@@ -45,8 +45,9 @@ export default function ROICalculator() {
 
       <div className="roi-inputs">
         <div className="roi-input-group">
-          <label className="roi-input-label">Team Size</label>
+          <label className="roi-input-label" htmlFor="roi-team-size">Team Size</label>
           <input
+            id="roi-team-size"
             className="roi-input"
             type="number"
             min={1}
@@ -55,8 +56,9 @@ export default function ROICalculator() {
           />
         </div>
         <div className="roi-input-group">
-          <label className="roi-input-label">Sprint Length (days)</label>
+          <label className="roi-input-label" htmlFor="roi-sprint-length">Sprint Length (days)</label>
           <input
+            id="roi-sprint-length"
             className="roi-input"
             type="number"
             min={1}
@@ -65,8 +67,9 @@ export default function ROICalculator() {
           />
         </div>
         <div className="roi-input-group">
-          <label className="roi-input-label">Releases / Month</label>
+          <label className="roi-input-label" htmlFor="roi-release-freq">Releases / Month</label>
           <input
+            id="roi-release-freq"
             className="roi-input"
             type="number"
             min={1}
@@ -75,8 +78,9 @@ export default function ROICalculator() {
           />
         </div>
         <div className="roi-input-group">
-          <label className="roi-input-label">Avg Annual Dev Cost ($)</label>
+          <label className="roi-input-label" htmlFor="roi-dev-cost">Avg Annual Dev Cost ($)</label>
           <input
+            id="roi-dev-cost"
             className="roi-input"
             type="number"
             min={1000}
@@ -86,8 +90,9 @@ export default function ROICalculator() {
           />
         </div>
         <div className="roi-input-group">
-          <label className="roi-input-label">Current AI Spend ($/mo)</label>
+          <label className="roi-input-label" htmlFor="roi-ai-spend">Current AI Spend ($/mo)</label>
           <input
+            id="roi-ai-spend"
             className="roi-input"
             type="number"
             min={0}
