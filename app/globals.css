@@ -1886,6 +1886,11 @@ nav {
   color: var(--fog);
 }
 
+.sig-soon {
+  color: var(--signal);
+  opacity: 0.7;
+}
+
 @media (max-width: 768px) {
   .sig-grid {
     grid-template-columns: 1fr;
@@ -2069,7 +2074,7 @@ footer {
 .footer-copy {
   font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   font-size: 0.55rem;
-  color: var(--fog);
+  color: var(--mist);
   letter-spacing: 0.05em;
 }
 
