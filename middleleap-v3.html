@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiddleLeap — From Keystrokes to Decisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;0,9..40,700;1,9..40,300;400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#080808;--ink:#0e0e0e;--soot:#161616;--ash:#1e1e1e;
+  --smoke:#2a2a2a;--fog:#666;--mist:#999;--bone:#d4d4cf;--paper:#ece9e1;
+  --signal:#e05a2b;--signal-dim:rgba(224,90,43,.12);--signal-glow:rgba(224,90,43,.4);
+  --mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Instrument Serif',serif;
+}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--smoke) var(--void)}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:var(--smoke);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--signal)}
+body{background:var(--void);color:var(--bone);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden;cursor:none}
+::selection{background:var(--signal);color:var(--void)}
+
+/* Cursor */
+.cur-dot{position:fixed;w:8px;h:8px;width:8px;height:8px;background:var(--signal);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:transform .08s ease}
+.cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(224,90,43,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+.cur-ring.active{width:56px;height:56px;border-color:var(--signal)}
+
+/* Canvas */
+#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* Grain overlay */
+.grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* Layout */
+.container{max-width:1120px;margin:0 auto;padding:0 2rem}
+section{position:relative;z-index:1}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,.7);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:flex;align-items:center;gap:.75rem;font-family:var(--sans);font-size:1rem;letter-spacing:-.03em;color:var(--bone);text-decoration:none}
+.nav-logo span{font-weight:700}
+.nav-mark{width:28px;height:28px;border:1px solid var(--bone);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;color:var(--signal);transition:border-color .3s}
+.nav-logo:hover .nav-mark{border-color:var(--signal)}
+.nav-links{display:flex;gap:2.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fog)}
+.nav-links a{text-decoration:none;color:inherit;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--signal);transition:width .3s}
+.nav-links a:hover{color:var(--paper)}.nav-links a:hover::after{width:100%}
+.nav-cta{padding:.5rem 1.25rem;border:1px solid var(--smoke);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone);text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:var(--paper);color:var(--void);border-color:var(--paper)}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 2rem 6rem}
+.hero-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:2rem;opacity:0;animation:fadeUp .8s .3s forwards}
+.hero h1{font-family:var(--serif);font-size:clamp(3.2rem,8vw,7rem);line-height:.92;letter-spacing:-.03em;color:var(--paper);max-width:900px;opacity:0;animation:fadeUp 1s .5s forwards}
+.hero h1 em{font-style:italic;color:var(--fog)}
+.hero-sub{font-family:var(--sans);font-size:1.1rem;color:var(--fog);margin-top:2rem;max-width:520px;line-height:1.7;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-cta-row{display:flex;gap:1rem;margin-top:3rem;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s 1s forwards}
+.hero-cta{display:inline-flex;align-items:center;gap:.75rem;padding:.85rem 2rem;background:var(--signal);color:var(--void);font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all .3s;border:none}
+.hero-cta:hover{background:#ff6b3d;transform:translateY(-1px);box-shadow:0 8px 30px var(--signal-glow)}
+.hero-cta-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border:1px solid var(--smoke);color:var(--mist);font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.hero-cta-ghost:hover{border-color:var(--bone);color:var(--paper)}
+.hero-scroll{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.3}
+.hero-scroll span{font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fog)}
+.hero-scroll div{width:1px;height:40px;background:linear-gradient(var(--fog),transparent)}
+
+/* Section header pattern */
+.sec-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--signal);margin-bottom:1rem}
+.sec-title{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);line-height:1;letter-spacing:-.02em;color:var(--paper);margin-bottom:1rem}
+.sec-title em{font-style:italic;color:var(--fog)}
+.sec-desc{font-size:1.05rem;color:var(--fog);max-width:560px;line-height:1.7;margin-bottom:3.5rem}
+
+/* Divider */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--smoke),transparent);margin:0 auto;max-width:1120px}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+
+/* ── Problem Section ── */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--smoke);margin-bottom:3rem}
+.problem-card{background:var(--ink);padding:2.5rem}
+.problem-num{font-family:var(--mono);font-size:2.2rem;font-weight:600;color:var(--signal);margin-bottom:.25rem}
+.problem-num.zero{color:var(--smoke)}
+.problem-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fog);margin-bottom:1rem}
+.problem-text{font-size:.9rem;color:var(--mist);line-height:1.6}
+@media(max-width:768px){.problem-grid{grid-template-columns:1fr}}
+
+/* Terminal code block */
+.terminal{background:var(--ink);border:1px solid var(--ash);padding:2rem 2.5rem;font-family:var(--mono);font-size:.8rem;line-height:2;color:var(--mist);position:relative;overflow:hidden}
+.terminal::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 1px,rgba(0,0,0,.15) 1px,rgba(0,0,0,.15) 2px);pointer-events:none;opacity:.3}
+.terminal .ln{color:var(--smoke);user-select:none;display:inline-block;width:2rem;text-align:right;margin-right:1.5rem}
+.terminal .kw{color:var(--signal)}.terminal .str{color:#5a7a5a}.terminal .val{color:#8a7a4a}.terminal .cmt{color:#6a3333}
+
+/* ── Timeline Section ── */
+.tl-row{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;align-items:start;margin-bottom:2rem}
+.tl-stage{font-family:var(--mono);font-size:.85rem;color:var(--paper);text-align:right;padding-top:.4rem}
+.tl-bars{display:flex;flex-direction:column;gap:.5rem}
+.tl-bar-wrap{position:relative}
+.tl-bar-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.05em;color:var(--fog);margin-bottom:4px}
+.tl-bar-label.active{color:var(--signal)}
+.tl-bar{height:32px;border:1px solid var(--ash);position:relative;overflow:hidden;border-radius:1px}
+.tl-fill{height:100%;width:0;transition:width 1.8s cubic-bezier(.16,1,.3,1)}
+.tl-fill.sdlc{background:var(--ash)}
+.tl-fill.aidlc{background:linear-gradient(90deg,var(--signal),rgba(224,90,43,.6))}
+.tl-dead{position:absolute;top:0;height:100%;background:repeating-linear-gradient(90deg,rgba(120,40,40,.2),rgba(120,40,40,.2) 3px,transparent 3px,transparent 6px)}
+.tl-animated .tl-fill{width:var(--w)}
+@media(max-width:640px){.tl-row{grid-template-columns:1fr}.tl-stage{text-align:left}}
+
+/* ── Mechanism Cards ── */
+.mech-card{border:1px solid var(--ash);background:var(--ink);padding:3rem;transition:border-color .4s,box-shadow .4s;margin-bottom:1rem}
+.mech-card:hover{border-color:rgba(224,90,43,.3);box-shadow:0 0 40px rgba(224,90,43,.04)}
+.mech-num{font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.mech-num::after{content:'';flex:1;height:1px;background:var(--ash)}
+.mech-title{font-family:var(--serif);font-size:1.8rem;color:var(--paper);margin-bottom:.75rem}
+.mech-desc{font-size:.95rem;color:var(--mist);line-height:1.7;max-width:600px;margin-bottom:1.5rem}
+.mech-flow{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.75rem}
+.mech-flow .step{padding:.4rem .85rem;border:1px solid var(--smoke);color:var(--mist);transition:all .3s}
+.mech-flow .step.lit{border-color:var(--signal);color:var(--signal)}
+.mech-flow .arrow{color:var(--signal);opacity:.5;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.8}}
+
+/* Flywheel */
+.flywheel-wrap{margin:2rem 0;border:1px solid var(--ash);border-radius:2px;overflow:hidden;background:var(--void)}
+#flywheelCanvas{display:block;width:100%;height:240px}
+
+/* Risk badges */
+.risk-row{display:flex;flex-wrap:wrap;gap:.75rem;font-family:var(--mono);font-size:.7rem}
+.risk-badge{display:flex;align-items:center;gap:.4rem;color:var(--mist)}
+.risk-dot{width:7px;height:7px;border-radius:50%}
+.risk-dot.lo{background:#3a6a3a}.risk-dot.md{background:#7a6a2a}.risk-dot.hi{background:var(--signal)}
+
+/* ── Maturity ── */
+.mat-step{display:grid;grid-template-columns:64px 1fr;gap:1.5rem;border:1px solid var(--ash);border-top:none;background:var(--ink);padding:2rem 2.5rem}
+.mat-step:first-child{border-top:1px solid var(--ash)}
+.mat-step.apex{background:rgba(224,90,43,.04);border-color:rgba(224,90,43,.2)}
+.mat-step.apex::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--signal),transparent)}
+.mat-n{font-family:var(--mono);font-size:1.8rem;font-weight:600;color:var(--smoke);text-align:center}
+.mat-step.apex .mat-n{color:var(--signal);text-shadow:0 0 20px var(--signal-glow)}
+.mat-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fog);margin-bottom:.5rem}
+.mat-step.apex .mat-label{color:var(--signal)}
+.mat-name{font-family:var(--serif);font-size:1.3rem;color:var(--paper);margin-bottom:.5rem}
+.mat-text{font-size:.9rem;color:var(--mist);line-height:1.6}
+
+/* ── Stats ── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--smoke)}
+.stat-card{background:var(--ink);padding:2.5rem 2rem;text-align:center}
+.stat-num{font-family:var(--mono);font-size:2.8rem;font-weight:600;color:var(--signal);margin-bottom:.25rem;text-shadow:0 0 30px var(--signal-glow)}
+.stat-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fog);margin-bottom:.75rem}
+.stat-desc{font-size:.8rem;color:var(--mist);line-height:1.5}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Build Log ── */
+.buildlog{background:var(--ink);border:1px solid var(--ash);padding:2.5rem;position:relative;overflow:hidden}
+.buildlog::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 1px,rgba(0,0,0,.12) 1px,rgba(0,0,0,.12) 2px);pointer-events:none;opacity:.2}
+.buildlog-header{display:flex;align-items:center;gap:.5rem;margin-bottom:2rem;position:relative;z-index:1}
+.buildlog-dot{width:8px;height:8px;border-radius:50%;background:var(--signal);animation:bPulse 2s ease-in-out infinite}
+@keyframes bPulse{0%,100%{box-shadow:0 0 0 0 var(--signal-glow)}50%{box-shadow:0 0 0 6px transparent}}
+.buildlog-title{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal)}
+.bl-row{display:grid;grid-template-columns:50px 1fr;gap:1.25rem;font-family:var(--mono);font-size:.78rem;line-height:1.8;position:relative;z-index:1}
+.bl-time{color:var(--smoke);text-align:right}.bl-msg{color:var(--mist)}.bl-msg.done{color:var(--signal)}
+.bl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--ash);position:relative;z-index:1}
+.bl-stat-num{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:var(--signal)}.bl-stat-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog);margin-top:.25rem}
+@media(max-width:640px){.bl-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Repos ── */
+.repo{display:block;border:1px solid var(--ash);border-top:none;padding:1.5rem 2rem;background:var(--ink);text-decoration:none;transition:background .3s;position:relative;overflow:hidden}
+.repo:first-child{border-top:1px solid var(--ash)}
+.repo::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--signal);transition:width .4s}
+.repo:hover{background:var(--soot)}.repo:hover::after{width:100%}
+.repo-name{font-family:var(--mono);font-size:.9rem;font-weight:600;color:var(--paper);margin-bottom:.25rem}
+.repo-desc{font-size:.85rem;color:var(--mist)}
+.repo-tags{display:flex;gap:.4rem;margin-top:.5rem}
+.repo-tag{font-family:var(--mono);font-size:.55rem;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .5rem;border:1px solid var(--smoke);color:var(--fog)}
+
+/* ── Toolkit ── */
+.tk-group{margin-bottom:2.5rem}
+.tk-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem}
+.tk-badges{display:flex;flex-wrap:wrap;gap:.4rem}
+.tk-badge{font-family:var(--mono);font-size:.8rem;padding:.55rem 1.1rem;border:1px solid var(--smoke);color:var(--mist);transition:all .2s}
+.tk-badge:hover{background:var(--signal);color:var(--void);border-color:var(--signal)}
+
+/* ── Signal ── */
+.sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--smoke)}
+.sig-card{background:var(--ink);padding:2.5rem;text-decoration:none;color:inherit;transition:background .3s;display:flex;flex-direction:column}
+.sig-card:hover{background:var(--soot)}
+.sig-persona{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:1rem}
+.sig-title{font-family:var(--serif);font-size:1.2rem;color:var(--paper);margin-bottom:.75rem;line-height:1.3;transition:color .3s}
+.sig-card:hover .sig-title{color:var(--signal)}
+.sig-excerpt{font-size:.85rem;color:var(--mist);line-height:1.6;margin-bottom:1.5rem;flex:1}
+.sig-meta{font-family:var(--mono);font-size:.6rem;color:var(--fog)}
+@media(max-width:768px){.sig-grid{grid-template-columns:1fr}}
+
+/* ── CTA ── */
+.cta-section{text-align:center;padding:8rem 2rem}
+.cta-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);line-height:.92;color:var(--paper);margin-bottom:1.5rem;letter-spacing:-.02em}
+.cta-sub{font-size:1.1rem;color:var(--fog);margin-bottom:3rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-input-wrap{max-width:480px;margin:0 auto;position:relative}
+.cta-input-wrap::before{content:'';position:absolute;inset:-1px;background:linear-gradient(90deg,var(--smoke),var(--signal),var(--smoke));opacity:0;transition:opacity .6s;border-radius:1px;z-index:0}
+.cta-input-wrap:focus-within::before{opacity:1}
+.cta-input-inner{position:relative;z-index:1;display:flex;background:var(--ink);border:1px solid var(--smoke)}
+.cta-input-inner:focus-within{border-color:transparent}
+.cta-prompt{padding:0 1rem;display:flex;align-items:center;font-family:var(--mono);font-size:.8rem;color:var(--smoke);user-select:none}
+.cta-input{flex:1;background:none;border:none;padding:1rem .5rem;font-family:var(--mono);font-size:.85rem;color:var(--paper);outline:none}
+.cta-input::placeholder{color:var(--smoke)}
+.cta-btn{padding:0 1.75rem;border:none;border-left:1px solid var(--smoke);background:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);cursor:none;transition:all .3s;font-weight:600}
+.cta-btn:hover{background:var(--signal);color:var(--void)}
+.cta-note{font-family:var(--mono);font-size:.6rem;color:var(--smoke);margin-top:1rem;letter-spacing:.05em}
+
+/* ── Footer ── */
+footer{border-top:1px solid var(--ash);padding:4rem 2rem 3rem}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;margin-bottom:3rem}
+.footer-col-title{font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal);margin-bottom:1rem}
+.footer-col a{display:block;font-family:var(--mono);font-size:.75rem;color:var(--fog);text-decoration:none;margin-bottom:.4rem;transition:color .2s}
+.footer-col a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--ash)}
+.footer-copy{font-family:var(--mono);font-size:.55rem;color:var(--smoke);letter-spacing:.05em}
+@media(max-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Status Bar ── */
+.statusbar{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--void);border-top:1px solid var(--ash);padding:.4rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.55rem;color:var(--smoke)}
+.statusbar .feed{color:var(--fog);transition:opacity .3s;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:.4rem}
+.feed-dot{width:5px;height:5px;border-radius:50%;background:var(--signal);animation:bPulse 2s ease-in-out infinite}
+.statusbar .sys{display:flex;gap:1.5rem}
+.statusbar .sig-val{color:var(--signal)}
+
+/* Keyframes */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="cur-dot" id="cDot"></div>
+<div class="cur-ring" id="cRing"></div>
+<div class="grain"></div>
+<canvas id="bgCanvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><div class="nav-mark">&gt;&gt;</div>Middle<span>Leap</span></a>
+  <div class="nav-links">
+    <a href="#problem">Manifesto</a>
+    <a href="#mechanics">Mechanics</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#lab">Lab</a>
+    <a href="#toolkit">Toolkit</a>
+  </div>
+  <a href="#cta" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">System Override</div>
+    <h1>From Keystrokes<br>to <em>Decisions.</em></h1>
+    <p class="hero-sub">Y Combinator is looking for the first 10-person, $100 billion company. That's only possible when AI isn't bolted on — it's the base layer. MiddleLeap is the methodology that gets you there. Built by practitioners with 20+ years shipping software across banking, telco, and enterprise.</p>
+    <div class="hero-cta-row">
+      <a href="#cta" class="hero-cta">Build the 20× Company →</a>
+      <a href="#problem" class="hero-cta-ghost">Read the manifesto</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div></div></div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 01 — The Problem</div>
+    <h2 class="sec-title rv">You bolted AI onto a broken process.<br><em>It gave you 15%.</em></h2>
+    <p class="sec-desc rv rv-d1">The next generation of companies won't win by hiring more engineers. They'll win with 10-person teams that outproduce 200-person organizations — because AI eliminates the 73% of the value stream lost to handoffs, approvals, and waiting. That's the 20× company. And you can't build one on bolt-on tools.</p>
+
+    <div class="problem-grid rv rv-d2">
+      <div class="problem-card"><div class="problem-num">10–15%</div><div class="problem-label">Efficiency Gain</div><div class="problem-text">The average improvement from AI coding assistants. You're optimizing the wrong layer.</div></div>
+      <div class="problem-card"><div class="problem-num">73%</div><div class="problem-label">Value Stream Waste</div><div class="problem-text">Time between steps — handoffs, context switches, approval queues — dwarfs time spent writing code.</div></div>
+      <div class="problem-card"><div class="problem-num zero">0</div><div class="problem-label">Paradigm Shift</div><div class="problem-text">Bolt-on tools don't change how you work. Meanwhile, YC-backed startups are building $100B companies with 10-person teams. The difference isn't talent. It's operating model.</div></div>
+    </div>
+
+    <div class="terminal rv rv-d3">
+      <div><span class="ln">01</span><span class="kw">const</span> currentState = {</div>
+      <div><span class="ln">02</span>  model: <span class="str">"Software Factory"</span>,</div>
+      <div><span class="ln">03</span>  aiUsage: <span class="str">"bolt-on autocomplete"</span>,</div>
+      <div><span class="ln">04</span>  bottleneck: <span class="str">"handoffs, not keystrokes"</span>,</div>
+      <div><span class="ln">05</span>  realGain: <span class="val">0.15</span>,</div>
+      <div><span class="ln">06</span>  potentialGain: <span class="kw">20.0</span>,</div>
+      <div><span class="ln">07</span>};</div>
+      <div style="margin-top:.5rem"><span class="ln">08</span><span class="cmt">// ERROR: You're optimizing the wrong variable.</span></div>
+      <div><span class="ln">09</span><span class="cmt">// YC is funding 10-person teams that ship like 200.</span></div>
+      <div><span class="ln">10</span><span class="cmt">// The gap isn't code generation. It's decision latency.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THE SHIFT — Timeline -->
+<section id="shift" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 02 — The Shift</div>
+    <h2 class="sec-title rv">SDLC → AI-DLC</h2>
+    <p class="sec-desc rv rv-d1">The Adaptive Development Lifecycle doesn't speed up each step. It eliminates the wait between them. This is the operating model behind the 20× company — and the red zones below are why you're stuck at 15%.</p>
+
+    <div id="tlSection" class="rv rv-d2">
+      <div class="tl-row"><div class="tl-stage">Business Case</div><div class="tl-bars"><div class="tl-bar-wrap"><div class="tl-bar-label">SDLC — 4 weeks</div><div class="tl-bar"><div class="tl-fill sdlc" style="--w:100%"></div><div class="tl-dead" style="left:15%;width:20%"></div><div class="tl-dead" style="left:55%;width:15%"></div><div class="tl-dead" style="left:80%;width:10%"></div></div></div><div class="tl-bar-wrap"><div class="tl-bar-label active">AI-DLC — 4 hours</div><div class="tl-bar"><div class="tl-fill aidlc" style="--w:6%"></div></div></div></div></div>
+      <div class="tl-row"><div class="tl-stage">Prototype</div><div class="tl-bars"><div class="tl-bar-wrap"><div class="tl-bar-label">SDLC — 3 weeks</div><div class="tl-bar"><div class="tl-fill sdlc" style="--w:75%"></div><div class="tl-dead" style="left:10%;width:25%"></div><div class="tl-dead" style="left:60%;width:15%"></div></div></div><div class="tl-bar-wrap"><div class="tl-bar-label active">AI-DLC — same day</div><div class="tl-bar"><div class="tl-fill aidlc" style="--w:4%"></div></div></div></div></div>
+      <div class="tl-row"><div class="tl-stage">Architecture</div><div class="tl-bars"><div class="tl-bar-wrap"><div class="tl-bar-label">SDLC — 2 weeks</div><div class="tl-bar"><div class="tl-fill sdlc" style="--w:50%"></div><div class="tl-dead" style="left:20%;width:30%"></div></div></div><div class="tl-bar-wrap"><div class="tl-bar-label active">AI-DLC — 2 hours</div><div class="tl-bar"><div class="tl-fill aidlc" style="--w:3%"></div></div></div></div></div>
+      <div class="tl-row"><div class="tl-stage">Security</div><div class="tl-bars"><div class="tl-bar-wrap"><div class="tl-bar-label">SDLC — 1 week</div><div class="tl-bar"><div class="tl-fill sdlc" style="--w:25%"></div><div class="tl-dead" style="left:40%;width:35%"></div></div></div><div class="tl-bar-wrap"><div class="tl-bar-label active">AI-DLC — at commit</div><div class="tl-bar"><div class="tl-fill aidlc" style="--w:2%"></div></div></div></div></div>
+      <div class="tl-row"><div class="tl-stage">Deployment</div><div class="tl-bars"><div class="tl-bar-wrap"><div class="tl-bar-label">SDLC — 2 weeks</div><div class="tl-bar"><div class="tl-fill sdlc" style="--w:50%"></div><div class="tl-dead" style="left:5%;width:20%"></div><div class="tl-dead" style="left:50%;width:25%"></div></div></div><div class="tl-bar-wrap"><div class="tl-bar-label active">AI-DLC — auto-merge</div><div class="tl-bar"><div class="tl-fill aidlc" style="--w:3%"></div></div></div></div></div>
+    </div>
+
+    <div class="rv rv-d3" style="border-left:2px solid var(--signal);padding-left:1.5rem;margin-top:3rem">
+      <div style="font-family:var(--serif);font-size:1.8rem;color:var(--paper)">Weeks → Hours.</div>
+      <div style="font-family:var(--mono);font-size:.8rem;color:var(--fog);margin-top:.25rem">This is how a 10-person team outproduces 200. Not by working harder — by eliminating the dead time between every step.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MECHANICS -->
+<section id="mechanics" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 03 — The Mechanics</div>
+    <h2 class="sec-title rv">Three mechanisms<br><em>that build a 20× company.</em></h2>
+    <p class="sec-desc rv rv-d1">The 20× company isn't a vibe — it's an architecture. Each mechanism feeds the next. The system gets smarter with every cycle. This is how 10 people outproduce 200.</p>
+
+    <div class="mech-card rv rv-d1">
+      <div class="mech-num">Mechanism 01</div>
+      <div class="mech-title">Specification-First Delivery</div>
+      <div class="mech-desc">Rigorous specifications force alignment before execution. You cannot delegate to an agent without a contract. This eliminates the most expensive waste: building the wrong thing fast. We learned this the hard way — two decades of regulated delivery in banking and telco taught us that ambiguity is the real cost driver, not velocity.</div>
+      <div class="mech-flow"><span class="step">Prompt</span><span class="arrow">→</span><span class="step">Requirement</span><span class="arrow">→</span><span class="step">Design</span><span class="arrow">→</span><span class="step lit">Plan</span></div>
+    </div>
+
+    <div class="mech-card rv rv-d2">
+      <div class="mech-num">Mechanism 02</div>
+      <div class="mech-title">Compounding Engineering</div>
+      <div class="mech-desc">The Knowledge Flywheel. Every feature generates new steering files — reusable instruction sets that encode your architecture, standards, and domain rules. This is the mechanism that separates a 20× company from a team using ChatGPT. The system doesn't just remember. It learns. Each cycle makes the next one faster, cheaper, and more reliable.</div>
+      <div class="flywheel-wrap"><canvas id="flywheelCanvas"></canvas></div>
+      <div class="mech-flow"><span class="step lit">Plan</span><span class="arrow">→</span><span class="step">Delegate</span><span class="arrow">→</span><span class="step">Assess</span><span class="arrow">→</span><span class="step lit">Codify</span><span class="arrow">↻</span></div>
+    </div>
+
+    <div class="mech-card rv rv-d3">
+      <div class="mech-num">Mechanism 03</div>
+      <div class="mech-title">Adaptive Workflows</div>
+      <div class="mech-desc">The AI-DLC routes intelligently. Simple fixes flow through fast-track automation. Complex features get full specification cycles. Process weight matches problem weight. This is how a 10-person team handles the throughput of 200 — not by cutting corners, but by matching effort to risk.</div>
+      <div class="risk-row"><div class="risk-badge"><div class="risk-dot lo"></div>Low-risk → Auto</div><div class="risk-badge"><div class="risk-dot md"></div>Medium → Review</div><div class="risk-badge"><div class="risk-dot hi"></div>High → Full spec</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section id="roadmap" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 04 — The Roadmap</div>
+    <h2 class="sec-title rv">From bolt-on to <em>20× company.</em></h2>
+    <p class="sec-desc rv rv-d1">You don't leap in one jump. Four stages, each unlocking the next. This model comes from observing — and leading — transformation across fintech startups, tier-1 banks, and global telcos. Every stage is a pattern we've seen work.</p>
+
+    <div class="rv rv-d2">
+      <div class="mat-step"><div class="mat-n">1</div><div><div class="mat-label">The Bolt-On Era — where 95% of companies are today</div><div class="mat-name">AI-Assisted</div><div class="mat-text">Ad-hoc tools. Individual usage. Copilot in the IDE, ChatGPT in the browser. No organizational integration. No compounding. You're getting 15% and calling it transformation.</div></div></div>
+      <div class="mat-step"><div class="mat-n">2</div><div><div class="mat-label">Standardization Begins</div><div class="mat-name">Templates & Scaffolds</div><div class="mat-text">Standardized prompts. MCP servers introduced. Reusable templates. First steering files appear. Knowledge persists between sessions.</div></div></div>
+      <div class="mat-step"><div class="mat-n">3</div><div><div class="mat-label">Institutional Memory</div><div class="mat-name">System Knowledge Plane</div><div class="mat-text">Agents access proprietary knowledge graphs. Architecture decisions, compliance rules, and domain expertise become machine-readable.</div></div></div>
+      <div class="mat-step apex" style="position:relative"><div class="mat-n">4</div><div><div class="mat-label">The 20× Company</div><div class="mat-name">The Agent Factory</div><div class="mat-text">The destination YC is betting on: tiny teams, outsized output. Autonomous agent fleets. Compounding engineering at scale. Leadership directs outcomes, not tasks. A 10-person team that ships like 200. The middle leap is complete.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESULTS -->
+<section id="results" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 05 — The Evidence</div>
+    <h2 class="sec-title rv">The 20× company <em>isn't theory.</em></h2>
+    <div style="height:2rem"></div>
+    <div class="stats-grid rv rv-d1" id="statsGrid">
+      <div class="stat-card"><div class="stat-num" data-count="88" data-suffix="%">0%</div><div class="stat-label">Modernization Reduction</div><div class="stat-desc">Microsoft Platform Engineering</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="46" data-prefix="~" data-suffix="m">0m</div><div class="stat-label">Saved Per Task</div><div class="stat-desc">New engineer onboarding</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="7000" data-suffix="+">0+</div><div class="stat-label">Autonomous Incidents</div><div class="stat-desc">SRE agent resolution</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="280" data-suffix="×">0×</div><div class="stat-label">Cost per Token Drop</div><div class="stat-desc">18-month trajectory</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BUILT WITH AI-DLC -->
+<section id="built" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 06 — Built With AI-DLC</div>
+    <h2 class="sec-title rv">This site is <em>its own proof.</em></h2>
+    <p class="sec-desc rv rv-d1">Everything you see — designed, coded, documented — using the methodology above. Not by a team of 20. By practitioners who've spent 20+ years shipping production software in banking, telco, and enterprise. This is what a 20× workflow looks like in practice.</p>
+
+    <div class="buildlog rv rv-d2">
+      <div class="buildlog-header"><div class="buildlog-dot"></div><div class="buildlog-title">Build Session Log</div></div>
+      <div class="bl-row"><div class="bl-time">00:00</div><div class="bl-msg">Session initialized. Steering files loaded: frontend-design, docx, brand-guidelines</div></div>
+      <div class="bl-row"><div class="bl-time">00:12</div><div class="bl-msg">PRD v1.0 generated from prior conversation context</div></div>
+      <div class="bl-row"><div class="bl-time">00:28</div><div class="bl-msg">Design system: void/paper/signal palette, Instrument Serif + DM Sans + JetBrains Mono</div></div>
+      <div class="bl-row"><div class="bl-time">00:45</div><div class="bl-msg">Hero section built: generative canvas, typewriter, split panel</div></div>
+      <div class="bl-row"><div class="bl-time">01:10</div><div class="bl-msg">Sections 01–04: Problem, Shift (timeline), Mechanics (flywheel), Roadmap</div></div>
+      <div class="bl-row"><div class="bl-time">01:35</div><div class="bl-msg">Sections 05–08: Results, Lab, Toolkit, Signal</div></div>
+      <div class="bl-row"><div class="bl-time">02:15</div><div class="bl-msg">Executive review applied — governance, TCO, personas, proof points</div></div>
+      <div class="bl-row"><div class="bl-time">02:50</div><div class="bl-msg">v2: particles, flywheel viz, stat counters, cursor, agent feed</div></div>
+      <div class="bl-row"><div class="bl-time">03:20</div><div class="bl-msg">v3: complete redesign — editorial typography, refined layout, cohesive system</div></div>
+      <div class="bl-row"><div class="bl-time">03:47</div><div class="bl-msg done">Build complete. Zero manual CSS. All agent-generated from specification.</div></div>
+      <div class="bl-stats">
+        <div><div class="bl-stat-num">3h 47m</div><div class="bl-stat-label">Total Time</div></div>
+        <div><div class="bl-stat-num">3</div><div class="bl-stat-label">Steering Files</div></div>
+        <div><div class="bl-stat-num">12</div><div class="bl-stat-label">Sections</div></div>
+        <div><div class="bl-stat-num">0</div><div class="bl-stat-label">Lines Hand-Written</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LAB -->
+<section id="lab" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 07 — The Lab</div>
+    <h2 class="sec-title rv">Open source. <em>Open methodology.</em></h2>
+    <p class="sec-desc rv rv-d1">The tools that power the 20× company. We build in public — every framework, template, and steering file that makes agent-native delivery work.</p>
+
+    <div class="rv rv-d2">
+      <a href="#" class="repo"><div class="repo-name">agent-factory-framework</div><div class="repo-desc">Multi-agent orchestration with spec-driven contracts. Claude Code native.</div><div class="repo-tags"><span class="repo-tag">TypeScript</span><span class="repo-tag">MCP</span></div></a>
+      <a href="#" class="repo"><div class="repo-name">ai-dlc-toolkit</div><div class="repo-desc">CLI and templates for the Adaptive Development Lifecycle. Spec engine included.</div><div class="repo-tags"><span class="repo-tag">Python</span><span class="repo-tag">CLI</span></div></a>
+      <a href="#" class="repo"><div class="repo-name">steering-files-library</div><div class="repo-desc">Battle-tested steering files, system prompts, and CLAUDE.md templates.</div><div class="repo-tags"><span class="repo-tag">Markdown</span></div></a>
+      <a href="#" class="repo"><div class="repo-name">spec-validator-mcp</div><div class="repo-desc">Validates specifications against quality gates before agent execution.</div><div class="repo-tags"><span class="repo-tag">MCP Server</span></div></a>
+      <a href="#" class="repo"><div class="repo-name">control-tower-dashboard</div><div class="repo-desc">Real-time visibility into agent fleet activity, routing, and cost.</div><div class="repo-tags"><span class="repo-tag">React</span></div></a>
+      <a href="#" class="repo"><div class="repo-name">open-finance-agents</div><div class="repo-desc">Domain-specific agents for financial services — compliance, integration, reporting.</div><div class="repo-tags"><span class="repo-tag">Domain-Specific</span></div></a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLKIT -->
+<section id="toolkit" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 08 — The Toolkit</div>
+    <h2 class="sec-title rv">Curated stack.</h2>
+    <p class="sec-desc rv rv-d1">The stack behind the 20× company. Battle-tested across real production workloads in regulated industries.</p>
+    <div class="rv rv-d2">
+      <div class="tk-group"><div class="tk-label">AI Agents & Code</div><div class="tk-badges"><span class="tk-badge">Claude Code</span><span class="tk-badge">Claude + Skills</span><span class="tk-badge">Cursor</span><span class="tk-badge">Copilot</span><span class="tk-badge">v0</span></div></div>
+      <div class="tk-group"><div class="tk-label">Design & Prototyping</div><div class="tk-badges"><span class="tk-badge">Magic Patterns</span><span class="tk-badge">Bolt.new</span><span class="tk-badge">Lovable</span><span class="tk-badge">Figma</span><span class="tk-badge">Vercel</span></div></div>
+      <div class="tk-group"><div class="tk-label">Protocols & Infrastructure</div><div class="tk-badges"><span class="tk-badge">MCP</span><span class="tk-badge">NotebookLM</span><span class="tk-badge">GitHub Actions</span><span class="tk-badge">Codex CLI</span><span class="tk-badge">Linear</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SIGNAL -->
+<section id="signal" style="padding:8rem 0">
+  <div class="container">
+    <div class="sec-label rv">// 09 — The Signal</div>
+    <h2 class="sec-title rv">Stay sharp.</h2>
+    <p class="sec-desc rv rv-d1">Essays, case studies, and dispatches from the frontier of the 20× company.</p>
+
+    <div class="sig-grid rv rv-d2">
+      <a href="#" class="sig-card"><div class="sig-persona">Essay · For CTOs</div><div class="sig-title">The 20× Company: Why Your AI Strategy is Stuck at 15%</div><div class="sig-excerpt">YC is betting on 10-person teams that outproduce 200. Most organizations bolt AI onto existing processes and wonder why transformation never arrives.</div><div class="sig-meta">12 min read →</div></a>
+      <a href="#" class="sig-card"><div class="sig-persona">Case Study · For CPOs</div><div class="sig-title">4 Hypotheses in a Week: A Product Leader's AI-DLC Playbook</div><div class="sig-excerpt">When prototypes cost hours instead of sprints, your portfolio strategy changes fundamentally.</div><div class="sig-meta">8 min read →</div></a>
+      <a href="#" class="sig-card"><div class="sig-persona">Governance · For CIOs</div><div class="sig-title">Agent Governance: The Control Framework Your CAB Needs</div><div class="sig-excerpt">Agent velocity without agent governance is just faster chaos. Here's the framework.</div><div class="sig-meta">12 min read →</div></a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section id="cta" class="cta-section">
+  <div class="rv"><div class="sec-label" style="text-align:center">// ready?</div></div>
+  <h2 class="cta-title rv">Build the 20×<br>company.</h2>
+  <p class="cta-sub rv rv-d1">The next wave of companies will be built by tiny teams with AI-native operating models — not by adding headcount. MiddleLeap is the methodology. Built by engineers who've done this across regulated industries.</p>
+  <div class="cta-input-wrap rv rv-d2">
+    <div class="cta-input-inner">
+      <div class="cta-prompt">~$</div>
+      <input type="email" class="cta-input" placeholder="your_email@company.com">
+      <button class="cta-btn">Initialize</button>
+    </div>
+  </div>
+  <div class="cta-note rv rv-d3">Get the playbook for 20× product velocity. Unsubscribe anytime.</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><div class="footer-col-title">Navigate</div><a href="#problem">Manifesto</a><a href="#shift">The Shift</a><a href="#mechanics">Mechanics</a><a href="#roadmap">Roadmap</a></div>
+      <div class="footer-col"><div class="footer-col-title">Build</div><a href="#lab">The Lab</a><a href="#toolkit">Toolkit</a><a href="#">GitHub</a><a href="#">Docs</a></div>
+      <div class="footer-col"><div class="footer-col-title">Read</div><a href="#signal">The Signal</a><a href="#">Case Studies</a><a href="#">Essays</a></div>
+      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="#">X / Twitter</a><a href="#">LinkedIn</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" style="display:flex;align-items:center;gap:.5rem"><div style="width:16px;height:16px;border:1px solid var(--smoke);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:6px;color:var(--smoke)">&gt;&gt;</div>MiddleLeap Ventures · Dubai, UAE · The methodology behind the 20× company</div>
+      <div class="footer-copy">© 2025. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <div class="feed"><div class="feed-dot"></div><span id="feedText">agent-07 committed to steering-files-library · 3m ago</span></div>
+  <div class="sys"><span>CPU: <span class="sig-val">OK</span></span><span>MEM: <span class="sig-val">OK</span></span><span>V 3.0</span></div>
+</div>
+
+<script>
+// ── Cursor ──
+const cD=document.getElementById('cDot'),cR=document.getElementById('cRing');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cD.style.left=mx+'px';cD.style.top=my+'px'});
+(function aR(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cR.style.left=rx+'px';cR.style.top=ry+'px';requestAnimationFrame(aR)})();
+document.querySelectorAll('a,button,input,.tk-badge,.repo,.sig-card').forEach(el=>{el.addEventListener('mouseenter',()=>cR.classList.add('active'));el.addEventListener('mouseleave',()=>cR.classList.remove('active'))});
+
+// ── Particle Network ──
+const cv=document.getElementById('bgCanvas'),cx=cv.getContext('2d');
+function rz(){cv.width=innerWidth;cv.height=document.documentElement.scrollHeight}
+rz();addEventListener('resize',rz);
+const pts=Array.from({length:100},()=>({x:Math.random()*innerWidth,y:Math.random()*document.documentElement.scrollHeight,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.2+.3}));
+let _scrollY=0;addEventListener('scroll',()=>_scrollY=window.scrollY);
+(function draw(){cx.clearRect(0,0,cv.width,cv.height);const vt=_scrollY,vb=_scrollY+innerHeight;
+pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cv.width)p.vx*=-1;if(p.y<0||p.y>cv.height)p.vy*=-1;
+if(p.y>vt-200&&p.y<vb+200){cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.28);cx.fillStyle='rgba(224,90,43,.12)';cx.fill()}});
+for(let i=0;i<pts.length;i++){if(pts[i].y<vt-200||pts[i].y>vb+200)continue;for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<140){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle=`rgba(224,90,43,${.04*(1-d/140)})`;cx.lineWidth=.5;cx.stroke()}}}
+requestAnimationFrame(draw)})();
+
+// ── Flywheel ──
+const fc=document.getElementById('flywheelCanvas'),fx=fc.getContext('2d');
+function rzF(){fc.width=fc.parentElement.offsetWidth;fc.height=240}rzF();addEventListener('resize',rzF);
+const fLabels=['SPEC','PLAN','AGENT','CODE','TEST','STEER','RULE','KNOW'];let ft=0;
+(function drawF(){fx.clearRect(0,0,fc.width,fc.height);ft+=.006;const cxf=fc.width/2,cyf=fc.height/2,r=Math.min(cxf,cyf)*.72;
+fx.beginPath();fx.arc(cxf,cyf,r,0,6.28);fx.strokeStyle='rgba(42,42,42,.6)';fx.lineWidth=.5;fx.stroke();
+const nodes=fLabels.map((l,i)=>{const a=(i/fLabels.length)*6.28-1.57+ft;const x=cxf+Math.cos(a)*r,y=cyf+Math.sin(a)*r,o=.35+Math.sin(ft*2+i)*.15;
+fx.beginPath();fx.moveTo(cxf,cyf);fx.lineTo(x,y);fx.strokeStyle=`rgba(224,90,43,${o*.25})`;fx.lineWidth=.4;fx.stroke();
+fx.beginPath();fx.arc(x,y,3.5,0,6.28);fx.fillStyle=`rgba(224,90,43,${o})`;fx.fill();
+fx.font='500 9px JetBrains Mono';fx.fillStyle=`rgba(212,212,207,${o*.8})`;fx.textAlign='center';fx.fillText(l,x,y-9);return{x,y}});
+for(let i=0;i<nodes.length;i++){const j=(i+3)%nodes.length;fx.beginPath();fx.moveTo(nodes[i].x,nodes[i].y);fx.lineTo(nodes[j].x,nodes[j].y);fx.strokeStyle=`rgba(224,90,43,${.04+Math.sin(ft+i)*.02})`;fx.lineWidth=.3;fx.stroke()}
+const cp=2.5+Math.sin(ft*3)*.5;fx.beginPath();fx.arc(cxf,cyf,cp,0,6.28);fx.fillStyle='rgba(224,90,43,.5)';fx.fill();
+requestAnimationFrame(drawF)})();
+
+// ── Scroll Reveal ──
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── Timeline Animation ──
+const tlObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.tl-bar').forEach(b=>{b.closest('#tlSection').classList.add('tl-animated')});tlObs.unobserve(e.target)}})},{threshold:.2});
+document.querySelectorAll('#tlSection').forEach(el=>tlObs.observe(el));
+
+// ── Stat Counters ──
+const stObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-count]').forEach(el=>{const t=+el.dataset.count,p=el.dataset.prefix||'',s=el.dataset.suffix||'',dur=1600,st=performance.now();
+(function a(now){const prog=Math.min((now-st)/dur,1),v=Math.floor((1-Math.pow(1-prog,3))*t);el.textContent=p+(v>999?v.toLocaleString():v)+s;if(prog<1)requestAnimationFrame(a)})(performance.now())});stObs.unobserve(e.target)}})},{threshold:.3});
+document.querySelectorAll('#statsGrid').forEach(el=>stObs.observe(el));
+
+// ── Smooth Scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+
+// ── Agent Feed ──
+const feeds=["agent-07 committed to steering-files-library · 3m ago","spec-validator passed gate #412 · 8m ago","steering file codified from engagement · 22m ago","control-tower: 14 agents active · 31m ago","ai-dlc-toolkit v2.1.0 released · 1h ago","knowledge-plane: 847 files indexed · 2h ago"];
+let fi=0;const fEl=document.getElementById('feedText');
+setInterval(()=>{fi=(fi+1)%feeds.length;fEl.style.opacity=0;setTimeout(()=>{fEl.textContent=feeds[fi];fEl.style.opacity=1},250)},5000);
+fEl.style.transition='opacity .25s';
+</script>
+</body>
+</html>
