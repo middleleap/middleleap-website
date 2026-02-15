@@ -9,6 +9,7 @@ import CustomCursor from "@/components/CustomCursor";
 import ParticleNetwork from "@/components/ParticleNetwork";
 import ScrollReveal from "@/components/ScrollReveal";
 import StatusBar from "@/components/StatusBar";
+import InlineCTA from "@/components/InlineCTA";
 
 // Lazy load below-the-fold sections to reduce initial JS
 const Mechanics = dynamic(() => import("@/components/Mechanics"));
@@ -34,6 +35,12 @@ export default function Home() {
       <Shift />
       <Divider />
       <WhatThisMeans />
+      <InlineCTA
+        label="// Find your stage"
+        text="Take the 2-minute self-assessment to identify where you are on the maturity model — and what to do next."
+        href="#roadmap"
+        buttonText="Start the assessment"
+      />
       <Divider />
       <Mechanics />
       <Divider />
@@ -42,6 +49,12 @@ export default function Home() {
       <Roadmap />
       <Divider />
       <Results />
+      <InlineCTA
+        label="// Ready to move?"
+        text="Schedule a 30-minute diagnostic session. We'll map your current maturity stage and identify your highest-leverage next step."
+        href="#cta"
+        buttonText="Schedule a diagnostic"
+      />
       <Divider />
       <Built />
       <Divider />
