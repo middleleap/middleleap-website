@@ -4,10 +4,12 @@ import { useEffect, useRef } from "react";
 
 export default function Flywheel() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fc = canvasRef.current;
-    if (!fc) return;
+    const wrap = wrapRef.current;
+    if (!fc || !wrap) return;
     const fx = fc.getContext("2d");
     if (!fx) return;
 
@@ -21,8 +23,19 @@ export default function Flywheel() {
     const fLabels = ["SPEC", "PLAN", "AGENT", "CODE", "TEST", "STEER", "RULE", "KNOW"];
     let ft = 0;
     let animId: number;
+    let inViewport = false;
+    let tabVisible = true;
+    let lastFrame = 0;
+    const frameInterval = 1000 / 30; // 30fps
 
-    const drawF = () => {
+    const drawF = (now: number) => {
+      if (!inViewport || !tabVisible) return;
+      animId = requestAnimationFrame(drawF);
+
+      const delta = now - lastFrame;
+      if (delta < frameInterval) return;
+      lastFrame = now - (delta % frameInterval);
+
       fx!.clearRect(0, 0, fc!.width, fc!.height);
       ft += 0.006;
       const cxf = fc!.width / 2;
@@ -75,19 +88,40 @@ export default function Flywheel() {
       fx!.arc(cxf, cyf, cp, 0, 6.28);
       fx!.fillStyle = "rgba(224,90,43,.5)";
       fx!.fill();
+    };
 
+    const startLoop = () => {
+      cancelAnimationFrame(animId);
       animId = requestAnimationFrame(drawF);
     };
-    animId = requestAnimationFrame(drawF);
+
+    // Pause when out of viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inViewport = entry.isIntersecting;
+        if (inViewport && tabVisible) startLoop();
+      },
+      { threshold: 0 }
+    );
+    observer.observe(wrap);
+
+    // Pause when tab is hidden
+    const onVisibilityChange = () => {
+      tabVisible = !document.hidden;
+      if (inViewport && tabVisible) startLoop();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      observer.disconnect();
       cancelAnimationFrame(animId);
     };
   }, []);
 
   return (
-    <div className="flywheel-wrap">
+    <div className="flywheel-wrap" ref={wrapRef}>
       <canvas ref={canvasRef} id="flywheelCanvas" />
     </div>
   );

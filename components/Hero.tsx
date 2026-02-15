@@ -16,14 +16,14 @@ export default function Hero() {
       <div className="container">
         <div className="hero-label">System Override</div>
         <h1>
-          From Keystrokes
+          From Process
           <br />
-          to <em>Decisions.</em>
+          to <em>Product.</em>
         </h1>
         <p className="hero-sub">
-          Y Combinator is looking for the first 10-person, $100 billion company.
-          That&apos;s only possible when AI isn&apos;t bolted on — it&apos;s the
-          base layer. MiddleLeap is the methodology that gets you there. Built by
+          The next wave of $100B companies won&apos;t have 2,000 engineers.
+          They&apos;ll have 10 — with AI as the base layer, not a bolt-on.
+          MiddleLeap is the methodology that gets you there. Built by
           practitioners with 20+ years shipping software across banking, telco,
           and enterprise.
         </p>

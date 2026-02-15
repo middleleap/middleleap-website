@@ -3,7 +3,7 @@ const articles = [
     persona: "Essay \u00b7 For CTOs",
     title: "The 20\u00d7 Company: Why Your AI Strategy is Stuck at 15%",
     excerpt:
-      "YC is betting on 10-person teams that outproduce 200. Most organizations bolt AI onto existing processes and wonder why transformation never arrives.",
+      "The evidence is clear: 10-person teams can outproduce 200. Most organizations bolt AI onto existing processes and wonder why transformation never arrives.",
     meta: "12 min read \u2192",
   },
   {

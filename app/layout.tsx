@@ -12,15 +12,17 @@ const instrumentSerif = Instrument_Serif({
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "MiddleLeap — From Keystrokes to Decisions",
+  title: "MiddleLeap — From Process to Product",
   description:
     "MiddleLeap Ventures: The methodology behind the 20× company. Helping engineering leaders transition from the SDLC to the AI-DLC.",
 };

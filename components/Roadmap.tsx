@@ -62,7 +62,7 @@ export default function Roadmap() {
               <div className="mat-label">The 20× Company</div>
               <div className="mat-name">The Agent Factory</div>
               <div className="mat-text">
-                The destination YC is betting on: tiny teams, outsized output.
+                The destination the market is converging on: tiny teams, outsized output.
                 Autonomous agent fleets. Compounding engineering at scale.
                 Leadership directs outcomes, not tasks. A 10-person team that
                 ships like 200. The middle leap is complete.

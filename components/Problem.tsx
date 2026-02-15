@@ -37,7 +37,7 @@ export default function Problem() {
             <div className="problem-num zero">0</div>
             <div className="problem-label">Paradigm Shift</div>
             <div className="problem-text">
-              Bolt-on tools don&apos;t change how you work. Meanwhile, YC-backed
+              Bolt-on tools don&apos;t change how you work. Meanwhile, AI-native
               startups are building $100B companies with 10-person teams. The
               difference isn&apos;t talent. It&apos;s operating model.
             </div>
@@ -82,7 +82,7 @@ export default function Problem() {
           <div>
             <span className="ln">09</span>
             <span className="cmt">
-              {"// YC is funding 10-person teams that ship like 200."}
+              {"// AI-native teams of 10 are outshipping orgs of 200."}
             </span>
           </div>
           <div>

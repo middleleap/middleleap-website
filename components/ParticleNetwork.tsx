@@ -34,9 +34,16 @@ export default function ParticleNetwork() {
 
     let animId: number;
     let visible = true;
+    let lastFrame = 0;
+    const frameInterval = 1000 / 30; // 30fps
 
-    const draw = () => {
+    const draw = (now: number) => {
       if (!visible) return;
+      animId = requestAnimationFrame(draw);
+
+      const delta = now - lastFrame;
+      if (delta < frameInterval) return;
+      lastFrame = now - (delta % frameInterval);
 
       cx!.clearRect(0, 0, cv!.width, cv!.height);
       const vt = scrollY;
@@ -71,7 +78,6 @@ export default function ParticleNetwork() {
           }
         }
       }
-      animId = requestAnimationFrame(draw);
     };
     animId = requestAnimationFrame(draw);
 
