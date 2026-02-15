@@ -1891,9 +1891,80 @@ nav {
   opacity: 0.7;
 }
 
+.sig-reading {
+  margin-top: 3rem;
+}
+
+.sig-reading-label {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 1rem;
+}
+
+.sig-reading-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--ash);
+  border-top: none;
+  background: var(--ink);
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.sig-reading-link:first-of-type {
+  border-top: 1px solid var(--ash);
+}
+
+.sig-reading-link:hover {
+  background: var(--soot);
+}
+
+.sig-reading-source {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fog);
+  min-width: 100px;
+}
+
+.sig-reading-title {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--bone);
+  transition: color 0.3s;
+}
+
+.sig-reading-link:hover .sig-reading-title {
+  color: var(--signal);
+}
+
+.sig-reading-arrow {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--smoke);
+  transition: color 0.3s;
+}
+
+.sig-reading-link:hover .sig-reading-arrow {
+  color: var(--signal);
+}
+
 @media (max-width: 768px) {
   .sig-grid {
     grid-template-columns: 1fr;
+  }
+  .sig-reading-link {
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  .sig-reading-source {
+    min-width: auto;
   }
 }
 

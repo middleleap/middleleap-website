@@ -1,3 +1,31 @@
+const reading = [
+  {
+    source: "Anthropic",
+    title: "Claude Code: Best practices for agentic coding",
+    href: "https://www.anthropic.com/engineering/claude-code-best-practices",
+  },
+  {
+    source: "Simon Willison",
+    title: "AI-assisted development and the future of software engineering",
+    href: "https://simonwillison.net/2025/Mar/19/ai-assisted-search/",
+  },
+  {
+    source: "Andrej Karpathy",
+    title: "Software in the era of AI",
+    href: "https://karpathy.ai/blog/software-in-2025.html",
+  },
+  {
+    source: "Sequoia Capital",
+    title: "AI\u2019s $600B question",
+    href: "https://www.sequoiacap.com/article/ais-600b-question/",
+  },
+  {
+    source: "a16z",
+    title: "The AI-native developer",
+    href: "https://a16z.com/ai-native-developer/",
+  },
+];
+
 const articles = [
   {
     persona: "Essay \u00b7 For CTOs",
@@ -43,6 +71,23 @@ export default function Signal() {
                 {a.meta} &middot; <span className="sig-soon">Coming soon</span>
               </div>
             </div>
+          ))}
+        </div>
+
+        <div className="sig-reading rv rv-d3">
+          <div className="sig-reading-label">{"// What We're Reading"}</div>
+          {reading.map((r) => (
+            <a
+              href={r.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sig-reading-link"
+              key={r.title}
+            >
+              <span className="sig-reading-source">{r.source}</span>
+              <span className="sig-reading-title">{r.title}</span>
+              <span className="sig-reading-arrow">&rarr;</span>
+            </a>
           ))}
         </div>
       </div>
