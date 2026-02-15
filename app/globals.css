@@ -71,7 +71,42 @@ body {
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
-  cursor: none;
+}
+
+/* Custom cursor only on non-touch devices with fine pointer */
+@media (pointer: fine) {
+  body,
+  button, a, input, .tk-badge, .repo, .sig-card,
+  .persona-tab, .assess-option, .assess-start, .assess-cta,
+  .assess-restart, .spec-gen-btn, .spec-output-reset,
+  .spec-output-talk, .cta-btn, .nav-cta, .hero-cta,
+  .hero-cta-ghost { cursor: none; }
+}
+
+/* Focus styles for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--signal);
+  color: var(--void);
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 10001;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 ::selection {
@@ -530,8 +565,15 @@ nav {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob {
-    animation: none;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rv {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -935,7 +977,7 @@ nav {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fog);
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
   text-align: center;
 }
@@ -1067,7 +1109,7 @@ nav {
   text-transform: uppercase;
   font-weight: 600;
   border: none;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
 }
 
@@ -1136,7 +1178,7 @@ nav {
   font-family: var(--font-dm-sans), "DM Sans", sans-serif;
   font-size: 0.95rem;
   line-height: 1.5;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.25s;
 }
 
@@ -1257,7 +1299,7 @@ nav {
   text-decoration: none;
   font-weight: 600;
   border: none;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
   margin-right: 1rem;
 }
@@ -1280,7 +1322,7 @@ nav {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
 }
 
@@ -1942,7 +1984,7 @@ nav {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--signal);
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
   font-weight: 600;
 }
@@ -2006,7 +2048,7 @@ footer {
   display: block;
   font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   font-size: 0.75rem;
-  color: var(--fog);
+  color: var(--mist);
   text-decoration: none;
   margin-bottom: 0.4rem;
   transition: color 0.2s;
@@ -2027,7 +2069,7 @@ footer {
 .footer-copy {
   font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   font-size: 0.55rem;
-  color: var(--smoke);
+  color: var(--fog);
   letter-spacing: 0.05em;
 }
 
@@ -2052,11 +2094,11 @@ footer {
   align-items: center;
   font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   font-size: 0.55rem;
-  color: var(--smoke);
+  color: var(--mist);
 }
 
 .statusbar .feed {
-  color: var(--fog);
+  color: var(--mist);
   transition: opacity 0.3s;
   max-width: 300px;
   overflow: hidden;
@@ -2465,7 +2507,7 @@ footer {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--signal);
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
   font-weight: 600;
   white-space: nowrap;
@@ -2655,7 +2697,7 @@ footer {
   border: 1px solid var(--smoke);
   background: none;
   color: var(--mist);
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
 }
 
@@ -2678,7 +2720,7 @@ footer {
   text-decoration: none;
   font-weight: 600;
   border: none;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s;
 }
 

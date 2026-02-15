@@ -25,6 +25,41 @@ export const metadata: Metadata = {
   title: "MiddleLeap — From Process to Product",
   description:
     "MiddleLeap Ventures: The methodology behind the 20× company. Helping engineering leaders transition from the SDLC to the AI-DLC.",
+  keywords: [
+    "AI development lifecycle",
+    "AI-DLC",
+    "agent factory",
+    "AI-native engineering",
+    "specification-first delivery",
+    "compounding engineering",
+    "steering files",
+    "AI maturity model",
+    "AI governance framework",
+    "agent-native delivery",
+    "20x company",
+    "engineering transformation",
+  ],
+  authors: [{ name: "MiddleLeap Ventures" }],
+  metadataBase: new URL("https://middleleap.com"),
+  openGraph: {
+    title: "MiddleLeap — From Process to Product",
+    description:
+      "The methodology behind the 20× company. Stop optimizing keystrokes. Start optimizing decisions.",
+    url: "https://middleleap.com",
+    siteName: "MiddleLeap",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MiddleLeap — From Process to Product",
+    description:
+      "The methodology behind the 20× company. 10-person teams, 200-person output.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +72,7 @@ export default function RootLayout({
       <body
         className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       >
+        <a href="#problem" className="skip-link">Skip to content</a>
         <div className="grain" />
         {children}
       </body>
