@@ -38,42 +38,41 @@ export default function CustomCursor() {
     document.addEventListener("mousemove", onMouseMove);
 
     let animId: number;
-    const animate = () => {
+    let lastRing = 0;
+    const ringInterval = 1000 / 30;
+    const animate = (now: number) => {
+      animId = requestAnimationFrame(animate);
+      if (now - lastRing < ringInterval) return;
+      lastRing = now;
       rx += (mx - rx) * 0.12;
       ry += (my - ry) * 0.12;
       ring.style.left = rx + "px";
       ring.style.top = ry + "px";
-      animId = requestAnimationFrame(animate);
     };
     animId = requestAnimationFrame(animate);
 
+    // Use event delegation instead of per-element listeners + MutationObserver
     const interactiveSelector = "a,button,input,.tk-badge,.repo,.sig-card";
-    const onEnter = () => ring.classList.add("active");
-    const onLeave = () => ring.classList.remove("active");
-
-    const elements = document.querySelectorAll(interactiveSelector);
-    elements.forEach((el) => {
-      el.addEventListener("mouseenter", onEnter);
-      el.addEventListener("mouseleave", onLeave);
-    });
-
-    // Re-observe for dynamically added elements
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll(interactiveSelector).forEach((el) => {
-        el.addEventListener("mouseenter", onEnter);
-        el.addEventListener("mouseleave", onLeave);
-      });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+    const onOver = (e: Event) => {
+      const target = e.target as Element;
+      if (target.closest?.(interactiveSelector)) {
+        ring.classList.add("active");
+      }
+    };
+    const onOut = (e: Event) => {
+      const target = e.target as Element;
+      if (target.closest?.(interactiveSelector)) {
+        ring.classList.remove("active");
+      }
+    };
+    document.addEventListener("mouseover", onOver);
+    document.addEventListener("mouseout", onOut);
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseout", onOut);
       cancelAnimationFrame(animId);
-      observer.disconnect();
-      elements.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnter);
-        el.removeEventListener("mouseleave", onLeave);
-      });
     };
   }, []);
 

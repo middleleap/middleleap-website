@@ -87,6 +87,7 @@ body {
   pointer-events: none;
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  will-change: transform;
 }
 
 /* ── Layout ── */
@@ -112,6 +113,7 @@ section {
   z-index: 10000;
   transform: translate(-50%, -50%);
   transition: transform 0.08s ease;
+  will-change: left, top;
 }
 
 .cur-ring {
@@ -124,6 +126,7 @@ section {
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.25s, height 0.25s, border-color 0.25s;
+  will-change: left, top;
 }
 
 .cur-ring.active {
