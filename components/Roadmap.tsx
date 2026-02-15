@@ -1,4 +1,5 @@
 import SelfAssessment from "./SelfAssessment";
+import ROICalculator from "./ROICalculator";
 
 export default function Roadmap() {
   return (
@@ -69,6 +70,8 @@ export default function Roadmap() {
             </div>
           </div>
         </div>
+
+        <ROICalculator />
       </div>
     </section>
   );

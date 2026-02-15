@@ -1,8 +1,17 @@
+import Image from "next/image";
 import AuroraBackground from "./AuroraBackground";
 
 export default function Hero() {
   return (
     <section className="hero">
+      <Image
+        src="/hero-bg.webp"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="hero-bg-img"
+      />
       <AuroraBackground />
       <div className="container">
         <div className="hero-label">System Override</div>

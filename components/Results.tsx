@@ -10,6 +10,52 @@ interface StatItem {
   desc: string;
 }
 
+interface CaseStudy {
+  name: string;
+  deliverable: string;
+  before: string;
+  after: string;
+  method: string;
+}
+
+const caseStudies: CaseStudy[] = [
+  {
+    name: "GreenDrive Business Case",
+    deliverable: "Executive pitch deck",
+    before: "4\u20136 weeks",
+    after: "Same day",
+    method: "Specification-first + Claude agent fleet",
+  },
+  {
+    name: "Open Finance Developer Portal PRD",
+    deliverable: "Comprehensive PRD",
+    before: "2\u20133 weeks",
+    after: "2 days",
+    method: "Structured prompts + knowledge plane",
+  },
+  {
+    name: "MiddleLeap.com Website",
+    deliverable: "10-section landing page",
+    before: "Weeks",
+    after: "Under 4 hours",
+    method: "Full AI-DLC pipeline",
+  },
+  {
+    name: "OpenFinance-OS.org Community Platform",
+    deliverable: "Full platform scaffolding",
+    before: "2\u20133 months",
+    after: "1 day",
+    method: "Agent factory + steering files",
+  },
+  {
+    name: "Financial Analytics Dashboards",
+    deliverable: "Production dashboards",
+    before: "3\u20134 sprints",
+    after: "1\u20132 days",
+    method: "Template scaffolds + adaptive routing",
+  },
+];
+
 const stats: StatItem[] = [
   { count: 88, suffix: "%", label: "Modernization Reduction", desc: "Microsoft Platform Engineering" },
   { count: 46, prefix: "~", suffix: "m", label: "Saved Per Task", desc: "New engineer onboarding" },
@@ -80,6 +126,25 @@ export default function Results() {
               </div>
               <div className="stat-label">{s.label}</div>
               <div className="stat-desc">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="case-studies-header rv">{"// Practitioner Case Studies"}</div>
+        <h3 className="case-studies-title rv">
+          From weeks to days.
+        </h3>
+        <div className="case-studies-grid rv rv-d1">
+          {caseStudies.map((cs) => (
+            <div className="case-study-card" key={cs.name}>
+              <div className="case-study-name">{cs.name}</div>
+              <div className="case-study-deliverable">{cs.deliverable}</div>
+              <div className="case-study-timeline">
+                <span className="case-study-before">{cs.before}</span>
+                <span className="case-study-arrow">&rarr;</span>
+                <span className="case-study-after">{cs.after}</span>
+              </div>
+              <div className="case-study-method">{cs.method}</div>
             </div>
           ))}
         </div>

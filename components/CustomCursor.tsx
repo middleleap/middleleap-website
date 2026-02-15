@@ -1,12 +1,24 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    const isTouch =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (isTouch) {
+      setIsTouchDevice(true);
+      document.body.style.cursor = "auto";
+      return;
+    }
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
@@ -64,6 +76,8 @@ export default function CustomCursor() {
       });
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   return (
     <>

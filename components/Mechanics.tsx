@@ -1,4 +1,5 @@
 import Flywheel from "./Flywheel";
+import SpecGenerator from "./SpecGenerator";
 
 export default function Mechanics() {
   return (
@@ -86,6 +87,8 @@ export default function Mechanics() {
             </div>
           </div>
         </div>
+
+        <SpecGenerator />
       </div>
     </section>
   );

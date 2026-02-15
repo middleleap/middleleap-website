@@ -18,7 +18,7 @@ export default function ParticleNetwork() {
     resize();
     window.addEventListener("resize", resize);
 
-    const pts = Array.from({ length: 100 }, () => ({
+    const pts = Array.from({ length: 50 }, () => ({
       x: Math.random() * innerWidth,
       y: Math.random() * document.documentElement.scrollHeight,
       vx: (Math.random() - 0.5) * 0.25,
@@ -33,7 +33,11 @@ export default function ParticleNetwork() {
     window.addEventListener("scroll", onScroll);
 
     let animId: number;
+    let visible = true;
+
     const draw = () => {
+      if (!visible) return;
+
       cx!.clearRect(0, 0, cv!.width, cv!.height);
       const vt = scrollY;
       const vb = scrollY + innerHeight;
@@ -71,9 +75,22 @@ export default function ParticleNetwork() {
     };
     animId = requestAnimationFrame(draw);
 
+    // Pause animation when tab is not visible
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        visible = false;
+        cancelAnimationFrame(animId);
+      } else {
+        visible = true;
+        animId = requestAnimationFrame(draw);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       cancelAnimationFrame(animId);
     };
   }, []);
