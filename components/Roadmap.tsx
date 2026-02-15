@@ -1,3 +1,5 @@
+import SelfAssessment from "./SelfAssessment";
+
 export default function Roadmap() {
   return (
     <section id="roadmap" style={{ padding: "8rem 0" }}>
@@ -12,6 +14,8 @@ export default function Roadmap() {
           fintech startups, tier-1 banks, and global telcos. Every stage is a
           pattern we&apos;ve seen work.
         </p>
+
+        <SelfAssessment />
 
         <div className="rv rv-d2">
           <div className="mat-step">

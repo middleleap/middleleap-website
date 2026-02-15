@@ -8,6 +8,7 @@ interface Persona {
   paragraphs: string[];
   ctaLabel: string;
   ctaText: string;
+  ctaLink?: string;
 }
 
 const personas: Persona[] = [
@@ -21,7 +22,8 @@ const personas: Persona[] = [
     ],
     ctaLabel: "Your first 30 days",
     ctaText:
-      "Run the self-assessment. Pilot spec-first delivery on one team. Measure the gap between agent-assisted and agent-native.",
+      "Run the self-assessment to find your stage. Pilot spec-first delivery on one team. Measure the gap between agent-assisted and agent-native.",
+    ctaLink: "#roadmap",
   },
   {
     id: "cpo",
@@ -86,10 +88,17 @@ export default function WhatThisMeans() {
                 {text}
               </p>
             ))}
-            <div className="persona-cta-box">
-              <div className="persona-cta-label">{persona.ctaLabel}</div>
-              {persona.ctaText}
-            </div>
+            {persona.ctaLink ? (
+              <a href={persona.ctaLink} className="persona-cta-box" style={{ display: "block", textDecoration: "none", color: "inherit" }}>
+                <div className="persona-cta-label">{persona.ctaLabel}</div>
+                {persona.ctaText}
+              </a>
+            ) : (
+              <div className="persona-cta-box">
+                <div className="persona-cta-label">{persona.ctaLabel}</div>
+                {persona.ctaText}
+              </div>
+            )}
           </div>
         </div>
       </div>

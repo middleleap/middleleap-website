@@ -1,6 +1,9 @@
+import AuroraBackground from "./AuroraBackground";
+
 export default function Hero() {
   return (
     <section className="hero">
+      <AuroraBackground />
       <div className="container">
         <div className="hero-label">System Override</div>
         <h1>
