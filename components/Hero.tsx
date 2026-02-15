@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AuroraBackground from "./AuroraBackground";
+import HeroTypewriter from "./HeroTypewriter";
 
 export default function Hero() {
   return (
@@ -14,7 +15,7 @@ export default function Hero() {
       />
       <AuroraBackground />
       <div className="container">
-        <div className="hero-label">System Override</div>
+        <HeroTypewriter />
         <h1>
           From Process
           <br />
