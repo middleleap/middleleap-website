@@ -26,7 +26,7 @@ export default function Signal() {
   return (
     <section id="signal" style={{ padding: "8rem 0" }}>
       <div className="container">
-        <div className="sec-label rv">{"// 09 — The Signal"}</div>
+        <div className="sec-label rv">{"// 11 — The Signal"}</div>
         <h2 className="sec-title rv">Stay sharp.</h2>
         <p className="sec-desc rv rv-d1">
           Essays, case studies, and dispatches from the frontier of the 20×

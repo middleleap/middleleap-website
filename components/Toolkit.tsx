@@ -17,7 +17,7 @@ export default function Toolkit() {
   return (
     <section id="toolkit" style={{ padding: "8rem 0" }}>
       <div className="container">
-        <div className="sec-label rv">{"// 08 — The Toolkit"}</div>
+        <div className="sec-label rv">{"// 10 — The Toolkit"}</div>
         <h2 className="sec-title rv">Curated stack.</h2>
         <p className="sec-desc rv rv-d1">
           The stack behind the 20× company. Battle-tested across real production

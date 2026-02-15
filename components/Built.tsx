@@ -22,7 +22,7 @@ export default function Built() {
   return (
     <section id="built" style={{ padding: "8rem 0" }}>
       <div className="container">
-        <div className="sec-label rv">{"// 06 — Built With AI-DLC"}</div>
+        <div className="sec-label rv">{"// 08 — Built With AI-DLC"}</div>
         <h2 className="sec-title rv">
           This site is <em>its own proof.</em>
         </h2>

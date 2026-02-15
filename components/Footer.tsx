@@ -7,7 +7,9 @@ export default function Footer() {
             <div className="footer-col-title">Navigate</div>
             <a href="#problem">Manifesto</a>
             <a href="#shift">The Shift</a>
+            <a href="#whatthismeans">For You</a>
             <a href="#mechanics">Mechanics</a>
+            <a href="#governance">Governance</a>
             <a href="#roadmap">Roadmap</a>
           </div>
           <div className="footer-col">

@@ -62,7 +62,7 @@ export default function Results() {
   return (
     <section id="results" style={{ padding: "8rem 0" }}>
       <div className="container">
-        <div className="sec-label rv">{"// 05 — The Evidence"}</div>
+        <div className="sec-label rv">{"// 07 — The Evidence"}</div>
         <h2 className="sec-title rv">
           The 20× company <em>isn&apos;t theory.</em>
         </h2>

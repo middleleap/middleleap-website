@@ -754,6 +754,110 @@ nav {
   background: var(--signal);
 }
 
+/* ── Persona Tabs ── */
+.persona-tabs {
+  display: flex;
+  border: 1px solid var(--ash);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.persona-tab {
+  flex: 1;
+  padding: 0.75rem 1.25rem;
+  background: var(--ink);
+  border: none;
+  border-right: 1px solid var(--ash);
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fog);
+  cursor: none;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.persona-tab:last-child {
+  border-right: none;
+}
+
+.persona-tab:hover {
+  color: var(--paper);
+  background: var(--soot);
+}
+
+.persona-tab.active {
+  background: var(--signal);
+  color: var(--void);
+  font-weight: 600;
+}
+
+.persona-card {
+  border: 1px solid var(--ash);
+  background: var(--ink);
+  padding: 3rem;
+  min-height: 320px;
+}
+
+.persona-p {
+  font-size: 0.95rem;
+  color: var(--mist);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 680px;
+}
+
+.persona-p:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.persona-cta-box {
+  border: 1px solid rgba(224, 90, 43, 0.3);
+  background: rgba(224, 90, 43, 0.04);
+  padding: 1.5rem 2rem;
+  font-size: 0.9rem;
+  color: var(--bone);
+  line-height: 1.7;
+  position: relative;
+}
+
+.persona-cta-box::before {
+  content: "→";
+  position: absolute;
+  top: 1.5rem;
+  left: -1.25rem;
+  color: var(--signal);
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 1rem;
+}
+
+.persona-cta-label {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .persona-tabs {
+    flex-direction: column;
+  }
+  .persona-tab {
+    border-right: none;
+    border-bottom: 1px solid var(--ash);
+  }
+  .persona-tab:last-child {
+    border-bottom: none;
+  }
+  .persona-card {
+    padding: 2rem 1.5rem;
+    min-height: auto;
+  }
+}
+
 /* ── Maturity Steps ── */
 .mat-step {
   display: grid;
@@ -822,6 +926,148 @@ nav {
   font-size: 0.9rem;
   color: var(--mist);
   line-height: 1.6;
+}
+
+/* ── Governance ── */
+.gov-principles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--smoke);
+  margin-bottom: 3rem;
+}
+
+.gov-principle {
+  background: var(--ink);
+  padding: 2.5rem;
+}
+
+.gov-principle-num {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--smoke);
+  margin-bottom: 0.75rem;
+}
+
+.gov-principle-title {
+  font-family: var(--font-instrument-serif), "Instrument Serif", serif;
+  font-size: 1.15rem;
+  color: var(--paper);
+  margin-bottom: 0.5rem;
+}
+
+.gov-principle-text {
+  font-size: 0.9rem;
+  color: var(--mist);
+  line-height: 1.6;
+}
+
+.gov-section-title {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.gov-stage {
+  border: 1px solid var(--ash);
+  border-top: none;
+  background: var(--ink);
+  padding: 2rem 2.5rem;
+}
+
+.gov-stage:first-of-type {
+  border-top: 1px solid var(--ash);
+}
+
+.gov-stage-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gov-stage-num {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--smoke);
+  min-width: 32px;
+}
+
+.gov-stage-name {
+  font-family: var(--font-instrument-serif), "Instrument Serif", serif;
+  font-size: 1.15rem;
+  color: var(--paper);
+}
+
+.gov-dims {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.gov-dim-label {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 0.4rem;
+}
+
+.gov-dim-text {
+  font-size: 0.85rem;
+  color: var(--mist);
+  line-height: 1.6;
+}
+
+.gov-security-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--smoke);
+  margin-bottom: 3rem;
+}
+
+.gov-security-item {
+  background: var(--ink);
+  padding: 2rem 2.5rem;
+}
+
+.gov-security-title {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--paper);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.gov-security-desc {
+  font-size: 0.85rem;
+  color: var(--mist);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .gov-principles {
+    grid-template-columns: 1fr;
+  }
+  .gov-dims {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .gov-security-grid {
+    grid-template-columns: 1fr;
+  }
+  .gov-stage {
+    padding: 1.5rem;
+  }
 }
 
 /* ── Stats ── */

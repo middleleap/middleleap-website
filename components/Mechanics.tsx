@@ -4,7 +4,7 @@ export default function Mechanics() {
   return (
     <section id="mechanics" style={{ padding: "8rem 0" }}>
       <div className="container">
-        <div className="sec-label rv">{"// 03 — The Mechanics"}</div>
+        <div className="sec-label rv">{"// 04 — The Mechanics"}</div>
         <h2 className="sec-title rv">
           Three mechanisms
           <br />

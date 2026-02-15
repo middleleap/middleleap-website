@@ -2,7 +2,9 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import Shift from "@/components/Shift";
+import WhatThisMeans from "@/components/WhatThisMeans";
 import Mechanics from "@/components/Mechanics";
+import Governance from "@/components/Governance";
 import Roadmap from "@/components/Roadmap";
 import Results from "@/components/Results";
 import Built from "@/components/Built";
@@ -28,7 +30,11 @@ export default function Home() {
       <Divider />
       <Shift />
       <Divider />
+      <WhatThisMeans />
+      <Divider />
       <Mechanics />
+      <Divider />
+      <Governance />
       <Divider />
       <Roadmap />
       <Divider />

@@ -35,7 +35,7 @@ export default function Lab() {
   return (
     <section id="lab" style={{ padding: "8rem 0" }}>
       <div className="container">
-        <div className="sec-label rv">{"// 07 — The Lab"}</div>
+        <div className="sec-label rv">{"// 09 — The Lab"}</div>
         <h2 className="sec-title rv">
           Open source. <em>Open methodology.</em>
         </h2>

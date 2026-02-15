@@ -2,7 +2,7 @@ export default function Roadmap() {
   return (
     <section id="roadmap" style={{ padding: "8rem 0" }}>
       <div className="container">
-        <div className="sec-label rv">{"// 04 — The Roadmap"}</div>
+        <div className="sec-label rv">{"// 06 — The Roadmap"}</div>
         <h2 className="sec-title rv">
           From bolt-on to <em>20× company.</em>
         </h2>
