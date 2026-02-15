@@ -254,6 +254,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   padding: 8rem 2rem 6rem;
+  background: url("/hero-bg.jpg") center 75% / cover no-repeat;
 }
 
 .hero-label {
@@ -382,13 +383,21 @@ nav {
   pointer-events: none;
 }
 
+.aurora::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.82);
+  z-index: 0;
+}
+
 .aurora::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 30%;
+  height: 40%;
   background: linear-gradient(to bottom, transparent, var(--void));
   z-index: 1;
 }
