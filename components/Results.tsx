@@ -16,22 +16,16 @@ interface CaseStudy {
   before: string;
   after: string;
   method: string;
+  link?: string;
 }
 
 const caseStudies: CaseStudy[] = [
   {
-    name: "GreenDrive Business Case",
-    deliverable: "Executive pitch deck",
+    name: "GreenDrive Value Proposition",
+    deliverable: "Strategic positioning & go-to-market narrative",
     before: "4\u20136 weeks",
     after: "Same day",
     method: "Specification-first + Claude agent fleet",
-  },
-  {
-    name: "Open Finance Developer Portal PRD",
-    deliverable: "Comprehensive PRD",
-    before: "2\u20133 weeks",
-    after: "2 days",
-    method: "Structured prompts + knowledge plane",
   },
   {
     name: "MiddleLeap.com Website",
@@ -46,13 +40,7 @@ const caseStudies: CaseStudy[] = [
     before: "2\u20133 months",
     after: "1 day",
     method: "Agent factory + steering files",
-  },
-  {
-    name: "Financial Analytics Dashboards",
-    deliverable: "Production dashboards",
-    before: "3\u20134 sprints",
-    after: "1\u20132 days",
-    method: "Template scaffolds + adaptive routing",
+    link: "https://openfinance-os.org",
   },
 ];
 
@@ -135,18 +123,36 @@ export default function Results() {
           From weeks to days.
         </h3>
         <div className="case-studies-grid rv rv-d1">
-          {caseStudies.map((cs) => (
-            <div className="case-study-card" key={cs.name}>
-              <div className="case-study-name">{cs.name}</div>
-              <div className="case-study-deliverable">{cs.deliverable}</div>
-              <div className="case-study-timeline">
-                <span className="case-study-before">{cs.before}</span>
-                <span className="case-study-arrow">&rarr;</span>
-                <span className="case-study-after">{cs.after}</span>
+          {caseStudies.map((cs) => {
+            const content = (
+              <>
+                <div className="case-study-name">{cs.name}</div>
+                <div className="case-study-deliverable">{cs.deliverable}</div>
+                <div className="case-study-timeline">
+                  <span className="case-study-before">{cs.before}</span>
+                  <span className="case-study-arrow">&rarr;</span>
+                  <span className="case-study-after">{cs.after}</span>
+                </div>
+                <div className="case-study-method">{cs.method}</div>
+              </>
+            );
+            return cs.link ? (
+              <a
+                className="case-study-card"
+                key={cs.name}
+                href={cs.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                {content}
+              </a>
+            ) : (
+              <div className="case-study-card" key={cs.name}>
+                {content}
               </div>
-              <div className="case-study-method">{cs.method}</div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

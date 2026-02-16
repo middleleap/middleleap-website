@@ -27,9 +27,8 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Connect</div>
-            <a href="#">X / Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Contact</a>
+            <a href="https://www.linkedin.com/company/middleleap/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:contact@middleleap.com">Contact</a>
           </div>
         </div>
         <div className="footer-bottom">
