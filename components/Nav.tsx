@@ -16,8 +16,7 @@ export default function Nav() {
   return (
     <nav>
       <a href="#" className="nav-logo" onClick={handleClick}>
-        <div className="nav-mark">&gt;&gt;</div>
-        Middle<span>Leap</span>
+        Middle<div className="nav-mark">&gt;&gt;</div><span>Leap</span>
       </a>
       <div className="nav-links">
         <a href="#problem" onClick={handleClick}>Manifesto</a>
