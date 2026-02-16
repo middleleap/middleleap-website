@@ -1,21 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useSyncExternalStore } from "react";
+
+function getTheme(): "dark" | "light" {
+  if (typeof window === "undefined") return "dark";
+  return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+}
+
+function subscribe(cb: () => void) {
+  const observer = new MutationObserver(cb);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  return () => observer.disconnect();
+}
 
 export default function Nav() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const theme = useSyncExternalStore(subscribe, getTheme, () => "dark" as const);
 
-  useEffect(() => {
-    const stored = localStorage.getItem("middleleap-theme");
-    if (stored === "light") setTheme("light");
-  }, []);
-
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("middleleap-theme", next);
-  };
+  }, [theme]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

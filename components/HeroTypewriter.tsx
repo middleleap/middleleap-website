@@ -12,7 +12,6 @@ const SEQUENCE = [
 ];
 
 export default function HeroTypewriter() {
-  const [displayed, setDisplayed] = useState("");
   const [segments, setSegments] = useState<{ text: string; className?: string }[]>([]);
   const [cursorVisible, setCursorVisible] = useState(true);
   const started = useRef(false);
@@ -37,7 +36,6 @@ export default function HeroTypewriter() {
           if (cancelled) return;
           builtSegments.push({ text: step.text, className: step.className });
           setSegments([...builtSegments]);
-          setDisplayed(builtSegments.map((s) => s.text).join(""));
         } else {
           // Type character by character
           const currentIdx = builtSegments.length;
@@ -50,7 +48,6 @@ export default function HeroTypewriter() {
               className: step.className,
             };
             setSegments([...builtSegments]);
-            setDisplayed(builtSegments.map((s) => s.text).join(""));
             await delay(step.speed + Math.random() * 40);
           }
         }

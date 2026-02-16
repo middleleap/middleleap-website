@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const isTouchRef = useRef(false);
 
   useEffect(() => {
     const isTouch =
@@ -14,8 +14,11 @@ export default function CustomCursor() {
       window.matchMedia("(pointer: coarse)").matches;
 
     if (isTouch) {
-      setIsTouchDevice(true);
+      isTouchRef.current = true;
       document.body.style.cursor = "auto";
+      // Hide cursor elements directly via DOM since we can't re-render from here
+      dotRef.current?.style.setProperty("display", "none");
+      ringRef.current?.style.setProperty("display", "none");
       return;
     }
 
@@ -75,8 +78,6 @@ export default function CustomCursor() {
       cancelAnimationFrame(animId);
     };
   }, []);
-
-  if (isTouchDevice) return null;
 
   return (
     <>
