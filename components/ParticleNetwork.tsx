@@ -41,6 +41,11 @@ export default function ParticleNetwork() {
       if (delta < frameInterval) return;
       lastFrame = now - (delta % frameInterval);
 
+      // Read theme colors once per frame
+      const styles = getComputedStyle(document.documentElement);
+      const particleFill = styles.getPropertyValue("--particle-fill").trim() || "rgba(224,90,43,.12)";
+      const particleRgb = styles.getPropertyValue("--particle-rgb").trim() || "224, 90, 43";
+
       cx!.clearRect(0, 0, cv!.width, cv!.height);
 
       for (let i = 0; i < pts.length; i++) {
@@ -52,7 +57,7 @@ export default function ParticleNetwork() {
 
         cx!.beginPath();
         cx!.arc(p.x, p.y, p.r, 0, 6.28);
-        cx!.fillStyle = "rgba(224,90,43,.12)";
+        cx!.fillStyle = particleFill;
         cx!.fill();
       }
 
@@ -68,7 +73,7 @@ export default function ParticleNetwork() {
             cx!.beginPath();
             cx!.moveTo(pts[i].x, pts[i].y);
             cx!.lineTo(pts[j].x, pts[j].y);
-            cx!.strokeStyle = `rgba(224,90,43,${0.04 * (1 - d / 140)})`;
+            cx!.strokeStyle = `rgba(${particleRgb},${0.04 * (1 - d / 140)})`;
             cx!.stroke();
           }
         }

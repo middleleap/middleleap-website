@@ -36,6 +36,12 @@ export default function Flywheel() {
       if (delta < frameInterval) return;
       lastFrame = now - (delta % frameInterval);
 
+      // Read theme colors once per frame
+      const styles = getComputedStyle(document.documentElement);
+      const circleStroke = styles.getPropertyValue("--flywheel-circle").trim() || "rgba(42,42,42,.6)";
+      const particleRgb = styles.getPropertyValue("--particle-rgb").trim() || "224, 90, 43";
+      const labelRgb = styles.getPropertyValue("--flywheel-label-rgb").trim() || "212, 212, 207";
+
       fx!.clearRect(0, 0, fc!.width, fc!.height);
       ft += 0.006;
       const cxf = fc!.width / 2;
@@ -44,7 +50,7 @@ export default function Flywheel() {
 
       fx!.beginPath();
       fx!.arc(cxf, cyf, r, 0, 6.28);
-      fx!.strokeStyle = "rgba(42,42,42,.6)";
+      fx!.strokeStyle = circleStroke;
       fx!.lineWidth = 0.5;
       fx!.stroke();
 
@@ -57,17 +63,17 @@ export default function Flywheel() {
         fx!.beginPath();
         fx!.moveTo(cxf, cyf);
         fx!.lineTo(x, y);
-        fx!.strokeStyle = `rgba(224,90,43,${o * 0.25})`;
+        fx!.strokeStyle = `rgba(${particleRgb},${o * 0.25})`;
         fx!.lineWidth = 0.4;
         fx!.stroke();
 
         fx!.beginPath();
         fx!.arc(x, y, 3.5, 0, 6.28);
-        fx!.fillStyle = `rgba(224,90,43,${o})`;
+        fx!.fillStyle = `rgba(${particleRgb},${o})`;
         fx!.fill();
 
         fx!.font = "500 9px JetBrains Mono";
-        fx!.fillStyle = `rgba(212,212,207,${o * 0.8})`;
+        fx!.fillStyle = `rgba(${labelRgb},${o * 0.8})`;
         fx!.textAlign = "center";
         fx!.fillText(l, x, y - 9);
         return { x, y };
@@ -78,7 +84,7 @@ export default function Flywheel() {
         fx!.beginPath();
         fx!.moveTo(nodes[i].x, nodes[i].y);
         fx!.lineTo(nodes[j].x, nodes[j].y);
-        fx!.strokeStyle = `rgba(224,90,43,${0.04 + Math.sin(ft + i) * 0.02})`;
+        fx!.strokeStyle = `rgba(${particleRgb},${0.04 + Math.sin(ft + i) * 0.02})`;
         fx!.lineWidth = 0.3;
         fx!.stroke();
       }
@@ -86,7 +92,7 @@ export default function Flywheel() {
       const cp = 2.5 + Math.sin(ft * 3) * 0.5;
       fx!.beginPath();
       fx!.arc(cxf, cyf, cp, 0, 6.28);
-      fx!.fillStyle = "rgba(224,90,43,.5)";
+      fx!.fillStyle = `rgba(${particleRgb},.5)`;
       fx!.fill();
     };
 
