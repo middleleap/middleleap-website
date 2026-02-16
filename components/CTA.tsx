@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-
-type Status = "idle" | "loading" | "success" | "error";
+import { validateEmail, type Status } from "@/lib/validation";
 
 export default function CTA() {
   const [email, setEmail] = useState("");
@@ -13,7 +12,7 @@ export default function CTA() {
     e.preventDefault();
 
     const trimmed = email.trim();
-    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+    if (!trimmed || !validateEmail(trimmed)) {
       setStatus("error");
       setErrorMsg("Invalid email format.");
       return;

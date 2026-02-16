@@ -1,16 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-
-const STAGE_SAVINGS_HOURS = [8, 20, 40, 80];
-const STAGE_NAMES = ["AI-Assisted", "Templates & Scaffolds", "Knowledge Plane", "Agent Factory"];
-const STAGE_INVESTMENT = [5000, 25000, 80000, 200000];
-
-function fmt(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
-  return `$${n.toFixed(0)}`;
-}
+import { fmt, calculateROIResults } from "@/lib/roi-calculator";
 
 export default function ROICalculator() {
   const [teamSize, setTeamSize] = useState(10);
@@ -20,21 +11,8 @@ export default function ROICalculator() {
   const [aiSpend, setAiSpend] = useState(500);
 
   const results = useMemo(() => {
-    const hourlyRate = annualDevCost / 2080;
-    return STAGE_SAVINGS_HOURS.map((stageSavings, i) => {
-      const monthlyHoursSaved = teamSize * stageSavings;
-      const annualCostSavings = monthlyHoursSaved * 12 * hourlyRate;
-      const monthlySavings = annualCostSavings / 12;
-      const paybackMonths = monthlySavings > 0 ? STAGE_INVESTMENT[i] / monthlySavings : Infinity;
-      return {
-        stage: i + 1,
-        name: STAGE_NAMES[i],
-        hoursSaved: monthlyHoursSaved,
-        annualSavings: annualCostSavings,
-        paybackMonths: paybackMonths,
-      };
-    });
-  }, [teamSize, sprintLength, releaseFreq, annualDevCost, aiSpend]);
+    return calculateROIResults({ teamSize, annualDevCost });
+  }, [teamSize, annualDevCost]);
 
   return (
     <div className="roi-wrapper rv rv-d3">
