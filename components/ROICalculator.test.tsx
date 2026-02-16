@@ -35,4 +35,49 @@ describe("ROICalculator", () => {
     const allText = document.body.textContent;
     expect(allText).toContain("$55K");
   });
+
+  it("handles zero team size gracefully", () => {
+    render(<ROICalculator />);
+    const teamInput = screen.getByLabelText("Team Size");
+    fireEvent.change(teamInput, { target: { value: "0" } });
+
+    // Stage 1 with team=0: 0*8=0h
+    const allText = document.body.textContent;
+    expect(allText).toContain("0h");
+  });
+
+  it("handles large team sizes with million-dollar formatting", () => {
+    render(<ROICalculator />);
+    const teamInput = screen.getByLabelText("Team Size");
+    fireEvent.change(teamInput, { target: { value: "200" } });
+
+    const costInput = screen.getByLabelText("Avg Annual Dev Cost ($)");
+    fireEvent.change(costInput, { target: { value: "200000" } });
+
+    // Stage 4: 200*80=16000h/mo, 16000*12*96.15 ≈ $18.5M
+    const allText = document.body.textContent;
+    expect(allText).toContain("M");
+  });
+
+  it("updates when annual dev cost changes", () => {
+    render(<ROICalculator />);
+    const costInput = screen.getByLabelText("Avg Annual Dev Cost ($)");
+    fireEvent.change(costInput, { target: { value: "200000" } });
+
+    // Stage 1: 10*8*12*(200000/2080) ≈ $92K
+    const allText = document.body.textContent;
+    expect(allText).toContain("$92K");
+  });
+
+  it("renders all 4 stage cards", () => {
+    const { container } = render(<ROICalculator />);
+    const cards = container.querySelectorAll(".roi-stage-card");
+    expect(cards).toHaveLength(4);
+  });
+
+  it("renders CTA link to #cta", () => {
+    const { container } = render(<ROICalculator />);
+    const link = container.querySelector('a[href="#cta"]');
+    expect(link).toBeInTheDocument();
+  });
 });

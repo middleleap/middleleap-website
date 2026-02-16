@@ -68,4 +68,71 @@ describe("SpecGenerator", () => {
     const resetInput = screen.getByPlaceholderText("Describe your next feature in one sentence") as HTMLInputElement;
     expect(resetInput.value).toBe("");
   });
+
+  it("generates spec on Enter key press", () => {
+    vi.useFakeTimers();
+    render(<SpecGenerator />);
+
+    const input = screen.getByPlaceholderText("Describe your next feature in one sentence");
+    fireEvent.change(input, { target: { value: "add auth" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+
+    expect(screen.getByText("Generating specification...")).toBeInTheDocument();
+
+    act(() => { vi.advanceTimersByTime(1200); });
+    expect(screen.getByText("Feature Specification")).toBeInTheDocument();
+  });
+
+  it("shows high complexity for payment + auth input", () => {
+    vi.useFakeTimers();
+    render(<SpecGenerator />);
+
+    const input = screen.getByPlaceholderText("Describe your next feature in one sentence");
+    fireEvent.change(input, { target: { value: "payment auth integration" } });
+    fireEvent.click(screen.getByText("Generate"));
+    act(() => { vi.advanceTimersByTime(1200); });
+
+    expect(screen.getByText("high complexity")).toBeInTheDocument();
+    expect(screen.getByText(/Senior Agent \+ Human Review/)).toBeInTheDocument();
+  });
+
+  it("shows low complexity for generic input", () => {
+    vi.useFakeTimers();
+    render(<SpecGenerator />);
+
+    const input = screen.getByPlaceholderText("Describe your next feature in one sentence");
+    fireEvent.change(input, { target: { value: "add a simple widget" } });
+    fireEvent.click(screen.getByText("Generate"));
+    act(() => { vi.advanceTimersByTime(1200); });
+
+    expect(screen.getByText("low complexity")).toBeInTheDocument();
+    expect(screen.getByText(/Fast-Track Agent/)).toBeInTheDocument();
+  });
+
+  it("disables input during generation", () => {
+    vi.useFakeTimers();
+    render(<SpecGenerator />);
+
+    const input = screen.getByPlaceholderText("Describe your next feature in one sentence");
+    fireEvent.change(input, { target: { value: "add auth" } });
+    fireEvent.click(screen.getByText("Generate"));
+
+    expect(input).toBeDisabled();
+
+    act(() => { vi.advanceTimersByTime(1200); });
+    // After generation, the result is shown (input may or may not re-enable depending on result state)
+  });
+
+  it("shows CTA text after generation", () => {
+    vi.useFakeTimers();
+    render(<SpecGenerator />);
+
+    const input = screen.getByPlaceholderText("Describe your next feature in one sentence");
+    fireEvent.change(input, { target: { value: "add auth" } });
+    fireEvent.click(screen.getByText("Generate"));
+    act(() => { vi.advanceTimersByTime(1200); });
+
+    expect(screen.getByText(/This took/)).toBeInTheDocument();
+    expect(screen.getByText(/8 seconds/)).toBeInTheDocument();
+  });
 });
