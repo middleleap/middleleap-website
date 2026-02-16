@@ -620,7 +620,8 @@ nav {
   border: 1px solid rgba(224, 90, 43, 0.25);
   background: rgba(224, 90, 43, 0.03);
   padding: 2.5rem 3rem;
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
   align-items: center;
   gap: 2rem;
   position: relative;
@@ -678,7 +679,7 @@ nav {
 
 @media (max-width: 768px) {
   .inline-cta-inner {
-    flex-direction: column;
+    flex-direction: column !important;
     align-items: flex-start;
     gap: 1rem;
     padding: 2rem 1.5rem;
