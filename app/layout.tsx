@@ -69,6 +69,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" />
+      </head>
       <body
         className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       >

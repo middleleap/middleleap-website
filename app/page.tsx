@@ -5,11 +5,13 @@ import Problem from "@/components/Problem";
 import Shift from "@/components/Shift";
 import WhatThisMeans from "@/components/WhatThisMeans";
 import Divider from "@/components/Divider";
-import CustomCursor from "@/components/CustomCursor";
-import ParticleNetwork from "@/components/ParticleNetwork";
-import ScrollReveal from "@/components/ScrollReveal";
-import StatusBar from "@/components/StatusBar";
 import InlineCTA from "@/components/InlineCTA";
+
+// Lazy load non-critical client components
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"));
+const ParticleNetwork = dynamic(() => import("@/components/ParticleNetwork"));
+const ScrollReveal = dynamic(() => import("@/components/ScrollReveal"));
+const StatusBar = dynamic(() => import("@/components/StatusBar"));
 
 // Lazy load below-the-fold sections to reduce initial JS
 const Mechanics = dynamic(() => import("@/components/Mechanics"));
