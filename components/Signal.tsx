@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const reading = [
   {
     source: "Anthropic",
@@ -28,6 +30,7 @@ const reading = [
 
 const articles = [
   {
+    slug: "agent-factory-stuck-at-15",
     persona: "Essay \u00b7 For CTOs",
     title: "The 20\u00d7 Company: Why Your AI Strategy is Stuck at 15%",
     excerpt:
@@ -35,6 +38,7 @@ const articles = [
     meta: "12 min read",
   },
   {
+    slug: "product-leader-4-hypotheses-week",
     persona: "Case Study \u00b7 For CPOs",
     title: "4 Hypotheses in a Week: A Product Leader\u2019s AI-DLC Playbook",
     excerpt:
@@ -42,6 +46,7 @@ const articles = [
     meta: "8 min read",
   },
   {
+    slug: "agent-governance-control-framework",
     persona: "Governance \u00b7 For CIOs",
     title: "Agent Governance: The Control Framework Your CAB Needs",
     excerpt:
@@ -63,15 +68,21 @@ export default function Signal() {
 
         <div className="sig-grid rv rv-d2">
           {articles.map((a) => (
-            <div className="sig-card" key={a.title}>
+            <Link href={`/signal/${a.slug}`} className="sig-card" key={a.title}>
               <div className="sig-persona">{a.persona}</div>
               <div className="sig-title">{a.title}</div>
               <div className="sig-excerpt">{a.excerpt}</div>
               <div className="sig-meta">
                 {a.meta} &middot; <span className="sig-soon">Coming soon</span>
               </div>
-            </div>
+            </Link>
           ))}
+        </div>
+
+        <div className="rv rv-d2">
+          <Link href="/signal" className="sig-readall">
+            Read all essays &rarr;
+          </Link>
         </div>
 
         <div className="sig-reading rv rv-d3">
