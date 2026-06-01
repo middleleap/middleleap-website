@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Instrument_Serif, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+// Analytics is a no-op until a domain is configured. Plausible is
+// cookieless and privacy-friendly, matching the PRD's analytics intent.
+const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -83,6 +88,14 @@ export default function RootLayout({
         <a href="#problem" className="skip-link">Skip to content</a>
         <div className="grain" />
         {children}
+        {plausibleDomain && (
+          <Script
+            defer
+            data-domain={plausibleDomain}
+            src="https://plausible.io/js/script.js"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
