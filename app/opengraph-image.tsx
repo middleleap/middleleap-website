@@ -1,5 +1,9 @@
 import { ImageResponse } from "next/og";
 
+// Required for next/og image routes under `output: export` so the PNG
+// is rendered once at build time rather than on demand.
+export const dynamic = "force-static";
+
 export const alt = "MiddleLeap — From Process to Product";
 
 export const size = {
