@@ -1,75 +1,259 @@
-import dynamic from "next/dynamic";
-import Nav from "@/components/Nav";
-import Hero from "@/components/Hero";
-import Problem from "@/components/Problem";
-import Shift from "@/components/Shift";
-import WhatThisMeans from "@/components/WhatThisMeans";
-import Divider from "@/components/Divider";
-import InlineCTA from "@/components/InlineCTA";
+import type { Metadata } from "next";
+import Link from "next/link";
+import CustomCursor from "@/components/CustomCursor";
+import styles from "./page.module.css";
 
-// Lazy load non-critical client components
-const CustomCursor = dynamic(() => import("@/components/CustomCursor"));
-const ParticleNetwork = dynamic(() => import("@/components/ParticleNetwork"));
-const ScrollReveal = dynamic(() => import("@/components/ScrollReveal"));
-const StatusBar = dynamic(() => import("@/components/StatusBar"));
+export const metadata: Metadata = {
+  title: "MiddleLeap — Regulated platform transformation",
+  description:
+    "MiddleLeap helps regulated platform businesses move from strategic mandate to market execution.",
+};
 
-// Lazy load below-the-fold sections to reduce initial JS
-const Mechanics = dynamic(() => import("@/components/Mechanics"));
-const Governance = dynamic(() => import("@/components/Governance"));
-const Roadmap = dynamic(() => import("@/components/Roadmap"));
-const Results = dynamic(() => import("@/components/Results"));
-const Built = dynamic(() => import("@/components/Built"));
-const Lab = dynamic(() => import("@/components/Lab"));
-const Toolkit = dynamic(() => import("@/components/Toolkit"));
-const Signal = dynamic(() => import("@/components/Signal"));
-const CTA = dynamic(() => import("@/components/CTA"));
-const Footer = dynamic(() => import("@/components/Footer"));
+const shifts = [
+  {
+    number: "01",
+    title: "Open Finance",
+    question: "What position will you occupy in the new value chain?",
+  },
+  {
+    number: "02",
+    title: "Platform businesses",
+    question: "How will APIs, partners and ecosystems create value?",
+  },
+  {
+    number: "03",
+    title: "AI-native operations",
+    question: "How must the organization work differently to compete?",
+  },
+];
 
-export default function Home() {
+const capabilities = [
+  {
+    number: "01",
+    title: "Regulatory & market transformation",
+    detail:
+      "Open Finance strategy, regulatory readiness, LFI and TPP operating models, market entry and ecosystem participation.",
+  },
+  {
+    number: "02",
+    title: "Platform & ecosystem strategy",
+    detail:
+      "Platform propositions, API strategy, embedded finance, partnerships, commercial models and monetisation.",
+  },
+  {
+    number: "03",
+    title: "AI-native operating models",
+    detail:
+      "Value-stream redesign, agentic workflows, product and engineering models, governance and control.",
+  },
+  {
+    number: "04",
+    title: "Transformation & execution",
+    detail:
+      "Executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.",
+  },
+];
+
+const approach = [
+  { number: "01", name: "Frame", detail: "Clarify the regulatory, commercial or operating mandate." },
+  { number: "02", name: "Design", detail: "Shape the proposition, ecosystem, platform and operating model." },
+  { number: "03", name: "Mobilise", detail: "Align leaders, partners, product teams and governance stakeholders." },
+  { number: "04", name: "Deliver", detail: "Turn the strategy into working products and capabilities." },
+  { number: "05", name: "Codify", detail: "Embed reusable knowledge, controls and agent workflows." },
+];
+
+const engagements = [
+  {
+    title: "Executive advisory",
+    detail: "Senior guidance for regulatory, platform and transformation mandates.",
+  },
+  {
+    title: "Platform strategy sprint",
+    detail: "Define the proposition, ecosystem, commercial model and execution roadmap.",
+  },
+  {
+    title: "AI-native delivery pilot",
+    detail: "Apply AI-DLC to one real platform, product or operating outcome.",
+  },
+];
+
+export default function PrototypePage() {
   return (
-    <>
+    <main className={styles.shell} id="problem">
       <CustomCursor />
-      <ParticleNetwork />
-      <Nav />
-      <Hero />
-      <Problem />
-      <Divider />
-      <Shift />
-      <Divider />
-      <WhatThisMeans />
-      <InlineCTA
-        label="// Find your stage"
-        text="Take the 2-minute self-assessment to identify where you are on the maturity model — and what to do next."
-        href="#roadmap"
-        buttonText="Start the assessment"
-      />
-      <Divider />
-      <Mechanics />
-      <Divider />
-      <Governance />
-      <Divider />
-      <Roadmap />
-      <Divider />
-      <Results />
-      <InlineCTA
-        label="// Ready to move?"
-        text="Schedule a 30-minute diagnostic session. We'll map your current maturity stage and identify your highest-leverage next step."
-        href="#cta"
-        buttonText="Schedule a diagnostic"
-      />
-      <Divider />
-      <Built />
-      <Divider />
-      <Lab />
-      <Divider />
-      <Toolkit />
-      <Divider />
-      <Signal />
-      <Divider />
-      <CTA />
-      <Footer />
-      <StatusBar />
-      <ScrollReveal />
-    </>
+
+      <header className={styles.nav}>
+        <Link href="/" className={styles.logo} aria-label="Back to MiddleLeap home">
+          Middle <span aria-hidden="true">&gt;&gt;</span> <strong>Leap</strong>
+        </Link>
+        <nav className={styles.navLinks} aria-label="Prototype navigation">
+          <a href="#expertise">Expertise</a>
+          <a href="#method">How we work</a>
+          <a href="#experience">Experience</a>
+        </nav>
+        <a className={styles.navCta} href="#engage">Discuss a mandate</a>
+      </header>
+
+      <section className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>Regulated markets · Platform businesses · AI-native execution</p>
+          <h1>
+            From strategic mandate<br />to <em>market execution.</em>
+          </h1>
+          <p className={styles.lede}>
+            MiddleLeap helps banks, fintechs, financial infrastructure providers
+            and regulated platform businesses navigate market shifts, design
+            scalable platforms and build AI-native operating models.
+          </p>
+          <div className={styles.actions}>
+            <a className={styles.primaryAction} href="#engage">Discuss a strategic mandate</a>
+            <a className={styles.secondaryAction} href="#expertise">Explore our capabilities</a>
+          </div>
+          <div className={styles.proofLine} aria-label="MiddleLeap positioning">
+            <span><strong>MENA</strong> market focus</span>
+            <span><strong>20+ years</strong> regulated platforms</span>
+            <span><strong>Strategy</strong> through execution</span>
+          </div>
+        </div>
+
+        <div className={styles.heroVisual} aria-label="A strategic mandate moving through platform design to execution">
+          <div className={styles.mandateCard}>
+            <span>Strategic mandate</span>
+            <strong>Turn Open Finance from compliance into platform advantage</strong>
+          </div>
+          <div className={styles.visualPath}>
+            <div><span>01</span><strong>Market position</strong><small>Role in the value chain</small></div>
+            <div><span>02</span><strong>Platform model</strong><small>Proposition, APIs, economics</small></div>
+            <div><span>03</span><strong>Ecosystem</strong><small>Partners and governance</small></div>
+            <div><span>04</span><strong>Operating model</strong><small>People, controls, agents</small></div>
+          </div>
+          <div className={styles.outputCard}>
+            <span className={styles.liveDot} aria-hidden="true" />
+            <div><strong>Market-ready capability</strong><small>aligned, governed and executable</small></div>
+            <b>READY</b>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.shift}>
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>The new mandate</p>
+          <h2>Financial services is being redesigned around platforms, ecosystems and intelligent agents.</h2>
+        </div>
+        <div className={styles.shiftGrid}>
+          {shifts.map((shift) => (
+            <article key={shift.number}>
+              <span>{shift.number}</span>
+              <h3>{shift.title}</h3>
+              <p>{shift.question}</p>
+            </article>
+          ))}
+        </div>
+        <p className={styles.shiftConclusion}>
+          The opportunity is not simply to comply or deploy new technology. It is
+          to redesign the proposition, ecosystem and operating model together.
+        </p>
+      </section>
+
+      <section className={styles.expertise} id="expertise">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>What we do</p>
+          <h2>Strategy designed to reach execution.</h2>
+        </div>
+        <div className={styles.capabilityGrid}>
+          {capabilities.map((capability) => (
+            <article key={capability.number}>
+              <span>{capability.number}</span>
+              <h3>{capability.title}</h3>
+              <p>{capability.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.method} id="method">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>How we work</p>
+          <h2>From mandate to working capability.</h2>
+        </div>
+        <ol className={styles.approach}>
+          {approach.map((item) => (
+            <li key={item.number}>
+              <span>{item.number}</span>
+              <strong>{item.name}</strong>
+              <p>{item.detail}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div className={styles.aidlc}>
+          <div className={styles.aidlcCopy}>
+            <p className={styles.eyebrow}>The execution engine</p>
+            <h3>AI-DLC turns strategic intent into governed delivery.</h3>
+            <p>
+              MiddleLeap&apos;s Adaptive Development Lifecycle converts outcomes into
+              specifications that people and intelligent agents can execute. It
+              compresses discovery-to-delivery without losing architectural
+              integrity, governance or auditability.
+            </p>
+          </div>
+          <div className={styles.aidlcFlow} aria-label="AI-DLC delivery flow">
+            <span>Outcome</span><b>→</b><span>Specify</span><b>→</b><span>Execute</span><b>→</b><span>Verify</span><b>→</b><span>Codify</span>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.experience} id="experience">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Experience behind the practice</p>
+          <h2>Built in regulated markets—not in a transformation lab.</h2>
+        </div>
+        <div className={styles.experienceLayout}>
+          <div className={styles.evidenceList}>
+            <div><strong>20+ years</strong><span>Across banking, fintech, telecommunications and SaaS</span></div>
+            <div><strong>UAE firsts</strong><span>Leadership behind first bank certification and first live licensed-TPP transactions</span></div>
+            <div><strong>Platform scale</strong><span>Open Finance, BaaS, premium APIs, partner ecosystems and large-scale customer platforms</span></div>
+            <div><strong>Execution depth</strong><span>Executive leadership across strategy, commercial growth, technology and transformation delivery</span></div>
+          </div>
+
+          <aside className={styles.network}>
+            <p className={styles.eyebrow}>Built around the mandate</p>
+            <h3>Senior expertise without the generic staffing model.</h3>
+            <p>
+              MiddleLeap assembles focused teams around each engagement, combining
+              a senior lead advisor with specialists across regulation, strategy,
+              product, technology, ecosystems and delivery.
+            </p>
+            <div className={styles.networkModel} aria-label="MiddleLeap engagement team model">
+              <span>Lead advisor</span><b>+</b><span>Domain specialists</span><b>+</b><span>Client leadership</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className={styles.engage} id="engage">
+        <div>
+          <p className={styles.eyebrow}>Start with the mandate in front of you</p>
+          <h2>Bring the right senior team to the problem.</h2>
+        </div>
+        <div className={styles.engagementGrid}>
+          {engagements.map((engagement, index) => (
+            <article key={engagement.title}>
+              <span>0{index + 1}</span>
+              <h3>{engagement.title}</h3>
+              <p>{engagement.detail}</p>
+            </article>
+          ))}
+        </div>
+        <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
+          Discuss your mandate →
+        </a>
+      </section>
+
+      <footer className={styles.footer}>
+        <span>MiddleLeap · Independent advisory firm · Dubai, UAE</span>
+        <a href="#problem">Back to top</a>
+      </footer>
+    </main>
   );
 }
