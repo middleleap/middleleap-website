@@ -1,0 +1,49 @@
+# MiddleLeap
+
+> MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps banks, fintechs, financial infrastructure providers and regulated platform businesses move from strategic mandate to market execution.
+
+Canonical website: https://middleleap.com/
+Contact: contact@middleleap.com
+Founded: 2021
+Primary market: Middle East and North Africa
+
+## Positioning
+
+MiddleLeap helps leaders turn regulatory, commercial and technology shifts into platform advantage. Its work connects market position, platform economics, ecosystem design and AI-native operating models. Open Finance is a significant area of experience, but it is one part of the broader regulated platform transformation practice.
+
+## Core capabilities
+
+- Regulatory and market transformation: Open Finance strategy, regulatory readiness, LFI and TPP operating models, market entry and ecosystem participation.
+- Platform and ecosystem strategy: platform propositions, API strategy, embedded finance, partnerships, commercial models and monetisation.
+- AI-native operating models: value-stream redesign, agentic workflows, product and engineering models, governance and control.
+- Transformation and execution: executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.
+
+## How MiddleLeap works
+
+MiddleLeap works from mandate to working capability through five stages:
+
+1. Frame the regulatory, commercial or operating mandate.
+2. Design the proposition, ecosystem, platform and operating model.
+3. Mobilise leaders, partners, product teams and governance stakeholders.
+4. Deliver working products and capabilities.
+5. Codify reusable knowledge, controls and agent workflows.
+
+AI-DLC, the Adaptive Development Lifecycle, is MiddleLeap's execution approach for converting outcomes into specifications that people and intelligent agents can execute and verify.
+
+## Engagement models
+
+- Executive advisory for regulatory, platform and transformation mandates.
+- Platform strategy sprints covering proposition, ecosystem, commercial model and execution roadmap.
+- AI-native delivery pilots applied to a real platform, product or operating outcome.
+
+## Experience and delivery model
+
+- More than 20 years of experience across banking, fintech, telecommunications and SaaS.
+- Experience spanning Open Finance, Banking-as-a-Service, premium APIs, partner ecosystems and large-scale customer platforms.
+- MiddleLeap assembles focused teams around each mandate, combining a senior lead advisor with specialists across regulation, strategy, product, technology, ecosystems and delivery.
+
+## Primary source
+
+- [MiddleLeap homepage](https://middleleap.com/): current positioning, capabilities, approach, experience and contact information.
+
+Last reviewed: 2026-07-11

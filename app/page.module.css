@@ -63,24 +63,43 @@
 .proofLine { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 46px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--faint); font: 400 9px var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
 .proofLine strong { color: var(--text); font-weight: 500; }
 
-.heroVisual { position: relative; padding-left: 28px; }
-.heroVisual::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 1px; background: linear-gradient(transparent, var(--signal), transparent); }
-.mandateCard, .outputCard { border: 1px solid var(--line); background: rgba(17,17,15,.9); }
-.mandateCard { padding: 22px; }
-.mandateCard span, .visualPath span, .outputCard small { display: block; color: var(--faint); font: 400 9px var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
-.mandateCard strong { display: block; margin-top: 10px; font-size: 16px; font-weight: 500; line-height: 1.45; }
-.visualPath { margin: 24px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.visualPath div { min-height: 126px; padding: 16px; background: var(--surface-2); }
-.visualPath span { color: var(--signal); }
-.visualPath strong, .visualPath small { display: block; }
-.visualPath strong { margin-top: 28px; font-size: 13px; font-weight: 500; }
-.visualPath small { margin-top: 4px; color: var(--faint); font-size: 11px; line-height: 1.4; }
-.outputCard { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 18px 20px; border-color: rgba(230, 92, 45, .55); }
-.liveDot { width: 8px; height: 8px; border-radius: 50%; background: #6ecb87; box-shadow: 0 0 0 5px rgba(110,203,135,.1); }
-.outputCard strong, .outputCard small { display: block; }
-.outputCard strong { font-size: 14px; font-weight: 500; }
-.outputCard small { margin-top: 3px; }
-.outputCard b { color: #6ecb87; font: 500 9px var(--font-jetbrains-mono), monospace; letter-spacing: .1em; }
+.heroVisual { position: relative; min-width: 0; }
+.mandateSystem { position: relative; overflow: hidden; border: 1px solid var(--line); background: rgba(12,12,10,.8); box-shadow: 0 28px 90px rgba(0,0,0,.28); }
+.mandateSystem::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 48%, rgba(230,92,45,.12), transparent 34%); }
+.systemHeader { position: relative; z-index: 2; display: flex; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--line); color: var(--faint); font: 400 8px var(--font-jetbrains-mono), monospace; letter-spacing: .11em; text-transform: uppercase; }
+.systemHeader span:last-child { display: flex; align-items: center; gap: 7px; color: var(--muted); }
+.systemHeader i { width: 5px; height: 5px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px rgba(230,92,45,.09); animation: systemPulse 2s ease-in-out infinite; }
+.systemField { position: relative; width: 100%; height: 390px; }
+.systemConnections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.systemConnections circle { fill: none; stroke: rgba(238,234,224,.07); stroke-width: 1; stroke-dasharray: 2 7; transform-origin: center; animation: systemRotate 28s linear infinite; }
+.systemConnections circle:nth-child(2) { animation-direction: reverse; animation-duration: 20s; }
+.systemConnections path { fill: none; stroke: var(--line); stroke-width: 1; transition: stroke .35s ease, stroke-width .35s ease; }
+.systemConnections .activePath { stroke: var(--signal); stroke-width: 1.5; stroke-dasharray: 5 8; animation: pathSignal 1.4s linear infinite; }
+.systemSignal { fill: var(--signal); filter: drop-shadow(0 0 5px var(--signal)); }
+.systemCore { position: absolute; z-index: 2; top: 50%; left: 50%; width: 142px; height: 142px; display: grid; place-content: center; text-align: center; transform: translate(-50%, -50%); border: 1px solid rgba(230,92,45,.55); border-radius: 50%; background: rgba(17,17,15,.96); box-shadow: 0 0 0 12px rgba(230,92,45,.025), 0 0 55px rgba(230,92,45,.12); }
+.systemCore::before { content: ""; position: absolute; inset: -7px; border: 1px solid rgba(230,92,45,.16); border-radius: inherit; }
+.systemCore span, .systemCore small, .systemNode span, .systemNode small, .systemOutput span { display: block; font-family: var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
+.systemCore span { color: var(--signal); font-size: 7px; letter-spacing: .11em; }
+.systemCore strong { margin-top: 8px; font: 400 18px/.88 var(--font-instrument-serif), serif; }
+.systemCore small { margin-top: 10px; color: var(--faint); font-size: 7px; letter-spacing: .12em; }
+.systemNode { position: absolute; z-index: 3; width: 150px; min-height: 82px; padding: 12px; text-align: left; color: var(--text); border: 1px solid var(--line); background: rgba(17,17,15,.94); cursor: pointer; transition: border-color .25s ease, background .25s ease, transform .25s ease; }
+.systemNode:hover, .systemNode:focus-visible, .activeNode { border-color: rgba(230,92,45,.7); background: #191510; transform: translateY(-2px); }
+.systemNode span { color: var(--signal); font-size: 7px; letter-spacing: .1em; }
+.systemNode strong { display: block; margin-top: 9px; font-size: 11px; font-weight: 500; }
+.systemNode small { display: block; margin-top: 4px; color: var(--faint); font-size: 7px; line-height: 1.35; letter-spacing: .02em; }
+.systemNode1 { top: 9%; left: 3%; }
+.systemNode2 { top: 9%; right: 3%; }
+.systemNode3 { bottom: 7%; left: 3%; }
+.systemNode4 { right: 3%; bottom: 7%; }
+.systemOutput { position: relative; z-index: 2; display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; min-height: 58px; padding: 12px 16px; border-top: 1px solid rgba(230,92,45,.35); background: rgba(230,92,45,.05); }
+.systemOutput span { color: var(--signal); font-size: 7px; letter-spacing: .1em; }
+.systemOutput strong { font-size: 12px; font-weight: 500; }
+.systemOutput b { color: var(--signal); font-weight: 400; animation: outputNudge 1.5s ease-in-out infinite; }
+
+@keyframes systemPulse { 50% { opacity: .4; transform: scale(.75); } }
+@keyframes systemRotate { to { transform: rotate(360deg); } }
+@keyframes pathSignal { to { stroke-dashoffset: -26; } }
+@keyframes outputNudge { 50% { transform: translateX(4px); } }
 
 .shift, .expertise, .method, .experience { max-width: 1240px; margin: 0 auto; padding: 108px 28px; border-top: 1px solid var(--line); }
 .sectionIntro { display: grid; grid-template-columns: minmax(180px, .36fr) 1fr; gap: 36px; margin-bottom: 54px; }
@@ -141,7 +160,7 @@
   .nav { grid-template-columns: 1fr auto; }
   .navLinks { display: none; }
   .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 68px; }
-  .heroVisual { max-width: 680px; }
+  .heroVisual { width: min(100%, 620px); }
   .sectionIntro { grid-template-columns: 1fr; gap: 6px; }
   .approach { grid-template-columns: 1fr 1fr; }
   .approach li { border-bottom: 1px solid var(--line); }
@@ -158,10 +177,13 @@
   .navCta { display: none; }
   .hero, .shift, .expertise, .method, .experience { padding: 70px 20px; }
   .hero h1 { font-size: 50px; }
-  .heroVisual { padding-left: 14px; }
-  .visualPath, .shiftGrid, .capabilityGrid, .approach, .engagementGrid { grid-template-columns: 1fr; }
-  .visualPath div { min-height: auto; }
-  .visualPath strong { margin-top: 12px; }
+  .systemField { height: auto; padding: 18px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .systemConnections { display: none; }
+  .systemCore { position: relative; top: auto; left: auto; grid-column: 1 / -1; justify-self: center; width: 120px; height: 120px; margin-bottom: 18px; transform: none; }
+  .systemCore strong { font-size: 15px; }
+  .systemCore small::after { content: "↓"; display: block; margin-top: 10px; color: var(--signal); font-size: 11px; }
+  .systemNode { position: relative; inset: auto; width: 100%; min-height: 92px; }
+  .shiftGrid, .capabilityGrid, .approach, .engagementGrid { grid-template-columns: 1fr; }
   .shiftGrid article, .approach li { min-height: 180px; border-right: 0; border-bottom: 1px solid var(--line); }
   .shiftGrid article:last-child, .approach li:last-child { border-bottom: 0; }
   .shiftGrid h3, .approach li strong { margin-top: 34px; }
@@ -175,4 +197,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .shell { scroll-behavior: auto; }
+  .systemHeader i, .systemConnections circle, .systemConnections .activePath, .systemOutput b { animation: none; }
 }
