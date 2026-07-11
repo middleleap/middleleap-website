@@ -27,29 +27,27 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MiddleLeap — From Process to Product",
+  title: "MiddleLeap — Regulated Platform Transformation",
   description:
-    "MiddleLeap Ventures: The methodology behind the 20× company. Helping engineering leaders transition from the SDLC to the AI-DLC.",
+    "MiddleLeap helps banks, fintechs and regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
   keywords: [
-    "AI development lifecycle",
+    "Open Finance",
+    "embedded finance",
+    "platform strategy",
+    "API strategy",
+    "ecosystem strategy",
+    "platform monetisation",
+    "regulatory readiness",
+    "AI-native operating models",
     "AI-DLC",
-    "agent factory",
-    "AI-native engineering",
-    "specification-first delivery",
-    "compounding engineering",
-    "steering files",
-    "AI maturity model",
-    "AI governance framework",
-    "agent-native delivery",
-    "20x company",
-    "engineering transformation",
+    "financial services transformation",
   ],
-  authors: [{ name: "MiddleLeap Ventures" }],
+  authors: [{ name: "MiddleLeap" }],
   metadataBase: new URL("https://middleleap.com"),
   openGraph: {
-    title: "MiddleLeap — From Process to Product",
+    title: "MiddleLeap — From Strategic Mandate to Market Execution",
     description:
-      "The methodology behind the 20× company. Stop optimizing keystrokes. Start optimizing decisions.",
+      "Regulated platform transformation across strategy, ecosystems, operating models and AI-native execution.",
     url: "https://middleleap.com",
     siteName: "MiddleLeap",
     locale: "en_US",
@@ -57,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MiddleLeap — From Process to Product",
+    title: "MiddleLeap — From Strategic Mandate to Market Execution",
     description:
-      "The methodology behind the 20× company. 10-person teams, 200-person output.",
+      "Regulated platform transformation across strategy, ecosystems, operating models and AI-native execution.",
   },
   robots: {
     index: true,
@@ -74,14 +72,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("middleleap-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}})()`,
-          }}
-        />
-      </head>
       <body
         className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       >

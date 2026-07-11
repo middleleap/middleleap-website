@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 // is rendered once at build time rather than on demand.
 export const dynamic = "force-static";
 
-export const alt = "MiddleLeap — From Process to Product";
+export const alt = "MiddleLeap — From Strategic Mandate to Market Execution";
 
 export const size = {
   width: 1200,
@@ -63,7 +63,7 @@ export default function Image() {
               letterSpacing: "0.08em",
             }}
           >
-            {"// AI-DLC"}
+            {"// REGULATED PLATFORM TRANSFORMATION"}
           </div>
         </div>
 
@@ -78,7 +78,7 @@ export default function Image() {
               letterSpacing: "-0.03em",
             }}
           >
-            From Process
+            From strategic mandate
           </div>
           <div
             style={{
@@ -91,7 +91,7 @@ export default function Image() {
             }}
           >
             <span style={{ paddingRight: 24 }}>to</span>
-            <span style={{ color: SIGNAL }}>Product.</span>
+            <span style={{ color: SIGNAL }}>market execution.</span>
           </div>
           <div
             style={{
@@ -102,8 +102,8 @@ export default function Image() {
               lineHeight: 1.35,
             }}
           >
-            The methodology behind the 20× company. 10-person teams,
-            200-person output.
+            Platform strategy, ecosystems and AI-native operating models for
+            regulated financial services.
           </div>
         </div>
 
