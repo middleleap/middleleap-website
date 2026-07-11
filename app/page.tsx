@@ -1,19 +1,86 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CustomCursor from "@/components/CustomCursor";
+import { MandateSystem } from "@/components/MandateSystem";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "MiddleLeap — Regulated platform transformation",
+  title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
   description:
-    "MiddleLeap helps regulated platform businesses move from strategic mandate to market execution.",
+    "MiddleLeap advises banks, fintechs and regulated businesses on platform strategy, Open Finance, ecosystem design and AI-native operating models.",
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://middleleap.com/#organization",
+      name: "MiddleLeap",
+      url: "https://middleleap.com/",
+      email: "contact@middleleap.com",
+      foundingDate: "2021",
+      slogan: "From strategic mandate to market execution.",
+      description:
+        "Independent advisory firm helping banks, fintechs and regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Dubai",
+        addressCountry: "AE",
+      },
+      areaServed: [
+        { "@type": "Place", name: "Middle East and North Africa" },
+        { "@type": "Country", name: "United Arab Emirates" },
+      ],
+      knowsAbout: [
+        "Platform strategy",
+        "Open Finance",
+        "Embedded finance",
+        "API strategy",
+        "Ecosystem strategy",
+        "AI-native operating models",
+        "Agentic workflows",
+        "Regulated industry transformation",
+        "Product operating models",
+        "AI-DLC",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://middleleap.com/#website",
+      url: "https://middleleap.com/",
+      name: "MiddleLeap",
+      description:
+        "Platform strategy and AI-native transformation for regulated businesses.",
+      publisher: { "@id": "https://middleleap.com/#organization" },
+      inLanguage: "en",
+    },
+    {
+      "@type": "Service",
+      "@id": "https://middleleap.com/#advisory-service",
+      name: "Regulated platform transformation advisory",
+      serviceType: [
+        "Executive advisory",
+        "Platform and ecosystem strategy",
+        "AI-native operating model design",
+        "Transformation and execution",
+      ],
+      provider: { "@id": "https://middleleap.com/#organization" },
+      areaServed: {
+        "@type": "Place",
+        name: "Middle East and North Africa",
+      },
+      description:
+        "Senior advisory from strategic mandate through platform design, mobilisation and market execution.",
+    },
+  ],
 };
 
 const shifts = [
   {
     number: "01",
-    title: "Open Finance",
-    question: "What position will you occupy in the new value chain?",
+    title: "Regulated market shifts",
+    question: "How will new mandates become market position and advantage?",
   },
   {
     number: "02",
@@ -80,6 +147,12 @@ const engagements = [
 export default function PrototypePage() {
   return (
     <main className={styles.shell} id="problem">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <CustomCursor />
 
       <header className={styles.nav}>
@@ -116,22 +189,8 @@ export default function PrototypePage() {
           </div>
         </div>
 
-        <div className={styles.heroVisual} aria-label="A strategic mandate moving through platform design to execution">
-          <div className={styles.mandateCard}>
-            <span>Strategic mandate</span>
-            <strong>Turn Open Finance from compliance into platform advantage</strong>
-          </div>
-          <div className={styles.visualPath}>
-            <div><span>01</span><strong>Market position</strong><small>Role in the value chain</small></div>
-            <div><span>02</span><strong>Platform model</strong><small>Proposition, APIs, economics</small></div>
-            <div><span>03</span><strong>Ecosystem</strong><small>Partners and governance</small></div>
-            <div><span>04</span><strong>Operating model</strong><small>People, controls, agents</small></div>
-          </div>
-          <div className={styles.outputCard}>
-            <span className={styles.liveDot} aria-hidden="true" />
-            <div><strong>Market-ready capability</strong><small>aligned, governed and executable</small></div>
-            <b>READY</b>
-          </div>
+        <div className={styles.heroVisual}>
+          <MandateSystem />
         </div>
       </section>
 

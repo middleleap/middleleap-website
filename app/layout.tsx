@@ -27,9 +27,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MiddleLeap — Regulated Platform Transformation",
+  title: {
+    default: "MiddleLeap | Platform Strategy & AI-Native Transformation",
+    template: "%s | MiddleLeap",
+  },
   description:
-    "MiddleLeap helps banks, fintechs and regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
+    "MiddleLeap advises banks, fintechs and regulated businesses on platform strategy, Open Finance, ecosystem design and AI-native operating models.",
   keywords: [
     "Open Finance",
     "embedded finance",
@@ -43,25 +46,48 @@ export const metadata: Metadata = {
     "financial services transformation",
   ],
   authors: [{ name: "MiddleLeap" }],
+  creator: "MiddleLeap",
+  publisher: "MiddleLeap",
+  applicationName: "MiddleLeap",
+  category: "IT Services and IT Consulting",
   metadataBase: new URL("https://middleleap.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "MiddleLeap — From Strategic Mandate to Market Execution",
+    title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
     description:
-      "Regulated platform transformation across strategy, ecosystems, operating models and AI-native execution.",
-    url: "https://middleleap.com",
+      "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
+    url: "https://middleleap.com/",
     siteName: "MiddleLeap",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "MiddleLeap — From strategic mandate to market execution",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MiddleLeap — From Strategic Mandate to Market Execution",
+    title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
     description:
-      "Regulated platform transformation across strategy, ecosystems, operating models and AI-native execution.",
+      "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -72,6 +98,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="MiddleLeap company information"
+        />
+      </head>
       <body
         className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       >
