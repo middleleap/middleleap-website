@@ -21,7 +21,7 @@
 .ml-btn__pv{width:9px;height:9px;border-radius:2px;background:currentColor;
   transition:transform var(--dur-leap) var(--ease-leap)}
 .ml-btn:hover .ml-btn__pv{transform:rotate(45deg)}
-.ml-btn--primary{background:var(--ember-500);color:#110D0A}
+.ml-btn--primary{background:var(--ember-500);color:var(--on-ember)}
 .ml-btn--primary:hover{background:var(--ember-400);box-shadow:var(--shadow-ember);transform:translateY(-1px)}
 .ml-btn--secondary{background:transparent;color:var(--bone-1);border:1px solid var(--ink-4)}
 .ml-btn--secondary:hover{border-color:var(--bone-3);background:var(--ink-2)}
@@ -49,7 +49,7 @@
 .ml-check{display:inline-flex;align-items:center;gap:12px;cursor:pointer;
   font-family:var(--font-body);font-size:15px;color:var(--bone-1)}
 .ml-check input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.ml-check__box{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--ink-4);
+.ml-check__box{width:20px;height:20px;border-radius:var(--r-mark);border:1.5px solid var(--ink-4);
   background:var(--ink-0);transition:all var(--dur-leap) var(--ease-leap)}
 .ml-check input:checked + .ml-check__box{background:var(--ember-grad);border-color:transparent;
   transform:rotate(45deg) scale(.88)}
@@ -61,7 +61,7 @@
 .ml-toggle input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .ml-toggle__track{position:absolute;inset:0;background:var(--ink-3);border:1px solid var(--ink-4);
   border-radius:var(--r-pill);transition:background var(--dur-base) var(--ease-out)}
-.ml-toggle__thumb{position:absolute;top:4px;left:4px;width:18px;height:18px;border-radius:5px;
+.ml-toggle__thumb{position:absolute;top:4px;left:4px;width:18px;height:18px;border-radius:var(--r-mark);
   background:var(--bone-2);transition:all var(--dur-leap) var(--ease-leap)}
 .ml-toggle input:checked ~ .ml-toggle__track{background:var(--ember-600);border-color:var(--ember-500)}
 .ml-toggle input:checked ~ .ml-toggle__thumb{left:26px;background:var(--bone-0);transform:rotate(45deg)}
@@ -96,7 +96,7 @@
 .ml-alert--info{background:var(--info-dim);border-color:rgba(93,143,166,.3)}.ml-alert--info .ml-alert__dot{background:var(--info)}
 
 /* ---------- Loader ---------- */
-.ml-loader{width:34px;height:34px;border-radius:7px;background:var(--ember-grad);
+.ml-loader{width:34px;height:34px;border-radius:var(--r-mark);background:var(--ember-grad);
   animation:ml-pivot-loop 1.6s var(--ease-leap) infinite}
 @keyframes ml-pivot-loop{0%,15%{transform:rotate(0)}50%,70%{transform:rotate(45deg)}100%{transform:rotate(90deg)}}
 

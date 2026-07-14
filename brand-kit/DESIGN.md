@@ -39,9 +39,10 @@ Use these exact values. A drop-in `tokens.css` ships alongside this file — imp
 | ember-300 | `#F58F55` | accent text on dark |
 | ember-400 | `#F0722E` | hover state, eyebrows, ghost buttons |
 | ember-500 | `#E65C2D` | brand core; primary CTA background; hero italic accent |
-| ember-600 | `#CE451B` | accent text on light backgrounds |
+| ember-600 | `#CE451B` | accent text on light backgrounds — **large text only** (≥24px / ≥18.66px bold; 3.38:1). Fails AA at body size |
 | ember-grad | `linear-gradient(135deg,#F0722E,#CE451B)` | **THE MARK ONLY.** Never on buttons or UI. |
 | ember-dim | `rgba(230,92,45,.14)` | tinted backgrounds |
+| on-ember | `#110D0A` | text on ember-500 CTA fills (5.46:1) |
 
 ### Color — Semantic
 | token | value | rule |
@@ -84,9 +85,9 @@ Eyebrow pattern: JetBrains Mono 12.5px, `letter-spacing:.22em`, uppercase, ember
 
 ## 4. Component recipes
 
-- **Button**: JetBrains Mono 500, 13px, uppercase, `letter-spacing:.08em`, padding 14/22, radius 0. Primary = flat ember-500 bg, text `#110D0A`, hover → ember-400 + ember shadow + translateY(-1px). Secondary = transparent, 1px ink-4 border. Ghost = ember-400 text, ember-dim hover bg. Danger = `#C43B3B` bg, white text. Primary carries a 9px `currentColor` square marker that rotates 45° on hover (400ms leap easing). Focus: 2px ember-400 outline, 2px offset.
+- **Button**: JetBrains Mono 500, 13px, uppercase, `letter-spacing:.08em`, padding 14/22, radius 0. Primary = flat ember-500 bg, text `on-ember` (`#110D0A`), hover → ember-400 + ember shadow + translateY(-1px). Secondary = transparent, 1px ink-4 border. Ghost = ember-400 text, ember-dim hover bg. Danger = `#C43B3B` bg, white text. Primary carries a 9px `currentColor` square marker that rotates 45° on hover (400ms leap easing). Focus: 2px ember-400 outline, 2px offset.
 - **Input**: ink-0 bg, 1px ink-4 border, radius 0, padding 11/14, DM Sans 15px. Focus: ember-500 border + `0 0 0 3px ember-dim`. Label: DM Sans 600 14px. Hint: caption bone-3. Error: critical border, hint in critical-text.
-- **Checkbox**: THE PIVOT. 20px square, 5px radius, ink-4 border. Checked → ember-grad fill, `rotate(45deg) scale(.88)`, 400ms leap easing. Input is visually hidden but focusable (never `display:none`).
+- **Checkbox**: THE PIVOT. 20px square, `r-mark` (16%) radius, ink-4 border. Checked → ember-grad fill, `rotate(45deg) scale(.88)`, 400ms leap easing. Input is visually hidden but focusable (never `display:none`).
 - **Toggle**: 48×26 pill track; 18px squircle thumb; checked → thumb slides right AND rotates 45°, track ember-600.
 - **Badge**: mono 11.5px, 2px radius, `{color}-dim` bg, colored text (critical uses critical-text), 7px rotated-square dot.
 - **Card**: ink-2 bg, ink-border, radius 0, padding 24. Hover: ink-4 border, translateY(-2px), overlay shadow.
@@ -141,7 +142,7 @@ brand-kit/
 │   ├── components.css               ← component styles (imports ../tokens.css)
 │   └── index.jsx                    ← React library, tokens baked in
 ├── scripts/check-contrast.mjs       ← WCAG AA gate — run after any color change
-├── skill/middleleap-brand/          ← Claude Code skill (self-contained)
+├── skill/middleleap-brand/          ← Claude Code skill (SKILL.md; references this spec + kit files)
 └── assets/
     ├── pivot_primary.svg · pivot_icon.svg · pivot_anim.svg
     ├── og-image.png                 ← 1200×630 social card

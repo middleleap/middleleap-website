@@ -23,6 +23,7 @@ module.exports = {
           600: '#CE451B', 700: '#A83614',
           dim: 'rgba(230,92,45,.14)',
         },
+        'on-ember': '#110D0A', // text on ember-500 CTA fills (AA 5.46:1)
         positive: { DEFAULT: '#5FA671', dim: 'rgba(95,166,113,.14)' },
         caution:  { DEFAULT: '#D9A03C', dim: 'rgba(217,160,60,.14)' },
         critical: { DEFAULT: '#D64545', text: '#E06060', dim: 'rgba(214,69,69,.14)' },

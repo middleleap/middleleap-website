@@ -127,7 +127,7 @@ export function Alert({ tone = 'info', title, children, className = '' }) {
 export function Loader({ size = 34, label = 'Loading' }) {
   return (
     <span role="status" aria-label={label}>
-      <span className="ml-loader" style={{ width: size, height: size, borderRadius: size * 0.2, display: 'inline-block' }} />
+      <span className="ml-loader" style={{ width: size, height: size, borderRadius: size * 0.16, display: 'inline-block' }} />
     </span>
   );
 }
