@@ -24,7 +24,10 @@ const blend = (fg,a,bg) => '#' + [0,2,4].map(i => {
   return Math.round(f*a+g*(1-a)).toString(16).padStart(2,'0');
 }).join('');
 
-// [name, fg, bg, required]  — 4.5 normal text · 3.0 large text (>=24px / 18.66px bold)
+// [name, fg, bg, required, mode?]
+//   mode 'min' (default): PASS when ratio >= required  — 4.5 normal text · 3.0 large text (>=24px / 18.66px bold)
+//   mode 'below':         PASS when ratio <  required  — asserts a pairing is NOT valid at that threshold
+//                         (documents a large-only color: it must fail normal-text AA)
 const pairs = [
   ['headline bone-0 on ink-0', T.bone0, T.ink0, 4.5],
   ['body bone-1 on ink-0', T.bone1, T.ink0, 4.5],
@@ -42,14 +45,17 @@ const pairs = [
   ['error hint critical-text on ink-1', T.criticalText, T.ink1, 4.5],
   ['on-light body on bone-1', T.onLightText, T.bone1, 4.5],
   ['on-light ember-600 (large) on bone-1', T.ember600, T.bone1, 3.0],
+  // ember-600 is a LARGE-only accent on light — this asserts it must NOT be used as normal-size text
+  ['on-light ember-600 is large-only (must fail normal AA)', T.ember600, T.bone1, 4.5, 'below'],
 ];
 
 let fail = 0;
-for (const [name, fg, bg, req] of pairs) {
+for (const [name, fg, bg, req, mode = 'min'] of pairs) {
   const r = ratio(fg, bg);
-  const ok = r >= req;
+  const ok = mode === 'below' ? r < req : r >= req;
   if (!ok) fail++;
-  console.log(`${ok ? 'PASS' : 'FAIL'}  ${r.toFixed(2).padStart(5)}:1  (need ${req})  ${name}`);
+  const need = mode === 'below' ? `<${req}` : `${req}`;
+  console.log(`${ok ? 'PASS' : 'FAIL'}  ${r.toFixed(2).padStart(5)}:1  (need ${need})  ${name}`);
 }
 console.log(fail ? `\n${fail} pairing(s) FAILED WCAG AA` : '\nAll pairings pass WCAG AA');
 process.exit(fail ? 1 : 0);

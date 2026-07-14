@@ -32,12 +32,13 @@ brand-kit/
 
 ## Wiring
 
-**Claude Code** — copy `skill/middleleap-brand/` into `~/.claude/skills/` (or the project's `.claude/skills/`). Alternatively add to `CLAUDE.md`:
+**Claude Code** — the skill (`skill/middleleap-brand/SKILL.md`) references sibling kit files (`DESIGN.md`, `tokens.css`, `scripts/`, `assets/`), so keep the whole `brand-kit/` together rather than copying the skill folder alone. Commit `brand-kit/` into the project and add to `CLAUDE.md`:
 ```
 For any MiddleLeap UI, document, or copy: read brand-kit/DESIGN.md first,
 import brand-kit/tokens.css, and run node brand-kit/scripts/check-contrast.mjs
 after color changes.
 ```
+To register it as a proper skill, copy the entire `brand-kit/` into the project (e.g. under `.claude/`) so those relative paths keep resolving.
 
 **Codex / other agents** — add the same instruction to `AGENTS.md`, or include `DESIGN.md` directly in context. It is plain markdown, tool-agnostic.
 
@@ -75,4 +76,4 @@ node brand-kit/scripts/check-contrast.mjs
 
 ## Versioning
 
-Tokens are the contract. Any change to `tokens.css` must be mirrored in `tokens.json`, `tailwind.preset.js`, the pair list in `check-contrast.mjs`, and `DESIGN.md` — and the gate must pass. Bump the version in this file and `DESIGN.md` together.
+Tokens are the contract. Any change to `tokens.css` must be mirrored in `tokens.json`, `tailwind.preset.js`, the pair list in `check-contrast.mjs`, `components/` (`components.css` + `index.jsx`), the `:root` block in `middleleap-design-system.html`, and `DESIGN.md` — and the gate must pass. Consume tokens via `var(--…)` in component/reference code rather than re-hardcoding hex. Bump the version in this file and `DESIGN.md` together.

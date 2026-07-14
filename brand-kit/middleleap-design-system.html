@@ -36,6 +36,7 @@
   --ember-700:#A83614;
   --ember-grad:linear-gradient(135deg,#F0722E 0%,#CE451B 100%); /* THE MARK ONLY — UI uses flat ember */
   --ember-dim:rgba(230,92,45,.14);
+  --on-ember:#110D0A; /* text on ember-500 CTA fills (AA 5.46:1) */
 
   /* -- Color · Semantic -- */
   --positive:#5FA671;  --positive-dim:rgba(95,166,113,.14);
@@ -186,7 +187,7 @@ code,.mono{font-family:var(--font-mono);font-size:13px}
 .btn .pv{width:9px;height:9px;border-radius:2px;background:currentColor;
   transition:transform var(--dur-leap) var(--ease-leap)}
 .btn:hover .pv{transform:rotate(45deg)}
-.btn-primary{background:var(--ember-500);color:#110D0A}
+.btn-primary{background:var(--ember-500);color:var(--on-ember)}
 .btn-primary:hover{background:var(--ember-400);box-shadow:var(--shadow-ember);transform:translateY(-1px)}
 .btn-secondary{background:transparent;color:var(--bone-1);border:1px solid var(--ink-4)}
 .btn-secondary:hover{border-color:var(--bone-3);background:var(--ink-2)}
@@ -214,7 +215,7 @@ code,.mono{font-family:var(--font-mono);font-size:13px}
 /* Checkbox — the pivot IS the checkbox */
 .check{display:inline-flex;align-items:center;gap:12px;cursor:pointer;font-size:15px;color:var(--bone-1)}
 .check input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.check .box{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--ink-4);
+.check .box{width:20px;height:20px;border-radius:var(--r-mark);border:1.5px solid var(--ink-4);
   background:var(--ink-0);transition:all var(--dur-leap) var(--ease-leap)}
 .check input:checked + .box{background:var(--ember-grad);border-color:transparent;transform:rotate(45deg) scale(.88)}
 .check:hover .box{border-color:var(--bone-3)}
@@ -225,7 +226,7 @@ code,.mono{font-family:var(--font-mono);font-size:13px}
 .toggle input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .toggle .tr{position:absolute;inset:0;background:var(--ink-3);border:1px solid var(--ink-4);
   border-radius:var(--r-pill);transition:background var(--dur-base) var(--ease-out)}
-.toggle .th{position:absolute;top:4px;left:4px;width:18px;height:18px;border-radius:5px;
+.toggle .th{position:absolute;top:4px;left:4px;width:18px;height:18px;border-radius:var(--r-mark);
   background:var(--bone-2);transition:all var(--dur-leap) var(--ease-leap)}
 .toggle input:checked ~ .tr{background:var(--ember-600);border-color:var(--ember-500)}
 .toggle input:checked ~ .th{left:26px;background:var(--bone-0);transform:rotate(45deg)}
@@ -269,7 +270,7 @@ td .mono{color:var(--bone-3)}
 
 /* ==================== 06 MOTION ==================== */
 .motion-stage{display:flex;gap:var(--s-7);align-items:center;flex-wrap:wrap}
-.loader{width:34px;height:34px;border-radius:7px;background:var(--ember-grad);
+.loader{width:34px;height:34px;border-radius:var(--r-mark);background:var(--ember-grad);
   animation:pivot-loop 1.6s var(--ease-leap) infinite}
 @keyframes pivot-loop{0%,15%{transform:rotate(0)}50%,70%{transform:rotate(45deg)}100%{transform:rotate(90deg)}}
 .leap-demo{display:flex;align-items:center;gap:0;cursor:pointer}

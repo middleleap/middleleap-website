@@ -15,6 +15,7 @@
   --ember-600:#CE451B; --ember-700:#A83614;
   --ember-grad:linear-gradient(135deg,#F0722E 0%,#CE451B 100%); /* the mark only */
   --ember-dim:rgba(230,92,45,.14);
+  --on-ember:#110D0A; /* text on ember-500 CTA fills (AA 5.46:1) */
 
   /* Semantic */
   --positive:#5FA671; --positive-dim:rgba(95,166,113,.14);
