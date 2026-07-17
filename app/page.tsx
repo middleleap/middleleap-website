@@ -41,6 +41,8 @@ const structuredData = {
         "Ecosystem strategy",
         "AI-native operating models",
         "Agentic workflows",
+        "The Loom regulated AI delivery method",
+        "AI delivery governance",
         "Regulated industry transformation",
         "Telecommunications transformation",
         "Product operating models",
@@ -142,7 +144,7 @@ const engagements = [
   },
   {
     title: "AI-native delivery pilot",
-    detail: "Apply AI-DLC to one real platform, product or operating outcome.",
+    detail: "Adopt The Loom around one real outcome and leave a governed repository capability behind.",
   },
 ];
 
@@ -160,6 +162,7 @@ export default function HomePage() {
         <nav className={styles.navLinks} aria-label="Primary navigation">
           <a href="#expertise">Expertise</a>
           <a href="#method">How we work</a>
+          <Link href="/the-loom">The Loom</Link>
           <Link href="/ventures">Ventures</Link>
           <a href="#experience">Experience</a>
         </nav>
@@ -169,6 +172,7 @@ export default function HomePage() {
           <nav aria-label="Mobile navigation">
             <a href="#expertise">Expertise</a>
             <a href="#method">How we work</a>
+            <Link href="/the-loom">The Loom</Link>
             <Link href="/ventures">Ventures</Link>
             <a href="#experience">Experience</a>
             <a href="#engage">Discuss a mandate</a>
@@ -255,19 +259,55 @@ export default function HomePage() {
           ))}
         </ol>
 
-        <div className={styles.aidlc}>
-          <div className={styles.aidlcCopy}>
-            <p className={styles.eyebrow}>The execution engine</p>
-            <h3>AI-DLC turns strategic intent into governed delivery.</h3>
+        <div className={styles.loomFeature}>
+          <div className={styles.loomCopy}>
+            <p className={styles.eyebrow}>The Loom · AI-native execution</p>
+            <h3>The Loom turns strategic intent into audit-ready software.</h3>
             <p>
-              MiddleLeap&apos;s Adaptive Development Lifecycle converts outcomes into
-              specifications that people and intelligent agents can execute. It
-              compresses discovery-to-delivery without losing architectural
-              integrity, governance or auditability.
+              Discovery finds the right problem. Delivery ships it under control.
+              Both run across always-on controls and the institution&apos;s governed
+              context. Agents build and verify; accountable people approve every merge.
             </p>
+            <div className={styles.loomActions}>
+              <Link href="/the-loom">See how The Loom works →</Link>
+              <Link href="/ai-dlc">Explore AI-DLC →</Link>
+            </div>
           </div>
-          <div className={styles.aidlcFlow} aria-label="AI-DLC delivery flow">
-            <span>Outcome</span><b>→</b><span>Specify</span><b>→</b><span>Execute</span><b>→</b><span>Verify</span><b>→</b><span>Codify</span>
+          <div className={styles.loomMini} aria-label="The Loom regulated delivery method">
+            <div className={styles.loomMiniHeader}>
+              <span>Two harnesses · one governed frame</span>
+              <b>Human accountable</b>
+            </div>
+            <div className={styles.loomMiniFlow}>
+              <article>
+                <small>Diamond 01</small>
+                <strong>Discovery</strong>
+                <span>D1—D9</span>
+              </article>
+              <i aria-hidden="true">→</i>
+              <div className={styles.loomWaist}>
+                <small>Gate-green</small>
+                <strong>Hand-off</strong>
+              </div>
+              <i aria-hidden="true">→</i>
+              <article>
+                <small>Diamond 02</small>
+                <strong>Delivery</strong>
+                <span>Q1—Q5</span>
+              </article>
+            </div>
+            <div className={styles.loomWarp}>
+              <span>Four-eyes</span>
+              <span>Audit</span>
+              <span>Lineage</span>
+              <span>Gates</span>
+              <span>Residency</span>
+            </div>
+            <div className={styles.loomProof}>
+              <span><strong>134 / ~139</strong> stories to done</span>
+              <span><strong>100%</strong> human merges</span>
+              <span><strong>0</strong> real records</span>
+            </div>
           </div>
         </div>
       </section>

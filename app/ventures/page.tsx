@@ -43,6 +43,7 @@ export default function VenturesPage() {
         <nav className={styles.navLinks} aria-label="Primary navigation">
           <Link href="/#expertise">Expertise</Link>
           <Link href="/#method">How we work</Link>
+          <Link href="/the-loom">The Loom</Link>
           <Link href="/ventures" aria-current="page">Ventures</Link>
           <Link href="/#experience">Experience</Link>
         </nav>
@@ -56,7 +57,7 @@ export default function VenturesPage() {
           <h1>We build what<br />we <em>advise.</em></h1>
           <p className={styles.lede}>
             MiddleLeap contributes to open ecosystems, creates focused platform
-            ventures and codifies AI-native ways of working. Each initiative
+            ventures and codifies governed AI-native ways of working. Each initiative
             turns strategic ideas into operating evidence.
           </p>
           <div className={styles.heroActions}>
