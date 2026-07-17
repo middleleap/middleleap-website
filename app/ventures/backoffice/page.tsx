@@ -100,6 +100,7 @@ export default function BackofficeProjectPage() {
         <BrandLockup />
         <nav className={styles.navLinks} aria-label="Project navigation">
           <Link href="/ventures">Ventures</Link>
+          <Link href="/the-loom">The Loom</Link>
           <a href="#architecture">Architecture</a>
           <a href="#build-system">Build system</a>
           <a href="#development">Development</a>
@@ -119,6 +120,7 @@ export default function BackofficeProjectPage() {
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="https://backoffice.openfinance-os.org/" target="_blank" rel="noreferrer">Open the live Backoffice ↗</a>
+            <Link className={styles.secondaryAction} href="/the-loom">Read The Loom method →</Link>
             <a className={styles.secondaryAction} href="https://github.com/openfinance-os/ofbo" target="_blank" rel="noreferrer">View repository ↗</a>
           </div>
           <p className={styles.snapshot}>Evidence snapshot · repository main at 99ab0dd · reviewed 11 July 2026</p>
@@ -188,7 +190,14 @@ export default function BackofficeProjectPage() {
       <section className={styles.section}>
         <div className={styles.sectionLabel}><span>03</span><p>Delivery approach</p></div>
         <div>
-          <h2>A governed double diamond feeding a spec-first delivery loop.</h2>
+          <h2>The first cloth off The Loom: a governed double diamond feeding a spec-first delivery loop.</h2>
+          <p className={styles.sectionLede}>
+            The Open Finance Back Office is the first evidenced implementation of
+            <Link href="/the-loom"> The Loom</Link>. Its autonomous loop carried 134 of
+            approximately 139 backlog stories to done under quality gates, synthetic-data
+            constraints and human four-eyes merge. The method is reusable; the Open Finance
+            regulation, brand, contracts and controls are this implementation&apos;s pattern.
+          </p>
           <div className={styles.buildFlow}>
             {buildStages.map((stage) => (
               <article key={stage.number}>

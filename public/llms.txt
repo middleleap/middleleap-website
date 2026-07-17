@@ -28,7 +28,24 @@ MiddleLeap works from mandate to working capability through five stages:
 4. Deliver working products and capabilities.
 5. Codify reusable knowledge, controls and agent workflows.
 
-AI-DLC, the Adaptive Development Lifecycle, is MiddleLeap's execution approach for converting outcomes into specifications that people and intelligent agents can execute and verify.
+The Loom is MiddleLeap's reusable method for building regulated software with AI. A gated discovery harness finds the right problem; a governed delivery harness ships it under quality controls and human four-eyes approval. Both operate across always-on controls and the institution's governed context.
+
+AI-DLC means "downloadable content for AI-enabled development." It is the public, installable marketplace that packages The Loom and related MiddleLeap domain intelligence as skills, agents and repository workflows. AI-DLC is an execution capability, not MiddleLeap's umbrella identity.
+
+### The Loom
+
+- Discovery runs through gates D1-D9, covering framing, evidence, scope, the no-solutioning boundary, synthesis, data governance, brand conformance, tangibility and stakeholder validation.
+- Delivery is spec-first and agent-enabled, with bounded reviewers, quality gates, tripwire hooks and a merge policy in which agents propose and accountable humans approve.
+- The context brain has three dimensions: regulated context, solution-domain knowledge and institutional DNA.
+- The first evidenced implementation was the UAE Open Finance Back Office, where 134 of approximately 139 stories reached done under quality gates, synthetic-data constraints and human four-eyes merge.
+- The current proof is demo-proven, not production-proven. It has not cleared live production scale or a regulator examination.
+
+### AI-DLC catalogue
+
+- The Loom: regulated discovery, delivery, continuous-assurance and harness-governance machinery.
+- Open Finance: UAE standards, Islamic-banking context, risk review and value-proposition prototyping.
+- AI-SDLC: repository context patterns and structured code review.
+- MiddleLeap Brand: design tokens, components, assets, copy rules and a WCAG AA gate.
 
 ## Ventures and open infrastructure
 
@@ -36,7 +53,7 @@ MiddleLeap builds and contributes to working platforms so its advisory work is g
 
 - Open Finance Commons: independent, community-led infrastructure including OpenFinance-OS, Backoffice, the Data Sandbox and Ecosystem Watcher. MiddleLeap's role is contribution and stewardship, not institutional ownership.
 - Platform ventures: focused propositions including Parqo and HiveMind, developed as working platform experiments.
-- AI-native execution systems: the Open Finance Skill collaboration with Nebras, The Loom and emerging agentic tooling for governed delivery.
+- AI-native execution systems: The Loom regulated delivery method, Open Finance intelligence and the public AI-DLC marketplace.
 
 The portfolio operates as a build, learn and apply loop: build working assets, capture market and execution intelligence, and apply the learning to client mandates.
 
@@ -44,7 +61,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 - Executive advisory for regulatory, platform and transformation mandates.
 - Platform strategy sprints covering proposition, ecosystem, commercial model and execution roadmap.
-- AI-native delivery pilots applied to a real platform, product or operating outcome.
+- AI-native delivery pilots that adopt The Loom around one bounded outcome and leave a governed repository capability behind.
 
 ## Experience and delivery model
 
@@ -56,8 +73,10 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 - [MiddleLeap homepage](https://middleleap.com/): current positioning, capabilities, approach, experience and contact information.
 - [MiddleLeap Ventures](https://middleleap.com/ventures): portfolio thesis, venture families, project status and external project links.
+- [The Loom](https://middleleap.com/the-loom): regulated AI delivery method, discovery and delivery harnesses, context brain, continuous assurance, governance and stated limits.
+- [AI-DLC](https://middleleap.com/ai-dlc): installable catalogue of MiddleLeap skills, agents, methods and repository workflows.
 - [Open Finance Back Office build record](https://middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
 - [HiveMind build record](https://middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
 - [Parqo build record](https://middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
 
-Last reviewed: 2026-07-11
+Last reviewed: 2026-07-17

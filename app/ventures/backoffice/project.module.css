@@ -59,6 +59,7 @@
 .sectionLabel p { margin-top: 8px; }
 .section h2, .sources h2 { max-width: 880px; font: 400 clamp(30px, 4vw, 42px)/1.2 var(--font-instrument-serif), serif; letter-spacing: normal; }
 .sectionLede { max-width: 800px; margin-top: 24px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.sectionLede a { color: var(--bone-0); text-decoration-color: var(--ember-500); text-underline-offset: 4px; }
 
 .outcomeGrid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 44px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .outcomeGrid article { min-height: 220px; padding: 22px; border-right: 1px solid var(--line); }
