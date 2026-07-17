@@ -13,7 +13,7 @@ The firm's core capabilities are regulatory and market transformation, platform 
 - Single advisory homepage in `app/page.tsx`
 - Route-scoped styling in `app/page.module.css`
 - Global reset, fonts, grain and cursor styles in `app/globals.css`
-- Shared custom cursor in `components/CustomCursor.tsx`
+- Shared canonical lockup in `components/BrandLockup.tsx`
 - Generated Open Graph and Twitter images
 
 ## Brand system

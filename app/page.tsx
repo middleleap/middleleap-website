@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CustomCursor from "@/components/CustomCursor";
+import { BrandLockup } from "@/components/BrandLockup";
 import { MandateSystem } from "@/components/MandateSystem";
+import { ventureFamilies } from "@/lib/ventures";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -144,7 +145,7 @@ const engagements = [
   },
 ];
 
-export default function PrototypePage() {
+export default function HomePage() {
   return (
     <main className={styles.shell} id="problem">
       <script
@@ -153,18 +154,25 @@ export default function PrototypePage() {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <CustomCursor />
-
       <header className={styles.nav}>
-        <Link href="/" className={styles.logo} aria-label="Back to MiddleLeap home">
-          Middle <span aria-hidden="true">&gt;&gt;</span> <strong>Leap</strong>
-        </Link>
-        <nav className={styles.navLinks} aria-label="Prototype navigation">
+        <BrandLockup priority />
+        <nav className={styles.navLinks} aria-label="Primary navigation">
           <a href="#expertise">Expertise</a>
           <a href="#method">How we work</a>
+          <Link href="/ventures">Ventures</Link>
           <a href="#experience">Experience</a>
         </nav>
         <a className={styles.navCta} href="#engage">Discuss a mandate</a>
+        <details className={styles.mobileMenu}>
+          <summary><span aria-hidden="true" /> Menu</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="#expertise">Expertise</a>
+            <a href="#method">How we work</a>
+            <Link href="/ventures">Ventures</Link>
+            <a href="#experience">Experience</a>
+            <a href="#engage">Discuss a mandate</a>
+          </nav>
+        </details>
       </header>
 
       <section className={styles.hero}>
@@ -259,6 +267,51 @@ export default function PrototypePage() {
           <div className={styles.aidlcFlow} aria-label="AI-DLC delivery flow">
             <span>Outcome</span><b>→</b><span>Specify</span><b>→</b><span>Execute</span><b>→</b><span>Verify</span><b>→</b><span>Codify</span>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.ventures} id="ventures">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Ventures &amp; open infrastructure</p>
+          <div>
+            <h2>We build what we advise.</h2>
+            <p className={styles.venturesIntro}>
+              MiddleLeap contributes to open ecosystems, creates focused platform
+              ventures and codifies AI-native execution systems—turning practical
+              experience into stronger strategic and delivery advice.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.ventureLoop} aria-label="MiddleLeap venture learning loop">
+          <span><b>Build</b> Working assets</span>
+          <i aria-hidden="true">→</i>
+          <span><b>Learn</b> Operating intelligence</span>
+          <i aria-hidden="true">→</i>
+          <span><b>Apply</b> Stronger mandates</span>
+        </div>
+
+        <div className={styles.ventureGrid}>
+          {ventureFamilies.map((family) => (
+            <article key={family.id}>
+              <div className={styles.ventureMeta}>
+                <span>{family.number}</span>
+                <small>{family.eyebrow}</small>
+              </div>
+              <h3>{family.title}</h3>
+              <p>{family.proposition}</p>
+              <div className={styles.ventureProjects}>
+                {family.projects.slice(0, 3).map((project) => (
+                  <span key={project.name}>{project.name}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className={styles.venturesFooter}>
+          <p>Open ecosystem infrastructure · Owned platform ventures · AI-native execution tooling</p>
+          <Link className={styles.venturesLink} href="/ventures">Explore MiddleLeap Ventures →</Link>
         </div>
       </section>
 

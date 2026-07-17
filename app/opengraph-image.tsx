@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
 
-// Required for next/og image routes under `output: export` so the PNG
-// is rendered once at build time rather than on demand.
 export const dynamic = "force-static";
 
 export const alt = "MiddleLeap — From Strategic Mandate to Market Execution";
@@ -13,11 +11,11 @@ export const size = {
 
 export const contentType = "image/png";
 
-// Brand colors (mirrors :root tokens in globals.css)
-const VOID = "#080808";
-const PAPER = "#ece9e1";
-const SIGNAL = "#e05a2b";
-const FOG = "#666";
+const INK = "#080808";
+const BONE = "#ECE9E1";
+const BODY = "#A8A59E";
+const CAPTION = "#87847D";
+const EMBER = "#E65C2D";
 
 export default function Image() {
   return new ImageResponse(
@@ -29,12 +27,10 @@ export default function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: VOID,
-          padding: "72px 80px",
-          fontFamily: "sans-serif",
+          background: INK,
+          padding: "64px 80px 58px",
         }}
       >
-        {/* top: wordmark + mono label */}
         <div
           style={{
             display: "flex",
@@ -42,40 +38,60 @@ export default function Image() {
             justifyContent: "space-between",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "baseline",
-              fontSize: 34,
-              fontWeight: 700,
-              color: PAPER,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Middle
-            <span style={{ color: SIGNAL, padding: "0 4px" }}>{">>"}</span>
-            Leap
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div
+              style={{
+                width: 46,
+                height: 46,
+                borderRadius: 7,
+                background: "#DEDBD4",
+              }}
+            />
+            <div
+              style={{
+                width: 46,
+                height: 46,
+                marginLeft: 18,
+                borderRadius: 7,
+                background: "linear-gradient(135deg,#F0722E,#CE451B)",
+                transform: "rotate(45deg)",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                marginLeft: 38,
+                fontFamily: "Arial, sans-serif",
+                fontSize: 34,
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              <span style={{ color: "#DEDBD4" }}>Middle</span>
+              <span style={{ color: EMBER }}>Leap</span>
+            </div>
           </div>
           <div
             style={{
-              fontSize: 22,
-              color: FOG,
-              letterSpacing: "0.08em",
+              color: CAPTION,
+              fontFamily: "monospace",
+              fontSize: 17,
+              letterSpacing: "0.2em",
             }}
           >
             {"// REGULATED PLATFORM TRANSFORMATION"}
           </div>
         </div>
 
-        {/* middle: headline */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              fontSize: 96,
-              fontWeight: 700,
-              color: PAPER,
-              lineHeight: 1.02,
-              letterSpacing: "-0.03em",
+              display: "flex",
+              color: BONE,
+              fontFamily: "Georgia, serif",
+              fontSize: 82,
+              fontWeight: 400,
+              lineHeight: 1.08,
             }}
           >
             From strategic mandate
@@ -83,23 +99,26 @@ export default function Image() {
           <div
             style={{
               display: "flex",
-              fontSize: 96,
-              fontWeight: 700,
-              lineHeight: 1.02,
-              letterSpacing: "-0.03em",
-              color: PAPER,
+              color: BONE,
+              fontFamily: "Georgia, serif",
+              fontSize: 82,
+              fontWeight: 400,
+              lineHeight: 1.08,
             }}
           >
-            <span style={{ paddingRight: 24 }}>to</span>
-            <span style={{ color: SIGNAL }}>market execution.</span>
+            <span style={{ marginRight: 20 }}>to</span>
+            <span style={{ color: EMBER, fontStyle: "italic" }}>
+              market execution.
+            </span>
           </div>
           <div
             style={{
-              marginTop: 28,
-              fontSize: 30,
-              color: FOG,
               maxWidth: 900,
-              lineHeight: 1.35,
+              marginTop: 26,
+              color: BODY,
+              fontFamily: "Arial, sans-serif",
+              fontSize: 28,
+              lineHeight: 1.45,
             }}
           >
             Platform strategy, ecosystems and AI-native operating models for
@@ -107,22 +126,29 @@ export default function Image() {
           </div>
         </div>
 
-        {/* bottom: signal accent bar */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center" }}>
           <div
-            style={{ width: 64, height: 6, background: SIGNAL, marginRight: 20 }}
+            style={{
+              width: 10,
+              height: 10,
+              marginRight: 18,
+              background: EMBER,
+              transform: "rotate(45deg)",
+            }}
           />
-          <div style={{ fontSize: 22, color: FOG, letterSpacing: "0.04em" }}>
+          <div
+            style={{
+              color: CAPTION,
+              fontFamily: "monospace",
+              fontSize: 18,
+              letterSpacing: "0.08em",
+            }}
+          >
             middleleap.com
           </div>
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }
