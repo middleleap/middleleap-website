@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | MiddleLeap",
   },
   description:
-    "MiddleLeap advises banks, fintechs and regulated businesses on platform strategy, Open Finance, ecosystem design and AI-native operating models.",
+    "MiddleLeap advises banks, fintechs, financial infrastructure and telecommunications providers on platform strategy and AI-native transformation.",
   keywords: [
     "Open Finance",
     "embedded finance",
@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     "AI-native operating models",
     "AI-DLC",
     "financial services transformation",
+    "telecommunications transformation",
   ],
   authors: [{ name: "MiddleLeap" }],
   creator: "MiddleLeap",
