@@ -31,6 +31,7 @@
   --fs-hero:clamp(44px,6vw,76px);
   --fs-h1:42px; --fs-h2:30px; --fs-h3:22px;
   --fs-body:16px; --fs-small:14px; --fs-caption:12.5px;
+  --fs-ui:12px; --fs-ui-small:11px; --fs-ui-micro:10px;
   --lh-tight:1.08; --lh-head:1.2; --lh-body:1.6;
 
   /* Space — 4px grid */

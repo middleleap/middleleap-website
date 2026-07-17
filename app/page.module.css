@@ -1,8 +1,8 @@
 .shell {
-  --type-ui: 10px;
-  --type-ui-small: 9px;
-  --type-ui-micro: 8px;
-  --type-ui-nano: 7px;
+  --type-ui: var(--fs-ui);
+  --type-ui-small: var(--fs-ui-small);
+  --type-ui-micro: var(--fs-ui-micro);
+  --type-ui-nano: var(--fs-ui-micro);
   min-height: 100vh;
   overflow: hidden;
   color: var(--bone-1);
@@ -382,7 +382,7 @@
   display: block;
   margin-top: 9px;
   color: var(--bone-0);
-  font-size: 11px;
+  font-size: var(--fs-ui);
   font-weight: 600;
 }
 
@@ -444,7 +444,7 @@
 
 .systemOutput strong {
   color: var(--bone-1);
-  font-size: 12px;
+  font-size: var(--fs-caption);
   font-weight: 600;
 }
 
@@ -856,7 +856,7 @@
 .ventureProjects span {
   padding: 7px 9px;
   color: var(--bone-3);
-  font-size: 10px;
+  font-size: var(--fs-ui-small);
 }
 
 .venturesFooter {
@@ -1093,7 +1093,7 @@
   }
 
   .hero h1 {
-    font-size: 48px;
+    font-size: clamp(42px, 12vw, 48px);
   }
 
   .sectionIntro {
