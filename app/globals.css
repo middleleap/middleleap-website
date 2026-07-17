@@ -1,11 +1,5 @@
+@import "../brand-kit/tokens.css";
 @import "tailwindcss";
-
-:root {
-  --void: #080808;
-  --paper: #ece9e1;
-  --signal: #e05a2b;
-  --signal-ring: rgba(224, 90, 43, 0.35);
-}
 
 @theme inline {
   --font-serif: var(--font-instrument-serif);
@@ -24,36 +18,27 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #292923 var(--void);
+  scrollbar-color: var(--ink-4) var(--ink-0);
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background: var(--void);
-  color: var(--paper);
+  background: var(--ink-0);
+  color: var(--bone-1);
   font-family: var(--font-dm-sans), "DM Sans", sans-serif;
   font-size: 16px;
-  line-height: 1.7;
-}
-
-@media (pointer: fine) {
-  body,
-  a,
-  button,
-  input {
-    cursor: none;
-  }
+  line-height: var(--lh-body);
 }
 
 :focus-visible {
-  outline: 2px solid var(--signal);
-  outline-offset: 3px;
+  outline: 2px solid var(--ember-400);
+  outline-offset: 2px;
 }
 
 ::selection {
-  background: var(--signal);
-  color: var(--void);
+  background: var(--ember-500);
+  color: var(--ink-0);
 }
 
 .skip-link {
@@ -62,9 +47,9 @@ body {
   left: 1rem;
   z-index: 10001;
   padding: 0.75rem 1.5rem;
-  background: var(--signal);
-  color: var(--void);
-  font: 600 0.75rem var(--font-jetbrains-mono), monospace;
+  background: var(--ember-500);
+  color: var(--ink-0);
+  font: 500 var(--fs-caption) var(--font-jetbrains-mono), monospace;
   text-decoration: none;
 }
 
@@ -79,35 +64,6 @@ body {
   pointer-events: none;
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.cur-dot {
-  position: fixed;
-  z-index: 10000;
-  width: 8px;
-  height: 8px;
-  pointer-events: none;
-  border-radius: 50%;
-  background: var(--signal);
-  transform: translate(-50%, -50%);
-}
-
-.cur-ring {
-  position: fixed;
-  z-index: 9999;
-  width: 36px;
-  height: 36px;
-  pointer-events: none;
-  border: 1px solid var(--signal-ring);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.25s, height 0.25s, border-color 0.25s;
-}
-
-.cur-ring.active {
-  width: 56px;
-  height: 56px;
-  border-color: var(--signal);
 }
 
 @media (prefers-reduced-motion: reduce) {

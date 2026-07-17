@@ -1,0 +1,19 @@
+.lockup {
+  display: inline-flex;
+  width: 152px;
+  flex: 0 0 auto;
+  align-items: center;
+  text-decoration: none;
+}
+
+.lockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 720px) {
+  .lockup {
+    width: 136px;
+  }
+}

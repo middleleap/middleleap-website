@@ -30,6 +30,16 @@ MiddleLeap works from mandate to working capability through five stages:
 
 AI-DLC, the Adaptive Development Lifecycle, is MiddleLeap's execution approach for converting outcomes into specifications that people and intelligent agents can execute and verify.
 
+## Ventures and open infrastructure
+
+MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The portfolio has three distinct families:
+
+- Open Finance Commons: independent, community-led infrastructure including OpenFinance-OS, Backoffice, the Data Sandbox and Ecosystem Watcher. MiddleLeap's role is contribution and stewardship, not institutional ownership.
+- Platform ventures: focused propositions including Parqo and HiveMind, developed as working platform experiments.
+- AI-native execution systems: the Open Finance Skill collaboration with Nebras, The Loom and emerging agentic tooling for governed delivery.
+
+The portfolio operates as a build, learn and apply loop: build working assets, capture market and execution intelligence, and apply the learning to client mandates.
+
 ## Engagement models
 
 - Executive advisory for regulatory, platform and transformation mandates.
@@ -45,5 +55,9 @@ AI-DLC, the Adaptive Development Lifecycle, is MiddleLeap's execution approach f
 ## Primary source
 
 - [MiddleLeap homepage](https://middleleap.com/): current positioning, capabilities, approach, experience and contact information.
+- [MiddleLeap Ventures](https://middleleap.com/ventures): portfolio thesis, venture families, project status and external project links.
+- [Open Finance Back Office build record](https://middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
+- [HiveMind build record](https://middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
+- [Parqo build record](https://middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
 
 Last reviewed: 2026-07-11
