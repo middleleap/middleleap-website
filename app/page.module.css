@@ -203,12 +203,24 @@
 }
 
 .mandateSystem {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--ink-4);
-  background: var(--ink-1);
+  background: rgba(16, 14, 12, .92);
   box-shadow: var(--shadow-2);
 }
 
+.mandateSystem::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 48%, rgba(230, 92, 45, .14), transparent 35%);
+  content: "";
+  pointer-events: none;
+}
+
 .systemHeader {
+  position: relative;
+  z-index: 4;
   display: flex;
   justify-content: space-between;
   gap: var(--s-4);
@@ -229,154 +241,195 @@
 }
 
 .systemHeader i {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--ember-400);
-  transform: rotate(45deg);
+  box-shadow: 0 0 0 5px rgba(230, 92, 45, .1);
+  animation: systemPulse 2s ease-in-out infinite;
 }
 
 .systemField {
-  padding: var(--s-5);
-}
-
-.systemMandate {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--s-5);
-  align-items: center;
-  padding-bottom: var(--s-5);
-  border-bottom: 1px solid var(--ink-border);
-}
-
-.systemPivot {
   position: relative;
-  width: 74px;
-  height: 52px;
+  width: 100%;
+  height: 390px;
 }
 
-.systemPivot i,
-.systemPivot b {
+.systemConnections {
   position: absolute;
-  top: 10px;
-  width: 32px;
-  height: 32px;
-  border-radius: 5px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
-.systemPivot i {
-  left: 0;
-  background: var(--bone-1);
+.systemConnections circle {
+  fill: none;
+  stroke: rgba(242, 238, 230, .08);
+  stroke-width: 1;
+  stroke-dasharray: 2 7;
+  transform-origin: center;
+  animation: systemRotate 28s linear infinite;
 }
 
-.systemPivot b {
-  right: 2px;
-  background: var(--ember-500);
-  transform: rotate(45deg);
+.systemConnections circle:nth-child(2) {
+  animation-direction: reverse;
+  animation-duration: 20s;
 }
 
-.systemMandate span,
+.systemConnections path {
+  fill: none;
+  stroke: var(--ink-4);
+  stroke-width: 1;
+  transition: stroke var(--dur-base) var(--ease-out), stroke-width var(--dur-base) var(--ease-out);
+}
+
+.systemConnections .activePath {
+  stroke: var(--ember-500);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 8;
+  animation: pathSignal 1.4s linear infinite;
+}
+
+.systemSignal {
+  fill: var(--ember-400);
+  filter: drop-shadow(0 0 5px var(--ember-500));
+}
+
+.systemCore {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 142px;
+  height: 142px;
+  border: 1px solid var(--ember-500);
+  border-radius: 50%;
+  background: rgba(20, 17, 14, .97);
+  box-shadow: 0 0 0 12px rgba(230, 92, 45, .03), 0 0 58px rgba(230, 92, 45, .14);
+  place-content: center;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.systemCore::before {
+  position: absolute;
+  inset: -7px;
+  border: 1px solid rgba(230, 92, 45, .2);
+  border-radius: inherit;
+  content: "";
+}
+
+.systemCore span,
+.systemCore small,
 .systemNode span,
 .systemNode small,
 .systemOutput span {
+  display: block;
   font-family: var(--font-jetbrains-mono), monospace;
   text-transform: uppercase;
 }
 
-.systemMandate span {
+.systemCore span {
   color: var(--ember-400);
-  font-size: 11.5px;
-  letter-spacing: .1em;
+  font-size: 8px;
+  letter-spacing: .12em;
 }
 
-.systemMandate strong {
-  display: block;
-  margin-top: var(--s-2);
+.systemCore strong {
+  margin-top: 8px;
   color: var(--bone-0);
-  font: 400 22px/1.2 var(--font-instrument-serif), "Instrument Serif", serif;
+  font: 400 18px/.9 var(--font-instrument-serif), "Instrument Serif", serif;
 }
 
-.systemDimensions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: var(--s-5);
-  border-top: 1px solid var(--ink-border);
-  border-left: 1px solid var(--ink-border);
+.systemCore small {
+  margin-top: 10px;
+  color: var(--bone-3);
+  font-size: 8px;
+  letter-spacing: .12em;
 }
 
 .systemNode {
-  position: relative;
-  min-height: 128px;
-  padding: var(--s-4);
+  position: absolute;
+  z-index: 3;
+  width: 150px;
+  min-height: 84px;
+  padding: 12px;
   color: var(--bone-1);
-  border: 0;
-  border-right: 1px solid var(--ink-border);
-  border-bottom: 1px solid var(--ink-border);
+  border: 1px solid var(--ink-4);
   border-radius: var(--r-ui);
-  background: transparent;
+  background: rgba(20, 17, 14, .95);
   text-align: left;
   cursor: pointer;
   transition:
-    background var(--dur-base) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
-}
-
-.systemNode > i {
-  position: absolute;
-  top: var(--s-4);
-  right: var(--s-4);
-  width: 10px;
-  height: 10px;
-  border: 1px solid var(--bone-3);
-  border-radius: 2px;
-  transition:
     background var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast) var(--ease-out),
-    transform var(--dur-leap) var(--ease-leap);
+    transform var(--dur-base) var(--ease-out);
 }
 
 .systemNode > span {
-  color: var(--bone-3);
-  font-size: 11.5px;
-  letter-spacing: .08em;
+  color: var(--ember-400);
+  font-size: 8px;
+  letter-spacing: .1em;
 }
 
 .systemNode strong {
   display: block;
-  margin-top: var(--s-5);
+  margin-top: 9px;
   color: var(--bone-0);
-  font-size: var(--fs-small);
+  font-size: 12px;
   font-weight: 600;
 }
 
 .systemNode small {
   display: block;
-  margin-top: var(--s-1);
+  margin-top: 4px;
   color: var(--bone-3);
-  font-size: 11.5px;
-  line-height: 1.45;
+  font-size: 8px;
+  line-height: 1.35;
+  letter-spacing: .02em;
 }
 
 .systemNode:hover,
 .systemNode:focus-visible,
 .activeNode {
+  border-color: var(--ember-500);
   background: var(--ink-2);
+  transform: translateY(-2px);
 }
 
-.activeNode > i {
-  border-color: var(--ember-500);
-  background: var(--ember-500);
-  transform: rotate(45deg);
+.systemNode1 {
+  top: 9%;
+  left: 3%;
+}
+
+.systemNode2 {
+  top: 9%;
+  right: 3%;
+}
+
+.systemNode3 {
+  bottom: 7%;
+  left: 3%;
+}
+
+.systemNode4 {
+  right: 3%;
+  bottom: 7%;
 }
 
 .systemOutput {
+  position: relative;
+  z-index: 4;
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--s-4);
   align-items: center;
-  min-height: 64px;
+  min-height: 60px;
   padding: var(--s-4);
   border-top: 1px solid var(--ember-600);
-  background: var(--ink-2);
+  background: rgba(230, 92, 45, .06);
 }
 
 .systemOutput span {
@@ -394,6 +447,23 @@
 .systemOutput b {
   color: var(--ember-400);
   font: 500 var(--fs-caption) var(--font-jetbrains-mono), monospace;
+  animation: outputNudge 1.5s ease-in-out infinite;
+}
+
+@keyframes systemPulse {
+  50% { opacity: .4; transform: scale(.75); }
+}
+
+@keyframes systemRotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pathSignal {
+  to { stroke-dashoffset: -26; }
+}
+
+@keyframes outputNudge {
+  50% { transform: translateX(4px); }
 }
 
 .shift,
@@ -939,19 +1009,46 @@
   }
 
   .systemField {
-    padding: var(--s-4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: auto;
+    padding: 18px 12px;
   }
 
-  .systemMandate {
-    grid-template-columns: 1fr;
+  .systemConnections {
+    display: none;
   }
 
-  .systemDimensions {
-    grid-template-columns: 1fr;
+  .systemCore {
+    position: relative;
+    top: auto;
+    left: auto;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 18px;
+    transform: none;
+  }
+
+  .systemCore strong {
+    font-size: 15px;
+  }
+
+  .systemCore small::after {
+    display: block;
+    margin-top: 10px;
+    color: var(--ember-400);
+    font-size: 11px;
+    content: "↓";
   }
 
   .systemNode {
-    min-height: 112px;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 96px;
   }
 
   .systemOutput {
@@ -1015,11 +1112,17 @@
   .primaryAction,
   .primaryAction::before,
   .systemNode,
-  .systemNode > i,
   .mobileMenu summary span,
   .shiftGrid article,
   .capabilityGrid article,
   .ventureGrid article {
     transition-duration: .01ms;
+  }
+
+  .systemHeader i,
+  .systemConnections circle,
+  .systemConnections .activePath,
+  .systemOutput b {
+    animation: none;
   }
 }
