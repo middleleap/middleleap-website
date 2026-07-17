@@ -1,4 +1,8 @@
 .shell {
+  --type-ui: 10px;
+  --type-ui-small: 9px;
+  --type-ui-micro: 8px;
+  --type-ui-nano: 7px;
   min-height: 100vh;
   overflow: hidden;
   color: var(--bone-1);
@@ -40,7 +44,7 @@
 .mobileMenu summary,
 .mobileMenu a {
   color: var(--bone-3);
-  font: 500 11.5px var(--font-jetbrains-mono), monospace;
+  font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
   letter-spacing: .08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -84,8 +88,8 @@
 .eyebrow {
   margin-bottom: var(--s-5);
   color: var(--ember-400);
-  font: 500 var(--fs-caption) var(--font-jetbrains-mono), monospace;
-  letter-spacing: .22em;
+  font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
@@ -129,8 +133,8 @@
   min-height: 48px;
   padding: 14px 22px;
   border-radius: var(--r-ui);
-  font: 500 13px var(--font-jetbrains-mono), monospace;
-  letter-spacing: .08em;
+  font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .07em;
   text-decoration: none;
   text-transform: uppercase;
   transition:
@@ -187,7 +191,7 @@
   padding-top: var(--s-5);
   border-top: 1px solid var(--ink-border);
   color: var(--bone-3);
-  font: 400 var(--fs-caption) var(--font-jetbrains-mono), monospace;
+  font: 400 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   line-height: 1.45;
   text-transform: uppercase;
 }
@@ -229,8 +233,8 @@
   padding-inline: var(--s-4);
   border-bottom: 1px solid var(--ink-border);
   color: var(--bone-3);
-  font: 400 11.5px var(--font-jetbrains-mono), monospace;
-  letter-spacing: .08em;
+  font: 400 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .11em;
   text-transform: uppercase;
 }
 
@@ -333,7 +337,7 @@
 
 .systemCore span {
   color: var(--ember-400);
-  font-size: 8px;
+  font-size: var(--type-ui-nano);
   letter-spacing: .12em;
 }
 
@@ -346,7 +350,7 @@
 .systemCore small {
   margin-top: 10px;
   color: var(--bone-3);
-  font-size: 8px;
+  font-size: var(--type-ui-nano);
   letter-spacing: .12em;
 }
 
@@ -370,7 +374,7 @@
 
 .systemNode > span {
   color: var(--ember-400);
-  font-size: 8px;
+  font-size: var(--type-ui-nano);
   letter-spacing: .1em;
 }
 
@@ -378,7 +382,7 @@
   display: block;
   margin-top: 9px;
   color: var(--bone-0);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
 }
 
@@ -386,7 +390,7 @@
   display: block;
   margin-top: 4px;
   color: var(--bone-3);
-  font-size: 8px;
+  font-size: var(--type-ui-nano);
   line-height: 1.35;
   letter-spacing: .02em;
 }
@@ -434,19 +438,19 @@
 
 .systemOutput span {
   color: var(--ember-400);
-  font-size: 11.5px;
-  letter-spacing: .08em;
+  font-size: var(--type-ui-nano);
+  letter-spacing: .1em;
 }
 
 .systemOutput strong {
   color: var(--bone-1);
-  font-size: var(--fs-small);
+  font-size: 12px;
   font-weight: 600;
 }
 
 .systemOutput b {
   color: var(--ember-400);
-  font: 500 var(--fs-caption) var(--font-jetbrains-mono), monospace;
+  font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   animation: outputNudge 1.5s ease-in-out infinite;
 }
 
@@ -523,7 +527,7 @@
 .engagementGrid article > span,
 .ventureMeta > span {
   color: var(--ember-400);
-  font: 500 var(--fs-caption) var(--font-jetbrains-mono), monospace;
+  font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
 }
 
 .shiftGrid h3,
@@ -603,7 +607,7 @@
 
 .approach li > span {
   color: var(--ember-400);
-  font: 500 var(--fs-caption) var(--font-jetbrains-mono), monospace;
+  font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
 }
 
 .approach li strong {
@@ -663,7 +667,7 @@
   border: 1px solid var(--ink-4);
   border-radius: var(--r-chip);
   color: var(--bone-1);
-  font: 400 11.5px var(--font-jetbrains-mono), monospace;
+  font: 400 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   text-transform: uppercase;
 }
 
@@ -689,7 +693,7 @@
   min-height: 72px;
   padding: var(--s-4) var(--s-5);
   color: var(--bone-2);
-  font: 400 var(--fs-caption) var(--font-jetbrains-mono), monospace;
+  font: 400 var(--type-ui) var(--font-jetbrains-mono), monospace;
   text-transform: uppercase;
 }
 
@@ -712,7 +716,7 @@
   justify-content: space-between;
   gap: var(--s-3);
   color: var(--bone-3);
-  font: 400 11.5px var(--font-jetbrains-mono), monospace;
+  font: 400 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   letter-spacing: .06em;
   text-transform: uppercase;
 }
@@ -745,14 +749,14 @@
 
 .venturesFooter p {
   color: var(--bone-3);
-  font: 400 11.5px/1.6 var(--font-jetbrains-mono), monospace;
+  font: 400 var(--type-ui-small)/1.6 var(--font-jetbrains-mono), monospace;
   text-transform: uppercase;
 }
 
 .venturesLink {
   flex: 0 0 auto;
   color: var(--ember-400);
-  font: 500 11.5px var(--font-jetbrains-mono), monospace;
+  font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   letter-spacing: .06em;
   text-decoration: none;
   text-transform: uppercase;
@@ -858,7 +862,7 @@
   padding-block: var(--s-5);
   border-top: 1px solid var(--ink-border);
   color: var(--bone-3);
-  font: 400 11.5px var(--font-jetbrains-mono), monospace;
+  font: 400 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   text-transform: uppercase;
 }
 

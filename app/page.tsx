@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
   description:
-    "MiddleLeap advises banks, fintechs and regulated businesses on platform strategy, Open Finance, ecosystem design and AI-native operating models.",
+    "MiddleLeap advises banks, fintechs, financial infrastructure and telecommunications providers on platform strategy and AI-native transformation.",
 };
 
 const structuredData = {
@@ -23,7 +23,7 @@ const structuredData = {
       foundingDate: "2021",
       slogan: "From strategic mandate to market execution.",
       description:
-        "Independent advisory firm helping banks, fintechs and regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
+        "Independent advisory firm helping banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Dubai",
@@ -42,6 +42,7 @@ const structuredData = {
         "AI-native operating models",
         "Agentic workflows",
         "Regulated industry transformation",
+        "Telecommunications transformation",
         "Product operating models",
         "AI-DLC",
       ],
@@ -182,9 +183,10 @@ export default function HomePage() {
             From strategic mandate<br />to <em>market execution.</em>
           </h1>
           <p className={styles.lede}>
-            MiddleLeap helps banks, fintechs, financial infrastructure providers
-            and regulated platform businesses navigate market shifts, design
-            scalable platforms and build AI-native operating models.
+            MiddleLeap helps banks, fintechs, financial infrastructure providers,
+            telecommunications companies and other regulated platform businesses
+            navigate market shifts, design scalable platforms and build AI-native
+            operating models.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#engage">Discuss a strategic mandate</a>
