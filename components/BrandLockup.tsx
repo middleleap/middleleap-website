@@ -17,8 +17,8 @@ export function BrandLockup({ className = "", priority = false }: BrandLockupPro
       <Image
         src="/pivot-primary.svg"
         alt="MiddleLeap"
-        width={152}
-        height={36}
+        width={164}
+        height={39}
         priority={priority}
       />
     </Link>

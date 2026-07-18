@@ -17,7 +17,7 @@
 
 .nav {
   display: grid;
-  grid-template-columns: 158px 1fr auto;
+  grid-template-columns: 164px 1fr auto;
   gap: 28px;
   align-items: center;
   min-height: 84px;
