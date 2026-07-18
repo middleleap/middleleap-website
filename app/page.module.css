@@ -336,8 +336,11 @@
 }
 
 .systemCore span {
+  width: 80px;
+  margin-inline: auto;
   color: var(--ember-400);
   font-size: var(--type-ui-nano);
+  line-height: 1.35;
   letter-spacing: .12em;
 }
 
