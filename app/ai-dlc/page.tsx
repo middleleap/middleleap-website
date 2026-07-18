@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrandLockup } from "@/components/BrandLockup";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./ai-dlc.module.css";
 
 export const metadata: Metadata = {
-  title: "AI-DLC | Installable Delivery Intelligence",
+  title: "The Loom Toolkit | AI-DLC",
   description:
-    "AI-DLC packages MiddleLeap methods, regulated-market knowledge, agents and repository workflows as installable plugins for AI-enabled development.",
+    "The Loom Toolkit packages MiddleLeap's governed delivery method, agents, controls and domain knowledge through the AI-DLC public marketplace.",
   alternates: { canonical: "/ai-dlc" },
   openGraph: {
-    title: "AI-DLC | Installable Delivery Intelligence",
+    title: "The Loom Toolkit | AI-DLC",
     description:
       "MiddleLeap methods, domain knowledge and controls packaged as installable skills, agents and workflows.",
     url: "https://middleleap.com/ai-dlc",
@@ -22,7 +23,7 @@ const plugins = [
     number: "01",
     version: "v1.1",
     name: "The Loom",
-    label: "Regulated delivery method",
+    label: "Governed delivery harness",
     description:
       "A gated discovery harness, an autonomous delivery loop with human four-eyes merge, always-on guardrails and the machinery to adopt the method in a repository.",
     contents: ["Loom method canon", "Loom adoption skill", "2 reviewer agents", "D1—D9 gates + Q-gate patterns"],
@@ -66,40 +67,45 @@ const plugins = [
 const layers = [
   ["01", "Advisory", "Frames the mandate", "Regulatory, commercial and operating questions are resolved at leadership level."],
   ["02", "Method", "Defines how work moves", "The Loom turns an evidenced problem into governed, auditable delivery."],
-  ["03", "AI-DLC", "Carries the method into the repo", "Installable skills, agents and controls make the operating model executable."],
+  ["03", "The Loom Toolkit", "Carries the method into the repo", "AI-DLC packages installable skills, agents and controls that make the operating model executable."],
   ["04", "Institution", "Mounts its own context", "Regulation, domain knowledge and institutional DNA remain owned by the adopting entity."],
 ] as const;
 
 export default function AiDlcPage() {
   return (
     <main className={styles.shell} id="problem">
-      <header className={styles.nav}>
-        <BrandLockup priority />
-        <nav className={styles.navLinks} aria-label="AI-DLC navigation">
-          <Link href="/">Advisory</Link>
-          <Link href="/the-loom">The Loom</Link>
-          <a href="#catalogue">Catalogue</a>
-          <Link href="/ventures">Ventures</Link>
-        </nav>
-        <a className={styles.navCta} href="https://github.com/middleleap/ai-dlc" target="_blank" rel="noreferrer">GitHub repository ↗</a>
-        <Link className={styles.mobileNavLink} href="/">Advisory</Link>
-      </header>
+      <SiteHeader
+        active="method"
+        priority
+        breadcrumbs={[
+          { href: "/", label: "Advisory" },
+          { href: "/#method", label: "How we work" },
+          { href: "/the-loom", label: "The Loom" },
+          { label: "Toolkit" },
+        ]}
+        contextLabel="Toolkit navigation"
+        contextLinks={[
+          { href: "/the-loom", label: "The Loom" },
+          { href: "#catalogue", label: "Catalogue" },
+          { href: "#installation", label: "Installation" },
+          { href: "#boundaries", label: "Boundaries" },
+        ]}
+      />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>AI-DLC · downloadable content for AI-enabled development</p>
-          <h1>Installable delivery <em>intelligence.</em></h1>
+          <p className={styles.eyebrow}>The Loom Toolkit · delivered through AI-DLC</p>
+          <h1>Install the harness where the <em>work happens.</em></h1>
           <p className={styles.lede}>
-            AI-DLC packages MiddleLeap&apos;s methods, domain knowledge and controls
-            as skills, agents and repository workflows. Adopt the capability where
-            the work happens, without turning a consulting deck into another shelf artifact.
+            The Loom defines how governed delivery works. AI-DLC packages its methods,
+            agents, controls and domain knowledge as installable repository capability.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#catalogue">Browse the catalogue</a>
             <Link className={styles.secondaryAction} href="/the-loom">Start with The Loom</Link>
           </div>
         </div>
-        <div className={styles.packageVisual} aria-label="AI-DLC package architecture">
+        <div className={styles.packageVisual} role="img" aria-label="AI-DLC package architecture">
           <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Public marketplace</b></div>
           <div className={styles.packageCore}><span>Methods</span><span>Domain knowledge</span><span>Controls</span><span>Brand</span><strong>Install into the repository</strong></div>
           <div className={styles.packageOutput}><span>Skills</span><i>+</i><span>Agents</span><i>+</i><span>Workflows</span><i>+</i><span>Guardrails</span></div>
@@ -107,7 +113,7 @@ export default function AiDlcPage() {
       </section>
 
       <section className={styles.layers}>
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>The hierarchy</p><div><h2>Advisory remains the front door. AI-DLC makes the method executable.</h2><p>MiddleLeap is not repositioning as a plugin vendor. The marketplace is the delivery layer that leaves reusable capability behind after an engagement.</p></div></div>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>The hierarchy</p><div><h2>The Loom is the delivery system. AI-DLC is its installable toolkit.</h2><p>Advisory frames the mandate, The Loom governs how the work moves, and the toolkit carries reusable skills, agents and controls into the repository.</p></div></div>
         <div className={styles.layerGrid}>
           {layers.map(([id, title, label, detail]) => <article key={id}><span>{id}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
@@ -128,7 +134,7 @@ export default function AiDlcPage() {
         </div>
       </section>
 
-      <section className={styles.install}>
+      <section className={styles.install} id="installation">
         <div>
           <p className={styles.eyebrow}>For builders</p>
           <h2>Install the marketplace, then choose the capability.</h2>
@@ -141,7 +147,7 @@ export default function AiDlcPage() {
 /middleleap-loom:loom-adopt`}</code></pre>
       </section>
 
-      <section className={styles.boundaries}>
+      <section className={styles.boundaries} id="boundaries">
         <div className={styles.sectionIntro}><p className={styles.eyebrow}>Clear by design</p><div><h2>The package carries the frame. The institution supplies the pattern.</h2><p>Adoption is not a claim that generic automation understands an institution by default.</p></div></div>
         <div className={styles.boundaryGrid}>
           <article><span>AI-DLC supplies</span><h3>Reusable machinery</h3><p>Gate validators, renderer, templates, build-loop skills, reviewer protocols and guardrail hooks.</p></article>
@@ -157,7 +163,7 @@ export default function AiDlcPage() {
         <div className={styles.actions}><Link className={styles.primaryAction} href="/#engage">Discuss a delivery pilot</Link><a className={styles.darkAction} href="https://github.com/middleleap/ai-dlc" target="_blank" rel="noreferrer">Browse the repository ↗</a></div>
       </section>
 
-      <footer className={styles.footer}><span>MiddleLeap · AI-DLC · Apache 2.0</span><Link href="/">Advisory home</Link></footer>
+      <SiteFooter />
     </main>
   );
 }

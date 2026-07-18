@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrandLockup } from "@/components/BrandLockup";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./loom.module.css";
 
 export const metadata: Metadata = {
-  title: "The Loom | Regulated AI Delivery Method",
+  title: "The Loom | Governed AI Delivery Harness",
   description:
-    "The Loom is MiddleLeap's method for building regulated software with AI: gated discovery, governed delivery, continuous assurance and human accountability.",
+    "The Loom is MiddleLeap's governed AI delivery harness, adapting evidence, controls and human authority to regulated transformation and venture building.",
   alternates: { canonical: "/the-loom" },
   openGraph: {
-    title: "The Loom | How a Regulated Entity Builds with AI",
+    title: "The Loom | Governed AI Delivery Harness",
     description:
-      "Two governed harnesses turn an ambiguous mandate into audit-ready software while accountable people retain approval.",
+      "One governed delivery system with regulated and venture profiles, installable through the AI-DLC toolkit.",
     url: "https://middleleap.com/the-loom",
   },
 };
@@ -19,16 +20,16 @@ export const metadata: Metadata = {
 const proofPoints = [
   ["134 / ~139", "Stories to done in the first build"],
   ["9 + 5", "Discovery gates and primary quality gates"],
-  ["100%", "Merges approved by human four-eyes"],
+  ["100%", "Merges approved by people in the regulated build"],
   ["0", "Real customer records used"],
 ] as const;
 
 const loomParts = [
-  ["Warp", "Always-on controls", "Four-eyes, audit, lineage, quality gates and residency remain under tension throughout."],
+  ["Warp", "Always-on principles", "Evidence, bounded work, human authority, quality and traceability remain under tension throughout."],
   ["Harnesses", "Discovery + delivery", "One harness finds the right problem. The other ships the chosen solution under control."],
   ["Shuttle", "AI agents", "Specialised agents move through the harness to research, build, review, test and evidence."],
-  ["Pattern", "The context brain", "Regulation, solution-domain knowledge and institutional DNA determine what gets woven."],
-  ["Cloth", "Audit-ready software", "The output is a working solution with controls and evidence constructed into the line."],
+  ["Pattern", "The context brain", "Mandate constraints, solution-domain knowledge and institutional context determine what gets woven."],
+  ["Cloth", "Evidence-backed software", "The output is a working solution with the profile-appropriate controls and evidence constructed into the line."],
 ] as const;
 
 const discoveryGates = [
@@ -37,7 +38,7 @@ const discoveryGates = [
   ["D3", "Scope", "Stakeholders and in/out boundaries are named."],
   ["D4", "No solutioning", "Discovery does not leak into production design."],
   ["D5", "Synthesis", "Themes trace to signals and prioritisation is explicit."],
-  ["D6", "Data governance", "Risks and regulatory drivers resolve against the register."],
+  ["D6", "Data governance", "Risks and mandate-specific drivers resolve against the register."],
   ["D7", "Brand", "Stakeholder artifacts render through the mounted brand profile."],
   ["D8", "Tangibility", "A disposable, low-fidelity prototype makes the direction visible."],
   ["D9", "Validation", "Named stakeholders react and the evidence loop closes."],
@@ -49,13 +50,13 @@ const deliverySteps = [
   ["03", "Specify", "Contract, generated types and acceptance tests precede implementation."],
   ["04", "Implement", "Build to green with synthetic data, audit and lineage in the same change."],
   ["05", "Review", "Bounded reviewers judge hard stops and contract conformance."],
-  ["06", "Human merge", "A protected control plane requires accountable four-eyes approval."],
+  ["06", "Human approval", "A protected control plane requires accountable approval; regulated work can require formal four-eyes."],
   ["07", "Deploy", "Promotion, live smoke checks and rollback remain governed."],
   ["08", "Evidence", "Release gates rerun at the shipped commit and seal the evidence bundle."],
 ] as const;
 
 const brainDimensions = [
-  ["Regulated context", "What must be obeyed", "Mandates, deadlines, security posture, risk taxonomy and controls."],
+  ["Mandate context", "What must be obeyed", "Commercial goals, regulation where applicable, deadlines, risk posture and controls."],
   ["Solution domain", "What is being built", "Contracts, data models, personas, scopes and synthetic datasets."],
   ["Institutional DNA", "How the entity works", "Approval routes, architecture, approved technology, terminology, brand and voice."],
 ] as const;
@@ -94,49 +95,54 @@ const limits = [
 export default function LoomPage() {
   return (
     <main className={styles.shell} id="problem">
-      <header className={styles.nav}>
-        <BrandLockup priority />
-        <nav className={styles.navLinks} aria-label="The Loom navigation">
-          <a href="#method">Method</a>
-          <a href="#brain">Context brain</a>
-          <a href="#assurance">Assurance</a>
-          <a href="#governance">Governance</a>
-          <Link href="/ai-dlc">AI-DLC</Link>
-        </nav>
-        <Link className={styles.navCta} href="/#engage">Discuss adoption</Link>
-        <Link className={styles.mobileNavLink} href="/">Advisory</Link>
-      </header>
+      <SiteHeader
+        active="method"
+        priority
+        breadcrumbs={[
+          { href: "/", label: "Advisory" },
+          { href: "/#method", label: "How we work" },
+          { label: "The Loom" },
+        ]}
+        contextLabel="The Loom navigation"
+        contextLinks={[
+          { href: "#method", label: "Core harness" },
+          { href: "#profiles", label: "Profiles" },
+          { href: "#assurance", label: "Assurance" },
+          { href: "#evidence", label: "Evidence" },
+          { href: "/ai-dlc", label: "Toolkit" },
+        ]}
+      />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>The Loom · regulated AI delivery</p>
-          <h1>A way for a regulated entity to build with <em>AI.</em></h1>
+          <p className={styles.eyebrow}>The Loom · governed AI delivery harness</p>
+          <h1>One harness.<br />Controls matched to the <em>mandate.</em></h1>
           <p className={styles.lede}>
-            Set it up once, then weave any solution on it. Discovery finds the right
-            problem. Delivery ships it under control. Always-on controls and governed
-            institutional context run through both.
+            Evidence-led discovery, controlled AI-assisted delivery and human authority
+            form the shared core. A regulated profile applies formal assurance; a venture
+            profile applies commercial evidence and expert-authority gates.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#method">Explore the method</a>
-            <Link className={styles.secondaryAction} href="/ai-dlc">Adopt through AI-DLC</Link>
+            <Link className={styles.secondaryAction} href="/ai-dlc">View the technical toolkit</Link>
           </div>
         </div>
 
-        <div className={styles.loomFigure} role="img" aria-label="The Loom maps always-on controls, discovery and delivery harnesses, institutional context and AI agents to shipped audit-ready software">
-          <div className={styles.figureHeader}><span>The Loom / method frame</span><b>Controls under tension</b></div>
-          <div className={styles.warp}><span>Four-eyes</span><span>Audit</span><span>Lineage</span><span>Gates</span><span>Residency</span></div>
+        <div className={styles.loomFigure} role="img" aria-label="The Loom maps evidence, bounded work, human authority, quality and traceability through discovery and delivery harnesses to evidence-backed software">
+          <div className={styles.figureHeader}><span>The Loom / shared core</span><b>Profile applied by mandate</b></div>
+          <div className={styles.warp}><span>Evidence</span><span>Boundaries</span><span>Authority</span><span>Quality</span><span>Traceability</span></div>
           <div className={styles.harnesses}>
             <article><small>Harness 01</small><strong>Discovery</strong><span>Find the right problem · D1—D9</span></article>
             <i aria-hidden="true">→</i>
             <article><small>Harness 02</small><strong>Delivery</strong><span>Ship under control · Q1—Q5</span></article>
           </div>
-          <div className={styles.pattern}><small>The pattern</small><strong>Institutional context brain</strong><span>Regulation · Domain · Institutional DNA</span></div>
+          <div className={styles.pattern}><small>The pattern</small><strong>Mandate context brain</strong><span>Constraints · Domain · Institutional context</span></div>
           <div className={styles.shuttle}><i aria-hidden="true" /><span>AI agents weave continuously</span></div>
-          <div className={styles.cloth}><small>The cloth</small><strong>Live, audit-ready software</strong></div>
+          <div className={styles.cloth}><small>The cloth</small><strong>Evidence-backed working software</strong></div>
         </div>
       </section>
 
-      <section className={styles.proof} aria-label="Evidence from the first Loom build">
+      <section className={styles.proof} aria-label="Evidence from the first regulated Loom build">
         {proofPoints.map(([value, label]) => <article key={value}><strong>{value}</strong><span>{label}</span></article>)}
       </section>
 
@@ -147,6 +153,29 @@ export default function LoomPage() {
         </div>
         <div className={styles.partGrid}>
           {loomParts.map(([part, title, detail]) => <article key={part}><span>{part}</span><h3>{title}</h3><p>{detail}</p></article>)}
+        </div>
+      </section>
+
+      <section className={styles.section} id="profiles">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Delivery profiles</p>
+          <div>
+            <h2>The governing principle stays fixed. The control intensity changes.</h2>
+            <p>
+              Both profiles preserve evidence, bounded agent work and human authority.
+              They differ in the risks being controlled and the proof required to proceed.
+            </p>
+          </div>
+        </div>
+        <div className={styles.limitGrid}>
+          <article>
+            <h3>Regulated delivery</h3>
+            <p>Formal four-eyes approval, audit, lineage, regulatory context, data controls, residency requirements and governed production promotion.</p>
+          </article>
+          <article>
+            <h3>Venture delivery</h3>
+            <p>Market-evidence gates, bounded specifications, founder or expert authority, production-safety checks and investment conditional on learning.</p>
+          </article>
         </div>
       </section>
 
@@ -198,8 +227,8 @@ export default function LoomPage() {
 
       <section className={styles.section} id="assurance">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Always-on</p>
-          <div><h2>Continuous assurance: agents do the recurring work, people retain judgement.</h2><p>The harness re-runs on changes, schedules and regulatory events, keeping evidence current to the last trigger instead of the last meeting.</p></div>
+          <p className={styles.eyebrow}>Regulated profile · always-on</p>
+          <div><h2>Continuous assurance: agents do the recurring work, people retain judgement.</h2><p>The formal regulated profile re-runs on changes, schedules and regulatory events, keeping evidence current to the last trigger instead of the last meeting.</p></div>
         </div>
         <ol className={styles.assuranceFlow}>
           {assuranceSteps.map(([id, title, detail]) => <li key={id}><span>{id}</span><h3>{title}</h3><p>{detail}</p></li>)}
@@ -208,15 +237,15 @@ export default function LoomPage() {
 
       <section className={styles.section} id="governance">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Who assures the AI?</p>
-          <div><h2>AI proposes. Humans and a protected control plane dispose.</h2><p>The governance catalogue closes the gaps that let an ungoverned agent self-review, self-merge, deploy and edit its own guardrails.</p></div>
+          <p className={styles.eyebrow}>Regulated profile · who assures the AI?</p>
+          <div><h2>AI proposes. Humans and a protected control plane dispose.</h2><p>The regulated reference catalogue closes the gaps that let an ungoverned agent self-review, self-merge, deploy and edit its own guardrails.</p></div>
         </div>
         <div className={styles.governanceGrid}>
           {governanceDecisions.map(([id, title, detail]) => <article key={id}><span>{id}</span><div><h3>{title}</h3><p>{detail}</p></div></article>)}
         </div>
       </section>
 
-      <section className={styles.section}>
+      <section className={styles.section} id="evidence">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Proof and limits</p>
           <div><h2>Proven on Open Finance. Stated plainly.</h2><p>The first build demonstrates a real gated system and a reusable method. It does not justify claims the evidence cannot yet carry.</p></div>
@@ -224,7 +253,8 @@ export default function LoomPage() {
         <div className={styles.limitGrid}>
           {limits.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
-        <div className={styles.caseLink}><span>First implementation</span><strong>Open Finance Back Office</strong><p>A bank-neutral, synthetic-only operating platform and the first cloth off The Loom.</p><Link href="/ventures/backoffice">Read the evidenced build record →</Link></div>
+        <div className={styles.caseLink}><span>Regulated profile</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only operating platform and the first formal proof of the harness.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
+        <div className={styles.caseLink}><span>Venture profile</span><strong>Parqo · HiveMind</strong><p>Lighter applications of the same evidence, specification and human-authority principles—not claims of full regulated adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
       </section>
 
       <section className={styles.engage}>
@@ -233,11 +263,11 @@ export default function LoomPage() {
         <p>Mount the institution&apos;s controls and context, run one gated discovery, and deliver one bounded outcome with human accountability intact.</p>
         <div className={styles.actions}>
           <Link className={styles.primaryAction} href="/#engage">Discuss a Loom pilot</Link>
-          <Link className={styles.darkAction} href="/ai-dlc">See the installable package</Link>
+          <Link className={styles.darkAction} href="/ai-dlc">View The Loom Toolkit</Link>
         </div>
       </section>
 
-      <footer className={styles.footer}><span>MiddleLeap · The Loom · Regulated AI delivery</span><Link href="/">Advisory home</Link></footer>
+      <SiteFooter />
     </main>
   );
 }

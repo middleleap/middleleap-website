@@ -1,0 +1,11 @@
+.shell { min-height: 100vh; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), sans-serif; }
+.content { width: min(calc(100% - 64px), 820px); margin: 0 auto; padding: 100px 0 120px; }
+.eyebrow { color: var(--ember-400); font: 500 var(--fs-ui) var(--font-jetbrains-mono), monospace; letter-spacing: .13em; text-transform: uppercase; }
+.content h1 { margin-top: 18px; color: var(--bone-0); font: 400 clamp(50px, 7vw, 78px)/1 var(--font-instrument-serif), serif; }
+.updated { margin-top: 20px; color: var(--bone-3); font: 400 11px var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
+.content section { margin-top: 55px; padding-top: 32px; border-top: 1px solid var(--ink-border); }
+.content h2 { color: var(--bone-0); font: 400 31px var(--font-instrument-serif), serif; }
+.content p, .content li { margin-top: 14px; color: var(--bone-2); font-size: 15px; line-height: 1.75; }
+.content ul { padding-left: 22px; }
+.content a { color: var(--bone-0); text-decoration-color: var(--ember-500); text-underline-offset: 4px; }
+@media (max-width: 680px) { .content { width: calc(100% - 40px); padding-block: 72px 90px; } }

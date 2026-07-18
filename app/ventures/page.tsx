@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrandLockup } from "@/components/BrandLockup";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 import { VenturesPortfolio } from "@/components/VenturesPortfolio";
 import styles from "./ventures.module.css";
 
@@ -38,27 +39,26 @@ const principles = [
 export default function VenturesPage() {
   return (
     <main className={styles.shell} id="problem">
-      <header className={styles.nav}>
-        <BrandLockup />
-        <nav className={styles.navLinks} aria-label="Primary navigation">
-          <Link href="/#expertise">Expertise</Link>
-          <Link href="/#method">How we work</Link>
-          <Link href="/the-loom">The Loom</Link>
-          <Link href="/ventures" aria-current="page">Ventures</Link>
-          <Link href="/#experience">Experience</Link>
-        </nav>
-        <Link className={styles.navCta} href="/#engage">Discuss a mandate</Link>
-        <Link className={styles.mobileNavLink} href="/">Advisory</Link>
-      </header>
+      <SiteHeader
+        active="ventures"
+        priority
+        breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Ventures" }]}
+        contextLabel="Ventures navigation"
+        contextLinks={[
+          { href: "#portfolio", label: "Portfolio" },
+          { href: "#ecosystem", label: "Ecosystem" },
+          { href: "/ventures/studio", label: "Venture Studio" },
+        ]}
+      />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
           <h1>We build what<br />we <em>advise.</em></h1>
           <p className={styles.lede}>
-            MiddleLeap contributes to open ecosystems, creates focused platform
-            ventures and codifies governed AI-native ways of working. Each initiative
-            turns strategic ideas into operating evidence.
+            MiddleLeap creates focused ventures and contributes selectively to open
+            ecosystems. Each initiative turns a strategic proposition into operating
+            and commercial evidence.
           </p>
           <div className={styles.heroActions}>
             <a className={styles.primaryAction} href="#portfolio">Explore the portfolio</a>
@@ -66,16 +66,16 @@ export default function VenturesPage() {
           </div>
         </div>
 
-        <div className={styles.heroSystem} aria-label="Venture learning system">
+        <div className={styles.heroSystem} role="img" aria-label="Venture learning system">
           <div className={styles.systemHeader}>
             <span>Venture intelligence system / 03</span>
             <span><i aria-hidden="true" /> Operating</span>
           </div>
           <div className={styles.systemBody}>
             <div className={styles.systemOrbit} aria-hidden="true">
-              <span className={styles.orbitOne}>Open ecosystems</span>
-              <span className={styles.orbitTwo}>Platforms</span>
-              <span className={styles.orbitThree}>AI-native tooling</span>
+              <span className={styles.orbitOne}>Backoffice</span>
+              <span className={styles.orbitTwo}>Parqo</span>
+              <span className={styles.orbitThree}>HiveMind</span>
               <b>Build<br />Learn<br />Apply</b>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function VenturesPage() {
       <section className={styles.thesis}>
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>The portfolio thesis</p>
-          <h2>Advisory identifies the mandate. Ventures test the proposition. Tooling compounds the learning.</h2>
+          <h2>Advisory identifies mandates. Ventures test propositions. The Studio opens the door to the next one.</h2>
         </div>
         <div className={styles.principleGrid}>
           {principles.map((principle) => (
@@ -106,9 +106,23 @@ export default function VenturesPage() {
       <section className={styles.portfolio} id="portfolio" tabIndex={-1}>
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>The portfolio</p>
-          <h2>Three ways of building practical intelligence.</h2>
+          <h2>Three builds. Two delivery profiles. One compounding body of evidence.</h2>
         </div>
         <VenturesPortfolio />
+      </section>
+
+      <section className={styles.studioCallout} id="studio">
+        <div>
+          <p className={styles.eyebrow}>MiddleLeap Venture Studio</p>
+          <h2>Bring us a problem worth building around.</h2>
+        </div>
+        <div>
+          <p>
+            We work with operators, domain experts and potential partners to test focused
+            propositions in regulated markets, platform businesses and financial infrastructure.
+          </p>
+          <Link href="/ventures/studio">Propose a venture →</Link>
+        </div>
       </section>
 
       <section className={styles.boundary}>
@@ -123,8 +137,8 @@ export default function VenturesPage() {
             not institutional ownership.
           </p>
           <p>
-            MiddleLeap platform ventures and execution systems are identified
-            separately, with their maturity and operating status made visible.
+            MiddleLeap-owned ventures and independent ecosystem contributions are
+            identified separately, with maturity, role and operating status made visible.
           </p>
         </div>
       </section>
@@ -141,10 +155,7 @@ export default function VenturesPage() {
         </a>
       </section>
 
-      <footer className={styles.footer}>
-        <span>MiddleLeap · Independent advisory firm · Dubai, UAE</span>
-        <Link href="/">Advisory home</Link>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
