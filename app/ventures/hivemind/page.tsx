@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BrandLockup } from "@/components/BrandLockup";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { RelatedPortfolio } from "@/components/RelatedPortfolio";
 import styles from "../backoffice/project.module.css";
 
 export const metadata: Metadata = {
@@ -48,33 +49,41 @@ const phases = [
 ];
 
 const sources = [
-  ["R1", "Repository overview and product principles", "https://github.com/middleleap/hivemind/blob/main/README.md"],
-  ["R2", "Binding Claude Code conventions", "https://github.com/middleleap/hivemind/blob/main/CLAUDE.md"],
-  ["R3", "Technical architecture", "https://github.com/middleleap/hivemind/blob/main/docs/HiveMind_Technical_Architecture.md"],
-  ["R4", "Phase 0 build plan", "https://github.com/middleleap/hivemind/blob/main/docs/BUILD_PLAN.md"],
-  ["R5", "Post-Phase-0 roadmap", "https://github.com/middleleap/hivemind/blob/main/ROADMAP.md"],
-  ["R6", "Claude Code hooks and plugins", "https://github.com/middleleap/hivemind/blob/main/.claude/settings.json"],
-  ["R7", "Continuous-integration workflow", "https://github.com/middleleap/hivemind/blob/main/.github/workflows/ci.yml"],
-  ["R8", "Deployment runbook", "https://github.com/middleleap/hivemind/blob/main/DEPLOY.md"],
+  ["R1", "Repository overview and product principles", "https://github.com/middleleap/hivemind/blob/7e23cfe/README.md"],
+  ["R2", "Binding Claude Code conventions", "https://github.com/middleleap/hivemind/blob/7e23cfe/CLAUDE.md"],
+  ["R3", "Technical architecture", "https://github.com/middleleap/hivemind/blob/7e23cfe/docs/HiveMind_Technical_Architecture.md"],
+  ["R4", "Phase 0 build plan", "https://github.com/middleleap/hivemind/blob/7e23cfe/docs/BUILD_PLAN.md"],
+  ["R5", "Post-Phase-0 roadmap", "https://github.com/middleleap/hivemind/blob/7e23cfe/ROADMAP.md"],
+  ["R6", "Claude Code hooks and plugins", "https://github.com/middleleap/hivemind/blob/7e23cfe/.claude/settings.json"],
+  ["R7", "Continuous-integration workflow", "https://github.com/middleleap/hivemind/blob/7e23cfe/.github/workflows/ci.yml"],
+  ["R8", "Deployment runbook", "https://github.com/middleleap/hivemind/blob/7e23cfe/DEPLOY.md"],
 ];
 
 export default function HiveMindProjectPage() {
   return (
     <main className={styles.shell} id="problem">
-      <header className={styles.nav}>
-        <BrandLockup />
-        <nav className={styles.navLinks} aria-label="Project navigation">
-          <Link href="/ventures">Ventures</Link><a href="#architecture">Architecture</a><a href="#build-system">Build system</a><a href="#development">Development</a>
-        </nav>
-        <a className={styles.navCta} href="https://github.com/middleleap/hivemind" target="_blank" rel="noreferrer">View repository ↗</a>
-        <Link className={styles.mobileNavLink} href="/ventures">All Ventures</Link>
-      </header>
+      <SiteHeader
+        active="ventures"
+        breadcrumbs={[
+          { href: "/ventures", label: "Ventures" },
+          { href: "/ventures#portfolio", label: "Portfolio" },
+          { label: "HiveMind" },
+        ]}
+        contextLabel="HiveMind navigation"
+        contextLinks={[
+          { href: "#problem", label: "Overview" },
+          { href: "#delivery", label: "Delivery" },
+          { href: "#development", label: "Current boundary" },
+          { href: "#evidence", label: "Evidence" },
+          { href: "#outcome", label: "What it proves" },
+        ]}
+      />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Platform venture · Build record</p>
+          <p className={styles.eyebrow}>Portfolio · AI-enabled service venture</p>
           <h1>HiveMind.<br /><em>Human-led coaching.</em></h1>
-          <p className={styles.lede}>Hive Coach turns track-day evidence into a coach-owned debrief: AI accelerates the analysis, while the coach retains judgement, voice and final sign-off.</p>
+          <p className={styles.lede}>HiveMind is the venture; Hive Coach is its product. It turns track-day evidence into a coach-owned debrief: AI accelerates the analysis, while the coach retains judgement, voice and final sign-off.</p>
           <div className={styles.actions}><a className={styles.primaryAction} href="#architecture">See how it works ↓</a><a className={styles.secondaryAction} href="https://github.com/middleleap/hivemind" target="_blank" rel="noreferrer">View repository ↗</a></div>
           <p className={styles.snapshot}>Evidence snapshot · repository main at 7e23cfe · reviewed 11 July 2026</p>
         </div>
@@ -118,7 +127,7 @@ export default function HiveMindProjectPage() {
         </div>
       </section>
 
-      <section className={styles.section}><div className={styles.sectionLabel}><span>03</span><p>Delivery approach</p></div><div><h2>Start with the coach&apos;s gold standard, then make every AI step answer to it.</h2><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
+      <section className={styles.section} id="delivery"><div className={styles.sectionLabel}><span>03</span><p>Venture delivery profile</p></div><div><h2>Start with the coach&apos;s gold standard, then make every AI step answer to it.</h2><p className={styles.sectionLede}>HiveMind applies the Loom&apos;s evidence, specification and human-authority principles as a lighter venture profile. It is not presented as a full regulated-harness implementation.</p><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
 
       <section className={styles.section} id="build-system" tabIndex={-1}>
         <div className={styles.sectionLabel}><span>04</span><p>AI systems</p></div>
@@ -144,10 +153,11 @@ export default function HiveMindProjectPage() {
         <div className={styles.boundaryNote}><span>Known boundary</span><p>Phase 0 is a working application, but production confidence still depends on real coach inputs, noisy trackside trials, live delivery credentials and wider pilot evidence. Parent consent and coach authority remain human responsibilities, not model decisions.</p></div>
       </div></section>
 
-      <section className={styles.sources}><div className={styles.sectionLabel}><span>08</span><p>Evidence register</p></div><div><h2>Claims trace back to the repository.</h2><div className={styles.sourceList}>{sources.map(([id,label,href]) => <a href={href} target="_blank" rel="noreferrer" key={id}><span>{id}</span><strong>{label}</strong><b>Open ↗</b></a>)}</div></div></section>
+      <section className={styles.sources} id="evidence"><div className={styles.sectionLabel}><span>08</span><p>Evidence register</p></div><div><h2>Claims trace back to the repository.</h2><div className={styles.sourceList}>{sources.map(([id,label,href]) => <a href={href} target="_blank" rel="noreferrer" key={id}><span>{id}</span><strong>{label}</strong><b>Open ↗</b></a>)}</div></div></section>
 
-      <section className={styles.engage}><p className={styles.eyebrow}>What this venture proves</p><h2>AI can deepen a human service without taking authority away from the expert.</h2><p>Bring the product, operating-model and governed-AI learning into your service proposition.</p><a href="mailto:contact@middleleap.com?subject=HiveMind%20venture%20learning">Discuss the mandate →</a></section>
-      <footer className={styles.footer}><span>MiddleLeap Ventures · Platform venture</span><Link href="/ventures#family-platforms">Back to Ventures</Link></footer>
+      <section className={styles.engage} id="outcome"><p className={styles.eyebrow}>What this venture proves</p><h2>AI can deepen a human service without taking authority away from the expert.</h2><p>Bring the product, operating-model and governed-AI learning into your service proposition.</p><a href="mailto:contact@middleleap.com?subject=HiveMind%20venture%20learning">Discuss the mandate →</a></section>
+      <RelatedPortfolio currentPath="/ventures/hivemind" />
+      <SiteFooter />
     </main>
   );
 }

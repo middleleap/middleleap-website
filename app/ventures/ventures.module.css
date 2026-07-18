@@ -127,6 +127,25 @@
 .projectLinks { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 22px; }
 .projectLinks a { color: var(--text); font: 400 var(--fs-ui-small) var(--font-jetbrains-mono), monospace; letter-spacing: .05em; text-decoration-color: var(--signal); text-underline-offset: 4px; text-transform: uppercase; }
 
+.portfolioExplorer > .portfolioMap { display: grid; grid-template-columns: .8fr 1fr 1fr; gap: 1px; min-height: 270px; margin: 0 0 34px; border: 1px solid var(--line); background: var(--line); }
+.portfolioExplorer > .portfolioMap > div { display: flex; flex-direction: column; justify-content: center; padding: 34px; background: var(--surface); }
+.portfolioExplorer > .portfolioMap .mapCore { background: rgba(230,92,45,.07); }
+.portfolioExplorer > .portfolioMap span { color: var(--signal); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
+.portfolioExplorer > .portfolioMap strong { margin-top: 20px; font: 400 30px/1.12 var(--font-instrument-serif), serif; }
+.portfolioExplorer > .portfolioMap small { margin-top: 14px; color: var(--faint); font-size: 12px; line-height: 1.55; }
+.portfolioExplorer > .projectGrid { grid-template-columns: repeat(3, 1fr); }
+.portfolioExplorer > .projectGrid article { min-height: 390px; display: flex; flex-direction: column; }
+.portfolioExplorer > .projectGrid h3 { margin-top: 42px; font: 400 27px var(--font-instrument-serif), serif; }
+.portfolioExplorer > .projectGrid .projectLinks { margin-top: auto; padding-top: 22px; }
+.projectEvidence { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); }
+.projectEvidence span { display: block; color: var(--signal); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.projectEvidence strong { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.55; }
+.ecosystemSection { scroll-margin-top: 28px; display: grid; grid-template-columns: minmax(230px, .7fr) minmax(0, 1.3fr); gap: 40px; margin-top: 72px; padding-top: 72px; border-top: 1px solid var(--line); }
+.contributionGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.contributionGrid article { min-height: 260px; padding: 20px; border: 1px solid var(--line); background: var(--surface); }
+.contributionGrid h4 { margin-top: 38px; font: 400 24px var(--font-instrument-serif), serif; }
+.contributionGrid article > p { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
 .boundary { max-width: 1080px; margin: 0 auto 96px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border: 1px solid var(--line); background: var(--surface); box-shadow: inset 3px 0 var(--signal); }
 .boundary h2 { font: 400 42px/1.2 var(--font-instrument-serif), serif; letter-spacing: normal; }
 .boundaryCopy { border-top: 1px solid var(--line); }
@@ -137,6 +156,11 @@
 .engage h2 { max-width: 790px; font: 400 clamp(42px, 5vw, 66px)/1 var(--font-instrument-serif), serif; }
 .engage > p:not(.eyebrow) { max-width: 620px; margin-top: 22px; color: var(--ink-4); font-size: 14px; line-height: 1.65; }
 .engageAction { display: inline-flex; min-height: 48px; align-items: center; margin-top: 34px; padding: 14px 22px; color: #110D0A; background: var(--signal); text-decoration: none; font: 500 13px var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.studioCallout { max-width: 1080px; margin: 0 auto 96px; padding: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border: 1px solid rgba(230,92,45,.55); background: rgba(230,92,45,.06); }
+.studioCallout h2 { font: 400 clamp(36px, 4vw, 52px)/1.08 var(--font-instrument-serif), serif; }
+.studioCallout > div:last-child { align-self: end; }
+.studioCallout > div:last-child p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+.studioCallout a { display: inline-flex; margin-top: 28px; color: var(--text); font: 500 12px var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-decoration-color: var(--signal); text-underline-offset: 5px; text-transform: uppercase; }
 .footer { max-width: 1144px; margin: 0 auto; padding: 24px 32px; display: flex; justify-content: space-between; border-top: 1px solid var(--line); color: var(--faint); font: 400 11.5px var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
 .footer a { color: var(--muted); }
 
@@ -148,6 +172,10 @@
   .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 68px; }
   .heroSystem { width: min(100%, 620px); }
   .sectionIntro { grid-template-columns: 1fr; gap: 6px; }
+  .portfolioExplorer > .projectGrid { grid-template-columns: 1fr; }
+  .portfolioExplorer > .projectGrid article { min-height: auto; }
+  .ecosystemSection { grid-template-columns: 1fr; }
+  .contributionGrid { grid-template-columns: 1fr 1fr; }
   .familyPanel, .boundary { grid-template-columns: 1fr; }
   .boundary { margin-inline: 20px; }
   .engage { margin-inline: 20px; }
@@ -162,6 +190,9 @@
   .orbitTwo { right: -18px; }
   .orbitThree { left: -20px; }
   .principleGrid, .portfolioControls, .projectGrid { grid-template-columns: 1fr; }
+  .portfolioExplorer > .portfolioMap, .studioCallout { grid-template-columns: 1fr; }
+  .contributionGrid { grid-template-columns: 1fr; }
+  .studioCallout { margin: 0 12px 70px; padding: 36px 24px; }
   .principleGrid article, .portfolioControls a { border-right: 0; border-bottom: 1px solid var(--line); }
   .principleGrid article:last-child, .portfolioControls a:last-child { border-bottom: 0; }
   .principleGrid article::after { display: none; }

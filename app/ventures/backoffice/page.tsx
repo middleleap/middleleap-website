@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrandLockup } from "@/components/BrandLockup";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { RelatedPortfolio } from "@/components/RelatedPortfolio";
 import styles from "./project.module.css";
 
 export const metadata: Metadata = {
-  title: "Open Finance Back Office",
+  title: "Open Finance Backoffice",
   description:
     "How the Open Finance Back Office was designed and built: architecture, AI delivery harness, technology stack, quality controls and development maturity.",
   alternates: { canonical: "/ventures/backoffice" },
   openGraph: {
-    title: "Open Finance Back Office | MiddleLeap Ventures",
+    title: "Open Finance Backoffice | MiddleLeap Ventures",
     description:
       "An evidence-backed build record for the bank-neutral UAE Open Finance operations platform.",
     url: "https://middleleap.com/ventures/backoffice",
@@ -83,36 +85,40 @@ const phases = [
 ];
 
 const sources = [
-  ["R1", "Repository overview and status", "https://github.com/openfinance-os/ofbo/blob/main/README.md"],
-  ["R2", "Binding build conventions", "https://github.com/openfinance-os/ofbo/blob/main/CLAUDE.md"],
-  ["R3", "Claude Code hooks", "https://github.com/openfinance-os/ofbo/blob/main/.claude/settings.json"],
-  ["R4", "Product MCP configuration", "https://github.com/openfinance-os/ofbo/blob/main/.mcp.json"],
-  ["R5", "Architecture overview", "https://github.com/openfinance-os/ofbo/blob/main/docs/architecture-overview.md"],
-  ["R6", "Quality-gate workflow", "https://github.com/openfinance-os/ofbo/blob/main/.github/workflows/ci.yml"],
-  ["R7", "Development backlog", "https://github.com/openfinance-os/ofbo/blob/main/docs/backlog.yaml"],
-  ["R8", "Agentic build record", "https://github.com/openfinance-os/ofbo/blob/main/docs/build-log.md"],
+  ["R1", "Repository overview and status", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/README.md"],
+  ["R2", "Binding build conventions", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/CLAUDE.md"],
+  ["R3", "Claude Code hooks", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/.claude/settings.json"],
+  ["R4", "Product MCP configuration", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/.mcp.json"],
+  ["R5", "Architecture overview", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/docs/architecture-overview.md"],
+  ["R6", "Quality-gate workflow", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/.github/workflows/ci.yml"],
+  ["R7", "Development backlog", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/docs/backlog.yaml"],
+  ["R8", "Agentic build record", "https://github.com/openfinance-os/ofbo/blob/99ab0dd/docs/build-log.md"],
 ];
 
 export default function BackofficeProjectPage() {
   return (
     <main className={styles.shell} id="problem">
-      <header className={styles.nav}>
-        <BrandLockup />
-        <nav className={styles.navLinks} aria-label="Project navigation">
-          <Link href="/ventures">Ventures</Link>
-          <Link href="/the-loom">The Loom</Link>
-          <a href="#architecture">Architecture</a>
-          <a href="#build-system">Build system</a>
-          <a href="#development">Development</a>
-        </nav>
-        <a className={styles.navCta} href="https://backoffice.openfinance-os.org/" target="_blank" rel="noreferrer">Visit Backoffice ↗</a>
-        <Link className={styles.mobileNavLink} href="/ventures">All Ventures</Link>
-      </header>
+      <SiteHeader
+        active="ventures"
+        breadcrumbs={[
+          { href: "/ventures", label: "Ventures" },
+          { href: "/ventures#portfolio", label: "Portfolio" },
+          { label: "Backoffice" },
+        ]}
+        contextLabel="Backoffice navigation"
+        contextLinks={[
+          { href: "#problem", label: "Overview" },
+          { href: "#delivery", label: "Delivery" },
+          { href: "#development", label: "Current boundary" },
+          { href: "#evidence", label: "Evidence" },
+          { href: "#outcome", label: "What it proves" },
+        ]}
+      />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Open Finance Commons · Build record</p>
-          <h1>Open Finance<br /><em>Back Office.</em></h1>
+          <p className={styles.eyebrow}>Portfolio · Regulated delivery profile</p>
+          <h1>Open Finance<br /><em>Backoffice.</em></h1>
           <p className={styles.lede}>
             A bank-neutral operations platform for running UAE Open Finance in
             both roles: LFI for inbound third-party traffic and TPP-of-record
@@ -187,12 +193,12 @@ export default function BackofficeProjectPage() {
         </div>
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.sectionLabel}><span>03</span><p>Delivery approach</p></div>
+      <section className={styles.section} id="delivery">
+        <div className={styles.sectionLabel}><span>03</span><p>Regulated delivery profile</p></div>
         <div>
           <h2>The first cloth off The Loom: a governed double diamond feeding a spec-first delivery loop.</h2>
           <p className={styles.sectionLede}>
-            The Open Finance Back Office is the first evidenced implementation of
+            The Open Finance Backoffice is the first evidenced implementation of
             <Link href="/the-loom"> The Loom</Link>. Its autonomous loop carried 134 of
             approximately 139 backlog stories to done under quality gates, synthetic-data
             constraints and human four-eyes merge. The method is reusable; the Open Finance
@@ -224,7 +230,7 @@ export default function BackofficeProjectPage() {
               </article>
             ))}
           </div>
-          <div className={styles.controlLine} aria-label="Agent delivery controls">
+          <div className={styles.controlLine} role="group" aria-label="Agent delivery controls">
             <span>Worktree isolation</span><i>→</i><span>Spec + test tripwires</span><i>→</i><span>Bounded reviewers</span><i>→</i><span>Human merge</span><i>→</i><span>Sealed provenance</span>
           </div>
         </div>
@@ -285,7 +291,7 @@ export default function BackofficeProjectPage() {
         </div>
       </section>
 
-      <section className={styles.sources}>
+      <section className={styles.sources} id="evidence">
         <div className={styles.sectionLabel}><span>08</span><p>Evidence register</p></div>
         <div>
           <h2>Claims trace back to the repository.</h2>
@@ -299,17 +305,15 @@ export default function BackofficeProjectPage() {
         </div>
       </section>
 
-      <section className={styles.engage}>
+      <section className={styles.engage} id="outcome">
         <p className={styles.eyebrow}>What this venture proves</p>
         <h2>Regulated operating controls can be designed into the platform from day one.</h2>
         <p>Bring the architecture, operating-model and AI-delivery learning into your Open Finance mandate.</p>
         <a href="mailto:contact@middleleap.com?subject=Open%20Finance%20Back%20Office">Discuss the mandate →</a>
       </section>
 
-      <footer className={styles.footer}>
-        <span>MiddleLeap Ventures · Open Finance Commons contribution</span>
-        <Link href="/ventures#family-commons">Back to Ventures</Link>
-      </footer>
+      <RelatedPortfolio currentPath="/ventures/backoffice" />
+      <SiteFooter />
     </main>
   );
 }

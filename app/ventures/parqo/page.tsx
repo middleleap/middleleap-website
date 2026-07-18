@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BrandLockup } from "@/components/BrandLockup";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { RelatedPortfolio } from "@/components/RelatedPortfolio";
 import styles from "../backoffice/project.module.css";
 
 export const metadata: Metadata = {
@@ -47,31 +48,39 @@ const phases = [
 ];
 
 const sources = [
-  ["R1", "Repository overview and shipped scope", "https://github.com/middleleap/parqo/blob/main/README.md"],
-  ["R2", "Approved v0.4 specification", "https://github.com/middleleap/parqo/blob/main/docs/11_v0.4_specification.md"],
-  ["R3", "Current acquisition website stack", "https://github.com/middleleap/parqo/blob/main/docs/17_acquisition_website_stack.md"],
-  ["R4", "AI-native delivery controls", "https://github.com/middleleap/parqo/blob/main/docs/16_ai_native_delivery.md"],
-  ["R5", "First Codex implementation prompt", "https://github.com/middleleap/parqo/blob/main/scripts/first_codex_prompt.md"],
-  ["R6", "Ordered implementation backlog", "https://github.com/middleleap/parqo/blob/main/docs/08_backlog.md"],
-  ["R7", "Operations runbook", "https://github.com/middleleap/parqo/blob/main/docs/19_operations_runbook.md"],
-  ["R8", "Notion leads dashboard automation", "https://github.com/middleleap/parqo/blob/main/docs/20_notion_leads_dashboard.md"],
+  ["R1", "Repository overview and shipped scope", "https://github.com/middleleap/parqo/blob/79cd4aa/README.md"],
+  ["R2", "Approved v0.4 specification", "https://github.com/middleleap/parqo/blob/79cd4aa/docs/11_v0.4_specification.md"],
+  ["R3", "Current acquisition website stack", "https://github.com/middleleap/parqo/blob/79cd4aa/docs/17_acquisition_website_stack.md"],
+  ["R4", "AI-native delivery controls", "https://github.com/middleleap/parqo/blob/79cd4aa/docs/16_ai_native_delivery.md"],
+  ["R5", "First Codex implementation prompt", "https://github.com/middleleap/parqo/blob/79cd4aa/scripts/first_codex_prompt.md"],
+  ["R6", "Ordered implementation backlog", "https://github.com/middleleap/parqo/blob/79cd4aa/docs/08_backlog.md"],
+  ["R7", "Operations runbook", "https://github.com/middleleap/parqo/blob/79cd4aa/docs/19_operations_runbook.md"],
+  ["R8", "Notion leads dashboard automation", "https://github.com/middleleap/parqo/blob/79cd4aa/docs/20_notion_leads_dashboard.md"],
 ];
 
 export default function ParqoProjectPage() {
   return (
     <main className={styles.shell} id="problem">
-      <header className={styles.nav}>
-        <BrandLockup />
-        <nav className={styles.navLinks} aria-label="Project navigation">
-          <Link href="/ventures">Ventures</Link><a href="#architecture">Architecture</a><a href="#build-system">Build system</a><a href="#development">Development</a>
-        </nav>
-        <a className={styles.navCta} href="https://parqo.co/" target="_blank" rel="noreferrer">Visit Parqo ↗</a>
-        <Link className={styles.mobileNavLink} href="/ventures">All Ventures</Link>
-      </header>
+      <SiteHeader
+        active="ventures"
+        breadcrumbs={[
+          { href: "/ventures", label: "Ventures" },
+          { href: "/ventures#portfolio", label: "Portfolio" },
+          { label: "Parqo" },
+        ]}
+        contextLabel="Parqo navigation"
+        contextLinks={[
+          { href: "#problem", label: "Overview" },
+          { href: "#delivery", label: "Delivery" },
+          { href: "#development", label: "Current boundary" },
+          { href: "#evidence", label: "Evidence" },
+          { href: "#outcome", label: "What it proves" },
+        ]}
+      />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Platform venture · Build record</p>
+          <p className={styles.eyebrow}>Portfolio · Platform venture</p>
           <h1>Parqo.<br /><em>Space, put to work.</em></h1>
           <p className={styles.lede}>A B2B marketplace proposition connecting idle hotel parking with employers that need reliable employee parking in dense UAE business districts.</p>
           <div className={styles.actions}><a className={styles.primaryAction} href="https://parqo.co/" target="_blank" rel="noreferrer">Open the live site ↗</a><a className={styles.secondaryAction} href="https://github.com/middleleap/parqo" target="_blank" rel="noreferrer">View repository ↗</a></div>
@@ -117,7 +126,7 @@ export default function ParqoProjectPage() {
         </div>
       </section>
 
-      <section className={styles.section}><div className={styles.sectionLabel}><span>03</span><p>Delivery approach</p></div><div><h2>Make the next investment conditional on real market evidence.</h2><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
+      <section className={styles.section} id="delivery"><div className={styles.sectionLabel}><span>03</span><p>Venture delivery profile</p></div><div><h2>Make the next investment conditional on real market evidence.</h2><p className={styles.sectionLede}>Parqo applies the Loom&apos;s evidence, specification and human-authority principles as a lighter venture profile. It is not presented as a full regulated-harness implementation.</p><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
 
       <section className={styles.section} id="build-system" tabIndex={-1}>
         <div className={styles.sectionLabel}><span>04</span><p>AI build system</p></div>
@@ -143,10 +152,11 @@ export default function ParqoProjectPage() {
         <div className={styles.boundaryNote}><span>Known boundary</span><p>Parqo is not yet an operating parking marketplace. The live production asset validates acquisition; the approved v0.4 design describes the next product. Facility contracting, access provisioning, staff and employer portals, payments, provider adapters and the employee PWA remain future work gated by district-level demand and supply evidence.</p></div>
       </div></section>
 
-      <section className={styles.sources}><div className={styles.sectionLabel}><span>08</span><p>Evidence register</p></div><div><h2>Claims trace back to the repository.</h2><div className={styles.sourceList}>{sources.map(([id,label,href]) => <a href={href} target="_blank" rel="noreferrer" key={id}><span>{id}</span><strong>{label}</strong><b>Open ↗</b></a>)}</div></div></section>
+      <section className={styles.sources} id="evidence"><div className={styles.sectionLabel}><span>08</span><p>Evidence register</p></div><div><h2>Claims trace back to the repository.</h2><div className={styles.sourceList}>{sources.map(([id,label,href]) => <a href={href} target="_blank" rel="noreferrer" key={id}><span>{id}</span><strong>{label}</strong><b>Open ↗</b></a>)}</div></div></section>
 
-      <section className={styles.engage}><p className={styles.eyebrow}>What this venture proves</p><h2>Platform strategy gets sharper when every build step has a commercial learning target.</h2><p>Bring the marketplace, district-density and AI-native delivery learning into your platform mandate.</p><a href="mailto:contact@middleleap.com?subject=Parqo%20venture%20learning">Discuss the mandate →</a></section>
-      <footer className={styles.footer}><span>MiddleLeap Ventures · Platform venture</span><Link href="/ventures#family-platforms">Back to Ventures</Link></footer>
+      <section className={styles.engage} id="outcome"><p className={styles.eyebrow}>What this venture proves</p><h2>Platform strategy gets sharper when every build step has a commercial learning target.</h2><p>Bring the marketplace, district-density and AI-native delivery learning into your platform mandate.</p><a href="mailto:contact@middleleap.com?subject=Parqo%20venture%20learning">Discuss the mandate →</a></section>
+      <RelatedPortfolio currentPath="/ventures/parqo" />
+      <SiteFooter />
     </main>
   );
 }

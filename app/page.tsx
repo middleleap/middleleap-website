@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrandLockup } from "@/components/BrandLockup";
 import { MandateSystem } from "@/components/MandateSystem";
-import { ventureFamilies } from "@/lib/ventures";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -41,7 +42,7 @@ const structuredData = {
         "Ecosystem strategy",
         "AI-native operating models",
         "Agentic workflows",
-        "The Loom regulated AI delivery method",
+        "The Loom governed AI delivery harness",
         "AI delivery governance",
         "Regulated industry transformation",
         "Telecommunications transformation",
@@ -157,28 +158,7 @@ export default function HomePage() {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <header className={styles.nav}>
-        <BrandLockup priority />
-        <nav className={styles.navLinks} aria-label="Primary navigation">
-          <a href="#expertise">Expertise</a>
-          <a href="#method">How we work</a>
-          <Link href="/the-loom">The Loom</Link>
-          <Link href="/ventures">Ventures</Link>
-          <a href="#experience">Experience</a>
-        </nav>
-        <a className={styles.navCta} href="#engage">Discuss a mandate</a>
-        <details className={styles.mobileMenu}>
-          <summary><span aria-hidden="true" /> Menu</summary>
-          <nav aria-label="Mobile navigation">
-            <a href="#expertise">Expertise</a>
-            <a href="#method">How we work</a>
-            <Link href="/the-loom">The Loom</Link>
-            <Link href="/ventures">Ventures</Link>
-            <a href="#experience">Experience</a>
-            <a href="#engage">Discuss a mandate</a>
-          </nav>
-        </details>
-      </header>
+      <SiteHeader home priority />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
@@ -196,7 +176,7 @@ export default function HomePage() {
             <a className={styles.primaryAction} href="#engage">Discuss a strategic mandate</a>
             <a className={styles.secondaryAction} href="#expertise">Explore our capabilities</a>
           </div>
-          <div className={styles.proofLine} aria-label="MiddleLeap positioning">
+          <div className={styles.proofLine} role="group" aria-label="MiddleLeap positioning">
             <span><strong>MENA</strong> market focus</span>
             <span><strong>20+ years</strong> regulated platforms</span>
             <span><strong>Strategy</strong> through execution</span>
@@ -261,21 +241,21 @@ export default function HomePage() {
 
         <div className={styles.loomFeature}>
           <div className={styles.loomCopy}>
-            <p className={styles.eyebrow}>The Loom · AI-native execution</p>
-            <h3>The Loom turns strategic intent into audit-ready software.</h3>
+            <p className={styles.eyebrow}>The Loom · Governed AI delivery</p>
+            <h3>One harness. A control profile matched to the mandate.</h3>
             <p>
-              Discovery finds the right problem. Delivery ships it under control.
-              Both run across always-on controls and the institution&apos;s governed
-              context. Agents build and verify; accountable people approve every merge.
+              The Loom combines evidenced discovery, controlled AI-assisted delivery and
+              human authority. Its regulated profile applies formal assurance; its venture
+              profile applies commercial evidence and expert-authority gates.
             </p>
             <div className={styles.loomActions}>
-              <Link href="/the-loom">See how The Loom works →</Link>
-              <Link href="/ai-dlc">Explore AI-DLC →</Link>
+              <Link href="/the-loom">Explore the delivery harness →</Link>
+              <Link href="/ai-dlc">View the technical toolkit →</Link>
             </div>
           </div>
-          <div className={styles.loomMini} aria-label="The Loom regulated delivery method">
+          <div className={styles.loomMini} role="img" aria-label="The Loom regulated delivery reference profile">
             <div className={styles.loomMiniHeader}>
-              <span>Two harnesses · one governed frame</span>
+              <span>Regulated profile · reference build</span>
               <b>Human accountable</b>
             </div>
             <div className={styles.loomMiniFlow}>
@@ -314,18 +294,18 @@ export default function HomePage() {
 
       <section className={styles.ventures} id="ventures">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Ventures &amp; open infrastructure</p>
+          <p className={styles.eyebrow}>MiddleLeap Ventures</p>
           <div>
             <h2>We build what we advise.</h2>
             <p className={styles.venturesIntro}>
-              MiddleLeap contributes to open ecosystems, creates focused platform
-              ventures and codifies AI-native execution systems—turning practical
-              experience into stronger strategic and delivery advice.
+              MiddleLeap creates focused ventures and contributes selectively to open
+              ecosystems—turning practical operating experience into stronger strategic
+              and delivery advice.
             </p>
           </div>
         </div>
 
-        <div className={styles.ventureLoop} aria-label="MiddleLeap venture learning loop">
+        <div className={styles.ventureLoop} role="img" aria-label="MiddleLeap venture learning loop">
           <span><b>Build</b> Working assets</span>
           <i aria-hidden="true">→</i>
           <span><b>Learn</b> Operating intelligence</span>
@@ -334,26 +314,28 @@ export default function HomePage() {
         </div>
 
         <div className={styles.ventureGrid}>
-          {ventureFamilies.map((family) => (
-            <article key={family.id}>
+          {portfolioProjects.map((project, index) => (
+            <article key={project.name}>
               <div className={styles.ventureMeta}>
-                <span>{family.number}</span>
-                <small>{family.eyebrow}</small>
+                <span>0{index + 1}</span>
+                <small>{project.harnessProfile}</small>
               </div>
-              <h3>{family.title}</h3>
-              <p>{family.proposition}</p>
+              <h3>{project.name}</h3>
+              <p>{project.summary}</p>
               <div className={styles.ventureProjects}>
-                {family.projects.slice(0, 3).map((project) => (
-                  <span key={project.name}>{project.name}</span>
-                ))}
+                <span>{project.type}</span>
+                <span>{project.status}</span>
               </div>
             </article>
           ))}
         </div>
 
         <div className={styles.venturesFooter}>
-          <p>Open ecosystem infrastructure · Owned platform ventures · AI-native execution tooling</p>
-          <Link className={styles.venturesLink} href="/ventures">Explore MiddleLeap Ventures →</Link>
+          <p>Working platforms · Operating evidence · New propositions</p>
+          <div className={styles.loomActions}>
+            <Link className={styles.venturesLink} href="/ventures">Explore MiddleLeap Ventures →</Link>
+            <Link className={styles.venturesLink} href="/ventures/studio">Propose a venture →</Link>
+          </div>
         </div>
       </section>
 
@@ -378,7 +360,7 @@ export default function HomePage() {
               a senior lead advisor with specialists across regulation, strategy,
               product, technology, ecosystems and delivery.
             </p>
-            <div className={styles.networkModel} aria-label="MiddleLeap engagement team model">
+            <div className={styles.networkModel} role="img" aria-label="MiddleLeap engagement team model">
               <span>Lead advisor</span><b>+</b><span>Domain specialists</span><b>+</b><span>Client leadership</span>
             </div>
           </aside>
@@ -404,10 +386,7 @@ export default function HomePage() {
         </a>
       </section>
 
-      <footer className={styles.footer}>
-        <span>MiddleLeap · Independent advisory firm · Dubai, UAE</span>
-        <a href="#problem">Back to top</a>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

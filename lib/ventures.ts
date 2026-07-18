@@ -1,133 +1,84 @@
-export type VentureFamilyId = "commons" | "platforms" | "tooling";
+export type PortfolioProject = {
+  name: string;
+  type: string;
+  summary: string;
+  status: string;
+  evidence: string;
+  harnessProfile: "Regulated delivery" | "Venture delivery";
+  detailPath: string;
+  href?: string;
+  repository: string;
+};
 
-export type VentureProject = {
+export type EcosystemContribution = {
   name: string;
   role: string;
   summary: string;
   status: string;
-  detailPath?: string;
-  href?: string;
+  href: string;
   repository?: string;
 };
 
-export type VentureFamily = {
-  id: VentureFamilyId;
-  number: string;
-  eyebrow: string;
-  title: string;
-  proposition: string;
-  intelligence: string;
-  projects: VentureProject[];
-};
+export const portfolioProjects: PortfolioProject[] = [
+  {
+    name: "Open Finance Backoffice",
+    type: "Open infrastructure · Regulated platform",
+    summary:
+      "A bank-neutral, synthetic-only operating platform that turns Open Finance obligations into governed workflows for people and agents.",
+    status: "Demo-complete",
+    evidence: "Regulated controls designed into a working platform from day one.",
+    harnessProfile: "Regulated delivery",
+    detailPath: "/ventures/backoffice",
+    href: "https://backoffice.openfinance-os.org/",
+    repository: "https://github.com/openfinance-os/ofbo",
+  },
+  {
+    name: "Parqo",
+    type: "Platform venture",
+    summary:
+      "A UAE parking marketplace beginning with a live demand-and-supply acquisition wedge in dense business districts.",
+    status: "Acquisition wedge live",
+    evidence: "Commercial investment is gated by district-level demand and supply evidence.",
+    harnessProfile: "Venture delivery",
+    detailPath: "/ventures/parqo",
+    href: "https://parqo.co/",
+    repository: "https://github.com/middleleap/parqo",
+  },
+  {
+    name: "HiveMind / Hive Coach",
+    type: "AI-enabled service venture",
+    summary:
+      "A human-led coaching product that turns track evidence into grounded, coach-owned advice for developing drivers.",
+    status: "Initial product live",
+    evidence: "AI can deepen an expert service without taking authority from the expert.",
+    harnessProfile: "Venture delivery",
+    detailPath: "/ventures/hivemind",
+    repository: "https://github.com/middleleap/hivemind",
+  },
+];
 
-export const ventureFamilies: VentureFamily[] = [
+export const ecosystemContributions: EcosystemContribution[] = [
   {
-    id: "commons",
-    number: "01",
-    eyebrow: "Contribute",
-    title: "Open Finance Commons",
-    proposition:
-      "Independent community infrastructure that makes the UAE Open Finance ecosystem visible, testable and easier to navigate.",
-    intelligence:
-      "Market participation, regulatory signals, API behaviour and ecosystem readiness.",
-    projects: [
-      {
-        name: "OpenFinance-OS",
-        role: "Community infrastructure",
-        summary: "Website, observatory, updates and ecosystem visibility.",
-        status: "Active",
-        href: "https://openfinance-os.org/",
-        repository: "https://github.com/openfinance-os/community-website",
-      },
-      {
-        name: "Backoffice",
-        role: "Operating knowledge",
-        summary: "Open working knowledge, methods and ecosystem documentation.",
-        status: "Active",
-        detailPath: "/ventures/backoffice",
-        href: "https://backoffice.openfinance-os.org/",
-        repository: "https://github.com/openfinance-os/ofbo",
-      },
-      {
-        name: "Data Sandbox",
-        role: "Synthetic infrastructure",
-        summary: "Realistic, specification-driven Open Finance payloads and personas.",
-        status: "Active",
-        href: "https://data-sandbox.openfinance-os.org/",
-        repository: "https://github.com/openfinance-os/data-sandbox",
-      },
-      {
-        name: "Ecosystem Watcher",
-        role: "Agent-run intelligence",
-        summary: "Scheduled monitoring of ecosystem change and market signals.",
-        status: "Active",
-        href: "https://ecosystem-watcher.openfinance-os.org/",
-      },
-    ],
+    name: "OpenFinance-OS",
+    role: "Community infrastructure",
+    summary: "Independent ecosystem visibility, observatory and working knowledge for UAE Open Finance.",
+    status: "Active",
+    href: "https://openfinance-os.org/",
+    repository: "https://github.com/openfinance-os/community-website",
   },
   {
-    id: "platforms",
-    number: "02",
-    eyebrow: "Build",
-    title: "Platform ventures",
-    proposition:
-      "Focused propositions built as working platforms, exposing the real choices behind product, ecosystem and operating-model design.",
-    intelligence:
-      "Platform economics, proposition design, architecture, go-to-market and operating models.",
-    projects: [
-      {
-        name: "Parqo",
-        role: "Platform venture",
-        summary: "A UAE parking marketplace beginning with a live demand-and-supply acquisition wedge.",
-        status: "Acquisition wedge live",
-        detailPath: "/ventures/parqo",
-        href: "https://parqo.co/",
-        repository: "https://github.com/middleleap/parqo",
-      },
-      {
-        name: "HiveMind",
-        role: "Platform venture",
-        summary: "Human-led, AI-amplified karting coaching delivered through the Hive Coach product.",
-        status: "Phase 0 live",
-        detailPath: "/ventures/hivemind",
-        repository: "https://github.com/middleleap/hivemind",
-      },
-    ],
+    name: "Data Sandbox",
+    role: "Synthetic infrastructure",
+    summary: "Realistic, specification-driven Open Finance payloads and personas for safe testing.",
+    status: "Active",
+    href: "https://data-sandbox.openfinance-os.org/",
+    repository: "https://github.com/openfinance-os/data-sandbox",
   },
   {
-    id: "tooling",
-    number: "03",
-    eyebrow: "Codify",
-    title: "AI-native execution systems",
-    proposition:
-      "Skills, harnesses and governed agent workflows that turn strategic intent into repeatable delivery capability.",
-    intelligence:
-      "Agent workflows, specifications, controls, verification and reusable delivery methods.",
-    projects: [
-      {
-        name: "The Loom",
-        role: "Regulated delivery method",
-        summary: "Two governed harnesses that find the right problem, deliver under control and preserve human accountability.",
-        status: "Available · v1.1",
-        detailPath: "/the-loom",
-        repository: "https://github.com/middleleap/ai-dlc",
-      },
-      {
-        name: "Open Finance intelligence",
-        role: "UAE domain and risk system",
-        summary: "Installable standards, Islamic-banking, risk-review and experience-prototyping intelligence.",
-        status: "Available · v2.1",
-        detailPath: "/ai-dlc#open-finance",
-        repository: "https://github.com/middleleap/ai-dlc/tree/main/plugins/middleleap-open-finance",
-      },
-      {
-        name: "AI-DLC marketplace",
-        role: "Installable execution layer",
-        summary: "The public catalogue of MiddleLeap methods, domain knowledge, agents and repository workflows.",
-        status: "Public marketplace",
-        detailPath: "/ai-dlc",
-        repository: "https://github.com/middleleap/ai-dlc",
-      },
-    ],
+    name: "Ecosystem Watcher",
+    role: "Agent-run intelligence",
+    summary: "Scheduled monitoring of ecosystem change, participant activity and market signals.",
+    status: "Active",
+    href: "https://ecosystem-watcher.openfinance-os.org/",
   },
 ];
