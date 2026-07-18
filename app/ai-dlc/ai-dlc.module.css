@@ -1,6 +1,6 @@
 .shell { min-height: 100vh; overflow: hidden; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), "DM Sans", sans-serif; }
 .nav, .hero, .layers, .catalogue, .install, .boundaries, .footer { width: min(calc(100% - 64px), 1120px); margin-inline: auto; }
-.nav { display: grid; grid-template-columns: 158px 1fr auto; gap: 28px; align-items: center; min-height: 84px; border-bottom: 1px solid var(--ink-border); }
+.nav { display: grid; grid-template-columns: 164px 1fr auto; gap: 28px; align-items: center; min-height: 84px; border-bottom: 1px solid var(--ink-border); }
 .navLinks { display: flex; justify-content: center; gap: 26px; }
 .navLinks a, .navCta, .mobileNavLink { color: var(--bone-3); font: 500 var(--fs-ui) var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
 .navLinks a:hover, .navLinks a:focus-visible { color: var(--bone-0); }
