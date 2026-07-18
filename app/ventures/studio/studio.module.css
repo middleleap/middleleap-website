@@ -17,10 +17,22 @@
 .criteriaGrid article { min-height: 210px; padding: 24px; border: 1px solid var(--ink-border); background: var(--ink-1); }
 .criteriaGrid h3, .processGrid h3 { color: var(--bone-0); font: 400 26px var(--font-instrument-serif), serif; }
 .criteriaGrid p, .processGrid p { margin-top: 12px; color: var(--bone-2); font-size: 13px; line-height: 1.6; }
-.processGrid { display: grid; grid-template-columns: repeat(5, 1fr); list-style: none; border-block: 1px solid var(--ink-border); }
-.processGrid li { min-height: 250px; padding: 22px; border-right: 1px solid var(--ink-border); }
+.processSystem { border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.processHeader, .processOutcomes { display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 15px 18px; color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
+.processHeader { border-bottom: 1px solid var(--ink-border); }
+.processHeader b, .processOutcomes > span { color: var(--ember-400); font-weight: 500; }
+.processGrid { display: grid; grid-template-columns: repeat(5, 1fr); list-style: none; background: var(--ink-0); }
+.processGrid li { position: relative; min-height: 290px; display: flex; flex-direction: column; padding: 22px; border-right: 1px solid var(--ink-border); }
 .processGrid li:last-child { border-right: 0; }
-.processGrid span { display: block; margin-bottom: 45px; color: var(--ember-400); font: 500 12px var(--font-jetbrains-mono), monospace; }
+.processGrid li:not(:last-child)::after { position: absolute; z-index: 2; top: 50%; right: -11px; width: 22px; color: var(--ember-400); background: var(--ink-0); content: "→"; text-align: center; transform: translateY(-50%); }
+.stageMeta { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.stageMeta span, .stageMeta b { color: var(--ember-400); font: 500 11px var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
+.stageMeta b { padding: 6px 7px; border: 1px solid rgba(230,92,45,.4); color: var(--bone-3); font-weight: 400; }
+.processGrid h3 { margin-top: 42px; }
+.processGrid small { width: fit-content; margin-top: auto; padding-top: 20px; color: var(--ember-400); font: 500 10px var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.processOutcomes { justify-content: flex-start; border-top: 1px solid rgba(230,92,45,.4); background: rgba(230,92,45,.05); }
+.processOutcomes > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.processOutcomes b { padding: 7px 9px; border: 1px solid var(--ink-4); color: var(--bone-1); font-weight: 400; }
 .form { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 34px; border: 1px solid var(--ink-4); background: var(--ink-1); }
 .formIntro, .fullField, .form > button, .preparedProposal { grid-column: 1 / -1; }
 .formIntro { display: flex; justify-content: space-between; gap: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--ink-border); }
@@ -44,5 +56,5 @@
 .copyStatus:empty { display: none; }
 .preparedText { min-height: 260px; font-family: var(--font-jetbrains-mono), monospace !important; font-size: 12px !important; }
 
-@media (max-width: 900px) { .criteriaGrid { grid-template-columns: 1fr 1fr; } .processGrid { grid-template-columns: 1fr; } .processGrid li { min-height: auto; border-right: 0; border-bottom: 1px solid var(--ink-border); } .processGrid span { margin-bottom: 20px; } }
-@media (max-width: 680px) { .hero, .section, .propose { width: calc(100% - 40px); } .hero { min-height: 560px; } .sectionIntro, .criteriaGrid, .form { grid-template-columns: 1fr; } .form { padding: 24px 18px; } .form label, .formIntro, .fullField, .form > button, .preparedProposal { grid-column: 1; } .formIntro { flex-direction: column; } .proposalActions { flex-direction: column; align-items: stretch; } .proposalActions a, .proposalActions button { width: 100%; } }
+@media (max-width: 900px) { .criteriaGrid { grid-template-columns: 1fr 1fr; } .processGrid { grid-template-columns: 1fr; } .processGrid li { min-height: auto; border-right: 0; border-bottom: 1px solid var(--ink-border); } .processGrid li:not(:last-child)::after { top: auto; right: auto; bottom: -12px; left: 22px; transform: rotate(90deg); } .processGrid small { margin-top: 22px; } }
+@media (max-width: 680px) { .hero, .section, .propose { width: calc(100% - 40px); } .hero { min-height: 560px; } .sectionIntro, .criteriaGrid, .form { grid-template-columns: 1fr; } .processHeader, .processOutcomes { align-items: flex-start; flex-direction: column; } .form { padding: 24px 18px; } .form label, .formIntro, .fullField, .form > button, .preparedProposal { grid-column: 1; } .formIntro { flex-direction: column; } .proposalActions { flex-direction: column; align-items: stretch; } .proposalActions a, .proposalActions button { width: 100%; } }

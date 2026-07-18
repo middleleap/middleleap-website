@@ -22,11 +22,11 @@ const criteria = [
 ] as const;
 
 const process = [
-  ["01", "Suggest", "Share the problem, evidence and your relationship to it."],
-  ["02", "Screen", "Test strategic fit, access, boundaries and conflicts."],
-  ["03", "Evidence sprint", "Pressure-test the problem before shaping the venture thesis."],
-  ["04", "Bounded pilot", "Build the smallest useful wedge with explicit learning gates."],
-  ["05", "Decide", "Build, partner, contribute to the commons—or pass clearly."],
+  ["01", "Suggest", "Share the problem, evidence and your relationship to it.", "Investigate?"],
+  ["02", "Screen", "Test strategic fit, access, boundaries and conflicts.", "Sprint?"],
+  ["03", "Evidence sprint", "Pressure-test the problem before shaping the venture thesis.", "Pilot?"],
+  ["04", "Bounded pilot", "Build the smallest useful wedge with explicit learning gates.", "Commit?"],
+  ["05", "Decide", "Build, partner, contribute to the commons—or pass clearly.", "Path chosen"],
 ] as const;
 
 export default function VentureStudioPage() {
@@ -75,9 +75,23 @@ export default function VentureStudioPage() {
           <p className={styles.eyebrow}>How it moves</p>
           <div><h2>Evidence before surface area.</h2><p>Every step has a decision gate. The outcome may be a venture, a partnership, shared infrastructure or a clear decision not to proceed.</p></div>
         </div>
-        <ol className={styles.processGrid}>
-          {process.map(([number, title, detail]) => <li key={number}><span>{number}</span><h3>{title}</h3><p>{detail}</p></li>)}
-        </ol>
+        <div className={styles.processSystem} aria-label="Venture Studio stage-gate process">
+          <div className={styles.processHeader}><span>Studio decision system / 05</span><b>Evidence before commitment</b></div>
+          <ol className={styles.processGrid}>
+            {process.map(([number, title, detail, gate]) => (
+              <li key={number}>
+                <div className={styles.stageMeta}><span>{number}</span><b>Gate {number}</b></div>
+                <h3>{title}</h3>
+                <p>{detail}</p>
+                <small>{gate}</small>
+              </li>
+            ))}
+          </ol>
+          <div className={styles.processOutcomes}>
+            <span>Possible decisions</span>
+            <div><b>Build</b><b>Partner</b><b>Contribute</b><b>Pass clearly</b></div>
+          </div>
+        </div>
       </section>
 
       <section className={styles.propose} id="propose">

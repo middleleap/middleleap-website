@@ -133,6 +133,20 @@
 .portfolioExplorer > .portfolioMap span { color: var(--signal); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
 .portfolioExplorer > .portfolioMap strong { margin-top: 20px; font: 400 30px/1.12 var(--font-instrument-serif), serif; }
 .portfolioExplorer > .portfolioMap small { margin-top: 14px; color: var(--faint); font-size: 12px; line-height: 1.55; }
+.evidenceMap { margin: 0 0 34px; border: 1px solid var(--line); background: var(--surface); }
+.evidenceMapHeader, .evidenceRow { display: grid; grid-template-columns: 1.05fr 1.25fr .85fr 1.15fr; gap: 1px; }
+.evidenceMapHeader { background: var(--line); }
+.evidenceMapHeader span { padding: 12px 15px; background: var(--ink-1); color: var(--faint); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.evidenceRow { position: relative; color: var(--text); background: var(--line); text-decoration: none; }
+.evidenceRow + .evidenceRow { border-top: 1px solid var(--line); }
+.evidenceRow > span { min-height: 86px; display: flex; gap: 10px; align-items: center; padding: 15px; background: var(--surface); color: var(--muted); font-size: 12.5px; line-height: 1.45; transition: background .2s ease, color .2s ease; }
+.evidenceRow:hover > span, .evidenceRow:focus-visible > span { color: var(--text); background: var(--surface-2); }
+.evidenceRow > span:first-child { color: var(--text); }
+.evidenceRow strong { font: 400 20px var(--font-instrument-serif), serif; }
+.evidenceRow > span > i:first-child { color: var(--signal); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; font-style: normal; }
+.evidenceRow b { color: var(--signal); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .04em; text-transform: uppercase; }
+.evidenceRow > span:last-child { justify-content: space-between; color: var(--text); }
+.evidenceRow > span:last-child i { color: var(--signal); font-style: normal; }
 .portfolioExplorer > .projectGrid { grid-template-columns: repeat(3, 1fr); }
 .portfolioExplorer > .projectGrid article { min-height: 390px; display: flex; flex-direction: column; }
 .portfolioExplorer > .projectGrid h3 { margin-top: 42px; font: 400 27px var(--font-instrument-serif), serif; }
@@ -174,6 +188,12 @@
   .sectionIntro { grid-template-columns: 1fr; gap: 6px; }
   .portfolioExplorer > .projectGrid { grid-template-columns: 1fr; }
   .portfolioExplorer > .projectGrid article { min-height: auto; }
+  .evidenceMapHeader { display: none; }
+  .evidenceRow { grid-template-columns: 1fr 1fr; }
+  .evidenceRow > span { display: grid; min-height: 100px; align-content: center; }
+  .evidenceRow > span::before { display: block; margin-bottom: 7px; color: var(--faint); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; content: attr(data-label); }
+  .evidenceRow > span:first-child { display: flex; }
+  .evidenceRow > span:first-child::before { display: none; }
   .ecosystemSection { grid-template-columns: 1fr; }
   .contributionGrid { grid-template-columns: 1fr 1fr; }
   .familyPanel, .boundary { grid-template-columns: 1fr; }
@@ -191,6 +211,8 @@
   .orbitThree { left: -20px; }
   .principleGrid, .portfolioControls, .projectGrid { grid-template-columns: 1fr; }
   .portfolioExplorer > .portfolioMap, .studioCallout { grid-template-columns: 1fr; }
+  .evidenceRow { grid-template-columns: 1fr; }
+  .evidenceRow > span { min-height: auto; }
   .contributionGrid { grid-template-columns: 1fr; }
   .studioCallout { margin: 0 12px 70px; padding: 36px 24px; }
   .principleGrid article, .portfolioControls a { border-right: 0; border-bottom: 1px solid var(--line); }
