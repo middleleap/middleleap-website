@@ -1,0 +1,46 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Maya Brooks, Parqo SDR</title>
+  <desc id="desc">A polished illustrated avatar of Maya Brooks, a warm and professional Parqo sales development representative wearing a headset.</desc>
+  <defs>
+    <linearGradient id="card" x1="76" y1="32" x2="442" y2="482" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E7EEE9"/>
+    </linearGradient>
+    <linearGradient id="jacket" x1="162" y1="332" x2="352" y2="461" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C2521"/>
+      <stop offset="1" stop-color="#060808"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="205" y1="142" x2="310" y2="318" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8B68B"/>
+      <stop offset="1" stop-color="#C9865F"/>
+    </linearGradient>
+    <filter id="softShadow" x="73" y="54" width="366" height="410" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0B0D0D" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="104" fill="#F1F4ED"/>
+  <circle cx="256" cy="236" r="172" fill="url(#card)" stroke="#D7DED9" stroke-width="4"/>
+  <path d="M94 118H205" stroke="#1FFFC0" stroke-width="9" stroke-linecap="round"/>
+  <path d="M113 145H174" stroke="#596560" stroke-width="8" stroke-linecap="round"/>
+  <path d="M377 402H424" stroke="#1FFFC0" stroke-width="9" stroke-linecap="round"/>
+  <g filter="url(#softShadow)">
+    <path d="M124 438C140 359 188 318 256 318C324 318 372 359 388 438H124Z" fill="url(#jacket)"/>
+    <path d="M173 438C185 387 218 358 256 358C294 358 327 387 339 438H173Z" fill="#17201D"/>
+    <path d="M204 364L256 420L308 364" stroke="#1FFFC0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M231 319H281V364C281 378 270 389 256 389C242 389 231 378 231 364V319Z" fill="#C9865F"/>
+    <path d="M196 200C196 150 222 119 258 119C294 119 320 150 320 200V242C320 284 293 314 258 314C223 314 196 284 196 242V200Z" fill="url(#skin)"/>
+    <path d="M198 220C180 221 170 235 175 253C180 270 191 276 204 271" fill="#D69C73"/>
+    <path d="M318 220C336 221 346 235 341 253C336 270 325 276 312 271" fill="#D69C73"/>
+    <path d="M194 208C203 174 225 158 258 158C291 158 312 174 322 208C331 153 300 105 258 105C216 105 185 153 194 208Z" fill="#111615"/>
+    <path d="M192 220C191 157 218 96 260 96C315 96 343 165 323 220C318 168 297 131 260 131C221 131 199 166 192 220Z" fill="#111615"/>
+    <circle cx="231" cy="232" r="7" fill="#0B0D0D"/>
+    <circle cx="285" cy="232" r="7" fill="#0B0D0D"/>
+    <path d="M219 214C229 207 240 207 248 213" stroke="#0B0D0D" stroke-width="5" stroke-linecap="round"/>
+    <path d="M268 213C277 207 288 207 298 214" stroke="#0B0D0D" stroke-width="5" stroke-linecap="round"/>
+    <path d="M240 269C250 278 267 278 277 269" stroke="#0B0D0D" stroke-width="7" stroke-linecap="round"/>
+    <path d="M255 238L249 255H263" stroke="#A56F51" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M342 178C375 202 395 239 395 281C395 347 340 400 275 400" stroke="#1FFFC0" stroke-width="11" stroke-linecap="round"/>
+    <path d="M376 306C376 325 361 340 342 340H320" stroke="#0B0D0D" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="316" cy="340" r="14" fill="#1FFFC0" stroke="#0B0D0D" stroke-width="6"/>
+  </g>
+</svg>

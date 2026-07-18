@@ -990,7 +990,7 @@
   color: var(--bone-2);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1023px) {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -999,26 +999,9 @@
   .heroVisual {
     width: min(100%, 620px);
   }
-
-  .loomFeature,
-  .experienceLayout {
-    grid-template-columns: 1fr;
-  }
-
 }
 
-@media (max-width: 720px) {
-  .nav,
-  .hero,
-  .shift,
-  .expertise,
-  .method,
-  .ventures,
-  .experience,
-  .footer {
-    width: min(calc(100% - 40px), 1080px);
-  }
-
+@media (max-width: 919px) {
   .nav {
     grid-template-columns: 1fr auto;
     gap: var(--s-4);
@@ -1081,6 +1064,26 @@
   .mobileMenu a:last-child {
     color: var(--ember-400);
     border-bottom: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .loomFeature,
+  .experienceLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav,
+  .hero,
+  .shift,
+  .expertise,
+  .method,
+  .ventures,
+  .experience,
+  .footer {
+    width: min(calc(100% - 40px), 1080px);
   }
 
   .hero,
@@ -1158,11 +1161,14 @@
   }
 
   .systemCore small::after {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
     display: block;
-    margin-top: 10px;
     color: var(--ember-400);
     font-size: 11px;
     content: "↓";
+    transform: translateX(-50%);
   }
 
   .systemNode {
