@@ -33,13 +33,22 @@
 .sectionIntro { display: grid; grid-template-columns: 230px 1fr; gap: 38px; margin-bottom: 48px; }
 .sectionIntro h2, .install h2 { max-width: 820px; color: var(--bone-0); font: 400 clamp(34px, 4vw, 46px)/1.15 var(--font-instrument-serif), serif; letter-spacing: normal; }
 .sectionIntro div > p, .install > div > p:not(.eyebrow) { max-width: 760px; margin-top: 16px; color: var(--bone-2); font-size: 14px; line-height: 1.65; }
-.layerGrid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink-border); border-bottom: 1px solid var(--ink-border); }
-.layerGrid article { min-height: 260px; padding: 22px; border-right: 1px solid var(--ink-border); }
+.layerSystem { border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.layerSystemHeader, .layerOutput { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 15px 18px; color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
+.layerSystemHeader { border-bottom: 1px solid var(--ink-border); }
+.layerSystemHeader b, .layerOutput > span { color: var(--ember-400); font-weight: 500; }
+.layerGrid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--ink-0); }
+.layerGrid article { position: relative; min-height: 280px; padding: 22px; border-right: 1px solid var(--ink-border); }
 .layerGrid article:last-child { border-right: 0; }
+.layerGrid article:not(:last-child)::after { position: absolute; z-index: 2; top: 50%; right: -11px; width: 22px; color: var(--ember-400); background: var(--ink-0); content: "→"; text-align: center; transform: translateY(-50%); }
 .layerGrid article > span { color: var(--ember-400); font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace; }
 .layerGrid small { display: block; margin-top: 42px; color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
 .layerGrid h3 { margin-top: 10px; color: var(--bone-0); font: 400 28px var(--font-instrument-serif), serif; }
 .layerGrid p { margin-top: 12px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.55; }
+.layerOutput { justify-content: flex-start; border-top: 1px solid rgba(230,92,45,.38); background: rgba(230,92,45,.05); }
+.layerOutput > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.layerOutput b { padding: 7px 9px; border: 1px solid var(--ink-4); color: var(--bone-1); font-weight: 400; }
+.layerOutput strong { margin-left: auto; color: var(--bone-1); font-size: var(--fs-caption); font-weight: 500; letter-spacing: normal; text-transform: none; }
 
 .catalogue { width: 100%; padding-inline: max(32px, calc((100% - 1120px) / 2)); background: var(--ink-1); }
 .pluginGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -75,6 +84,8 @@
   .packageVisual { width: min(100%, 650px); }
   .layerGrid { grid-template-columns: repeat(2, 1fr); }
   .layerGrid article { border-bottom: 1px solid var(--ink-border); }
+  .layerGrid article:nth-child(2n) { border-right: 0; }
+  .layerGrid article:nth-child(2n)::after { display: none; }
 }
 
 @media (max-width: 680px) {
@@ -86,6 +97,10 @@
   .catalogue { padding-inline: 20px; }
   .sectionIntro, .pluginGrid, .install, .boundaryGrid, .layerGrid { grid-template-columns: 1fr; }
   .layerGrid article { min-height: auto; border-right: 0; }
+  .layerGrid article:not(:last-child)::after { top: auto; right: auto; bottom: -11px; left: 22px; transform: rotate(90deg); }
+  .layerGrid article:nth-child(2n)::after { display: block; }
+  .layerOutput { align-items: flex-start; flex-direction: column; }
+  .layerOutput strong { margin-left: 0; }
   .pluginGrid article { min-height: auto; }
   .packageCore { padding: 20px; }
   .engage { width: calc(100% - 24px); margin-block: 48px; padding: 40px 24px; }

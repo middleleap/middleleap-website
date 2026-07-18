@@ -167,15 +167,53 @@ export default function LoomPage() {
             </p>
           </div>
         </div>
-        <div className={styles.limitGrid}>
-          <article>
-            <h3>Regulated delivery</h3>
-            <p>Formal four-eyes approval, audit, lineage, regulatory context, data controls, residency requirements and governed production promotion.</p>
-          </article>
-          <article>
-            <h3>Venture delivery</h3>
-            <p>Market-evidence gates, bounded specifications, founder or expert authority, production-safety checks and investment conditional on learning.</p>
-          </article>
+        <div className={styles.profileSystem} aria-label="The Loom shared delivery core and two control profiles">
+          <div className={styles.profileSystemHeader}>
+            <span>The Loom / control architecture</span>
+            <b>One core · profile by mandate</b>
+          </div>
+          <div className={styles.sharedCore}>
+            <span>Shared core</span>
+            <strong>Evidence-led discovery + controlled delivery + human authority</strong>
+            <div>
+              <small>Bounded work</small>
+              <small>Lineage</small>
+              <small>Verification</small>
+              <small>Decision gates</small>
+              <small>Owned context</small>
+            </div>
+          </div>
+          <div className={styles.profileBranches} aria-hidden="true"><i /><b>Apply the control profile</b><i /></div>
+          <div className={styles.profileCards}>
+            <article>
+              <span>Profile 01</span>
+              <h3>Regulated delivery</h3>
+              <p>Formal assurance for regulated software and institutional transformation.</p>
+              <ul>
+                <li>Four-eyes approval</li>
+                <li>Audit and lineage</li>
+                <li>Data and residency controls</li>
+                <li>Governed promotion</li>
+              </ul>
+              <Link href="/ventures/backoffice">Proof: Backoffice →</Link>
+            </article>
+            <article>
+              <span>Profile 02</span>
+              <h3>Venture delivery</h3>
+              <p>Evidence discipline for commercial experiments and expert-led products.</p>
+              <ul>
+                <li>Market-evidence gates</li>
+                <li>Bounded specifications</li>
+                <li>Founder or expert authority</li>
+                <li>Investment tied to learning</li>
+              </ul>
+              <Link href="/ventures#portfolio">Proof: Parqo · HiveMind →</Link>
+            </article>
+          </div>
+          <div className={styles.profileOutput}>
+            <span>Same governing principle</span>
+            <strong>AI proposes. Accountable people decide.</strong>
+          </div>
         </div>
       </section>
 

@@ -114,8 +114,16 @@ export default function AiDlcPage() {
 
       <section className={styles.layers}>
         <div className={styles.sectionIntro}><p className={styles.eyebrow}>The hierarchy</p><div><h2>The Loom is the delivery system. AI-DLC is its installable toolkit.</h2><p>Advisory frames the mandate, The Loom governs how the work moves, and the toolkit carries reusable skills, agents and controls into the repository.</p></div></div>
-        <div className={styles.layerGrid}>
-          {layers.map(([id, title, label, detail]) => <article key={id}><span>{id}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
+        <div className={styles.layerSystem} aria-label="From advisory mandate to installed institutional capability">
+          <div className={styles.layerSystemHeader}><span>Capability installation path / 04</span><b>Frame → govern → install → mount</b></div>
+          <div className={styles.layerGrid}>
+            {layers.map(([id, title, label, detail]) => <article key={id}><span>{id}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
+          </div>
+          <div className={styles.layerOutput}>
+            <span>Repository capability</span>
+            <div><b>Skills</b><b>Agents</b><b>Controls</b><b>Owned context</b></div>
+            <strong>Operable by the institution</strong>
+          </div>
         </div>
       </section>
 

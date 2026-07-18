@@ -14,6 +14,7 @@
 .hero,
 .shift,
 .expertise,
+.operatingModel,
 .method,
 .ventures,
 .experience,
@@ -475,6 +476,7 @@
 
 .shift,
 .expertise,
+.operatingModel,
 .method,
 .ventures,
 .experience {
@@ -588,6 +590,125 @@
 
 .capabilityGrid h3 {
   margin-top: var(--s-7);
+}
+
+.operatingModelIntro {
+  max-width: 720px;
+  margin-top: var(--s-3);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.companySystem {
+  border: 1px solid var(--ink-4);
+  background: var(--ink-1);
+  box-shadow: var(--shadow-2);
+}
+
+.companySystemHeader,
+.companySystemReturn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  color: var(--bone-3);
+  font: 400 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.companySystemHeader {
+  border-bottom: 1px solid var(--ink-border);
+}
+
+.companySystemHeader b,
+.companySystemReturn span,
+.companySystemReturn b {
+  color: var(--ember-400);
+  font-weight: 500;
+}
+
+.companySystemFlow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: var(--s-3);
+  align-items: stretch;
+  padding: var(--s-5);
+  background:
+    linear-gradient(90deg, transparent 0 33.2%, rgba(238,234,224,.035) 33.2% 33.3%, transparent 33.3% 66.5%, rgba(238,234,224,.035) 66.5% 66.6%, transparent 66.6%),
+    var(--ink-0);
+}
+
+.companySystemFlow > i {
+  align-self: center;
+  color: var(--ember-400);
+  font-style: normal;
+}
+
+.companySystemFlow article {
+  min-height: 260px;
+  padding: var(--s-5);
+  border: 1px solid var(--ink-4);
+  background: var(--ink-2);
+}
+
+.companySystemFlow article:nth-of-type(2) {
+  border-color: rgba(230,92,45,.58);
+  background: rgba(230,92,45,.07);
+}
+
+.companySystemFlow article > span,
+.companySystemFlow small {
+  color: var(--ember-400);
+  font: 500 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.companySystemFlow h3 {
+  margin-top: var(--s-6);
+  color: var(--bone-0);
+  font: 400 34px/1.05 var(--font-instrument-serif), serif;
+}
+
+.companySystemFlow p {
+  min-height: 70px;
+  margin-top: var(--s-3);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: 1.55;
+}
+
+.companySystemFlow article > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--ink-border);
+}
+
+.companySystemFlow small {
+  padding: 7px 8px;
+  border: 1px solid var(--ink-4);
+  color: var(--bone-3);
+  letter-spacing: .03em;
+}
+
+.companySystemReturn {
+  justify-content: flex-start;
+  border-top: 1px solid rgba(230,92,45,.38);
+  background: rgba(230,92,45,.05);
+}
+
+.companySystemReturn strong {
+  color: var(--bone-1);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .approach {
@@ -1082,6 +1203,7 @@
   .hero,
   .shift,
   .expertise,
+  .operatingModel,
   .method,
   .ventures,
   .experience,
@@ -1092,6 +1214,7 @@
   .hero,
   .shift,
   .expertise,
+  .operatingModel,
   .method,
   .ventures,
   .experience {
@@ -1119,6 +1242,33 @@
   .ventureGrid,
   .engagementGrid {
     grid-template-columns: 1fr;
+  }
+
+  .companySystemFlow {
+    grid-template-columns: 1fr;
+  }
+
+  .companySystemFlow > i {
+    justify-self: start;
+    padding-left: var(--s-5);
+    transform: rotate(90deg);
+  }
+
+  .companySystemFlow article {
+    min-height: auto;
+  }
+
+  .companySystemFlow p {
+    min-height: auto;
+  }
+
+  .companySystemReturn {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .companySystemReturn b {
+    display: none;
   }
 
   .proofLine {

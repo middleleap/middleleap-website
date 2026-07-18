@@ -224,6 +224,53 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.operatingModel} aria-labelledby="operating-model-title">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>How MiddleLeap fits together</p>
+          <div>
+            <h2 id="operating-model-title">One practice. Three connected systems.</h2>
+            <p className={styles.operatingModelIntro}>
+              Advisory frames the mandate. Execution turns it into working capability.
+              Ventures test propositions and return operating evidence to the practice.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.companySystem} aria-label="MiddleLeap company operating model">
+          <div className={styles.companySystemHeader}>
+            <span>MiddleLeap operating system / 03</span>
+            <b>Evidence compounds</b>
+          </div>
+          <div className={styles.companySystemFlow}>
+            <article>
+              <span>01 · Front door</span>
+              <h3>Advisory</h3>
+              <p>Frame the strategic, regulatory and commercial mandate.</p>
+              <div><small>What we do</small><small>How we work</small><small>Experience</small></div>
+            </article>
+            <i aria-hidden="true">→</i>
+            <article>
+              <span>02 · Delivery system</span>
+              <h3>Execution</h3>
+              <p>Use a governed harness and installable toolkit to deliver.</p>
+              <div><small>The Loom</small><small>The Loom Toolkit</small></div>
+            </article>
+            <i aria-hidden="true">→</i>
+            <article>
+              <span>03 · Evidence engine</span>
+              <h3>Ventures</h3>
+              <p>Test propositions in operating reality and expose the next decision.</p>
+              <div><small>Portfolio</small><small>Venture Studio</small></div>
+            </article>
+          </div>
+          <div className={styles.companySystemReturn}>
+            <span>Operating evidence</span>
+            <b aria-hidden="true">↶</b>
+            <strong>Learning returns to Advisory and sharpens the next mandate.</strong>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.method} id="method">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>How we work</p>
