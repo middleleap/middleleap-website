@@ -1163,6 +1163,11 @@
     font-size: 15px;
   }
 
+  .systemCore span {
+    font-size: 9px;
+    letter-spacing: .1em;
+  }
+
   .systemCore small::after {
     position: absolute;
     bottom: -8px;
