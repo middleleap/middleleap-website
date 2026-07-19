@@ -1,6 +1,6 @@
 .shell { min-height: 100vh; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), sans-serif; }
 .content { width: min(calc(100% - 64px), 820px); margin: 0 auto; padding: 100px 0 120px; }
-.eyebrow { color: var(--ember-400); font: 500 var(--fs-ui) var(--font-jetbrains-mono), monospace; letter-spacing: .13em; text-transform: uppercase; }
+.eyebrow { color: var(--ember-text); font: 500 var(--fs-ui) var(--font-jetbrains-mono), monospace; letter-spacing: .13em; text-transform: uppercase; }
 .content h1 { margin-top: 18px; color: var(--bone-0); font: 400 clamp(50px, 7vw, 78px)/1 var(--font-instrument-serif), serif; }
 .updated { margin-top: 20px; color: var(--bone-3); font: 400 11px var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
 .content section { margin-top: 55px; padding-top: 32px; border-top: 1px solid var(--ink-border); }

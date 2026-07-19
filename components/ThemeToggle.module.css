@@ -1,0 +1,76 @@
+.toggle {
+  display: inline-grid;
+  padding: 0;
+  border: 0;
+  color: var(--bone-2);
+  background: transparent;
+  cursor: pointer;
+}
+
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 52px;
+  height: 28px;
+  align-items: center;
+  border: 1px solid var(--ink-4);
+  border-radius: var(--r-pill);
+  background: var(--ink-2);
+  color: var(--bone-3);
+  font: 500 9px var(--font-jetbrains-mono), monospace;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+.darkIcon,
+.lightIcon {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.darkIcon {
+  color: var(--ink-0);
+}
+
+.thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--r-mark);
+  background: var(--bone-1);
+  transition: transform var(--dur-leap) var(--ease-leap);
+}
+
+:global(html[data-theme="light"]) .thumb {
+  transform: translateX(24px) rotate(45deg);
+}
+
+:global(html[data-theme="light"]) .darkIcon {
+  color: var(--bone-3);
+}
+
+:global(html[data-theme="light"]) .lightIcon {
+  color: var(--ink-0);
+}
+
+.toggle:hover .track {
+  border-color: var(--bone-3);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--ember-400);
+  outline-offset: 3px;
+  border-radius: var(--r-pill);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    transition-duration: .01ms;
+  }
+}

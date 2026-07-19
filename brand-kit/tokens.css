@@ -16,6 +16,14 @@
   --ember-grad:linear-gradient(135deg,#F0722E 0%,#CE451B 100%); /* the mark only */
   --ember-dim:rgba(230,92,45,.14);
   --on-ember:#110D0A; /* text on ember-500 CTA fills (AA 5.46:1) */
+  --ember-text:var(--ember-400);
+  --ember-on-inverse:var(--ember-600);
+
+  /* Paper — light-mode surfaces */
+  --paper-0:#F7F5EF; --paper-1:#F0EDE5; --paper-2:#E8E4DB;
+  --paper-3:#DED8CC; --paper-4:#BDB6AA; --paper-border:#D4CEC2;
+  --paper-text-0:#1B1B1B; --paper-text-1:#2B2925; --paper-text-2:#4D4942;
+  --paper-text-3:#67635C; --paper-text-4:#A09A90;
 
   /* Semantic */
   --positive:#5FA671; --positive-dim:rgba(95,166,113,.14);
@@ -51,6 +59,18 @@
   --dur-fast:120ms; --dur-base:200ms; --dur-leap:400ms;
   --ease-out:cubic-bezier(.2,0,0,1);
   --ease-leap:cubic-bezier(.34,1.3,.4,1);
+}
+
+:root[data-theme="light"]{
+  --ink-0:var(--paper-0); --ink-1:var(--paper-1); --ink-2:var(--paper-2);
+  --ink-3:var(--paper-3); --ink-4:var(--paper-4); --ink-border:var(--paper-border);
+  --bone-0:var(--paper-text-0); --bone-1:var(--paper-text-1); --bone-2:var(--paper-text-2);
+  --bone-3:var(--paper-text-3); --bone-4:var(--paper-text-4);
+  --ember-text:var(--ember-700);
+  --ember-on-inverse:var(--ember-400);
+  --shadow-1:0 1px 2px rgba(27,27,27,.12);
+  --shadow-2:0 8px 30px rgba(27,27,27,.12);
+  --shadow-ember:0 4px 24px rgba(230,92,45,.2);
 }
 @media (prefers-reduced-motion:reduce){
   :root{--dur-fast:.01ms;--dur-base:.01ms;--dur-leap:.01ms}

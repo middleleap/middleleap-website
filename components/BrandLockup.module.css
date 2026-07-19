@@ -12,6 +12,18 @@
   height: auto;
 }
 
+.onLight {
+  display: none !important;
+}
+
+:global(html[data-theme="light"]) .onInk {
+  display: none;
+}
+
+:global(html[data-theme="light"]) .onLight {
+  display: block !important;
+}
+
 @media (max-width: 720px) {
   .lockup {
     width: 136px;
