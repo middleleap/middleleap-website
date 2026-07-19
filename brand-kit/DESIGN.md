@@ -45,7 +45,7 @@ Use these exact values. A drop-in `tokens.css` ships alongside this file — imp
 | paper-text-0 | `#1B1B1B` | headlines |
 | paper-text-1 | `#2B2925` | body text |
 | paper-text-2 | `#4D4942` | secondary text |
-| paper-text-3 | `#67635C` | captions and interface labels |
+| paper-text-3 | `#5F5B54` | captions and interface labels (AA 5.3:1 on paper cards) |
 | paper-text-4 | `#A09A90` | disabled only |
 
 Light mode is a token remap, not a separate visual identity. Typography, spacing, sharp geometry, ember actions and pivot motion stay unchanged. Use `ember-700` for small accent text on paper; `ember-500` remains the CTA fill and large headline accent.
@@ -56,7 +56,8 @@ Light mode is a token remap, not a separate visual identity. Typography, spacing
 | ember-300 | `#F58F55` | accent text on dark |
 | ember-400 | `#F0722E` | hover state, eyebrows, ghost buttons |
 | ember-500 | `#E65C2D` | brand core; primary CTA background; hero italic accent |
-| ember-600 | `#CE451B` | accent text on light backgrounds — **large text only** (≥24px / ≥18.66px bold; 3.38:1). Fails AA at body size |
+| ember-600 | `#CE451B` | accent text on light backgrounds — **large text only** (≥24px / ≥18.66px bold). Fails AA at body size |
+| ember-700 | `#A83614` | small accent and interface text on light backgrounds (AA 5.4:1 on bone-0) |
 | ember-grad | `linear-gradient(135deg,#F0722E,#CE451B)` | **THE MARK ONLY.** Never on buttons or UI. |
 | ember-dim | `rgba(230,92,45,.14)` | tinted backgrounds |
 | on-ember | `#110D0A` | text on ember-500 CTA fills (5.46:1) |
