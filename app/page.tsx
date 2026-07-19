@@ -306,21 +306,19 @@ export default function HomePage() {
               <b>Human accountable</b>
             </div>
             <div className={styles.loomMiniFlow}>
-              <article>
+              <article className={styles.loomDiamond}>
                 <small>Diamond 01</small>
                 <strong>Discovery</strong>
-                <span>D1—D9</span>
+                <span>Discover → Define · D1—D9</span>
               </article>
-              <i aria-hidden="true">→</i>
               <div className={styles.loomWaist}>
                 <small>Gate-green</small>
                 <strong>Hand-off</strong>
               </div>
-              <i aria-hidden="true">→</i>
-              <article>
+              <article className={styles.loomDiamond}>
                 <small>Diamond 02</small>
                 <strong>Delivery</strong>
-                <span>Q1—Q5</span>
+                <span>Develop → Deliver · Q1—Q5</span>
               </article>
             </div>
             <div className={styles.loomWarp}>

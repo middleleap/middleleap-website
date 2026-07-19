@@ -132,9 +132,9 @@ export default function LoomPage() {
           <div className={styles.figureHeader}><span>The Loom / shared core</span><b>Profile applied by mandate</b></div>
           <div className={styles.warp}><span>Evidence</span><span>Boundaries</span><span>Authority</span><span>Quality</span><span>Traceability</span></div>
           <div className={styles.harnesses}>
-            <article><small>Harness 01</small><strong>Discovery</strong><span>Find the right problem · D1—D9</span></article>
+            <article className={styles.harnessDiamond}><small>Harness 01</small><strong>Discovery</strong><span>Discover → Define · D1—D9</span></article>
             <i aria-hidden="true">→</i>
-            <article><small>Harness 02</small><strong>Delivery</strong><span>Ship under control · Q1—Q5</span></article>
+            <article className={styles.harnessDiamond}><small>Harness 02</small><strong>Delivery</strong><span>Develop → Deliver · Q1—Q5</span></article>
           </div>
           <div className={styles.pattern}><small>The pattern</small><strong>Mandate context brain</strong><span>Constraints · Domain · Institutional context</span></div>
           <div className={styles.shuttle}><i aria-hidden="true" /><span>AI agents weave continuously</span></div>
@@ -222,12 +222,16 @@ export default function LoomPage() {
           <p className={styles.eyebrow}>The two harnesses</p>
           <div><h2>A double diamond: find the right problem, then deliver it.</h2><p>The diamonds meet at one enforced waist: a gate-green hand-off. Discovery may stop a weak problem early; delivery evidence may legitimately send the work back.</p></div>
         </div>
-        <div className={styles.diamondFlow}>
-          <article><span>01</span><strong>Discover</strong><small>Diverge around evidence</small></article>
-          <article><span>02</span><strong>Define</strong><small>Converge on one problem</small></article>
-          <div><span>Waist gate</span><strong>Agreed hand-off</strong></div>
-          <article><span>03</span><strong>Develop</strong><small>Diverge across solutions</small></article>
-          <article><span>04</span><strong>Deliver</strong><small>Converge under control</small></article>
+        <div className={styles.diamondFlow} role="img" aria-label="Discovery diverges to discover evidence and converges to define one problem, passes through an agreed waist gate, then delivery diverges to develop solutions and converges to deliver under control">
+          <article className={styles.methodDiamond}>
+            <div className={styles.diamondStage}><span>01</span><strong>Discover</strong><small>Diverge around evidence</small></div>
+            <div className={styles.diamondStage}><span>02</span><strong>Define</strong><small>Converge on one problem</small></div>
+          </article>
+          <div className={styles.diamondGate}><span>Waist gate</span><strong>Agreed hand-off</strong></div>
+          <article className={styles.methodDiamond}>
+            <div className={styles.diamondStage}><span>03</span><strong>Develop</strong><small>Diverge across solutions</small></div>
+            <div className={styles.diamondStage}><span>04</span><strong>Deliver</strong><small>Converge under control</small></div>
+          </article>
         </div>
       </section>
 
