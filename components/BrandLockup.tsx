@@ -15,7 +15,16 @@ export function BrandLockup({ className = "", priority = false }: BrandLockupPro
       aria-label="MiddleLeap home"
     >
       <Image
-        src="/pivot-primary.svg"
+        className={styles.onInk}
+        src="/pivot-on-ink.svg"
+        alt="MiddleLeap"
+        width={164}
+        height={39}
+        priority={priority}
+      />
+      <Image
+        className={styles.onLight}
+        src="/pivot-on-light.svg"
         alt="MiddleLeap"
         width={164}
         height={39}

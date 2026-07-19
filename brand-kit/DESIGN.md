@@ -33,6 +33,23 @@ Use these exact values. A drop-in `tokens.css` ships alongside this file — imp
 | bone-3 | `#87847D` | captions, hints, table headers (AA ≥4.8:1 on all surfaces) |
 | bone-4 | `#4A4945` | disabled ONLY (WCAG-exempt) |
 
+### Color — Paper (light mode)
+| token | value | use |
+|---|---|---|
+| paper-0 | `#F7F5EF` | page background |
+| paper-1 | `#F0EDE5` | raised surface |
+| paper-2 | `#E8E4DB` | card |
+| paper-3 | `#DED8CC` | hover surface |
+| paper-4 | `#BDB6AA` | strong border |
+| paper-border | `#D4CEC2` | default border |
+| paper-text-0 | `#1B1B1B` | headlines |
+| paper-text-1 | `#2B2925` | body text |
+| paper-text-2 | `#4D4942` | secondary text |
+| paper-text-3 | `#67635C` | captions and interface labels |
+| paper-text-4 | `#A09A90` | disabled only |
+
+Light mode is a token remap, not a separate visual identity. Typography, spacing, sharp geometry, ember actions and pivot motion stay unchanged. Use `ember-700` for small accent text on paper; `ember-500` remains the CTA fill and large headline accent.
+
 ### Color — Ember (accent)
 | token | value | use |
 |---|---|---|

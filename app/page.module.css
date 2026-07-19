@@ -60,7 +60,7 @@
 }
 
 .navCta {
-  color: var(--ember-400);
+  color: var(--ember-text);
 }
 
 .navCta::before {
@@ -88,7 +88,7 @@
 
 .eyebrow {
   margin-bottom: var(--s-5);
-  color: var(--ember-400);
+  color: var(--ember-text);
   font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -211,7 +211,7 @@
   position: relative;
   overflow: hidden;
   border: 1px solid var(--ink-4);
-  background: rgba(16, 14, 12, .92);
+  background: color-mix(in srgb, var(--ink-1) 92%, transparent);
   box-shadow: var(--shadow-2);
 }
 
@@ -270,7 +270,7 @@
 
 .systemConnections circle {
   fill: none;
-  stroke: rgba(242, 238, 230, .08);
+  stroke: color-mix(in srgb, var(--bone-0) 8%, transparent);
   stroke-width: 1;
   stroke-dasharray: 2 7;
   transform-origin: center;
@@ -311,7 +311,7 @@
   height: 142px;
   border: 1px solid var(--ember-500);
   border-radius: 50%;
-  background: rgba(20, 17, 14, .97);
+  background: color-mix(in srgb, var(--ink-1) 97%, transparent);
   box-shadow: 0 0 0 12px rgba(230, 92, 45, .03), 0 0 58px rgba(230, 92, 45, .14);
   place-content: center;
   text-align: center;
@@ -339,7 +339,7 @@
 .systemCore span {
   width: 80px;
   margin-inline: auto;
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-size: var(--type-ui-nano);
   line-height: 1.35;
   letter-spacing: .12em;
@@ -367,7 +367,7 @@
   color: var(--bone-1);
   border: 1px solid var(--ink-4);
   border-radius: var(--r-ui);
-  background: rgba(20, 17, 14, .95);
+  background: color-mix(in srgb, var(--ink-1) 95%, transparent);
   text-align: left;
   cursor: pointer;
   transition:
@@ -377,7 +377,7 @@
 }
 
 .systemNode > span {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-size: var(--type-ui-nano);
   letter-spacing: .1em;
 }
@@ -441,7 +441,7 @@
 }
 
 .systemOutput span {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-size: var(--type-ui-nano);
   letter-spacing: .1em;
 }
@@ -453,7 +453,7 @@
 }
 
 .systemOutput b {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   animation: outputNudge 1.5s ease-in-out infinite;
 }
@@ -531,7 +531,7 @@
 .capabilityGrid article > span,
 .engagementGrid article > span,
 .ventureMeta > span {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
 }
 
@@ -626,7 +626,7 @@
 .companySystemHeader b,
 .companySystemReturn span,
 .companySystemReturn b {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-weight: 500;
 }
 
@@ -637,13 +637,13 @@
   align-items: stretch;
   padding: var(--s-5);
   background:
-    linear-gradient(90deg, transparent 0 33.2%, rgba(238,234,224,.035) 33.2% 33.3%, transparent 33.3% 66.5%, rgba(238,234,224,.035) 66.5% 66.6%, transparent 66.6%),
+    linear-gradient(90deg, transparent 0 33.2%, color-mix(in srgb, var(--bone-0) 4%, transparent) 33.2% 33.3%, transparent 33.3% 66.5%, color-mix(in srgb, var(--bone-0) 4%, transparent) 66.5% 66.6%, transparent 66.6%),
     var(--ink-0);
 }
 
 .companySystemFlow > i {
   align-self: center;
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-style: normal;
 }
 
@@ -661,7 +661,7 @@
 
 .companySystemFlow article > span,
 .companySystemFlow small {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font: 500 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -730,7 +730,7 @@
 }
 
 .approach li > span {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
 }
 
@@ -830,7 +830,7 @@
 }
 
 .loomMiniHeader b {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-weight: 500;
 }
 
@@ -881,7 +881,7 @@
 
 .loomDiamond span,
 .loomWaist small {
-  color: var(--ember-400);
+  color: var(--ember-text);
 }
 
 .loomWaist {
@@ -892,7 +892,7 @@
   min-height: 76px;
   margin-inline: -6px;
   padding: var(--s-3) var(--s-2);
-  border-color: var(--ember-600);
+  border-color: var(--ember-on-inverse);
   background: rgba(230, 92, 45, .08);
   border: 1px solid var(--ember-600);
   align-content: center;
@@ -946,7 +946,7 @@
 }
 
 .networkModel b {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-weight: 400;
 }
 
@@ -976,7 +976,7 @@
 }
 
 .ventureLoop i {
-  color: var(--ember-400);
+  color: var(--ember-text);
   font-style: normal;
 }
 
@@ -1028,7 +1028,7 @@
 
 .venturesLink {
   flex: 0 0 auto;
-  color: var(--ember-400);
+  color: var(--ember-text);
   font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   letter-spacing: .06em;
   text-decoration: none;
@@ -1088,7 +1088,7 @@
 }
 
 .engage .eyebrow {
-  color: var(--ember-600);
+  color: var(--ember-on-inverse);
 }
 
 .engage h2 {
@@ -1110,7 +1110,7 @@
 }
 
 .engagementGrid article > span {
-  color: var(--ember-600);
+  color: var(--ember-on-inverse);
 }
 
 .engagementGrid h3 {
@@ -1215,7 +1215,7 @@
   }
 
   .mobileMenu a:last-child {
-    color: var(--ember-400);
+    color: var(--ember-text);
     border-bottom: 0;
   }
 }
@@ -1352,7 +1352,7 @@
     bottom: -8px;
     left: 50%;
     display: block;
-    color: var(--ember-400);
+    color: var(--ember-text);
     font-size: 11px;
     content: "↓";
     transform: translateX(-50%);

@@ -7,6 +7,8 @@ import "./globals.css";
 // cookieless and privacy-friendly, matching the PRD's analytics intent.
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
+const themeBootScript = `(()=>{try{const k="middleleap-theme",s=localStorage.getItem(k),m=matchMedia("(prefers-color-scheme: light)").matches,t=s==="light"||s==="dark"?s:m?"light":"dark";document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch{document.documentElement.dataset.theme="dark"}})();`;
+
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
@@ -104,6 +106,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
+        <Script id="middleleap-theme" strategy="beforeInteractive">
+          {themeBootScript}
+        </Script>
         <link
           rel="alternate"
           type="text/plain"

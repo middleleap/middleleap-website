@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, type ReactNode } from "react";
 import { BrandLockup } from "./BrandLockup";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
 type NavSection = "what" | "method" | "ventures" | "experience";
@@ -84,7 +85,10 @@ export function SiteHeader({
             </HeaderLink>
           ))}
         </nav>
-        <HeaderLink className={styles.cta} href={`${prefix}#engage`}>Discuss a mandate</HeaderLink>
+        <div className={styles.headerActions}>
+          <HeaderLink className={styles.cta} href={`${prefix}#engage`}>Discuss a mandate</HeaderLink>
+          <ThemeToggle />
+        </div>
 
         <details className={styles.mobileMenu} ref={mobileMenuRef}>
           <summary>Menu</summary>

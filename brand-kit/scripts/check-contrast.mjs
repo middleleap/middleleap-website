@@ -8,7 +8,9 @@
 const T = {
   ink0:'#080808', ink1:'#101010', ink2:'#181817',
   bone0:'#ECE9E1', bone1:'#DEDBD4', bone2:'#A8A59E', bone3:'#87847D',
-  ember300:'#F58F55', ember400:'#F0722E', ember500:'#E65C2D', ember600:'#CE451B',
+  ember300:'#F58F55', ember400:'#F0722E', ember500:'#E65C2D', ember600:'#CE451B', ember700:'#A83614',
+  paper0:'#F7F5EF', paper1:'#F0EDE5', paper2:'#E8E4DB',
+  paperText0:'#1B1B1B', paperText1:'#2B2925', paperText2:'#4D4942', paperText3:'#67635C',
   positive:'#5FA671', caution:'#D9A03C', critical:'#D64545', criticalText:'#E06060',
   info:'#5D8FA6', dangerBtn:'#C43B3B', btnPrimaryText:'#110D0A', onLightText:'#1B1B1B',
 };
@@ -47,6 +49,12 @@ const pairs = [
   ['on-light ember-600 (large) on bone-1', T.ember600, T.bone1, 3.0],
   // ember-600 is a LARGE-only accent on light — this asserts it must NOT be used as normal-size text
   ['on-light ember-600 is large-only (must fail normal AA)', T.ember600, T.bone1, 4.5, 'below'],
+  ['paper headline on paper-0', T.paperText0, T.paper0, 4.5],
+  ['paper body on paper-0', T.paperText1, T.paper0, 4.5],
+  ['paper secondary on paper-2 (worst)', T.paperText2, T.paper2, 4.5],
+  ['paper caption on paper-2 (worst)', T.paperText3, T.paper2, 4.5],
+  ['paper accent ember-700 on paper-2 (worst)', T.ember700, T.paper2, 4.5],
+  ['paper hero italic ember-500 on paper-0 (large)', T.ember500, T.paper0, 3.0],
 ];
 
 let fail = 0;
