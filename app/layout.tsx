@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "regulatory readiness",
     "AI-native operating models",
     "The Loom",
-    "governed AI delivery harness",
+    "governed AI delivery method",
     "venture studio",
     "AI governance",
     "AI-DLC",

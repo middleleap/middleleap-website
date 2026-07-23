@@ -127,7 +127,7 @@ export default function HiveMindProjectPage() {
         </div>
       </section>
 
-      <section className={styles.section} id="delivery"><div className={styles.sectionLabel}><span>03</span><p>Venture delivery profile</p></div><div><h2>Start with the coach&apos;s gold standard, then make every AI step answer to it.</h2><p className={styles.sectionLede}>HiveMind applies the Loom&apos;s evidence, specification and human-authority principles as a lighter venture profile. It is not presented as a full regulated-harness implementation.</p><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
+      <section className={styles.section} id="delivery"><div className={styles.sectionLabel}><span>03</span><p>Loom-informed delivery</p></div><div><h2>Start with the coach&apos;s gold standard, then make every AI step answer to it.</h2><p className={styles.sectionLede}>HiveMind applies the Loom&apos;s evidence, specification and human-authority principles to venture building. This is disciplined use of the method&apos;s ideas—not a claim of full regulated-harness adoption.</p><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
 
       <section className={styles.section} id="build-system" tabIndex={-1}>
         <div className={styles.sectionLabel}><span>04</span><p>AI systems</p></div>

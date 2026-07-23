@@ -117,7 +117,7 @@ export default function BackofficeProjectPage() {
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Portfolio · Regulated delivery profile</p>
+          <p className={styles.eyebrow}>Portfolio · Regulated reference build</p>
           <h1>Open Finance<br /><em>Backoffice.</em></h1>
           <p className={styles.lede}>
             A bank-neutral operations platform for running UAE Open Finance in
@@ -194,7 +194,7 @@ export default function BackofficeProjectPage() {
       </section>
 
       <section className={styles.section} id="delivery">
-        <div className={styles.sectionLabel}><span>03</span><p>Regulated delivery profile</p></div>
+        <div className={styles.sectionLabel}><span>03</span><p>The Loom · reference implementation</p></div>
         <div>
           <h2>The first cloth off The Loom: a governed double diamond feeding a spec-first delivery loop.</h2>
           <p className={styles.sectionLede}>

@@ -289,21 +289,21 @@ export default function HomePage() {
         <div className={styles.loomFeature}>
           <div className={styles.loomCopy}>
             <p className={styles.eyebrow}>The Loom · Governed AI delivery</p>
-            <h3>One harness. A control profile matched to the mandate.</h3>
+            <h3>Find the right problem. Ship it under control. Learn from what runs.</h3>
             <p>
-              The Loom combines evidenced discovery, controlled AI-assisted delivery and
-              human authority. Its regulated profile applies formal assurance; its venture
-              profile applies commercial evidence and expert-authority gates.
+              Two harnesses turn an evidenced mandate into audit-ready software.
+              Operational signals then return to Discovery, keeping assurance and the
+              institution&apos;s context current.
             </p>
             <div className={styles.loomActions}>
-              <Link href="/the-loom">Explore the delivery harness →</Link>
+              <Link href="/the-loom">Explore the closed loop →</Link>
               <Link href="/ai-dlc">View the technical toolkit →</Link>
             </div>
           </div>
-          <div className={styles.loomMini} role="img" aria-label="The Loom regulated delivery reference profile">
+          <div className={styles.loomMini} role="img" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
             <div className={styles.loomMiniHeader}>
-              <span>Regulated profile · reference build</span>
-              <b>Human accountable</b>
+              <span>Mandate → outcome</span>
+              <b>Two harnesses · one loop</b>
             </div>
             <div className={styles.loomMiniFlow}>
               <article className={styles.loomDiamond}>
@@ -321,6 +321,13 @@ export default function HomePage() {
                 <span>Develop → Deliver · Q1—Q5</span>
               </article>
             </div>
+            <div className={styles.loomRuntime}>
+              <span>Audit-ready software</span>
+              <i aria-hidden="true">→</i>
+              <strong>Run / Operations</strong>
+              <b aria-hidden="true">↶</b>
+              <small>Signals return to Discovery as evidence</small>
+            </div>
             <div className={styles.loomWarp}>
               <span>Four-eyes</span>
               <span>Audit</span>
@@ -330,7 +337,7 @@ export default function HomePage() {
             </div>
             <div className={styles.loomProof}>
               <span><strong>134 / ~139</strong> stories to done</span>
-              <span><strong>100%</strong> human merges</span>
+              <span><strong>2 + 1</strong> harnesses + Run arc</span>
               <span><strong>0</strong> real records</span>
             </div>
           </div>

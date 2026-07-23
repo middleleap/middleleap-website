@@ -106,7 +106,7 @@ export default function VenturesPage() {
       <section className={styles.portfolio} id="portfolio" tabIndex={-1}>
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>The portfolio</p>
-          <h2>Three builds. Two delivery profiles. One compounding body of evidence.</h2>
+          <h2>One formal harness proof. Two Loom-informed ventures. One compounding body of evidence.</h2>
         </div>
         <VenturesPortfolio />
       </section>

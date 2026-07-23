@@ -813,6 +813,7 @@
 
 .loomMiniHeader,
 .loomMiniFlow,
+.loomRuntime,
 .loomWarp,
 .loomProof {
   padding: var(--s-4);
@@ -912,6 +913,44 @@
 
 .loomWaist::before { left: -8px; transform: translateY(-50%) rotate(45deg); }
 .loomWaist::after { right: -8px; transform: translateY(-50%) rotate(45deg); }
+
+.loomRuntime {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--s-2);
+  align-items: center;
+  border-top: 1px solid rgba(230, 92, 45, .35);
+  background: rgba(230, 92, 45, .05);
+}
+
+.loomRuntime span,
+.loomRuntime strong,
+.loomRuntime small {
+  color: var(--bone-2);
+  font: 400 var(--type-ui-nano) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.loomRuntime strong {
+  color: var(--bone-0);
+  font-weight: 500;
+}
+
+.loomRuntime i,
+.loomRuntime b {
+  color: var(--ember-text);
+  font-style: normal;
+}
+
+.loomRuntime b {
+  font: 400 24px var(--font-instrument-serif), "Instrument Serif", serif;
+}
+
+.loomRuntime small {
+  grid-column: 2 / -1;
+  color: var(--ember-text);
+}
 
 .loomWarp {
   display: flex;
@@ -1395,6 +1434,18 @@
   .loomMiniFlow {
     grid-template-columns: 1fr;
     justify-items: center;
+  }
+
+  .loomRuntime {
+    grid-template-columns: 1fr auto;
+  }
+
+  .loomRuntime strong {
+    text-align: right;
+  }
+
+  .loomRuntime small {
+    grid-column: 1 / -1;
   }
 
   .loomDiamond {
