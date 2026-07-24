@@ -22,8 +22,8 @@ const contents = [
 const stack = [
   ["01", "BrainKit", "Institution-owned context", "Private, approved and digest-pinned institutional intelligence.", "/brainkit"],
   ["02", "The Loom", "Governed application", "Discovery and delivery machinery that binds work to evidence and human authority.", "/the-loom"],
-  ["03", "The Loom Toolkit", "Repository runtime", "Installable controls, templates, adoption reports and continuous assurance.", "/ai-dlc"],
-  ["04", "AI-DLC", "Open distribution", "The technical channel used to package, version and adopt the public Toolkit.", "/ai-dlc"],
+  ["03", "The Loom Toolkit", "Repository runtime", "Installable controls, templates, adoption reports and continuous assurance.", "/toolkit"],
+  ["04", "AI-DLC", "Open distribution", "The technical channel used to package, version and adopt the public Toolkit.", "/toolkit"],
 ] as const;
 
 const cycle = [

@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   title: "The Loom Toolkit | Institutional AI Delivery",
   description:
     "The Loom Toolkit installs MiddleLeap's governed delivery method, an institution-owned BrainKit and optional domain intelligence inside repositories.",
-  alternates: { canonical: "/ai-dlc" },
+  alternates: { canonical: "/toolkit" },
   openGraph: {
     title: "The Loom Toolkit | Institutional AI Delivery",
     description:
       "Install a governed delivery toolkit, draft the institution's BrainKit and pin that approved context across repositories.",
-    url: "https://www.middleleap.com/ai-dlc",
+    url: "https://www.middleleap.com/toolkit",
   },
 };
 
@@ -87,17 +87,18 @@ export default function AiDlcPage() {
   return (
     <main className={styles.shell} id="problem">
       <SiteHeader
-        active="loom"
+        active="intelligence"
         priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/#method", label: "How we work" },
+          { href: "/institutional-intelligence", label: "Institutional Intelligence" },
           { href: "/the-loom", label: "The Loom" },
           { label: "Toolkit" },
         ]}
         contextLabel="Toolkit navigation"
         contextLinks={[
           { href: "/the-loom", label: "The Loom" },
+          { href: "/brainkit", label: "BrainKit" },
           { href: "#catalogue", label: "Bundles" },
           { href: "#installation", label: "Installation" },
           { href: "#context", label: "Your BrainKit" },
@@ -236,6 +237,9 @@ export default function AiDlcPage() {
           <div className={styles.brainkitFooter}>
             <strong>Private by default. Local by design.</strong>
             <p>The public AI-DLC repository ships the schema, adoption machinery and a fictional example—not institutional content. Product repositories validate their mounted snapshot locally, without a public registry or live resolution service.</p>
+          </div>
+          <div className={styles.actions}>
+            <Link className={styles.secondaryAction} href="/brainkit">Examine the Institutional BrainKit</Link>
           </div>
         </div>
       </section>

@@ -43,6 +43,7 @@ export default function VentureStudioPage() {
         active="ventures"
         priority
         breadcrumbs={[
+          { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
           { label: "Venture Studio" },
         ]}

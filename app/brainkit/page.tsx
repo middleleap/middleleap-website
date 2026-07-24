@@ -169,9 +169,13 @@ export default function BrainKitPage() {
           A credible pilot uses approved sources, a bounded scope and named context owners. It
           proves whether the institution can govern the asset before trying to scale it.
         </p>
-        <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=BrainKit%20pilot">
-          Shape a BrainKit pilot
-        </a>
+        <div className={styles.actions}>
+          <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=BrainKit%20pilot">
+            Shape a BrainKit pilot
+          </a>
+          <Link className={styles.secondaryAction} href="/the-loom">See how The Loom applies it</Link>
+          <Link className={styles.secondaryAction} href="/toolkit">View the installable Toolkit</Link>
+        </div>
       </section>
 
       <SiteFooter />

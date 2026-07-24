@@ -9,7 +9,15 @@ export const metadata: Metadata = { title: "Venture Submission Terms", alternate
 export default function VentureSubmissionTermsPage() {
   return (
     <main className={styles.shell} id="problem">
-      <SiteHeader active="ventures" breadcrumbs={[{ href: "/ventures/studio", label: "Venture Studio" }, { label: "Submission terms" }]} />
+      <SiteHeader
+        active="ventures"
+        breadcrumbs={[
+          { href: "/", label: "Advisory" },
+          { href: "/ventures", label: "Ventures" },
+          { href: "/ventures/studio", label: "Venture Studio" },
+          { label: "Submission terms" },
+        ]}
+      />
       <article className={styles.content}>
         <p className={styles.eyebrow}>Venture Studio</p>
         <h1>Submission terms.</h1>

@@ -10,12 +10,6 @@ export function SiteFooter() {
         <p>Working capability and institution-owned intelligence.</p>
       </div>
       <div className={styles.footerLinks}>
-        <nav className={styles.footerGroup} aria-label="Proposition links">
-          <span>Proposition</span>
-          <Link href="/institutional-intelligence">Institutional Intelligence</Link>
-          <Link href="/brainkit">BrainKit</Link>
-          <Link href="/#model">Operating model</Link>
-        </nav>
         <nav className={styles.footerGroup} aria-label="Advisory links">
           <span>Advisory</span>
           <Link href="/#expertise">What we do</Link>
@@ -23,18 +17,17 @@ export function SiteFooter() {
           <Link href="/#practice">The practice</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
-        <nav className={styles.footerGroup} aria-label="Execution links">
-          <span>Execution</span>
+        <nav className={styles.footerGroup} aria-label="Institutional Intelligence links">
+          <span>Institutional Intelligence</span>
+          <Link href="/institutional-intelligence">Institutional Intelligence</Link>
+          <Link href="/brainkit">BrainKit</Link>
           <Link href="/the-loom">The Loom</Link>
-          <Link href="/ai-dlc">The Loom Toolkit</Link>
+          <Link href="/toolkit">The Loom Toolkit</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Venture links">
           <span>Ventures</span>
           <Link href="/ventures#portfolio">Portfolio</Link>
           <Link href="/ventures/studio">Venture Studio</Link>
-          <Link href="/ventures/backoffice">Backoffice</Link>
-          <Link href="/ventures/parqo">Parqo</Link>
-          <Link href="/ventures/hivemind">HiveMind</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>

@@ -6,7 +6,7 @@ import { BrandLockup } from "./BrandLockup";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
-type NavSection = "intelligence" | "loom" | "open-finance" | "ventures";
+type NavSection = "advisory" | "intelligence" | "open-finance" | "ventures";
 
 export type ContextLink = {
   href: string;
@@ -62,8 +62,8 @@ export function SiteHeader({
   const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
   const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
-    { href: "/institutional-intelligence", label: "Intelligence", section: "intelligence" },
-    { href: "/the-loom", label: "The Loom", section: "loom" },
+    { href: home ? "#expertise" : "/#expertise", label: "Advisory", section: "advisory" },
+    { href: "/institutional-intelligence", label: "Institutional Intelligence", section: "intelligence" },
     { href: "/open-finance", label: "Open Finance", section: "open-finance" },
     { href: "/ventures", label: "Ventures", section: "ventures" },
   ];
@@ -203,17 +203,19 @@ export function SiteHeader({
               </span>
             ))}
           </nav>
-          <nav className={styles.contextNav} aria-label={contextLabel ?? "On this page"}>
-            {contextLinks.map((link) => (
-              <HeaderLink
-                key={link.href}
-                href={link.href}
-                current={link.current || link.href === activeContextHref ? "location" : undefined}
-              >
-                {link.label}
-              </HeaderLink>
-            ))}
-          </nav>
+          {contextLinks.length > 0 && (
+            <nav className={styles.contextNav} aria-label={contextLabel ?? "On this page"}>
+              {contextLinks.map((link) => (
+                <HeaderLink
+                  key={link.href}
+                  href={link.href}
+                  current={link.current || link.href === activeContextHref ? "location" : undefined}
+                >
+                  {link.label}
+                </HeaderLink>
+              ))}
+            </nav>
+          )}
         </div>
       )}
     </div>

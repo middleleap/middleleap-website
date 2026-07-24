@@ -73,63 +73,6 @@ const structuredData = {
   ],
 };
 
-const problems = [
-  {
-    number: "01",
-    title: "Decisions lose their context",
-    detail: "The answer survives in a deck. The evidence, trade-offs and accountable decision do not.",
-  },
-  {
-    number: "02",
-    title: "Teams restart the argument",
-    detail: "New leaders, partners and AI systems reconstruct architecture and policy from fragments.",
-  },
-  {
-    number: "03",
-    title: "Capability leaves with the project",
-    detail: "The product ships, but the institution remains dependent on the people who remember how it works.",
-  },
-];
-
-const architecture = [
-  {
-    number: "01",
-    label: "The asset",
-    title: "Institutional BrainKit",
-    detail:
-      "A private, human-approved package of institutional language, architecture, policy, decisions and evidence.",
-    href: "/brainkit",
-    action: "Explore the BrainKit",
-  },
-  {
-    number: "02",
-    label: "The method",
-    title: "The Loom",
-    detail:
-      "A governed discovery and delivery method that applies institutional context while preserving human authority.",
-    href: "/the-loom",
-    action: "Explore The Loom",
-  },
-  {
-    number: "03",
-    label: "The runtime",
-    title: "The Loom Toolkit",
-    detail:
-      "The installable repository capability that carries the method, controls and adoption machinery into delivery.",
-    href: "/ai-dlc",
-    action: "View the Toolkit",
-  },
-  {
-    number: "04",
-    label: "Domain intelligence",
-    title: "Regulated context",
-    detail:
-      "Specialist packs add jurisdiction, market and control knowledge without confusing it with the institution’s own DNA.",
-    href: "/open-finance",
-    action: "See Open Finance",
-  },
-];
-
 const capabilities = [
   {
     number: "01",
@@ -157,13 +100,6 @@ const capabilities = [
       "Move from executive mandate through mobilisation to working products, platforms and institutional capability.",
   },
 ];
-
-const operatingLoop = [
-  ["01", "Frame", "Resolve the mandate, evidence, boundaries and accountable decisions."],
-  ["02", "Build", "Turn the proposition and operating model into working capability."],
-  ["03", "Govern", "Bind delivery to institutional context, controls and human authority."],
-  ["04", "Compound", "Return operating evidence and approved decisions to the institution."],
-] as const;
 
 const evidence = [
   {
@@ -201,7 +137,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
-      <SiteHeader home priority />
+      <SiteHeader active="advisory" home priority />
 
       <section className={styles.hero}>
         <div>
@@ -237,76 +173,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.problem}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>The value that disappears</p>
-          <div>
-            <h2>Transformation creates intelligence. Most institutions keep only fragments.</h2>
-            <p>
-              Projects produce far more than software and slides. They produce decisions,
-              language, architecture, policy and evidence. When that context remains informal,
-              the next team starts again.
-            </p>
-          </div>
-        </div>
-        <div className={styles.problemGrid}>
-          {problems.map((problem) => (
-            <article key={problem.number}>
-              <span>{problem.number}</span>
-              <h3>{problem.title}</h3>
-              <p>{problem.detail}</p>
-            </article>
-          ))}
-        </div>
-        <p className={styles.turn}>
-          The project is not the only outcome. <em>The institution’s ability to act again is the other.</em>
-        </p>
-      </section>
-
-      <section className={styles.model} id="model">
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>The MiddleLeap model</p>
-          <div>
-            <h2>Build the capability. Codify what made it possible.</h2>
-            <p>
-              Institutional intelligence is the governed context an organisation can own,
-              approve, apply and improve. It grows through delivery—not as a documentation
-              exercise after delivery.
-            </p>
-          </div>
-        </div>
-        <InstitutionalIntelligenceSystem />
-        <div className={styles.modelLink}>
-          <Link href="/institutional-intelligence">Explore the institutional intelligence proposition →</Link>
-        </div>
-      </section>
-
-      <section className={styles.architecture}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>One proposition · Four layers</p>
-          <div>
-            <h2>The institution stays at the top. The technology stays in service of it.</h2>
-            <p>
-              BrainKit is the asset. The Loom governs how it is applied. The Toolkit installs
-              the method. Domain intelligence adds specialist context.
-            </p>
-          </div>
-        </div>
-        <div className={styles.architectureGrid}>
-          {architecture.map((item) => (
-            <article key={item.number}>
-              <div><span>{item.number}</span><small>{item.label}</small></div>
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
-              <Link href={item.href}>{item.action} →</Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className={styles.expertise} id="expertise">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Advisory remains the front door</p>
+          <p className={styles.eyebrow}>Advisory is the front door</p>
           <div>
             <h2>Start with the strategic mandate—not the toolkit.</h2>
             <p>
@@ -328,29 +197,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.method} id="method">
+      <section className={styles.model} id="model">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>How the work compounds</p>
+          <p className={styles.eyebrow}>The MiddleLeap model</p>
           <div>
-            <h2>Discover. Build. Govern. Return the learning.</h2>
+            <h2>Build the capability. Codify what made it possible.</h2>
             <p>
-              The operating loop connects executive decisions to delivery evidence and returns
-              approved learning to the institution.
+              Institutional intelligence is the governed context an organisation can own,
+              approve, apply and improve. It grows through delivery—not as a documentation
+              exercise after delivery.
             </p>
           </div>
         </div>
-        <ol className={styles.operatingLoop}>
-          {operatingLoop.map(([number, title, detail]) => (
-            <li key={number}>
-              <span>{number}</span>
-              <strong>{title}</strong>
-              <p>{detail}</p>
-            </li>
-          ))}
-        </ol>
-        <div className={styles.methodFooter}>
-          <p>The Loom provides the governed discovery and delivery machinery underneath this loop.</p>
-          <Link href="/the-loom">Examine the method →</Link>
+        <InstitutionalIntelligenceSystem />
+        <div className={styles.modelLink}>
+          <Link href="/institutional-intelligence">Explore the institutional intelligence proposition →</Link>
         </div>
       </section>
 

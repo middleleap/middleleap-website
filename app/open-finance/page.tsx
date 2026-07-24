@@ -136,7 +136,6 @@ export default function OpenFinancePage() {
         priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/#expertise", label: "What we do" },
           { label: "Open Finance" },
         ]}
         contextLabel="Open Finance navigation"
