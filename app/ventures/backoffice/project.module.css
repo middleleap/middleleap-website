@@ -104,6 +104,68 @@
 .stackGrid { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 42px; }
 .stackGrid span { padding: 10px 12px; border: 1px solid var(--line); color: var(--muted); background: var(--surface); font: 400 var(--fs-ui-small) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
 
+.technicalDetails {
+  max-width: 1144px;
+  margin: 0 auto;
+  padding: 34px 32px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 132px;
+}
+
+.technicalDetails > summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid var(--ink-4);
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+  list-style: none;
+}
+
+.technicalDetails > summary::-webkit-details-marker {
+  display: none;
+}
+
+.technicalDetails > summary span,
+.technicalDetails > summary strong {
+  font-family: var(--font-jetbrains-mono), monospace;
+  text-transform: uppercase;
+}
+
+.technicalDetails > summary span {
+  color: var(--ember-text);
+  font-size: var(--fs-ui-micro);
+  letter-spacing: .09em;
+}
+
+.technicalDetails > summary strong {
+  color: var(--bone-2);
+  font-size: var(--fs-ui-small);
+  font-weight: 400;
+}
+
+.technicalDetails > summary i {
+  color: var(--ember-text);
+  font: 400 24px var(--font-jetbrains-mono), monospace;
+  transition: transform .2s ease;
+}
+
+.technicalDetails[open] > summary i {
+  transform: rotate(45deg);
+}
+
+.technicalDetailsBody {
+  border-inline: 1px solid var(--line);
+}
+
+.technicalDetailsBody .section {
+  max-width: 100%;
+  padding-inline: 24px;
+}
+
 .phaseTrack { display: grid; grid-template-columns: repeat(7,1fr); margin-top: 42px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .phaseTrack article { min-height: 180px; padding: 16px; border-right: 1px solid var(--line); }
 .phaseTrack article:last-child { border-right: 0; }
@@ -168,6 +230,11 @@
   .controlLine { justify-content: flex-start; }
   .controlLine i { transform: rotate(90deg); }
   .boundaryNote { grid-template-columns: 1fr; }
+  .technicalDetails { padding: 24px 20px; scroll-margin-top: 80px; }
+  .technicalDetails > summary { grid-template-columns: 1fr auto; gap: 10px; padding: 18px; }
+  .technicalDetails > summary strong { grid-column: 1 / -1; grid-row: 2; }
+  .technicalDetails > summary i { grid-column: 2; grid-row: 1; }
+  .technicalDetailsBody .section { padding-inline: 16px; }
   .sourceList a { grid-template-columns: 38px 1fr; }
   .sourceList b { display: none; }
   .engage { margin-inline: 12px; padding: 38px 24px; }

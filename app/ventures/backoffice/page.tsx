@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { RelatedPortfolio } from "@/components/RelatedPortfolio";
@@ -108,9 +109,10 @@ export default function BackofficeProjectPage() {
         contextLabel="Backoffice navigation"
         contextLinks={[
           { href: "#problem", label: "Overview" },
+          { href: "#architecture", label: "Architecture" },
           { href: "#delivery", label: "Delivery" },
           { href: "#development", label: "Current boundary" },
-          { href: "#evidence", label: "Evidence" },
+          { href: "#technical-record", label: "Technical record" },
           { href: "#outcome", label: "What it proves" },
         ]}
       />
@@ -143,6 +145,18 @@ export default function BackofficeProjectPage() {
           </dl>
         </aside>
       </section>
+
+      <ExecutiveSummary
+        title="A regulated operating model made tangible."
+        intro="Backoffice is MiddleLeap's flagship delivery proof: a synthetic-only reference platform showing how Open Finance obligations can become governed workflows, architecture and evidence."
+        items={[
+          { label: "Problem", title: "Operations, not APIs", detail: "Banks need one operating layer for consent, servicing, reconciliation, approvals, audit and lineage across LFI and TPP roles." },
+          { label: "For whom", title: "Banks and platforms", detail: "Relevant to institutions turning a regulatory mandate into an operable platform and accountable control model." },
+          { label: "Evidence", title: "Demo-complete", detail: "A working reference implementation, quality gates and repository evidence demonstrate the designed control chain." },
+          { label: "Boundary", title: "Not production proof", detail: "The build remains synthetic and has not yet cleared bank integration, live data, production scale or regulator examination." },
+          { label: "Advisory value", title: "Controls become architecture", detail: "The work makes implementation trade-offs visible early enough to shape strategy, operating model and investment." },
+        ]}
+      />
 
       <section className={styles.section}>
         <div className={styles.sectionLabel}><span>01</span><p>Why it exists</p></div>
@@ -214,7 +228,10 @@ export default function BackofficeProjectPage() {
         </div>
       </section>
 
-      <section className={styles.section} id="build-system" tabIndex={-1}>
+      <details className={styles.technicalDetails} id="technical-record">
+        <summary><span>Technical build record</span><strong>AI build system · Technology · Quality controls</strong><i aria-hidden="true">+</i></summary>
+        <div className={styles.technicalDetailsBody}>
+      <section className={styles.section}>
         <div className={styles.sectionLabel}><span>04</span><p>AI build system</p></div>
         <div>
           <h2>The model proposes. The harness constrains. Humans decide.</h2>
@@ -260,6 +277,8 @@ export default function BackofficeProjectPage() {
           </div>
         </div>
       </section>
+        </div>
+      </details>
 
       <section className={styles.section} id="development" tabIndex={-1}>
         <div className={styles.sectionLabel}><span>07</span><p>Development record</p></div>

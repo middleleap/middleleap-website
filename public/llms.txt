@@ -5,6 +5,7 @@
 Canonical website: https://middleleap.com/
 Contact: contact@middleleap.com
 Founded: 2021
+Founder: Michael Ryberg Hartmann
 Primary market: Middle East and North Africa
 
 ## Positioning
@@ -30,7 +31,7 @@ MiddleLeap works from mandate to working capability through five stages:
 
 The Loom is MiddleLeap's governed AI delivery harness. Its shared core combines evidence-led discovery, bounded AI-assisted delivery and human authority. A regulated profile adds formal assurance, audit, lineage and institutional controls; a venture profile applies commercial-evidence, product-safety and expert-authority gates.
 
-AI-DLC means "downloadable content for AI-enabled development." It is the public technical toolkit that packages The Loom and related MiddleLeap domain intelligence as installable skills, agents and repository workflows. The Loom is the delivery system; AI-DLC is how the capability is carried into a repository.
+The Loom is the governed delivery method. The Loom Toolkit is the installable product that carries the method, controls and adoption machinery into a repository. AI-DLC is the technical distribution mechanism for the Toolkit rather than a separate consulting proposition. The Institutional BrainKit is the institution-owned context component, and domain packs are optional specialist intelligence.
 
 ### The Loom
 
@@ -40,20 +41,20 @@ AI-DLC means "downloadable content for AI-enabled development." It is the public
 - The first evidenced implementation was the UAE Open Finance Back Office, where 134 of approximately 139 stories reached done under quality gates, synthetic-data constraints and human four-eyes merge.
 - The current proof is demo-proven, not production-proven. It has not cleared live production scale or a regulator examination.
 
-### The Loom Toolkit / AI-DLC catalogue
+### The Loom Toolkit
 
-- The Loom: regulated discovery, delivery, continuous-assurance and harness-governance machinery.
-- Open Finance: UAE standards, Islamic-banking context, risk review and value-proposition prototyping.
-- AI-SDLC: repository context patterns and structured code review.
-- MiddleLeap Brand: design tokens, components, assets, copy rules and a WCAG AA gate.
+- Core Toolkit: regulated discovery, delivery, continuous assurance, harness governance, repository foundations and the Institutional BrainKit.
+- Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights.
+- Open Finance domain pack: UAE standards, Islamic-banking context, risk review and value-proposition prototyping.
+- AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the public Toolkit.
 
 ## Ventures, portfolio and studio
 
-MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The primary portfolio contains three evidence-backed builds:
+MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The primary portfolio contains one flagship regulated proof and two venture experiments:
 
-- Open Finance Backoffice: open infrastructure and a regulated-platform implementation using the regulated Loom profile.
-- Parqo: a platform venture using a lighter venture delivery profile to gate investment on commercial evidence.
-- HiveMind / Hive Coach: an AI-enabled service venture using a lighter venture delivery profile while preserving expert authority.
+- Open Finance Backoffice: the flagship regulated delivery proof, implemented with synthetic data and the regulated Loom profile.
+- Parqo: a venture experiment using commercial evidence to gate investment in a two-sided parking marketplace.
+- HiveMind / Hive Coach: a service venture experiment testing how AI can extend an expert service while preserving human authority.
 
 OpenFinance-OS, the Data Sandbox and Ecosystem Watcher are presented separately as independent ecosystem contributions. MiddleLeap's role is contribution and stewardship, not institutional ownership.
 
@@ -69,9 +70,13 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 ## Experience and delivery model
 
-- More than 20 years of experience across banking, fintech, telecommunications and SaaS.
-- Experience spanning Open Finance, Banking-as-a-Service, premium APIs, partner ecosystems and large-scale customer platforms.
-- MiddleLeap assembles focused teams around each mandate, combining a senior lead advisor with specialists across regulation, strategy, product, technology, ecosystems and delivery.
+- MiddleLeap is a founder-led, networked advisory practice rather than a fixed consulting bench.
+- Each mandate has senior accountability, specialists assembled around the problem and active client leadership so institutional context and delivery capability remain with the client.
+- Experience carried into the practice includes building and expanding an Open Banking platform across MENA, followed by leadership of a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE Open Finance framework and deliver the country's first live transactions with a licensed TPP.
+- Business-banking ecosystem experience includes the build-out of Danske Bank's District platform and marketplace across the Nordics and UK, the migration of 250,000 organizations and the development of API-based partner channels.
+- Enterprise transformation experience includes leadership of a 70+ person digital delivery organization through an API-first Telco-as-a-Service shift within a 140-year-old company.
+- MiddleLeap was founded by Michael Ryberg Hartmann, a product and technology executive with more than 20 years across banking, fintech, telecommunications and SaaS. He leads selected mandates and assembles the senior specialists required around each client and problem.
+- Professional profile: https://www.linkedin.com/in/michael-ryberg-hartmann
 
 ## Primary source
 
@@ -79,9 +84,9 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [MiddleLeap Ventures](https://middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
 - [The Loom](https://middleleap.com/the-loom): governed AI delivery harness, regulated and venture profiles, context brain, assurance and stated limits.
-- [The Loom Toolkit / AI-DLC](https://middleleap.com/ai-dlc): installable catalogue of MiddleLeap skills, agents, methods and repository workflows.
+- [The Loom Toolkit](https://middleleap.com/ai-dlc): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
 - [Open Finance Back Office build record](https://middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
 - [HiveMind build record](https://middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
 - [Parqo build record](https://middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
 
-Last reviewed: 2026-07-18
+Last reviewed: 2026-07-24

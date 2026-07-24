@@ -21,6 +21,13 @@ const criteria = [
   ["An active role", "A proposer prepared to contribute expertise, access, operating leadership or delivery capacity."],
 ] as const;
 
+const contribution = [
+  ["Senior operating leadership", "Strategy, product, technology and commercial judgement from people who have carried platform mandates into live operations."],
+  ["An evidence sprint", "A bounded investigation of the problem, customer reality, regulatory constraints, access and smallest useful test."],
+  ["A governed build path", "Where a pilot is justified, MiddleLeap brings The Loom's evidence, specification and human-authority principles into delivery."],
+  ["A clear decision", "The outcome may be a venture, partnership, shared infrastructure, advisory mandate or an explicit decision not to proceed."],
+] as const;
+
 const process = [
   ["01", "Suggest", "Share the problem, evidence and your relationship to it.", "Investigate?"],
   ["02", "Screen", "Test strategic fit, access, boundaries and conflicts.", "Sprint?"],
@@ -42,6 +49,7 @@ export default function VentureStudioPage() {
         contextLabel="Venture Studio navigation"
         contextLinks={[
           { href: "#criteria", label: "What we look for" },
+          { href: "#contribution", label: "What we contribute" },
           { href: "#process", label: "Process" },
           { href: "#propose", label: "Propose" },
         ]}
@@ -53,6 +61,8 @@ export default function VentureStudioPage() {
         <p className={styles.lede}>
           We work with operators, domain experts and potential partners to test focused
           propositions in regulated markets, platform businesses and financial infrastructure.
+          Dubai is the base and MENA is the primary market; this is for evidenced problems,
+          not funding-only pitch submissions.
         </p>
         <div className={styles.actions}>
           <a href="#propose">Propose a venture</a>
@@ -67,6 +77,16 @@ export default function VentureStudioPage() {
         </div>
         <div className={styles.criteriaGrid}>
           {criteria.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
+        </div>
+      </section>
+
+      <section className={styles.section} id="contribution">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>What MiddleLeap contributes</p>
+          <div><h2>More than a review—and no automatic promise of capital.</h2><p>MiddleLeap brings senior platform leadership, an evidence-led decision process and a governed route to a bounded pilot. Commercial structure, ownership and participation are agreed only after mutual fit is established.</p></div>
+        </div>
+        <div className={styles.criteriaGrid}>
+          {contribution.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
       </section>
 
@@ -97,7 +117,7 @@ export default function VentureStudioPage() {
       <section className={styles.propose} id="propose">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Propose a venture</p>
-          <div><h2>Start with a concise, non-confidential brief.</h2><p>Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before preparing the email.</p></div>
+          <div><h2>Start with a concise, non-confidential brief.</h2><p>If there is a fit, MiddleLeap will contact you to agree the next evidence step. Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before preparing the email.</p></div>
         </div>
         <VentureProposalForm />
       </section>

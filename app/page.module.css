@@ -4,7 +4,7 @@
   --type-ui-micro: var(--fs-ui-micro);
   --type-ui-nano: var(--fs-ui-micro);
   min-height: 100vh;
-  overflow: hidden;
+  overflow: clip;
   color: var(--bone-1);
   background: var(--ink-0);
   font-family: var(--font-dm-sans), "DM Sans", sans-serif;
@@ -760,14 +760,12 @@
   background: var(--ink-1);
 }
 
-.loomCopy h3,
-.network h3 {
+.loomCopy h3 {
   color: var(--bone-0);
   font: 400 30px/1.2 var(--font-instrument-serif), "Instrument Serif", serif;
 }
 
 .loomCopy > p:not(.eyebrow),
-.network > p:not(.eyebrow),
 .venturesIntro {
   margin-top: var(--s-4);
   color: var(--bone-2);
@@ -775,8 +773,7 @@
   line-height: var(--lh-body);
 }
 
-.loomActions,
-.networkModel {
+.loomActions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-2);
@@ -785,7 +782,6 @@
 }
 
 .loomActions a,
-.networkModel span,
 .ventureProjects span {
   padding: 9px 11px;
   border: 1px solid var(--ink-4);
@@ -984,11 +980,6 @@
   font-weight: 500;
 }
 
-.networkModel b {
-  color: var(--ember-text);
-  font-weight: 400;
-}
-
 .ventureLoop {
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr;
@@ -1076,8 +1067,59 @@
 
 .experienceLayout {
   display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: var(--s-4);
+  grid-template-columns: 8fr 4fr;
+  gap: var(--s-5);
+}
+
+.experienceIntro {
+  max-width: 720px;
+  margin-top: var(--s-3);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.practiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: var(--s-7);
+  border-top: 1px solid var(--ink-border);
+  border-bottom: 1px solid var(--ink-border);
+}
+
+.practiceGrid article {
+  min-height: 250px;
+  padding: var(--s-5);
+  border-right: 1px solid var(--ink-border);
+}
+
+.practiceGrid article:last-child {
+  border-right: 0;
+}
+
+.practiceGrid span {
+  color: var(--ember-text);
+  font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
+}
+
+.practiceGrid h3 {
+  margin-top: var(--s-7);
+  color: var(--bone-0);
+  font: 400 26px/1.15 var(--font-instrument-serif), "Instrument Serif", serif;
+}
+
+.practiceGrid p {
+  margin-top: var(--s-3);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.evidencePanel > h3 {
+  max-width: 620px;
+  margin-block: var(--s-4) var(--s-5);
+  color: var(--bone-0);
+  font: 400 30px/1.2 var(--font-instrument-serif), "Instrument Serif", serif;
 }
 
 .evidenceList {
@@ -1103,19 +1145,42 @@
   line-height: var(--lh-body);
 }
 
-.network {
+.founderNote {
+  align-self: start;
   padding: var(--s-6);
   border: 1px solid var(--ink-border);
   background: var(--ink-2);
 }
 
-.network h3 {
-  margin-top: var(--s-6);
+.founderNote h3 {
+  margin-top: var(--s-5);
+  color: var(--bone-0);
+  font: 400 30px/1.12 var(--font-instrument-serif), "Instrument Serif", serif;
 }
 
-.networkModel {
-  justify-content: flex-start;
-  margin-top: var(--s-6);
+.founderNote small {
+  display: block;
+  margin-top: var(--s-2);
+  color: var(--bone-3);
+  font: 400 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.founderNote > p:not(.eyebrow) {
+  margin-top: var(--s-4);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.founderNote a {
+  display: inline-block;
+  margin-top: var(--s-5);
+  color: var(--ember-text);
+  font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
+  text-underline-offset: 4px;
+  text-transform: uppercase;
 }
 
 .engage {
@@ -1165,6 +1230,18 @@
 .engage .primaryAction {
   width: fit-content;
   color: #110D0A;
+}
+
+.contactFallback {
+  margin-top: var(--s-4);
+  color: var(--ink-4);
+  font-size: var(--fs-small);
+}
+
+.contactFallback a {
+  color: var(--ink-2);
+  font-weight: 600;
+  text-underline-offset: 3px;
 }
 
 .footer {
@@ -1261,8 +1338,19 @@
 
 @media (max-width: 800px) {
   .loomFeature,
-  .experienceLayout {
+  .experienceLayout,
+  .practiceGrid {
     grid-template-columns: 1fr;
+  }
+
+  .practiceGrid article {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink-border);
+  }
+
+  .practiceGrid article:last-child {
+    border-bottom: 0;
   }
 }
 

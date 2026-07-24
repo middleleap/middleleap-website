@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./loom.module.css";
@@ -166,6 +167,18 @@ export default function LoomPage() {
           <div className={styles.feedback}><b aria-hidden="true">↶</b><span>Incidents · drift · regulatory change · customer signals</span><strong>Return to Discovery as evidence</strong></div>
         </div>
       </section>
+
+      <ExecutiveSummary
+        title="A governed route from ambiguous mandate to accountable software."
+        intro="The Loom is for institutions that want the speed of AI-assisted delivery without giving an agent authority over scope, controls or release."
+        items={[
+          { label: "Mandate", title: "Start before code", detail: "Frame the outcome, evidence, boundaries and decision rights before implementation begins." },
+          { label: "For whom", title: "Regulated leaders", detail: "Built for sponsors, product owners, risk leaders and delivery teams working under real institutional constraints." },
+          { label: "Capability", title: "One closed loop", detail: "Discovery, delivery and operations share evidence instead of handing work across disconnected phases." },
+          { label: "Evidence", title: "A working reference", detail: "The first regulated build reached demo-complete using synthetic data, explicit gates and human release authority." },
+          { label: "Next decision", title: "Pilot one outcome", detail: "Adopt the method around a bounded mandate, then judge it on operating evidence rather than presentation claims." },
+        ]}
+      />
 
       <section className={styles.proof} aria-label="Evidence from the first regulated Loom build">
         {proofPoints.map(([value, label]) => <article key={value}><strong>{value}</strong><span>{label}</span></article>)}

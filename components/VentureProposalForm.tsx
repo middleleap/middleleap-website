@@ -23,11 +23,9 @@ export function VentureProposalForm() {
       ["Working title", form.get("title")],
       ["Problem", form.get("problem")],
       ["Who experiences it", form.get("audience")],
-      ["Why now", form.get("whyNow")],
       ["Existing evidence", form.get("evidence")],
       ["Market or customer access", form.get("access")],
-      ["Proposed solution", form.get("solution")],
-      ["Proposer experience", form.get("experience")],
+      ["Your connection to the problem", form.get("connection")],
       ["Desired participation", form.get("participation")],
       ["Name", form.get("name")],
       ["Email", form.get("email")],
@@ -75,10 +73,6 @@ export function VentureProposalForm() {
         <textarea name="audience" rows={4} maxLength={350} required />
       </label>
       <label>
-        <span>Why now?</span>
-        <textarea name="whyNow" rows={4} maxLength={350} required />
-      </label>
-      <label>
         <span>What evidence already exists?</span>
         <textarea name="evidence" rows={4} maxLength={600} required />
       </label>
@@ -87,12 +81,8 @@ export function VentureProposalForm() {
         <textarea name="access" rows={4} maxLength={350} />
       </label>
       <label>
-        <span>Proposed solution, if one exists</span>
-        <textarea name="solution" rows={4} maxLength={500} />
-      </label>
-      <label>
-        <span>Your relevant experience</span>
-        <textarea name="experience" rows={4} maxLength={400} required />
+        <span>Your connection to the problem</span>
+        <textarea name="connection" rows={4} maxLength={400} required />
       </label>
       <label className={styles.fullField}>
         <span>How would you like to participate?</span>

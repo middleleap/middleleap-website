@@ -1,6 +1,6 @@
 .shell {
   min-height: 100vh;
-  overflow: hidden;
+  overflow: clip;
   color: var(--bone-1);
   background: var(--ink-0);
   font-family: var(--font-dm-sans), "DM Sans", sans-serif;

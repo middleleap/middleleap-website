@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { RelatedPortfolio } from "@/components/RelatedPortfolio";
@@ -71,9 +72,10 @@ export default function ParqoProjectPage() {
         contextLabel="Parqo navigation"
         contextLinks={[
           { href: "#problem", label: "Overview" },
+          { href: "#architecture", label: "Architecture" },
           { href: "#delivery", label: "Delivery" },
           { href: "#development", label: "Current boundary" },
-          { href: "#evidence", label: "Evidence" },
+          { href: "#technical-record", label: "Technical record" },
           { href: "#outcome", label: "What it proves" },
         ]}
       />
@@ -97,6 +99,18 @@ export default function ParqoProjectPage() {
           </dl>
         </aside>
       </section>
+
+      <ExecutiveSummary
+        title="A marketplace experiment designed to earn the next investment."
+        intro="Parqo is not presented as regulated-platform proof. It tests a transferable platform question: can fragmented demand and idle supply become reliable contracted capacity in one dense district?"
+        items={[
+          { label: "Question", title: "Can density compound?", detail: "The venture tests whether qualified employer demand and dependable hotel supply can meet repeatedly in one operating district." },
+          { label: "Evidence", title: "Acquisition wedge live", detail: "Separate demand and supply journeys now produce structured leads and commercial learning." },
+          { label: "Boundary", title: "Not yet a marketplace", detail: "Contracts, access operations, payments and repeatable district economics remain outside the current proof." },
+          { label: "Practice value", title: "Evidence before scale", detail: "The experiment sharpens marketplace strategy by tying each build decision to a commercial learning target." },
+          { label: "Next gate", title: "District-level proof", detail: "Validate supply, employer willingness and operational reliability before funding broader platform surface area." },
+        ]}
+      />
 
       <section className={styles.section}>
         <div className={styles.sectionLabel}><span>01</span><p>Why it exists</p></div>
@@ -128,7 +142,10 @@ export default function ParqoProjectPage() {
 
       <section className={styles.section} id="delivery"><div className={styles.sectionLabel}><span>03</span><p>Loom-informed delivery</p></div><div><h2>Make the next investment conditional on real market evidence.</h2><p className={styles.sectionLede}>Parqo applies the Loom&apos;s evidence, specification and human-authority principles to venture building. This is disciplined use of the method&apos;s ideas—not a claim of full regulated-harness adoption.</p><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
 
-      <section className={styles.section} id="build-system" tabIndex={-1}>
+      <details className={styles.technicalDetails} id="technical-record">
+        <summary><span>Technical build record</span><strong>AI delivery · Technology · Quality posture</strong><i aria-hidden="true">+</i></summary>
+        <div className={styles.technicalDetailsBody}>
+      <section className={styles.section}>
         <div className={styles.sectionLabel}><span>04</span><p>AI build system</p></div>
         <div><h2>AI shortens the learning loop. It does not own the business decision.</h2><p className={styles.sectionLede}>The repo evidences Codex as an implementation partner and documents a broader AI-native operating model. It also makes a disciplined claim: generated code is not the moat. Distribution, contracts, reliable access operations and proprietary network data are.</p>
           <div className={styles.harnessGrid}>{aiControls.map((item) => <article key={item.title}><span>{item.label}</span><h3>{item.title}</h3><p>{item.detail}</p></article>)}</div>
@@ -146,6 +163,8 @@ export default function ParqoProjectPage() {
         <article><span>Current evidence</span><h3>One source test</h3><p>The reviewed repository contains one source-behaviour test and one database migration.</p></article>
         <article><span>Hardening gap</span><h3>No CI workflow found</h3><p>Automated CI, RLS tests and production-like vertical-slice checks belong before the operational pilot.</p></article>
       </div></div></section>
+        </div>
+      </details>
 
       <section className={styles.section} id="development" tabIndex={-1}><div className={styles.sectionLabel}><span>07</span><p>Development record</p></div><div><h2>The next milestone is commercial proof, not more surface area.</h2><div className={styles.phaseTrack}>{phases.map((phase) => <article className={phase.state === "next" ? styles.nextPhase : styles.donePhase} key={phase.number}><span>{phase.number}</span><h3>{phase.title}</h3><p>{phase.label}</p></article>)}</div>
         <div className={styles.evidenceGrid}><article><strong>2</strong><span>Lead pathways: employer demand and hotel supply</span></article><article><strong>5</strong><span>Current Next.js page and API route files</span></article><article><strong>12</strong><span>Text-based lead views in the Notion automation</span></article><article><strong>0</strong><span>Repository hooks, custom skills or MCP configs evidenced</span></article></div>

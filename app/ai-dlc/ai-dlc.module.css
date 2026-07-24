@@ -1,4 +1,4 @@
-.shell { min-height: 100vh; overflow: hidden; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), "DM Sans", sans-serif; }
+.shell { min-height: 100vh; overflow: clip; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), "DM Sans", sans-serif; }
 .nav, .hero, .layers, .catalogue, .install, .boundaries, .footer { width: min(calc(100% - 64px), 1120px); margin-inline: auto; }
 .nav { display: grid; grid-template-columns: 164px 1fr auto; gap: 28px; align-items: center; min-height: 84px; border-bottom: 1px solid var(--ink-border); }
 .navLinks { display: flex; justify-content: center; gap: 26px; }
@@ -37,13 +37,13 @@
 .layerSystemHeader, .layerOutput { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 15px 18px; color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
 .layerSystemHeader { border-bottom: 1px solid var(--ink-border); }
 .layerSystemHeader b, .layerOutput > span { color: var(--ember-text); font-weight: 500; }
-.layerGrid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--ink-0); }
+.layerGrid { display: grid; grid-template-columns: repeat(5, 1fr); background: var(--ink-0); }
 .layerGrid article { position: relative; min-height: 280px; padding: 22px; border-right: 1px solid var(--ink-border); }
 .layerGrid article:last-child { border-right: 0; }
 .layerGrid article:not(:last-child)::after { position: absolute; z-index: 2; top: 50%; right: -11px; width: 22px; color: var(--ember-text); background: var(--ink-0); content: "→"; text-align: center; transform: translateY(-50%); }
 .layerGrid article > span { color: var(--ember-text); font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace; }
 .layerGrid small { display: block; margin-top: 42px; color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
-.layerGrid h3 { margin-top: 10px; color: var(--bone-0); font: 400 28px var(--font-instrument-serif), serif; }
+.layerGrid h3 { margin-top: 10px; color: var(--bone-0); font: 400 25px var(--font-instrument-serif), serif; }
 .layerGrid p { margin-top: 12px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.55; }
 .layerOutput { justify-content: flex-start; border-top: 1px solid rgba(230,92,45,.38); background: rgba(230,92,45,.05); }
 .layerOutput > div { display: flex; flex-wrap: wrap; gap: 7px; }
@@ -71,11 +71,33 @@
 .boundaryGrid span { color: var(--ember-text); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
 .boundaryGrid h3 { margin-top: 44px; color: var(--bone-0); font: 400 28px var(--font-instrument-serif), serif; }
 .boundaryGrid p { margin-top: 13px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.6; }
-.referencePack { display: grid; grid-template-columns: .8fr 1.45fr auto; gap: 28px; align-items: center; margin-top: 18px; padding: 24px; border: 1px solid var(--ink-4); background: var(--ink-1); }
-.referencePack span { color: var(--bone-3); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
-.referencePack h3 { margin-top: 9px; color: var(--bone-0); font: 400 26px var(--font-instrument-serif), serif; }
-.referencePack p { color: var(--bone-2); font-size: var(--fs-small); line-height: 1.6; }
-.referencePack a { color: var(--bone-0); font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace; text-decoration-color: var(--ember-500); text-transform: uppercase; text-underline-offset: 4px; }
+.boundaryGrid .brainkitDimension { border-color: rgba(230,92,45,.5); background: rgba(230,92,45,.045); }
+.brainkitDimension b { display: inline-block; margin-top: 24px; padding: 7px 9px; border: 1px solid rgba(230,92,45,.45); color: var(--ember-text); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
+.brainkitFlow { margin-top: 18px; border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.brainkitHeader, .brainkitFooter { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 20px; }
+.brainkitHeader { border-bottom: 1px solid var(--ink-border); color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .09em; text-transform: uppercase; }
+.brainkitHeader b { color: var(--ember-text); font-weight: 500; }
+.brainkitGrid { display: grid; grid-template-columns: 1fr 44px 1.2fr 44px 1fr; align-items: stretch; background: var(--ink-0); }
+.brainkitGrid article { min-width: 0; padding: 26px; }
+.brainkitGrid article > span { color: var(--bone-3); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.brainkitGrid article h3 { margin-top: 38px; color: var(--bone-0); font: 400 30px var(--font-instrument-serif), serif; }
+.brainkitGrid article p { margin-top: 14px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.6; }
+.brainkitGrid > i { display: grid; place-items: center; border-inline: 1px solid var(--ink-border); color: var(--ember-text); font: 400 20px var(--font-jetbrains-mono), monospace; font-style: normal; }
+.brainkitGrid ul { display: grid; gap: 8px; margin-top: 20px; list-style: none; }
+.brainkitGrid li, .brainkitSeed div b { padding: 8px 9px; border: 1px solid var(--ink-4); color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
+.brainkitSeed { background: rgba(230,92,45,.055); }
+.brainkitSeed h3 { color: var(--ember-text); }
+.brainkitSeed div { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+.brainkitSeed div b { color: var(--bone-1); font-weight: 400; }
+.brainkitLifecycle { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink-border); background: var(--ink-1); }
+.brainkitLifecycle article { min-width: 0; padding: 22px; border-right: 1px solid var(--ink-border); }
+.brainkitLifecycle article:last-child { border-right: 0; }
+.brainkitLifecycle span { color: var(--ember-text); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; }
+.brainkitLifecycle h4 { margin-top: 24px; color: var(--bone-0); font: 400 22px var(--font-instrument-serif), serif; }
+.brainkitLifecycle p { margin-top: 10px; color: var(--bone-3); font-size: var(--fs-ui-small); line-height: 1.55; }
+.brainkitFooter { border-top: 1px solid rgba(230,92,45,.38); background: rgba(230,92,45,.04); }
+.brainkitFooter strong { color: var(--bone-0); font: 400 22px var(--font-instrument-serif), serif; }
+.brainkitFooter p { max-width: 650px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.6; }
 
 .engage { width: min(calc(100% - 64px), 1080px); margin: 72px auto; padding: 64px; color: var(--ink-2); background: var(--bone-0); }
 .engage .eyebrow { color: var(--ember-on-inverse); }
@@ -94,8 +116,13 @@
   .layerGrid article { border-bottom: 1px solid var(--ink-border); }
   .layerGrid article:nth-child(2n) { border-right: 0; }
   .layerGrid article:nth-child(2n)::after { display: none; }
-  .bundleGrid, .referencePack { grid-template-columns: 1fr; }
-  .referencePack a { width: fit-content; }
+  .bundleGrid { grid-template-columns: 1fr; }
+  .brainkitGrid { grid-template-columns: 1fr; }
+  .brainkitGrid > i { min-height: 44px; border: 0; border-block: 1px solid var(--ink-border); transform: rotate(90deg); }
+  .brainkitLifecycle { grid-template-columns: repeat(2, 1fr); }
+  .brainkitLifecycle article { border-bottom: 1px solid var(--ink-border); }
+  .brainkitLifecycle article:nth-child(2n) { border-right: 0; }
+  .brainkitFooter { align-items: flex-start; flex-direction: column; }
 }
 
 @media (max-width: 680px) {
@@ -111,6 +138,8 @@
   .layerGrid article:nth-child(2n)::after { display: block; }
   .layerOutput { align-items: flex-start; flex-direction: column; }
   .layerOutput strong { margin-left: 0; }
+  .brainkitLifecycle { grid-template-columns: 1fr; }
+  .brainkitLifecycle article { border-right: 0; }
   .pluginGrid article { min-height: auto; }
   .packageCore { padding: 20px; }
   .engage { width: calc(100% - 24px); margin-block: 48px; padding: 40px 24px; }
