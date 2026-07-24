@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HiveMind / Hive Coach | MiddleLeap Ventures",
     description: "An evidence-backed build record for human-led, AI-amplified karting coaching.",
-    url: "https://middleleap.com/ventures/hivemind",
+    url: "https://www.middleleap.com/ventures/hivemind",
   },
 };
 

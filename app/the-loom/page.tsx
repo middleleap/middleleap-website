@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "The Loom | Governed AI Delivery for Regulated Institutions",
     description:
       "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
-    url: "https://middleleap.com/the-loom",
+    url: "https://www.middleleap.com/the-loom",
   },
 };
 

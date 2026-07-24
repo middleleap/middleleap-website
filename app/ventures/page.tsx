@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "MiddleLeap Ventures | Building What We Advise",
     description:
       "Working platforms, open infrastructure and AI-native execution systems grounded in regulated markets.",
-    url: "https://middleleap.com/ventures",
+    url: "https://www.middleleap.com/ventures",
   },
 };
 

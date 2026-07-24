@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Parqo | MiddleLeap Ventures",
     description: "An evidence-backed build record for a UAE employee-parking marketplace.",
-    url: "https://middleleap.com/ventures/parqo",
+    url: "https://www.middleleap.com/ventures/parqo",
   },
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "The Loom Toolkit | Institutional AI Delivery",
     description:
       "Install a governed delivery toolkit, draft the institution's BrainKit and pin that approved context across repositories.",
-    url: "https://middleleap.com/ai-dlc",
+    url: "https://www.middleleap.com/ai-dlc",
   },
 };
 

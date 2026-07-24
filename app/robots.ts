@@ -14,7 +14,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://middleleap.com/sitemap.xml",
-    host: "https://middleleap.com",
+    sitemap: "https://www.middleleap.com/sitemap.xml",
+    host: "https://www.middleleap.com",
   };
 }

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Open Finance Backoffice | MiddleLeap Ventures",
     description:
       "An evidence-backed build record for the bank-neutral UAE Open Finance operations platform.",
-    url: "https://middleleap.com/ventures/backoffice",
+    url: "https://www.middleleap.com/ventures/backoffice",
   },
 };
 

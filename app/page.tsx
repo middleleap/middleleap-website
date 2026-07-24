@@ -17,12 +17,12 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://middleleap.com/#organization",
+      "@id": "https://www.middleleap.com/#organization",
       name: "MiddleLeap",
-      url: "https://middleleap.com/",
+      url: "https://www.middleleap.com/",
       email: "contact@middleleap.com",
       foundingDate: "2021",
-      founder: { "@id": "https://middleleap.com/#michael-ryberg-hartmann" },
+      founder: { "@id": "https://www.middleleap.com/#michael-ryberg-hartmann" },
       slogan: "From strategic mandate to market execution.",
       description:
         "Independent advisory practice assembling senior leadership and specialist teams to help banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
@@ -53,12 +53,12 @@ const structuredData = {
     },
     {
       "@type": "Person",
-      "@id": "https://middleleap.com/#michael-ryberg-hartmann",
+      "@id": "https://www.middleleap.com/#michael-ryberg-hartmann",
       name: "Michael Ryberg Hartmann",
       jobTitle: "Founder and Principal Adviser",
-      url: "https://middleleap.com/#experience",
+      url: "https://www.middleleap.com/#experience",
       sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
-      worksFor: { "@id": "https://middleleap.com/#organization" },
+      worksFor: { "@id": "https://www.middleleap.com/#organization" },
       alumniOf: [
         { "@type": "Organization", name: "Fintech Galaxy" },
         { "@type": "Organization", name: "TDC Group" },
@@ -74,17 +74,17 @@ const structuredData = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://middleleap.com/#website",
-      url: "https://middleleap.com/",
+      "@id": "https://www.middleleap.com/#website",
+      url: "https://www.middleleap.com/",
       name: "MiddleLeap",
       description:
         "Platform strategy and AI-native transformation for regulated businesses.",
-      publisher: { "@id": "https://middleleap.com/#organization" },
+      publisher: { "@id": "https://www.middleleap.com/#organization" },
       inLanguage: "en",
     },
     {
       "@type": "Service",
-      "@id": "https://middleleap.com/#advisory-service",
+      "@id": "https://www.middleleap.com/#advisory-service",
       name: "Regulated platform transformation advisory",
       serviceType: [
         "Executive advisory",
@@ -92,7 +92,7 @@ const structuredData = {
         "AI-native operating model design",
         "Transformation and execution",
       ],
-      provider: { "@id": "https://middleleap.com/#organization" },
+      provider: { "@id": "https://www.middleleap.com/#organization" },
       areaServed: {
         "@type": "Place",
         name: "Middle East and North Africa",
@@ -127,6 +127,8 @@ const capabilities = [
     title: "Regulatory & market transformation",
     detail:
       "Open Finance strategy, regulatory readiness, LFI and TPP operating models, market entry and ecosystem participation.",
+    href: "/open-finance",
+    linkLabel: "Explore Open Finance advisory",
   },
   {
     number: "02",
@@ -241,6 +243,11 @@ export default function HomePage() {
               <span>{capability.number}</span>
               <h3>{capability.title}</h3>
               <p>{capability.detail}</p>
+              {"href" in capability && capability.href && (
+                <Link className={styles.capabilityLink} href={capability.href}>
+                  {capability.linkLabel} →
+                </Link>
+              )}
             </article>
           ))}
         </div>
