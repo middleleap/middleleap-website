@@ -66,6 +66,12 @@
 
 .install { display: grid; grid-template-columns: 1fr 1fr; gap: 58px; align-items: center; padding-block: 92px; border-top: 1px solid var(--ink-border); }
 .install pre { overflow-x: auto; padding: 26px; border: 1px solid var(--ink-4); background: var(--ink-1); color: var(--bone-1); font: 400 var(--fs-caption)/1.9 var(--font-jetbrains-mono), monospace; }
+.install code { font-family: var(--font-jetbrains-mono), monospace; }
+.install > div > p code { color: var(--bone-1); font-size: .92em; }
+.operatingBoundary { grid-column: 1 / -1; display: grid; grid-template-columns: 230px 1fr; gap: 38px; align-items: start; padding: 24px; border: 1px solid var(--ink-4); background: var(--ink-1); }
+.operatingBoundary > span { color: var(--ember-text); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
+.operatingBoundary h3 { max-width: 760px; color: var(--bone-0); font: 400 28px/1.2 var(--font-instrument-serif), serif; }
+.operatingBoundary p { max-width: 760px; margin-top: 10px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.6; }
 .boundaryGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .boundaryGrid article { min-height: 250px; padding: 24px; border: 1px solid var(--ink-border); }
 .boundaryGrid span { color: var(--ember-text); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
@@ -132,7 +138,7 @@
   .hero h1 { font-size: clamp(42px, 12vw, 52px); }
   .layers, .catalogue, .boundaries { padding-block: 68px; }
   .catalogue { padding-inline: 20px; }
-  .sectionIntro, .pluginGrid, .install, .boundaryGrid, .layerGrid { grid-template-columns: 1fr; }
+  .sectionIntro, .pluginGrid, .install, .boundaryGrid, .layerGrid, .operatingBoundary { grid-template-columns: 1fr; }
   .layerGrid article { min-height: auto; border-right: 0; }
   .layerGrid article:not(:last-child)::after { top: auto; right: auto; bottom: -11px; left: 22px; transform: rotate(90deg); }
   .layerGrid article:nth-child(2n)::after { display: block; }
