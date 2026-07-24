@@ -22,13 +22,13 @@ const bundles = [
   {
     id: "loom-toolkit",
     number: "Core bundle",
-    version: "Loom 2.0 RC.9 · AI-SDLC 1.0",
+    version: "Loom 2.0 RC.10 · AI-SDLC 1.0",
     name: "The Loom Toolkit",
     label: "Governed delivery system",
     kind: "core",
     description:
       "The customer-facing core combines The Loom's governed method, the Institutional BrainKit and repository foundations that compile each change into the gates, evidence and accountable decisions it requires.",
-    contents: ["Discovery + delivery harnesses", "Institutional BrainKit", "Compiled control plans", "Continuous assurance", "Governance + evidence controls", "Idempotent adoption"],
+    contents: ["Discovery + delivery harnesses", "Institutional BrainKit", "Compiled control plans", "Continuous assurance", "Governance + evidence controls", "Safe, merge-aware adoption"],
     href: "/the-loom",
     linkLabel: "Explore The Loom",
   },
@@ -49,7 +49,7 @@ const bundles = [
 
 const layers = [
   ["01", "Advisory", "Frames the mandate", "Regulatory, commercial and operating questions are resolved at leadership level."],
-  ["02", "The Loom Toolkit", "Installs the frame", "One manifest installs the harnesses, controls, templates and adoption report inside the repository."],
+  ["02", "The Loom Toolkit", "Installs the frame", "One manifest installs the harnesses, controls and templates, preserves existing agent settings and reports anything that still needs a human merge."],
   ["03", "BrainKit draft", "Seeds institutional DNA", "Approved sources become draft identity, terminology, architecture, technology policy and decision rights; unknowns remain visible gaps."],
   ["04", "Human governance", "Approves and mounts", "Accountable context owners approve the private release; product repositories mount a digest-pinned snapshot."],
   ["05", "Institution", "Operates and compounds", "Each governed change binds the institutional profile while the wider context brain grows through delivery cycles."],
@@ -80,7 +80,7 @@ const brainkitLifecycle = [
   ["01", "Draft from evidence", "The generator uses approved institutional sources only. Unsupported decisions go into a gap register."],
   ["02", "Approve with humans", "Accountable owners review the package. The agent can seal digests, but it cannot approve institutional context."],
   ["03", "Pin the release", "Each repository mounts the private snapshot. Its institution profile and compiled plans record the BrainKit digest."],
-  ["04", "Validate in CI", "Once compiled, CI checks the approved version, canonical sections, source grounding, digests and artifact provenance against the live BrainKit."],
+  ["04", "Validate in CI", "Once compiled, CI checks the approved version, canonical sections, complete digest envelope, source grounding, D7 provenance and artifact provenance—and rejects undeclared BrainKit files."],
 ] as const;
 
 export default function AiDlcPage() {
@@ -119,7 +119,7 @@ export default function AiDlcPage() {
           </div>
         </div>
         <div className={styles.packageVisual} role="img" aria-label="The Loom Toolkit combines compiled control plans with an institution-owned BrainKit and optional domain packs">
-          <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Loom 2.0 RC.9</b></div>
+          <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Loom 2.0 RC.10</b></div>
           <div className={styles.packageCore}><span>Discovery + delivery</span><span>Policy compiler</span><span>Continuous assurance</span><span>Manifest-driven adoption</span><strong>The Loom Toolkit / public core</strong></div>
           <div className={styles.packageOutput}><span>Your BrainKit / private seed</span><i>+</i><span>Optional domain intelligence</span></div>
         </div>
@@ -171,7 +171,7 @@ export default function AiDlcPage() {
         <div>
           <p className={styles.eyebrow}>For builders</p>
           <h2>Install the frame. Then draft the institution&apos;s seed.</h2>
-          <p>The current release adopts the Loom from one copy manifest and leaves a file-by-file report. BrainKit templates land as a draft: the generator may organise approved sources and expose gaps, but only accountable humans can approve the result.</p>
+          <p>RC.10 adopts the Loom from one copy manifest, preserves an existing <code>.claude/settings.json</code> and writes a sidecar when human merging is required. BrainKit templates land as a draft: the generator may organise approved sources and expose gaps, but only accountable humans can approve the result.</p>
         </div>
         <pre aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
 /plugin install middleleap-loom@middleleap-ai-dlc
@@ -185,6 +185,13 @@ export default function AiDlcPage() {
 
 # optional domain intelligence
 /plugin install middleleap-open-finance@middleleap-ai-dlc`}</code></pre>
+        <aside className={styles.operatingBoundary}>
+          <span>Operating boundary / RC.10</span>
+          <div>
+            <h3>Build-time control frame. Institution-operated production controls.</h3>
+            <p>The Toolkit validates repository-level gates, evidence and readiness records. Live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution&apos;s responsibility.</p>
+          </div>
+        </aside>
       </section>
 
       <section className={styles.boundaries} id="context">
