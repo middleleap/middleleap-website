@@ -5,7 +5,8 @@ import "./globals.css";
 
 // Analytics is a no-op until a domain is configured. Plausible is
 // cookieless and privacy-friendly, matching the PRD's analytics intent.
-const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+const siteOrigin = "https://www.middleleap.com";
+const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "www.middleleap.com";
 
 const themeBootScript = `(()=>{try{const k="middleleap-theme",s=localStorage.getItem(k),a=s==="light"||s==="dark"?s:"auto",m=matchMedia("(prefers-color-scheme: light)").matches,t=a==="auto"?(m?"light":"dark"):a;document.documentElement.dataset.theme=t;document.documentElement.dataset.themeMode=a;document.documentElement.style.colorScheme=t}catch{document.documentElement.dataset.theme="dark";document.documentElement.dataset.themeMode="auto"}})();`;
 
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   publisher: "MiddleLeap",
   applicationName: "MiddleLeap",
   category: "Business Consulting and Services",
-  metadataBase: new URL("https://middleleap.com"),
+  metadataBase: new URL(siteOrigin),
   alternates: {
     canonical: "/",
   },
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
     title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
     description:
       "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
-    url: "https://middleleap.com/",
+    url: `${siteOrigin}/`,
     siteName: "MiddleLeap",
     locale: "en_US",
     type: "website",

@@ -2,7 +2,7 @@
 
 > MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps banks, fintechs, financial infrastructure providers and regulated platform businesses move from strategic mandate to market execution.
 
-Canonical website: https://middleleap.com/
+Canonical website: https://www.middleleap.com/
 Contact: contact@middleleap.com
 Founded: 2021
 Founder: Michael Ryberg Hartmann
@@ -18,6 +18,16 @@ MiddleLeap helps leaders turn regulatory, commercial and technology shifts into 
 - Platform and ecosystem strategy: platform propositions, API strategy, embedded finance, partnerships, commercial models and monetisation.
 - AI-native operating models: value-stream redesign, agentic workflows, product and engineering models, governance and control.
 - Transformation and execution: executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.
+
+### Open Finance advisory
+
+MiddleLeap helps banks, fintechs, TPPs and financial infrastructure providers connect Open Finance obligations with market position, propositions, ecosystem economics, platform capabilities and accountable execution.
+
+- Market position: decide where the institution will lead, participate or partner as regulation changes the value chain.
+- Proposition: translate permitted data and payment capabilities into customer, partner and embedded-finance propositions.
+- Platform: shape the consent, data, API, partner and control capabilities required to operate at ecosystem scale.
+- Operating model: align product, technology, risk, compliance, operations and partner management around delivery.
+- Engagement models include executive advisory, focused strategy sprints and transformation mobilisation.
 
 ## How MiddleLeap works
 
@@ -80,13 +90,14 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 ## Primary source
 
-- [MiddleLeap homepage](https://middleleap.com/): current positioning, capabilities, approach, experience and contact information.
-- [MiddleLeap Ventures](https://middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
-- [Venture Studio](https://middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
-- [The Loom](https://middleleap.com/the-loom): governed AI delivery harness, regulated and venture profiles, context brain, assurance and stated limits.
-- [The Loom Toolkit](https://middleleap.com/ai-dlc): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
-- [Open Finance Back Office build record](https://middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
-- [HiveMind build record](https://middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
-- [Parqo build record](https://middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
+- [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
+- [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
+- [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
+- [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
+- [The Loom](https://www.middleleap.com/the-loom): governed AI delivery harness, regulated and venture profiles, context brain, assurance and stated limits.
+- [The Loom Toolkit](https://www.middleleap.com/ai-dlc): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
+- [Open Finance Back Office build record](https://www.middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
+- [HiveMind build record](https://www.middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
+- [Parqo build record](https://www.middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
 
 Last reviewed: 2026-07-24

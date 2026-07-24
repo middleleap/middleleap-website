@@ -13,6 +13,7 @@ export function SiteFooter() {
         <nav className={styles.footerGroup} aria-label="Advisory links">
           <span>Advisory</span>
           <Link href="/#expertise">What we do</Link>
+          <Link href="/open-finance">Open Finance</Link>
           <Link href="/#method">How we work</Link>
           <Link href="/#experience">The practice</Link>
           <Link href="/#engage">Discuss a mandate</Link>

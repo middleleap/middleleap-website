@@ -558,6 +558,15 @@
   line-height: var(--lh-body);
 }
 
+.capabilityLink {
+  display: inline-block;
+  margin-top: var(--s-5);
+  color: var(--ember-text);
+  font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
+  text-underline-offset: 5px;
+  text-transform: uppercase;
+}
+
 .shiftConclusion {
   max-width: 760px;
   margin: var(--s-6) 0 0 auto;
