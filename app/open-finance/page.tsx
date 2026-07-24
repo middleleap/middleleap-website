@@ -132,11 +132,10 @@ export default function OpenFinancePage() {
       />
 
       <SiteHeader
-        active="what"
+        active="open-finance"
         priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/#expertise", label: "What we do" },
           { label: "Open Finance" },
         ]}
         contextLabel="Open Finance navigation"

@@ -6,7 +6,7 @@ import { BrandLockup } from "./BrandLockup";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
-type NavSection = "what" | "method" | "ventures" | "experience";
+type NavSection = "advisory" | "intelligence" | "open-finance" | "ventures";
 
 export type ContextLink = {
   href: string;
@@ -62,9 +62,9 @@ export function SiteHeader({
   const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
   const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
-    { href: `${prefix}#expertise`, label: "What we do", section: "what" },
-    { href: `${prefix}#method`, label: "How we work", section: "method" },
-    { href: `${prefix}#experience`, label: "The practice", section: "experience" },
+    { href: home ? "#expertise" : "/#expertise", label: "Advisory", section: "advisory" },
+    { href: "/institutional-intelligence", label: "Institutional Intelligence", section: "intelligence" },
+    { href: "/open-finance", label: "Open Finance", section: "open-finance" },
     { href: "/ventures", label: "Ventures", section: "ventures" },
   ];
   const closeMobileMenu = () => {
@@ -203,17 +203,19 @@ export function SiteHeader({
               </span>
             ))}
           </nav>
-          <nav className={styles.contextNav} aria-label={contextLabel ?? "On this page"}>
-            {contextLinks.map((link) => (
-              <HeaderLink
-                key={link.href}
-                href={link.href}
-                current={link.current || link.href === activeContextHref ? "location" : undefined}
-              >
-                {link.label}
-              </HeaderLink>
-            ))}
-          </nav>
+          {contextLinks.length > 0 && (
+            <nav className={styles.contextNav} aria-label={contextLabel ?? "On this page"}>
+              {contextLinks.map((link) => (
+                <HeaderLink
+                  key={link.href}
+                  href={link.href}
+                  current={link.current || link.href === activeContextHref ? "location" : undefined}
+                >
+                  {link.label}
+                </HeaderLink>
+              ))}
+            </nav>
+          )}
         </div>
       )}
     </div>

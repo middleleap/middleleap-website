@@ -19,6 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${SITE_URL}/institutional-intelligence`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.95,
+    },
+    {
+      url: `${SITE_URL}/brainkit`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/open-finance`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -37,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${SITE_URL}/ai-dlc`,
+      url: `${SITE_URL}/toolkit`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.75,

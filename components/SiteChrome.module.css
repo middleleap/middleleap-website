@@ -321,8 +321,10 @@
 }
 
 .footerLinks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
   justify-content: flex-end;
-  gap: 44px;
+  gap: 32px;
 }
 
 .footerGroup {

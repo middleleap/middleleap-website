@@ -102,6 +102,7 @@ export default function BackofficeProjectPage() {
       <SiteHeader
         active="ventures"
         breadcrumbs={[
+          { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
           { href: "/ventures#portfolio", label: "Portfolio" },
           { label: "Backoffice" },

@@ -6,37 +6,34 @@ export function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.footerIdentity}>
         <strong>MiddleLeap</strong>
-        <p>Independent advisory practice and venture studio · Dubai, UAE</p>
-        <p>Senior teams assembled around each mandate.</p>
+        <p>Independent advisory practice · Dubai, UAE</p>
+        <p>Working capability and institution-owned intelligence.</p>
       </div>
       <div className={styles.footerLinks}>
         <nav className={styles.footerGroup} aria-label="Advisory links">
           <span>Advisory</span>
           <Link href="/#expertise">What we do</Link>
           <Link href="/open-finance">Open Finance</Link>
-          <Link href="/#method">How we work</Link>
-          <Link href="/#experience">The practice</Link>
+          <Link href="/#practice">The practice</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
-        <nav className={styles.footerGroup} aria-label="Execution links">
-          <span>Execution</span>
+        <nav className={styles.footerGroup} aria-label="Institutional Intelligence links">
+          <span>Institutional Intelligence</span>
+          <Link href="/institutional-intelligence">Institutional Intelligence</Link>
+          <Link href="/brainkit">BrainKit</Link>
           <Link href="/the-loom">The Loom</Link>
-          <Link href="/ai-dlc">The Loom Toolkit</Link>
+          <Link href="/toolkit">The Loom Toolkit</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Venture links">
           <span>Ventures</span>
           <Link href="/ventures#portfolio">Portfolio</Link>
           <Link href="/ventures/studio">Venture Studio</Link>
-          <Link href="/ventures/backoffice">Backoffice</Link>
-          <Link href="/ventures/parqo">Parqo</Link>
-          <Link href="/ventures/hivemind">HiveMind</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <Link href="/#experience">Practice &amp; founder</Link>
+          <Link href="/#practice">Practice &amp; founder</Link>
           <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
           <Link href="/privacy">Privacy</Link>
-          <Link href="/venture-submission-terms">Submission terms</Link>
         </nav>
       </div>
     </footer>

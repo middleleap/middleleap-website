@@ -117,11 +117,11 @@ export default function LoomPage() {
   return (
     <main className={styles.shell} id="problem">
       <SiteHeader
-        active="method"
+        active="intelligence"
         priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/#method", label: "How we work" },
+          { href: "/institutional-intelligence", label: "Institutional Intelligence" },
           { label: "The Loom" },
         ]}
         contextLabel="The Loom navigation"
@@ -130,7 +130,7 @@ export default function LoomPage() {
           { href: "#control-chain", label: "Control chain" },
           { href: "#assurance", label: "Assurance" },
           { href: "#evidence", label: "Evidence" },
-          { href: "/ai-dlc", label: "Toolkit" },
+          { href: "/toolkit", label: "Toolkit" },
         ]}
       />
 
@@ -145,7 +145,7 @@ export default function LoomPage() {
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#loop">Explore the closed loop</a>
-            <Link className={styles.secondaryAction} href="/ai-dlc">View the technical toolkit</Link>
+            <Link className={styles.secondaryAction} href="/toolkit">View the technical toolkit</Link>
           </div>
         </div>
 
@@ -274,6 +274,9 @@ export default function LoomPage() {
           {brainDimensions.map(([title, label, detail], index) => <article key={title}><span>0{index + 1}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
         <div className={styles.moat}><span>The moat test</span><p>If a competitor copied the codebase tomorrow, it would still lack the accumulated, governed context that makes the software belong to the institution.</p></div>
+        <div className={styles.actions}>
+          <Link className={styles.secondaryAction} href="/brainkit">Examine the Institutional BrainKit</Link>
+        </div>
       </section>
 
       <section className={styles.section} id="assurance">
@@ -321,7 +324,7 @@ export default function LoomPage() {
         <p>Mount the institution&apos;s controls and context, run one gated discovery, and deliver one bounded outcome with human accountability intact.</p>
         <div className={styles.actions}>
           <Link className={styles.primaryAction} href="/#engage">Discuss a Loom pilot</Link>
-          <Link className={styles.darkAction} href="/ai-dlc">View The Loom Toolkit</Link>
+          <Link className={styles.darkAction} href="/toolkit">View The Loom Toolkit</Link>
         </div>
       </section>
 
