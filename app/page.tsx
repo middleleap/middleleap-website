@@ -22,9 +22,10 @@ const structuredData = {
       url: "https://middleleap.com/",
       email: "contact@middleleap.com",
       foundingDate: "2021",
+      founder: { "@id": "https://middleleap.com/#michael-ryberg-hartmann" },
       slogan: "From strategic mandate to market execution.",
       description:
-        "Independent advisory firm helping banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
+        "Independent advisory practice assembling senior leadership and specialist teams to help banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Dubai",
@@ -48,6 +49,27 @@ const structuredData = {
         "Telecommunications transformation",
         "Product operating models",
         "AI-DLC",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://middleleap.com/#michael-ryberg-hartmann",
+      name: "Michael Ryberg Hartmann",
+      jobTitle: "Founder and Principal Adviser",
+      url: "https://middleleap.com/#experience",
+      sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
+      worksFor: { "@id": "https://middleleap.com/#organization" },
+      alumniOf: [
+        { "@type": "Organization", name: "Fintech Galaxy" },
+        { "@type": "Organization", name: "TDC Group" },
+        { "@type": "Organization", name: "Danske Bank" },
+      ],
+      knowsAbout: [
+        "Open Finance",
+        "Platform strategy",
+        "AI-native operating models",
+        "Product and technology strategy",
+        "Transformation delivery",
       ],
     },
     {
@@ -178,7 +200,7 @@ export default function HomePage() {
           </div>
           <div className={styles.proofLine} role="group" aria-label="MiddleLeap positioning">
             <span><strong>MENA</strong> market focus</span>
-            <span><strong>20+ years</strong> regulated platforms</span>
+            <span><strong>Senior-led</strong> every mandate</span>
             <span><strong>Strategy</strong> through execution</span>
           </div>
         </div>
@@ -289,21 +311,21 @@ export default function HomePage() {
         <div className={styles.loomFeature}>
           <div className={styles.loomCopy}>
             <p className={styles.eyebrow}>The Loom · Governed AI delivery</p>
-            <h3>One harness. A control profile matched to the mandate.</h3>
+            <h3>Find the right problem. Ship it under control. Learn from what runs.</h3>
             <p>
-              The Loom combines evidenced discovery, controlled AI-assisted delivery and
-              human authority. Its regulated profile applies formal assurance; its venture
-              profile applies commercial evidence and expert-authority gates.
+              Two harnesses turn an evidenced mandate into audit-ready software.
+              Operational signals then return to Discovery, keeping assurance and the
+              institution&apos;s context current.
             </p>
             <div className={styles.loomActions}>
-              <Link href="/the-loom">Explore the delivery harness →</Link>
+              <Link href="/the-loom">Explore the closed loop →</Link>
               <Link href="/ai-dlc">View the technical toolkit →</Link>
             </div>
           </div>
-          <div className={styles.loomMini} role="img" aria-label="The Loom regulated delivery reference profile">
+          <div className={styles.loomMini} role="img" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
             <div className={styles.loomMiniHeader}>
-              <span>Regulated profile · reference build</span>
-              <b>Human accountable</b>
+              <span>Mandate → outcome</span>
+              <b>Two harnesses · one loop</b>
             </div>
             <div className={styles.loomMiniFlow}>
               <article className={styles.loomDiamond}>
@@ -321,6 +343,13 @@ export default function HomePage() {
                 <span>Develop → Deliver · Q1—Q5</span>
               </article>
             </div>
+            <div className={styles.loomRuntime}>
+              <span>Audit-ready software</span>
+              <i aria-hidden="true">→</i>
+              <strong>Run / Operations</strong>
+              <b aria-hidden="true">↶</b>
+              <small>Signals return to Discovery as evidence</small>
+            </div>
             <div className={styles.loomWarp}>
               <span>Four-eyes</span>
               <span>Audit</span>
@@ -330,10 +359,94 @@ export default function HomePage() {
             </div>
             <div className={styles.loomProof}>
               <span><strong>134 / ~139</strong> stories to done</span>
-              <span><strong>100%</strong> human merges</span>
+              <span><strong>2 + 1</strong> harnesses + Run arc</span>
               <span><strong>0</strong> real records</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.experience} id="experience">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>The practice behind the mandate</p>
+          <div>
+            <h2>Senior leadership, assembled around the work.</h2>
+            <p className={styles.experienceIntro}>
+              MiddleLeap is an independent advisory practice built for mandates that cross
+              strategy, regulation, product, technology and delivery. Each engagement is shaped
+              around the work—not a fixed consulting bench.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.practiceGrid}>
+          <article>
+            <span>01</span>
+            <h3>Senior accountability</h3>
+            <p>
+              A senior lead stays accountable from mandate framing through the decisions,
+              operating model and route to execution.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Specialists around the problem</h3>
+            <p>
+              Regulation, strategy, product, technology, ecosystem and delivery expertise is
+              brought in where the mandate requires it.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Client ownership by design</h3>
+            <p>
+              Client leaders remain part of the working system so decisions, institutional
+              context and delivery capability stay inside the organization.
+            </p>
+          </article>
+        </div>
+
+        <div className={styles.experienceLayout}>
+          <div className={styles.evidencePanel}>
+            <p className={styles.eyebrow}>Experience carried into the practice</p>
+            <h3>Operating evidence across regulated platforms and transformation.</h3>
+            <div className={styles.evidenceList}>
+              <div>
+                <strong>MENA Open Banking &amp; Open Finance</strong>
+                <span>Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE framework and deliver the country&apos;s first live transactions with a licensed TPP.</span>
+              </div>
+              <div>
+                <strong>Business banking ecosystems</strong>
+                <span>Led the build-out of Danske Bank&apos;s District platform and marketplace across the Nordics and UK, including the migration of 250,000 SMEs, corporates and institutions and the development of API-based partner channels.</span>
+              </div>
+              <div>
+                <strong>Enterprise transformation</strong>
+                <span>Led a 70+ person digital delivery organization through an API-first Telco-as-a-Service transformation within a 140-year-old enterprise, modernising the operating model as well as the technology.</span>
+              </div>
+              <div>
+                <strong>Product to boardroom</strong>
+                <span>Experience spanning software engineering and architecture through product, commercial and executive transformation leadership.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside className={styles.founderNote}>
+            <p className={styles.eyebrow}>Founded in Dubai</p>
+            <h3>Michael Ryberg Hartmann</h3>
+            <small>Founder and Principal Adviser</small>
+            <p>
+              Michael founded MiddleLeap after more than 20 years across banking, fintech,
+              telecommunications and SaaS, including senior roles at a leading UAE bank,
+              Fintech Galaxy, TDC Group, Danske Bank and Planday.
+            </p>
+            <p>
+              He leads selected mandates and assembles the senior specialists required
+              around each client and problem.
+            </p>
+            <a href="https://www.linkedin.com/in/michael-ryberg-hartmann" target="_blank" rel="noreferrer">
+              Founder profile ↗
+            </a>
+          </aside>
         </div>
       </section>
 
@@ -341,11 +454,11 @@ export default function HomePage() {
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
           <div>
-            <h2>We build what we advise.</h2>
+            <h2>One regulated proof. Two venture experiments.</h2>
             <p className={styles.venturesIntro}>
-              MiddleLeap creates focused ventures and contributes selectively to open
-              ecosystems—turning practical operating experience into stronger strategic
-              and delivery advice.
+              Backoffice demonstrates governed delivery in MiddleLeap&apos;s core market.
+              Parqo and HiveMind test transferable platform and human-authority principles
+              in different operating contexts. Their roles are deliberately not presented as equal evidence.
             </p>
           </div>
         </div>
@@ -363,7 +476,7 @@ export default function HomePage() {
             <article key={project.name}>
               <div className={styles.ventureMeta}>
                 <span>0{index + 1}</span>
-                <small>{project.harnessProfile}</small>
+                <small>{project.portfolioRole}</small>
               </div>
               <h3>{project.name}</h3>
               <p>{project.summary}</p>
@@ -384,34 +497,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.experience} id="experience">
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Experience behind the practice</p>
-          <h2>Built in regulated markets—not in a transformation lab.</h2>
-        </div>
-        <div className={styles.experienceLayout}>
-          <div className={styles.evidenceList}>
-            <div><strong>20+ years</strong><span>Across banking, fintech, telecommunications and SaaS</span></div>
-            <div><strong>UAE firsts</strong><span>Leadership behind first bank certification and first live licensed-TPP transactions</span></div>
-            <div><strong>Platform scale</strong><span>Open Finance, BaaS, premium APIs, partner ecosystems and large-scale customer platforms</span></div>
-            <div><strong>Execution depth</strong><span>Executive leadership across strategy, commercial growth, technology and transformation delivery</span></div>
-          </div>
-
-          <aside className={styles.network}>
-            <p className={styles.eyebrow}>Built around the mandate</p>
-            <h3>Senior expertise without the generic staffing model.</h3>
-            <p>
-              MiddleLeap assembles focused teams around each engagement, combining
-              a senior lead advisor with specialists across regulation, strategy,
-              product, technology, ecosystems and delivery.
-            </p>
-            <div className={styles.networkModel} role="img" aria-label="MiddleLeap engagement team model">
-              <span>Lead advisor</span><b>+</b><span>Domain specialists</span><b>+</b><span>Client leadership</span>
-            </div>
-          </aside>
-        </div>
-      </section>
-
       <section className={styles.engage} id="engage">
         <div>
           <p className={styles.eyebrow}>Start with the mandate in front of you</p>
@@ -429,6 +514,9 @@ export default function HomePage() {
         <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
           Discuss your mandate →
         </a>
+        <p className={styles.contactFallback}>
+          Prefer to use your own email client? Copy <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.
+        </p>
       </section>
 
       <SiteFooter />

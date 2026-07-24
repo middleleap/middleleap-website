@@ -5,6 +5,7 @@ export type PortfolioProject = {
   status: string;
   evidence: string;
   nextGate: string;
+  portfolioRole: "Flagship regulated proof" | "Venture experiment";
   harnessProfile: "Regulated delivery" | "Venture delivery";
   detailPath: string;
   href?: string;
@@ -29,6 +30,7 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "Demo-complete",
     evidence: "Regulated controls designed into a working platform from day one.",
     nextGate: "Enterprise adoption",
+    portfolioRole: "Flagship regulated proof",
     harnessProfile: "Regulated delivery",
     detailPath: "/ventures/backoffice",
     href: "https://backoffice.openfinance-os.org/",
@@ -42,6 +44,7 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "Acquisition wedge live",
     evidence: "Commercial investment is gated by district-level demand and supply evidence.",
     nextGate: "District-level commercial proof",
+    portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/parqo",
     href: "https://parqo.co/",
@@ -55,6 +58,7 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "Initial product live",
     evidence: "AI can deepen an expert service without taking authority from the expert.",
     nextGate: "Repeat usage and coach validation",
+    portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/hivemind",
     repository: "https://github.com/middleleap/hivemind",

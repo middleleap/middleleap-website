@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { RelatedPortfolio } from "@/components/RelatedPortfolio";
@@ -72,9 +73,10 @@ export default function HiveMindProjectPage() {
         contextLabel="HiveMind navigation"
         contextLinks={[
           { href: "#problem", label: "Overview" },
+          { href: "#architecture", label: "Architecture" },
           { href: "#delivery", label: "Delivery" },
           { href: "#development", label: "Current boundary" },
-          { href: "#evidence", label: "Evidence" },
+          { href: "#technical-record", label: "Technical record" },
           { href: "#outcome", label: "What it proves" },
         ]}
       />
@@ -98,6 +100,18 @@ export default function HiveMindProjectPage() {
           </dl>
         </aside>
       </section>
+
+      <ExecutiveSummary
+        title="A service experiment in preserving expert authority."
+        intro="HiveMind is deliberately outside MiddleLeap's regulated core. Its relevance is the operating principle: AI may increase the reach and consistency of an expert service without becoming the accountable expert."
+        items={[
+          { label: "Question", title: "Can expertise scale safely?", detail: "Turn fragmented track evidence into useful coaching while preserving the coach's judgement, voice and customer relationship." },
+          { label: "Evidence", title: "Core loop live", detail: "The product can assemble evidence, draft a grounded debrief and return it to a coach for review." },
+          { label: "Authority", title: "The coach decides", detail: "AI cannot issue final advice; human edit and sign-off remain the customer-facing boundary." },
+          { label: "Practice value", title: "Human-in-the-loop design", detail: "The experiment informs service propositions where AI assists perception and synthesis but cannot own the decision." },
+          { label: "Next gate", title: "Wider pilot evidence", detail: "Test credentials, noisy trackside inputs, repeat usage and coach validation before expanding the service." },
+        ]}
+      />
 
       <section className={styles.section}>
         <div className={styles.sectionLabel}><span>01</span><p>Why it exists</p></div>
@@ -127,9 +141,12 @@ export default function HiveMindProjectPage() {
         </div>
       </section>
 
-      <section className={styles.section} id="delivery"><div className={styles.sectionLabel}><span>03</span><p>Venture delivery profile</p></div><div><h2>Start with the coach&apos;s gold standard, then make every AI step answer to it.</h2><p className={styles.sectionLede}>HiveMind applies the Loom&apos;s evidence, specification and human-authority principles as a lighter venture profile. It is not presented as a full regulated-harness implementation.</p><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
+      <section className={styles.section} id="delivery"><div className={styles.sectionLabel}><span>03</span><p>Loom-informed delivery</p></div><div><h2>Start with the coach&apos;s gold standard, then make every AI step answer to it.</h2><p className={styles.sectionLede}>HiveMind applies the Loom&apos;s evidence, specification and human-authority principles to venture building. This is disciplined use of the method&apos;s ideas—not a claim of full regulated-harness adoption.</p><div className={styles.buildFlow}>{buildStages.map((stage) => <article key={stage.number}><span>{stage.number}</span><h3>{stage.name}</h3><p>{stage.detail}</p></article>)}</div></div></section>
 
-      <section className={styles.section} id="build-system" tabIndex={-1}>
+      <details className={styles.technicalDetails} id="technical-record">
+        <summary><span>Technical build record</span><strong>AI systems · Technology · Quality controls</strong><i aria-hidden="true">+</i></summary>
+        <div className={styles.technicalDetailsBody}>
+      <section className={styles.section}>
         <div className={styles.sectionLabel}><span>04</span><p>AI systems</p></div>
         <div><h2>Delivery AI and product AI are different systems.</h2><p className={styles.sectionLede}>Claude Code, skills, hooks, reviewers and Stitch MCP shape how the product is built. Claude and Whisper power the server-side customer workflow. The repository contains no Codex build provenance in the reviewed snapshot.</p>
           <div className={styles.harnessGrid}>{harnessCapabilities.map((item) => <article key={item.title}><span>{item.label}</span><h3>{item.title}</h3><p>{item.detail}</p></article>)}</div>
@@ -147,6 +164,8 @@ export default function HiveMindProjectPage() {
         <article><span>Journey</span><h3>Product confidence</h3><p>Playwright covers user journeys, AI-tagged scenarios and row-level security boundaries.</p></article>
         <article><span>Release</span><h3>Coach authority</h3><p>The product requires a coach edit and sign-off before a debrief becomes customer-facing advice.</p></article>
       </div></div></section>
+        </div>
+      </details>
 
       <section className={styles.section} id="development" tabIndex={-1}><div className={styles.sectionLabel}><span>07</span><p>Development record</p></div><div><h2>The core loop is live; expansion remains evidence-led.</h2><div className={styles.phaseTrack}>{phases.map((phase) => <article className={phase.state === "next" ? styles.nextPhase : styles.donePhase} key={phase.number}><span>{phase.number}</span><h3>{phase.title}</h3><p>{phase.label}</p></article>)}</div>
         <div className={styles.evidenceGrid}><article><strong>303</strong><span>Tracked test/spec files in the application</span></article><article><strong>71</strong><span>Supabase migrations in the reviewed repository</span></article><article><strong>25</strong><span>Next.js API route handlers</span></article><article><strong>2 + 3 + 2</strong><span>Repository skills, hooks and bounded review agents</span></article></div>

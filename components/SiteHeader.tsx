@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { BrandLockup } from "./BrandLockup";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
@@ -59,16 +59,72 @@ export function SiteHeader({
   priority = false,
 }: SiteHeaderProps) {
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+  const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
   const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
     { href: `${prefix}#expertise`, label: "What we do", section: "what" },
     { href: `${prefix}#method`, label: "How we work", section: "method" },
+    { href: `${prefix}#experience`, label: "The practice", section: "experience" },
     { href: "/ventures", label: "Ventures", section: "ventures" },
-    { href: `${prefix}#experience`, label: "Experience", section: "experience" },
   ];
   const closeMobileMenu = () => {
     if (mobileMenuRef.current) mobileMenuRef.current.open = false;
   };
+
+  useEffect(() => {
+    const scrollToHash = () => {
+      if (!window.location.hash) return;
+
+      const target = document.querySelector(window.location.hash);
+      if (!target) return;
+
+      target.scrollIntoView({ block: "start" });
+    };
+    const scheduleHashScroll = () => {
+      scrollToHash();
+      window.requestAnimationFrame(scrollToHash);
+    };
+    const settleTimer = window.setTimeout(scrollToHash, 350);
+
+    scheduleHashScroll();
+    document.fonts?.ready.then(scrollToHash);
+    window.addEventListener("load", scrollToHash);
+    window.addEventListener("resize", scheduleHashScroll);
+    window.addEventListener("hashchange", scheduleHashScroll);
+    return () => {
+      window.clearTimeout(settleTimer);
+      window.removeEventListener("load", scrollToHash);
+      window.removeEventListener("resize", scheduleHashScroll);
+      window.removeEventListener("hashchange", scheduleHashScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const localLinks = contextLinks.filter((link) => link.href.startsWith("#"));
+    if (localLinks.length === 0) return;
+
+    const updateActiveContext = () => {
+      const visibleThreshold = 180;
+      let activeHref = "";
+
+      for (const link of localLinks) {
+        const target = document.querySelector(link.href);
+        if (target && target.getBoundingClientRect().top <= visibleThreshold) {
+          activeHref = link.href;
+        }
+      }
+
+      setActiveContextHref(activeHref);
+    };
+
+    updateActiveContext();
+    window.addEventListener("scroll", updateActiveContext, { passive: true });
+    window.addEventListener("hashchange", updateActiveContext);
+    return () => {
+      window.removeEventListener("scroll", updateActiveContext);
+      window.removeEventListener("hashchange", updateActiveContext);
+    };
+  }, [contextLinks]);
 
   return (
     <div className={styles.headerWrap}>
@@ -79,6 +135,7 @@ export function SiteHeader({
             <HeaderLink
               key={link.section}
               href={link.href}
+              current={active === link.section ? "location" : undefined}
               active={active === link.section}
             >
               {link.label}
@@ -94,12 +151,43 @@ export function SiteHeader({
           <summary>Menu</summary>
           <nav className={styles.mobileLinks} aria-label="Mobile navigation">
             {globalLinks.map((link) => (
-              <HeaderLink key={link.section} href={link.href} onClick={closeMobileMenu}>{link.label}</HeaderLink>
+              <HeaderLink
+                key={link.section}
+                href={link.href}
+                current={active === link.section ? "location" : undefined}
+                active={active === link.section}
+                onClick={closeMobileMenu}
+              >
+                {link.label}
+              </HeaderLink>
             ))}
             <HeaderLink href={`${prefix}#engage`} onClick={closeMobileMenu}>Discuss a mandate</HeaderLink>
+            {breadcrumbs.length > 0 && (
+              <>
+                <span className={styles.mobileContextLabel}>You are here</span>
+                <div className={styles.mobileBreadcrumbs}>
+                  {breadcrumbs.map((crumb, index) => (
+                    <span key={`${crumb.label}-${index}`}>
+                      {index > 0 && <i aria-hidden="true">/</i>}
+                      {crumb.href ? <Link href={crumb.href} onClick={closeMobileMenu}>{crumb.label}</Link> : <b>{crumb.label}</b>}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
             {contextLinks.length > 0 && <span className={styles.mobileContextLabel}>On this page</span>}
             {contextLinks.map((link) => (
-              <HeaderLink key={link.href} href={link.href} onClick={closeMobileMenu}>{link.label}</HeaderLink>
+              <HeaderLink
+                key={link.href}
+                href={link.href}
+                current={link.current || link.href === activeContextHref ? "location" : undefined}
+                onClick={() => {
+                  if (link.href.startsWith("#")) setActiveContextHref(link.href);
+                  closeMobileMenu();
+                }}
+              >
+                {link.label}
+              </HeaderLink>
             ))}
           </nav>
         </details>
@@ -120,7 +208,7 @@ export function SiteHeader({
               <HeaderLink
                 key={link.href}
                 href={link.href}
-                current={link.current ? "location" : undefined}
+                current={link.current || link.href === activeContextHref ? "location" : undefined}
               >
                 {link.label}
               </HeaderLink>

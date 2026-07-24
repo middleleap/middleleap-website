@@ -22,28 +22,11 @@ export function VenturesPortfolio() {
         </div>
       </div>
 
-      <div className={styles.evidenceMap} aria-label="Portfolio evidence and next decision gates">
-        <div className={styles.evidenceMapHeader}>
-          <span>Venture</span>
-          <span>Proposition</span>
-          <span>Evidence now</span>
-          <span>Next gate</span>
-        </div>
-        {portfolioProjects.map((project, index) => (
-          <Link className={styles.evidenceRow} href={project.detailPath} key={project.name}>
-            <span data-label="Venture"><i>0{index + 1}</i><strong>{project.name}</strong></span>
-            <span data-label="Proposition">{project.type}</span>
-            <span data-label="Evidence now"><b>{project.status}</b></span>
-            <span data-label="Next gate">{project.nextGate}<i aria-hidden="true">→</i></span>
-          </Link>
-        ))}
-      </div>
-
       <div className={styles.projectGrid}>
         {portfolioProjects.map((project) => (
           <article key={project.name}>
             <div className={styles.projectMeta}>
-              <span>{project.type}</span>
+              <span>{project.portfolioRole}</span>
               <b>{project.status}</b>
             </div>
             <h3>{project.name}</h3>

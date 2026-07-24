@@ -7,7 +7,7 @@ import "./globals.css";
 // cookieless and privacy-friendly, matching the PRD's analytics intent.
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
-const themeBootScript = `(()=>{try{const k="middleleap-theme",s=localStorage.getItem(k),m=matchMedia("(prefers-color-scheme: light)").matches,t=s==="light"||s==="dark"?s:m?"light":"dark";document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch{document.documentElement.dataset.theme="dark"}})();`;
+const themeBootScript = `(()=>{try{const k="middleleap-theme",s=localStorage.getItem(k),a=s==="light"||s==="dark"?s:"auto",m=matchMedia("(prefers-color-scheme: light)").matches,t=a==="auto"?(m?"light":"dark"):a;document.documentElement.dataset.theme=t;document.documentElement.dataset.themeMode=a;document.documentElement.style.colorScheme=t}catch{document.documentElement.dataset.theme="dark";document.documentElement.dataset.themeMode="auto"}})();`;
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "regulatory readiness",
     "AI-native operating models",
     "The Loom",
-    "governed AI delivery harness",
+    "governed AI delivery method",
     "venture studio",
     "AI governance",
     "AI-DLC",

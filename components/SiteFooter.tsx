@@ -6,14 +6,15 @@ export function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.footerIdentity}>
         <strong>MiddleLeap</strong>
-        <p>Independent advisory firm and venture studio · Dubai, UAE</p>
+        <p>Independent advisory practice and venture studio · Dubai, UAE</p>
+        <p>Senior teams assembled around each mandate.</p>
       </div>
       <div className={styles.footerLinks}>
         <nav className={styles.footerGroup} aria-label="Advisory links">
           <span>Advisory</span>
           <Link href="/#expertise">What we do</Link>
           <Link href="/#method">How we work</Link>
-          <Link href="/#experience">Experience</Link>
+          <Link href="/#experience">The practice</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Execution links">
@@ -31,7 +32,8 @@ export function SiteFooter() {
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <a href="mailto:contact@middleleap.com">Contact</a>
+          <Link href="/#experience">Practice &amp; founder</Link>
+          <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/venture-submission-terms">Submission terms</Link>
         </nav>

@@ -1,4 +1,4 @@
-.shell { min-height: 100vh; overflow: hidden; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), sans-serif; }
+.shell { min-height: 100vh; overflow: clip; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), sans-serif; }
 .hero, .section, .propose { width: min(calc(100% - 64px), 1080px); margin-inline: auto; }
 .hero { min-height: 650px; display: flex; flex-direction: column; justify-content: center; padding-block: 90px; }
 .eyebrow { margin-bottom: 20px; color: var(--ember-text); font: 500 var(--fs-ui) var(--font-jetbrains-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
