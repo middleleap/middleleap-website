@@ -6,16 +6,21 @@ export function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.footerIdentity}>
         <strong>MiddleLeap</strong>
-        <p>Independent advisory practice and venture studio · Dubai, UAE</p>
-        <p>Senior teams assembled around each mandate.</p>
+        <p>Independent advisory practice · Dubai, UAE</p>
+        <p>Working capability and institution-owned intelligence.</p>
       </div>
       <div className={styles.footerLinks}>
+        <nav className={styles.footerGroup} aria-label="Proposition links">
+          <span>Proposition</span>
+          <Link href="/institutional-intelligence">Institutional Intelligence</Link>
+          <Link href="/brainkit">BrainKit</Link>
+          <Link href="/#model">Operating model</Link>
+        </nav>
         <nav className={styles.footerGroup} aria-label="Advisory links">
           <span>Advisory</span>
           <Link href="/#expertise">What we do</Link>
           <Link href="/open-finance">Open Finance</Link>
-          <Link href="/#method">How we work</Link>
-          <Link href="/#experience">The practice</Link>
+          <Link href="/#practice">The practice</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Execution links">
@@ -33,10 +38,9 @@ export function SiteFooter() {
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <Link href="/#experience">Practice &amp; founder</Link>
+          <Link href="/#practice">Practice &amp; founder</Link>
           <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
           <Link href="/privacy">Privacy</Link>
-          <Link href="/venture-submission-terms">Submission terms</Link>
         </nav>
       </div>
     </footer>

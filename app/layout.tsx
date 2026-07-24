@@ -31,11 +31,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "MiddleLeap | Platform Strategy & AI-Native Transformation",
+    default: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
     template: "%s | MiddleLeap",
   },
   description:
-    "MiddleLeap advises banks, fintechs, financial infrastructure and telecommunications providers on platform strategy and AI-native transformation.",
+    "MiddleLeap helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.",
   keywords: [
     "Open Finance",
     "embedded finance",
@@ -45,6 +45,8 @@ export const metadata: Metadata = {
     "platform monetisation",
     "regulatory readiness",
     "AI-native operating models",
+    "institutional intelligence",
+    "Institutional BrainKit",
     "The Loom",
     "governed AI delivery method",
     "venture studio",
@@ -63,9 +65,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
+    title: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
     description:
-      "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
+      "Deliver the mandate in front of you. Strengthen the institution behind it.",
     url: `${siteOrigin}/`,
     siteName: "MiddleLeap",
     locale: "en_US",
@@ -75,15 +77,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "MiddleLeap — From strategic mandate to market execution",
+        alt: "MiddleLeap — Every engagement should leave the institution smarter",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
+    title: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
     description:
-      "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
+      "Deliver the mandate in front of you. Strengthen the institution behind it.",
     images: ["/twitter-image"],
   },
   robots: {
@@ -120,9 +122,9 @@ export default function RootLayout({
       <body
         className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       >
-        <a href="#problem" className="skip-link">Skip to content</a>
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <div className="grain" />
-        {children}
+        <div id="main-content">{children}</div>
         {plausibleDomain && (
           <Script
             defer

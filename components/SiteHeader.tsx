@@ -6,7 +6,7 @@ import { BrandLockup } from "./BrandLockup";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
-type NavSection = "what" | "method" | "ventures" | "experience";
+type NavSection = "intelligence" | "loom" | "open-finance" | "ventures";
 
 export type ContextLink = {
   href: string;
@@ -62,9 +62,9 @@ export function SiteHeader({
   const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
   const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
-    { href: `${prefix}#expertise`, label: "What we do", section: "what" },
-    { href: `${prefix}#method`, label: "How we work", section: "method" },
-    { href: `${prefix}#experience`, label: "The practice", section: "experience" },
+    { href: "/institutional-intelligence", label: "Intelligence", section: "intelligence" },
+    { href: "/the-loom", label: "The Loom", section: "loom" },
+    { href: "/open-finance", label: "Open Finance", section: "open-finance" },
     { href: "/ventures", label: "Ventures", section: "ventures" },
   ];
   const closeMobileMenu = () => {

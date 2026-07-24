@@ -117,7 +117,7 @@ export default function LoomPage() {
   return (
     <main className={styles.shell} id="problem">
       <SiteHeader
-        active="method"
+        active="loom"
         priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },

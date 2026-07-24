@@ -1,6 +1,6 @@
 # MiddleLeap
 
-> MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps banks, fintechs, financial infrastructure providers and regulated platform businesses move from strategic mandate to market execution.
+> MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.
 
 Canonical website: https://www.middleleap.com/
 Contact: contact@middleleap.com
@@ -10,7 +10,11 @@ Primary market: Middle East and North Africa
 
 ## Positioning
 
-MiddleLeap helps leaders turn regulatory, commercial and technology shifts into platform advantage. Its work connects market position, platform economics, ecosystem design and AI-native operating models. Open Finance is a significant area of experience, but it is one part of the broader regulated platform transformation practice.
+MiddleLeap works from a simple belief: every engagement should leave the institution smarter. It helps leaders turn regulatory, commercial and technology shifts into platform advantage while capturing the approved decisions, architecture, controls and operating knowledge created through delivery.
+
+Institutional intelligence is the governed context an organisation uses to make, explain and repeat good decisions. MiddleLeap builds it through live mandates rather than as a detached knowledge-management programme. The commercial outcome remains working capability; the second outcome is an institution that retains more of what made that capability possible.
+
+Advisory remains the front door. The Institutional BrainKit is the institution-owned asset, The Loom is the governed method, The Loom Toolkit is the installable runtime, and AI-DLC is the open technical distribution mechanism.
 
 ## Core capabilities
 
@@ -29,15 +33,25 @@ MiddleLeap helps banks, fintechs, TPPs and financial infrastructure providers co
 - Operating model: align product, technology, risk, compliance, operations and partner management around delivery.
 - Engagement models include executive advisory, focused strategy sprints and transformation mobilisation.
 
+## Institutional intelligence
+
+Institutional intelligence includes:
+
+- Identity and language: approved purpose, principles, terminology, customers and positions.
+- Architecture and policy: system boundaries, technology choices, control policy and delivery constraints.
+- Decisions and rights: what was decided, why, who owns it and what would trigger review.
+- Evidence and gaps: sources, assurance records, operating signals and explicit unknowns.
+
+The Institutional BrainKit packages this context privately. Accountable institutional owners approve it. Repositories mount digest-pinned releases, and delivery validation checks canonical sections, declared files, source grounding, digests and artifact provenance. Agents may organise sources, draft sections, expose gaps and validate structure; they cannot approve institutional truth or operate production controls.
+
 ## How MiddleLeap works
 
-MiddleLeap works from mandate to working capability through five stages:
+MiddleLeap works from mandate to working capability and retained institutional intelligence through four stages:
 
-1. Frame the regulatory, commercial or operating mandate.
-2. Design the proposition, ecosystem, platform and operating model.
-3. Mobilise leaders, partners, product teams and governance stakeholders.
-4. Deliver working products and capabilities.
-5. Codify reusable knowledge, controls and agent workflows.
+1. Frame the mandate, evidence, boundaries and accountable decisions.
+2. Build the proposition, platform or operating capability.
+3. Govern delivery through institutional context, controls and human authority.
+4. Compound approved decisions and operating evidence into the next mandate.
 
 The Loom is MiddleLeap's governed AI delivery harness. Its shared core combines evidence-led discovery, bounded AI-assisted delivery and human authority. A regulated profile adds formal assurance, audit, lineage and institutional controls; a venture profile applies commercial-evidence, product-safety and expert-authority gates.
 
@@ -76,7 +90,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 - Executive advisory for regulatory, platform and transformation mandates.
 - Platform strategy sprints covering proposition, ecosystem, commercial model and execution roadmap.
-- AI-native delivery pilots that adopt The Loom around one bounded outcome and leave a governed repository capability behind.
+- Governed delivery pilots that adopt The Loom around one bounded outcome and leave a governed repository capability and first BrainKit release behind.
 
 ## Experience and delivery model
 
@@ -91,6 +105,8 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 ## Primary source
 
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
+- [Institutional Intelligence](https://www.middleleap.com/institutional-intelligence): proposition, ownership model, product hierarchy and compounding loop.
+- [Institutional BrainKit](https://www.middleleap.com/brainkit): private context asset, contents, lifecycle and human-authority boundary.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
