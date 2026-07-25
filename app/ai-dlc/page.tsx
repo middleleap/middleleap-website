@@ -1,22 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./ai-dlc.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "The Loom Toolkit | Institutional AI Delivery",
   description:
     "The Loom Toolkit installs MiddleLeap's governed delivery method, an institution-owned BrainKit and optional domain intelligence inside repositories.",
-  alternates: { canonical: "/toolkit" },
-  openGraph: {
-    title: "The Loom Toolkit | Institutional AI Delivery",
-    description:
-      "Install a governed delivery toolkit, draft the institution's BrainKit and pin that approved context across repositories.",
-    url: "https://www.middleleap.com/toolkit",
-  },
-};
+  path: "/toolkit",
+  socialDescription:
+    "Install a governed delivery toolkit, draft the institution's BrainKit and pin that approved context across repositories.",
+});
 
 const bundles = [
   {
@@ -85,7 +81,7 @@ const brainkitLifecycle = [
 
 export default function AiDlcPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
         active="intelligence"
         priority
@@ -105,7 +101,8 @@ export default function AiDlcPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>The Loom Toolkit · delivered through AI-DLC</p>
           <h1>Install the method. Give it your <em>institutional DNA.</em></h1>
@@ -250,8 +247,9 @@ export default function AiDlcPage() {
         <p>Use an AI-native delivery pilot to draft the first BrainKit from approved sources, establish accountable ownership and leave a digest-pinned, manifest-installed harness in the repository.</p>
         <div className={styles.actions}><Link className={styles.primaryAction} href="/#engage">Discuss a delivery pilot</Link><a className={styles.darkAction} href="https://github.com/middleleap/ai-dlc" target="_blank" rel="noreferrer">Browse the repository ↗</a></div>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

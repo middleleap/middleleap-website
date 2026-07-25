@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VentureProposalForm } from "@/components/VentureProposalForm";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./studio.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Venture Studio",
   description:
     "Propose an evidenced platform, regulated-market or financial-infrastructure problem to the MiddleLeap Venture Studio.",
-  alternates: { canonical: "/ventures/studio" },
-};
+  path: "/ventures/studio",
+});
 
 const criteria = [
   ["A real problem", "A clear operating, customer or ecosystem problem—not only a product idea."],
@@ -38,7 +38,7 @@ const process = [
 
 export default function VentureStudioPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
         active="ventures"
         priority
@@ -56,7 +56,8 @@ export default function VentureStudioPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <p className={styles.eyebrow}>MiddleLeap Venture Studio</p>
         <h1>Bring us a problem<br />worth <em>building around.</em></h1>
         <p className={styles.lede}>
@@ -123,7 +124,8 @@ export default function VentureStudioPage() {
         <VentureProposalForm />
       </section>
 
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }

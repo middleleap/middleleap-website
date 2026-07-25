@@ -1,21 +1,18 @@
-import type { Metadata } from "next";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { RelatedPortfolio } from "@/components/RelatedPortfolio";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "../backoffice/project.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "HiveMind / Hive Coach",
   description:
     "How HiveMind built Hive Coach: product architecture, runtime AI pipeline, delivery harness, technology stack, quality controls and development maturity.",
-  alternates: { canonical: "/ventures/hivemind" },
-  openGraph: {
-    title: "HiveMind / Hive Coach | MiddleLeap Ventures",
-    description: "An evidence-backed build record for human-led, AI-amplified karting coaching.",
-    url: "https://www.middleleap.com/ventures/hivemind",
-  },
-};
+  path: "/ventures/hivemind",
+  socialTitle: "HiveMind / Hive Coach | MiddleLeap Ventures",
+  socialDescription: "An evidence-backed build record for human-led, AI-amplified karting coaching.",
+});
 
 const buildStages = [
   { number: "01", name: "Observe", detail: "Coach workflow, track-day evidence and a gold-standard debrief" },
@@ -62,7 +59,7 @@ const sources = [
 
 export default function HiveMindProjectPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
         active="ventures"
         breadcrumbs={[
@@ -82,7 +79,8 @@ export default function HiveMindProjectPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Portfolio · AI-enabled service venture</p>
           <h1>HiveMind.<br /><em>Human-led coaching.</em></h1>
@@ -177,7 +175,8 @@ export default function HiveMindProjectPage() {
 
       <section className={styles.engage} id="outcome"><p className={styles.eyebrow}>What this venture proves</p><h2>AI can deepen a human service without taking authority away from the expert.</h2><p>Bring the product, operating-model and governed-AI learning into your service proposition.</p><a href="mailto:contact@middleleap.com?subject=HiveMind%20venture%20learning">Discuss the mandate →</a></section>
       <RelatedPortfolio currentPath="/ventures/hivemind" />
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }

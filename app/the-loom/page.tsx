@@ -1,22 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./loom.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
     "The Loom is MiddleLeap's reusable way for regulated institutions to find the right problem, deliver software under control and learn from what runs.",
-  alternates: { canonical: "/the-loom" },
-  openGraph: {
-    title: "The Loom | Governed AI Delivery for Regulated Institutions",
-    description:
-      "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
-    url: "https://www.middleleap.com/the-loom",
-  },
-};
+  path: "/the-loom",
+  socialDescription:
+    "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
+});
 
 const proofPoints = [
   ["134 / ~139", "Stories to done in the first build"],
@@ -115,7 +111,7 @@ const limits = [
 
 export default function LoomPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
         active="intelligence"
         priority
@@ -134,7 +130,8 @@ export default function LoomPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>The Loom · governed AI delivery</p>
           <h1>Find the right problem.<br />Ship it under <em>control.</em></h1>
@@ -327,8 +324,9 @@ export default function LoomPage() {
           <Link className={styles.darkAction} href="/toolkit">View The Loom Toolkit</Link>
         </div>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

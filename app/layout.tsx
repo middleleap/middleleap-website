@@ -124,7 +124,7 @@ export default function RootLayout({
       >
         <a href="#main-content" className="skip-link">Skip to content</a>
         <div className="grain" />
-        <div id="main-content">{children}</div>
+        <div>{children}</div>
         {plausibleDomain && (
           <Script
             defer

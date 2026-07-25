@@ -1,16 +1,21 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "../legal.module.css";
 
-export const metadata: Metadata = { title: "Privacy", alternates: { canonical: "/privacy" } };
+export const metadata = createPageMetadata({
+  title: "Privacy",
+  description: "How MiddleLeap handles information received through this website and its enquiry routes.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Privacy" }]} />
-      <article className={styles.content}>
+      <main id="main-content" tabIndex={-1}>
+      <article className={styles.content} id="problem">
         <p className={styles.eyebrow}>Company information</p>
         <h1>Privacy.</h1>
         <p className={styles.updated}>Effective 18 July 2026</p>
@@ -50,7 +55,8 @@ export default function PrivacyPage() {
           <p>Venture proposals are also governed by the <Link href="/venture-submission-terms">Venture Submission Terms</Link>.</p>
         </section>
       </article>
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }

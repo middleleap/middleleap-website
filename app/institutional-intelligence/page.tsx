@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { InstitutionalIntelligenceSystem } from "@/components/InstitutionalIntelligenceSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./proposition.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Institutional Intelligence",
   description:
     "Build governed institutional intelligence that captures decisions, architecture, controls and operating knowledge through real delivery.",
-  alternates: { canonical: "/institutional-intelligence" },
-};
+  path: "/institutional-intelligence",
+});
 
 const contents = [
   ["01", "Identity & language", "Purpose, principles, terminology, customers and the vocabulary the institution has approved."],
@@ -35,7 +35,7 @@ const cycle = [
 
 export default function InstitutionalIntelligencePage() {
   return (
-    <main className={styles.shell} id="overview">
+    <div className={styles.shell}>
       <SiteHeader
         active="intelligence"
         priority
@@ -48,7 +48,8 @@ export default function InstitutionalIntelligencePage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="overview">
         <div>
           <p className={styles.eyebrow}>The proposition</p>
           <h1>
@@ -210,8 +211,9 @@ export default function InstitutionalIntelligencePage() {
           Discuss a mandate
         </a>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "../institutional-intelligence/proposition.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Institutional BrainKit",
   description:
     "A private, human-approved package of institutional context used to ground governed discovery and delivery.",
-  alternates: { canonical: "/brainkit" },
-};
+  path: "/brainkit",
+});
 
 const contents = [
   ["01", "Identity", "Purpose, customers, principles and the positions that define the institution."],
@@ -31,7 +31,7 @@ const lifecycle = [
 
 export default function BrainKitPage() {
   return (
-    <main className={styles.shell} id="overview">
+    <div className={styles.shell}>
       <SiteHeader
         active="intelligence"
         priority
@@ -48,7 +48,8 @@ export default function BrainKitPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="overview">
         <div>
           <p className={styles.eyebrow}>The institution-owned asset</p>
           <h1>
@@ -177,8 +178,9 @@ export default function BrainKitPage() {
           <Link className={styles.secondaryAction} href="/toolkit">View the installable Toolkit</Link>
         </div>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

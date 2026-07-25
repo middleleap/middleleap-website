@@ -111,9 +111,9 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
 - [The Loom](https://www.middleleap.com/the-loom): governed AI delivery harness, regulated and venture profiles, context brain, assurance and stated limits.
-- [The Loom Toolkit](https://www.middleleap.com/ai-dlc): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
+- [The Loom Toolkit](https://www.middleleap.com/toolkit): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
 - [Open Finance Back Office build record](https://www.middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
 - [HiveMind build record](https://www.middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
 - [Parqo build record](https://www.middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
 
-Last reviewed: 2026-07-24
+Last reviewed: 2026-07-25

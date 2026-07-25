@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { InstitutionalIntelligenceSystem } from "@/components/InstitutionalIntelligenceSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
   description:
     "MiddleLeap helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.",
-};
+  path: "/",
+  socialDescription: "Deliver the mandate in front of you. Strengthen the institution behind it.",
+});
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -80,24 +82,31 @@ const capabilities = [
     detail:
       "Turn a regulatory shift into market position, proposition, operating model and accountable execution.",
     href: "/open-finance",
+    action: "Explore Open Finance",
   },
   {
     number: "02",
     title: "Platform & ecosystem strategy",
     detail:
       "Design the platform proposition, APIs, partner model, economics and governance as one commercial system.",
+    href: "#engage",
+    action: "Discuss a platform mandate",
   },
   {
     number: "03",
     title: "AI-native operating models",
     detail:
       "Redesign value streams, decision rights, teams and controls for human-and-agent execution.",
+    href: "#engage",
+    action: "Discuss an AI operating model",
   },
   {
     number: "04",
     title: "Transformation delivery",
     detail:
       "Move from executive mandate through mobilisation to working products, platforms and institutional capability.",
+    href: "#engage",
+    action: "Discuss transformation delivery",
   },
 ];
 
@@ -132,14 +141,15 @@ const engagements = [
 
 export default function HomePage() {
   return (
-    <main className={styles.shell} id="top">
+    <div className={styles.shell}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
       <SiteHeader active="advisory" home priority />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="top">
         <div>
           <p className={styles.eyebrow}>Independent advisory · Dubai</p>
           <h1>
@@ -191,7 +201,7 @@ export default function HomePage() {
               <span>{capability.number}</span>
               <h3>{capability.title}</h3>
               <p>{capability.detail}</p>
-              {capability.href && <Link href={capability.href}>Explore the capability →</Link>}
+              <Link href={capability.href}>{capability.action} →</Link>
             </article>
           ))}
         </div>
@@ -224,6 +234,10 @@ export default function HomePage() {
               MiddleLeap is an independent advisory practice. A senior lead stays accountable;
               specialists are assembled around the mandate; client leaders remain inside the
               working system.
+            </p>
+            <p>
+              The outcomes below were delivered in prior executive roles and are carried into
+              MiddleLeap&apos;s practice.
             </p>
           </div>
         </div>
@@ -293,8 +307,9 @@ export default function HomePage() {
           Or write directly to <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.
         </p>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

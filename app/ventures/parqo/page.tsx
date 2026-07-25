@@ -1,21 +1,18 @@
-import type { Metadata } from "next";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { RelatedPortfolio } from "@/components/RelatedPortfolio";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "../backoffice/project.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Parqo",
   description:
     "How Parqo is being built: the live acquisition wedge, approved marketplace design, AI-native delivery controls, technology stack and validation roadmap.",
-  alternates: { canonical: "/ventures/parqo" },
-  openGraph: {
-    title: "Parqo | MiddleLeap Ventures",
-    description: "An evidence-backed build record for a UAE employee-parking marketplace.",
-    url: "https://www.middleleap.com/ventures/parqo",
-  },
-};
+  path: "/ventures/parqo",
+  socialTitle: "Parqo | MiddleLeap Ventures",
+  socialDescription: "An evidence-backed build record for a UAE employee-parking marketplace.",
+});
 
 const buildStages = [
   { number: "01", name: "Research", detail: "Market evidence, competition, risks and district economics" },
@@ -61,7 +58,7 @@ const sources = [
 
 export default function ParqoProjectPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
         active="ventures"
         breadcrumbs={[
@@ -81,7 +78,8 @@ export default function ParqoProjectPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Portfolio · Platform venture</p>
           <h1>Parqo.<br /><em>Space, put to work.</em></h1>
@@ -176,7 +174,8 @@ export default function ParqoProjectPage() {
 
       <section className={styles.engage} id="outcome"><p className={styles.eyebrow}>What this venture proves</p><h2>Platform strategy gets sharper when every build step has a commercial learning target.</h2><p>Bring the marketplace, district-density and AI-native delivery learning into your platform mandate.</p><a href="mailto:contact@middleleap.com?subject=Parqo%20venture%20learning">Discuss the mandate →</a></section>
       <RelatedPortfolio currentPath="/ventures/parqo" />
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }
