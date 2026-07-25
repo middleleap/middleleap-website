@@ -126,7 +126,7 @@ export default function LoomPage() {
           { href: "#control-chain", label: "Control chain" },
           { href: "#assurance", label: "Assurance" },
           { href: "#evidence", label: "Evidence" },
-          { href: "/toolkit", label: "Toolkit" },
+          { href: "/toolkit", label: "Implementation" },
         ]}
       />
 
@@ -142,7 +142,7 @@ export default function LoomPage() {
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#loop">Explore the closed loop</a>
-            <Link className={styles.secondaryAction} href="/toolkit">View the technical toolkit</Link>
+            <Link className={styles.secondaryAction} href="/toolkit">View the technical implementation</Link>
           </div>
         </div>
 
@@ -272,7 +272,7 @@ export default function LoomPage() {
         </div>
         <div className={styles.moat}><span>The moat test</span><p>If a competitor copied the codebase tomorrow, it would still lack the accumulated, governed context that makes the software belong to the institution.</p></div>
         <div className={styles.actions}>
-          <Link className={styles.secondaryAction} href="/brainkit">Examine the Institutional BrainKit</Link>
+          <Link className={styles.secondaryAction} href="/institutional-brain">Examine the Institutional Brain</Link>
         </div>
       </section>
 
@@ -321,7 +321,7 @@ export default function LoomPage() {
         <p>Mount the institution&apos;s controls and context, run one gated discovery, and deliver one bounded outcome with human accountability intact.</p>
         <div className={styles.actions}>
           <Link className={styles.primaryAction} href="/#engage">Discuss a Loom pilot</Link>
-          <Link className={styles.darkAction} href="/toolkit">View The Loom Toolkit</Link>
+          <Link className={styles.darkAction} href="/toolkit">View the technical implementation</Link>
         </div>
       </section>
       </main>

@@ -19,11 +19,23 @@ const contents = [
   ["04", "Evidence & gaps", "Sources, assurance records, operating signals and the unknowns that must remain visible."],
 ] as const;
 
-const stack = [
-  ["01", "BrainKit", "Institution-owned context", "Private, approved and digest-pinned institutional intelligence.", "/brainkit"],
-  ["02", "The Loom", "Governed application", "Discovery and delivery machinery that binds work to evidence and human authority.", "/the-loom"],
-  ["03", "The Loom Toolkit", "Repository runtime", "Installable controls, templates, adoption reports and continuous assurance.", "/toolkit"],
-  ["04", "AI-DLC", "Open distribution", "The technical channel used to package, version and adopt the public Toolkit.", "/toolkit"],
+const publicModel = [
+  [
+    "01",
+    "The Institutional Brain",
+    "Institution-owned intelligence",
+    "The private, governed body of collective understanding that makes the institution distinctive.",
+    "/institutional-brain",
+    "Examine the Brain",
+  ],
+  [
+    "02",
+    "The Loom",
+    "Governed delivery method",
+    "The method that applies institutional intelligence to discovery, delivery and assurance.",
+    "/the-loom",
+    "Examine the method",
+  ],
 ] as const;
 
 const cycle = [
@@ -43,7 +55,7 @@ export default function InstitutionalIntelligencePage() {
         contextLinks={[
           { href: "#overview", label: "Overview" },
           { href: "#model", label: "The model" },
-          { href: "#architecture", label: "Architecture" },
+          { href: "#architecture", label: "Brain & Loom" },
           { href: "#ownership", label: "Ownership" },
         ]}
       />
@@ -57,14 +69,15 @@ export default function InstitutionalIntelligencePage() {
           </h1>
           <p>
             Institutional intelligence is the governed context an organisation uses to make,
-            explain and repeat good decisions. MiddleLeap builds it through real mandates so it
-            stays connected to operating evidence—not detached in a knowledge programme.
+            explain and repeat good decisions. It is the collective understanding of what makes
+            the institution distinctive and how it decides, builds and operates. MiddleLeap builds
+            it through real mandates so it stays connected to operating evidence.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20intelligence">
               Discuss the proposition
             </a>
-            <Link className={styles.secondaryAction} href="/brainkit">Examine the BrainKit</Link>
+            <Link className={styles.secondaryAction} href="/institutional-brain">Examine the Institutional Brain</Link>
           </div>
         </div>
         <aside className={styles.heroAside}>
@@ -111,8 +124,8 @@ export default function InstitutionalIntelligencePage() {
           <div>
             <h2>Context feeds delivery. Evidence improves context.</h2>
             <p>
-              The BrainKit sits outside the delivery loop: it informs the work, receives approved
-              learning and remains controlled by the institution.
+              The Institutional Brain sits outside the delivery loop: it informs the work,
+              receives approved learning and remains controlled by the institution.
             </p>
           </div>
         </div>
@@ -121,17 +134,17 @@ export default function InstitutionalIntelligencePage() {
 
       <section className={styles.section} id="architecture">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Clear product hierarchy</p>
+          <p className={styles.eyebrow}>One asset. One method.</p>
           <div>
-            <h2>Asset, method, runtime and distribution each have one job.</h2>
+            <h2>The Brain holds what the institution knows. The Loom applies it.</h2>
             <p>
-              Keeping the layers distinct makes the commercial proposition understandable and
-              preserves honest technical boundaries.
+              The public proposition has two named elements. Repository controls, initializers
+              and distribution mechanisms sit underneath as implementation details.
             </p>
           </div>
         </div>
         <div className={styles.stack}>
-          {stack.map(([number, title, label, detail, href]) => (
+          {publicModel.map(([number, title, label, detail, href, action]) => (
             <article key={number}>
               <span>{number}</span>
               <div>
@@ -139,10 +152,22 @@ export default function InstitutionalIntelligencePage() {
                 <h3>{title}</h3>
                 <p>{detail}</p>
               </div>
-              <Link href={href}>Open layer →</Link>
+              <Link href={href}>{action} →</Link>
             </article>
           ))}
         </div>
+        <aside className={styles.implementationNote}>
+          <span>Technical implementation</span>
+          <div>
+            <h3>Repository machinery remains visible without becoming another proposition.</h3>
+            <p>
+              The Loom&apos;s controls, templates and assurance are distributed through AI-DLC.
+              BrainKit is the initializer used to draft and validate the Brainstem inside an
+              institution&apos;s private context release.
+            </p>
+            <Link href="/toolkit">View the technical implementation →</Link>
+          </div>
+        </aside>
       </section>
 
       <section className={styles.section}>

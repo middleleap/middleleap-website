@@ -20,9 +20,9 @@ export function SiteFooter() {
         <nav className={styles.footerGroup} aria-label="Institutional Intelligence links">
           <span>Institutional Intelligence</span>
           <Link href="/institutional-intelligence">Overview</Link>
-          <Link href="/brainkit">BrainKit</Link>
+          <Link href="/institutional-brain">Institutional Brain</Link>
           <Link href="/the-loom">The Loom</Link>
-          <Link href="/toolkit">The Loom Toolkit</Link>
+          <Link href="/toolkit">Technical implementation</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Venture links">
           <span>Ventures</span>

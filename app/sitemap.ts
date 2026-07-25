@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
-      url: `${SITE_URL}/brainkit`,
+      url: `${SITE_URL}/institutional-brain`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,

@@ -38,7 +38,8 @@ const structuredData = {
       ],
       knowsAbout: [
         "Institutional intelligence",
-        "Institutional BrainKit",
+        "Institutional Brain",
+        "Institutional Brainstem",
         "Platform strategy",
         "Open Finance",
         "API strategy",
@@ -187,7 +188,7 @@ export default function HomePage() {
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Advisory is the front door</p>
           <div>
-            <h2>Start with the strategic mandate—not the toolkit.</h2>
+            <h2>Start with the strategic mandate—not the implementation.</h2>
             <p>
               MiddleLeap works where regulation, platform economics, technology and operating
               models have to move together. The delivery system supports the work; it does not

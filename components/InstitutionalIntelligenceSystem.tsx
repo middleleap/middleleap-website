@@ -13,7 +13,7 @@ export function InstitutionalIntelligenceSystem() {
     <div
       className={styles.intelligenceSystem}
       role="img"
-      aria-label="A strategic mandate becomes working capability through an institution-owned BrainKit and The Loom, with operating evidence returning to the institution"
+      aria-label="The institution-owned Institutional Brain informs The Loom, which creates working capability and returns operating evidence to the institution"
     >
       <div className={styles.intelligenceHeader}>
         <span>Institutional intelligence / 04</span>
@@ -32,10 +32,10 @@ export function InstitutionalIntelligenceSystem() {
 
       <div className={styles.intelligenceFlow}>
         <article>
-          <span>Private institutional asset</span>
-          <h3>BrainKit</h3>
-          <p>Captures approved context, decisions, architecture and policy.</p>
-          <Link href="/brainkit">Examine the asset →</Link>
+          <span>Institution-owned intelligence</span>
+          <h3>Institutional Brain</h3>
+          <p>Holds approved collective understanding around a governed Brainstem.</p>
+          <Link href="/institutional-brain">Examine the Brain →</Link>
         </article>
         <i aria-hidden="true">→</i>
         <article>

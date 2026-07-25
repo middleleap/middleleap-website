@@ -260,6 +260,45 @@
   white-space: nowrap;
 }
 
+.implementationNote {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--s-7);
+  margin-top: var(--s-7);
+  padding: var(--s-6);
+  border: 1px solid var(--ink-border);
+  background: var(--ink-1);
+}
+
+.implementationNote > span {
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.implementationNote h3 {
+  color: var(--bone-0);
+  font: 400 30px/1.15 var(--font-instrument-serif), serif;
+}
+
+.implementationNote p {
+  max-width: 720px;
+  margin-top: var(--s-3);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+}
+
+.implementationNote a {
+  display: inline-block;
+  margin-top: var(--s-4);
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  text-underline-offset: 5px;
+  text-transform: uppercase;
+}
+
 .cycle {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -352,7 +391,8 @@
   .sectionIntro,
   .contentGrid,
   .cycle,
-  .boundaryGrid {
+  .boundaryGrid,
+  .implementationNote {
     grid-template-columns: 1fr;
   }
 

@@ -14,7 +14,7 @@ MiddleLeap works from a simple belief: every engagement should leave the institu
 
 Institutional intelligence is the governed context an organisation uses to make, explain and repeat good decisions. MiddleLeap builds it through live mandates rather than as a detached knowledge-management programme. The commercial outcome remains working capability; the second outcome is an institution that retains more of what made that capability possible.
 
-Advisory remains the front door. The Institutional BrainKit is the institution-owned asset, The Loom is the governed method, The Loom Toolkit is the installable runtime, and AI-DLC is the open technical distribution mechanism.
+Advisory remains the front door. The public model has two named elements: the Institutional Brain is the institution-owned body of collective understanding, and The Loom is the governed method that applies it to real work. BrainKit, repository controls and AI-DLC sit underneath as technical implementation details rather than separate consulting propositions.
 
 ## Core capabilities
 
@@ -42,7 +42,7 @@ Institutional intelligence includes:
 - Decisions and rights: what was decided, why, who owns it and what would trigger review.
 - Evidence and gaps: sources, assurance records, operating signals and explicit unknowns.
 
-The Institutional BrainKit packages this context privately. Accountable institutional owners approve it. Repositories mount digest-pinned releases, and delivery validation checks canonical sections, declared files, source grounding, digests and artifact provenance. Agents may organise sources, draft sections, expose gaps and validate structure; they cannot approve institutional truth or operate production controls.
+The Institutional Brain holds this context privately. At its centre is the Brainstem: the stable, approved foundation of identity, terminology, architecture, principles, controls and decision rights that every team and agent can inherit. Accountable institutional owners approve each release. Repositories mount digest-pinned snapshots, and delivery validation checks canonical sections, declared files, source grounding, digests and artifact provenance. Agents may organise sources, draft sections, expose gaps and validate structure; they cannot approve institutional truth or operate production controls.
 
 ## How MiddleLeap works
 
@@ -55,7 +55,7 @@ MiddleLeap works from mandate to working capability and retained institutional i
 
 The Loom is MiddleLeap's governed AI delivery harness. Its shared core combines evidence-led discovery, bounded AI-assisted delivery and human authority. A regulated profile adds formal assurance, audit, lineage and institutional controls; a venture profile applies commercial-evidence, product-safety and expert-authority gates.
 
-The Loom is the governed delivery method. The Loom Toolkit is the installable product that carries the method, controls and adoption machinery into a repository. AI-DLC is the technical distribution mechanism for the Toolkit rather than a separate consulting proposition. The Institutional BrainKit is the institution-owned context component, and domain packs are optional specialist intelligence.
+The Institutional Brain holds what the institution knows. The Loom applies that intelligence through governed discovery, delivery and assurance, then returns approved operating evidence to the institution. BrainKit is the technical initializer used to draft and validate the Brainstem from approved sources. AI-DLC distributes and versions The Loom's repository implementation. Domain packs remain optional specialist intelligence.
 
 ### The Loom
 
@@ -65,12 +65,12 @@ The Loom is the governed delivery method. The Loom Toolkit is the installable pr
 - The first evidenced implementation was the UAE Open Finance Back Office, where 134 of approximately 139 stories reached done under quality gates, synthetic-data constraints and human four-eyes merge.
 - The current proof is demo-proven, not production-proven. It has not cleared live production scale or a regulator examination.
 
-### The Loom Toolkit
+### Technical implementation
 
-- Core Toolkit: regulated discovery, delivery, continuous assurance, harness governance, repository foundations and the Institutional BrainKit.
-- Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights.
+- The Loom repository implementation: regulated discovery, delivery, continuous assurance, harness governance and repository foundations.
+- BrainKit initializer: technical tooling that drafts and validates the private Brainstem; it is not the institutional asset.
 - Open Finance domain pack: UAE standards, Islamic-banking context, risk review and value-proposition prototyping.
-- AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the public Toolkit.
+- AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the implementation.
 
 ## Ventures, portfolio and studio
 
@@ -90,7 +90,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 - Executive advisory for regulatory, platform and transformation mandates.
 - Platform strategy sprints covering proposition, ecosystem, commercial model and execution roadmap.
-- Governed delivery pilots that adopt The Loom around one bounded outcome and leave a governed repository capability and first BrainKit release behind.
+- Governed delivery pilots that adopt The Loom around one bounded outcome and leave a governed repository capability and first Institutional Brain release behind.
 
 ## Experience and delivery model
 
@@ -106,12 +106,12 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
 - [Institutional Intelligence](https://www.middleleap.com/institutional-intelligence): proposition, ownership model, product hierarchy and compounding loop.
-- [Institutional BrainKit](https://www.middleleap.com/brainkit): private context asset, contents, lifecycle and human-authority boundary.
+- [Institutional Brain](https://www.middleleap.com/institutional-brain): institution-owned collective understanding, its governed Brainstem, lifecycle and human-authority boundary.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
 - [The Loom](https://www.middleleap.com/the-loom): governed AI delivery harness, regulated and venture profiles, context brain, assurance and stated limits.
-- [The Loom Toolkit](https://www.middleleap.com/toolkit): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
+- [The Loom technical implementation](https://www.middleleap.com/toolkit): repository controls, BrainKit initializer, AI-DLC distribution mechanism and optional domain intelligence.
 - [Open Finance Back Office build record](https://www.middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
 - [HiveMind build record](https://www.middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
 - [Parqo build record](https://www.middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.

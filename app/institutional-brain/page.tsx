@@ -5,10 +5,10 @@ import { createPageMetadata } from "@/lib/metadata";
 import styles from "../institutional-intelligence/proposition.module.css";
 
 export const metadata = createPageMetadata({
-  title: "Institutional BrainKit",
+  title: "The Institutional Brain",
   description:
-    "A private, human-approved package of institutional context used to ground governed discovery and delivery.",
-  path: "/brainkit",
+    "The institution-owned body of approved collective understanding that grounds governed decisions, delivery and learning.",
+  path: "/institutional-brain",
 });
 
 const contents = [
@@ -24,12 +24,12 @@ const lifecycle = [
   ["01", "Draft from evidence", "Use approved institutional sources. Unsupported decisions become visible gaps."],
   ["02", "Review with owners", "Architecture, risk, product and other accountable owners examine their context."],
   ["03", "Approve the release", "Humans approve institutional context; agents can structure and validate, never self-authorise."],
-  ["04", "Pin and apply", "Repositories mount a digest-pinned private release alongside the public Loom Toolkit."],
+  ["04", "Pin and apply", "Repositories mount a digest-pinned private release alongside The Loom's repository controls."],
   ["05", "Validate in delivery", "CI checks canonical sections, digests, declared files, grounding and artifact provenance."],
   ["06", "Evolve deliberately", "Operating evidence proposes change; accountable owners approve the next release."],
 ] as const;
 
-export default function BrainKitPage() {
+export default function InstitutionalBrainPage() {
   return (
     <div className={styles.shell}>
       <SiteHeader
@@ -38,11 +38,11 @@ export default function BrainKitPage() {
         breadcrumbs={[
           { href: "/", label: "Advisory" },
           { href: "/institutional-intelligence", label: "Institutional Intelligence" },
-          { label: "BrainKit" },
+          { label: "Institutional Brain" },
         ]}
         contextLinks={[
           { href: "#overview", label: "Overview" },
-          { href: "#contents", label: "Contents" },
+          { href: "#contents", label: "Brainstem" },
           { href: "#lifecycle", label: "Lifecycle" },
           { href: "#boundary", label: "Boundary" },
         ]}
@@ -53,26 +53,27 @@ export default function BrainKitPage() {
         <div>
           <p className={styles.eyebrow}>The institution-owned asset</p>
           <h1>
-            Governed context. <em>Not borrowed memory.</em>
+            Collective understanding. <em>Governed and owned.</em>
           </h1>
           <p>
-            The Institutional BrainKit is a private, human-approved package of institutional
-            language, architecture, policy, decisions and evidence. It gives delivery systems
-            context without giving them authority.
+            The Institutional Brain is the private, human-approved body of understanding that
+            makes the institution distinctive: its language, architecture, principles, decisions,
+            controls and operating knowledge. It gives delivery systems context without giving
+            them authority.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20BrainKit">
-              Discuss a BrainKit pilot
+            <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20Brain">
+              Discuss an Institutional Brain pilot
             </a>
             <Link className={styles.secondaryAction} href="/institutional-intelligence">See the full proposition</Link>
           </div>
         </div>
         <aside className={styles.heroAside}>
-          <span>BrainKit boundary / private</span>
+          <span>Institutional Brain / private</span>
           <div>
             <small>What it is</small>
-            <strong>Approved institutional context</strong>
-            <p>Evidence-grounded, versioned, digest-pinned and controlled by accountable owners.</p>
+            <strong>Collective institutional understanding</strong>
+            <p>Evidence-grounded, versioned and controlled by accountable owners.</p>
           </div>
           <b>≠</b>
           <div>
@@ -85,12 +86,13 @@ export default function BrainKitPage() {
 
       <section className={styles.section} id="contents">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>What lives inside</p>
+          <p className={styles.eyebrow}>The Brainstem</p>
           <div>
-            <h2>The minimum context required to act like this institution.</h2>
+            <h2>The stable foundation every team and agent can inherit.</h2>
             <p>
-              Each section has a source and an accountable owner. The package records what is
-              approved, what is provisional and what remains unknown.
+              At the centre of the Institutional Brain is a governed Brainstem: the minimum
+              approved context required to understand how this institution decides, builds and
+              operates. Each section has a source and an accountable owner.
             </p>
           </div>
         </div>
@@ -111,8 +113,8 @@ export default function BrainKitPage() {
           <div>
             <h2>A governed lifecycle keeps context useful without pretending it is timeless.</h2>
             <p>
-              The BrainKit changes through accountable review, not silent agent memory. Every
-              release can be identified, mounted and validated.
+              The Institutional Brain changes through accountable review, not silent agent
+              memory. Every release can be identified, mounted and validated.
             </p>
           </div>
         </div>
@@ -128,6 +130,17 @@ export default function BrainKitPage() {
             </article>
           ))}
         </div>
+        <aside className={styles.implementationNote}>
+          <span>Implementation detail</span>
+          <div>
+            <h3>BrainKit initializes the Brainstem. It is not the institutional asset.</h3>
+            <p>
+              In the repository implementation, BrainKit is the technical initializer used to
+              draft, validate and release the Brainstem from approved sources.
+            </p>
+            <Link href="/toolkit">View the technical implementation →</Link>
+          </div>
+        </aside>
       </section>
 
       <section className={styles.section} id="boundary">
@@ -136,8 +149,9 @@ export default function BrainKitPage() {
           <div>
             <h2>The agent can assemble the draft. The institution approves the truth.</h2>
             <p>
-              BrainKit governance separates useful automation from decision authority. That
-              boundary is a feature of the operating model, not a limitation to conceal.
+              Institutional Brain governance separates useful automation from decision
+              authority. That boundary is a feature of the operating model, not a limitation
+              to conceal.
             </p>
           </div>
         </div>
@@ -157,7 +171,7 @@ export default function BrainKitPage() {
               <li>Approve institutional identity and policy</li>
               <li>Resolve contested architecture and terminology</li>
               <li>Assign context ownership and review conditions</li>
-              <li>Authorise each private BrainKit release</li>
+              <li>Authorise each private Institutional Brain release</li>
             </ul>
           </article>
         </div>
@@ -165,17 +179,16 @@ export default function BrainKitPage() {
 
       <section className={styles.cta}>
         <p className={styles.eyebrow}>Start narrow</p>
-        <h2>Build the first BrainKit around one mandate with real owners.</h2>
+        <h2>Build the first Institutional Brain around one mandate with real owners.</h2>
         <p>
           A credible pilot uses approved sources, a bounded scope and named context owners. It
           proves whether the institution can govern the asset before trying to scale it.
         </p>
         <div className={styles.actions}>
-          <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=BrainKit%20pilot">
-            Shape a BrainKit pilot
+          <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20Brain%20pilot">
+            Shape an Institutional Brain pilot
           </a>
           <Link className={styles.secondaryAction} href="/the-loom">See how The Loom applies it</Link>
-          <Link className={styles.secondaryAction} href="/toolkit">View the installable Toolkit</Link>
         </div>
       </section>
       </main>
