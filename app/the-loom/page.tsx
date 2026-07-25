@@ -1,22 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./loom.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
     "The Loom is MiddleLeap's reusable way for regulated institutions to find the right problem, deliver software under control and learn from what runs.",
-  alternates: { canonical: "/the-loom" },
-  openGraph: {
-    title: "The Loom | Governed AI Delivery for Regulated Institutions",
-    description:
-      "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
-    url: "https://www.middleleap.com/the-loom",
-  },
-};
+  path: "/the-loom",
+  socialDescription:
+    "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
+});
 
 const proofPoints = [
   ["134 / ~139", "Stories to done in the first build"],
@@ -115,13 +111,13 @@ const limits = [
 
 export default function LoomPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
-        active="method"
+        active="intelligence"
         priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/#method", label: "How we work" },
+          { href: "/institutional-intelligence", label: "Institutional Intelligence" },
           { label: "The Loom" },
         ]}
         contextLabel="The Loom navigation"
@@ -130,11 +126,12 @@ export default function LoomPage() {
           { href: "#control-chain", label: "Control chain" },
           { href: "#assurance", label: "Assurance" },
           { href: "#evidence", label: "Evidence" },
-          { href: "/ai-dlc", label: "Toolkit" },
+          { href: "/toolkit", label: "Implementation" },
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>The Loom · governed AI delivery</p>
           <h1>Find the right problem.<br />Ship it under <em>control.</em></h1>
@@ -145,7 +142,7 @@ export default function LoomPage() {
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#loop">Explore the closed loop</a>
-            <Link className={styles.secondaryAction} href="/ai-dlc">View the technical toolkit</Link>
+            <Link className={styles.secondaryAction} href="/toolkit">View the technical implementation</Link>
           </div>
         </div>
 
@@ -274,6 +271,9 @@ export default function LoomPage() {
           {brainDimensions.map(([title, label, detail], index) => <article key={title}><span>0{index + 1}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
         <div className={styles.moat}><span>The moat test</span><p>If a competitor copied the codebase tomorrow, it would still lack the accumulated, governed context that makes the software belong to the institution.</p></div>
+        <div className={styles.actions}>
+          <Link className={styles.secondaryAction} href="/institutional-brain">Examine the Institutional Brain</Link>
+        </div>
       </section>
 
       <section className={styles.section} id="assurance">
@@ -321,11 +321,12 @@ export default function LoomPage() {
         <p>Mount the institution&apos;s controls and context, run one gated discovery, and deliver one bounded outcome with human accountability intact.</p>
         <div className={styles.actions}>
           <Link className={styles.primaryAction} href="/#engage">Discuss a Loom pilot</Link>
-          <Link className={styles.darkAction} href="/ai-dlc">View The Loom Toolkit</Link>
+          <Link className={styles.darkAction} href="/toolkit">View the technical implementation</Link>
         </div>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

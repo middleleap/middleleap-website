@@ -1,22 +1,19 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./open-finance.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Open Finance Advisory | MENA Strategy & Execution",
   description:
     "MiddleLeap helps banks, fintechs and financial infrastructure providers turn Open Finance mandates into propositions, platforms, operating models and market execution.",
-  alternates: { canonical: "/open-finance" },
-  openGraph: {
-    title: "Open Finance Advisory | MiddleLeap",
-    description:
-      "Senior advisory for Open Finance strategy, regulatory readiness, LFI and TPP operating models, ecosystems and execution across MENA.",
-    url: "https://www.middleleap.com/open-finance",
-  },
-};
+  path: "/open-finance",
+  socialTitle: "Open Finance Advisory | MiddleLeap",
+  socialDescription:
+    "Senior advisory for Open Finance strategy, regulatory readiness, LFI and TPP operating models, ecosystems and execution across MENA.",
+});
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -123,7 +120,7 @@ const engagementModels = [
 
 export default function OpenFinancePage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -132,11 +129,10 @@ export default function OpenFinancePage() {
       />
 
       <SiteHeader
-        active="what"
+        active="open-finance"
         priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/#expertise", label: "What we do" },
           { label: "Open Finance" },
         ]}
         contextLabel="Open Finance navigation"
@@ -148,7 +144,8 @@ export default function OpenFinancePage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Open Finance advisory · MENA</p>
           <h1>
@@ -369,8 +366,9 @@ export default function OpenFinancePage() {
           <span>contact@middleleap.com · Dubai, UAE</span>
         </div>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

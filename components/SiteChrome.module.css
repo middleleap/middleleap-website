@@ -321,8 +321,10 @@
 }
 
 .footerLinks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
   justify-content: flex-end;
-  gap: 44px;
+  gap: 32px;
 }
 
 .footerGroup {
@@ -347,7 +349,7 @@
   color: var(--bone-0);
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1040px) {
   .header {
     grid-template-columns: 1fr auto auto;
   }
@@ -393,6 +395,9 @@
     border: 1px solid var(--ink-4);
     background: var(--ink-1);
     box-shadow: var(--shadow-2);
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .mobileLinks a,

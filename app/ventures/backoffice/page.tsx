@@ -1,23 +1,20 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { RelatedPortfolio } from "@/components/RelatedPortfolio";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./project.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Open Finance Backoffice",
   description:
     "How the Open Finance Back Office was designed and built: architecture, AI delivery harness, technology stack, quality controls and development maturity.",
-  alternates: { canonical: "/ventures/backoffice" },
-  openGraph: {
-    title: "Open Finance Backoffice | MiddleLeap Ventures",
-    description:
-      "An evidence-backed build record for the bank-neutral UAE Open Finance operations platform.",
-    url: "https://www.middleleap.com/ventures/backoffice",
-  },
-};
+  path: "/ventures/backoffice",
+  socialTitle: "Open Finance Backoffice | MiddleLeap Ventures",
+  socialDescription:
+    "An evidence-backed build record for the bank-neutral UAE Open Finance operations platform.",
+});
 
 const buildStages = [
   { number: "01", name: "Discover", detail: "Evidence, problem framing and data-governance gates" },
@@ -98,10 +95,11 @@ const sources = [
 
 export default function BackofficeProjectPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
         active="ventures"
         breadcrumbs={[
+          { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
           { href: "/ventures#portfolio", label: "Portfolio" },
           { label: "Backoffice" },
@@ -117,7 +115,8 @@ export default function BackofficeProjectPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Portfolio · Regulated reference build</p>
           <h1>Open Finance<br /><em>Backoffice.</em></h1>
@@ -332,7 +331,8 @@ export default function BackofficeProjectPage() {
       </section>
 
       <RelatedPortfolio currentPath="/ventures/backoffice" />
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }

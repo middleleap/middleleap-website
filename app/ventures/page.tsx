@@ -1,22 +1,19 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VenturesPortfolio } from "@/components/VenturesPortfolio";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "./ventures.module.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Ventures",
   description:
     "Open ecosystem infrastructure, platform ventures and AI-native execution systems built and contributed to by MiddleLeap.",
-  alternates: { canonical: "/ventures" },
-  openGraph: {
-    title: "MiddleLeap Ventures | Building What We Advise",
-    description:
-      "Working platforms, open infrastructure and AI-native execution systems grounded in regulated markets.",
-    url: "https://www.middleleap.com/ventures",
-  },
-};
+  path: "/ventures",
+  socialTitle: "MiddleLeap Ventures | Building What We Advise",
+  socialDescription:
+    "Working platforms, open infrastructure and AI-native execution systems grounded in regulated markets.",
+});
 
 const principles = [
   {
@@ -38,7 +35,7 @@ const principles = [
 
 export default function VenturesPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <div className={styles.shell}>
       <SiteHeader
         active="ventures"
         priority
@@ -51,7 +48,8 @@ export default function VenturesPage() {
         ]}
       />
 
-      <section className={styles.hero}>
+      <main id="main-content" tabIndex={-1}>
+      <section className={styles.hero} id="problem">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
           <h1>We build what<br />we <em>advise.</em></h1>
@@ -155,7 +153,8 @@ export default function VenturesPage() {
         </a>
       </section>
 
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }

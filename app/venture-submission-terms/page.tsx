@@ -1,16 +1,29 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/metadata";
 import styles from "../legal.module.css";
 
-export const metadata: Metadata = { title: "Venture Submission Terms", alternates: { canonical: "/venture-submission-terms" } };
+export const metadata = createPageMetadata({
+  title: "Venture Submission Terms",
+  description: "The terms that apply when submitting a non-confidential proposal to MiddleLeap Venture Studio.",
+  path: "/venture-submission-terms",
+});
 
 export default function VentureSubmissionTermsPage() {
   return (
-    <main className={styles.shell} id="problem">
-      <SiteHeader active="ventures" breadcrumbs={[{ href: "/ventures/studio", label: "Venture Studio" }, { label: "Submission terms" }]} />
-      <article className={styles.content}>
+    <div className={styles.shell}>
+      <SiteHeader
+        active="ventures"
+        breadcrumbs={[
+          { href: "/", label: "Advisory" },
+          { href: "/ventures", label: "Ventures" },
+          { href: "/ventures/studio", label: "Venture Studio" },
+          { label: "Submission terms" },
+        ]}
+      />
+      <main id="main-content" tabIndex={-1}>
+      <article className={styles.content} id="problem">
         <p className={styles.eyebrow}>Venture Studio</p>
         <h1>Submission terms.</h1>
         <p className={styles.updated}>Version effective 18 July 2026</p>
@@ -23,7 +36,8 @@ export default function VentureSubmissionTermsPage() {
         <section><h2>Acceptance record</h2><p>The Venture Studio proposal tool adds the applicable terms version and preparation time to the proposal email. Keep a copy of the email for your records. If you do not agree to these terms, do not send the proposal.</p></section>
         <section><h2>Before submitting</h2><p>If your proposal depends on protected intellectual property, regulatory restrictions or confidential commercial information, obtain your own professional advice before sending an initial brief.</p></section>
       </article>
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }
