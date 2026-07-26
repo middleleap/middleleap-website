@@ -316,44 +316,81 @@
   font-weight: 500;
 }
 
-.intelligenceInputs {
+.decisionArtifact {
+  border-bottom: 1px solid var(--ink-border);
+  background: var(--ink-2);
+}
+
+.artifactHeader {
+  display: flex;
+  gap: var(--s-4);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-3) var(--s-4);
+  border-bottom: 1px solid var(--ink-border);
+  color: var(--bone-3);
+  font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.artifactHeader span {
+  color: var(--ember-text);
+}
+
+.artifactDecision {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 150px 1fr auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: var(--s-5) var(--s-4);
   border-bottom: 1px solid var(--ink-border);
 }
 
-.intelligenceInputs > div {
+.artifactDecision small,
+.artifactFields small {
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.artifactDecision strong {
+  color: var(--bone-0);
+  font: 400 26px/1.15 var(--font-instrument-serif), serif;
+}
+
+.artifactDecision span {
+  padding: 7px 9px;
+  border: 1px solid color-mix(in srgb, var(--positive) 40%, transparent);
+  border-radius: var(--r-chip);
+  color: var(--positive);
+  background: color-mix(in srgb, var(--positive) 14%, transparent);
+  font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.artifactFields {
+  display: grid;
+  grid-template-columns: 1.6fr .8fr 1.4fr;
+}
+
+.artifactFields > div {
   min-width: 0;
   padding: var(--s-4);
   border-right: 1px solid var(--ink-border);
 }
 
-.intelligenceInputs > div:last-child {
+.artifactFields > div:last-child {
   border-right: 0;
 }
 
-.intelligenceInputs span,
-.intelligenceInputs strong,
-.intelligenceInputs small {
-  display: block;
-}
-
-.intelligenceInputs span {
-  color: var(--ember-text);
-  font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
-}
-
-.intelligenceInputs strong {
+.artifactFields p {
   margin-top: var(--s-3);
-  color: var(--bone-0);
-  font-size: var(--fs-small);
-}
-
-.intelligenceInputs small {
-  margin-top: var(--s-2);
-  color: var(--bone-3);
+  color: var(--bone-2);
   font-size: var(--fs-caption);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .intelligenceFlow {
@@ -410,6 +447,7 @@
 .capabilityGrid a,
 .methodFooter a,
 .ventureBridge a,
+.evidenceList a,
 .founderNote a {
   display: inline-block;
   margin-top: var(--s-5);
@@ -521,6 +559,41 @@
   align-items: start;
 }
 
+.evidenceMetrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: var(--s-7);
+  border-block: 1px solid var(--ink-border);
+}
+
+.evidenceMetrics > div {
+  min-height: 150px;
+  padding: var(--s-5);
+  border-right: 1px solid var(--ink-border);
+}
+
+.evidenceMetrics > div:last-child {
+  border-right: 0;
+}
+
+.evidenceMetrics strong,
+.evidenceMetrics span {
+  display: block;
+}
+
+.evidenceMetrics strong {
+  color: var(--bone-0);
+  font: 400 38px var(--font-instrument-serif), serif;
+}
+
+.evidenceMetrics span {
+  margin-top: var(--s-3);
+  color: var(--bone-3);
+  font: 400 var(--fs-ui-micro)/1.55 var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
 .evidenceList {
   border-top: 1px solid var(--ink-border);
 }
@@ -599,6 +672,29 @@
   border-right: 0;
 }
 
+.bringUsIn {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--s-7);
+  margin-bottom: var(--s-7);
+  padding: var(--s-5);
+  border: 1px solid var(--ink-4);
+  background: var(--ink-1);
+}
+
+.bringUsIn span {
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.bringUsIn p {
+  max-width: 720px;
+  color: var(--bone-1);
+  font: 400 24px/1.35 var(--font-instrument-serif), serif;
+}
+
 .contactFallback {
   margin-top: var(--s-4);
   color: var(--bone-3);
@@ -671,14 +767,16 @@
   .proofLine,
   .sectionIntro,
   .problemGrid,
-  .intelligenceInputs,
+  .artifactFields,
   .intelligenceFlow,
   .architectureGrid,
   .capabilityGrid,
   .operatingLoop,
   .practiceLayout,
+  .evidenceMetrics,
   .ventureBridge,
-  .engagementGrid {
+  .engagementGrid,
+  .bringUsIn {
     grid-template-columns: 1fr;
   }
 
@@ -691,8 +789,9 @@
   }
 
   .problemGrid article,
-  .intelligenceInputs > div,
+  .artifactFields > div,
   .operatingLoop li,
+  .evidenceMetrics > div,
   .engagementGrid article {
     min-height: auto;
     border-right: 0;
@@ -700,8 +799,9 @@
   }
 
   .problemGrid article:last-child,
-  .intelligenceInputs > div:last-child,
+  .artifactFields > div:last-child,
   .operatingLoop li:last-child,
+  .evidenceMetrics > div:last-child,
   .engagementGrid article:last-child {
     border-bottom: 0;
   }
@@ -716,6 +816,16 @@
   .intelligenceFlow > i {
     justify-self: center;
     transform: rotate(90deg);
+  }
+
+  .artifactHeader,
+  .artifactDecision {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .artifactDecision {
+    display: flex;
   }
 
   .intelligenceFlow article {

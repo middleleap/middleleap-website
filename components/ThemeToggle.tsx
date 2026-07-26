@@ -27,7 +27,7 @@ function applyMode(mode: ThemeMode, systemPrefersLight: boolean) {
 }
 
 export function ThemeToggle() {
-  const [mode, setMode] = useState<ThemeMode>("auto");
+  const [mode, setMode] = useState<ThemeMode>("dark");
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: light)");
@@ -61,11 +61,7 @@ export function ThemeToggle() {
 
   const selectMode = (nextMode: ThemeMode) => {
     const media = window.matchMedia("(prefers-color-scheme: light)");
-    if (nextMode === "auto") {
-      localStorage.removeItem(themeStorageKey);
-    } else {
-      localStorage.setItem(themeStorageKey, nextMode);
-    }
+    localStorage.setItem(themeStorageKey, nextMode);
     applyMode(nextMode, media.matches);
     setMode(nextMode);
   };

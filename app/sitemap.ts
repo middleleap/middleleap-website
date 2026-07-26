@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { fieldNotes } from "@/lib/field-notes";
 
 export const dynamic = "force-static";
 
@@ -36,6 +37,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${SITE_URL}/engagements/open-finance`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${SITE_URL}/field-notes`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    ...fieldNotes.map((note) => ({
+      url: `${SITE_URL}/field-notes/${note.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    })),
     {
       url: `${SITE_URL}/ventures/studio`,
       lastModified: new Date(),

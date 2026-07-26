@@ -8,7 +8,7 @@ import "./globals.css";
 const siteOrigin = "https://www.middleleap.com";
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "www.middleleap.com";
 
-const themeBootScript = `(()=>{try{const k="middleleap-theme",s=localStorage.getItem(k),a=s==="light"||s==="dark"?s:"auto",m=matchMedia("(prefers-color-scheme: light)").matches,t=a==="auto"?(m?"light":"dark"):a;document.documentElement.dataset.theme=t;document.documentElement.dataset.themeMode=a;document.documentElement.style.colorScheme=t}catch{document.documentElement.dataset.theme="dark";document.documentElement.dataset.themeMode="auto"}})();`;
+const themeBootScript = `(()=>{try{const k="middleleap-theme",s=localStorage.getItem(k),a=s==="auto"||s==="light"||s==="dark"?s:"dark",m=matchMedia("(prefers-color-scheme: light)").matches,t=a==="auto"?(m?"light":"dark"):a;document.documentElement.dataset.theme=t;document.documentElement.dataset.themeMode=a;document.documentElement.style.colorScheme=t}catch{document.documentElement.dataset.theme="dark";document.documentElement.dataset.themeMode="dark"}})();`;
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | MiddleLeap",
   },
   description:
-    "MiddleLeap helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.",
+    "MiddleLeap helps regulated institutions turn strategic mandates into products, platforms and operating models while retaining the intelligence created through delivery.",
   keywords: [
     "Open Finance",
     "embedded finance",
@@ -47,7 +47,6 @@ export const metadata: Metadata = {
     "AI-native operating models",
     "institutional intelligence",
     "Institutional Brain",
-    "Institutional Brainstem",
     "The Loom",
     "governed AI delivery method",
     "venture studio",

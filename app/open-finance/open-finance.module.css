@@ -359,8 +359,9 @@
 
 .evidenceResult {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 220px 1fr auto;
   gap: 30px;
+  align-items: center;
   padding: 22px 32px;
   border-top: 1px solid rgba(230, 92, 45, .35);
   background: rgba(230, 92, 45, .05);
@@ -377,6 +378,14 @@
   color: var(--bone-1);
   font-size: var(--fs-small);
   font-weight: 500;
+}
+
+.evidenceResult a {
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  text-underline-offset: 5px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .supportingEvidence {

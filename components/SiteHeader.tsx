@@ -6,7 +6,7 @@ import { BrandLockup } from "./BrandLockup";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
-type NavSection = "advisory" | "intelligence" | "open-finance" | "ventures";
+type NavSection = "advisory" | "intelligence" | "open-finance" | "notes" | "ventures";
 
 export type ContextLink = {
   href: string;
@@ -43,7 +43,7 @@ function HeaderLink({
   className?: string;
   onClick?: () => void;
 }) {
-  if (href.startsWith("#")) {
+  if (href.includes("#")) {
     return <a className={className} href={href} aria-current={current} data-active={active || undefined} onClick={onClick}>{children}</a>;
   }
 
@@ -62,9 +62,10 @@ export function SiteHeader({
   const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
   const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
-    { href: home ? "#expertise" : "/#expertise", label: "Advisory", section: "advisory" },
+    { href: home ? "#expertise" : "/#expertise", label: "What we do", section: "advisory" },
     { href: "/institutional-intelligence", label: "Institutional Intelligence", section: "intelligence" },
     { href: "/open-finance", label: "Open Finance", section: "open-finance" },
+    { href: "/field-notes", label: "Field notes", section: "notes" },
     { href: "/ventures", label: "Ventures", section: "ventures" },
   ];
   const closeMobileMenu = () => {
@@ -75,26 +76,25 @@ export function SiteHeader({
     const scrollToHash = () => {
       if (!window.location.hash) return;
 
-      const target = document.querySelector(window.location.hash);
+      const target = document.getElementById(window.location.hash.slice(1));
       if (!target) return;
 
       target.scrollIntoView({ block: "start" });
     };
-    const scheduleHashScroll = () => {
-      scrollToHash();
-      window.requestAnimationFrame(scrollToHash);
-    };
-    const settleTimer = window.setTimeout(scrollToHash, 350);
+    const scheduleHashScroll = () => window.requestAnimationFrame(scrollToHash);
+    const settleTimers = [
+      window.setTimeout(scrollToHash, 0),
+      window.setTimeout(scrollToHash, 160),
+      window.setTimeout(scrollToHash, 600),
+    ];
 
     scheduleHashScroll();
     document.fonts?.ready.then(scrollToHash);
     window.addEventListener("load", scrollToHash);
-    window.addEventListener("resize", scheduleHashScroll);
     window.addEventListener("hashchange", scheduleHashScroll);
     return () => {
-      window.clearTimeout(settleTimer);
+      settleTimers.forEach(window.clearTimeout);
       window.removeEventListener("load", scrollToHash);
-      window.removeEventListener("resize", scheduleHashScroll);
       window.removeEventListener("hashchange", scheduleHashScroll);
     };
   }, []);
@@ -130,6 +130,9 @@ export function SiteHeader({
     <div className={styles.headerWrap}>
       <header className={styles.header}>
         <BrandLockup priority={priority} />
+        <div className={styles.themeControl}>
+          <ThemeToggle />
+        </div>
         <nav className={styles.globalNav} aria-label="Primary navigation">
           {globalLinks.map((link) => (
             <HeaderLink
@@ -144,7 +147,6 @@ export function SiteHeader({
         </nav>
         <div className={styles.headerActions}>
           <HeaderLink className={styles.cta} href={`${prefix}#engage`}>Discuss a mandate</HeaderLink>
-          <ThemeToggle />
         </div>
 
         <details className={styles.mobileMenu} ref={mobileMenuRef}>

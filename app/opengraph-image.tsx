@@ -120,8 +120,7 @@ export default function Image() {
               lineHeight: 1.45,
             }}
           >
-            Working capability and institution-owned intelligence for regulated
-            businesses.
+            Products, platforms and institution-owned intelligence for regulated businesses.
           </div>
         </div>
 

@@ -15,8 +15,8 @@
 
 .header {
   display: grid;
-  grid-template-columns: 164px 1fr auto;
-  gap: 28px;
+  grid-template-columns: 164px 72px 1fr auto;
+  gap: 20px;
   align-items: center;
   min-height: 84px;
 }
@@ -31,14 +31,18 @@
 }
 
 .headerActions {
-  gap: 16px;
   align-items: center;
   justify-content: flex-end;
 }
 
+.themeControl {
+  display: flex;
+  align-items: center;
+}
+
 .globalNav {
   justify-content: center;
-  gap: 28px;
+  gap: 20px;
 }
 
 .globalNav a,
@@ -360,6 +364,10 @@
   }
 
   .headerActions .cta {
+    display: none;
+  }
+
+  .headerActions {
     display: none;
   }
 

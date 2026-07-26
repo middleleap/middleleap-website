@@ -303,6 +303,7 @@ export default function OpenFinancePage() {
           <div className={styles.evidenceResult}>
             <span>Transferable perspective</span>
             <strong>Platform economics and institutional execution in one advisory frame.</strong>
+            <Link href="/engagements/open-finance">Read the engagement record →</Link>
           </div>
         </div>
 

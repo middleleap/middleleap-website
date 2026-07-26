@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata = createPageMetadata({
   title: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
   description:
-    "MiddleLeap helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.",
+    "MiddleLeap helps regulated institutions turn strategic mandates into products, platforms and operating models while retaining the intelligence created through delivery.",
   path: "/",
   socialDescription: "Deliver the mandate in front of you. Strengthen the institution behind it.",
 });
@@ -26,7 +26,7 @@ const structuredData = {
       founder: { "@id": "https://www.middleleap.com/#michael-ryberg-hartmann" },
       slogan: "Every engagement should leave the institution smarter.",
       description:
-        "Independent Dubai-based advisory practice helping regulated institutions move from strategic mandate to working capability while retaining the decisions, architecture, controls and operating knowledge created along the way.",
+        "Independent Dubai-based advisory practice helping regulated institutions move from strategic mandate to products, platforms and operating models while retaining the decisions, architecture, controls and operating knowledge created along the way.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Dubai",
@@ -39,7 +39,6 @@ const structuredData = {
       knowsAbout: [
         "Institutional intelligence",
         "Institutional Brain",
-        "Institutional Brainstem",
         "Platform strategy",
         "Open Finance",
         "API strategy",
@@ -71,7 +70,7 @@ const structuredData = {
       provider: { "@id": "https://www.middleleap.com/#organization" },
       areaServed: { "@type": "Place", name: "Middle East and North Africa" },
       description:
-        "Senior advisory that delivers working capability and leaves governed institutional intelligence behind.",
+        "Senior advisory that delivers products, platforms and operating models while leaving governed institutional intelligence behind.",
     },
   ],
 };
@@ -157,13 +156,13 @@ export default function HomePage() {
             Every engagement should leave the institution <em>smarter.</em>
           </h1>
           <p className={styles.lede}>
-            MiddleLeap helps regulated institutions move from strategic mandate to working
-            capability—while retaining the decisions, architecture, controls and operating
-            knowledge created along the way.
+            MiddleLeap helps regulated institutions move from strategic mandate to the product,
+            platform or operating model they will run—while retaining the decisions,
+            architecture, controls and operating knowledge created along the way.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#engage">Discuss a mandate</a>
-            <a className={styles.secondaryAction} href="#model">See the operating model</a>
+            <a className={styles.secondaryAction} href="#practice">Review the evidence</a>
           </div>
           <div className={styles.proofLine} aria-label="MiddleLeap engagement principles">
             <span><strong>Senior-led</strong> from mandate to execution</span>
@@ -176,9 +175,9 @@ export default function HomePage() {
           <span>MiddleLeap thesis / 01</span>
           <blockquote>Institutions should not rent intelligence from consultants.</blockquote>
           <div>
-            <small>Working capability</small>
+            <small>Capability in operation</small>
             <b>+</b>
-            <small>Institutional intelligence</small>
+            <small>Knowledge retained</small>
           </div>
           <p>Deliver the mandate in front of you. Strengthen the institution behind it.</p>
         </div>
@@ -208,24 +207,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.model} id="model">
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>The MiddleLeap model</p>
-          <div>
-            <h2>Build the capability. Codify what made it possible.</h2>
-            <p>
-              Institutional intelligence is the governed context an organisation can own,
-              approve, apply and improve. It grows through delivery—not as a documentation
-              exercise after delivery.
-            </p>
-          </div>
-        </div>
-        <InstitutionalIntelligenceSystem />
-        <div className={styles.modelLink}>
-          <Link href="/institutional-intelligence">Explore the institutional intelligence proposition →</Link>
-        </div>
-      </section>
-
       <section className={styles.practice} id="practice">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Experience carried into the practice</p>
@@ -242,6 +223,12 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+        <div className={styles.evidenceMetrics} aria-label="Experience evidence">
+          <div><strong>20+</strong><span>years across regulated and platform businesses</span></div>
+          <div><strong>70+</strong><span>people led through an API-first transformation</span></div>
+          <div><strong>2</strong><span>regulated roles aligned in one LFI / TPP programme</span></div>
+          <div><strong>1st</strong><span>bank certification under the national framework</span></div>
+        </div>
         <div className={styles.practiceLayout}>
           <div className={styles.evidenceList}>
             {evidence.map((item, index) => (
@@ -250,6 +237,11 @@ export default function HomePage() {
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.detail}</p>
+                  {index === 0 && (
+                    <Link href="/engagements/open-finance">
+                      Read the anonymised engagement record →
+                    </Link>
+                  )}
                 </div>
               </article>
             ))}
@@ -266,6 +258,23 @@ export default function HomePage() {
               Founder profile ↗
             </a>
           </aside>
+        </div>
+      </section>
+
+      <section className={styles.model} id="model">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>What the institution keeps</p>
+          <div>
+            <h2>One owned asset. One delivery method. One capability in operation.</h2>
+            <p>
+              The model below names each element only after showing the evidence behind the
+              practice. The example decision record makes the retained output concrete.
+            </p>
+          </div>
+        </div>
+        <InstitutionalIntelligenceSystem />
+        <div className={styles.modelLink}>
+          <Link href="/institutional-intelligence">Explore the institutional intelligence proposition →</Link>
         </div>
       </section>
 
@@ -301,6 +310,14 @@ export default function HomePage() {
             </article>
           ))}
         </div>
+        <aside className={styles.bringUsIn}>
+          <span>When institutions bring us in</span>
+          <p>
+            A new regulatory obligation with a date attached. A platform decision that is
+            build-or-buy on the surface and operating-model underneath. A programme stalled
+            between discovery and delivery that needs a decision, not another discovery phase.
+          </p>
+        </aside>
         <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
           Discuss your mandate
         </a>

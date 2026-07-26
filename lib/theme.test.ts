@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { parseThemeMode, resolveTheme } from "./theme";
 
 describe("theme preference", () => {
-  it("defaults missing and unknown preferences to auto", () => {
-    expect(parseThemeMode(null)).toBe("auto");
+  it("defaults missing and unknown preferences to dark", () => {
+    expect(parseThemeMode(null)).toBe("dark");
     expect(parseThemeMode("auto")).toBe("auto");
-    expect(parseThemeMode("unknown")).toBe("auto");
+    expect(parseThemeMode("unknown")).toBe("dark");
   });
 
   it("preserves explicit light and dark preferences", () => {

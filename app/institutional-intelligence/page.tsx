@@ -116,6 +116,17 @@ export default function InstitutionalIntelligencePage() {
             </article>
           ))}
         </div>
+        <aside className={styles.implementationNote}>
+          <span>Engagement evidence</span>
+          <div>
+            <h3>See how a regulated mandate moves from institutional position to live participation.</h3>
+            <p>
+              The anonymised Open Finance record shows the mandate, the constraints, the
+              sequence of decisions and the named outputs an institution should retain.
+            </p>
+            <Link href="/engagements/open-finance">Read the engagement record →</Link>
+          </div>
+        </aside>
       </section>
 
       <section className={styles.section}>

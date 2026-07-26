@@ -14,6 +14,7 @@ export function SiteFooter() {
           <span>Advisory</span>
           <Link href="/#expertise">What we do</Link>
           <Link href="/open-finance">Open Finance</Link>
+          <Link href="/engagements/open-finance">Engagement record</Link>
           <Link href="/#practice">The practice</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
@@ -31,7 +32,9 @@ export function SiteFooter() {
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
+          <Link href="/field-notes">Field notes</Link>
           <Link href="/#practice">Practice &amp; founder</Link>
+          <a href="https://www.linkedin.com/in/michael-ryberg-hartmann" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
           <Link href="/privacy">Privacy</Link>
         </nav>

@@ -4,7 +4,9 @@ export type ThemeMode = "auto" | Theme;
 export const themeStorageKey = "middleleap-theme";
 
 export function parseThemeMode(value: string | null): ThemeMode {
-  return value === "light" || value === "dark" ? value : "auto";
+  return value === "auto" || value === "light" || value === "dark"
+    ? value
+    : "dark";
 }
 
 export function resolveTheme(

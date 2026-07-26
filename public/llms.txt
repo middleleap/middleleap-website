@@ -86,6 +86,11 @@ The MiddleLeap Venture Studio invites operators, domain experts and potential pa
 
 The portfolio operates as a build, learn and apply loop: build working assets, capture market and execution intelligence, and apply the learning to client mandates.
 
+## Engagement records and field notes
+
+- The anonymised Open Finance engagement record explains a dual LFI/TPP mandate through four movements: the mandate, the constraint, the decision path and the outputs an institution should retain. It draws only on public claims from prior executive experience and excludes client identity, dates, documents and confidential operating detail.
+- Field notes publish MiddleLeap's working positions on decision-grade evidence, leaders-in-the-loop AI delivery and Open Finance as an operating-model decision.
+
 ## Engagement models
 
 - Executive advisory for regulatory, platform and transformation mandates.
@@ -108,6 +113,8 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [Institutional Intelligence](https://www.middleleap.com/institutional-intelligence): proposition, ownership model, product hierarchy and compounding loop.
 - [Institutional Brain](https://www.middleleap.com/institutional-brain): institution-owned collective understanding, its governed Brainstem, lifecycle and human-authority boundary.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
+- [Open Finance engagement record](https://www.middleleap.com/engagements/open-finance): anonymised mandate, constraints, decision path and retained artifact set.
+- [Field notes](https://www.middleleap.com/field-notes): practical thinking on decision-grade evidence, governed AI delivery and Open Finance operating models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
 - [The Loom](https://www.middleleap.com/the-loom): governed AI delivery harness, regulated and venture profiles, context brain, assurance and stated limits.
@@ -116,4 +123,4 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [HiveMind build record](https://www.middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
 - [Parqo build record](https://www.middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
 
-Last reviewed: 2026-07-25
+Last reviewed: 2026-07-26
