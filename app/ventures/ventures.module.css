@@ -87,6 +87,8 @@
 .portfolioExplorer > .portfolioMap > div { display: flex; flex-direction: column; justify-content: center; padding: 34px; background: var(--surface); }
 .portfolioExplorer > .portfolioMap .mapCore { background: rgba(230,92,45,.07); }
 .portfolioExplorer > .portfolioMap span { color: var(--ember-text); font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
+/* The mapCore cell adds an ember tint; light-theme ember-700 drops below AA on it. */
+:global([data-theme="light"]) .portfolioExplorer > .portfolioMap .mapCore span { color: var(--ember-800); }
 .portfolioExplorer > .portfolioMap strong { margin-top: 20px; font: 400 30px/1.12 var(--font-instrument-serif), serif; }
 .portfolioExplorer > .portfolioMap small { margin-top: 14px; color: var(--faint); font-size: 12px; line-height: 1.55; }
 .portfolioExplorer > .projectGrid { grid-template-columns: repeat(3, 1fr); }

@@ -38,8 +38,10 @@ Use a calm, executive, evidence-led tone. Lead with regulated markets, platform 
 - `npm run lint`
 - `npm run type-check`
 - `npm run test` (watch) / `npm run test:run` (CI)
+- `npm run test:e2e` — Playwright smoke + axe accessibility checks over the built `out/` (run `npm run build` first)
+- `npm run check:contrast` — WCAG contrast gate over the brand token pairings
 
-CI (`.github/workflows/ci.yml`) runs lint, type-check, unit tests, the static build and Lighthouse budgets (`lighthouserc.js`).
+CI (`.github/workflows/ci.yml`) runs lint, type-check, contrast check, unit tests, the static build, Playwright smoke + axe, and Lighthouse budgets over every exported page (`lighthouserc.js`).
 
 ## Roadmap
 
