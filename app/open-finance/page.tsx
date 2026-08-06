@@ -124,7 +124,7 @@ const engagementModels = [
 
 export default function OpenFinancePage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -134,7 +134,6 @@ export default function OpenFinancePage() {
 
       <SiteHeader
         active="what"
-        priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
           { href: "/#expertise", label: "What we do" },
@@ -168,7 +167,7 @@ export default function OpenFinancePage() {
 
         <div
           className={styles.decisionSystem}
-          role="img"
+          role="group"
           aria-label="Open Finance decision system connecting a regulatory mandate to market position, proposition, platform and operating model"
         >
           <div className={styles.systemHeader}>
@@ -284,7 +283,7 @@ export default function OpenFinancePage() {
         </div>
 
         <div className={styles.evidenceFeature}>
-          <div className={styles.evidenceTimeline} aria-label="MENA Open Banking and Open Finance experience">
+          <div className={styles.evidenceTimeline} role="group" aria-label="MENA Open Banking and Open Finance experience">
             <article>
               <span>Platform side</span>
               <h3>Build and expand across MENA</h3>

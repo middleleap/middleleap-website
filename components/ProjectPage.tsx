@@ -167,7 +167,7 @@ function ProjectActionLink({ action }: { action: ProjectAction }) {
 
 export function ProjectPage({ data }: { data: ProjectPageData }) {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
         active="ventures"
         breadcrumbs={[

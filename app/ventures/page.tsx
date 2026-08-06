@@ -39,10 +39,9 @@ const principles = [
 
 export default function VenturesPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
         active="ventures"
-        priority
         breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Ventures" }]}
         contextLabel="Ventures navigation"
         contextLinks={[
@@ -67,7 +66,7 @@ export default function VenturesPage() {
           </div>
         </div>
 
-        <div className={styles.heroSystem} role="img" aria-label="Venture learning system">
+        <div className={styles.heroSystem} role="group" aria-label="Venture learning system">
           <div className={styles.systemHeader}>
             <span>Venture intelligence system / 03</span>
             <span><i aria-hidden="true" /> Operating</span>

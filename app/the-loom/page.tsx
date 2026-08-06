@@ -117,10 +117,9 @@ const limits = [
 
 export default function LoomPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
         active="method"
-        priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
           { href: "/#method", label: "How we work" },
@@ -151,7 +150,7 @@ export default function LoomPage() {
           </div>
         </div>
 
-        <div className={styles.loomFigure} role="img" aria-label="The Loom uses Discovery and Delivery harnesses to turn a mandate into audit-ready software, then routes operational signals back into Discovery">
+        <div className={styles.loomFigure} role="group" aria-label="The Loom uses Discovery and Delivery harnesses to turn a mandate into audit-ready software, then routes operational signals back into Discovery">
           <div className={styles.figureHeader}><span>Mandate → outcome / closed loop</span><b>Two harnesses · one feedback arc</b></div>
           <div className={styles.warp}><span>Evidence</span><span>Boundaries</span><span>Authority</span><span>Quality</span><span>Traceability</span></div>
           <div className={styles.harnesses}>
@@ -207,7 +206,7 @@ export default function LoomPage() {
             </p>
           </div>
         </div>
-        <div className={styles.controlChain} aria-label="The Loom control chain from mandate to operational signal">
+        <div className={styles.controlChain} role="group" aria-label="The Loom control chain from mandate to operational signal">
           {controlChain.map(([id, title, detail]) => (
             <article key={id}>
               <span>{id}</span>
@@ -228,7 +227,7 @@ export default function LoomPage() {
           <p className={styles.eyebrow}>The two harnesses</p>
           <div><h2>A double diamond: find the right problem, then deliver it.</h2><p>The diamonds meet at one enforced waist: a gate-green hand-off. Discovery may stop a weak problem early; delivery evidence may legitimately send the work back.</p></div>
         </div>
-        <div className={styles.diamondFlow} role="img" aria-label="Discovery diverges to discover evidence and converges to define one problem, passes through an agreed waist gate, then delivery diverges to develop solutions and converges to deliver under control">
+        <div className={styles.diamondFlow} role="group" aria-label="Discovery diverges to discover evidence and converges to define one problem, passes through an agreed waist gate, then delivery diverges to develop solutions and converges to deliver under control">
           <article className={styles.methodDiamond}>
             <div className={styles.diamondStage}><span>01</span><strong>Discover</strong><small>Diverge around evidence</small></div>
             <div className={styles.diamondStage}><span>02</span><strong>Define</strong><small>Converge on one problem</small></div>

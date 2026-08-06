@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Privacy", alternates: { canonical: "
 
 export default function PrivacyPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Privacy" }]} />
       <article className={styles.content}>
         <p className={styles.eyebrow}>Company information</p>

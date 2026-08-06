@@ -172,14 +172,14 @@ const engagements = [
 
 export default function HomePage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <SiteHeader home priority />
+      <SiteHeader home />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
@@ -197,7 +197,7 @@ export default function HomePage() {
             <a className={styles.primaryAction} href="#engage">Discuss a strategic mandate</a>
             <a className={styles.secondaryAction} href="#expertise">Explore our capabilities</a>
           </div>
-          <div className={styles.proofLine} role="group" aria-label="MiddleLeap positioning">
+          <div className={styles.proofLine}>
             <span><strong>MENA</strong> market focus</span>
             <span><strong>Senior-led</strong> every mandate</span>
             <span><strong>Strategy</strong> through execution</span>
@@ -262,7 +262,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className={styles.companySystem} aria-label="MiddleLeap company operating model">
+        <div className={styles.companySystem} role="group" aria-label="MiddleLeap company operating model">
           <div className={styles.companySystemHeader}>
             <span>MiddleLeap operating system / 03</span>
             <b>Evidence compounds</b>
@@ -326,7 +326,7 @@ export default function HomePage() {
               <Link href="/ai-dlc">View the technical toolkit →</Link>
             </div>
           </div>
-          <div className={styles.loomMini} role="img" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
+          <div className={styles.loomMini} role="group" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
             <div className={styles.loomMiniHeader}>
               <span>Mandate → outcome</span>
               <b>Two harnesses · one loop</b>
@@ -467,7 +467,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className={styles.ventureLoop} role="img" aria-label="MiddleLeap venture learning loop">
+        <div className={styles.ventureLoop} role="group" aria-label="MiddleLeap venture learning loop">
           <span><b>Build</b> Working assets</span>
           <i aria-hidden="true">→</i>
           <span><b>Learn</b> Operating intelligence</span>

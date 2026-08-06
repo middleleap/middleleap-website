@@ -25,7 +25,6 @@ type SiteHeaderProps = {
   contextLabel?: string;
   contextLinks?: ContextLink[];
   home?: boolean;
-  priority?: boolean;
 };
 
 function HeaderLink({
@@ -56,7 +55,6 @@ export function SiteHeader({
   contextLabel,
   contextLinks = [],
   home = false,
-  priority = false,
 }: SiteHeaderProps) {
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
   const [activeContextHref, setActiveContextHref] = useState("");
@@ -146,7 +144,7 @@ export function SiteHeader({
   return (
     <div className={styles.headerWrap}>
       <header className={styles.header}>
-        <BrandLockup priority={priority} />
+        <BrandLockup />
         <nav className={styles.globalNav} aria-label="Primary navigation">
           {globalLinks.map((link) => (
             <HeaderLink
