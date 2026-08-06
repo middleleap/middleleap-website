@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -6,11 +5,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
-  description:
-    "MiddleLeap advises banks, fintechs, financial infrastructure and telecommunications providers on platform strategy and AI-native transformation.",
-};
+// Homepage metadata (title, description, canonical, Open Graph) is inherited
+// from the root layout, which declares the same values as its defaults.
 
 const structuredData = {
   "@context": "https://schema.org",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
   description:
     "The Loom is MiddleLeap's reusable way for regulated institutions to find the right problem, deliver software under control and learn from what runs.",
   alternates: { canonical: "/the-loom" },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "The Loom | Governed AI Delivery for Regulated Institutions",
     description:
       "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
-    url: "https://www.middleleap.com/the-loom",
-  },
+    path: "/the-loom",
+  }),
 };
 
 const proofPoints = [

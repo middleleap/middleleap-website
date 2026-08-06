@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { legalTermsEffectiveDate } from "@/lib/legal";
 import styles from "@/app/ventures/studio/studio.module.css";
 
 type PreparedProposal = {
@@ -10,11 +11,18 @@ type PreparedProposal = {
   subject: string;
 };
 
-const submissionTermsVersion = "18 July 2026";
+// Several mail clients truncate or drop mailto: URLs beyond ~2,000 characters,
+// so long proposals should steer users to the copy fallback.
+const mailtoLengthLimit = 2000;
 
 export function VentureProposalForm() {
   const [preparedProposal, setPreparedProposal] = useState<PreparedProposal | null>(null);
   const [copyStatus, setCopyStatus] = useState("");
+  const preparedSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (preparedProposal) preparedSectionRef.current?.focus();
+  }, [preparedProposal]);
 
   function prepareProposal(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,7 +37,7 @@ export function VentureProposalForm() {
       ["Desired participation", form.get("participation")],
       ["Name", form.get("name")],
       ["Email", form.get("email")],
-      ["Submission terms accepted", `Yes — version ${submissionTermsVersion}`],
+      ["Submission terms accepted", `Yes — version ${legalTermsEffectiveDate}`],
       ["Prepared at", new Date().toISOString()],
     ];
     const body = fields.map(([label, value]) => `${label}:\n${String(value ?? "").trim() || "—"}`).join("\n\n");
@@ -113,11 +121,20 @@ export function VentureProposalForm() {
       <button type="submit">Prepare proposal options →</button>
 
       {preparedProposal && (
-        <section className={styles.preparedProposal} aria-labelledby="prepared-proposal-heading">
+        <section
+          ref={preparedSectionRef}
+          tabIndex={-1}
+          className={styles.preparedProposal}
+          aria-labelledby="prepared-proposal-heading"
+        >
           <div>
             <span>Ready to send</span>
             <h3 id="prepared-proposal-heading">Your proposal has been prepared locally.</h3>
-            <p>Opening email is convenient, but copying the brief is the reliable fallback if your device has no mail application configured.</p>
+            <p>
+              {preparedProposal.mailto.length > mailtoLengthLimit
+                ? "This proposal is long enough that some mail applications may truncate it when opened directly — use “Copy proposal” and paste it into a new email instead."
+                : "Opening email is convenient, but copying the brief is the reliable fallback if your device has no mail application configured."}
+            </p>
           </div>
           <div className={styles.proposalActions}>
             <a href={preparedProposal.mailto}>Open email application →</a>

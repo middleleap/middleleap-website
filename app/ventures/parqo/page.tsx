@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOpenGraph } from "@/lib/seo";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -10,11 +11,12 @@ export const metadata: Metadata = {
   description:
     "How Parqo is being built: the live acquisition wedge, approved marketplace design, AI-native delivery controls, technology stack and validation roadmap.",
   alternates: { canonical: "/ventures/parqo" },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Parqo | MiddleLeap Ventures",
-    description: "An evidence-backed build record for a UAE employee-parking marketplace.",
-    url: "https://www.middleleap.com/ventures/parqo",
-  },
+    description:
+      "An evidence-backed build record for a UAE employee-parking marketplace.",
+    path: "/ventures/parqo",
+  }),
 };
 
 const buildStages = [

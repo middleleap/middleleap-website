@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOpenGraph } from "@/lib/seo";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -10,11 +11,12 @@ export const metadata: Metadata = {
   description:
     "How HiveMind built Hive Coach: product architecture, runtime AI pipeline, delivery harness, technology stack, quality controls and development maturity.",
   alternates: { canonical: "/ventures/hivemind" },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "HiveMind / Hive Coach | MiddleLeap Ventures",
-    description: "An evidence-backed build record for human-led, AI-amplified karting coaching.",
-    url: "https://www.middleleap.com/ventures/hivemind",
-  },
+    description:
+      "An evidence-backed build record for human-led, AI-amplified karting coaching.",
+    path: "/ventures/hivemind",
+  }),
 };
 
 const buildStages = [

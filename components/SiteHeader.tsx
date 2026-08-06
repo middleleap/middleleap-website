@@ -99,32 +99,49 @@ export function SiteHeader({
     };
   }, []);
 
-  useEffect(() => {
-    const localLinks = contextLinks.filter((link) => link.href.startsWith("#"));
-    if (localLinks.length === 0) return;
+  // Pages pass contextLinks as inline array literals, so key the effect on the
+  // hrefs themselves rather than the (unstable) array identity.
+  const localContextHrefs = contextLinks
+    .filter((link) => link.href.startsWith("#"))
+    .map((link) => link.href)
+    .join(" ");
 
+  useEffect(() => {
+    if (!localContextHrefs) return;
+
+    const targets = localContextHrefs
+      .split(" ")
+      .map((href) => ({ href, element: document.querySelector(href) }))
+      .filter((entry): entry is { href: string; element: Element } => entry.element !== null);
+    if (targets.length === 0) return;
+
+    let frame = 0;
     const updateActiveContext = () => {
+      frame = 0;
       const visibleThreshold = 180;
       let activeHref = "";
 
-      for (const link of localLinks) {
-        const target = document.querySelector(link.href);
-        if (target && target.getBoundingClientRect().top <= visibleThreshold) {
-          activeHref = link.href;
+      for (const target of targets) {
+        if (target.element.getBoundingClientRect().top <= visibleThreshold) {
+          activeHref = target.href;
         }
       }
 
       setActiveContextHref(activeHref);
     };
+    const scheduleUpdate = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(updateActiveContext);
+    };
 
     updateActiveContext();
-    window.addEventListener("scroll", updateActiveContext, { passive: true });
-    window.addEventListener("hashchange", updateActiveContext);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("hashchange", scheduleUpdate);
     return () => {
-      window.removeEventListener("scroll", updateActiveContext);
-      window.removeEventListener("hashchange", updateActiveContext);
+      if (frame !== 0) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("hashchange", scheduleUpdate);
     };
-  }, [contextLinks]);
+  }, [localContextHrefs]);
 
   return (
     <div className={styles.headerWrap}>

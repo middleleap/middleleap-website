@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -11,12 +12,12 @@ export const metadata: Metadata = {
   description:
     "How the Open Finance Back Office was designed and built: architecture, AI delivery harness, technology stack, quality controls and development maturity.",
   alternates: { canonical: "/ventures/backoffice" },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Open Finance Backoffice | MiddleLeap Ventures",
     description:
       "An evidence-backed build record for the bank-neutral UAE Open Finance operations platform.",
-    url: "https://www.middleleap.com/ventures/backoffice",
-  },
+    path: "/ventures/backoffice",
+  }),
 };
 
 const buildStages = [

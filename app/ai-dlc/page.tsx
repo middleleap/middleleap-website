@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
   description:
     "The Loom Toolkit installs MiddleLeap's governed delivery method, an institution-owned BrainKit and optional domain intelligence inside repositories.",
   alternates: { canonical: "/ai-dlc" },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "The Loom Toolkit | Institutional AI Delivery",
     description:
       "Install a governed delivery toolkit, draft the institution's BrainKit and pin that approved context across repositories.",
-    url: "https://www.middleleap.com/ai-dlc",
-  },
+    path: "/ai-dlc",
+  }),
 };
 
 const bundles = [

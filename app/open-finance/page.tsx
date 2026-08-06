@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
   description:
     "MiddleLeap helps banks, fintechs and financial infrastructure providers turn Open Finance mandates into propositions, platforms, operating models and market execution.",
   alternates: { canonical: "/open-finance" },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Open Finance Advisory | MiddleLeap",
     description:
       "Senior advisory for Open Finance strategy, regulatory readiness, LFI and TPP operating models, ecosystems and execution across MENA.",
-    url: "https://www.middleleap.com/open-finance",
-  },
+    path: "/open-finance",
+  }),
 };
 
 const structuredData = {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { legalTermsEffectiveDate } from "@/lib/legal";
 import styles from "../legal.module.css";
 
 export const metadata: Metadata = { title: "Venture Submission Terms", alternates: { canonical: "/venture-submission-terms" } };
@@ -13,7 +14,7 @@ export default function VentureSubmissionTermsPage() {
       <article className={styles.content}>
         <p className={styles.eyebrow}>Venture Studio</p>
         <h1>Submission terms.</h1>
-        <p className={styles.updated}>Version effective 18 July 2026</p>
+        <p className={styles.updated}>Version effective {legalTermsEffectiveDate}</p>
         <section><h2>Do not submit confidential information</h2><p>Initial venture submissions must be non-confidential. MiddleLeap cannot agree to confidentiality obligations merely by receiving or reviewing a submission. If confidential discussion becomes appropriate, the parties can agree suitable terms before that information is shared.</p></section>
         <section><h2>No obligation is created</h2><p>A submission does not create an advisory, investment, employment, partnership, fiduciary or other business relationship. MiddleLeap is not obliged to review, respond to, develop, fund or proceed with a proposal.</p></section>
         <section><h2>Your authority</h2><p>You confirm that you are entitled to provide the submitted material and that doing so does not breach another person&apos;s rights or your contractual, professional or legal obligations.</p></section>
