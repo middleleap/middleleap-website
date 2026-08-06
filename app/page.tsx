@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
+import { loomProof } from "@/lib/proof";
 
 // Homepage metadata (title, description, canonical, Open Graph) is inherited
 // from the root layout, which declares the same values as its defaults.
@@ -361,9 +362,9 @@ export default function HomePage() {
               <span>Residency</span>
             </div>
             <div className={styles.loomProof}>
-              <span><strong>134 / ~139</strong> stories to done</span>
-              <span><strong>2 + 1</strong> harnesses + Run arc</span>
-              <span><strong>0</strong> real records</span>
+              <span><strong>{loomProof.storiesRatio}</strong> stories to done</span>
+              <span><strong>{loomProof.harnesses}</strong> harnesses + Run arc</span>
+              <span><strong>{loomProof.realCustomerRecords}</strong> real records</span>
             </div>
           </div>
         </div>

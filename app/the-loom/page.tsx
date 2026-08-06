@@ -5,6 +5,7 @@ import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./loom.module.css";
+import { loomProof } from "@/lib/proof";
 
 export const metadata: Metadata = {
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
@@ -20,10 +21,10 @@ export const metadata: Metadata = {
 };
 
 const proofPoints = [
-  ["134 / ~139", "Stories to done in the first build"],
-  ["2 + 1", "Harnesses and the Run feedback arc"],
-  ["100%", "Merges approved by people in the regulated build"],
-  ["0", "Real customer records used"],
+  [loomProof.storiesRatio, "Stories to done in the first build"],
+  [loomProof.harnesses, "Harnesses and the Run feedback arc"],
+  [loomProof.humanApprovedMerges, "Merges approved by people in the regulated build"],
+  [String(loomProof.realCustomerRecords), "Real customer records used"],
 ] as const;
 
 const loomParts = [
