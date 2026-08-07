@@ -102,6 +102,8 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 ## Primary source
 
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
+- [The practice](https://www.middleleap.com/practice): the founder-led, networked operating model, how mandates are staffed, the founder profile and the experience carried into the practice.
+- [How we engage](https://www.middleleap.com/how-we-engage): the three engagement models, how a senior team is assembled around a mandate and how to start.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.

@@ -4,6 +4,8 @@ import { expect, test } from "@playwright/test";
 const routes = [
   "/",
   "/open-finance",
+  "/practice",
+  "/how-we-engage",
   "/the-loom",
   "/ai-dlc",
   "/ventures",

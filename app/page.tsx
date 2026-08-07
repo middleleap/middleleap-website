@@ -54,7 +54,7 @@ const structuredData = {
       "@id": "https://www.middleleap.com/#michael-ryberg-hartmann",
       name: "Michael Ryberg Hartmann",
       jobTitle: "Founder and Principal Adviser",
-      url: "https://www.middleleap.com/#experience",
+      url: "https://www.middleleap.com/practice",
       sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
       worksFor: { "@id": "https://www.middleleap.com/#organization" },
       alumniOf: [

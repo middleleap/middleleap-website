@@ -9,7 +9,7 @@ import { JsonLd } from "./JsonLd";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
-type NavSection = "what" | "method" | "ventures" | "experience";
+type NavSection = "what" | "method" | "ventures" | "practice";
 
 export type ContextLink = {
   href: Route;
@@ -61,7 +61,7 @@ export function SiteHeader({
   const globalLinks: Array<{ href: Route; label: string; section: NavSection }> = [
     { href: `${prefix}#expertise`, label: "What we do", section: "what" },
     { href: `${prefix}#method`, label: "How we work", section: "method" },
-    { href: `${prefix}#experience`, label: "The practice", section: "experience" },
+    { href: "/practice", label: "The practice", section: "practice" },
     { href: "/ventures", label: "Ventures", section: "ventures" },
   ];
   const closeMobileMenu = () => {

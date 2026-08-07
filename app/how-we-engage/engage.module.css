@@ -1,0 +1,258 @@
+/*
+  Global tokens only — see the note in app/practice/practice.module.css.
+*/
+
+.shell {
+  min-height: 100vh;
+  overflow: clip;
+  color: var(--bone-1);
+  background: var(--ink-0);
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+}
+
+.hero,
+.section,
+.start {
+  width: min(calc(100% - 64px), 1120px);
+  margin-inline: auto;
+}
+
+.hero {
+  padding-block: 88px 64px;
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+  color: var(--ember-text);
+  font: 500 var(--fs-caption) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "// ";
+}
+
+.hero h1 {
+  max-width: 900px;
+  color: var(--bone-0);
+  font: 400 clamp(46px, 5.6vw, 70px)/1.06 var(--font-instrument-serif), serif;
+  letter-spacing: normal;
+}
+
+.hero h1 em {
+  color: var(--ember-500);
+  font-weight: 400;
+}
+
+.lede {
+  max-width: 700px;
+  margin-top: 26px;
+  color: var(--bone-2);
+  font-size: 18px;
+  line-height: var(--lh-body);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.primaryAction {
+  color: var(--on-ember);
+  background: var(--ember-500);
+}
+
+.secondaryAction {
+  color: var(--bone-0);
+  border: 1px solid var(--ink-4);
+}
+
+.section {
+  padding-block: 76px;
+  border-top: 1px solid var(--ink-border);
+}
+
+.section h2 {
+  max-width: 860px;
+  color: var(--bone-0);
+  font: 400 clamp(32px, 3.6vw, 46px)/1.1 var(--font-instrument-serif), serif;
+}
+
+.section h2 em {
+  color: var(--ember-500);
+  font-weight: 400;
+}
+
+.sectionLede {
+  max-width: 720px;
+  margin-top: 18px;
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.modelList {
+  margin-top: 44px;
+}
+
+.modelList article {
+  display: grid;
+  grid-template-columns: minmax(0, 64px) minmax(0, 3fr) minmax(0, 6fr);
+  gap: 28px;
+  padding-block: 30px;
+  border-bottom: 1px solid var(--ink-border);
+}
+
+.modelList span {
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+}
+
+.modelList h3 {
+  color: var(--bone-0);
+  font: 400 26px/1.2 var(--font-instrument-serif), serif;
+}
+
+.modelList h3 small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--bone-3);
+  font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.modelList p {
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.staffingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 44px;
+}
+
+.staffingGrid article {
+  padding: 26px;
+  border: 1px solid var(--ink-border);
+  background: var(--ink-1);
+}
+
+.staffingGrid span {
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+}
+
+.staffingGrid h3 {
+  margin-top: 20px;
+  color: var(--bone-0);
+  font: 400 24px var(--font-instrument-serif), serif;
+}
+
+.staffingGrid p {
+  margin-top: 10px;
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+.evidenceLink {
+  display: inline-flex;
+  margin-top: 34px;
+  color: var(--bone-0);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-decoration-color: var(--ember-text);
+  text-underline-offset: 5px;
+  text-transform: uppercase;
+}
+
+/* Inverse panel — see the warning in practice.module.css. */
+.start {
+  margin-block: 76px;
+  padding: 62px;
+  color: var(--ink-2);
+  background: var(--bone-0);
+}
+
+.start .eyebrow {
+  color: var(--ember-on-inverse);
+}
+
+.start h2 {
+  max-width: 720px;
+  color: var(--ink-2);
+  font: 400 clamp(30px, 3.4vw, 44px)/1.1 var(--font-instrument-serif), serif;
+}
+
+.start p {
+  max-width: 640px;
+  margin-top: 16px;
+  color: var(--ink-4);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.startActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.startActions a:first-child {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 14px 22px;
+  color: var(--bone-0);
+  background: var(--ink-2);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.startActions a + a {
+  color: var(--ink-2);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-decoration-color: var(--ember-on-inverse);
+  text-underline-offset: 5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+  .staffingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modelList article {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .start {
+    padding: 34px;
+  }
+}
