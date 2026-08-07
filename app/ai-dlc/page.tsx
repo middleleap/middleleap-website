@@ -173,7 +173,12 @@ export default function AiDlcPage() {
           <h2>Install the frame. Then draft the institution&apos;s seed.</h2>
           <p>RC.10 adopts the Loom from one copy manifest, preserves an existing <code>.claude/settings.json</code> and writes a sidecar when human merging is required. BrainKit templates land as a draft: the generator may organise approved sources and expose gaps, but only accountable humans can approve the result.</p>
         </div>
-        <pre aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
+        {/*
+          A labelled scrollable region rather than a bare aria-label: `pre` has a
+          generic role, so the label was being dropped, and the block scrolls, which
+          keyboard users need to be able to reach and read.
+        */}
+        <pre role="region" tabIndex={0} aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
 /plugin install middleleap-loom@middleleap-ai-dlc
 /plugin install middleleap-ai-sdlc@middleleap-ai-dlc
 

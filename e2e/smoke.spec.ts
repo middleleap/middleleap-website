@@ -71,6 +71,17 @@ for (const route of routes) {
       expect(crumbNames).toEqual(visible);
     });
 
+    test("same-page fragment links resolve to a target", async ({ page }) => {
+      await page.goto(route);
+      const missing = await page.$$eval("a[href*='#']", (anchors) =>
+        anchors
+          .map((a) => a.getAttribute("href") ?? "")
+          .filter((h) => h.startsWith("#") && h.length > 1)
+          .filter((h) => !document.getElementById(h.slice(1))),
+      );
+      expect(missing).toEqual([]);
+    });
+
     test("internal navigation links resolve", async ({ page }) => {
       await page.goto(route);
       const hrefs = await page.$$eval("a[href^='/']", (anchors) =>
@@ -94,6 +105,13 @@ for (const route of routes) {
         expect(
           blocking.map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })),
         ).toEqual([]);
+
+        // axe downgrades aria-prohibited-attr from violation to "incomplete" when
+        // the element has text content, which is exactly why the aria-label-on-div
+        // defects survived this gate before. Assert on it specifically; do not fail
+        // on all incomplete results, since color-contrast is perpetually incomplete.
+        const prohibited = results.incomplete.filter((r) => r.id === "aria-prohibited-attr");
+        expect(prohibited.flatMap((r) => r.nodes.map((n) => n.html))).toEqual([]);
       });
     }
   });

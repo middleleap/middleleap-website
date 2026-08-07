@@ -1,7 +1,8 @@
+import type { Route } from "next";
 import { siteOrigin } from "./seo";
 
 export type Breadcrumb = {
-  href?: string;
+  href?: Route;
   label: string;
 };
 

@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import { ExecutiveSummary } from "./ExecutiveSummary";
@@ -8,7 +9,7 @@ import styles from "./ProjectPage.module.css";
 
 export type ProjectAction = {
   label: string;
-  href: string;
+  href: Route;
   kind: "primary" | "secondary";
   external?: boolean;
 };

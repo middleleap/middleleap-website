@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { breadcrumbList, type Breadcrumb } from "@/lib/structured-data";
@@ -11,7 +12,7 @@ import styles from "./SiteChrome.module.css";
 type NavSection = "what" | "method" | "ventures" | "experience";
 
 export type ContextLink = {
-  href: string;
+  href: Route;
   label: string;
   current?: boolean;
 };
@@ -32,7 +33,7 @@ function HeaderLink({
   className,
   onClick,
 }: {
-  href: string;
+  href: Route;
   children: ReactNode;
   current?: "page" | "location";
   active?: boolean;
@@ -57,7 +58,7 @@ export function SiteHeader({
   const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
   const breadcrumbSchema = breadcrumbList(breadcrumbs);
-  const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
+  const globalLinks: Array<{ href: Route; label: string; section: NavSection }> = [
     { href: `${prefix}#expertise`, label: "What we do", section: "what" },
     { href: `${prefix}#method`, label: "How we work", section: "method" },
     { href: `${prefix}#experience`, label: "The practice", section: "experience" },

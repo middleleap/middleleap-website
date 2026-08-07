@@ -66,6 +66,7 @@ export function MandateSystem() {
   return (
     <div
       className={styles.mandateSystem}
+      role="group"
       aria-label="Interactive view of a strategic mandate becoming a market-ready capability"
       onMouseLeave={() => setIsExploring(false)}
     >

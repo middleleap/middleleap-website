@@ -1,3 +1,5 @@
+import type { Route } from "next";
+
 export type PortfolioProject = {
   name: string;
   type: string;
@@ -6,7 +8,7 @@ export type PortfolioProject = {
   evidence: string;
   portfolioRole: "Flagship regulated proof" | "Venture experiment";
   harnessProfile: "Regulated delivery" | "Venture delivery";
-  detailPath: string;
+  detailPath: Route;
   href?: string;
   repository: string;
 };

@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   // every canonical to a trailing-slash form, turning already-indexed URLs into
   // redirect hops and desynchronising the root canonical from its sitemap entry.
   output: "export",
+  typedRoutes: true,
   reactCompiler: true,
   images: {
     unoptimized: true,

@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -118,7 +119,13 @@ const shifts = [
   },
 ];
 
-const capabilities = [
+const capabilities: Array<{
+  number: string;
+  title: string;
+  detail: string;
+  href?: Route;
+  linkLabel?: string;
+}> = [
   {
     number: "01",
     title: "Regulatory & market transformation",
