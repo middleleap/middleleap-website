@@ -85,11 +85,27 @@ lead-gen paths**, plus a set of fixable correctness and hygiene issues below.
    (backoffice/hivemind/parqo) are near-clones sharing an identical 8-section skeleton
    and byte-identical SVG connector paths. A data-driven component collapses ~700 lines
    to ~200 + typed data, and future ventures become a data file, not a page fork.
-2. **Create shared CSS primitives.** `.eyebrow` is defined 15×, `.hero` 25×, `.engage`
-   26×, `.primaryAction` 17× across route modules with drifting values. Move recurring
-   primitives into a shared module (or extend `SiteChrome.module.css`) and fix the
-   bidirectional `app/` ↔ `components/` CSS import coupling (route pages importing
-   sibling routes' CSS, components importing route CSS).
+2. ~~**Create shared CSS primitives.**~~ **REJECTED — measured, not assumed.** The
+   duplication was overstated: the real base-rule counts are `.eyebrow` in 8 files,
+   `.hero` 7, `.engage` 6, `.primaryAction` 6 — and `.hero` has *zero* identical pairs
+   across its 7 definitions, while `.eyebrow` has 6 distinct value sets across 8. Those
+   are design decisions, not duplication.
+   A `composes:`-based shared module was then built and measured end-to-end: it is
+   declaration-preserving and passes every gate, but it adds a 6th render-blocking
+   stylesheet and perturbs webpack's CSS chunk graph enough to make `/the-loom`
+   **+3,398 B gzip**, `/ai-dlc` +2,310 B and `/open-finance` +1,716 B, doubling those
+   routes' stylesheet count from 2 to 4 — against Lighthouse budgets asserting
+   performance ≥0.9 and FCP ≤1800 ms on every page. The maintainability gain was 4
+   rules totalling ~20 declarations. Net-negative; do not re-propose without
+   re-measuring.
+   The plan's claim that route pages import sibling routes' CSS was also wrong: the
+   only instance is `/privacy` and `/venture-submission-terms` sharing
+   `../legal.module.css`, which is a deliberate shared parent module.
+   What *is* real is the `components/` → `app/` import inversion (four components
+   import route CSS). Deferred: moving it safely requires relocating localized
+   `@keyframes`, far-away responsive rules and a `prefers-reduced-motion` block
+   together, plus a computed-style regression harness across two viewports and two
+   themes — high risk, zero user-visible benefit. Schedule it on its own.
 3. **Move copy toward typed content files.** The site is ~90% hardcoded literals in TSX.
    Adopt the `content/*.ts` + `as const satisfies` pattern for repeating shapes
    (capabilities, engagement models, decisions, workstreams). Replace positional tuple
@@ -187,29 +203,70 @@ Ordered by evidence-backed impact for a boutique advisory firm (Hinge buyer rese
    page** (advisory retainer / strategy sprint / transformation mobilisation, senior
    staffing model, boutique-vs-big-firm rationale). Outcome-titled anonymized cards
    substitute for client logos where FS confidentiality applies.
-6. **SEO/AEO polish**: add `BreadcrumbList` JSON-LD to the 8 routes that render visible
-   breadcrumbs but only mark them up on `/open-finance`; type all JSON-LD with
-   `schema-dts`; use real content dates in `sitemap.ts` instead of `new Date()` per
-   build; fix the llms.txt drift (still describes the retired "profiles" vocabulary for
-   The Loom, omits 2 routes, hardcodes proof figures a third time) — but note llms.txt
-   is a hedge, not a strategy: Google explicitly ignores it; entity consistency and
-   quotable ungated content are what earn AI citations.
-7. **Decide `trailingSlash`** for static-host URL stability and keep canonicals in sync.
+6. **SEO/AEO polish** — DONE, except `schema-dts`. `BreadcrumbList` is now generated
+   from the same array `SiteHeader` renders visibly, so markup and visible trail cannot
+   drift; `sitemap.ts` maps a typed route registry carrying real content dates; the
+   llms.txt drift is corrected and guarded by a route-parity test.
+   **`schema-dts` deliberately skipped** — flag for owner sign-off. It is 936 KB of
+   union-heavy declarations to type two hand-authored payload shapes that a 60-line
+   local type already covers, and v2.0.0 adds a *runtime* dependency, so the
+   "types-only, zero-cost" framing never applied to it. It does catch property-name
+   typos, but its value types accept a bare string where a `Thing` is declared, so it
+   is not the safety net it looks like.
+7. **`trailingSlash`** — RESOLVED: leave at the default. The export already emits flat
+   `out/<route>.html` with every canonical and every sitemap `<loc>` matching
+   byte-for-byte, and the `out/<route>/` directories hold only prefetch payloads, not
+   competing URLs. Enabling it would turn every indexed URL into a redirect hop.
+   Rationale recorded in `next.config.ts`.
+
+### Deliberately not done (with reasons)
+
+- **External link checking** — rejected. The four venture repositories are private, so
+  roughly 28 of the 45 external anchors 404 for any anonymous checker. After the
+  necessary exclusions a weekly job would verify ~9 URLs at the cost of two third-party
+  actions and a scheduled build.
+- **Insights section / MDX tooling (6.2)** — still correctly deferred by this plan's own
+  guidance: do not add the tooling until 3+ pieces are actually committed.
+- **Flagship research asset (6.3)** and **anonymised engagement snapshots** — need
+  source material only the founder can supply. Note that *no* outcome-quantified
+  evidence of a MiddleLeap-contracted engagement exists anywhere in the repo; the three
+  quantified items on the site are explicitly disclaimed as prior-role work. Any
+  "case study" framing needs sign-off, not drafting.
 
 ---
 
 ## Suggested sequencing
 
-| Order | Work | Size | Value |
-|---|---|---|---|
-| 1 | Phase 1 correctness fixes | S | Stops shipping a real analytics bug + INP risk |
-| 2 | Phase 2 hygiene + CLAUDE.md rewrite | S | Removes 1.4 MB dead weight, unblocks agents working accurately |
-| 3 | Phase 4.1–4.2 (LHCI all pages, smoke+axe) | M | Locks in quality before refactors |
-| 4 | Phase 3 refactors (ProjectPage, shared CSS, content files) | M–L | Halves duplication, makes content editable |
-| 5 | Phase 5 accessibility pass | M | Fixes real AT-facing defects; protected by new CI |
-| 6 | Phase 6.1–6.2 (people page, first explainers) | M | Biggest commercial impact |
-| 7 | Phase 6.3–6.5 (flagship asset, lead-gen, engagement page) | L | Compounding credibility engine |
+| Order | Work | Status |
+|---|---|---|
+| 1 | Phase 1 correctness fixes | Done |
+| 2 | Phase 2 hygiene + CLAUDE.md rewrite | Done |
+| 3 | Phase 4 (LHCI all pages, Playwright smoke + axe, tests) | Done |
+| 4 | Phase 3 refactors (ProjectPage, proof figures, typedRoutes) | Done; shared CSS rejected on measurement |
+| 5 | Phase 5 accessibility pass | Done, now lint- and axe-guarded |
+| 6 | Phase 6.1 / 6.5 (`/practice`, `/how-we-engage`) | Done |
+| 7 | Phase 6.6 / 6.7 (structured data, sitemap dates, trailingSlash) | Done, minus `schema-dts` |
+| 8 | Phase 6.2 / 6.3 / 6.4 (insights, flagship asset, scheduler) | Open — needs founder input |
 
-Phases 1–5 are pure engineering and can proceed without content decisions. Phase 6
-needs founder input (bio, which explainers first, scheduler tooling) but items 6.1–6.2
-can start with existing material.
+Everything that could be decided from the repository is implemented and gated. What
+remains genuinely needs the founder:
+
+- **Which explainers to publish first**, and the editorial commitment behind them.
+  Only then is MDX tooling worth adding (this plan's own guidance: not before 3+
+  committed pieces).
+- **The flagship recurring asset** — its subject and cadence.
+- **A scheduler URL** for the productized entry point, and a decision on newsletter
+  cadence.
+- **A headshot**, if the practice page should carry one. None exists in the repo.
+- **Anonymised engagement snapshots**, if wanted. No outcome-quantified evidence of a
+  MiddleLeap-contracted engagement exists anywhere in the repo; every quantified item
+  currently on the site is disclaimed as prior-role work. The safe shape is 2–3
+  "mandate patterns" (problem → decision resolved → what was left behind) with no
+  client identity and no invented metrics.
+- **`schema-dts`**, if the typing is wanted despite the cost noted in 6.6.
+
+### Verification baseline
+
+At the time of writing: lint (with a11y guards), type-check with `next typegen`,
+contrast gate, 27 unit tests, static build, 78 Playwright + axe checks across 13
+routes in both themes, and Lighthouse budgets green on all 13 exported pages.
