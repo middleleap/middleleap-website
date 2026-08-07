@@ -36,6 +36,41 @@ for (const route of routes) {
       }
     });
 
+    test("BreadcrumbList markup matches the visible breadcrumb trail", async ({ page }) => {
+      await page.goto(route);
+
+      // The desktop trail only; the mobile duplicate lives under a different nav.
+      const visible = (
+        await page.$$eval('nav[aria-label="Breadcrumb"] > span', (spans) =>
+          spans.map((span) => {
+            const clone = span.cloneNode(true) as HTMLElement;
+            clone.querySelectorAll('[aria-hidden="true"]').forEach((n) => n.remove());
+            return (clone.textContent ?? "").trim();
+          }),
+        )
+      ).filter(Boolean);
+
+      const blocks = await page
+        .locator('script[type="application/ld+json"]')
+        .allTextContents();
+      const crumbNames: string[] = [];
+      for (const block of blocks) {
+        const parsed = JSON.parse(block);
+        for (const node of parsed["@graph"] ?? [parsed]) {
+          if (node?.["@type"] !== "BreadcrumbList") continue;
+          for (const item of node.itemListElement) {
+            expect(typeof item.position).toBe("number");
+            crumbNames.push(item.name);
+          }
+          expect(node.itemListElement.map((i: { position: number }) => i.position)).toEqual(
+            node.itemListElement.map((_: unknown, i: number) => i + 1),
+          );
+        }
+      }
+
+      expect(crumbNames).toEqual(visible);
+    });
+
     test("internal navigation links resolve", async ({ page }) => {
       await page.goto(route);
       const hrefs = await page.$$eval("a[href^='/']", (anchors) =>

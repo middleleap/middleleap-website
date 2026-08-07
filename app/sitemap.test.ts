@@ -35,4 +35,20 @@ describe("sitemap route parity", () => {
       expect(entry.url.startsWith("https://www.middleleap.com")).toBe(true);
     }
   });
+
+  it("carries a real, well-formed content date for every entry", () => {
+    for (const entry of sitemap()) {
+      const value = entry.lastModified;
+      expect(typeof value).toBe("string");
+      expect(value as string).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Date.parse(value as string)).toBeLessThanOrEqual(Date.now());
+    }
+  });
+
+  // A regression to `new Date()` would collapse all entries to one build-time
+  // timestamp, failing both the format assertion above and this one.
+  it("does not stamp every route with one build-time date", () => {
+    const dates = sitemap().map((entry) => entry.lastModified as string);
+    expect(new Set(dates).size).toBeGreaterThanOrEqual(2);
+  });
 });

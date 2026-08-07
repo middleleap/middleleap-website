@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { breadcrumbList, type Breadcrumb } from "@/lib/structured-data";
 import { BrandLockup } from "./BrandLockup";
+import { JsonLd } from "./JsonLd";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
@@ -12,11 +14,6 @@ export type ContextLink = {
   href: string;
   label: string;
   current?: boolean;
-};
-
-type Breadcrumb = {
-  href?: string;
-  label: string;
 };
 
 type SiteHeaderProps = {
@@ -59,6 +56,7 @@ export function SiteHeader({
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
   const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
+  const breadcrumbSchema = breadcrumbList(breadcrumbs);
   const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
     { href: `${prefix}#expertise`, label: "What we do", section: "what" },
     { href: `${prefix}#method`, label: "How we work", section: "method" },
@@ -143,6 +141,12 @@ export function SiteHeader({
 
   return (
     <div className={styles.headerWrap}>
+      {/*
+        Generated from the same `breadcrumbs` array rendered visibly below, so the
+        markup and the trail a user sees cannot drift. Kept outside `.utilityRow`
+        (a two-column grid) so it can never become a grid item.
+      */}
+      {breadcrumbSchema && <JsonLd node={breadcrumbSchema} />}
       <header className={styles.header}>
         <BrandLockup />
         <nav className={styles.globalNav} aria-label="Primary navigation">

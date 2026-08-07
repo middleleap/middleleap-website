@@ -42,23 +42,6 @@ const structuredData = {
       description:
         "Senior advisory that connects Open Finance regulatory obligations with proposition design, platform strategy, ecosystem economics and operating-model execution.",
     },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Advisory",
-          item: "https://www.middleleap.com/",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Open Finance",
-          item: "https://www.middleleap.com/open-finance",
-        },
-      ],
-    },
   ],
 };
 
