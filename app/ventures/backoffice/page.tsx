@@ -7,7 +7,7 @@ import { pageOpenGraph } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Open Finance Backoffice",
   description:
-    "How the Open Finance Back Office was designed and built: architecture, AI delivery harness, technology stack, quality controls and development maturity.",
+    "How the Open Finance Backoffice was designed and built: architecture, AI delivery harness, technology stack, quality controls and development maturity.",
   alternates: { canonical: "/ventures/backoffice" },
   openGraph: pageOpenGraph({
     title: "Open Finance Backoffice | MiddleLeap Ventures",
