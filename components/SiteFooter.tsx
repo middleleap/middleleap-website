@@ -15,7 +15,7 @@ export function SiteFooter() {
           <Link href="/#expertise">What we do</Link>
           <Link href="/open-finance">Open Finance</Link>
           <Link href="/#method">How we work</Link>
-          <Link href="/#experience">The practice</Link>
+          <Link href="/practice">The practice</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Execution links">
@@ -33,7 +33,8 @@ export function SiteFooter() {
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <Link href="/#experience">Practice &amp; founder</Link>
+          <Link href="/practice">Practice &amp; founder</Link>
+          <Link href="/how-we-engage">How we engage</Link>
           <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/venture-submission-terms">Submission terms</Link>

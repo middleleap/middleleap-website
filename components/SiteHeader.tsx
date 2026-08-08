@@ -1,22 +1,20 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { breadcrumbList, type Breadcrumb } from "@/lib/structured-data";
 import { BrandLockup } from "./BrandLockup";
+import { JsonLd } from "./JsonLd";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
-type NavSection = "what" | "method" | "ventures" | "experience";
+type NavSection = "what" | "method" | "ventures" | "practice";
 
 export type ContextLink = {
-  href: string;
+  href: Route;
   label: string;
   current?: boolean;
-};
-
-type Breadcrumb = {
-  href?: string;
-  label: string;
 };
 
 type SiteHeaderProps = {
@@ -25,7 +23,6 @@ type SiteHeaderProps = {
   contextLabel?: string;
   contextLinks?: ContextLink[];
   home?: boolean;
-  priority?: boolean;
 };
 
 function HeaderLink({
@@ -36,7 +33,7 @@ function HeaderLink({
   className,
   onClick,
 }: {
-  href: string;
+  href: Route;
   children: ReactNode;
   current?: "page" | "location";
   active?: boolean;
@@ -56,15 +53,15 @@ export function SiteHeader({
   contextLabel,
   contextLinks = [],
   home = false,
-  priority = false,
 }: SiteHeaderProps) {
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
   const [activeContextHref, setActiveContextHref] = useState("");
   const prefix = home ? "" : "/";
-  const globalLinks: Array<{ href: string; label: string; section: NavSection }> = [
+  const breadcrumbSchema = breadcrumbList(breadcrumbs);
+  const globalLinks: Array<{ href: Route; label: string; section: NavSection }> = [
     { href: `${prefix}#expertise`, label: "What we do", section: "what" },
     { href: `${prefix}#method`, label: "How we work", section: "method" },
-    { href: `${prefix}#experience`, label: "The practice", section: "experience" },
+    { href: "/practice", label: "The practice", section: "practice" },
     { href: "/ventures", label: "Ventures", section: "ventures" },
   ];
   const closeMobileMenu = () => {
@@ -99,37 +96,60 @@ export function SiteHeader({
     };
   }, []);
 
-  useEffect(() => {
-    const localLinks = contextLinks.filter((link) => link.href.startsWith("#"));
-    if (localLinks.length === 0) return;
+  // Pages pass contextLinks as inline array literals, so key the effect on the
+  // hrefs themselves rather than the (unstable) array identity.
+  const localContextHrefs = contextLinks
+    .filter((link) => link.href.startsWith("#"))
+    .map((link) => link.href)
+    .join(" ");
 
+  useEffect(() => {
+    if (!localContextHrefs) return;
+
+    const targets = localContextHrefs
+      .split(" ")
+      .map((href) => ({ href, element: document.querySelector(href) }))
+      .filter((entry): entry is { href: string; element: Element } => entry.element !== null);
+    if (targets.length === 0) return;
+
+    let frame = 0;
     const updateActiveContext = () => {
+      frame = 0;
       const visibleThreshold = 180;
       let activeHref = "";
 
-      for (const link of localLinks) {
-        const target = document.querySelector(link.href);
-        if (target && target.getBoundingClientRect().top <= visibleThreshold) {
-          activeHref = link.href;
+      for (const target of targets) {
+        if (target.element.getBoundingClientRect().top <= visibleThreshold) {
+          activeHref = target.href;
         }
       }
 
       setActiveContextHref(activeHref);
     };
+    const scheduleUpdate = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(updateActiveContext);
+    };
 
     updateActiveContext();
-    window.addEventListener("scroll", updateActiveContext, { passive: true });
-    window.addEventListener("hashchange", updateActiveContext);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("hashchange", scheduleUpdate);
     return () => {
-      window.removeEventListener("scroll", updateActiveContext);
-      window.removeEventListener("hashchange", updateActiveContext);
+      if (frame !== 0) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("hashchange", scheduleUpdate);
     };
-  }, [contextLinks]);
+  }, [localContextHrefs]);
 
   return (
     <div className={styles.headerWrap}>
+      {/*
+        Generated from the same `breadcrumbs` array rendered visibly below, so the
+        markup and the trail a user sees cannot drift. Kept outside `.utilityRow`
+        (a two-column grid) so it can never become a grid item.
+      */}
+      {breadcrumbSchema && <JsonLd node={breadcrumbSchema} />}
       <header className={styles.header}>
-        <BrandLockup priority={priority} />
+        <BrandLockup />
         <nav className={styles.globalNav} aria-label="Primary navigation">
           {globalLinks.map((link) => (
             <HeaderLink

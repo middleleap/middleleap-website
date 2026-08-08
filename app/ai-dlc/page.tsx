@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
   description:
     "The Loom Toolkit installs MiddleLeap's governed delivery method, an institution-owned BrainKit and optional domain intelligence inside repositories.",
   alternates: { canonical: "/ai-dlc" },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "The Loom Toolkit | Institutional AI Delivery",
     description:
       "Install a governed delivery toolkit, draft the institution's BrainKit and pin that approved context across repositories.",
-    url: "https://www.middleleap.com/ai-dlc",
-  },
+    path: "/ai-dlc",
+  }),
 };
 
 const bundles = [
@@ -85,10 +86,9 @@ const brainkitLifecycle = [
 
 export default function AiDlcPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
         active="method"
-        priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
           { href: "/#method", label: "How we work" },
@@ -118,7 +118,7 @@ export default function AiDlcPage() {
             <Link className={styles.secondaryAction} href="/the-loom">Start with The Loom</Link>
           </div>
         </div>
-        <div className={styles.packageVisual} role="img" aria-label="The Loom Toolkit combines compiled control plans with an institution-owned BrainKit and optional domain packs">
+        <div className={styles.packageVisual} role="group" aria-label="The Loom Toolkit combines compiled control plans with an institution-owned BrainKit and optional domain packs">
           <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Loom 2.0 RC.10</b></div>
           <div className={styles.packageCore}><span>Discovery + delivery</span><span>Policy compiler</span><span>Continuous assurance</span><span>Manifest-driven adoption</span><strong>The Loom Toolkit / public core</strong></div>
           <div className={styles.packageOutput}><span>Your BrainKit / private seed</span><i>+</i><span>Optional domain intelligence</span></div>
@@ -139,7 +139,7 @@ export default function AiDlcPage() {
 
       <section className={styles.layers}>
         <div className={styles.sectionIntro}><p className={styles.eyebrow}>The adoption path</p><div><h2>Install the frame. Draft the identity. Put owners in control.</h2><p>The public toolkit installs from one manifest. The first institution-owned artifact is a private BrainKit, reviewed by accountable humans and pinned into each repository that adopts it.</p></div></div>
-        <div className={styles.layerSystem} aria-label="From advisory mandate to installed institutional capability">
+        <div className={styles.layerSystem} role="group" aria-label="From advisory mandate to installed institutional capability">
           <div className={styles.layerSystemHeader}><span>Capability adoption path / 05</span><b>Frame → install → draft → approve → compound</b></div>
           <div className={styles.layerGrid}>
             {layers.map(([id, title, label, detail]) => <article key={id}><span>{id}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
@@ -173,7 +173,12 @@ export default function AiDlcPage() {
           <h2>Install the frame. Then draft the institution&apos;s seed.</h2>
           <p>RC.10 adopts the Loom from one copy manifest, preserves an existing <code>.claude/settings.json</code> and writes a sidecar when human merging is required. BrainKit templates land as a draft: the generator may organise approved sources and expose gaps, but only accountable humans can approve the result.</p>
         </div>
-        <pre aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
+        {/*
+          A labelled scrollable region rather than a bare aria-label: `pre` has a
+          generic role, so the label was being dropped, and the block scrolls, which
+          keyboard users need to be able to reach and read.
+        */}
+        <pre role="region" tabIndex={0} aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
 /plugin install middleleap-loom@middleleap-ai-dlc
 /plugin install middleleap-ai-sdlc@middleleap-ai-dlc
 
@@ -224,7 +229,7 @@ export default function AiDlcPage() {
               <ul>{brainkitOutputs.map((output) => <li key={output}>{output}</li>)}</ul>
             </article>
           </div>
-          <div className={styles.brainkitLifecycle} aria-label="BrainKit governance lifecycle">
+          <div className={styles.brainkitLifecycle} role="group" aria-label="BrainKit governance lifecycle">
             {brainkitLifecycle.map(([id, title, detail]) => (
               <article key={id}>
                 <span>{id}</span>

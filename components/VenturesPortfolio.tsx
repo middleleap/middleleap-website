@@ -5,7 +5,7 @@ import styles from "@/app/ventures/ventures.module.css";
 export function VenturesPortfolio() {
   return (
     <div className={styles.portfolioExplorer}>
-      <div className={styles.portfolioMap} role="img" aria-label="MiddleLeap portfolio and delivery profiles">
+      <div className={styles.portfolioMap} role="group" aria-label="MiddleLeap portfolio and delivery profiles">
         <div className={styles.mapCore}>
           <span>Portfolio evidence</span>
           <strong>Build<br />Learn<br />Apply</strong>

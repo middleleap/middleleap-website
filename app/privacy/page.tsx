@@ -2,18 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { legalTermsEffectiveDate } from "@/lib/legal";
 import styles from "../legal.module.css";
 
 export const metadata: Metadata = { title: "Privacy", alternates: { canonical: "/privacy" } };
 
 export default function PrivacyPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Privacy" }]} />
       <article className={styles.content}>
         <p className={styles.eyebrow}>Company information</p>
         <h1>Privacy.</h1>
-        <p className={styles.updated}>Effective 18 July 2026</p>
+        <p className={styles.updated}>Effective {legalTermsEffectiveDate}</p>
         <section>
           <h2>Who controls your information</h2>
           <p>MiddleLeap, based in Dubai, United Arab Emirates, operates this website and determines why and how personal information submitted through it is used. In that capacity, MiddleLeap is the data controller. Privacy questions and rights requests can be sent to <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.</p>

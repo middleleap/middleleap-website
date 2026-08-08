@@ -38,10 +38,9 @@ const process = [
 
 export default function VentureStudioPage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
         active="ventures"
-        priority
         breadcrumbs={[
           { href: "/ventures", label: "Ventures" },
           { label: "Venture Studio" },
@@ -95,7 +94,7 @@ export default function VentureStudioPage() {
           <p className={styles.eyebrow}>How it moves</p>
           <div><h2>Evidence before surface area.</h2><p>Every step has a decision gate. The outcome may be a venture, a partnership, shared infrastructure or a clear decision not to proceed.</p></div>
         </div>
-        <div className={styles.processSystem} aria-label="Venture Studio stage-gate process">
+        <div className={styles.processSystem} role="group" aria-label="Venture Studio stage-gate process">
           <div className={styles.processHeader}><span>Studio decision system / 05</span><b>Evidence before commitment</b></div>
           <ol className={styles.processGrid}>
             {process.map(([number, title, detail, gate]) => (

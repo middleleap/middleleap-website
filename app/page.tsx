@@ -1,16 +1,14 @@
-import type { Metadata } from "next";
+import type { Route } from "next";
 import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
+import { loomProof } from "@/lib/proof";
 
-export const metadata: Metadata = {
-  title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
-  description:
-    "MiddleLeap advises banks, fintechs, financial infrastructure and telecommunications providers on platform strategy and AI-native transformation.",
-};
+// Homepage metadata (title, description, canonical, Open Graph) is inherited
+// from the root layout, which declares the same values as its defaults.
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -56,7 +54,7 @@ const structuredData = {
       "@id": "https://www.middleleap.com/#michael-ryberg-hartmann",
       name: "Michael Ryberg Hartmann",
       jobTitle: "Founder and Principal Adviser",
-      url: "https://www.middleleap.com/#experience",
+      url: "https://www.middleleap.com/practice",
       sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
       worksFor: { "@id": "https://www.middleleap.com/#organization" },
       alumniOf: [
@@ -121,7 +119,13 @@ const shifts = [
   },
 ];
 
-const capabilities = [
+const capabilities: Array<{
+  number: string;
+  title: string;
+  detail: string;
+  href?: Route;
+  linkLabel?: string;
+}> = [
   {
     number: "01",
     title: "Regulatory & market transformation",
@@ -175,14 +179,14 @@ const engagements = [
 
 export default function HomePage() {
   return (
-    <main className={styles.shell} id="problem">
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <SiteHeader home priority />
+      <SiteHeader home />
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
@@ -200,7 +204,7 @@ export default function HomePage() {
             <a className={styles.primaryAction} href="#engage">Discuss a strategic mandate</a>
             <a className={styles.secondaryAction} href="#expertise">Explore our capabilities</a>
           </div>
-          <div className={styles.proofLine} role="group" aria-label="MiddleLeap positioning">
+          <div className={styles.proofLine}>
             <span><strong>MENA</strong> market focus</span>
             <span><strong>Senior-led</strong> every mandate</span>
             <span><strong>Strategy</strong> through execution</span>
@@ -265,7 +269,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className={styles.companySystem} aria-label="MiddleLeap company operating model">
+        <div className={styles.companySystem} role="group" aria-label="MiddleLeap company operating model">
           <div className={styles.companySystemHeader}>
             <span>MiddleLeap operating system / 03</span>
             <b>Evidence compounds</b>
@@ -329,7 +333,7 @@ export default function HomePage() {
               <Link href="/ai-dlc">View the technical toolkit →</Link>
             </div>
           </div>
-          <div className={styles.loomMini} role="img" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
+          <div className={styles.loomMini} role="group" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
             <div className={styles.loomMiniHeader}>
               <span>Mandate → outcome</span>
               <b>Two harnesses · one loop</b>
@@ -365,9 +369,9 @@ export default function HomePage() {
               <span>Residency</span>
             </div>
             <div className={styles.loomProof}>
-              <span><strong>134 / ~139</strong> stories to done</span>
-              <span><strong>2 + 1</strong> harnesses + Run arc</span>
-              <span><strong>0</strong> real records</span>
+              <span><strong>{loomProof.storiesRatio}</strong> stories to done</span>
+              <span><strong>{loomProof.harnesses}</strong> harnesses + Run arc</span>
+              <span><strong>{loomProof.realCustomerRecords}</strong> real records</span>
             </div>
           </div>
         </div>
@@ -470,7 +474,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className={styles.ventureLoop} role="img" aria-label="MiddleLeap venture learning loop">
+        <div className={styles.ventureLoop} role="group" aria-label="MiddleLeap venture learning loop">
           <span><b>Build</b> Working assets</span>
           <i aria-hidden="true">→</i>
           <span><b>Learn</b> Operating intelligence</span>

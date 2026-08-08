@@ -1,9 +1,12 @@
 module.exports = {
   ci: {
+    // No url list: LHCI discovers every exported HTML page in out/, so all
+    // routes are held to the budgets below, not just the homepage.
     collect: {
       staticDistDir: "./out",
       numberOfRuns: 3,
-      url: ["http://localhost/index.html"],
+      maxAutodiscoverUrls: 0,
+      autodiscoverUrlBlocklist: ["/404.html", "/_not-found.html"],
     },
     assert: {
       assertions: {

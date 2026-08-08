@@ -1,13 +1,14 @@
+import type { Route } from "next";
+
 export type PortfolioProject = {
   name: string;
   type: string;
   summary: string;
   status: string;
   evidence: string;
-  nextGate: string;
   portfolioRole: "Flagship regulated proof" | "Venture experiment";
   harnessProfile: "Regulated delivery" | "Venture delivery";
-  detailPath: string;
+  detailPath: Route;
   href?: string;
   repository: string;
 };
@@ -29,7 +30,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "A bank-neutral, synthetic-only operating platform that turns Open Finance obligations into governed workflows for people and agents.",
     status: "Demo-complete",
     evidence: "Regulated controls designed into a working platform from day one.",
-    nextGate: "Enterprise adoption",
     portfolioRole: "Flagship regulated proof",
     harnessProfile: "Regulated delivery",
     detailPath: "/ventures/backoffice",
@@ -43,7 +43,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "A UAE parking marketplace beginning with a live demand-and-supply acquisition wedge in dense business districts.",
     status: "Acquisition wedge live",
     evidence: "Commercial investment is gated by district-level demand and supply evidence.",
-    nextGate: "District-level commercial proof",
     portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/parqo",
@@ -57,7 +56,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "A human-led coaching product that turns track evidence into grounded, coach-owned advice for developing drivers.",
     status: "Initial product live",
     evidence: "AI can deepen an expert service without taking authority from the expert.",
-    nextGate: "Repeat usage and coach validation",
     portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/hivemind",

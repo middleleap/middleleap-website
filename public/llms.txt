@@ -1,6 +1,6 @@
 # MiddleLeap
 
-> MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps banks, fintechs, financial infrastructure providers and regulated platform businesses move from strategic mandate to market execution.
+> MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses move from strategic mandate to market execution.
 
 Canonical website: https://www.middleleap.com/
 Contact: contact@middleleap.com
@@ -26,7 +26,7 @@ MiddleLeap helps banks, fintechs, TPPs and financial infrastructure providers co
 - Market position: decide where the institution will lead, participate or partner as regulation changes the value chain.
 - Proposition: translate permitted data and payment capabilities into customer, partner and embedded-finance propositions.
 - Platform: shape the consent, data, API, partner and control capabilities required to operate at ecosystem scale.
-- Operating model: align product, technology, risk, compliance, operations and partner management around delivery.
+- Operating model: align product, technology, risk, compliance, operations and partner management around accountable execution.
 - Engagement models include executive advisory, focused strategy sprints and transformation mobilisation.
 
 ## How MiddleLeap works
@@ -39,36 +39,47 @@ MiddleLeap works from mandate to working capability through five stages:
 4. Deliver working products and capabilities.
 5. Codify reusable knowledge, controls and agent workflows.
 
-The Loom is MiddleLeap's governed AI delivery harness. Its shared core combines evidence-led discovery, bounded AI-assisted delivery and human authority. A regulated profile adds formal assurance, audit, lineage and institutional controls; a venture profile applies commercial-evidence, product-safety and expert-authority gates.
+One practice runs three connected systems. Advisory frames the strategic, regulatory and commercial mandate. Execution turns it into working capability through The Loom and The Loom Toolkit. Ventures test propositions in operating reality, and the learning returns to Advisory to sharpen the next mandate.
+
+The Loom is MiddleLeap's governed route from an ambiguous mandate to accountable software. Discovery and Delivery are its two harnesses. A third arc, Run and Operations, returns incidents, drift, regulatory change and customer signals to Discovery as evidence, so the institution learns from what the software actually does.
 
 The Loom is the governed delivery method. The Loom Toolkit is the installable product that carries the method, controls and adoption machinery into a repository. AI-DLC is the technical distribution mechanism for the Toolkit rather than a separate consulting proposition. The Institutional BrainKit is the institution-owned context component, and domain packs are optional specialist intelligence.
 
 ### The Loom
 
-- Discovery runs through gates D1-D9, covering framing, evidence, scope, the no-solutioning boundary, synthesis, data governance, brand conformance, tangibility and stakeholder validation.
-- Delivery is spec-first and agent-enabled, with bounded reviewers, quality gates, tripwire hooks and a merge policy in which agents propose and accountable humans approve.
-- The context brain has three dimensions: regulated context, solution-domain knowledge and institutional DNA.
-- The first evidenced implementation was the UAE Open Finance Back Office, where 134 of approximately 139 stories reached done under quality gates, synthetic-data constraints and human four-eyes merge.
-- The current proof is demo-proven, not production-proven. It has not cleared live production scale or a regulator examination.
+- Two harnesses form a double diamond. Discovery diverges around evidence and converges on one problem through gates D1-D9; Delivery diverges across solutions and converges under control through quality gates Q1-Q5. They meet at one enforced waist gate: a gate-green hand-off. Discovery may stop a weak problem early, and delivery evidence may legitimately send the work back.
+- Discovery gates D1-D9 cover framing, evidence, scope, the no-solutioning boundary, synthesis, data governance, brand conformance, tangibility and stakeholder validation. Prototypes are brand-real and behaviour-hollow: they test the framing without binding the production solution.
+- Delivery is spec-first and agent-enabled. Contract, generated types and acceptance tests precede implementation; bounded reviewers judge hard stops and contract conformance; PII, spec and test-integrity tripwires apply at the moment of edit; and a protected control plane keeps merge approval accountable, per change by default or through a narrowly governed routine-change envelope in which approval is relocated, never removed.
+- A third arc, Run and Operations, deploys, observes and triages. Most signals become a delivery fix or a risk-register update; only evidence that challenges the original framing reopens Discovery.
+- The control chain runs mandate, problem, solution, release, outcome and signal. The success measures that justify the problem become the evaluation targets for the released product, and every step leaves an owned artifact.
+- The context brain is the pattern the harness weaves to. It has three dimensions: mandate context, solution-domain knowledge and institutional DNA.
+- Continuous assurance re-runs on changes, schedules and regulatory events through watch, assess, check, test, evidence and confirm, closing with agent-prepared reporting plus human four-eyes.
+- Harness governance is a stated catalogue of thirteen decisions, including no self-merge, immutable controls, sealed evidence, least privilege, governed promotion, model-risk governance of the harness itself, a discovery-first entry condition, residency control and a mandatory kill switch with a named accountable officer.
+- Control maturity is graded honestly: absent, defined, mechanically validated, platform enforced and organisationally enforced. Documentation alone is not treated as enforcement.
+- The first evidenced implementation was the Open Finance Backoffice, where 134 of approximately 139 stories reached done under quality gates, synthetic-data constraints and human four-eyes merge.
+- The stated limits are plain. The proof is demo-proven, not production-proven, and has not cleared live production scale or a regulator examination. One domain is early evidence. Delivery spend is measured while value remains unproven. Comprehension debt remains. The context brain must be curated. AI model risk requires validation, monitoring and independent challenge.
 
 ### The Loom Toolkit
 
-- Core Toolkit: regulated discovery, delivery, continuous assurance, harness governance, repository foundations and the Institutional BrainKit.
-- Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights.
-- Open Finance domain pack: UAE standards, Islamic-banking context, risk review and value-proposition prototyping.
+- Core bundle: the discovery and delivery harnesses, the Institutional BrainKit, compiled control plans, continuous assurance, governance and evidence controls, and safe, merge-aware adoption from one copy manifest.
+- Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights. It is drafted from approved sources only with unknowns left visible as gaps, approved by accountable owners, digest-pinned per repository and validated in CI.
+- Open Finance Intelligence domain pack: CBUAE and AlTareq knowledge, Islamic-banking context, UAE bank risk review and value-proposition prototyping, attached only when a mandate requires it.
 - AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the public Toolkit.
+- Operating boundary: the Toolkit is a build-time control frame. It validates repository-level gates, evidence and readiness records; live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution's responsibility.
 
 ## Ventures, portfolio and studio
 
-MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The primary portfolio contains one flagship regulated proof and two venture experiments:
+MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The primary portfolio is one flagship regulated proof, two venture experiments and one compounding body of evidence:
 
-- Open Finance Backoffice: the flagship regulated delivery proof, implemented with synthetic data and the regulated Loom profile.
-- Parqo: a venture experiment using commercial evidence to gate investment in a two-sided parking marketplace.
-- HiveMind / Hive Coach: a service venture experiment testing how AI can extend an expert service while preserving human authority.
+- Open Finance Backoffice — flagship regulated proof, regulated delivery profile, demo-complete. A bank-neutral, synthetic-only operating platform that turns Open Finance obligations into governed workflows for people and agents, and the first formal proof of the harness.
+- Parqo — venture experiment, venture delivery profile, acquisition wedge live. A UAE parking marketplace beginning with a live demand-and-supply acquisition wedge in dense business districts. It is not yet an operating marketplace; commercial investment is gated by district-level demand and supply evidence.
+- HiveMind / Hive Coach — venture experiment, venture delivery profile, initial product live. A human-led coaching product that turns track evidence into grounded, coach-owned advice, testing how AI can extend an expert service without taking authority from the expert.
+
+Parqo and HiveMind apply The Loom's evidence, specification and human-authority principles to venture building. Neither is a claim of full regulated-harness adoption.
 
 OpenFinance-OS, the Data Sandbox and Ecosystem Watcher are presented separately as independent ecosystem contributions. MiddleLeap's role is contribution and stewardship, not institutional ownership.
 
-The MiddleLeap Venture Studio invites operators, domain experts and potential partners to propose non-confidential, evidenced problems in regulated markets, platform businesses and financial infrastructure. Submissions are screened before any evidence sprint, venture thesis or bounded pilot.
+The MiddleLeap Venture Studio invites operators, domain experts and potential partners to propose non-confidential, evidenced problems in regulated markets, platform businesses and financial infrastructure. Dubai is the base and MENA the primary market; this is for evidenced problems, not funding-only pitch submissions. Submissions are screened before any evidence sprint, venture thesis or bounded pilot, and the outcome may be a venture, a partnership, shared infrastructure, an advisory mandate or an explicit decision not to proceed.
 
 The portfolio operates as a build, learn and apply loop: build working assets, capture market and execution intelligence, and apply the learning to client mandates.
 
@@ -83,7 +94,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - MiddleLeap is a founder-led, networked advisory practice rather than a fixed consulting bench.
 - Each mandate has senior accountability, specialists assembled around the problem and active client leadership so institutional context and delivery capability remain with the client.
 - Experience carried into the practice includes building and expanding an Open Banking platform across MENA, followed by leadership of a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE Open Finance framework and deliver the country's first live transactions with a licensed TPP.
-- Business-banking ecosystem experience includes the build-out of Danske Bank's District platform and marketplace across the Nordics and UK, the migration of 250,000 organizations and the development of API-based partner channels.
+- Business-banking ecosystem experience includes the build-out of Danske Bank's District platform and marketplace across the Nordics and UK, the migration of 250,000 SMEs, corporates and institutions, and the development of API-based partner channels.
 - Enterprise transformation experience includes leadership of a 70+ person digital delivery organization through an API-first Telco-as-a-Service shift within a 140-year-old company.
 - MiddleLeap was founded by Michael Ryberg Hartmann, a product and technology executive with more than 20 years across banking, fintech, telecommunications and SaaS. He leads selected mandates and assembles the senior specialists required around each client and problem.
 - Professional profile: https://www.linkedin.com/in/michael-ryberg-hartmann
@@ -91,13 +102,17 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 ## Primary source
 
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
+- [The practice](https://www.middleleap.com/practice): the founder-led, networked operating model, how mandates are staffed, the founder profile and the experience carried into the practice.
+- [How we engage](https://www.middleleap.com/how-we-engage): the three engagement models, how a senior team is assembled around a mandate and how to start.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
-- [The Loom](https://www.middleleap.com/the-loom): governed AI delivery harness, regulated and venture profiles, context brain, assurance and stated limits.
+- [The Loom](https://www.middleleap.com/the-loom): the governed delivery method, its Discovery and Delivery harnesses, the Run feedback arc, control chain, context brain, continuous assurance, harness governance and stated limits.
 - [The Loom Toolkit](https://www.middleleap.com/ai-dlc): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
-- [Open Finance Back Office build record](https://www.middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
+- [Open Finance Backoffice build record](https://www.middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
 - [HiveMind build record](https://www.middleleap.com/ventures/hivemind): the human-led Hive Coach product, runtime AI pipeline, delivery harness, quality system and development maturity.
 - [Parqo build record](https://www.middleleap.com/ventures/parqo): the live acquisition wedge, approved marketplace design, AI-native delivery controls and next validation gates.
+- [Privacy](https://www.middleleap.com/privacy): data controller, information received, website measurement, purposes, recipients, retention and data-subject rights.
+- [Venture submission terms](https://www.middleleap.com/venture-submission-terms): non-confidentiality, no obligation created, ownership and the limited assessment permission covering Venture Studio proposals.
 
-Last reviewed: 2026-07-24
+Last reviewed: 2026-08-07

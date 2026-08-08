@@ -25,7 +25,13 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+*.zip
+
+# editors
+.idea/
+.vscode/
 
 # debug
 npm-debug.log*
@@ -46,3 +52,4 @@ next-env.d.ts
 
 # lighthouse
 lighthouse-report*
+.lighthouseci/
