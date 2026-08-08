@@ -1229,6 +1229,11 @@
     border-bottom: 0;
   }
 }@media (max-width: 720px) {
+  .venturesFooter {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .hero,
   .shift,
   .expertise,
@@ -1456,7 +1461,21 @@
     width: calc(100% - 24px);
     padding: var(--s-6) var(--s-5);
   }
-}@media (prefers-reduced-motion: reduce) {
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /*
+    Restored: the dead-CSS sweep removed this group because `.mobileMenu summary
+    span` was one of its members, taking the live members' motion opt-out with it.
+  */
+  .primaryAction,
+  .primaryAction::before,
+  .systemNode,
+  .shiftGrid article,
+  .capabilityGrid article,
+  .ventureGrid article {
+    transition-duration: .01ms;
+  }
 
   .systemHeader i,
   .systemConnections circle,
