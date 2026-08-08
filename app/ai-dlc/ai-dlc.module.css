@@ -1,3 +1,5 @@
+.hero, .layers, .catalogue, .install, .boundaries { width: min(calc(100% - 64px), 1120px); margin-inline: auto; }
+
 .shell { min-height: 100vh; overflow: clip; color: var(--bone-1); background: var(--ink-0); font-family: var(--font-dm-sans), "DM Sans", sans-serif; }
 
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, .8fr); gap: clamp(48px, 7vw, 90px); align-items: center; min-height: 680px; padding-block: 84px; }
@@ -116,6 +118,8 @@
   .brainkitLifecycle article:nth-child(2n) { border-right: 0; }
   .brainkitFooter { align-items: flex-start; flex-direction: column; }
 }@media (max-width: 680px) {
+  .hero, .layers, .install, .boundaries { width: calc(100% - 40px); }
+
   .hero { padding-block: 64px; }
   .hero h1 { font-size: clamp(42px, 12vw, 52px); }
   .layers, .catalogue, .boundaries { padding-block: 68px; }

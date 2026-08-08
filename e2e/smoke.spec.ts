@@ -73,6 +73,37 @@ for (const route of routes) {
       expect(crumbNames).toEqual(visible);
     });
 
+    /*
+      Layout guard. A dead-CSS sweep once removed grouped width rules like
+      `.nav, .hero, .section { width: min(...) }` because one member was dead,
+      silently un-constraining every live section to full bleed. Nothing else in
+      this suite looks at layout: lint, axe and Lighthouse all stayed green.
+
+      Asserts only that content is inset from the viewport edge, which is what
+      full bleed destroys. Column widths legitimately differ per route (legal
+      pages use a narrower 820px reading measure), so this deliberately does not
+      require the content to match the header exactly.
+    */
+    test("content column stays constrained, not full-bleed", async ({ page }) => {
+      await page.setViewportSize({ width: 1600, height: 900 });
+      await page.goto(route);
+
+      const metrics = await page.evaluate(() => {
+        const header = document.querySelector("header");
+        const heading = document.querySelector("h1");
+        if (!header || !heading) return null;
+        return {
+          headerLeft: header.getBoundingClientRect().left,
+          headingLeft: heading.getBoundingClientRect().left,
+        };
+      });
+
+      expect(metrics).not.toBeNull();
+      // Both the chrome and the page's own content column must be inset.
+      expect(metrics!.headerLeft).toBeGreaterThanOrEqual(100);
+      expect(metrics!.headingLeft).toBeGreaterThanOrEqual(100);
+    });
+
     test("same-page fragment links resolve to a target", async ({ page }) => {
       await page.goto(route);
       const missing = await page.$$eval("a[href*='#']", (anchors) =>

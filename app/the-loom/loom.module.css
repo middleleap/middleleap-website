@@ -1,3 +1,10 @@
+.hero,
+.proof,
+.section {
+  width: min(calc(100% - 64px), 1120px);
+  margin-inline: auto;
+}
+
 .shell {
   min-height: 100vh;
   overflow: clip;
@@ -183,6 +190,8 @@
   .maturityScale li { border-bottom: 1px solid var(--ink-border); }
   .maturityScale li:nth-child(3) { border-right: 0; }
 }@media (max-width: 680px) {
+  .hero, .proof, .section { width: calc(100% - 40px); }
+
   .hero { padding-block: 64px; }
   .hero h1 { font-size: clamp(42px, 12vw, 52px); }
   .harnesses, .sectionIntro, .splitIntro, .brainGrid, .governanceGrid, .limitGrid { grid-template-columns: 1fr; }
