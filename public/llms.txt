@@ -54,24 +54,26 @@ The Loom is the governed delivery method. The Loom Toolkit is the installable pr
 - The control chain runs mandate, problem, solution, release, outcome and signal. The success measures that justify the problem become the evaluation targets for the released product, and every step leaves an owned artifact.
 - The context brain is the pattern the harness weaves to. It has three dimensions: mandate context, solution-domain knowledge and institutional DNA.
 - Continuous assurance re-runs on changes, schedules and regulatory events through watch, assess, check, test, evidence and confirm, closing with agent-prepared reporting plus human four-eyes.
-- Harness governance is a stated catalogue of thirteen decisions, including no self-merge, immutable controls, sealed evidence, least privilege, governed promotion, model-risk governance of the harness itself, a discovery-first entry condition, residency control and a mandatory kill switch with a named accountable officer.
+- Harness governance is a stated catalogue of fourteen decisions, including no self-merge, immutable controls, sealed evidence, least privilege, governed promotion, model-risk governance of the harness itself, a discovery-first entry condition, residency control, a mandatory kill switch with a named accountable officer and human-issued religious and ethical determinations.
 - Control maturity is graded honestly: absent, defined, mechanically validated, platform enforced and organisationally enforced. Documentation alone is not treated as enforcement.
-- The first evidenced implementation was the Open Finance Backoffice, where 134 of approximately 139 stories reached done under quality gates, synthetic-data constraints and human four-eyes merge.
-- The stated limits are plain. The proof is demo-proven, not production-proven, and has not cleared live production scale or a regulator examination. One domain is early evidence. Delivery spend is measured while value remains unproven. Comprehension debt remains. The context brain must be curated. AI model risk requires validation, monitoring and independent challenge.
+- The first evidenced implementation was the synthetic Open Finance Backoffice reference build, where 134 of approximately 139 stories reached done under quality gates, synthetic-data constraints and human four-eyes merge.
+- The stated limits are plain. The proof is reference-build validated, not production-proven. It has not been used to deliver or operate a customer production system. It has not cleared live production scale or a regulator examination. One domain is early evidence. Delivery spend is measured while value remains unproven. Comprehension debt remains. The context brain must be curated. AI model risk requires validation, monitoring and independent challenge.
 
 ### The Loom Toolkit
 
+- Current public release: 2.0.0. Product status: released. Evidence status: Reference-build validated. The Toolkit was exercised end to end while building the synthetic Open Finance Backoffice reference portal. It has not been used to deliver or operate a customer production system.
 - Core bundle: the discovery and delivery harnesses, the Institutional BrainKit, compiled control plans, continuous assurance, governance and evidence controls, and safe, merge-aware adoption from one copy manifest.
 - Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights. It is drafted from approved sources only with unknowns left visible as gaps, approved by accountable owners, digest-pinned per repository and validated in CI.
 - Open Finance Intelligence domain pack: CBUAE and AlTareq knowledge, Islamic-banking context, UAE bank risk review and value-proposition prototyping, attached only when a mandate requires it.
 - AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the public Toolkit.
 - Operating boundary: the Toolkit is a build-time control frame. It validates repository-level gates, evidence and readiness records; live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution's responsibility.
+- Fairness and contestability boundary: version 2.0.0 can mechanically validate declared fairness evaluations and decision-contestability records. It does not determine whether a system is fair or whether an explanation is adequate.
 
 ## Ventures, portfolio and studio
 
 MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The primary portfolio is one flagship regulated proof, two venture experiments and one compounding body of evidence:
 
-- Open Finance Backoffice — flagship regulated proof, regulated delivery profile, demo-complete. A bank-neutral, synthetic-only operating platform that turns Open Finance obligations into governed workflows for people and agents, and the first formal proof of the harness.
+- Open Finance Backoffice — flagship reference build, regulated delivery profile, demo-complete. A bank-neutral, synthetic-only portal that turns Open Finance obligations into governed workflows for people and agents and was used to exercise the harness end to end. It is not a customer production deployment.
 - Parqo — venture experiment, venture delivery profile, acquisition wedge live. A UAE parking marketplace beginning with a live demand-and-supply acquisition wedge in dense business districts. It is not yet an operating marketplace; commercial investment is gated by district-level demand and supply evidence.
 - HiveMind / Hive Coach — venture experiment, venture delivery profile, initial product live. A human-led coaching product that turns track evidence into grounded, coach-owned advice, testing how AI can extend an expert service without taking authority from the expert.
 
@@ -115,4 +117,4 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [Privacy](https://www.middleleap.com/privacy): data controller, information received, website measurement, purposes, recipients, retention and data-subject rights.
 - [Venture submission terms](https://www.middleleap.com/venture-submission-terms): non-confidentiality, no obligation created, ownership and the limited assessment permission covering Venture Studio proposals.
 
-Last reviewed: 2026-08-07
+Last reviewed: 2026-08-12

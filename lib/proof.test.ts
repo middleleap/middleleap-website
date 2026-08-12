@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { loomProof } from "./proof";
+import { loomProof, loomRelease } from "./proof";
 
 // public/llms.txt is hand-maintained prose; this guard keeps its copy of the
 // proof figures in sync with the lib/proof.ts source of truth used by pages.
@@ -16,5 +16,12 @@ describe("proof figure consistency", () => {
     expect(loomProof.storiesRatio).toBe(
       `${loomProof.storiesDone} / ~${loomProof.storiesTotalApprox}`,
     );
+  });
+
+  it("llms.txt separates the Toolkit release from its evidence boundary", () => {
+    const llms = readFileSync("public/llms.txt", "utf8");
+    expect(llms).toContain(`Current public release: ${loomRelease.version}`);
+    expect(llms).toContain(loomRelease.evidenceStatus);
+    expect(llms).toContain(loomRelease.evidenceBoundary);
   });
 });

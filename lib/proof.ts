@@ -9,3 +9,16 @@ export const loomProof = {
   humanApprovedMerges: "100%",
   realCustomerRecords: 0,
 } as const;
+
+// Product maturity and evidence maturity are deliberately separate. A released
+// Toolkit version does not imply that the method has operated in customer
+// production.
+export const loomRelease = {
+  version: "2.0.0",
+  productStatus: "Released",
+  evidenceStatus: "Reference-build validated",
+  evidenceDetail:
+    "Exercised end to end while building the synthetic Open Finance Backoffice reference portal.",
+  evidenceBoundary:
+    "It has not been used to deliver or operate a customer production system.",
+} as const;

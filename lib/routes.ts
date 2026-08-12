@@ -21,7 +21,7 @@ export const routes = [
   { path: "/practice", contentUpdated: "2026-08-12", changeFrequency: "monthly", priority: 0.85 },
   { path: "/how-we-engage", contentUpdated: "2026-08-07", changeFrequency: "monthly", priority: 0.8 },
   { path: "/ventures", contentUpdated: "2026-08-12", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/ai-dlc", contentUpdated: "2026-08-06", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/ai-dlc", contentUpdated: "2026-08-12", changeFrequency: "monthly", priority: 0.75 },
   { path: "/ventures/studio", contentUpdated: "2026-08-06", changeFrequency: "monthly", priority: 0.75 },
   { path: "/ventures/backoffice", contentUpdated: "2026-08-12", changeFrequency: "monthly", priority: 0.7 },
   { path: "/ventures/hivemind", contentUpdated: "2026-08-12", changeFrequency: "monthly", priority: 0.7 },

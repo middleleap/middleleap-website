@@ -4,17 +4,18 @@ import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { loomRelease } from "@/lib/proof";
 import styles from "./ai-dlc.module.css";
 
 export const metadata: Metadata = {
   title: "The Loom Toolkit | Institutional AI Delivery",
   description:
-    "The Loom Toolkit installs MiddleLeap's governed delivery method, an institution-owned BrainKit and optional domain intelligence inside repositories.",
+    "The released Loom Toolkit 2.0.0 installs MiddleLeap's governed delivery method. Its evidence is a synthetic reference build, not customer production use.",
   alternates: { canonical: "/ai-dlc" },
   openGraph: pageOpenGraph({
     title: "The Loom Toolkit | Institutional AI Delivery",
     description:
-      "Install a governed delivery toolkit, draft the institution's BrainKit and pin that approved context across repositories.",
+      "Loom Toolkit 2.0.0 is released and reference-build validated on a synthetic Open Finance Backoffice—not customer production use.",
     path: "/ai-dlc",
   }),
 };
@@ -23,7 +24,7 @@ const bundles = [
   {
     id: "loom-toolkit",
     number: "Core bundle",
-    version: "Loom 2.0 RC.10 · AI-SDLC 1.0",
+    version: `Loom ${loomRelease.version} · AI-SDLC 1.0.0`,
     name: "The Loom Toolkit",
     label: "Governed delivery system",
     kind: "core",
@@ -106,12 +107,13 @@ export default function AiDlcPage() {
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>The Loom Toolkit · delivered through AI-DLC</p>
+          <p className={styles.eyebrow}>The Loom Toolkit {loomRelease.version} · released</p>
           <h1>Install the method. Give it your <em>institutional DNA.</em></h1>
           <p className={styles.lede}>
             The Toolkit includes the Institutional BrainKit: a private, governed seed for
             code, PRDs, architectures, interfaces and reports. Human owners approve it;
-            repositories pin it; the Loom applies it where the work happens.
+            repositories pin it; the Loom applies it where the work happens. Its present
+            evidence comes from a synthetic reference build—not customer production use.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#catalogue">Explore the bundles</a>
@@ -119,7 +121,7 @@ export default function AiDlcPage() {
           </div>
         </div>
         <div className={styles.packageVisual} role="group" aria-label="The Loom Toolkit combines compiled control plans with an institution-owned BrainKit and optional domain packs">
-          <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Loom 2.0 RC.10</b></div>
+          <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Loom Toolkit {loomRelease.version}</b></div>
           <div className={styles.packageCore}><span>Discovery + delivery</span><span>Policy compiler</span><span>Continuous assurance</span><span>Manifest-driven adoption</span><strong>The Loom Toolkit / public core</strong></div>
           <div className={styles.packageOutput}><span>Your BrainKit / private seed</span><i>+</i><span>Optional domain intelligence</span></div>
         </div>
@@ -129,11 +131,11 @@ export default function AiDlcPage() {
         title="The method is The Loom. The installable product is The Loom Toolkit."
         intro="AI-DLC is the technical distribution mechanism—not a competing consulting proposition. The Toolkit carries the method into the repository and binds it to institution-owned context."
         items={[
-          { label: "Product", title: "The Loom Toolkit", detail: "The installable delivery system: discovery and delivery harnesses, controls, assurance and adoption machinery." },
+          { label: "Release", title: `Toolkit ${loomRelease.version}`, detail: "The current public release of the installable discovery, delivery, controls, assurance and adoption system." },
+          { label: "Evidence", title: loomRelease.evidenceStatus, detail: loomRelease.evidenceDetail },
+          { label: "Boundary", title: "No customer production use", detail: loomRelease.evidenceBoundary },
           { label: "Context", title: "Your BrainKit", detail: "A private, human-approved package of institutional language, architecture, technology policy and decision rights." },
           { label: "Distribution", title: "AI-DLC", detail: "The repository and plugin mechanism used to distribute, version and adopt the public Toolkit." },
-          { label: "Extensions", title: "Domain packs", detail: "Optional specialist intelligence, beginning with UAE Open Finance, attached only when a mandate requires it." },
-          { label: "Adoption", title: "One bounded pilot", detail: "Install around a real outcome, establish ownership and leave the institution with an operable capability." },
         ]}
       />
 
@@ -171,7 +173,7 @@ export default function AiDlcPage() {
         <div>
           <p className={styles.eyebrow}>For builders</p>
           <h2>Install the frame. Then draft the institution&apos;s seed.</h2>
-          <p>RC.10 adopts the Loom from one copy manifest, preserves an existing <code>.claude/settings.json</code> and writes a sidecar when human merging is required. BrainKit templates land as a draft: the generator may organise approved sources and expose gaps, but only accountable humans can approve the result.</p>
+          <p>Version {loomRelease.version} adopts the Loom from one copy manifest, preserves an existing <code>.claude/settings.json</code> and writes a sidecar when human merging is required. BrainKit templates land as a draft: the generator may organise approved sources and expose gaps, but only accountable humans can approve the result.</p>
         </div>
         {/*
           A labelled scrollable region rather than a bare aria-label: `pre` has a
@@ -191,10 +193,11 @@ export default function AiDlcPage() {
 # optional domain intelligence
 /plugin install middleleap-open-finance@middleleap-ai-dlc`}</code></pre>
         <aside className={styles.operatingBoundary}>
-          <span>Operating boundary / RC.10</span>
+          <span>Operating boundary / {loomRelease.version}</span>
           <div>
             <h3>Build-time control frame. Institution-operated production controls.</h3>
             <p>The Toolkit validates repository-level gates, evidence and readiness records. Live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution&apos;s responsibility.</p>
+            <p>Version {loomRelease.version} can mechanically validate declared fairness evaluations and decision-contestability records. It does not determine whether a system is fair or whether an explanation is adequate.</p>
           </div>
         </aside>
       </section>

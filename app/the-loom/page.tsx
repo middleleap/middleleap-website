@@ -5,25 +5,25 @@ import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./loom.module.css";
-import { loomProof } from "@/lib/proof";
+import { loomProof, loomRelease } from "@/lib/proof";
 
 export const metadata: Metadata = {
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
-    "The Loom is MiddleLeap's reusable way for regulated institutions to find the right problem, deliver software under control and learn from what runs.",
+    "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.0.0 is released and validated on a synthetic reference build, not customer production.",
   alternates: { canonical: "/the-loom" },
   openGraph: pageOpenGraph({
     title: "The Loom | Governed AI Delivery for Regulated Institutions",
     description:
-      "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
+      "Toolkit 2.0.0 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
     path: "/the-loom",
   }),
 };
 
 const proofPoints = [
-  [loomProof.storiesRatio, "Stories to done in the first build"],
+  [loomProof.storiesRatio, "Stories to done in the synthetic reference build"],
   [loomProof.harnesses, "Harnesses and the Run feedback arc"],
-  [loomProof.humanApprovedMerges, "Merges approved by people in the regulated build"],
+  [loomProof.humanApprovedMerges, "Merges approved by people in the reference build"],
   [String(loomProof.realCustomerRecords), "Real customer records used"],
 ] as const;
 
@@ -108,7 +108,7 @@ const maturityStates = [
 ] as const;
 
 const limits = [
-  ["Demo-proven, not production-proven", "The first proof is permanently synthetic and has not cleared live production scale or a regulator examination."],
+  ["Reference-build validated, not production-proven", `${loomRelease.evidenceBoundary} It has not cleared live production scale or a regulator examination.`],
   ["One domain is early evidence", "Legacy integration, real data and organisational change remain the true cost curve for other institutions."],
   ["Spend measured; value unproven", "Token telemetry now measures delivery spend by iteration and milestone. The value half—and any implied ROI—remains unbuilt."],
   ["Comprehension debt remains", "Decision logs make agent reasoning replayable, but they do not prove that human reviewers still understand a growing codebase."],
@@ -138,7 +138,7 @@ export default function LoomPage() {
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>The Loom · governed AI delivery</p>
+          <p className={styles.eyebrow}>The Loom · Toolkit {loomRelease.version} released</p>
           <h1>Find the right problem.<br />Ship it under <em>control.</em></h1>
           <p className={styles.lede}>
             Two harnesses turn an ambiguous mandate into audit-ready software. Run and
@@ -177,12 +177,13 @@ export default function LoomPage() {
           { label: "Mandate", title: "Start before code", detail: "Frame the outcome, evidence, boundaries and decision rights before implementation begins." },
           { label: "For whom", title: "Regulated leaders", detail: "Built for sponsors, product owners, risk leaders and delivery teams working under real institutional constraints." },
           { label: "Capability", title: "One closed loop", detail: "Discovery, delivery and operations share evidence instead of handing work across disconnected phases." },
-          { label: "Evidence", title: "A working reference", detail: "The first regulated build reached demo-complete using synthetic data, explicit gates and human release authority." },
-          { label: "Next decision", title: "Pilot one outcome", detail: "Adopt the method around a bounded mandate, then judge it on operating evidence rather than presentation claims." },
+          { label: "Release", title: `Toolkit ${loomRelease.version}`, detail: "The current public release packages the method for repository adoption." },
+          { label: "Evidence", title: loomRelease.evidenceStatus, detail: loomRelease.evidenceDetail },
+          { label: "Boundary", title: "No customer production use", detail: loomRelease.evidenceBoundary },
         ]}
       />
 
-      <section className={styles.proof} aria-label="Evidence from the first regulated Loom build">
+      <section className={styles.proof} aria-label="Evidence from the synthetic Open Finance Backoffice reference build">
         {proofPoints.map(([value, label]) => <article key={value}><strong>{value}</strong><span>{label}</span></article>)}
       </section>
 
@@ -308,12 +309,12 @@ export default function LoomPage() {
       <section className={styles.section} id="evidence">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Proof and limits</p>
-          <div><h2>Proven on Open Finance. Stated plainly.</h2><p>The first build demonstrates a real gated system and a reusable method. It does not justify claims the evidence cannot yet carry.</p></div>
+          <div><h2>Validated on a reference build. Stated plainly.</h2><p>The synthetic Open Finance Backoffice demonstrates a real gated system and a reusable method. It is not evidence of customer production use.</p></div>
         </div>
         <div className={styles.limitGrid}>
           {limits.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
-        <div className={styles.caseLink}><span>Reference proof</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only operating platform and the first formal proof of the harness.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
+        <div className={styles.caseLink}><span>Reference-build evidence</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only portal used to exercise the harness end to end—not a customer production deployment.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
         <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Parqo · HiveMind</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
       </section>
 
