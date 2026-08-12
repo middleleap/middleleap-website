@@ -4,11 +4,8 @@ import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
-  careerContext,
   experienceProvenanceNote,
-  founderBio,
   practiceEvidence,
-  practiceExpertise,
   practiceFacts,
   practicePrinciples,
 } from "@/lib/practice";
@@ -30,21 +27,9 @@ export const metadata: Metadata = {
   }),
 };
 
-// Reuses the Person @id the homepage already declares, so / and /practice
-// describe one entity rather than two.
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${siteOrigin}/#michael-ryberg-hartmann`,
-      name: practiceFacts.principal,
-      jobTitle: practiceFacts.principalRole,
-      url: `${siteOrigin}/practice`,
-      sameAs: [practiceFacts.linkedIn],
-      worksFor: { "@id": `${siteOrigin}/#organization` },
-      knowsAbout: [...practiceExpertise],
-    },
     {
       "@type": "AboutPage",
       "@id": `${siteOrigin}/practice#page`,
@@ -52,7 +37,7 @@ const structuredData = {
       name: "The Practice",
       description,
       about: { "@id": `${siteOrigin}/#organization` },
-      mainEntity: { "@id": `${siteOrigin}/#michael-ryberg-hartmann` },
+      mainEntity: { "@id": `${siteOrigin}/#organization` },
     },
   ],
 };
@@ -71,7 +56,6 @@ export default function PracticePage() {
         contextLabel="Practice navigation"
         contextLinks={[
           { href: "#model", label: "How we staff" },
-          { href: "#founder", label: "Founder" },
           { href: "#evidence", label: "Evidence" },
           { href: "#engage", label: "Engage" },
         ]}
@@ -106,7 +90,6 @@ export default function PracticePage() {
             <div><dt>Base</dt><dd>{practiceFacts.base}</dd></div>
             <div><dt>Primary market</dt><dd>{practiceFacts.primaryMarket}</dd></div>
             <div><dt>Model</dt><dd>{practiceFacts.model}</dd></div>
-            <div><dt>Principal</dt><dd>{practiceFacts.principal} · {practiceFacts.principalRole}</dd></div>
             <div><dt>Contact</dt><dd>{practiceFacts.contactEmail}</dd></div>
           </dl>
         </aside>
@@ -114,7 +97,7 @@ export default function PracticePage() {
 
       <ExecutiveSummary
         title="Senior-led, and staffed around the problem."
-        intro="MiddleLeap is intentionally boutique and networked. Each mandate carries direct principal accountability, specialists assembled around the problem and active client leadership."
+        intro="MiddleLeap is intentionally boutique and networked. Each mandate carries clear senior accountability, specialists assembled around the problem and active client leadership."
         items={[
           { label: "Model", title: "Intentionally boutique and networked", detail: practiceFacts.model + "." },
           { label: "Accountability", title: practicePrinciples[0].title, detail: practicePrinciples[0].detail },
@@ -148,41 +131,6 @@ export default function PracticePage() {
         </div>
       </section>
 
-      <section className={styles.section} id="founder" tabIndex={-1}>
-        <p className={styles.eyebrow}>Leadership verification</p>
-        <h2>{practiceFacts.principal}</h2>
-        <div className={styles.founderLayout}>
-          <div className={styles.nameplate}>
-            <strong>{practiceFacts.principal}</strong>
-            <small>{practiceFacts.principalRole}</small>
-          </div>
-          <div className={styles.founderBody}>
-            {founderBio.map((paragraph) => (
-              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-            ))}
-
-            <div className={styles.chipGroup}>
-              <span>Career context</span>
-              <div className={styles.chips}>
-                {careerContext.map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </div>
-
-            <div className={styles.chipGroup}>
-              <span>Works on</span>
-              <div className={styles.chips}>
-                {practiceExpertise.map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </div>
-
-            <div className={styles.founderLinks}>
-              <a href={practiceFacts.linkedIn} target="_blank" rel="noreferrer">Founder profile ↗</a>
-              <a href="mailto:contact@middleleap.com?subject=Strategic%20mandate">Email the practice</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className={styles.section} id="evidence" tabIndex={-1}>
         <p className={styles.eyebrow}>Experience carried into the practice</p>
         <h2>Operating evidence across regulated platforms and transformation.</h2>
@@ -199,7 +147,7 @@ export default function PracticePage() {
 
       <section className={styles.engage} id="engage" tabIndex={-1}>
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
-        <h2>Bring the right senior team to the problem.</h2>
+        <h2>Bring the right senior expertise to the problem.</h2>
         <p>
           Prefer to use your own email client? Copy {practiceFacts.contactEmail}.
         </p>

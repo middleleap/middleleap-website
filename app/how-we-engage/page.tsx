@@ -51,8 +51,8 @@ export default function HowWeEngagePage() {
       </section>
 
       <ExecutiveSummary
-        title="Three ways to start. One senior team."
-        intro="Every mandate begins with a decision that cannot stay unresolved. The three models differ in scope and pace, not in who does the work."
+        title="Three ways to start. One accountable lead."
+        intro="Every mandate begins with a decision that cannot stay unresolved. The three models differ in scope and pace, not in senior accountability."
         items={[
           {
             label: "01",
@@ -124,7 +124,7 @@ export default function HowWeEngagePage() {
 
       <section className={styles.start} id="start" tabIndex={-1}>
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
-        <h2>Bring the right senior team to the problem.</h2>
+        <h2>Bring the right senior expertise to the problem.</h2>
         <p>Prefer to use your own email client? Copy {practiceFacts.contactEmail}.</p>
         <div className={styles.startActions}>
           <a href="mailto:contact@middleleap.com?subject=Strategic%20mandate">Discuss your mandate →</a>

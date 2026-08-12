@@ -54,7 +54,7 @@ const structuredData = {
       "@id": "https://www.middleleap.com/#michael-ryberg-hartmann",
       name: "Michael Ryberg Hartmann",
       jobTitle: "Founder and Principal Adviser",
-      url: "https://www.middleleap.com/practice",
+      url: "https://www.middleleap.com/",
       sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
       worksFor: { "@id": "https://www.middleleap.com/#organization" },
       alumniOf: [
@@ -441,22 +441,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className={styles.founderNote}>
-            <p className={styles.eyebrow}>Founded in Dubai</p>
-            <h3>Michael Ryberg Hartmann</h3>
-            <small>Founder and Principal Adviser</small>
-            <p>
-              Michael founded MiddleLeap after more than 20 years across banking, fintech,
-              telecommunications and SaaS, including senior roles at a leading UAE bank,
-              Fintech Galaxy, TDC Group, Danske Bank and Planday.
-            </p>
-            <p>
-              He leads selected mandates and assembles the senior specialists required
-              around each client and problem.
-            </p>
-            <a href="https://www.linkedin.com/in/michael-ryberg-hartmann" target="_blank" rel="noreferrer">
-              Founder profile ↗
-            </a>
+          <aside className={styles.practiceNote} aria-label="Mandate staffing model">
+            <p className={styles.eyebrow}>How a mandate is staffed</p>
+            <h3>Accountability stays constant. Expertise changes with the work.</h3>
+            <dl>
+              <div><dt>Constant</dt><dd>One accountable senior lead</dd></div>
+              <div><dt>Assembled</dt><dd>Independent specialist expertise where required</dd></div>
+              <div><dt>Retained</dt><dd>Context, decisions and capability inside the client</dd></div>
+            </dl>
+            <Link href="/practice">See how the practice works →</Link>
           </aside>
         </div>
       </section>
@@ -511,7 +504,7 @@ export default function HomePage() {
       <section className={styles.engage} id="engage">
         <div>
           <p className={styles.eyebrow}>Start with the mandate in front of you</p>
-          <h2>Bring the right senior team to the problem.</h2>
+          <h2>Bring the right senior expertise to the problem.</h2>
         </div>
         <div className={styles.engagementGrid}>
           {engagements.map((engagement, index) => (

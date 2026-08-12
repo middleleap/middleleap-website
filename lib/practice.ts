@@ -2,7 +2,7 @@
  * Practice copy shared by the homepage `#experience` section and `/practice`.
  *
  * Every string here already appears on the site; nothing asserts a new fact about
- * the firm, its founder or any client. Extracting it means the two surfaces cannot
+ * the firm or any client. Extracting it means the two surfaces cannot
  * drift, and it keeps the one disclosure rule in force: prior-role work names
  * "a leading UAE bank" and never the institution (see app/disclosure.test.ts).
  */
@@ -63,30 +63,5 @@ export const practiceFacts = {
   base: "Dubai, United Arab Emirates",
   primaryMarket: "Middle East and North Africa",
   contactEmail: "contact@middleleap.com",
-  principal: "Michael Ryberg Hartmann",
-  principalRole: "Founder and Principal Adviser",
-  linkedIn: "https://www.linkedin.com/in/michael-ryberg-hartmann",
   model: "Senior-led, networked advisory practice rather than a fixed consulting bench",
 } as const;
-
-export const founderBio = [
-  "Michael founded MiddleLeap after more than 20 years across banking, fintech, telecommunications and SaaS, including senior roles at a leading UAE bank, Fintech Galaxy, TDC Group, Danske Bank and Planday.",
-  "He leads selected mandates and assembles the senior specialists required around each client and problem.",
-] as const;
-
-/** Organisation names only. The repo holds no dates or titles for these roles. */
-export const careerContext = [
-  "A leading UAE bank",
-  "Fintech Galaxy",
-  "TDC Group",
-  "Danske Bank",
-  "Planday",
-] as const;
-
-export const practiceExpertise = [
-  "Open Finance",
-  "Platform strategy",
-  "AI-native operating models",
-  "Product and technology strategy",
-  "Transformation delivery",
-] as const;

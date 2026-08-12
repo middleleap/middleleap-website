@@ -1,7 +1,7 @@
 # MiddleLeap.com — Codebase & Website Improvement Plan
 
 Date: 2026-08-04
-Inputs: full codebase audit (all 11 routes, components, config, CI), competitive research
+Inputs: full codebase audit (now 13 public routes, components, config, CI), competitive research
 across best-in-class boutique advisory sites (11:FS, Flagship Advisory Partners, Elixirr,
 Aperture, Oliver Wyman, AlixPartners, WhiteSight), and current Next.js 16 static-export
 best-practice research.
@@ -10,7 +10,7 @@ best-practice research.
 
 ## Where the site stands
 
-The foundation is stronger than most marketing sites: 11 static routes, a lean
+The foundation is stronger than most marketing sites: 13 public static routes, a lean
 3-dependency runtime, strict TypeScript, per-route metadata with canonicals, generated
 OG images, a well-built `llms.txt`, a tested theme system with FOUC prevention, CI with
 lint/type-check/tests/build/Lighthouse budgets, and zero TODO/FIXME debt. The retired
@@ -128,7 +128,7 @@ guard). Good bones, big gaps:
 
 1. **Audit all pages in Lighthouse CI, not just the homepage.** `lighthouserc.js:6`
    hardcodes `url: ["http://localhost/index.html"]`; removing it lets LHCI auto-discover
-   all 11 exported pages — 10 routes currently have zero coverage, including the
+   all exported pages — the original audit found 10 routes with zero coverage, including the
    heaviest ones.
 2. **Playwright smoke + axe over `out/`**: each page 200s, exactly one `h1`,
    title/description present, JSON-LD parses, nav links resolve; `@axe-core/playwright`
@@ -179,6 +179,13 @@ Ordered by evidence-backed impact for a boutique advisory firm (Hinge buyer rese
    reputation ("Visible Expert" effect); the site currently has no people at all — the
    single biggest trust gap versus every comparable firm studied. Real bio, mandate
    history, headshot, `Person` JSON-LD, direct email, links to talks/posts.
+
+   **DEFERRED BY POSITIONING DECISION (2026-08-12).** Until a broader delivery group is
+   demonstrably behind MiddleLeap, the public people story remains deliberately restrained:
+   a senior-led, networked practice; one accountable lead per mandate; independent specialist
+   expertise assembled where required; and active client ownership. The homepage and
+   `/practice` do not carry a founder profile, headshot or named-team construct. Factual founder
+   attribution remains in organisation metadata and the machine-readable company record.
 2. **Ungated insights section with 3–5 cornerstone regulatory explainers** (e.g. "CBUAE
    Open Finance: what LFIs must do by phase", "AlTareq CX certification explained",
    "DIFC vs ADGM vs mainland licensing"). Law firms currently own these queries; almost
@@ -248,6 +255,16 @@ Ordered by evidence-backed impact for a boutique advisory firm (Hinge buyer rese
 | 7 | Phase 6.6 / 6.7 (structured data, sitemap dates, trailingSlash) | Done, minus `schema-dts` |
 | 8 | Phase 6.2 / 6.3 / 6.4 (insights, flagship asset, scheduler) | Open — needs founder input |
 
+### Loom Toolkit 2.0 release record
+
+- **Product status:** Loom Toolkit 2.0.0 released.
+- **Evidence status:** reference-build validated while building the synthetic Open Finance
+  Backoffice portal.
+- **Boundary:** it has not been used to deliver or operate a customer production system and
+  has not cleared live production scale or regulator examination.
+- Public Loom, Toolkit, metadata and `llms.txt` claims share one source of truth in
+  `lib/proof.ts`, with a unit test guarding the machine-readable copy.
+
 Everything that could be decided from the repository is implemented and gated. What
 remains genuinely needs the founder:
 
@@ -257,7 +274,6 @@ remains genuinely needs the founder:
 - **The flagship recurring asset** — its subject and cadence.
 - **A scheduler URL** for the productized entry point, and a decision on newsletter
   cadence.
-- **A headshot**, if the practice page should carry one. None exists in the repo.
 - **Anonymised engagement snapshots**, if wanted. No outcome-quantified evidence of a
   MiddleLeap-contracted engagement exists anywhere in the repo; every quantified item
   currently on the site is disclaimed as prior-role work. The safe shape is 2–3
@@ -268,5 +284,5 @@ remains genuinely needs the founder:
 ### Verification baseline
 
 At the time of writing: lint (with a11y guards), type-check with `next typegen`,
-contrast gate, 27 unit tests, static build, 78 Playwright + axe checks across 13
+contrast gate, 31 unit tests, static build, 91 Playwright + axe checks across 13
 routes in both themes, and Lighthouse budgets green on all 13 exported pages.

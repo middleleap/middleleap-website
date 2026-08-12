@@ -98,14 +98,14 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - Experience carried into the practice includes building and expanding an Open Banking platform across MENA, followed by leadership of a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE Open Finance framework and deliver the country's first live transactions with a licensed TPP.
 - Business-banking ecosystem experience includes the build-out of Danske Bank's District platform and marketplace across the Nordics and UK, the migration of 250,000 SMEs, corporates and institutions, and the development of API-based partner channels.
 - Enterprise transformation experience includes leadership of a 70+ person digital delivery organization through an API-first Telco-as-a-Service shift within a 140-year-old company.
-- MiddleLeap was founded by Michael Ryberg Hartmann, a product and technology executive with more than 20 years across banking, fintech, telecommunications and SaaS. He leads selected mandates and assembles the senior specialists required around each client and problem.
+- MiddleLeap was founded by Michael Ryberg Hartmann. Public positioning deliberately centres the practice model and documented experience rather than presenting a fixed team or consulting bench.
 - Professional profile: https://www.linkedin.com/in/michael-ryberg-hartmann
 
 ## Primary source
 
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
-- [The practice](https://www.middleleap.com/practice): the senior-led, networked operating model, how mandates are staffed, restrained leadership verification and the experience carried into the practice.
-- [How we engage](https://www.middleleap.com/how-we-engage): the three engagement models, how a senior team is assembled around a mandate and how to start.
+- [The practice](https://www.middleleap.com/practice): the senior-led, networked operating model, how mandates are staffed and the experience carried into the practice.
+- [How we engage](https://www.middleleap.com/how-we-engage): the three engagement models, how senior expertise is assembled around a mandate and how to start.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.

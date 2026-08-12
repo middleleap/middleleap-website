@@ -58,4 +58,17 @@ describe("public disclosure boundaries", () => {
 
     expect(findings).toEqual([]);
   });
+
+  it("keeps the visible people story practice-led rather than founder-led", async () => {
+    const [homepage, practicePage] = await Promise.all([
+      readFile("app/page.tsx", "utf8"),
+      readFile("app/practice/page.tsx", "utf8"),
+    ]);
+
+    expect(homepage).toContain("How a mandate is staffed");
+    expect(homepage).not.toContain("Founder profile");
+    expect(practicePage).not.toContain('href: "#founder"');
+    expect(practicePage).not.toContain("Founder profile");
+    expect(practicePage).not.toContain("practiceFacts.principal");
+  });
 });
