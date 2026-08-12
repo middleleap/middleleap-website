@@ -14,7 +14,7 @@ describe("ventures data invariants", () => {
   it("external links are absolute https URLs", () => {
     for (const project of portfolioProjects) {
       if (project.href) expect(project.href).toMatch(/^https:\/\//);
-      expect(project.repository).toMatch(/^https:\/\//);
+      if (project.repository) expect(project.repository).toMatch(/^https:\/\//);
     }
     for (const contribution of ecosystemContributions) {
       expect(contribution.href).toMatch(/^https:\/\//);

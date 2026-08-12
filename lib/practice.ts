@@ -32,7 +32,7 @@ export const practiceEvidence = [
   {
     label: "MENA Open Banking & Open Finance",
     detail:
-      "Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE framework and deliver the country's first live transactions with a licensed TPP.",
+      "Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme with a 15-person core and 100+ contributors that helped a leading UAE bank achieve first-bank certification under the UAE framework and deliver the country's first live transactions with a licensed TPP.",
   },
   {
     label: "Business banking ecosystems",
@@ -42,7 +42,7 @@ export const practiceEvidence = [
   {
     label: "Enterprise transformation",
     detail:
-      "Led a 70+ person digital delivery organization through an API-first Telco-as-a-Service transformation within a 140-year-old enterprise, modernising the operating model as well as the technology.",
+      "Led a 70+ person digital delivery organization at TDC, with a DKK 200m+ annual budget, through BSS/OSS modernisation and an API-first Telco-as-a-Service transformation within a 140-year-old enterprise, including CI/CD and DevOps operating-model change.",
   },
   {
     label: "Product to boardroom",
@@ -66,7 +66,7 @@ export const practiceFacts = {
   principal: "Michael Ryberg Hartmann",
   principalRole: "Founder and Principal Adviser",
   linkedIn: "https://www.linkedin.com/in/michael-ryberg-hartmann",
-  model: "Founder-led, networked advisory practice rather than a fixed consulting bench",
+  model: "Senior-led, networked advisory practice rather than a fixed consulting bench",
 } as const;
 
 export const founderBio = [

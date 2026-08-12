@@ -38,7 +38,8 @@ export function VenturesPortfolio() {
             <div className={styles.projectLinks}>
               <Link href={project.detailPath}>Read the build record →</Link>
               {project.href && <a href={project.href} target="_blank" rel="noreferrer">Visit live product ↗</a>}
-              <a href={project.repository} target="_blank" rel="noreferrer">View repository ↗</a>
+              {project.repository && <a href={project.repository} target="_blank" rel="noreferrer">View repository ↗</a>}
+              {project.evidenceAccess && <span>{project.evidenceAccess}</span>}
             </div>
           </article>
         ))}

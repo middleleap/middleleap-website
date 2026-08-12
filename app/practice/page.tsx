@@ -17,7 +17,7 @@ import { pageOpenGraph, siteOrigin } from "@/lib/seo";
 import styles from "./practice.module.css";
 
 const description =
-  "MiddleLeap is a founder-led, networked advisory practice in Dubai. Michael Ryberg Hartmann leads selected mandates and assembles the senior specialists required around each client and problem.";
+  "MiddleLeap is an intentionally boutique, senior-led advisory practice in Dubai, assembling focused expertise around each mandate rather than maintaining a fixed consulting bench.";
 
 export const metadata: Metadata = {
   title: "The Practice",
@@ -99,7 +99,7 @@ export default function PracticePage() {
         <aside className={styles.dossier} aria-label="Practice record">
           <div className={styles.dossierHeader}>
             <span>Practice record</span>
-            <b>Founder-led</b>
+            <b>Intentionally boutique</b>
           </div>
           <dl>
             <div><dt>Founded</dt><dd>{practiceFacts.foundedYear}</dd></div>
@@ -113,10 +113,10 @@ export default function PracticePage() {
       </section>
 
       <ExecutiveSummary
-        title="Founder-led, and staffed around the problem."
-        intro="MiddleLeap is founder-led and networked. Each mandate carries senior accountability, specialists assembled around the problem and active client leadership."
+        title="Senior-led, and staffed around the problem."
+        intro="MiddleLeap is intentionally boutique and networked. Each mandate carries direct principal accountability, specialists assembled around the problem and active client leadership."
         items={[
-          { label: "Model", title: "Founder-led and networked", detail: practiceFacts.model + "." },
+          { label: "Model", title: "Intentionally boutique and networked", detail: practiceFacts.model + "." },
           { label: "Accountability", title: practicePrinciples[0].title, detail: practicePrinciples[0].detail },
           { label: "Team", title: practicePrinciples[1].title, detail: practicePrinciples[1].detail },
           { label: "Ownership", title: practicePrinciples[2].title, detail: practicePrinciples[2].detail },
@@ -149,7 +149,7 @@ export default function PracticePage() {
       </section>
 
       <section className={styles.section} id="founder" tabIndex={-1}>
-        <p className={styles.eyebrow}>Founded in Dubai</p>
+        <p className={styles.eyebrow}>Leadership verification</p>
         <h2>{practiceFacts.principal}</h2>
         <div className={styles.founderLayout}>
           <div className={styles.nameplate}>

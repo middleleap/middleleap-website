@@ -111,7 +111,7 @@ export type ProjectPageData = {
     evidence: Array<{ stat: string; caption: string }>;
     boundary: ReactNode;
   };
-  sources: Array<{ id: string; label: string; href: string }>;
+  sources: Array<{ id: string; label: string; href?: string }>;
   engage: {
     heading: string;
     detail: string;
@@ -352,12 +352,13 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
       <section className={styles.sources} id="evidence">
         <div className={styles.sectionLabel}><span>08</span><p>Evidence register</p></div>
         <div>
-          <h2>Claims trace back to the repository.</h2>
+          <h2>{data.sources.some((source) => source.href) ? "Claims trace back to the repository." : "Claims are grounded in a reviewed private build record."}</h2>
+          {!data.sources.some((source) => source.href) && <p className={styles.sectionLede}>The repository is not publicly accessible. This register names the material reviewed; detailed source access can be considered during appropriate diligence.</p>}
           <div className={styles.sourceList}>
-            {data.sources.map((source) => (
-              <a href={source.href} target="_blank" rel="noreferrer" key={source.id}>
-                <span>{source.id}</span><strong>{source.label}</strong><b>Open ↗</b>
-              </a>
+            {data.sources.map((source) => source.href ? (
+              <a href={source.href} target="_blank" rel="noreferrer" key={source.id}><span>{source.id}</span><strong>{source.label}</strong><b>Open ↗</b></a>
+            ) : (
+              <div key={source.id}><span>{source.id}</span><strong>{source.label}</strong><b>Reviewed</b></div>
             ))}
           </div>
         </div>

@@ -96,6 +96,7 @@ const governanceDecisions = [
   ["HG-0011", "Residency control", "Model traffic passes through governed gateways and DLP."],
   ["HG-0012", "Derive, do not retrieve", "A sealed runtime distinguishes reasoning from answer mining."],
   ["HG-0013", "Graduated autonomy", "A narrow routine-change lane can move approval from each change to a second-line-owned, expiring envelope. Approval is relocated, never removed."],
+  ["HG-0014", "Human determinations", "Religious and ethical determinations are human-issued context, never agent work-product."],
 ] as const;
 
 const maturityStates = [

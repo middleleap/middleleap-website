@@ -10,7 +10,8 @@ export type PortfolioProject = {
   harnessProfile: "Regulated delivery" | "Venture delivery";
   detailPath: Route;
   href?: string;
-  repository: string;
+  repository?: string;
+  evidenceAccess?: string;
 };
 
 export type EcosystemContribution = {
@@ -34,7 +35,7 @@ export const portfolioProjects: PortfolioProject[] = [
     harnessProfile: "Regulated delivery",
     detailPath: "/ventures/backoffice",
     href: "https://backoffice.openfinance-os.org/",
-    repository: "https://github.com/openfinance-os/ofbo",
+    evidenceAccess: "Private build record · reviewed snapshot",
   },
   {
     name: "Parqo",
@@ -47,7 +48,7 @@ export const portfolioProjects: PortfolioProject[] = [
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/parqo",
     href: "https://parqo.co/",
-    repository: "https://github.com/middleleap/parqo",
+    evidenceAccess: "Private build record · reviewed snapshot",
   },
   {
     name: "HiveMind / Hive Coach",
@@ -59,7 +60,7 @@ export const portfolioProjects: PortfolioProject[] = [
     portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/hivemind",
-    repository: "https://github.com/middleleap/hivemind",
+    evidenceAccess: "Private build record · reviewed snapshot",
   },
 ];
 
@@ -70,7 +71,6 @@ export const ecosystemContributions: EcosystemContribution[] = [
     summary: "Independent ecosystem visibility, observatory and working knowledge for UAE Open Finance.",
     status: "Active",
     href: "https://openfinance-os.org/",
-    repository: "https://github.com/openfinance-os/community-website",
   },
   {
     name: "Data Sandbox",

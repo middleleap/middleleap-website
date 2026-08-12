@@ -91,7 +91,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 ## Experience and delivery model
 
-- MiddleLeap is a founder-led, networked advisory practice rather than a fixed consulting bench.
+- MiddleLeap is an intentionally boutique, senior-led networked advisory practice rather than a fixed consulting bench.
 - Each mandate has senior accountability, specialists assembled around the problem and active client leadership so institutional context and delivery capability remain with the client.
 - Experience carried into the practice includes building and expanding an Open Banking platform across MENA, followed by leadership of a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE Open Finance framework and deliver the country's first live transactions with a licensed TPP.
 - Business-banking ecosystem experience includes the build-out of Danske Bank's District platform and marketplace across the Nordics and UK, the migration of 250,000 SMEs, corporates and institutions, and the development of API-based partner channels.
@@ -102,7 +102,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 ## Primary source
 
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
-- [The practice](https://www.middleleap.com/practice): the founder-led, networked operating model, how mandates are staffed, the founder profile and the experience carried into the practice.
+- [The practice](https://www.middleleap.com/practice): the senior-led, networked operating model, how mandates are staffed, restrained leadership verification and the experience carried into the practice.
 - [How we engage](https://www.middleleap.com/how-we-engage): the three engagement models, how a senior team is assembled around a mandate and how to start.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.

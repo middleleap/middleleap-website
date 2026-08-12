@@ -33,7 +33,7 @@ export function SiteFooter() {
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <Link href="/practice">Practice &amp; founder</Link>
+          <Link href="/practice">The practice</Link>
           <Link href="/how-we-engage">How we engage</Link>
           <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
           <Link href="/privacy">Privacy</Link>
