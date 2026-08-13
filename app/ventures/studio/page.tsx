@@ -42,6 +42,7 @@ export default function VentureStudioPage() {
       <SiteHeader
         active="ventures"
         breadcrumbs={[
+          { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
           { label: "Venture Studio" },
         ]}

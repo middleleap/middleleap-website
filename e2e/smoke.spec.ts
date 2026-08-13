@@ -149,3 +149,68 @@ for (const route of routes) {
     }
   });
 }
+
+test.describe("global navigation IA", () => {
+  const expectations = [
+    { route: "/open-finance", section: "what", parent: "What we do", childHref: "/open-finance", exact: true },
+    { route: "/how-we-engage", section: "method", parent: "How we work", childHref: "/how-we-engage", exact: true },
+    { route: "/the-loom", section: "method", parent: "How we work", childHref: "/the-loom", exact: true },
+    { route: "/ai-dlc", section: "method", parent: "How we work", childHref: "/ai-dlc", exact: true },
+    { route: "/ventures", section: "ventures", parent: "Ventures", childHref: "/ventures", exact: true },
+    { route: "/ventures/studio", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: true },
+    { route: "/ventures/backoffice", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/ventures/hivemind", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/ventures/parqo", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/venture-submission-terms", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: false },
+  ] as const;
+
+  test("parent and child states agree on desktop and mobile", async ({ page }) => {
+    for (const expectation of expectations) {
+      await page.goto(expectation.route);
+
+      const desktopNav = page.locator('nav[aria-label="Primary navigation"]');
+      const activeParent = desktopNav.locator(`[data-section="${expectation.section}"][data-active="true"]`);
+      await expect(activeParent, `${expectation.route} activates ${expectation.parent}`).toHaveCount(1);
+
+      const children = page.locator(`a[href="${expectation.childHref}"]`).filter({ has: page.locator("span") });
+      await expect(children, `${expectation.route} exposes the child in desktop and mobile navigation`).toHaveCount(2);
+      for (const child of await children.all()) {
+        await expect(child).toHaveAttribute("data-active", "true");
+        if (expectation.exact) {
+          await expect(child).toHaveAttribute("aria-current", "page");
+        } else {
+          await expect(child).not.toHaveAttribute("aria-current", /.+/);
+        }
+      }
+    }
+  });
+
+  test("venture breadcrumbs preserve the complete hierarchy", async ({ page }) => {
+    const trails = {
+      "/ventures/studio": ["Advisory", "Ventures", "Venture Studio"],
+      "/ventures/backoffice": ["Advisory", "Ventures", "Portfolio", "Backoffice"],
+      "/ventures/hivemind": ["Advisory", "Ventures", "Portfolio", "HiveMind"],
+      "/ventures/parqo": ["Advisory", "Ventures", "Portfolio", "Parqo"],
+      "/venture-submission-terms": ["Advisory", "Ventures", "Venture Studio", "Submission terms"],
+    } as const;
+
+    for (const [route, expected] of Object.entries(trails)) {
+      await page.goto(route);
+      const labels = await page
+        .locator('nav[aria-label="Breadcrumb"] > span')
+        .evaluateAll((spans) => spans.map((span) => {
+          const clone = span.cloneNode(true) as HTMLElement;
+          clone.querySelectorAll('[aria-hidden="true"]').forEach((node) => node.remove());
+          return (clone.textContent ?? "").trim();
+        }));
+      expect(labels).toEqual(expected);
+    }
+  });
+
+  test("breadcrumb-only legal pages expose no empty contextual landmark", async ({ page }) => {
+    for (const route of ["/privacy", "/venture-submission-terms"]) {
+      await page.goto(route);
+      await expect(page.locator('nav[aria-label="On this page"]')).toHaveCount(0);
+    }
+  });
+});

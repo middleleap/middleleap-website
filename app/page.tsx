@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { engagementModels } from "@/lib/engagements";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
 import { loomProof } from "@/lib/proof";
@@ -160,21 +161,6 @@ const approach = [
   { number: "03", name: "Mobilise", detail: "Align leaders, partners, product teams and governance stakeholders." },
   { number: "04", name: "Deliver", detail: "Turn the strategy into working products and capabilities." },
   { number: "05", name: "Codify", detail: "Embed reusable knowledge, controls and agent workflows." },
-];
-
-const engagements = [
-  {
-    title: "Executive advisory",
-    detail: "Senior guidance for regulatory, platform and transformation mandates.",
-  },
-  {
-    title: "Platform strategy sprint",
-    detail: "Define the proposition, ecosystem, commercial model and execution roadmap.",
-  },
-  {
-    title: "AI-native delivery pilot",
-    detail: "Adopt The Loom around one real outcome and leave a governed repository capability behind.",
-  },
 ];
 
 export default function HomePage() {
@@ -507,11 +493,11 @@ export default function HomePage() {
           <h2>Bring the right senior expertise to the problem.</h2>
         </div>
         <div className={styles.engagementGrid}>
-          {engagements.map((engagement, index) => (
-            <article key={engagement.title}>
+          {engagementModels.map((engagement, index) => (
+            <article key={engagement.key}>
               <span>0{index + 1}</span>
-              <h3>{engagement.title}</h3>
-              <p>{engagement.detail}</p>
+              <h3>{engagement.label}</h3>
+              <p>{engagement.short}</p>
             </article>
           ))}
         </div>

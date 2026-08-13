@@ -172,6 +172,7 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
       <SiteHeader
         active="ventures"
         breadcrumbs={[
+          { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
           { href: "/ventures#portfolio", label: "Portfolio" },
           { label: data.breadcrumbLabel },

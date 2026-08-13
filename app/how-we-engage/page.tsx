@@ -26,7 +26,12 @@ export default function HowWeEngagePage() {
   return (
     <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
-        breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "How we engage" }]}
+        active="method"
+        breadcrumbs={[
+          { href: "/", label: "Advisory" },
+          { href: "/#method", label: "How we work" },
+          { label: "Engagement models" },
+        ]}
         contextLabel="Engagement navigation"
         contextLinks={[
           { href: "#models", label: "Models" },
