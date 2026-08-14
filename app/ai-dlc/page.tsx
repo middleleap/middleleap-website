@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -7,18 +6,15 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { loomRelease } from "@/lib/proof";
 import styles from "./ai-dlc.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "The Loom Toolkit | Institutional AI Delivery",
   description:
     "The released Loom Toolkit 2.0.0 installs MiddleLeap's governed delivery method. Its evidence is a synthetic reference build, not customer production use.",
-  alternates: { canonical: "/ai-dlc" },
-  openGraph: pageOpenGraph({
-    title: "The Loom Toolkit | Institutional AI Delivery",
-    description:
-      "Loom Toolkit 2.0.0 is released and reference-build validated on a synthetic Open Finance Backoffice—not customer production use.",
-    path: "/ai-dlc",
-  }),
-};
+  path: "/ai-dlc",
+  socialTitle: "The Loom Toolkit | Institutional AI Delivery",
+  socialDescription:
+    "Loom Toolkit 2.0.0 is released and reference-build validated on a synthetic Open Finance Backoffice—not customer production use.",
+});
 
 const bundles = [
   {

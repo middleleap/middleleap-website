@@ -1,23 +1,19 @@
-import type { Metadata } from "next";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./open-finance.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Open Finance Advisory | MENA Strategy & Execution",
   description:
     "MiddleLeap helps banks, fintechs and financial infrastructure providers turn Open Finance mandates into propositions, platforms, operating models and market execution.",
-  alternates: { canonical: "/open-finance" },
-  openGraph: pageOpenGraph({
-    title: "Open Finance Advisory | MiddleLeap",
-    description:
-      "Senior advisory for Open Finance strategy, regulatory readiness, LFI and TPP operating models, ecosystems and execution across MENA.",
-    path: "/open-finance",
-  }),
-};
+  path: "/open-finance",
+  socialTitle: "Open Finance Advisory | MiddleLeap",
+  socialDescription:
+    "Senior advisory for Open Finance strategy, regulatory readiness, LFI and TPP operating models, ecosystems and execution across MENA.",
+});
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -261,6 +257,17 @@ export default function OpenFinancePage() {
               The experience below was built in prior executive roles and is brought
               into MiddleLeap&apos;s advisory practice. It is distinguished from work
               contracted directly by MiddleLeap.
+            </p>
+            <p>
+              For the current regulatory scope and definitions, use the{" "}
+              <a
+                href="https://rulebook.centralbank.ae/en/rulebook/introduction-and-scope-2"
+                target="_blank"
+                rel="noreferrer"
+              >
+                CBUAE Open Finance Regulation
+              </a>{" "}
+              as the primary source.
             </p>
           </div>
         </div>

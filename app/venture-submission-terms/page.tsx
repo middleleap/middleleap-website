@@ -1,11 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { legalTermsEffectiveDate } from "@/lib/legal";
+import { pageMetadata } from "@/lib/seo";
 import styles from "../legal.module.css";
 
-export const metadata: Metadata = { title: "Venture Submission Terms", alternates: { canonical: "/venture-submission-terms" } };
+export const metadata = pageMetadata({
+  title: "Venture Submission Terms",
+  description:
+    "Terms for sending a non-confidential proposal to the MiddleLeap Venture Studio, including ownership and assessment boundaries.",
+  path: "/venture-submission-terms",
+  socialTitle: "Venture Submission Terms | MiddleLeap",
+});
 
 export default function VentureSubmissionTermsPage() {
   return (

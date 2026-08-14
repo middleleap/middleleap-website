@@ -1,21 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectPage, type ProjectPageData } from "@/components/ProjectPage";
 import { loomProof } from "@/lib/proof";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Open Finance Backoffice",
   description:
     "How the Open Finance Backoffice was designed and built: architecture, AI delivery harness, technology stack, quality controls and development maturity.",
-  alternates: { canonical: "/ventures/backoffice" },
-  openGraph: pageOpenGraph({
-    title: "Open Finance Backoffice | MiddleLeap Ventures",
-    description:
-      "An evidence-backed build record for the bank-neutral UAE Open Finance operations platform.",
-    path: "/ventures/backoffice",
-  }),
-};
+  path: "/ventures/backoffice",
+  socialTitle: "Open Finance Backoffice | MiddleLeap Ventures",
+  socialDescription:
+    "An evidence-backed build record for the bank-neutral UAE Open Finance operations platform.",
+});
 
 const data: ProjectPageData = {
   currentPath: "/ventures/backoffice",

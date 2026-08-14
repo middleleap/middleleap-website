@@ -1,19 +1,15 @@
-import type { Metadata } from "next";
 import { ProjectPage, type ProjectPageData } from "@/components/ProjectPage";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Parqo",
   description:
     "How Parqo is being built: the live acquisition wedge, approved marketplace design, AI-native delivery controls, technology stack and validation roadmap.",
-  alternates: { canonical: "/ventures/parqo" },
-  openGraph: pageOpenGraph({
-    title: "Parqo | MiddleLeap Ventures",
-    description:
-      "An evidence-backed build record for a UAE employee-parking marketplace.",
-    path: "/ventures/parqo",
-  }),
-};
+  path: "/ventures/parqo",
+  socialTitle: "Parqo | MiddleLeap Ventures",
+  socialDescription:
+    "An evidence-backed build record for a UAE employee-parking marketplace.",
+});
 
 const data: ProjectPageData = {
   currentPath: "/ventures/parqo",

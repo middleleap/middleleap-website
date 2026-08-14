@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -7,18 +6,15 @@ import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./loom.module.css";
 import { loomProof, loomRelease } from "@/lib/proof";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
     "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.0.0 is released and validated on a synthetic reference build, not customer production.",
-  alternates: { canonical: "/the-loom" },
-  openGraph: pageOpenGraph({
-    title: "The Loom | Governed AI Delivery for Regulated Institutions",
-    description:
-      "Toolkit 2.0.0 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
-    path: "/the-loom",
-  }),
-};
+  path: "/the-loom",
+  socialTitle: "The Loom | Governed AI Delivery for Regulated Institutions",
+  socialDescription:
+    "Toolkit 2.0.0 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
+});
 
 const proofPoints = [
   [loomProof.storiesRatio, "Stories to done in the synthetic reference build"],

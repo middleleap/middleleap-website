@@ -1,11 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { legalTermsEffectiveDate } from "@/lib/legal";
+import { pageMetadata } from "@/lib/seo";
 import styles from "../legal.module.css";
 
-export const metadata: Metadata = { title: "Privacy", alternates: { canonical: "/privacy" } };
+export const metadata = pageMetadata({
+  title: "Privacy",
+  description:
+    "How MiddleLeap handles personal information submitted through its website, mandate enquiries and Venture Studio tools.",
+  path: "/privacy",
+  socialTitle: "Privacy Notice | MiddleLeap",
+});
 
 export default function PrivacyPage() {
   return (

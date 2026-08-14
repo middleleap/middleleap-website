@@ -1,19 +1,15 @@
-import type { Metadata } from "next";
 import { ProjectPage, type ProjectPageData } from "@/components/ProjectPage";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "HiveMind / Hive Coach",
   description:
     "How HiveMind built Hive Coach: product architecture, runtime AI pipeline, delivery harness, technology stack, quality controls and development maturity.",
-  alternates: { canonical: "/ventures/hivemind" },
-  openGraph: pageOpenGraph({
-    title: "HiveMind / Hive Coach | MiddleLeap Ventures",
-    description:
-      "An evidence-backed build record for human-led, AI-amplified karting coaching.",
-    path: "/ventures/hivemind",
-  }),
-};
+  path: "/ventures/hivemind",
+  socialTitle: "HiveMind / Hive Coach | MiddleLeap Ventures",
+  socialDescription:
+    "An evidence-backed build record for human-led, AI-amplified karting coaching.",
+});
 
 const data: ProjectPageData = {
   currentPath: "/ventures/hivemind",

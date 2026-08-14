@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -10,22 +9,18 @@ import {
   practicePrinciples,
 } from "@/lib/practice";
 import { jsonLdScript } from "@/lib/structured-data";
-import { pageOpenGraph, siteOrigin } from "@/lib/seo";
+import { pageMetadata, siteOrigin } from "@/lib/seo";
 import styles from "./practice.module.css";
 
 const description =
   "MiddleLeap is an intentionally boutique, senior-led advisory practice in Dubai, assembling focused expertise around each mandate rather than maintaining a fixed consulting bench.";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "The Practice",
   description,
-  alternates: { canonical: "/practice" },
-  openGraph: pageOpenGraph({
-    title: "The Practice | MiddleLeap",
-    description,
-    path: "/practice",
-  }),
-};
+  path: "/practice",
+  socialTitle: "The Practice | MiddleLeap",
+});
 
 const structuredData = {
   "@context": "https://schema.org",

@@ -18,6 +18,7 @@ const structuredData = {
       "@type": "Organization",
       "@id": "https://www.middleleap.com/#organization",
       name: "MiddleLeap",
+      sameAs: ["https://github.com/middleleap"],
       url: "https://www.middleleap.com/",
       email: "contact@middleleap.com",
       foundingDate: "2021",
@@ -76,6 +77,7 @@ const structuredData = {
       "@id": "https://www.middleleap.com/#website",
       url: "https://www.middleleap.com/",
       name: "MiddleLeap",
+      alternateName: "MiddleLeap Advisory",
       description:
         "Platform strategy and AI-native transformation for regulated businesses.",
       publisher: { "@id": "https://www.middleleap.com/#organization" },

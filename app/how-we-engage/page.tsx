@@ -1,26 +1,21 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { engagementModels } from "@/lib/engagements";
 import { practiceFacts, practicePrinciples } from "@/lib/practice";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import styles from "./engage.module.css";
 
 const description =
   "Executive advisory, strategy sprints and transformation mobilisation. MiddleLeap assembles senior regulatory, strategy, product, technology and delivery expertise around the mandate rather than bringing a fixed bench.";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "How We Engage",
   description,
-  alternates: { canonical: "/how-we-engage" },
-  openGraph: pageOpenGraph({
-    title: "How We Engage | MiddleLeap",
-    description,
-    path: "/how-we-engage",
-  }),
-};
+  path: "/how-we-engage",
+  socialTitle: "How We Engage | MiddleLeap",
+});
 
 export default function HowWeEngagePage() {
   return (

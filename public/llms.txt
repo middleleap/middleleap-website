@@ -12,6 +12,14 @@ Primary market: Middle East and North Africa
 
 MiddleLeap helps leaders turn regulatory, commercial and technology shifts into platform advantage. Its work connects market position, platform economics, ecosystem design and AI-native operating models. Open Finance is a significant area of experience, but it is one part of the broader regulated platform transformation practice.
 
+## Canonical entities and disambiguation
+
+- MiddleLeap is the independent Dubai-based advisory practice. It is not a software product, fund or developer-productivity company.
+- The Loom is MiddleLeap's governed method for AI-enabled discovery, delivery and operational learning in regulated institutions.
+- The Loom Toolkit is the installable product that carries The Loom's method, controls and adoption machinery into a repository.
+- AI-DLC is the public repository and plugin mechanism used to distribute, version and adopt The Loom Toolkit; it is an execution capability, not MiddleLeap's umbrella identity.
+- MiddleLeap Ventures is the practice's build-learn-apply portfolio. Portfolio pages are evidence-bounded build records, and each states whether its evidence is a reference build, live venture experiment or ecosystem contribution.
+
 ## Core capabilities
 
 - Regulatory and market transformation: Open Finance strategy, regulatory readiness, LFI and TPP operating models, market entry and ecosystem participation.
@@ -117,4 +125,4 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [Privacy](https://www.middleleap.com/privacy): data controller, information received, website measurement, purposes, recipients, retention and data-subject rights.
 - [Venture submission terms](https://www.middleleap.com/venture-submission-terms): non-confidentiality, no obligation created, ownership and the limited assessment permission covering Venture Studio proposals.
 
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-14

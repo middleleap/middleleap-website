@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Instrument_Serif, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { siteOrigin } from "@/lib/seo";
 import { parseThemeMode, resolveTheme, themeStorageKey } from "@/lib/theme";
 import "./globals.css";
 
 // Analytics is a no-op until a domain is configured. Plausible is
 // cookieless and privacy-friendly, matching the PRD's analytics intent.
-const siteOrigin = "https://www.middleleap.com";
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || undefined;
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+const bingSiteVerification = process.env.BING_SITE_VERIFICATION;
 
 // Serialized from the tested implementations in lib/theme.ts so the
 // FOUC-prevention boot script cannot drift from runtime theme logic.
@@ -73,12 +75,21 @@ export const metadata: Metadata = {
     siteName: "MiddleLeap",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "MiddleLeap — From Strategic Mandate to Market Execution",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
     description:
       "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,
@@ -91,6 +102,16 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  ...(googleSiteVerification || bingSiteVerification
+    ? {
+        verification: {
+          ...(googleSiteVerification ? { google: googleSiteVerification } : {}),
+          ...(bingSiteVerification
+            ? { other: { "msvalidate.01": bingSiteVerification } }
+            : {}),
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({

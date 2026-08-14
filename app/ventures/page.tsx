@@ -1,23 +1,19 @@
-import type { Metadata } from "next";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VenturesPortfolio } from "@/components/VenturesPortfolio";
 import styles from "./ventures.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Ventures",
   description:
     "Open ecosystem infrastructure, platform ventures and AI-native execution systems built and contributed to by MiddleLeap.",
-  alternates: { canonical: "/ventures" },
-  openGraph: pageOpenGraph({
-    title: "MiddleLeap Ventures | Building What We Advise",
-    description:
-      "Working platforms, open infrastructure and AI-native execution systems grounded in regulated markets.",
-    path: "/ventures",
-  }),
-};
+  path: "/ventures",
+  socialTitle: "MiddleLeap Ventures | Building What We Advise",
+  socialDescription:
+    "Working platforms, open infrastructure and AI-native execution systems grounded in regulated markets.",
+});
 
 const principles = [
   {

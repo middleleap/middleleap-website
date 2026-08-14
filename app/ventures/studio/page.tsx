@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VentureProposalForm } from "@/components/VentureProposalForm";
+import { pageMetadata } from "@/lib/seo";
 import styles from "./studio.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Venture Studio",
   description:
     "Propose an evidenced platform, regulated-market or financial-infrastructure problem to the MiddleLeap Venture Studio.",
-  alternates: { canonical: "/ventures/studio" },
-};
+  path: "/ventures/studio",
+  socialTitle: "Venture Studio | MiddleLeap",
+});
 
 const criteria = [
   ["A real problem", "A clear operating, customer or ecosystem problem—not only a product idea."],
