@@ -5,6 +5,7 @@ import { ExecutiveSummary } from "./ExecutiveSummary";
 import { RelatedPortfolio } from "./RelatedPortfolio";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { bookingLinkProps } from "@/lib/contact";
 import styles from "./ProjectPage.module.css";
 
 export type ProjectAction = {
@@ -369,7 +370,10 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
         <p className={styles.eyebrow}>What this venture proves</p>
         <h2>{data.engage.heading}</h2>
         <p>{data.engage.detail}</p>
-        <a href={`mailto:contact@middleleap.com?subject=${data.engage.mailtoSubject}`}>Discuss the mandate →</a>
+        <div className={styles.engageActions}>
+          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a href={`mailto:contact@middleleap.com?subject=${data.engage.mailtoSubject}`}>Discuss the mandate by email →</a>
+        </div>
       </section>
 
       <RelatedPortfolio currentPath={data.currentPath} />

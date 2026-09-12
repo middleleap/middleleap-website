@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { engagementModels } from "@/lib/engagements";
 import { practiceFacts, practicePrinciples } from "@/lib/practice";
 import { pageMetadata } from "@/lib/seo";
@@ -43,8 +44,8 @@ export default function HowWeEngagePage() {
           delivery expertise around the mandate rather than bringing a fixed bench.
         </p>
         <div className={styles.actions}>
-          <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
-            Discuss your mandate
+          <a className={styles.primaryAction} {...bookingLinkProps}>
+            Book a conversation
           </a>
           <a className={styles.secondaryAction} href="#models">See the models</a>
         </div>
@@ -125,9 +126,10 @@ export default function HowWeEngagePage() {
       <section className={styles.start} id="start" tabIndex={-1}>
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
         <h2>Bring the right senior expertise to the problem.</h2>
-        <p>Prefer to use your own email client? Copy {practiceFacts.contactEmail}.</p>
+        <p>Book a call directly, or email {practiceFacts.contactEmail} if you prefer.</p>
         <div className={styles.startActions}>
-          <a href="mailto:contact@middleleap.com?subject=Strategic%20mandate">Discuss your mandate →</a>
+          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email →</a>
           <Link href="/practice">Meet the practice →</Link>
         </div>
       </section>

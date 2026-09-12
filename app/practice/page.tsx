@@ -8,6 +8,7 @@ import {
   practiceFacts,
   practicePrinciples,
 } from "@/lib/practice";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { jsonLdScript } from "@/lib/structured-data";
 import { pageMetadata, siteOrigin } from "@/lib/seo";
 import styles from "./practice.module.css";
@@ -66,8 +67,8 @@ export default function PracticePage() {
             around the work—not a fixed consulting bench.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
-              Discuss a mandate
+            <a className={styles.primaryAction} {...bookingLinkProps}>
+              Book a conversation
             </a>
             <Link className={styles.secondaryAction} href="/how-we-engage">
               See how we engage
@@ -144,10 +145,11 @@ export default function PracticePage() {
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
         <h2>Bring the right senior expertise to the problem.</h2>
         <p>
-          Prefer to use your own email client? Copy {practiceFacts.contactEmail}.
+          Book a call directly, or email {practiceFacts.contactEmail} if you prefer.
         </p>
         <div className={styles.engageActions}>
-          <a href="mailto:contact@middleleap.com?subject=Strategic%20mandate">Discuss your mandate →</a>
+          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email →</a>
           <Link href="/how-we-engage">See how we engage →</Link>
         </div>
       </section>

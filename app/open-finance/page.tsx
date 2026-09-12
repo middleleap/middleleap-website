@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
+import { bookingLinkProps, contactEmail, mailtoHref } from "@/lib/contact";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -350,13 +351,12 @@ export default function OpenFinancePage() {
           ))}
         </div>
         <div className={styles.engageActionRow}>
-          <a
-            className={styles.primaryAction}
-            href="mailto:contact@middleleap.com?subject=Open%20Finance%20mandate"
-          >
-            Discuss the mandate
+          <a className={styles.primaryAction} {...bookingLinkProps}>
+            Book a conversation
           </a>
-          <span>contact@middleleap.com · Dubai, UAE</span>
+          <span>
+            <a href={mailtoHref("Open Finance mandate")}>{contactEmail}</a> · Dubai, UAE
+          </span>
         </div>
       </section>
 

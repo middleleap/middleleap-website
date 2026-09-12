@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -146,9 +147,14 @@ export default function VenturesPage() {
           Explore how the portfolio&apos;s market, platform and execution intelligence
           can strengthen a regulated transformation mandate.
         </p>
-        <a className={styles.engageAction} href="mailto:contact@middleleap.com?subject=Ventures%20and%20strategic%20mandate">
-          Discuss your mandate →
-        </a>
+        <div className={styles.engageActions}>
+          <a className={styles.engageAction} {...bookingLinkProps}>
+            Book a conversation ↗
+          </a>
+          <a className={styles.engageEmail} href={mailtoHref("Ventures and strategic mandate")}>
+            Discuss your mandate by email →
+          </a>
+        </div>
       </section>
 
       <SiteFooter />
