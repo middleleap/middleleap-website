@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { engagementModels } from "@/lib/engagements";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
@@ -503,11 +504,12 @@ export default function HomePage() {
             </article>
           ))}
         </div>
-        <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
-          Discuss your mandate →
+        <a className={styles.primaryAction} {...bookingLinkProps}>
+          Book a conversation ↗
         </a>
         <p className={styles.contactFallback}>
-          Prefer to use your own email client? Copy <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.
+          Opens Google Calendar in a new tab. Prefer email?{" "}
+          <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email</a>.
         </p>
       </section>
 

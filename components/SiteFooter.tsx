@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { bookingLinkProps, contactEmail, mailtoHref } from "@/lib/contact";
 import styles from "./SiteChrome.module.css";
 
 export function SiteFooter() {
@@ -34,7 +35,8 @@ export function SiteFooter() {
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
+          <a {...bookingLinkProps}>Book a conversation</a>
+          <a href={mailtoHref()}>{contactEmail}</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/venture-submission-terms">Submission terms</Link>
         </nav>
