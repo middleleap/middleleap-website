@@ -21,7 +21,7 @@ const data: ProjectPageData = {
     lede:
       "A B2B marketplace proposition connecting idle hotel parking with employers that need reliable employee parking in dense UAE business districts.",
     actions: [
-      { label: "Open the live site ↗", href: "https://parqo.co/", kind: "primary", external: true },
+      { label: "Open the live site ↗", href: "https://parqo.middleleap.com/", kind: "primary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
     snapshot: "Private evidence snapshot · repository main at 79cd4aa · reviewed 11 July 2026",
