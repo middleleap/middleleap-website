@@ -30,4 +30,8 @@ The design uses existing website tokens, local fonts, chrome and theme controls.
 - Node 22.23.2 Playwright: 105 tests pass, including the existing smoke/axe suite and added product acceptance tests.
 - Responsive coverage: 390, 768 and 1440 pixels, light and dark, across all four affected routes. Review contact sheets are in `screenshots/`.
 - New behavioural checks: keyboard tabs, native disclosures, direct nested fragments, copy success/failure, catalogue/booking semantics and JavaScript-disabled reading.
-- Lighthouse budgets remain unchanged. Final results are recorded below when collection completes.
+- Lighthouse budgets remain unchanged. All assertions pass across 13 routes / 39 runs; see `lighthouse-results.md`.
+
+GitHub checks on code commit `6e3507f`: Node 22 build, lint/type/contrast, unit tests and e2e-smoke pass. Hosted branch preview verified at https://98c5202a.middleleap-website.pages.dev/the-loom with loaded artwork and no browser errors. Production remains unchanged.
+
+One unit run during concurrent Lighthouse collection hit the existing long-input form test's five-second timeout. With collection finished, the complete 47-test suite passes in 5.51 seconds; no timeouts or assertions were weakened.
