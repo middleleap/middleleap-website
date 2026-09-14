@@ -18,7 +18,7 @@ The server-rendered picture follows device appearance, then honours saved Light/
 
 ## Public and demo boundary
 
-The website is a static export. No protected demo route or access configuration was found in current main. The detailed worked case has therefore been retained outside the website repository as a local review copy, pending identification and verification of the intended protected destination. No unlisted or noindex route is treated as access protection. Neither the local illustration nor website tests demonstrate execution of a PFM/payment application.
+The website is a static export. The intended demo destination is a separate private deployment repository with a password gateway, not a route in this website. The detailed worked case is maintained there as a separately reviewable planning illustration, distinct from recorded execution evidence. It remains excluded from this public export. No unlisted or noindex route is treated as access protection. Neither the local illustration nor website tests demonstrate execution of a PFM/payment application.
 
 Removal from this branch does not revoke earlier immutable branch previews or erase git history. The historical case is fictional, but those previously published copies must not be described as private or access-protected.
 
