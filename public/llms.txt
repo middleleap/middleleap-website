@@ -69,13 +69,13 @@ The Loom is the governed delivery method. The Loom Toolkit is the installable pr
 
 ### The Loom Toolkit
 
-- Current public release: 2.0.0. Product status: released. Evidence status: Reference-build validated. The Toolkit was exercised end to end while building the synthetic Open Finance Backoffice reference portal. It has not been used to deliver or operate a customer production system.
+- Current public release: 2.4.2. Product status: available in the public repository. Source checked at AI-DLC commit 063b42029066db2c0b0f44cbd9aa057894d7151d on 2026-09-14. Evidence status: Reference-build validated. The method was exercised while building the synthetic Open Finance Backoffice reference portal; this is not version-specific qualification of every current capability. It has not been used to deliver or operate a customer production system.
 - Core bundle: the discovery and delivery harnesses, the Institutional BrainKit, compiled control plans, continuous assurance, governance and evidence controls, and safe, merge-aware adoption from one copy manifest.
 - Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights. It is drafted from approved sources only with unknowns left visible as gaps, approved by accountable owners, digest-pinned per repository and validated in CI.
 - Open Finance Intelligence domain pack: CBUAE and AlTareq knowledge, Islamic-banking context, UAE bank risk review and value-proposition prototyping, attached only when a mandate requires it.
 - AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the public Toolkit.
 - Operating boundary: the Toolkit is a build-time control frame. It validates repository-level gates, evidence and readiness records; live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution's responsibility.
-- Fairness and contestability boundary: version 2.0.0 can mechanically validate declared fairness evaluations and decision-contestability records. It does not determine whether a system is fair or whether an explanation is adequate.
+- Fairness and contestability boundary: version 2.4.2 can mechanically validate declared fairness evaluations and decision-contestability records. It does not determine whether a system is fair or whether an explanation is adequate.
 
 ## Ventures, portfolio and studio
 
@@ -126,3 +126,11 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [Venture submission terms](https://www.middleleap.com/venture-submission-terms): non-confidentiality, no obligation created, ownership and the limited assessment permission covering Venture Studio proposals.
 
 Last reviewed: 2026-08-14
+
+## Toolkit adoption and examples
+
+- AI SDLC 1.0.0 supplies project-context guidance, a starter template and a four-pass code reviewer. These support the core toolkit and are also installable separately.
+- Open Finance Intelligence 2.3.0 is an optional domain pack. MiddleLeap Brand is an internal tool, not a customer-facing offering.
+- Claude Code is the reference runtime. Codex is a bounded read-only reviewer pilot, without equivalent write-capable delivery or pre-action enforcement.
+- /ai-dlc#examples shows read-only source-derived fictional intake, configuration and release-evidence previews. The committed release example is deliberately refusable as a live release.
+- Installation is separate from reviewed repository adoption, institutional approval and production readiness. Book a conversation for a first-team pilot, or consult the technical adoption guide.

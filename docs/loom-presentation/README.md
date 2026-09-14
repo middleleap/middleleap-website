@@ -1,0 +1,33 @@
+# Loom product presentation
+
+This change integrates the approved visual mock into the advisory website. `/the-loom` explains the method; `/ai-dlc` presents the adoptable toolkit and optional Open Finance pack. AI SDLC remains a supporting foundation, not a competing flagship. MiddleLeap Brand remains internal.
+
+## Source verification
+
+Website base: `3251c58` (origin/main, refreshed 14 September 2026).
+AI-DLC source: `063b42029066db2c0b0f44cbd9aa057894d7151d` (origin/main, refreshed 14 September 2026).
+The plugin manifest and marketplace agree on Loom 2.4.2. AI SDLC is 1.0.0; Open Finance is 2.3.0. Public repository availability does not prove live runtime enforcement or customer production use. The historical synthetic reference build is method evidence, not complete qualification of the latest version.
+
+Commands and runtime boundaries follow the Loom README at that commit. The Codex adapter is a bounded read-only reviewer pilot. Installing plugins does not adopt a repository, approve institutional context, or activate production controls.
+
+Examples are read-only editorial previews, not outputs of a customer run:
+- Intake: fictional values arranged around the intake handoff contract and its source/reference/review distinctions.
+- Configuration: the first three tasks and role labels from `core/configuration-tasks.json`; all inputs remain pending.
+- Release: structure summarized from `evidence-example/README.md`; fictional commit and demo signer deliberately make the example refusable as a live release.
+
+Each preview links to its source at the pinned commit.
+
+## Artwork
+
+Both original compositions were generated using the built-in image generation tool on 14 September 2026. Exact prompts are in `image-prompts.md`. The originals remain in the task's `loom-product/assets` folder. The website owns six WebP derivatives under `public/images/loom/`, generated using Sharp at widths 640/960/1440 and quality 78. No runtime image service is needed. Figures are explicitly identified as AI-generated concepts.
+
+The design uses existing website tokens, local fonts, chrome and theme controls. Dark artwork is intentionally framed on both themes. No additional hosting, runtime API or analytics integration is introduced.
+
+## Verification
+
+- Node 22.23.2: lint, type checking, 47 unit tests (45 existing plus two provenance/installation checks) and brand contrast checks pass.
+- Production static export and SEO validation pass (initial build on Node 26.8.1; project supports >=22).
+- Node 22.23.2 Playwright: 105 tests pass, including the existing smoke/axe suite and added product acceptance tests.
+- Responsive coverage: 390, 768 and 1440 pixels, light and dark, across all four affected routes. Review contact sheets are in `screenshots/`.
+- New behavioural checks: keyboard tabs, native disclosures, direct nested fragments, copy success/failure, catalogue/booking semantics and JavaScript-disabled reading.
+- Lighthouse budgets remain unchanged. Final results are recorded below when collection completes.

@@ -332,6 +332,13 @@ export default function OpenFinancePage() {
         </div>
       </section>
 
+      <section className={styles.toolkitBridge} aria-labelledby="domain-toolkit-title">
+        <p className={styles.eyebrow}>From mandate to delivery</p>
+        <h2 id="domain-toolkit-title">Bring domain intelligence into the work.</h2>
+        <p>Advisory frames the Open Finance mandate. The optional Open Finance Intelligence pack brings UAE domain guidance, Islamic-banking context, risk review and journey prototyping into The Loom Toolkit. Accountable people retain the decisions.</p>
+        <Link className={styles.secondaryAction} href="/ai-dlc#open-finance">Explore the optional domain pack →</Link>
+      </section>
+
       <section className={styles.engage} id="engage">
         <div className={styles.engageIntro}>
           <p className={styles.eyebrow}>Engagement models</p>
