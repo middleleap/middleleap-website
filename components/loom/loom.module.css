@@ -1,0 +1,39 @@
+.artwork { margin: 0; overflow: hidden; border: 1px solid var(--ink-4); background: var(--ink-1); min-width: 0; }
+.artwork picture, .artwork img { display: block; width: 100%; }
+.artwork img { height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.artwork figcaption { display: flex; justify-content: space-between; gap: 16px; padding: 16px; color: var(--bone-2); font: 400 10px/1.6 var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.walkthrough { margin-block: 32px; border: 1px solid var(--ink-4); }
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--ink-4); }
+.tabs button { padding: 22px 12px; color: var(--bone-2); background: var(--ink-1); border: 0; font: 500 15px var(--font-dm-sans), sans-serif; cursor: pointer; }
+.tabs button span { display: block; margin-bottom: 10px; font: 400 11px var(--font-jetbrains-mono), monospace; }
+.tabs button[aria-selected="true"] { color: var(--bone-0); background: var(--ink-2); box-shadow: inset 0 -3px var(--ember-text); }
+.tabs button[aria-selected="true"] span { color: var(--ember-text); }
+.panel { padding: 36px; min-height: 270px; }
+.panel[hidden] { display: none; }
+.label { color: var(--bone-2); font: 400 11px/1.7 var(--font-jetbrains-mono), monospace; letter-spacing: .06em; text-transform: uppercase; }
+.panel h3 { color: var(--bone-0); font: 400 clamp(28px, 3vw, 40px)/1.15 var(--font-instrument-serif), serif; margin: 16px 0; }
+.panel p { max-width: 760px; line-height: 1.7; color: var(--bone-2); }
+.panel .output { border-top: 1px solid var(--ink-4); padding-top: 16px; margin-top: 24px; font-size: 13px; color: var(--bone-1); }
+.feedback { padding: 22px 36px; background: var(--ink-1); border-top: 1px solid var(--ink-4); }
+.feedback strong { color: var(--ember-text); font: 500 12px var(--font-jetbrains-mono), monospace; }
+.feedback p { margin-top: 10px; color: var(--bone-2); font-size: 14px; line-height: 1.7; }
+.details { border: 1px solid var(--ink-4); margin-top: 28px; }
+.details summary { cursor: pointer; padding: 22px; color: var(--bone-0); background: var(--ink-1); font-weight: 500; }
+.details > div { padding: 22px; }
+.commands { border: 1px solid var(--ink-4); min-width: 0; background: var(--ink-1); }
+.commandHeader { padding: 16px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ink-4); font: 400 11px var(--font-jetbrains-mono), monospace; color: var(--bone-2); }
+.commandHeader button { padding: 12px; border: 1px solid var(--field-border); background: var(--ink-2); color: var(--bone-0); cursor: pointer; }
+.commands pre { padding: 18px; overflow: auto; color: var(--bone-1); font: 400 12px/1.9 var(--font-jetbrains-mono), monospace; margin: 0; }
+.commands > p { padding: 0 18px 18px; font-size: 12px; min-height: 38px; color: var(--bone-2); }
+.examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.examples article { padding: 26px; border: 1px solid var(--ink-4); background: var(--ink-1); }
+.examples h3 { font: 400 30px var(--font-instrument-serif), serif; color: var(--bone-0); margin: 18px 0; }
+.examples dl { border-block: 1px solid var(--ink-4); margin: 20px 0; }
+.examples dl > div { padding: 12px 0; border-bottom: 1px solid var(--ink-border); }
+.examples dt { font: 400 11px/1.6 var(--font-jetbrains-mono), monospace; color: var(--bone-2); }
+.examples dd { margin: 5px 0 0; font-size: 13px; color: var(--bone-1); }
+.examples p { color: var(--bone-2); font-size: 14px; line-height: 1.7; }
+.examples a { display: inline-block; margin-top: 22px; font-size: 13px; color: var(--ember-text); }
+.tabs button:focus-visible, .panel:focus-visible, .details summary:focus-visible, .commands button:focus-visible, .commands pre:focus-visible, .examples a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
+@media(max-width: 900px) { .examples { grid-template-columns: 1fr; } }
+@media(max-width: 600px) { .tabs button { font-size: 12px; padding: 18px 5px; } .panel, .feedback { padding: 24px; } .artwork figcaption { font-size: 9px; } .details > div { padding: 14px; } }

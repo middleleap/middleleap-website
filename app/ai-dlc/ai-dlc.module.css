@@ -136,3 +136,11 @@
   .packageCore { padding: 20px; }
   .engage { width: calc(100% - 24px); margin-block: 48px; padding: 40px 24px; }
 }
+
+.bookingNote { margin-top: 18px; color: var(--bone-2); font-size: 13px; line-height: 1.7; }
+.bookingNote a, .foundation a { color: var(--ember-text); }
+.foundation { border-top: 1px solid var(--ink-4); padding-top: 28px; margin-top: 32px; }
+.foundation h3 { color: var(--bone-0); font: 400 28px var(--font-instrument-serif), serif; }
+.foundation p { color: var(--bone-2); line-height: 1.7; margin: 16px 0; max-width: 760px; }
+.install > div p + p { margin-top: 20px; }
+.hero > div { min-width: 0; }

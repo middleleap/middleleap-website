@@ -229,3 +229,8 @@
 @media (prefers-reduced-motion: reduce) {
   .primaryAction, .secondaryAction, .darkAction { transition: none; }
 }
+
+.hero > div { min-width: 0; }
+.hero > figure img { aspect-ratio: 1 / 1; object-position: 60% center; }
+.engage > p:last-child { margin-top: 22px; font-size: 13px; }
+@media(max-width:720px) { .hero > figure img { aspect-ratio: 3 / 2; } }
