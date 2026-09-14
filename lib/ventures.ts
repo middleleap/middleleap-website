@@ -47,7 +47,7 @@ export const portfolioProjects: PortfolioProject[] = [
     portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/parqo",
-    href: "https://parqo.co/",
+    href: "https://parqo.middleleap.com/",
     evidenceAccess: "Private build record · reviewed snapshot",
   },
   {
