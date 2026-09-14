@@ -10,10 +10,12 @@ The plugin manifest and marketplace agree on Loom 2.4.2. AI SDLC is 1.0.0; Open 
 
 Commands and runtime boundaries follow the Loom README at that commit. The Codex adapter is a bounded read-only reviewer pilot. Installing plugins does not adopt a repository, approve institutional context, or activate production controls.
 
-Examples are read-only editorial previews, not outputs of a customer run:
-- Intake: fictional values arranged around the intake handoff contract and its source/reference/review distinctions.
-- Configuration: the first three tasks and role labels from `core/configuration-tasks.json`; all inputs remain pending.
-- Release: structure summarized from `evidence-example/README.md`; fictional commit and demo signer deliberately make the example refusable as a live release.
+Examples are connected read-only editorial excerpts from the fictional Meridian Trust Open Finance case:
+- Intake: sponsor interest, customer problem, competing PFM/payment propositions and unresolved authority.
+- Configuration: illustrative ownership for product, compliance, platform, data, security and payment operations, with setup pending.
+- Release: proposed evidence requirements and a production-blocked decision, not executed test results.
+
+The case follows discovery, definition, synthetic development, release readiness and hypothetical operational learning. See `meridian-case.md` for domain sources and the distinction between repository structures and authored scenario values.
 
 Each preview links to its source at the pinned commit.
 
@@ -39,3 +41,7 @@ One unit run during concurrent Lighthouse collection hit the existing long-input
 ## Light artwork follow-up
 
 Both new reference-based illustrations have responsive WebP sizes and theme-aware captions. Lint, type checking, contrast, static build, SEO, 47 unit tests and the full 107-test browser/axe suite pass. Added browser coverage verifies stored light against a dark device, manual switching, and automatic device changes for both compositions. Desktop and mobile review captures are `screenshots/light-artwork-desktop.jpg` and `screenshots/light-artwork-mobile.jpg`.
+
+## Meridian case follow-up
+
+The Open Finance skill and linked public domain references ground one fictional PFM/payment-initiation intervention, from strategic interest through operational learning. See `meridian-case.md` for narrative, sources, boundaries and validation. All 47 unit tests and 108 browser tests pass; lint/type/build/contrast/SEO pass. The new screenshot files begin `meridian-`.

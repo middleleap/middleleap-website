@@ -170,7 +170,7 @@ export default function AiDlcPage() {
       </section>
 
       <section className={styles.layers} id="examples">
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>What the work looks like</p><div><h2>Inspect the artifacts. Understand the next decision.</h2><p>Read-only, source-derived fictional examples. They illustrate the workflow; they are not customer records, approvals or production evidence.</p></div></div>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>What the work looks like</p><div><h2>Inspect the artifacts. Understand the next decision.</h2><p>Read-only excerpts from the fictional Meridian Trust PFM and payment-initiation case. Follow the mandate, required setup and release decision; no customer records, approvals or production evidence are implied.</p></div></div>
         <Examples />
       </section>
 

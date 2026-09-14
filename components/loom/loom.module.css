@@ -37,3 +37,22 @@
 .tabs button:focus-visible, .panel:focus-visible, .details summary:focus-visible, .commands button:focus-visible, .commands pre:focus-visible, .examples a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
 @media(max-width: 900px) { .examples { grid-template-columns: 1fr; } }
 @media(max-width: 600px) { .tabs button { font-size: 12px; padding: 18px 5px; } .panel, .feedback { padding: 24px; } .artwork figcaption { font-size: 9px; } .details > div { padding: 14px; } }
+
+.caseBrief { padding: 32px 36px; background: var(--ink-1); border-bottom: 1px solid var(--ink-4); }
+.caseBrief h3, .exampleIntro h3 { margin: 18px 0; color: var(--bone-0); font: 400 clamp(28px, 3vw, 38px)/1.2 var(--font-instrument-serif), serif; max-width: 850px; }
+.caseBrief p, .exampleIntro p { color: var(--bone-2); max-width: 850px; line-height: 1.7; }
+.caseBrief p + p { margin-top: 16px; font-size: 13px; }
+.caseQuestions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 28px 0; }
+.caseQuestions > div { border-top: 1px solid var(--ink-4); padding-top: 16px; min-width: 0; }
+.caseQuestions dt { color: var(--bone-0); font-size: 14px; font-weight: 500; }
+.caseQuestions dd { margin: 12px 0 0; color: var(--bone-2); font-size: 14px; line-height: 1.7; }
+.panel .caseDecision { padding: 18px; border-left: 3px solid var(--ember-text); background: var(--ink-1); color: var(--bone-1); font-size: 14px; }
+.caseScope { padding: 22px 36px; border-top: 1px solid var(--ink-4); }
+.caseScope summary { color: var(--bone-0); cursor: pointer; font-size: 14px; font-weight: 500; }
+.caseSources { padding: 22px 36px; border-top: 1px solid var(--ink-4); }
+.caseSources p { color: var(--bone-2); font-size: 13px; line-height: 1.7; max-width: 850px; }
+.caseSources a, .exampleIntro a { color: var(--ember-text); font-size: 13px; }
+.caseSources > a, .exampleIntro > a { display: inline-block; margin: 16px 0; }
+.caseScope summary:focus-visible, .caseSources a:focus-visible, .exampleIntro a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
+.exampleIntro { margin-bottom: 26px; }
+@media(max-width: 720px) { .caseQuestions { grid-template-columns: 1fr; gap: 16px; } .caseBrief, .caseScope, .caseSources { padding: 24px; } }
