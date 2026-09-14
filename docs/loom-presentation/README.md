@@ -1,47 +1,29 @@
 # Loom product presentation
 
-This change integrates the approved visual mock into the advisory website. `/the-loom` explains the method; `/ai-dlc` presents the adoptable toolkit and optional Open Finance pack. AI SDLC remains a supporting foundation, not a competing flagship. MiddleLeap Brand remains internal.
+The public website presents the Loom method, its adoptable toolkit and the optional Open Finance pack while retaining MiddleLeap's advisory positioning. It includes matching light/dark artwork, a concise keyboard-accessible four-stage walkthrough with Operations feedback, native disclosures, installation guidance and booking links. Detailed worked customer scenarios and their artifact cards are excluded from the public site.
 
 ## Source verification
 
 Website base: `3251c58` (origin/main, refreshed 14 September 2026).
 AI-DLC source: `063b42029066db2c0b0f44cbd9aa057894d7151d` (origin/main, refreshed 14 September 2026).
-The plugin manifest and marketplace agree on Loom 2.4.2. AI SDLC is 1.0.0; Open Finance is 2.3.0. Public repository availability does not prove live runtime enforcement or customer production use. The historical synthetic reference build is method evidence, not complete qualification of the latest version.
+The plugin manifest and marketplace agree on Loom 2.4.2. AI SDLC is 1.0.0; Open Finance is 2.3.0. Public repository availability does not prove live runtime enforcement or customer production use. Historical synthetic reference-build evidence is method evidence, not qualification of every current capability.
 
-Commands and runtime boundaries follow the Loom README at that commit. The Codex adapter is a bounded read-only reviewer pilot. Installing plugins does not adopt a repository, approve institutional context, or activate production controls.
-
-Examples are connected read-only editorial excerpts from the fictional Meridian Trust Open Finance case:
-- Intake: sponsor interest, customer problem, competing PFM/payment propositions and unresolved authority.
-- Configuration: illustrative ownership for product, compliance, platform, data, security and payment operations, with setup pending.
-- Release: proposed evidence requirements and a production-blocked decision, not executed test results.
-
-The case follows discovery, definition, synthetic development, release readiness and hypothetical operational learning. See `meridian-case.md` for domain sources and the distinction between repository structures and authored scenario values.
-
-Each preview links to its source at the pinned commit.
+The Codex adapter remains a bounded read-only reviewer pilot. Installing plugins does not adopt a repository, approve institutional context or activate production controls. The preserved `/ai-dlc#examples` fragment now provides technical adoption guidance instead of worked artifact previews.
 
 ## Artwork
 
-Both original compositions were generated using the built-in image generation tool on 14 September 2026. Exact prompts are in `image-prompts.md`. The originals remain in the task's `loom-product/assets` folder. The website owns twelve WebP derivatives under `public/images/loom/`, generated using Sharp at widths 640/960/1440 and quality 78. No runtime image service is needed. Figures are explicitly identified as AI-generated concepts.
+The original compositions and matching light editions were generated using the built-in image tool on 14 September 2026. Exact prompts are in `image-prompts.md`. The website owns twelve responsive WebP derivatives at widths 640/960/1440, quality 78. Figures are identified as AI-generated concepts.
 
-The design uses existing website tokens, local fonts, chrome and theme controls. Matching light editions use warm paper studios and brushed silver; dark editions retain their original lighting. The shared picture component follows the device before hydration, then honours saved Light/Dark/Auto preferences and subsequent theme changes. Hero images are eagerly discovered with high fetch priority; an unconditional dark preload is avoided. A saved preference opposite to the device may request the device variant before hydration selects the saved variant. No additional hosting, runtime API or analytics integration is introduced.
+The server-rendered picture follows device appearance, then honours saved Light/Dark/Auto preferences. A saved preference opposite to the device can request a second variant during hydration. Hero images have high fetch priority; supporting artwork is lazy-loaded.
 
-## Verification
+## Public and demo boundary
 
-- Node 22.23.2: lint, type checking, 47 unit tests (45 existing plus two provenance/installation checks) and brand contrast checks pass.
-- Production static export and SEO validation pass (initial build on Node 26.8.1; project supports >=22).
-- Node 22.23.2 Playwright: 107 tests pass, including the existing smoke/axe suite and added product acceptance tests.
-- Responsive coverage: 390, 768 and 1440 pixels, light and dark, across all four affected routes. Review contact sheets are in `screenshots/`.
-- New behavioural checks: keyboard tabs, native disclosures, direct nested fragments, copy success/failure, catalogue/booking semantics and JavaScript-disabled reading.
-- Lighthouse budgets remain unchanged. All assertions pass across 13 routes / 39 runs; see `lighthouse-results.md`.
+The website is a static export. No protected demo route or access configuration was found in current main. The detailed worked case has therefore been retained outside the website repository as a local review copy, pending identification and verification of the intended protected destination. No unlisted or noindex route is treated as access protection. Neither the local illustration nor website tests demonstrate execution of a PFM/payment application.
 
-Prior integration verification: GitHub checks on code commit `6e3507f`: Node 22 build, lint/type/contrast, unit tests and e2e-smoke pass. Hosted branch preview verified at https://98c5202a.middleleap-website.pages.dev/the-loom with loaded artwork and no browser errors. Production remains unchanged.
+Removal from this branch does not revoke earlier immutable branch previews or erase git history. The historical case is fictional, but those previously published copies must not be described as private or access-protected.
 
-One unit run during concurrent Lighthouse collection hit the existing long-input form test's five-second timeout. With collection finished, the complete 47-test suite passes in 5.51 seconds; no timeouts or assertions were weakened.
+## Validation history
 
-## Light artwork follow-up
+The prior integrated presentation passed lint/type/contrast/build/SEO, 47 unit tests, the full browser/axe suite and Lighthouse budgets. See `lighthouse-results.md` for the measured revision. The public/demo separation is validated independently before delivery. Existing screenshots document the visual design; new public-layout screenshots supersede old artifact previews.
 
-Both new reference-based illustrations have responsive WebP sizes and theme-aware captions. Lint, type checking, contrast, static build, SEO, 47 unit tests and the full 107-test browser/axe suite pass. Added browser coverage verifies stored light against a dark device, manual switching, and automatic device changes for both compositions. Desktop and mobile review captures are `screenshots/light-artwork-desktop.jpg` and `screenshots/light-artwork-mobile.jpg`.
-
-## Meridian case follow-up
-
-The Open Finance skill and linked public domain references ground one fictional PFM/payment-initiation intervention, from strategic interest through operational learning. See `meridian-case.md` for narrative, sources, boundaries and validation. All 47 unit tests and 108 browser tests pass; lint/type/build/contrast/SEO pass. The new screenshot files begin `meridian-`.
+Public/demo separation checks: lint/type/static build/SEO pass; all 47 unit tests and 108 browser/axe tests pass. An explicit scan of exported HTML, JavaScript, JSON and text found no worked-case name. The preserved local review export was independently checked to retain the case.

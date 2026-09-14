@@ -147,7 +147,7 @@ export default function LoomPage() {
             what the software actually does.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="#meridian-case">Explore the Meridian case</a>
+            <a className={styles.primaryAction} href="#walkthrough-heading">Explore the method</a>
             <Link className={styles.secondaryAction} href="/ai-dlc">Explore the toolkit</Link>
           </div>
         </div>
@@ -168,8 +168,8 @@ export default function LoomPage() {
         ]}
       />
 
-      <section className={styles.section} id="meridian-case" aria-labelledby="walkthrough-heading">
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>The method in motion</p><div><h2 id="walkthrough-heading">Follow one Open Finance mandate through The Loom.</h2><p>Start with Meridian Trust’s strategic question, test the customer problem and trace an intervention through discovery, delivery and operational learning.</p></div></div>
+      <section className={styles.section} aria-labelledby="walkthrough-heading">
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>The method in motion</p><div><h2 id="walkthrough-heading">From the right problem to a controlled release.</h2><p>Explore the four stages. Institutional context, quality gates and human authority shape the work throughout.</p></div></div>
         <Walkthrough />
       </section>
 

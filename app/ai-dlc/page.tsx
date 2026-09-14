@@ -1,5 +1,4 @@
 import { Artwork } from "@/components/loom/Artwork";
-import { Examples } from "@/components/loom/Examples";
 import { InstallCommands } from "@/components/loom/InstallCommands";
 import { toolkitSource } from "@/lib/loom-product";
 import { bookingLinkProps, mailtoHref } from "@/lib/contact";
@@ -170,8 +169,8 @@ export default function AiDlcPage() {
       </section>
 
       <section className={styles.layers} id="examples">
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>What the work looks like</p><div><h2>Inspect the artifacts. Understand the next decision.</h2><p>Read-only excerpts from the fictional Meridian Trust PFM and payment-initiation case. Follow the mandate, required setup and release decision; no customer records, approvals or production evidence are implied.</p></div></div>
-        <Examples />
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>Technical documentation</p><div><h2>Explore the adoption guidance.</h2><p>Review the repository documentation to understand the required inputs, setup and evidence boundaries before adopting the toolkit.</p></div></div>
+        <div className={styles.foundation}><h3>From installation to reviewed adoption</h3><p>Start with the adoption guide, establish accountable ownership and verify the controls for your environment. Repository availability and passing checks do not establish production readiness.</p><a href="https://github.com/middleleap/ai-dlc/tree/main/plugins/middleleap-loom#starting-and-checking-an-adoption" target="_blank" rel="noopener noreferrer">Read the technical adoption guide ↗</a></div>
       </section>
 
       <section className={styles.install} id="installation">

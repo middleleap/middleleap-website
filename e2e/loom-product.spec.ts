@@ -11,7 +11,7 @@ test("walkthrough supports keyboard navigation and keeps operations visible", as
   await expect(page.getByRole("tabpanel")).toContainText("Make the next decision clear.");
   await page.keyboard.press("End");
   await expect(page.getByRole("tabpanel")).toContainText("Keep the release accountable.");
-  await expect(page.getByText("M05 · Outcome review → new intervention.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Observe outcomes, incidents and change.", { exact: false })).toBeVisible();
 });
 
 test("native disclosures open through keyboard and direct fragments", async ({ page }) => {
@@ -30,7 +30,7 @@ test("toolkit explains hierarchy, example status, and booking", async ({ page })
   await expect(page.locator("#open-finance")).toContainText("Open Finance Intelligence");
   await expect(page.getByRole("heading", { name: "AI SDLC / development foundations" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "MiddleLeap Brand" })).toHaveCount(0);
-  await expect(page.locator("#examples")).toContainText("deliberately refusable");
+  await expect(page.locator("#examples")).toContainText("Read the technical adoption guide");
   await expect(page.getByRole("link", { name: "Book a conversation ↗", exact: true })).toHaveAttribute("href", bookingUrl);
 });
 
@@ -96,24 +96,14 @@ for (const kind of ["sculpture", "weave"] as const) {
 }
 
 
-test("Meridian connects the mandate to a blocked release and operational learning", async ({ page }) => {
+
+test("public pages keep worked cases out of the public presentation", async ({ page }) => {
+  for (const route of ["/the-loom", "/ai-dlc"]) {
+    await page.goto(route);
+    await expect(page.locator("body")).not.toContainText("Meridian");
+    await expect(page.locator('a[href*="meridian"]')).toHaveCount(0);
+  }
   await page.goto("/the-loom");
-  await page.getByRole("link", { name: "Explore the Meridian case", exact: true }).click();
-  await expect(page).toHaveURL(/#meridian-case$/);
-  await expect(page.locator("#meridian-case")).toContainText("An app, a payment feature and a TPP operating model are hypotheses to test");
-  await expect(page.getByRole("tabpanel")).toContainText("M01");
-  await page.getByRole("tab", { name: /02\s*Define/ }).click();
-  await expect(page.getByRole("tabpanel")).toContainText("regulatory scope unresolved");
-  await page.getByRole("tab", { name: /03\s*Develop/ }).click();
-  await expect(page.getByRole("tabpanel")).toContainText("Meridian TPP → API Hub → bank");
-  await expect(page.getByRole("tabpanel")).toContainText("simulated API Hub and bank");
-  await page.getByRole("tab", { name: /04\s*Deliver/ }).click();
-  await expect(page.getByRole("tabpanel")).toContainText("PRODUCTION BLOCKED");
-  await expect(page.getByText("M05 · Outcome review → new intervention.", { exact: false })).toBeVisible();
-  await page.getByText("What Meridian must consider across the intervention", { exact: true }).click();
-  await expect(page.getByText("Authority and responsibility", { exact: true })).toBeVisible();
-  await page.getByRole("link", { name: "Inspect Meridian’s three example artifacts →" }).click();
-  await expect(page.locator("#examples")).toContainText("Meridian");
-  await expect(page.locator("#examples")).toContainText("not results of executed tests");
-  await expect(page.locator("#examples")).toContainText("production blocked");
+  await page.getByRole("link", { name: "Explore the method", exact: true }).click();
+  await expect(page).toHaveURL(/#walkthrough-heading$/);
 });

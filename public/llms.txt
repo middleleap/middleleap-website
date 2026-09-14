@@ -127,11 +127,11 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 Last reviewed: 2026-09-14
 
-## Toolkit adoption and examples
+## Toolkit adoption guidance
 
 - AI SDLC 1.0.0 supplies project-context guidance, a starter template and a four-pass code reviewer. These support the core toolkit and are also installable separately.
 - Open Finance Intelligence 2.3.0 is an optional domain pack. MiddleLeap Brand is an internal tool, not a customer-facing offering.
 - Claude Code is the reference runtime. Codex is a bounded read-only reviewer pilot, without equivalent write-capable delivery or pre-action enforcement.
-- /the-loom#meridian-case follows fictional Meridian Trust from its strategic interest in Open Finance through problem discovery, PFM versus payment-initiation options, feasibility, synthetic development, a blocked production-release decision and hypothetical operational learning. No customer research results, executed test results, licensing, certification or live connectivity are claimed.
-- /ai-dlc#examples shows three connected Meridian artifacts: institutional intake, team configuration and release evidence. Repository links supply the source structures; the scenario values and decisions are fictional editorial additions. The separate committed repository evidence example is deliberately refusable as a live release.
 - Installation is separate from reviewed repository adoption, institutional approval and production readiness. Book a conversation for a first-team pilot, or consult the technical adoption guide.
+
+- /ai-dlc#examples links to repository adoption guidance. Worked customer scenarios are not part of the public product presentation.
