@@ -1,7 +1,7 @@
-.artwork { margin: 0; overflow: hidden; border: 1px solid var(--ink-4); background: #080808; min-width: 0; }
+.artwork { margin: 0; overflow: hidden; border: 1px solid var(--ink-4); background: var(--ink-1); min-width: 0; }
 .artwork picture, .artwork img { display: block; width: 100%; }
 .artwork img { height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
-.artwork figcaption { display: flex; justify-content: space-between; gap: 16px; padding: 16px; color: #a8a59e; font: 400 10px/1.6 var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.artwork figcaption { display: flex; justify-content: space-between; gap: 16px; padding: 16px; color: var(--bone-2); font: 400 10px/1.6 var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
 .walkthrough { margin-block: 32px; border: 1px solid var(--ink-4); }
 .tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--ink-4); }
 .tabs button { padding: 22px 12px; color: var(--bone-2); background: var(--ink-1); border: 0; font: 500 15px var(--font-dm-sans), sans-serif; cursor: pointer; }

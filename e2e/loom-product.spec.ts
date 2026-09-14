@@ -76,3 +76,21 @@ for (const width of [390, 768, 1440]) for (const theme of ["light", "dark"] as c
     }
   });
 }
+
+for (const kind of ["sculpture", "weave"] as const) {
+  test(`${kind} artwork follows stored, selected, and automatic theme`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.addInitScript(() => localStorage.setItem("middleleap-theme", "light"));
+    await page.goto(kind === "sculpture" ? "/the-loom" : "/ai-dlc");
+    const artwork = page.locator('img[src^="/images/loom/"]');
+    const selected = () => artwork.evaluate((img: HTMLImageElement) => img.currentSrc);
+    await expect.poll(selected).toMatch(new RegExp(`${kind}-light-\\d+\\.webp$`));
+    await page.getByRole("radio", { name: "Use dark theme" }).click();
+    await expect.poll(selected).toMatch(new RegExp(`${kind}-\\d+\\.webp$`));
+    await page.getByRole("radio", { name: "Use automatic theme" }).click();
+    await page.emulateMedia({ colorScheme: "light" });
+    await expect.poll(selected).toMatch(new RegExp(`${kind}-light-\\d+\\.webp$`));
+    await page.emulateMedia({ colorScheme: "dark" });
+    await expect.poll(selected).toMatch(new RegExp(`${kind}-\\d+\\.webp$`));
+  });
+}
