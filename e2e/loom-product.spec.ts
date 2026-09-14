@@ -64,7 +64,7 @@ for (const width of [390, 768, 1440]) for (const theme of ["light", "dark"] as c
     for (const route of ["/", "/the-loom", "/ai-dlc", "/open-finance"]) {
       await page.goto(route);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-      await page.screenshot({ path: `/private/tmp/loom-review/${route.replaceAll("/", "") || "home"}-${width}-${theme}.png`, fullPage: true });
+      await page.screenshot({ path: `${process.env.LOOM_SCREENSHOT_DIR ?? test.info().outputDir}/${route.replaceAll("/", "") || "home"}-${width}-${theme}.png`, fullPage: true });
       const feature = page.locator(route === "/" ? '[class*="loomFeature"]' : route === "/the-loom" ? '[class*="walkthrough"]' : route === "/ai-dlc" ? '#examples' : '[class*="toolkitBridge"]');
       const images = page.locator('img[src^="/images/loom/"]');
       for (const image of await images.all()) {
@@ -72,7 +72,7 @@ for (const width of [390, 768, 1440]) for (const theme of ["light", "dark"] as c
         await expect(image).toBeVisible();
         await expect.poll(() => image.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)).toBe(true);
       }
-      await feature.screenshot({ path: `/private/tmp/loom-review/${route.replaceAll("/", "") || "home"}-feature-${width}-${theme}.png` });
+      await feature.screenshot({ path: `${process.env.LOOM_SCREENSHOT_DIR ?? test.info().outputDir}/${route.replaceAll("/", "") || "home"}-feature-${width}-${theme}.png` });
     }
   });
 }
