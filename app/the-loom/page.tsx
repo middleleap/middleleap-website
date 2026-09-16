@@ -1,3 +1,7 @@
+import { Artwork } from "@/components/loom/Artwork";
+import { Walkthrough } from "@/components/loom/Walkthrough";
+import { MethodDetails, RevealFragment } from "@/components/loom/Details";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
@@ -9,11 +13,11 @@ import { loomProof, loomRelease } from "@/lib/proof";
 export const metadata = pageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
-    "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.0.0 is released and validated on a synthetic reference build, not customer production.",
+    `The Loom is MiddleLeap's governed AI delivery method. Toolkit ${loomRelease.version} is available; the method was exercised on a synthetic reference build, not customer production.`,
   path: "/the-loom",
   socialTitle: "The Loom | Governed AI Delivery for Regulated Institutions",
   socialDescription:
-    "Toolkit 2.0.0 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
+    `Toolkit ${loomRelease.version} carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.`,
 });
 
 const proofPoints = [
@@ -115,6 +119,7 @@ const limits = [
 export default function LoomPage() {
   return (
     <main className={styles.shell} id="problem" tabIndex={-1}>
+      <RevealFragment />
       <SiteHeader
         active="method"
         breadcrumbs={[
@@ -134,36 +139,20 @@ export default function LoomPage() {
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>The Loom · Toolkit {loomRelease.version} released</p>
-          <h1>Find the right problem.<br />Ship it under <em>control.</em></h1>
+          <p className={styles.eyebrow}>The Loom · Toolkit {loomRelease.version} available</p>
+          <h1>AI builds.<br />You set the <em>pattern.</em></h1>
           <p className={styles.lede}>
             Two harnesses turn an ambiguous mandate into audit-ready software. Run and
             Operations then return evidence to Discovery, so the institution learns from
             what the software actually does.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="#loop">Explore the closed loop</a>
-            <Link className={styles.secondaryAction} href="/ai-dlc">View the technical toolkit</Link>
+            <a className={styles.primaryAction} href="#walkthrough-heading">Explore the method</a>
+            <Link className={styles.secondaryAction} href="/ai-dlc">Explore the toolkit</Link>
           </div>
         </div>
 
-        <div className={styles.loomFigure} role="group" aria-label="The Loom uses Discovery and Delivery harnesses to turn a mandate into audit-ready software, then routes operational signals back into Discovery">
-          <div className={styles.figureHeader}><span>Mandate → outcome / closed loop</span><b>Two harnesses · one feedback arc</b></div>
-          <div className={styles.warp}><span>Evidence</span><span>Boundaries</span><span>Authority</span><span>Quality</span><span>Traceability</span></div>
-          <div className={styles.harnesses}>
-            <article className={styles.harnessDiamond}><small>Harness 01</small><strong>Discovery</strong><span>Discover → Define · D1—D9</span></article>
-            <i aria-hidden="true">→</i>
-            <article className={styles.harnessDiamond}><small>Harness 02</small><strong>Delivery</strong><span>Develop → Deliver · Q1—Q5</span></article>
-          </div>
-          <div className={styles.pattern}><small>The pattern</small><strong>Mandate context brain</strong><span>Constraints · Domain · Institutional context</span></div>
-          <div className={styles.shuttle}><i aria-hidden="true" /><span>AI agents weave continuously</span></div>
-          <div className={styles.runtime}>
-            <div className={styles.cloth}><small>The cloth</small><strong>Audit-ready software</strong></div>
-            <i aria-hidden="true">→</i>
-            <div className={styles.runNode}><small>The third arc</small><strong>Run / Operations</strong><span>Reality tests the framing</span></div>
-          </div>
-          <div className={styles.feedback}><b aria-hidden="true">↶</b><span>Incidents · drift · regulatory change · customer signals</span><strong>Return to Discovery as evidence</strong></div>
-        </div>
+        <Artwork priority />
       </section>
 
       <ExecutiveSummary
@@ -173,11 +162,16 @@ export default function LoomPage() {
           { label: "Mandate", title: "Start before code", detail: "Frame the outcome, evidence, boundaries and decision rights before implementation begins." },
           { label: "For whom", title: "Regulated leaders", detail: "Built for sponsors, product owners, risk leaders and delivery teams working under real institutional constraints." },
           { label: "Capability", title: "One closed loop", detail: "Discovery, delivery and operations share evidence instead of handing work across disconnected phases." },
-          { label: "Release", title: `Toolkit ${loomRelease.version}`, detail: "The current public release packages the method for repository adoption." },
+          { label: "Release", title: `Toolkit ${loomRelease.version}`, detail: "The current repository version packages the method; enforcement requires verified adoption." },
           { label: "Evidence", title: loomRelease.evidenceStatus, detail: loomRelease.evidenceDetail },
           { label: "Boundary", title: "No customer production use", detail: loomRelease.evidenceBoundary },
         ]}
       />
+
+      <section className={styles.section} aria-labelledby="walkthrough-heading">
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>The method in motion</p><div><h2 id="walkthrough-heading">From the right problem to a controlled release.</h2><p>Explore the four stages. Institutional context, quality gates and human authority shape the work throughout.</p></div></div>
+        <Walkthrough />
+      </section>
 
       <section className={styles.proof} aria-label="Evidence from the synthetic Open Finance Backoffice reference build">
         {proofPoints.map(([value, label]) => <article key={value}><strong>{value}</strong><span>{label}</span></article>)}
@@ -248,9 +242,11 @@ export default function LoomPage() {
           <div><p className={styles.eyebrow}>Diamond 01</p><h2>Discovery: evidence in, problem out.</h2><p>Before code, every claim, boundary, data-risk decision, prototype and stakeholder reaction becomes a traceable artifact.</p></div>
           <div className={styles.prototypeRule}><span>Prototype boundary</span><strong>Brand-real. Behaviour-hollow.</strong><p>A disposable wireframe tests the framing. It never binds the production solution.</p></div>
         </div>
+        <MethodDetails title="Explore the nine discovery gates">
         <div className={styles.gateGrid}>
-          {discoveryGates.map(([id, title, detail]) => <article key={id}><span>{id}</span><h3>{title}</h3><p>{detail}</p></article>)}
+          {discoveryGates.map(([id, title, detail]) => <article id={id.toLowerCase()} key={id}><span>{id}</span><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
+        </MethodDetails>
       </section>
 
       <section className={styles.section}>
@@ -258,9 +254,11 @@ export default function LoomPage() {
           <p className={styles.eyebrow}>Diamond 02</p>
           <div><h2>Delivery: an autonomous loop that proposes, never disposes.</h2><p>One loop takes one eligible item end to end. The agent authors and verifies; a protected control plane keeps approval accountable—per change by default, or through a narrowly governed routine envelope.</p></div>
         </div>
+        <MethodDetails title="Explore the eight delivery steps">
         <ol className={styles.deliveryLoop}>
           {deliverySteps.map(([id, title, detail]) => <li key={id}><span>{id}</span><h3>{title}</h3><p>{detail}</p></li>)}
         </ol>
+        </MethodDetails>
         <div className={styles.tripwires}><span>PII guard</span><i>+</i><span>Spec tripwire</span><i>+</i><span>Test-integrity tripwire</span><strong>Controls apply at the moment of edit.</strong></div>
       </section>
 
@@ -290,9 +288,11 @@ export default function LoomPage() {
           <p className={styles.eyebrow}>Harness governance · who assures the AI?</p>
           <div><h2>AI proposes. Humans and a protected control plane dispose.</h2><p>The regulated reference catalogue closes the gaps that let an ungoverned agent self-review, self-merge, deploy and edit its own guardrails.</p></div>
         </div>
+        <MethodDetails title="Explore the governance catalogue">
         <div className={styles.governanceGrid}>
-          {governanceDecisions.map(([id, title, detail]) => <article key={id}><span>{id}</span><div><h3>{title}</h3><p>{detail}</p></div></article>)}
+          {governanceDecisions.map(([id, title, detail]) => <article id={id.toLowerCase()} key={id}><span>{id}</span><div><h3>{title}</h3><p>{detail}</p></div></article>)}
         </div>
+        </MethodDetails>
         <div className={styles.maturityIntro}>
           <span>Honest self-grade</span>
           <div><h3>A control is not “bank-grade” merely because it is documented.</h3><p>The Loom separates repository mechanics from platform enforcement and real operating evidence.</p></div>
@@ -319,9 +319,10 @@ export default function LoomPage() {
         <h2>Start with one real mandate and leave a reusable capability behind.</h2>
         <p>Mount the institution&apos;s controls and context, run one gated discovery, and deliver one bounded outcome with human accountability intact.</p>
         <div className={styles.actions}>
-          <Link className={styles.primaryAction} href="/#engage">Discuss a Loom pilot</Link>
-          <Link className={styles.darkAction} href="/ai-dlc">View The Loom Toolkit</Link>
+          <a className={styles.primaryAction} {...bookingLinkProps}>Book a conversation ↗</a>
+          <Link className={styles.darkAction} href="/ai-dlc">Explore the toolkit</Link>
         </div>
+        <p>Opens Google Calendar in a new tab. Prefer email? <a href={mailtoHref("Loom first-team pilot")}>Discuss a first-team pilot by email</a>.</p>
       </section>
 
       <SiteFooter />

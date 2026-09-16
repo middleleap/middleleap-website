@@ -1,3 +1,4 @@
+import { Artwork } from "@/components/loom/Artwork";
 import type { Route } from "next";
 import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
@@ -7,7 +8,6 @@ import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { engagementModels } from "@/lib/engagements";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
-import { loomProof } from "@/lib/proof";
 
 // Homepage metadata (title, description, canonical, Open Graph) is inherited
 // from the root layout, which declares the same values as its defaults.
@@ -318,51 +318,11 @@ export default function HomePage() {
               institution&apos;s context current.
             </p>
             <div className={styles.loomActions}>
-              <Link href="/the-loom">Explore the closed loop →</Link>
-              <Link href="/ai-dlc">View the technical toolkit →</Link>
+              <Link href="/the-loom">Explore the Loom →</Link>
+              <Link href="/ai-dlc">Explore the toolkit →</Link>
             </div>
           </div>
-          <div className={styles.loomMini} role="group" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
-            <div className={styles.loomMiniHeader}>
-              <span>Mandate → outcome</span>
-              <b>Two harnesses · one loop</b>
-            </div>
-            <div className={styles.loomMiniFlow}>
-              <article className={styles.loomDiamond}>
-                <small>Diamond 01</small>
-                <strong>Discovery</strong>
-                <span>Discover → Define · D1—D9</span>
-              </article>
-              <div className={styles.loomWaist}>
-                <small>Gate-green</small>
-                <strong>Hand-off</strong>
-              </div>
-              <article className={styles.loomDiamond}>
-                <small>Diamond 02</small>
-                <strong>Delivery</strong>
-                <span>Develop → Deliver · Q1—Q5</span>
-              </article>
-            </div>
-            <div className={styles.loomRuntime}>
-              <span>Audit-ready software</span>
-              <i aria-hidden="true">→</i>
-              <strong>Run / Operations</strong>
-              <b aria-hidden="true">↶</b>
-              <small>Signals return to Discovery as evidence</small>
-            </div>
-            <div className={styles.loomWarp}>
-              <span>Four-eyes</span>
-              <span>Audit</span>
-              <span>Lineage</span>
-              <span>Gates</span>
-              <span>Residency</span>
-            </div>
-            <div className={styles.loomProof}>
-              <span><strong>{loomProof.storiesRatio}</strong> stories to done</span>
-              <span><strong>{loomProof.harnesses}</strong> harnesses + Run arc</span>
-              <span><strong>{loomProof.realCustomerRecords}</strong> real records</span>
-            </div>
-          </div>
+          <Artwork />
         </div>
       </section>
 
