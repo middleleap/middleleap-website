@@ -5,6 +5,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { engagementModels } from "@/lib/engagements";
+import { founder, founderBioMedium, founderPerson } from "@/lib/founder";
+import { FounderPortrait } from "@/components/FounderPortrait";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
 import { loomProof } from "@/lib/proof";
@@ -52,27 +54,7 @@ const structuredData = {
         "AI-DLC",
       ],
     },
-    {
-      "@type": "Person",
-      "@id": "https://www.middleleap.com/#michael-ryberg-hartmann",
-      name: "Michael Ryberg Hartmann",
-      jobTitle: "Founder and Principal Adviser",
-      url: "https://www.middleleap.com/",
-      sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
-      worksFor: { "@id": "https://www.middleleap.com/#organization" },
-      alumniOf: [
-        { "@type": "Organization", name: "Fintech Galaxy" },
-        { "@type": "Organization", name: "TDC Group" },
-        { "@type": "Organization", name: "Danske Bank" },
-      ],
-      knowsAbout: [
-        "Open Finance",
-        "Platform strategy",
-        "AI-native operating models",
-        "Product and technology strategy",
-        "Transformation delivery",
-      ],
-    },
+    founderPerson,
     {
       "@type": "WebSite",
       "@id": "https://www.middleleap.com/#website",
@@ -413,7 +395,7 @@ export default function HomePage() {
             <div className={styles.evidenceList}>
               <div>
                 <strong>MENA Open Banking &amp; Open Finance</strong>
-                <span>Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE framework and deliver the country&apos;s first live transactions with a licensed TPP.</span>
+                <span>Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that took ADCB Group to first-bank certification under the UAE framework and delivered the country&apos;s first live transactions with a licensed TPP.</span>
               </div>
               <div>
                 <strong>Business banking ecosystems</strong>
@@ -430,15 +412,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className={styles.practiceNote} aria-label="Mandate staffing model">
-            <p className={styles.eyebrow}>How a mandate is staffed</p>
-            <h3>Accountability stays constant. Expertise changes with the work.</h3>
-            <dl>
-              <div><dt>Constant</dt><dd>One accountable senior lead</dd></div>
-              <div><dt>Assembled</dt><dd>Independent specialist expertise where required</dd></div>
-              <div><dt>Retained</dt><dd>Context, decisions and capability inside the client</dd></div>
-            </dl>
-            <Link href="/practice">See how the practice works →</Link>
+          <aside className={styles.founderNote} aria-label="Founder">
+            <FounderPortrait size={480} />
+            <p className={styles.eyebrow}>The senior lead on every mandate</p>
+            <h3>{founder.name}</h3>
+            <p>{founderBioMedium}</p>
+            <Link href="/founder">Founder profile →</Link>
           </aside>
         </div>
       </section>
