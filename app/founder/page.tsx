@@ -89,10 +89,6 @@ export default function FounderPage() {
             </div>
           ))}
         </dl>
-        <p>
-          Figures are from prior executive roles, before MiddleLeap, and are dated in the career
-          record below.
-        </p>
       </section>
 
       <section className={styles.section} id="record" tabIndex={-1}>

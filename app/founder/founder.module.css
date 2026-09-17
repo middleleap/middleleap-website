@@ -100,7 +100,7 @@
 
 /* Credentials strip: mono label, serif figure. Numbers over adjectives. */
 .credentials {
-  padding-block: 48px 32px;
+  padding-block: 48px;
   border-top: 1px solid var(--ink-border);
   border-bottom: 1px solid var(--ink-border);
   background: var(--ink-1);
@@ -130,14 +130,6 @@
   color: var(--bone-3);
   font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
   letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.credentials p {
-  margin-top: 32px;
-  color: var(--bone-3);
-  font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
-  letter-spacing: .08em;
   text-transform: uppercase;
 }
 
