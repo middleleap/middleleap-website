@@ -8,6 +8,7 @@
 .operatingModel,
 .method,
 .ventures,
+.proofPractice,
 .experience {
   width: min(calc(100% - 64px), 1080px);
   margin-inline: auto;
@@ -427,6 +428,7 @@
 .operatingModel,
 .method,
 .ventures,
+.proofPractice,
 .experience {
   padding-block: var(--s-9);
   border-top: 1px solid var(--ink-border);
@@ -967,8 +969,111 @@
   font-style: normal;
 }
 
+.ventureGrid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .ventureGrid article {
+  display: flex;
+  flex-direction: column;
   min-height: 332px;
+}
+
+.ventureGrid article > p {
+  flex: 1 0 auto;
+}
+
+.ventureLink {
+  display: inline-block;
+  margin-top: var(--s-4);
+  color: var(--ember-text);
+  font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.ventureLink:hover,
+.ventureLink:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* Practice, not commentary: three-beat proof (Built → Regulated → Taught). */
+.proofPracticeIntro {
+  max-width: 720px;
+  margin-top: var(--s-3);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.proofPractice .sectionIntro h2 em {
+  color: var(--ember-500);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.proofPracticeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink-border);
+  border-bottom: 1px solid var(--ink-border);
+}
+
+.proofPracticeGrid article {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: var(--s-5);
+  border-right: 1px solid var(--ink-border);
+}
+
+.proofPracticeGrid article:last-child {
+  border-right: 0;
+}
+
+.proofPracticeGrid article > span {
+  color: var(--ember-text);
+  font: 500 var(--type-ui) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.proofPracticeGrid h3 {
+  margin-top: var(--s-7);
+  color: var(--bone-0);
+  font: 400 30px/1.2 var(--font-instrument-serif), "Instrument Serif", serif;
+}
+
+.proofPracticeGrid p {
+  flex: 1 0 auto;
+  margin-top: var(--s-4);
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+}
+
+.proofPracticeGrid small {
+  display: block;
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--ink-border);
+  color: var(--bone-3);
+  font: 400 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.proofPracticeGrid small a {
+  color: var(--ember-text);
+  text-decoration: none;
+}
+
+.proofPracticeGrid small a:hover,
+.proofPracticeGrid small a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .ventureMeta {
@@ -1203,6 +1308,18 @@
     min-height: auto;
   }
 
+  .ventureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ventureGrid article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ventureGrid article:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--ink-border);
+  }
+
   .heroVisual {
     width: min(100%, 620px);
   }
@@ -1211,17 +1328,20 @@
 @media (max-width: 800px) {
   .loomFeature,
   .experienceLayout,
-  .practiceGrid {
+  .practiceGrid,
+  .proofPracticeGrid {
     grid-template-columns: 1fr;
   }
 
-  .practiceGrid article {
+  .practiceGrid article,
+  .proofPracticeGrid article {
     min-height: auto;
     border-right: 0;
     border-bottom: 1px solid var(--ink-border);
   }
 
-  .practiceGrid article:last-child {
+  .practiceGrid article:last-child,
+  .proofPracticeGrid article:last-child {
     border-bottom: 0;
   }
 }@media (max-width: 720px) {
@@ -1236,6 +1356,7 @@
   .operatingModel,
   .method,
   .ventures,
+  .proofPractice,
   .experience {
     width: min(calc(100% - 40px), 1080px);
   }
