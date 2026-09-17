@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { LoomBeatSlot, LoomStory } from "@/lib/loomStories";
 import styles from "./LoomMark.module.css";
 
 /*
@@ -12,7 +13,8 @@ import styles from "./LoomMark.module.css";
 
   All motion lives in LoomMark.module.css on one 14s cycle; every element's
   base style is the finished loop, so `prefers-reduced-motion` simply shows the
-  closed loop with every label lit.
+  closed loop with every label lit. The drawing is fixed; the `story` prop
+  (see lib/loomStories.ts) names the beats and the output strip's sentences.
 */
 
 const SIZE = 64;
@@ -68,25 +70,26 @@ const feedbackPath = [
   `L ${SQUARE_X} ${Y + HALF}`,
 ].join(" ");
 
-const beats = [
-  { className: "beatDiscovery", number: "01", title: "Discovery", detail: "Diverge on evidence, converge on one problem." },
-  { className: "beatGate", number: "02", title: "Gate", detail: "One gate-green hand-off into delivery." },
-  { className: "beatDelivery", number: "03", title: "Delivery", detail: "Develop solutions, deliver under control." },
-  { className: "beatRun", number: "04", title: "Run", detail: "Deploy, observe, triage in operation." },
-  { className: "beatFeedback", number: "05", title: "Feedback", detail: "Signal returns to discovery as evidence." },
-] as const;
+const slotClass: Record<LoomBeatSlot, string> = {
+  start: styles.beatStart,
+  discovery: styles.beatDiscovery,
+  gate: styles.beatGate,
+  delivery: styles.beatDelivery,
+  run: styles.beatRun,
+  feedback: styles.beatFeedback,
+};
 
-export function LoomMark() {
+export function LoomMark({ story }: { story: LoomStory }) {
   const [paused, setPaused] = useState(false);
 
   return (
     <div
       className={`${styles.loom} ${paused ? styles.paused : ""}`}
       role="group"
-      aria-label="The Loom: a strategic mandate pivots into discovery, passes one gate into delivery, runs in operation, and returns signal to discovery"
+      aria-label={story.ariaLabel}
     >
       <div className={styles.header}>
-        <span>The Loom / closed loop</span>
+        <span>{story.header}</span>
         <button
           type="button"
           className={styles.pause}
@@ -140,8 +143,8 @@ export function LoomMark() {
       </svg>
 
       <ol className={styles.beats}>
-        {beats.map((beat) => (
-          <li key={beat.className} className={styles[beat.className]}>
+        {story.beats.map((beat) => (
+          <li key={beat.slot} className={slotClass[beat.slot]}>
             <b aria-hidden="true" />
             <span>{beat.number}</span>
             <strong>{beat.title}</strong>
@@ -150,10 +153,10 @@ export function LoomMark() {
       </ol>
 
       <div className={styles.output}>
-        <span>Closed loop</span>
+        <span>{story.outputLabel}</span>
         <p>
-          {beats.map((beat) => (
-            <em key={beat.className} className={styles[beat.className]}>{beat.detail}</em>
+          {story.beats.map((beat) => (
+            <em key={beat.slot} className={slotClass[beat.slot]}>{beat.detail}</em>
           ))}
         </p>
       </div>

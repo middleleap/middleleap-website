@@ -38,13 +38,15 @@
   padding-inline: var(--s-4);
   border-bottom: 1px solid var(--ink-border);
   color: var(--bone-3);
-  font: 400 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
+  font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
   letter-spacing: .11em;
   text-transform: uppercase;
 }
 
 .pause {
+  flex: 0 0 auto;
   padding: var(--s-1) var(--s-2);
+  white-space: nowrap;
   border: 1px solid var(--ink-4);
   color: var(--bone-2);
   background: transparent;
@@ -143,7 +145,7 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--ink-border);
@@ -159,13 +161,17 @@
   padding: var(--s-3) var(--s-2) var(--s-3) var(--s-3);
   border-right: 1px solid var(--ink-border);
   color: var(--bone-1);
-  font: 400 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
+  font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
 
-.beats li:last-child {
+.beats li:nth-child(3n) {
   border-right: 0;
+}
+
+.beats li:nth-child(-n + 3) {
+  border-bottom: 1px solid var(--ink-border);
 }
 
 .beats b {
@@ -179,7 +185,7 @@
 
 .beats span {
   color: var(--ember-text);
-  font-size: var(--type-ui-nano, 10px);
+  font-size: var(--fs-ui-micro);
 }
 
 .beats strong {
@@ -193,6 +199,12 @@
   animation-duration: var(--cycle);
   animation-timing-function: step-end;
   animation-iteration-count: infinite;
+}
+
+/* the mandate is lit from the first frame: the square is already there */
+.beatStart,
+.beatStart b {
+  animation: none;
 }
 
 .beatDiscovery { animation-name: litDiscovery; }
@@ -234,7 +246,7 @@
 
 .output span {
   color: var(--ember-text);
-  font: 400 var(--type-ui-nano, 10px) var(--font-jetbrains-mono), monospace;
+  font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -244,7 +256,7 @@
   display: grid;
   margin: 0;
   color: var(--bone-1);
-  font: 600 var(--fs-caption, 13px)/1.4 var(--font-dm-sans), sans-serif;
+  font: 600 var(--fs-caption)/1.4 var(--font-dm-sans), sans-serif;
 }
 
 /* all details share one cell; the current beat's is the visible one */
@@ -258,13 +270,15 @@
   visibility: visible;
 }
 
+.output .beatStart { animation-name: showStart; }
 .output .beatDiscovery { animation-name: showDiscovery; }
 .output .beatGate { animation-name: showGate; }
 .output .beatDelivery { animation-name: showDelivery; }
 .output .beatRun { animation-name: showRun; }
 .output .beatFeedback { animation-name: showFeedback; }
 
-@keyframes showDiscovery { 0% { visibility: visible; } 28.57%, 100% { visibility: hidden; } }
+@keyframes showStart { 0% { visibility: visible; } 10.71%, 100% { visibility: hidden; } }
+@keyframes showDiscovery { 0% { visibility: hidden; } 10.71% { visibility: visible; } 28.57%, 100% { visibility: hidden; } }
 @keyframes showGate { 0% { visibility: hidden; } 28.57% { visibility: visible; } 35%, 100% { visibility: hidden; } }
 @keyframes showDelivery { 0% { visibility: hidden; } 35% { visibility: visible; } 50%, 100% { visibility: hidden; } }
 @keyframes showRun { 0% { visibility: hidden; } 50% { visibility: visible; } 64.29%, 100% { visibility: hidden; } }
@@ -297,23 +311,5 @@
 
   .pause {
     display: none;
-  }
-}
-
-@media (max-width: 720px) {
-  .beats {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .beats li:nth-child(3) {
-    border-right: 0;
-  }
-
-  .beats li:nth-child(-n + 3) {
-    border-bottom: 1px solid var(--ink-border);
-  }
-
-  .beats li:nth-child(5) {
-    border-right: 0;
   }
 }

@@ -103,7 +103,14 @@ proportions and 16% squircle radius. Two ways to handle that:
    threads on top as an SVG animation in the codebase, using the brand
    tokens and `ease-leap`. Exact, accessible, small, and it stays inside
    the pivot motion vocabulary. This is the recommended production path,
-   prototyped in `components/LoomMark.tsx` and wired into the homepage hero.
+   prototyped in `components/LoomMark.tsx`. The drawing is fixed; the story
+   it tells comes from `lib/loomStories.ts`. The homepage tells the advisory
+   proposition (mandate, strategy, decision, execution, market, evidence,
+   with real proof lines in the output strip). `/the-loom` tells the method
+   itself (mandate, discovery, gate, delivery, run, feedback). A visitor
+   review found the method version off-message for the homepage: it showed
+   a process, not the proposition, and named "The Loom" before the site
+   explains it.
 2. Upload a rasterised `brand-kit/assets/pivot_icon.svg` as a reference
    image in Higgsfield so the render's geometry is anchored to the mark.
 
