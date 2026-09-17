@@ -1,0 +1,319 @@
+/*
+  One 14s cycle. Beats as a share of the cycle:
+    0.6s   4.29%  the square leaps → Discovery diamond (0.9s, ease-leap)
+    1.5s  10.71%  Discovery threads draw
+    4.0s  28.57%  Gate: second leap → Delivery diamond (0.9s)
+    4.9s  35.00%  Delivery threads draw
+    7.0s  50.00%  Run: threads run level into the distance
+    9.0s  64.29%  Feedback thread returns to the square
+   10.5s  75.00%  hold on the closed loop, then restart
+  Base styles are the finished loop; keyframes replay it from the start.
+*/
+
+.loom {
+  --cycle: 14s;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ink-4);
+  background: color-mix(in srgb, var(--ink-1) 92%, transparent);
+  box-shadow: var(--shadow-2);
+}
+
+.loom::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 34% 46%, rgba(230, 92, 45, .12), transparent 38%);
+  content: "";
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  align-items: center;
+  min-height: 48px;
+  padding-inline: var(--s-4);
+  border-bottom: 1px solid var(--ink-border);
+  color: var(--bone-3);
+  font: 400 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.pause {
+  padding: var(--s-1) var(--s-2);
+  border: 1px solid var(--ink-4);
+  color: var(--bone-2);
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  transition: color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+
+.pause:hover,
+.pause:focus-visible {
+  color: var(--bone-0);
+  border-color: var(--bone-3);
+}
+
+.field {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: var(--s-5) var(--s-3) var(--s-3);
+}
+
+.square {
+  fill: var(--bone-1);
+}
+
+/* ---- the two pivots ------------------------------------------------- */
+
+.discovery,
+.delivery {
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+
+.discovery {
+  transform: translate(196px, 140px) rotate(45deg);
+  animation: leapDiscovery var(--cycle) linear infinite;
+}
+
+.delivery {
+  transform: translate(286.51px, 140px) rotate(45deg);
+  animation: leapDelivery var(--cycle) linear infinite;
+}
+
+@keyframes leapDiscovery {
+  0%, 4.29% { opacity: 0; transform: translate(72px, 140px) rotate(0deg); }
+  4.3% { opacity: 1; transform: translate(72px, 140px) rotate(0deg); animation-timing-function: var(--ease-leap); }
+  10.71%, 100% { opacity: 1; transform: translate(196px, 140px) rotate(45deg); }
+}
+
+@keyframes leapDelivery {
+  0%, 28.57% { opacity: 0; transform: translate(196px, 140px) rotate(0deg); }
+  28.58% { opacity: 1; transform: translate(196px, 140px) rotate(0deg); animation-timing-function: var(--ease-leap); }
+  35%, 100% { opacity: 1; transform: translate(286.51px, 140px) rotate(45deg); }
+}
+
+/* ---- warp threads --------------------------------------------------- */
+
+.thread {
+  fill: none;
+  stroke: var(--bone-2);
+  stroke-width: 1;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  opacity: .85;
+  animation: draw var(--cycle) linear infinite;
+}
+
+@keyframes draw {
+  0%, 10.71% { stroke-dashoffset: 100; }
+  28.57%, 35% { stroke-dashoffset: var(--after-discovery); }
+  50% { stroke-dashoffset: var(--after-delivery); }
+  64.29%, 100% { stroke-dashoffset: 0; }
+}
+
+.feedback {
+  fill: none;
+  stroke: var(--ember-500);
+  stroke-width: 1.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  animation: returnSignal var(--cycle) linear infinite;
+}
+
+@keyframes returnSignal {
+  0%, 64.29% { stroke-dashoffset: 100; }
+  75%, 100% { stroke-dashoffset: 0; }
+}
+
+/* ---- beat labels, lit in step with the drawing ---------------------- */
+
+.beats {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink-border);
+  list-style: none;
+}
+
+.beats li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--s-2);
+  align-items: center;
+  min-height: 52px;
+  padding: var(--s-3) var(--s-2) var(--s-3) var(--s-3);
+  border-right: 1px solid var(--ink-border);
+  color: var(--bone-1);
+  font: 400 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.beats li:last-child {
+  border-right: 0;
+}
+
+.beats b {
+  grid-row: 1 / span 2;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--ember-500);
+  background: var(--ember-500);
+  transform: rotate(45deg);
+}
+
+.beats span {
+  color: var(--ember-text);
+  font-size: var(--type-ui-nano, 10px);
+}
+
+.beats strong {
+  color: inherit;
+  font-weight: 500;
+}
+
+.beats li,
+.beats b,
+.output em {
+  animation-duration: var(--cycle);
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+}
+
+.beatDiscovery { animation-name: litDiscovery; }
+.beatDiscovery b { animation-name: markDiscovery; }
+.beatGate { animation-name: litGate; }
+.beatGate b { animation-name: markGate; }
+.beatDelivery { animation-name: litDelivery; }
+.beatDelivery b { animation-name: markDelivery; }
+.beatRun { animation-name: litRun; }
+.beatRun b { animation-name: markRun; }
+.beatFeedback { animation-name: litFeedback; }
+.beatFeedback b { animation-name: markFeedback; }
+
+@keyframes litDiscovery { 0% { color: var(--bone-3); } 10.71%, 100% { color: var(--bone-1); } }
+@keyframes markDiscovery { 0% { background: transparent; border-color: var(--ink-4); } 10.71%, 100% { background: var(--ember-500); border-color: var(--ember-500); } }
+@keyframes litGate { 0% { color: var(--bone-3); } 28.57%, 100% { color: var(--bone-1); } }
+@keyframes markGate { 0% { background: transparent; border-color: var(--ink-4); } 28.57%, 100% { background: var(--ember-500); border-color: var(--ember-500); } }
+@keyframes litDelivery { 0% { color: var(--bone-3); } 35%, 100% { color: var(--bone-1); } }
+@keyframes markDelivery { 0% { background: transparent; border-color: var(--ink-4); } 35%, 100% { background: var(--ember-500); border-color: var(--ember-500); } }
+@keyframes litRun { 0% { color: var(--bone-3); } 50%, 100% { color: var(--bone-1); } }
+@keyframes markRun { 0% { background: transparent; border-color: var(--ink-4); } 50%, 100% { background: var(--ember-500); border-color: var(--ember-500); } }
+@keyframes litFeedback { 0% { color: var(--bone-3); } 64.29%, 100% { color: var(--bone-1); } }
+@keyframes markFeedback { 0% { background: transparent; border-color: var(--ink-4); } 64.29%, 100% { background: var(--ember-500); border-color: var(--ember-500); } }
+
+/* ---- output strip: the current beat's detail ------------------------ */
+
+.output {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s-4);
+  align-items: center;
+  min-height: 56px;
+  padding: var(--s-3) var(--s-4);
+  border-top: 1px solid var(--ember-600);
+  background: rgba(230, 92, 45, .06);
+}
+
+.output span {
+  color: var(--ember-text);
+  font: 400 var(--type-ui-nano, 10px) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.output p {
+  position: relative;
+  display: grid;
+  margin: 0;
+  color: var(--bone-1);
+  font: 600 var(--fs-caption, 13px)/1.4 var(--font-dm-sans), sans-serif;
+}
+
+/* all details share one cell; the current beat's is the visible one */
+.output em {
+  grid-area: 1 / 1;
+  font-style: normal;
+  visibility: hidden;
+}
+
+.output .beatFeedback {
+  visibility: visible;
+}
+
+.output .beatDiscovery { animation-name: showDiscovery; }
+.output .beatGate { animation-name: showGate; }
+.output .beatDelivery { animation-name: showDelivery; }
+.output .beatRun { animation-name: showRun; }
+.output .beatFeedback { animation-name: showFeedback; }
+
+@keyframes showDiscovery { 0% { visibility: visible; } 28.57%, 100% { visibility: hidden; } }
+@keyframes showGate { 0% { visibility: hidden; } 28.57% { visibility: visible; } 35%, 100% { visibility: hidden; } }
+@keyframes showDelivery { 0% { visibility: hidden; } 35% { visibility: visible; } 50%, 100% { visibility: hidden; } }
+@keyframes showRun { 0% { visibility: hidden; } 50% { visibility: visible; } 64.29%, 100% { visibility: hidden; } }
+@keyframes showFeedback { 0% { visibility: hidden; } 64.29%, 100% { visibility: visible; } }
+
+/* ---- pause and reduced motion --------------------------------------- */
+
+.paused .discovery,
+.paused .delivery,
+.paused .thread,
+.paused .feedback,
+.paused .beats li,
+.paused .beats b,
+.paused .output em {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discovery,
+  .delivery,
+  .thread,
+  .feedback,
+  .beats li,
+  .beats b,
+  .output em,
+  .pause {
+    animation: none;
+    transition: none;
+  }
+
+  .pause {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .beats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .beats li:nth-child(3) {
+    border-right: 0;
+  }
+
+  .beats li:nth-child(-n + 3) {
+    border-bottom: 1px solid var(--ink-border);
+  }
+
+  .beats li:nth-child(5) {
+    border-right: 0;
+  }
+}

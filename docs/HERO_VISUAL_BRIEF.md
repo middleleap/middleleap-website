@@ -102,7 +102,8 @@ proportions and 16% squircle radius. Two ways to handle that:
 1. Use the render as an atmospheric backdrop and draw the actual mark and
    threads on top as an SVG animation in the codebase, using the brand
    tokens and `ease-leap`. Exact, accessible, small, and it stays inside
-   the pivot motion vocabulary. This is the recommended production path.
+   the pivot motion vocabulary. This is the recommended production path,
+   prototyped in `components/LoomMark.tsx` and wired into the homepage hero.
 2. Upload a rasterised `brand-kit/assets/pivot_icon.svg` as a reference
    image in Higgsfield so the render's geometry is anchored to the mark.
 

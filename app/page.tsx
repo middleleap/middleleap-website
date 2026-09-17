@@ -1,6 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
-import { MandateSystem } from "@/components/MandateSystem";
+import { LoomMark } from "@/components/LoomMark";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { bookingLinkProps, mailtoHref } from "@/lib/contact";
@@ -201,7 +201,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.heroVisual}>
-          <MandateSystem />
+          <LoomMark />
         </div>
       </section>
 
