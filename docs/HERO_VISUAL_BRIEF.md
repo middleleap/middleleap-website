@@ -22,7 +22,7 @@ cinematic should be that motion at architectural scale, not a generic
 
 ## 2. Concept directions
 
-### A. The Pivot at Scale (recommended)
+### A. The Pivot at Scale (first pass)
 
 A vast, perfectly ordered lattice of matte bone-coloured cubes rests on a near
 black plane, seen from a low three-quarter angle. Nothing moves. One cube in
@@ -34,7 +34,10 @@ data, partners. The camera pushes in slowly and settles so the last frame
 composes as a single ember diamond beside a bone square, the lockup.
 
 Why it works: it *is* the brand mark, told as a story. Institution → decision
-→ platform. Loops cleanly, reads at a glance, tolerates text overlay.
+→ platform. Loops cleanly and tolerates text overlay.
+
+First renders (17 Sep 2026) looked right but did not tell a first-time
+visitor what MiddleLeap does. Superseded by Concept E below.
 
 ### B. Mandate to Market
 
@@ -68,6 +71,89 @@ connected system.
 
 Why it works: most literal "platform and ecosystem" picture. Risk: drifts
 toward generic smart-city renders unless the geometry stays severe.
+
+### E. The Mark as the Loom (current direction)
+
+Feedback on Concept A: it looks right but says nothing to a first-time
+visitor. Concept E fixes that by using the logo itself to tell the method.
+
+The pivot mark is a settled bone square that leaps 45° into an ember
+diamond. The Loom is a double diamond: Discovery (diverge, converge), one
+gate, Delivery (diverge, converge), then Run/Operations returning signal to
+Discovery. So the mark *is* the Loom, told twice:
+
+| Beat | What happens on screen | What it says |
+|---|---|---|
+| 1 Mandate | A single bone square rests alone on ink. | The institution, settled and rigid. |
+| 2 Discovery | The square pivots 45° and lights ember. Fine bone threads, like a loom's warp, fan into the diamond's full width and pull tight to its right point. | Diverge around evidence, converge on one problem. |
+| 3 Gate | At that point, a second pivot: a new ember diamond is born from the first one's tip. | One gate-green hand-off. |
+| 4 Delivery | Threads fan out again across the second diamond and converge at its right point. | Develop across solutions, deliver under control. |
+| 5 Run | From the second tip the threads run straight, level and parallel into the distance, woven tight. | Working software in operation. |
+| 6 Feedback | One ember thread arcs back beneath both diamonds to the square on the left. The frame settles on square + ember diamond: the lockup. | Signal returns to Discovery. The loop closes on the logo. |
+
+The words (Discover, Define, Develop, Deliver, Run) are **not** in the
+render. They are HTML labels laid under the video and lit ember in sync with
+the playback position, so a visitor reads the method as the mark draws it.
+Under reduced motion the poster shows the finished loop with all labels lit.
+
+Honest caveat: a generative model will not reproduce the mark's exact
+proportions and 16% squircle radius. Two ways to handle that:
+
+1. Use the render as an atmospheric backdrop and draw the actual mark and
+   threads on top as an SVG animation in the codebase, using the brand
+   tokens and `ease-leap`. Exact, accessible, small, and it stays inside
+   the pivot motion vocabulary. This is the recommended production path.
+2. Upload a rasterised `brand-kit/assets/pivot_icon.svg` as a reference
+   image in Higgsfield so the render's geometry is anchored to the mark.
+
+### 3.6 Keyframe image prompt — Concept E (end state of the loop)
+
+```
+Cinematic 3D render on a near-black matte background (#080808). Wide
+composition, centred, generous negative space, editorial and severe. A
+single geometric sequence reads left to right like a logo drawn in space.
+Far left: a settled matte bone-white square block (#DEDBD4), very slightly
+softened corners, resting flat and still. To its right the same block has
+pivoted 45 degrees into a diamond and glows warm ember orange (#E65C2D)
+from within, like heated ceramic, not neon. Dozens of fine, taut
+bone-white threads, like the warp threads of a loom, leave the square,
+fan out across the full width of the ember diamond and pull tight to its
+right point. At that exact point a second identical ember diamond begins;
+the threads fan out across it and converge again at its right point. From
+there the threads run straight, level and perfectly parallel into the
+distance, woven into a tight fabric that fades into darkness. One single
+ember thread curves back beneath both diamonds and returns to the square
+on the left, closing the loop. Everything precise and sharp, matte
+ceramic and matte stone materials, restrained reflections. Soft
+directional key light from upper left, deep shadows, subtle floor haze,
+fine film grain. No text, no letters, no wordmark, no circles, no
+spheres, no particles, no glass, no lens flare, no people. Octane render
+quality, 8k.
+```
+
+Negative prompt: as 3.1, plus `wordmark, typography, arrows, icons,
+diagram, infographic, flowchart, glowing wires, neon tubes`.
+
+### 3.7 Video prompt — Concept E (image-to-video from the keyframe)
+
+```
+Slow, precise, mechanical animation on a black background, camera locked
+off with a very slight push-in. Start: a single matte bone-white square
+rests alone, nothing else visible. Beat one: the square pivots 45 degrees
+with a crisp snap and a slight overshoot as it lands, and lights warm
+ember orange from within. Fine bone-white loom threads pull out of the
+square, fan across the ember diamond's full width and draw tight to its
+right point. Beat two: at that point a second identical square appears and
+pivots 45 degrees into a second ember diamond; the threads fan out across
+it and draw tight again at its right point. Beat three: from that point
+the threads run straight, level and parallel into the distance and weave
+into a tight, calm fabric. Beat four: one single ember thread travels back
+beneath both diamonds to the square on the left and the loop closes. Final
+second: the threads dim to faint, the scene settles on the bone square and
+the ember diamond side by side, holding still like a logo. Warm matte
+ember light, not neon. Deep blacks, film grain, no flicker, no text, no
+particles. 10 seconds, ends on a still frame.
+```
 
 ## 3. Prompt pack for Higgsfield
 
