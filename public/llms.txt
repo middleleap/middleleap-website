@@ -111,7 +111,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 ## Founder
 
 - Michael Ryberg Hartmann (also written Michael Hartmann) is the founder and principal adviser of MiddleLeap, based in Dubai.
-- Head of Open Finance at ADCB Group, 2024 to 2026: took the bank to the first certification under the UAE Open Finance framework and delivered the country's first live Open Finance transactions with a licensed TPP; directed a dual LFI/TPP programme with a 15-person core and 100+ Group contributors; participated in BIS Innovation Hub Project Aperta and the CBUAE eKYC initiative.
+- Head of Open Finance at ADCB Group, 2024 to 2026: took the bank to the first certification under the UAE Open Finance framework and delivered the country's first live Open Finance transactions with a licensed TPP; directed the bank's dual LFI/TPP programme; participated in BIS Innovation Hub Project Aperta and the CBUAE eKYC initiative.
 - Associate Partner, TFPA (The Fintech and Payments Advisory Network), since 2023.
 - Chief Technology Officer and Chief Business Officer, Fintech Galaxy, 2022 to 2023: carried the thefinx.io open banking platform into Bahrain, Saudi Arabia and Jordan.
 - Head of Digital Delivery and Transformation, TDC Group, 2019 to 2021: led a 70+ person delivery organisation and the API-first Telco-as-a-Service platform for TDC NET.

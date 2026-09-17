@@ -40,7 +40,7 @@ export const founderBioMedium =
 /** Founder page. Three paragraphs. */
 export const founderBioLong = [
   "Michael Ryberg Hartmann founded MiddleLeap to help regulated platform businesses get through major operating-model shifts. Over twenty years he has worked through three of them: digital transformation, platform and ecosystem business models, and now AI-native operating models.",
-  "Most recently he led Open Finance for ADCB Group. He took the bank to the first certification under the UAE Open Finance framework and delivered the country's first live Open Finance transactions with a licensed third-party provider, directing a dual LFI/TPP programme with a 15-person core and more than 100 Group contributors. Before that he scaled Fintech Galaxy into Bahrain, Saudi Arabia and Jordan. In Denmark he built Danske Bank's District platform as open banking arrived in Europe and led the delivery organisation behind the split of TDC Group into a broadband-as-a-service business and its consumer brands.",
+  "Most recently he led Open Finance for ADCB Group. He took the bank to the first certification under the UAE Open Finance framework and delivered the country's first live Open Finance transactions with a licensed third-party provider, directing the bank's dual LFI/TPP programme. Before that he scaled Fintech Galaxy into Bahrain, Saudi Arabia and Jordan. In Denmark he built Danske Bank's District platform as open banking arrived in Europe and led the delivery organisation behind the split of TDC Group into a broadband-as-a-service business and its consumer brands.",
   "He covers both product and technology, and he still writes code. AI has closed the gap between deciding what to build and building it, so MiddleLeap handles both with one accountable lead. He is based in Dubai.",
 ] as const;
 
@@ -61,7 +61,7 @@ export const founderCareer = [
   {
     years: "2024 – 2026",
     title: "Head of Open Finance, ADCB Group",
-    detail: "Abu Dhabi · Dual LFI/TPP programme, 15-person core, 100+ Group contributors · BIS Innovation Hub Project Aperta · CBUAE eKYC initiative · Embedded Finance and BaaS strategy.",
+    detail: "Abu Dhabi · Dual LFI/TPP programme · BIS Innovation Hub Project Aperta · CBUAE eKYC initiative · Embedded Finance and BaaS strategy.",
   },
   {
     years: "2023 – now",
