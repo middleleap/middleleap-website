@@ -142,6 +142,12 @@
   line-height: 1.5;
 }
 
+.dossier dd a {
+  color: var(--bone-1);
+  text-decoration-color: var(--ember-text);
+  text-underline-offset: 4px;
+}
+
 .section {
   padding-block: 76px;
   border-top: 1px solid var(--ink-border);
@@ -260,6 +266,12 @@
   color: var(--ink-4);
   font-size: var(--fs-small);
   line-height: var(--lh-body);
+}
+
+.engage p a {
+  color: var(--ink-2);
+  text-decoration-color: var(--ember-on-inverse);
+  text-underline-offset: 4px;
 }
 
 .engageActions {
