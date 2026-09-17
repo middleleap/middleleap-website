@@ -3,8 +3,8 @@
  *
  * Every string here already appears on the site; nothing asserts a new fact about
  * the firm or any client. Extracting it means the two surfaces cannot
- * drift, and it keeps the one disclosure rule in force: prior-role work names
- * "a leading UAE bank" and never the institution (see app/disclosure.test.ts).
+ * drift. Prior-role work is attributed to the institution by name and always
+ * carried with `experienceProvenanceNote` (see app/disclosure.test.ts).
  */
 
 export const practicePrinciples = [
@@ -32,7 +32,7 @@ export const practiceEvidence = [
   {
     label: "MENA Open Banking & Open Finance",
     detail:
-      "Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme with a 15-person core and 100+ contributors that helped a leading UAE bank achieve first-bank certification under the UAE framework and deliver the country's first live transactions with a licensed TPP.",
+      "Built and expanded an Open Banking platform across MENA, then led the dual LFI/TPP programme that took ADCB Group to first-bank certification under the UAE framework and delivered the country's first live transactions with a licensed TPP.",
   },
   {
     label: "Business banking ecosystems",

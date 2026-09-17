@@ -126,7 +126,10 @@ export default function HowWeEngagePage() {
       <section className={styles.start} id="start" tabIndex={-1}>
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
         <h2>Bring the right senior expertise to the problem.</h2>
-        <p>Book a call directly, or email {practiceFacts.contactEmail} if you prefer.</p>
+        <p>
+          Book a call directly, or email{" "}
+          <a href={mailtoHref("Strategic mandate")}>{practiceFacts.contactEmail}</a> if you prefer.
+        </p>
         <div className={styles.startActions}>
           <a {...bookingLinkProps}>Book a conversation ↗</a>
           <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email →</a>

@@ -1102,45 +1102,32 @@
   line-height: var(--lh-body);
 }
 
-.practiceNote {
+.founderNote {
   align-self: start;
   padding: var(--s-6);
   border: 1px solid var(--ink-border);
   background: var(--ink-2);
 }
 
-.practiceNote h3 {
-  margin-top: var(--s-5);
+.founderNote > span {
+  max-width: 240px;
+  margin-bottom: var(--s-5);
+}
+
+.founderNote h3 {
+  margin-top: var(--s-2);
   color: var(--bone-0);
   font: 400 30px/1.12 var(--font-instrument-serif), "Instrument Serif", serif;
 }
 
-.practiceNote dl {
-  margin-top: var(--s-5);
-  border-top: 1px solid var(--ink-border);
-}
-
-.practiceNote dl > div {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: var(--s-3);
-  padding-block: var(--s-4);
-  border-bottom: 1px solid var(--ink-border);
-}
-
-.practiceNote dt {
-  color: var(--ember-text);
-  font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
-  text-transform: uppercase;
-}
-
-.practiceNote dd {
+.founderNote > p:not(.eyebrow) {
+  margin-top: var(--s-4);
   color: var(--bone-2);
   font-size: var(--fs-small);
   line-height: var(--lh-body);
 }
 
-.practiceNote a {
+.founderNote a {
   display: inline-block;
   margin-top: var(--s-5);
   color: var(--ember-text);

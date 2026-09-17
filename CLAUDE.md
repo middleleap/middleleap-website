@@ -10,7 +10,7 @@ The firm's core capabilities are regulatory and market transformation, platform 
 
 - Next.js 16 App Router with React 19 and TypeScript
 - Static export through `output: "export"` (no server; `next build --webpack` is used because the build opts out of Turbopack while `reactCompiler` is enabled)
-- Routes under `app/`: `/` (advisory homepage), `/open-finance`, `/the-loom`, `/ai-dlc`, `/ventures` plus venture detail pages (`/ventures/studio`, `/ventures/backoffice`, `/ventures/hivemind`, `/ventures/parqo`), `/privacy`, `/venture-submission-terms`
+- Routes under `app/`: `/` (advisory homepage), `/open-finance`, `/the-loom`, `/ai-dlc`, `/practice`, `/how-we-engage`, `/founder` (founder profile, data in `lib/founder.ts`), `/ventures` plus venture detail pages (`/ventures/studio`, `/ventures/backoffice`, `/ventures/hivemind`, `/ventures/parqo`), `/privacy`, `/venture-submission-terms`
 - Styling: route-scoped CSS Modules per page plus shared chrome styles in `components/SiteChrome.module.css`; global reset, fonts and grain overlay in `app/globals.css`
 - **`brand-kit/` is a build dependency**: `app/globals.css` imports `brand-kit/tokens.css`, which holds all colour/type tokens including the light-theme override — do not delete or move it casually
 - Shared components in `components/`: `SiteHeader` (nav, breadcrumbs, scrollspy), `SiteFooter`, `BrandLockup` (canonical lockup), `ThemeToggle`, `MandateSystem`, `ExecutiveSummary`, `VenturesPortfolio`, `RelatedPortfolio`, `VentureProposalForm` (client-side mailto form, no backend)

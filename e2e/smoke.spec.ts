@@ -5,6 +5,7 @@ const routes = [
   "/",
   "/open-finance",
   "/practice",
+  "/founder",
   "/how-we-engage",
   "/the-loom",
   "/ai-dlc",

@@ -3,6 +3,8 @@
 > MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses move from strategic mandate to market execution.
 
 Canonical website: https://www.middleleap.com/
+LinkedIn: https://www.linkedin.com/company/middleleap/
+GitHub: https://github.com/middleleap
 Contact: contact@middleleap.com
 Founded: 2021
 Founder: Michael Ryberg Hartmann
@@ -103,16 +105,29 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 - MiddleLeap is an intentionally boutique, senior-led networked advisory practice rather than a fixed consulting bench.
 - Each mandate has senior accountability, specialists assembled around the problem and active client leadership so institutional context and delivery capability remain with the client.
-- Experience carried into the practice includes building and expanding an Open Banking platform across MENA, followed by leadership of a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE Open Finance framework and deliver the country's first live transactions with a licensed TPP.
+- Experience carried into the practice includes building and expanding an Open Banking platform across MENA, followed by leadership of a dual LFI/TPP programme that took ADCB Group to first-bank certification under the UAE Open Finance framework and delivered the country's first live transactions with a licensed TPP.
 - Business-banking ecosystem experience includes the build-out of Danske Bank's District platform and marketplace across the Nordics and UK, the migration of 250,000 SMEs, corporates and institutions, and the development of API-based partner channels.
 - Enterprise transformation experience includes leadership of a 70+ person digital delivery organization through an API-first Telco-as-a-Service shift within a 140-year-old company.
-- MiddleLeap was founded by Michael Ryberg Hartmann. Public positioning deliberately centres the practice model and documented experience rather than presenting a fixed team or consulting bench.
-- Professional profile: https://www.linkedin.com/in/michael-ryberg-hartmann
+- MiddleLeap was founded and is led by Michael Ryberg Hartmann, who is the accountable senior lead on every mandate. The practice remains senior-led and networked rather than a fixed consulting bench.
+
+## Founder
+
+- Michael Ryberg Hartmann (also written Michael Hartmann) is the founder and principal adviser of MiddleLeap, based in Dubai.
+- Head of Open Finance at ADCB Group, 2024 to 2026: took the bank to the first certification under the UAE Open Finance framework and delivered the country's first live Open Finance transactions with a licensed TPP; directed the bank's dual LFI/TPP programme; participated in BIS Innovation Hub Project Aperta and the CBUAE eKYC initiative.
+- Associate Partner, TFPA (The Fintech and Payments Advisory Network), since 2023.
+- Chief Technology Officer and Chief Business Officer, Fintech Galaxy, 2022 to 2023: carried the thefinx.io open banking platform into Bahrain, Saudi Arabia and Jordan.
+- Head of Digital Delivery and Transformation, TDC Group, 2019 to 2021: led a 70+ person delivery organisation and the API-first Telco-as-a-Service platform for TDC NET.
+- Head of Digital Channels, Danske Bank, 2016 to 2019: led the post-PSD2 District business-banking platform and the migration of 250,000 SMEs, corporates and institutions.
+- Earlier career 2005 to 2016 at Planday, Unwire, Formpipe and Telmore in Copenhagen.
+- MSc Information Technology, IT University of Copenhagen; BComp (Hons), Deakin University; MIT Sloan Executive Education, Platform Strategies.
+- Board Member, VL94 (The Danish Management Society); Core Committee, MENA Fintech Association Open Finance Working Group; finalist, C:\>DIR Agentic Regulator Hackathon 2026.
+- Profile: https://www.linkedin.com/in/michael-ryberg-hartmann · Code: https://github.com/middleleap · https://github.com/openfinance-os
 
 ## Primary source
 
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
 - [The practice](https://www.middleleap.com/practice): the senior-led, networked operating model, how mandates are staffed and the experience carried into the practice.
+- [Founder](https://www.middleleap.com/founder): Michael Ryberg Hartmann's profile, track record, dated career record and professional links.
 - [How we engage](https://www.middleleap.com/how-we-engage): the three engagement models, how senior expertise is assembled around a mandate and how to start.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): mandates, workstreams, MENA experience, evidence and engagement models.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
@@ -125,4 +140,4 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - [Privacy](https://www.middleleap.com/privacy): data controller, information received, website measurement, purposes, recipients, retention and data-subject rights.
 - [Venture submission terms](https://www.middleleap.com/venture-submission-terms): non-confidentiality, no obligation created, ownership and the limited assessment permission covering Venture Studio proposals.
 
-Last reviewed: 2026-08-14
+Last reviewed: 2026-09-16

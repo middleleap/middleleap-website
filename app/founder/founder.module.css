@@ -1,7 +1,7 @@
 /*
-  Global tokens only. Do NOT use --type-ui* (declared on app/page.module.css's own
-  .shell) or --line/--surface/--text/--muted/--faint/--signal (declared on
-  components/ProjectPage.module.css's .shell) — they resolve to nothing here.
+  Global tokens only (same rule as practice.module.css): --type-ui* and the
+  ProjectPage --line/--surface tokens are declared on other shells and resolve to
+  nothing here.
 */
 
 .shell {
@@ -14,14 +14,15 @@
 
 .hero,
 .section,
-.engage {
+.engage,
+.credentials > * {
   width: min(calc(100% - 64px), 1120px);
   margin-inline: auto;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(380px, .95fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
   gap: clamp(48px, 7vw, 86px);
   align-items: center;
   min-height: 620px;
@@ -47,8 +48,10 @@
   letter-spacing: normal;
 }
 
-.hero h1 em {
+.hero h1 em,
+.section h2 em {
   color: var(--ember-500);
+  font-style: italic;
   font-weight: 400;
 }
 
@@ -90,161 +93,146 @@
   border: 1px solid var(--ink-4);
 }
 
-/* Dossier panel — stands in for the portrait the practice does not have. */
-.dossier {
-  border: 1px solid var(--ink-border);
+.portrait {
+  max-width: 520px;
+  justify-self: end;
+}
+
+/* Credentials strip: mono label, serif figure. Numbers over adjectives. */
+.credentials {
+  padding-block: 48px;
+  border-top: 1px solid var(--ink-border);
+  border-bottom: 1px solid var(--ink-border);
   background: var(--ink-1);
 }
 
-.dossierHeader {
+.credentials dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  /* Top-align the cells: with stretched cells the figures sit at different
+     heights depending on whether the label below wraps to one line or two. */
+  align-items: start;
+}
+
+.credentials dl > div {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column-reverse;
   gap: 12px;
-  padding: 18px 22px;
-  border-bottom: 1px solid var(--ink-border);
+}
+
+.credentials dd {
+  color: var(--bone-0);
+  font: 400 clamp(44px, 4.5vw, 56px)/1 var(--font-instrument-serif), serif;
+}
+
+.credentials dt {
   color: var(--bone-3);
   font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
-  letter-spacing: .08em;
+  letter-spacing: .12em;
   text-transform: uppercase;
-}
-
-.dossierHeader b {
-  color: var(--ember-text);
-  font-weight: 400;
-}
-
-.dossier dl {
-  display: grid;
-}
-
-.dossier dl > div {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
-  gap: 18px;
-  padding: 16px 22px;
-  border-bottom: 1px solid var(--ink-border);
-}
-
-.dossier dl > div:last-child {
-  border-bottom: 0;
-}
-
-.dossier dt {
-  color: var(--bone-3);
-  font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.dossier dd {
-  color: var(--bone-1);
-  font-size: var(--fs-small);
-  line-height: 1.5;
-}
-
-.dossier dd a {
-  color: var(--bone-1);
-  text-decoration-color: var(--ember-text);
-  text-underline-offset: 4px;
 }
 
 .section {
-  padding-block: 76px;
-  border-top: 1px solid var(--ink-border);
+  padding-block: 88px;
 }
 
 .section h2 {
-  max-width: 860px;
+  max-width: 560px;
   color: var(--bone-0);
   font: 400 clamp(32px, 3.6vw, 46px)/1.1 var(--font-instrument-serif), serif;
 }
 
-.section h2 em {
-  color: var(--ember-500);
-  font-weight: 400;
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(48px, 6vw, 80px);
+  align-items: start;
 }
 
-.sectionLede {
-  max-width: 720px;
-  margin-top: 18px;
-  color: var(--bone-2);
-  font-size: var(--fs-small);
+.bio {
+  margin-top: 28px;
+}
+
+.bio p {
+  max-width: 560px;
+  color: var(--bone-1);
   line-height: var(--lh-body);
 }
 
-.principleGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 44px;
+.bio p + p {
+  margin-top: 18px;
 }
 
-.principleGrid article {
-  padding: 26px;
-  border: 1px solid var(--ink-border);
-  background: var(--ink-1);
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 32px;
 }
 
-.principleGrid span {
-  color: var(--ember-text);
+.links a {
+  color: var(--bone-2);
   font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.principleGrid h3 {
-  margin-top: 20px;
-  color: var(--bone-0);
-  font: 400 24px var(--font-instrument-serif), serif;
+.links a:hover,
+.links a:focus-visible {
+  color: var(--ember-text);
 }
 
-.principleGrid p {
-  margin-top: 10px;
-  color: var(--bone-2);
-  font-size: var(--fs-small);
-  line-height: 1.6;
+/* Career record and the "beyond" list share one row grammar. */
+.record {
+  margin: 0 0 48px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink-border);
 }
 
-/* Evidence list */
-.provenance {
-  max-width: 760px;
-  margin-top: 18px;
-  padding: 18px 22px;
-  border-left: 2px solid var(--ember-500);
-  background: var(--ink-1);
-  color: var(--bone-2);
-  font-size: var(--fs-small);
-  line-height: var(--lh-body);
-}
-
-.evidenceList {
-  margin-top: 40px;
-}
-
-.evidenceList > div {
+.record > li,
+.record > div {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
-  gap: 28px;
-  padding-block: 24px;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 24px;
+  padding-block: 20px;
   border-bottom: 1px solid var(--ink-border);
 }
 
-.evidenceList strong {
-  color: var(--bone-0);
-  font: 400 22px var(--font-instrument-serif), serif;
+.record span,
+.record dt {
+  color: var(--bone-3);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
-.evidenceList span {
+.record strong {
+  display: block;
+  color: var(--bone-0);
+  font-weight: 500;
+}
+
+.record p,
+.record dd {
+  margin-top: 4px;
   color: var(--bone-2);
   font-size: var(--fs-small);
-  line-height: var(--lh-body);
+  line-height: 1.55;
+}
+
+.record dd {
+  margin-top: 0;
 }
 
 /*
-  Inverse panel: light ground, dark text. Every child colour below is the inverse
-  variant. Never lift these rules onto the dark shell — bone-on-ink children here
-  would render ~1.05:1.
+  Inverse panel: light ground, dark text. Every child colour is the inverse
+  variant; never lift these rules onto the dark shell.
 */
 .engage {
-  margin-block: 76px;
+  margin-block: 0 76px;
   padding: 62px;
   color: var(--ink-2);
   background: var(--bone-0);
@@ -311,8 +299,17 @@
     padding-block: 56px;
   }
 
-  .principleGrid {
+  .portrait {
+    max-width: 420px;
+    justify-self: start;
+  }
+
+  .columns {
     grid-template-columns: 1fr;
+  }
+
+  .credentials dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .engage {
@@ -321,9 +318,9 @@
 }
 
 @media (max-width: 720px) {
-  .evidenceList > div,
-  .dossier dl > div {
+  .record > li,
+  .record > div {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 }

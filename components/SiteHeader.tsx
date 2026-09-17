@@ -10,7 +10,7 @@ import { JsonLd } from "./JsonLd";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteChrome.module.css";
 
-type NavSection = "what" | "method" | "ventures" | "practice";
+type NavSection = "what" | "method" | "ventures" | "practice" | "founder";
 
 export type ContextLink = {
   href: Route;
@@ -132,6 +132,7 @@ export function SiteHeader({
       ],
     },
     { href: "/practice", label: "The practice", section: "practice" },
+    { href: "/founder", label: "Founder", section: "founder" },
     {
       label: "Ventures",
       section: "ventures",

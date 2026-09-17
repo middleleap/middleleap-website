@@ -10,6 +10,8 @@
 // accessible, and opens Google's hosted booking page in a new tab.
 export const contactEmail = "contact@middleleap.com";
 
+export const companyLinkedInUrl = "https://www.linkedin.com/company/middleleap/";
+
 export const bookingUrl =
   "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3OtHFutywfM5Dh6k7_Vf7qEOpHDWmQSH5v51r2_PBI-qBgH7xDx5vrrQVXXXCplPmD3nPOsuN-";
 
