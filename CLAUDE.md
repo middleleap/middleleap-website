@@ -9,12 +9,12 @@ The firm's core capabilities are regulatory and market transformation, platform 
 ## Current architecture
 
 - Next.js 16 App Router with React 19 and TypeScript
-- Static export through `output: "export"` (no server; `next build --webpack` is used because the build opts out of Turbopack while `reactCompiler` is enabled)
+- Static export through `output: "export"` (`next build --webpack` is used because the build opts out of Turbopack while `reactCompiler` is enabled). The only server code is one Cloudflare Pages Function, `functions/api/propose.ts`, which emails Venture Studio proposals via Resend; it needs the `RESEND_API_KEY` secret on the Pages project (see `.env.example`)
 - Routes under `app/`: `/` (advisory homepage), `/open-finance`, `/the-loom`, `/ai-dlc`, `/practice`, `/how-we-engage`, `/founder` (founder profile, data in `lib/founder.ts`), `/ventures` plus venture detail pages (`/ventures/studio`, `/ventures/backoffice`, `/ventures/hivemind`, `/ventures/parqo`), `/privacy`, `/venture-submission-terms`
 - Styling: route-scoped CSS Modules per page plus shared chrome styles in `components/SiteChrome.module.css`; global reset, fonts and grain overlay in `app/globals.css`
 - **`brand-kit/` is a build dependency**: `app/globals.css` imports `brand-kit/tokens.css`, which holds all colour/type tokens including the light-theme override — do not delete or move it casually
-- Shared components in `components/`: `SiteHeader` (nav, breadcrumbs, scrollspy), `SiteFooter`, `BrandLockup` (canonical lockup), `ThemeToggle`, `MandateSystem`, `ExecutiveSummary`, `VenturesPortfolio`, `RelatedPortfolio`, `VentureProposalForm` (client-side mailto form, no backend)
-- Data/logic in `lib/`: `ventures.ts` (portfolio data), `theme.ts` (theme mode parsing/resolution — the FOUC-prevention boot script in `app/layout.tsx` is serialized from these functions), `legal.ts` (legal terms version)
+- Shared components in `components/`: `SiteHeader` (nav, breadcrumbs, scrollspy), `SiteFooter`, `BrandLockup` (canonical lockup), `ThemeToggle`, `MandateSystem`, `ExecutiveSummary`, `VenturesPortfolio`, `RelatedPortfolio`, `VentureProposalForm` (posts to `/api/propose`, falls back to mailto/copy when the endpoint is unavailable)
+- Data/logic in `lib/`: `ventures.ts` (portfolio data), `proposal.ts` (proposal field limits, validation and email serialisation shared by the form and the Pages Function), `theme.ts` (theme mode parsing/resolution — the FOUC-prevention boot script in `app/layout.tsx` is serialized from these functions), `legal.ts` (legal terms version)
 - SEO: root metadata in `app/layout.tsx`, per-route metadata + canonicals on each page, generated OG/Twitter images (`app/opengraph-image.tsx`), `app/sitemap.ts`, `app/robots.ts`, `public/llms.txt`
 - Theme system: three-state (auto/light/dark) via `data-theme`/`data-theme-mode` attributes, localStorage key `middleleap-theme`, tokens in `brand-kit/tokens.css`
 

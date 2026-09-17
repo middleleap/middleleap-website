@@ -6,9 +6,10 @@ export type PortfolioProject = {
   summary: string;
   status: string;
   evidence: string;
-  portfolioRole: "Flagship regulated proof" | "Venture experiment";
+  portfolioRole: "Flagship regulated proof" | "Venture experiment" | "Regulated proof · Prototype";
   harnessProfile: "Regulated delivery" | "Venture delivery";
-  detailPath: Route;
+  /** Build record on this site. Absent for prototypes that have no build record yet. */
+  detailPath?: Route;
   href?: string;
   repository?: string;
   evidenceAccess?: string;
@@ -61,6 +62,21 @@ export const portfolioProjects: PortfolioProject[] = [
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/hivemind",
     evidenceAccess: "Private build record · reviewed snapshot",
+  },
+  {
+    // Hackathon prototype on an emulator profile, not a certified participant.
+    // The Demo Day result is not recorded here; do not claim an outcome
+    // beyond the shortlist until it is confirmed.
+    name: "Declare",
+    type: "Agentic payments · UAE Open Finance",
+    summary:
+      "Agentic payments with a regulator's ceiling built in. Conceived by MiddleLeap, built with Ozone × Nebras for the C:\\>DIR Global Agentic Regulator Hackathon; live emulator at declare.middleleap.com.",
+    status: "Hackathon prototype · not certified",
+    evidence: "AI as a supervised counterparty inside a regulated payments flow, with human oversight and regulator evaluation.",
+    portfolioRole: "Regulated proof · Prototype",
+    harnessProfile: "Regulated delivery",
+    href: "https://declare.middleleap.com/",
+    evidenceAccess: "Emulator profile · shortlisted, Agentic Payments, Commerce & their Oversight track",
   },
 ];
 

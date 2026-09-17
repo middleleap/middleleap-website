@@ -118,7 +118,7 @@ export default function VentureStudioPage() {
       <section className={styles.propose} id="propose">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Propose a venture</p>
-          <div><h2>Start with a concise, non-confidential brief.</h2><p>If there is a fit, MiddleLeap will contact you to agree the next evidence step. Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before preparing the email.</p></div>
+          <div><h2>Start with a concise, non-confidential brief.</h2><p>If there is a fit, MiddleLeap will contact you to agree the next evidence step. Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before sending the brief.</p></div>
         </div>
         <VentureProposalForm />
       </section>

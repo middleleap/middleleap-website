@@ -91,8 +91,8 @@
 :global([data-theme="light"]) .portfolioExplorer > .portfolioMap .mapCore span { color: var(--ember-800); }
 .portfolioExplorer > .portfolioMap strong { margin-top: 20px; font: 400 30px/1.12 var(--font-instrument-serif), serif; }
 .portfolioExplorer > .portfolioMap small { margin-top: 14px; color: var(--faint); font-size: 12px; line-height: 1.55; }
-.portfolioExplorer > .projectGrid { grid-template-columns: repeat(3, 1fr); }
-.portfolioExplorer > .projectGrid article { min-height: 390px; display: flex; flex-direction: column; }
+.portfolioExplorer > .projectGrid { grid-template-columns: repeat(2, 1fr); }
+.portfolioExplorer > .projectGrid article { min-height: 340px; display: flex; flex-direction: column; }
 .portfolioExplorer > .projectGrid h3 { margin-top: 42px; font: 400 27px var(--font-instrument-serif), serif; }
 .portfolioExplorer > .projectGrid .projectLinks { margin-top: auto; padding-top: 22px; }
 .projectEvidence { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); }

@@ -54,6 +54,7 @@
 .proposalActions a, .proposalActions button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 12px 16px; border: 1px solid var(--ink-4); color: var(--bone-0); background: transparent; font: 500 11px var(--font-jetbrains-mono), monospace; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
 .proposalActions a:first-child { color: #110d0a; border-color: var(--ember-500); background: var(--ember-500); }
 .copyStatus:empty { display: none; }
+.honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .preparedText { min-height: 260px; font-family: var(--font-jetbrains-mono), monospace !important; font-size: 12px !important; }
 
 @media (max-width: 900px) { .criteriaGrid { grid-template-columns: 1fr 1fr; } .processGrid { grid-template-columns: 1fr; } .processGrid li { min-height: auto; border-right: 0; border-bottom: 1px solid var(--ink-border); } .processGrid li:not(:last-child)::after { top: auto; right: auto; bottom: -12px; left: 22px; transform: rotate(90deg); } .processGrid small { margin-top: 22px; } }
