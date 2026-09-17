@@ -3,6 +3,8 @@
 > MiddleLeap is an independent advisory firm based in Dubai, United Arab Emirates. It helps banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses move from strategic mandate to market execution.
 
 Canonical website: https://www.middleleap.com/
+LinkedIn: https://www.linkedin.com/company/middleleap/
+GitHub: https://github.com/middleleap
 Contact: contact@middleleap.com
 Founded: 2021
 Founder: Michael Ryberg Hartmann

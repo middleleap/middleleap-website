@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { bookingLinkProps, mailtoHref } from "@/lib/contact";
+import { bookingLinkProps, companyLinkedInUrl, mailtoHref } from "@/lib/contact";
 import { engagementModels } from "@/lib/engagements";
 import { founder, founderBioMedium, founderPerson } from "@/lib/founder";
 import { FounderPortrait } from "@/components/FounderPortrait";
@@ -21,7 +21,7 @@ const structuredData = {
       "@type": "Organization",
       "@id": "https://www.middleleap.com/#organization",
       name: "MiddleLeap",
-      sameAs: ["https://github.com/middleleap"],
+      sameAs: [companyLinkedInUrl, "https://github.com/middleleap"],
       url: "https://www.middleleap.com/",
       email: "contact@middleleap.com",
       foundingDate: "2021",

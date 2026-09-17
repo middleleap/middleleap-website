@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { bookingLinkProps, contactEmail, mailtoHref } from "@/lib/contact";
+import { bookingLinkProps, companyLinkedInUrl, contactEmail, mailtoHref } from "@/lib/contact";
 import { founder } from "@/lib/founder";
 import styles from "./SiteChrome.module.css";
 
@@ -40,6 +40,7 @@ export function SiteFooter() {
           <span>Company</span>
           <a {...bookingLinkProps}>Book a conversation</a>
           <a href={mailtoHref()}>{contactEmail}</a>
+          <a href={companyLinkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/venture-submission-terms">Submission terms</Link>
         </nav>
