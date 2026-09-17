@@ -110,6 +110,9 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 32px;
+  /* Top-align the cells: with stretched cells the figures sit at different
+     heights depending on whether the label below wraps to one line or two. */
+  align-items: start;
 }
 
 .credentials dl > div {
