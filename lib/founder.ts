@@ -24,8 +24,8 @@ export const founder = {
   },
   links: {
     linkedin: "https://www.linkedin.com/in/michael-ryberg-hartmann",
-    github: "https://github.com/michartmann",
-    x: "https://x.com/michartmann",
+    middleleapGithub: "https://github.com/middleleap",
+    openFinanceOsGithub: "https://github.com/openfinance-os",
   },
 } as const;
 
@@ -121,7 +121,7 @@ export const founderPerson = {
   description: founderBioShort,
   url: `${siteOrigin}${founder.path}`,
   image: `${siteOrigin}${founder.portrait.schemaImage}`,
-  sameAs: [founder.links.linkedin, founder.links.github, founder.links.x],
+  sameAs: [founder.links.linkedin],
   worksFor: { "@id": `${siteOrigin}/#organization` },
   address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
   alumniOf: [

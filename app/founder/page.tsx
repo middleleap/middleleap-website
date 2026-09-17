@@ -107,8 +107,8 @@ export default function FounderPage() {
             </div>
             <div className={styles.links}>
               <a href={founder.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-              <a href={founder.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-              <a href={founder.links.x} target="_blank" rel="noopener noreferrer">X ↗</a>
+              <a href={founder.links.middleleapGithub} target="_blank" rel="noopener noreferrer">MiddleLeap on GitHub ↗</a>
+              <a href={founder.links.openFinanceOsGithub} target="_blank" rel="noopener noreferrer">OpenFinance-OS on GitHub ↗</a>
             </div>
           </div>
 

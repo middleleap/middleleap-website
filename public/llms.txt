@@ -119,7 +119,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 - Earlier career 2005 to 2016 at Planday, Unwire, Formpipe and Telmore in Copenhagen.
 - MSc Information Technology, IT University of Copenhagen; BComp (Hons), Deakin University; MIT Sloan Executive Education, Platform Strategies.
 - Board Member, VL94 (The Danish Management Society); Core Committee, MENA Fintech Association Open Finance Working Group; finalist, C:\>DIR Agentic Regulator Hackathon 2026.
-- Profiles: https://www.linkedin.com/in/michael-ryberg-hartmann · https://github.com/michartmann · https://x.com/michartmann
+- Profile: https://www.linkedin.com/in/michael-ryberg-hartmann · Code: https://github.com/middleleap · https://github.com/openfinance-os
 
 ## Primary source
 
