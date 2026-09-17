@@ -103,7 +103,7 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 
 - Built: Backoffice, OpenFinance-OS, Hive Coach, Parqo and The Loom itself are built and operated through the same governed loop brought to client mandates, with Discovery and Delivery harnesses, decision-grade proofs and an audit trail on every change.
 - Regulated: the same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq (CBUAE Open Finance, 2024 to 2026), where every consent, API and release is examined by the regulator; and, in 2026, in front of regulators as Declare.
-- Taught: in 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to train its teams on putting AI to work, using MiddleLeap's own builds as the worked examples.
+- Taught: in 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to teach its teams the fundamentals of working with AI: prompt engineering, an open mind, and how an organisation changes its culture and ways of working to get the value out of AI. This is the same shift MiddleLeap designs into AI-native operating models; the training is not about building software.
 
 ## Engagement models
 

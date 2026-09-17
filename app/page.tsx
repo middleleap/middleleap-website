@@ -180,9 +180,9 @@ const proofPractice: Array<{
   {
     number: "03",
     label: "Taught",
-    title: "Asked to show the working.",
+    title: "Asked to teach the mindset.",
     body:
-      "In 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to train its teams on putting AI to work, using our own builds as the worked examples, not a vendor's slideware.",
+      "In 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to teach its teams the fundamentals of working with AI: prompt engineering, an open mind, and how an organisation changes its culture and ways of working to get the value out. The same shift we design into AI-native operating models.",
     footer: "Executive training · via CFTE",
   },
 ];
