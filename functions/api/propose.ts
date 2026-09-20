@@ -8,6 +8,7 @@
 //   RESEND_API_KEY  required; the function answers 503 without it
 //   PROPOSAL_TO     optional; defaults to contact@middleleap.com
 //   PROPOSAL_FROM   optional; must be on a domain verified in Resend
+//                   (currently mail.middleleap.com)
 //
 // Wrangler bundles this file for Pages; imports must stay relative.
 import { contactEmail } from "../../lib/contact";
@@ -30,7 +31,11 @@ export type SendEmail = (message: {
   text: string;
 }) => Promise<{ id?: string }>;
 
-export const defaultProposalFrom = "MiddleLeap Venture Studio <studio@middleleap.com>";
+// Must be on a domain verified in Resend. The verified domain is the
+// `mail.middleleap.com` subdomain, not the apex: Resend does not treat a
+// verified subdomain as verification of its parent, so an apex sender is
+// rejected and the endpoint answers 502.
+export const defaultProposalFrom = "MiddleLeap Venture Studio <studio@mail.middleleap.com>";
 
 function json(status: number, data: Record<string, unknown>): Response {
   return new Response(JSON.stringify(data), {

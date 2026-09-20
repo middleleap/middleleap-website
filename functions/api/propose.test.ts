@@ -48,6 +48,15 @@ describe("POST /api/propose", () => {
     expect(message.text).toContain("Problem:\nParking is fragmented.");
   });
 
+  it("defaults to a sender on the domain verified in Resend", () => {
+    // Resend rejects a sender whose domain is unverified, and a verified
+    // subdomain does not verify its parent. Sending from the apex would make
+    // every proposal 502 and silently fall back to mailto, so the default
+    // must stay on mail.middleleap.com.
+    expect(defaultProposalFrom).toContain("@mail.middleleap.com>");
+    expect(defaultProposalFrom).not.toMatch(/@middleleap\.com>/);
+  });
+
   it("honours PROPOSAL_TO and PROPOSAL_FROM overrides", async () => {
     const sendEmail = vi.fn<SendEmail>().mockResolvedValue({});
     await handleProposal(

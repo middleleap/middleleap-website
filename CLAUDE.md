@@ -9,7 +9,7 @@ The firm's core capabilities are regulatory and market transformation, platform 
 ## Current architecture
 
 - Next.js 16 App Router with React 19 and TypeScript
-- Static export through `output: "export"` (`next build --webpack` is used because the build opts out of Turbopack while `reactCompiler` is enabled). The only server code is one Cloudflare Pages Function, `functions/api/propose.ts`, which emails Venture Studio proposals via Resend; it needs the `RESEND_API_KEY` secret on the Pages project (see `.env.example`)
+- Static export through `output: "export"` (`next build --webpack` is used because the build opts out of Turbopack while `reactCompiler` is enabled). The only server code is one Cloudflare Pages Function, `functions/api/propose.ts`, which emails Venture Studio proposals via Resend; it needs the `RESEND_API_KEY` secret on the Pages project (see `.env.example`). Mail is sent from the `mail.middleleap.com` subdomain, which is the domain verified in Resend
 - Routes under `app/`: `/` (advisory homepage), `/open-finance`, `/the-loom`, `/ai-dlc`, `/practice`, `/how-we-engage`, `/founder` (founder profile, data in `lib/founder.ts`), `/ventures` plus venture detail pages (`/ventures/studio`, `/ventures/backoffice`, `/ventures/hivemind`, `/ventures/parqo`), `/privacy`, `/venture-submission-terms`
 - Styling: route-scoped CSS Modules per page plus shared chrome styles in `components/SiteChrome.module.css`; global reset, fonts and grain overlay in `app/globals.css`
 - **`brand-kit/` is a build dependency**: `app/globals.css` imports `brand-kit/tokens.css`, which holds all colour/type tokens including the light-theme override — do not delete or move it casually
