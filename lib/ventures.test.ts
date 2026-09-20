@@ -6,8 +6,15 @@ import { ecosystemContributions, portfolioProjects } from "./ventures";
 describe("ventures data invariants", () => {
   it("every portfolio detailPath resolves to a real route", () => {
     for (const project of portfolioProjects) {
+      if (!project.detailPath) continue;
       const pagePath = path.join("app", project.detailPath, "page.tsx");
       expect(existsSync(pagePath), `${project.name}: ${pagePath} missing`).toBe(true);
+    }
+  });
+
+  it("every project without a build record links to something live", () => {
+    for (const project of portfolioProjects) {
+      if (!project.detailPath) expect(project.href, `${project.name}: no detailPath and no href`).toBeTruthy();
     }
   });
 

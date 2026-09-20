@@ -2,7 +2,14 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { legalTermsEffectiveDate } from "@/lib/legal";
+import {
+  participationOptions,
+  proposalEndpoint,
+  proposalRecipient,
+  serializeProposal,
+  validateProposal,
+  type ProposalInput,
+} from "@/lib/proposal";
 import styles from "@/app/ventures/studio/studio.module.css";
 
 type PreparedProposal = {
@@ -11,61 +18,90 @@ type PreparedProposal = {
   subject: string;
 };
 
+type SubmissionState =
+  | { status: "idle" }
+  | { status: "sending" }
+  | { status: "sent"; receivedAt: string }
+  | { status: "fallback"; prepared: PreparedProposal; reason: string };
+
 // Several mail clients truncate or drop mailto: URLs beyond ~2,000 characters,
 // so long proposals should steer users to the copy fallback.
 const mailtoLengthLimit = 2000;
 
+const fallbackReason =
+  "Direct sending is unavailable right now, so the brief has been prepared on your device instead. Open your email application or copy the brief and send it to contact@middleleap.com.";
+
+function prepareLocally(proposal: ProposalInput): PreparedProposal {
+  const { subject, body } = serializeProposal(proposal, new Date().toISOString());
+  return {
+    body,
+    mailto: `mailto:${proposalRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+    subject,
+  };
+}
+
+async function sendProposal(proposal: ProposalInput): Promise<{ receivedAt: string }> {
+  const response = await fetch(proposalEndpoint, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ ...proposal, website: "" }),
+  });
+  if (!response.ok) throw new Error(`Proposal endpoint responded ${response.status}`);
+  const data = (await response.json()) as { ok?: boolean; receivedAt?: string };
+  if (!data.ok) throw new Error("Proposal endpoint declined the submission");
+  return { receivedAt: data.receivedAt ?? new Date().toISOString() };
+}
+
 export function VentureProposalForm() {
-  const [preparedProposal, setPreparedProposal] = useState<PreparedProposal | null>(null);
+  const [submission, setSubmission] = useState<SubmissionState>({ status: "idle" });
   const [copyStatus, setCopyStatus] = useState("");
-  const preparedSectionRef = useRef<HTMLElement>(null);
+  const resultSectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (preparedProposal) preparedSectionRef.current?.focus();
-  }, [preparedProposal]);
+    if (submission.status === "sent" || submission.status === "fallback") resultSectionRef.current?.focus();
+  }, [submission]);
 
-  function prepareProposal(event: FormEvent<HTMLFormElement>) {
+  async function submitProposal(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const fields = [
-      ["Working title", form.get("title")],
-      ["Problem", form.get("problem")],
-      ["Who experiences it", form.get("audience")],
-      ["Existing evidence", form.get("evidence")],
-      ["Market or customer access", form.get("access")],
-      ["Your connection to the problem", form.get("connection")],
-      ["Desired participation", form.get("participation")],
-      ["Name", form.get("name")],
-      ["Email", form.get("email")],
-      ["Submission terms accepted", `Yes — version ${legalTermsEffectiveDate}`],
-      ["Prepared at", new Date().toISOString()],
-    ];
-    const body = fields.map(([label, value]) => `${label}:\n${String(value ?? "").trim() || "—"}`).join("\n\n");
-    const subject = `Venture proposal: ${String(form.get("title") ?? "New proposition")}`;
-    setPreparedProposal({
-      body,
-      mailto: `mailto:contact@middleleap.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
-      subject,
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
+    const validation = validateProposal({
+      ...Object.fromEntries(form.entries()),
+      terms: form.get("terms") === "on",
     });
+    // The browser's required/maxLength attributes already enforce these
+    // limits; this guard only matters if they are bypassed.
+    if (!validation.ok) return;
+
     setCopyStatus("");
+    setSubmission({ status: "sending" });
+    try {
+      const { receivedAt } = await sendProposal(validation.value);
+      formElement.reset();
+      setSubmission({ status: "sent", receivedAt });
+    } catch {
+      setSubmission({ status: "fallback", prepared: prepareLocally(validation.value), reason: fallbackReason });
+    }
   }
 
   async function copyProposal() {
-    if (!preparedProposal) return;
+    if (submission.status !== "fallback") return;
 
     try {
-      await navigator.clipboard.writeText(`${preparedProposal.subject}\n\n${preparedProposal.body}`);
+      await navigator.clipboard.writeText(`${submission.prepared.subject}\n\n${submission.prepared.body}`);
       setCopyStatus("Proposal copied. Paste it into any email application and send it to contact@middleleap.com.");
     } catch {
       setCopyStatus("Automatic copying is unavailable. Select the proposal text below and copy it manually.");
     }
   }
 
+  const sending = submission.status === "sending";
+
   return (
-    <form className={styles.form} onSubmit={prepareProposal}>
+    <form className={styles.form} onSubmit={submitProposal}>
       <div className={styles.formIntro}>
         <span>Proposal brief</span>
-        <p>This prepares a proposal locally. You choose whether to open email or copy the brief; nothing is submitted automatically.</p>
+        <p>Submitting sends this brief to contact@middleleap.com. If direct sending is unavailable, you can open your email application or copy the brief instead.</p>
       </div>
 
       <label>
@@ -96,11 +132,9 @@ export function VentureProposalForm() {
         <span>How would you like to participate?</span>
         <select name="participation" required defaultValue="">
           <option value="" disabled>Select a role</option>
-          <option>Venture lead or operator</option>
-          <option>Domain or industry partner</option>
-          <option>Design partner or prospective customer</option>
-          <option>Technical or delivery contributor</option>
-          <option>Open to discussing the right role</option>
+          {participationOptions.map((option) => (
+            <option key={option}>{option}</option>
+          ))}
         </select>
       </label>
       <label>
@@ -111,6 +145,13 @@ export function VentureProposalForm() {
         <span>Your email</span>
         <input name="email" type="email" autoComplete="email" maxLength={254} required />
       </label>
+      {/* Honeypot: hidden from people, filled by naive bots; the endpoint drops any submission that sets it. */}
+      <div className={styles.honeypot} aria-hidden="true">
+        <label>
+          Website
+          <input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <label className={`${styles.fullField} ${styles.consent}`}>
         <input name="terms" type="checkbox" required />
         <span>
@@ -118,28 +159,49 @@ export function VentureProposalForm() {
           <Link href="/venture-submission-terms">venture submission terms</Link>.
         </span>
       </label>
-      <button type="submit">Prepare proposal options →</button>
+      <button type="submit" disabled={sending} aria-busy={sending}>
+        {sending ? "Sending proposal…" : "Send proposal →"}
+      </button>
 
-      {preparedProposal && (
+      {submission.status === "sent" && (
         <section
-          ref={preparedSectionRef}
+          ref={resultSectionRef}
           tabIndex={-1}
           className={styles.preparedProposal}
-          aria-labelledby="prepared-proposal-heading"
+          aria-labelledby="proposal-result-heading"
+        >
+          <div>
+            <span>Sent</span>
+            <h3 id="proposal-result-heading">Your proposal has been sent.</h3>
+            <p>
+              MiddleLeap received it at {new Date(submission.receivedAt).toUTCString()} and will reply to the
+              email address you gave if there is a fit. Keep your own copy of the brief for your records.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {submission.status === "fallback" && (
+        <section
+          ref={resultSectionRef}
+          tabIndex={-1}
+          className={styles.preparedProposal}
+          aria-labelledby="proposal-result-heading"
         >
           <div>
             <span>Ready to send</span>
-            <h3 id="prepared-proposal-heading">Your proposal has been prepared locally.</h3>
+            <h3 id="proposal-result-heading">Your proposal has been prepared locally.</h3>
+            <p>{submission.reason}</p>
             <p>
-              {preparedProposal.mailto.length > mailtoLengthLimit
+              {submission.prepared.mailto.length > mailtoLengthLimit
                 ? "This proposal is long enough that some mail applications may truncate it when opened directly — use “Copy proposal” and paste it into a new email instead."
                 : "Opening email is convenient, but copying the brief is the reliable fallback if your device has no mail application configured."}
             </p>
           </div>
           <div className={styles.proposalActions}>
-            <a href={preparedProposal.mailto}>Open email application →</a>
+            <a href={submission.prepared.mailto}>Open email application →</a>
             <button type="button" onClick={copyProposal}>Copy proposal</button>
-            <a href={`mailto:contact@middleleap.com?subject=${encodeURIComponent(preparedProposal.subject)}`}>Open blank email</a>
+            <a href={`mailto:${proposalRecipient}?subject=${encodeURIComponent(submission.prepared.subject)}`}>Open blank email</a>
           </div>
           <p className={styles.copyStatus} aria-live="polite">{copyStatus}</p>
           <textarea
@@ -147,7 +209,7 @@ export function VentureProposalForm() {
             className={styles.preparedText}
             readOnly
             rows={14}
-            value={`${preparedProposal.subject}\n\n${preparedProposal.body}`}
+            value={`${submission.prepared.subject}\n\n${submission.prepared.body}`}
           />
         </section>
       )}

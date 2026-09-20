@@ -12,8 +12,8 @@ export function VenturesPortfolio() {
         </div>
         <div className={styles.mapBranch}>
           <span>Regulated delivery</span>
-          <strong>Backoffice</strong>
-          <small>Formal assurance and controlled platform delivery</small>
+          <strong>Backoffice · Declare</strong>
+          <small>Formal assurance, controlled platform delivery and a supervised-AI prototype</small>
         </div>
         <div className={styles.mapBranch}>
           <span>Venture delivery</span>
@@ -36,7 +36,7 @@ export function VenturesPortfolio() {
               <strong>{project.evidence}</strong>
             </div>
             <div className={styles.projectLinks}>
-              <Link href={project.detailPath}>Read the build record →</Link>
+              {project.detailPath && <Link href={project.detailPath}>Read the build record →</Link>}
               {project.href && <a href={project.href} target="_blank" rel="noreferrer">Visit live product ↗</a>}
               {project.repository && <a href={project.repository} target="_blank" rel="noreferrer">View repository ↗</a>}
               {project.evidenceAccess && <span>{project.evidenceAccess}</span>}

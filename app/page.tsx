@@ -148,6 +148,45 @@ const approach = [
   { number: "05", name: "Codify", detail: "Embed reusable knowledge, controls and agent workflows." },
 ];
 
+// Evidence, not an offering: training appears here only as proof that
+// institutions ask MiddleLeap to show the working. No workshop CTA anywhere.
+// Naming is settled: CFTE may be named; the bank and the sovereign wealth
+// fund are not.
+const proofPractice: Array<{
+  number: string;
+  label: string;
+  title: string;
+  body: string;
+  footer: string;
+  href?: Route;
+}> = [
+  {
+    number: "01",
+    label: "Built",
+    title: "Five products, one method.",
+    body:
+      "Backoffice, OpenFinance-OS, Hive Coach, Parqo and The Loom itself are built and operated through the same governed loop we bring to client mandates: Discovery and Delivery harnesses, decision-grade proofs, an audit trail on every change.",
+    footer: "Live · middleleap.com/ventures",
+    href: "/ventures",
+  },
+  {
+    number: "02",
+    label: "Regulated",
+    title: "Proven where the rules are strict.",
+    body:
+      "The same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq, where every consent, API and release is examined by the regulator, not just the product team. And, in 2026, in front of regulators as Declare.",
+    footer: "CBUAE Open Finance · 2024–2026",
+  },
+  {
+    number: "03",
+    label: "Taught",
+    title: "Asked to teach the mindset.",
+    body:
+      "In 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to teach its teams the fundamentals of working with AI: prompt engineering, an open mind, and how an organisation changes its culture and ways of working to get the value out. The same shift we design into AI-native operating models.",
+    footer: "Executive training · via CFTE",
+  },
+];
+
 export default function HomePage() {
   return (
     <main className={styles.shell} id="problem" tabIndex={-1}>
@@ -426,11 +465,12 @@ export default function HomePage() {
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
           <div>
-            <h2>One regulated proof. Two venture experiments.</h2>
+            <h2>One regulated proof. Two venture experiments. One regulated prototype.</h2>
             <p className={styles.venturesIntro}>
               Backoffice demonstrates governed delivery in MiddleLeap&apos;s core market.
               Parqo and HiveMind test transferable platform and human-authority principles
-              in different operating contexts. Their roles are deliberately not presented as equal evidence.
+              in different operating contexts. Declare puts AI inside a regulated payments
+              flow as a hackathon prototype. Their roles are deliberately not presented as equal evidence.
             </p>
           </div>
         </div>
@@ -456,6 +496,11 @@ export default function HomePage() {
                 <span>{project.type}</span>
                 <span>{project.status}</span>
               </div>
+              {!project.detailPath && project.href && (
+                <a className={styles.ventureLink} href={project.href} target="_blank" rel="noreferrer">
+                  Open the emulator ↗
+                </a>
+              )}
             </article>
           ))}
         </div>
@@ -466,6 +511,34 @@ export default function HomePage() {
             <Link className={styles.venturesLink} href="/ventures">Explore MiddleLeap Ventures →</Link>
             <Link className={styles.venturesLink} href="/ventures/studio">Propose a venture →</Link>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.proofPractice} id="practice-not-commentary" aria-labelledby="proof-practice-title">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Practice, not commentary</p>
+          <div>
+            <h2 id="proof-practice-title">
+              We advise on AI-native delivery because <em>we ship with it.</em>
+            </h2>
+            <p className={styles.proofPracticeIntro}>
+              Every position MiddleLeap takes on agentic workflows, governance and AI-enabled
+              delivery is tested on our own products first. Then, occasionally, we are asked to teach it.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.proofPracticeGrid}>
+          {proofPractice.map((item) => (
+            <article key={item.number}>
+              <span>{item.number} · {item.label}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <small>
+                {"href" in item && item.href ? <Link href={item.href}>{item.footer}</Link> : item.footer}
+              </small>
+            </article>
+          ))}
         </div>
       </section>
 

@@ -81,11 +81,13 @@ The Loom is the governed delivery method. The Loom Toolkit is the installable pr
 
 ## Ventures, portfolio and studio
 
-MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The primary portfolio is one flagship regulated proof, two venture experiments and one compounding body of evidence:
+MiddleLeap builds and contributes to working platforms so its advisory work is grounded in operating evidence. The primary portfolio is one flagship regulated proof, two venture experiments, one regulated prototype and one compounding body of evidence:
 
 - Open Finance Backoffice — flagship reference build, regulated delivery profile, demo-complete. A bank-neutral, synthetic-only portal that turns Open Finance obligations into governed workflows for people and agents and was used to exercise the harness end to end. It is not a customer production deployment.
 - Parqo — venture experiment, venture delivery profile, acquisition wedge live. A UAE parking marketplace beginning with a live demand-and-supply acquisition wedge in dense business districts. It is not yet an operating marketplace; commercial investment is gated by district-level demand and supply evidence.
 - HiveMind / Hive Coach — venture experiment, venture delivery profile, initial product live. A human-led coaching product that turns track evidence into grounded, coach-owned advice, testing how AI can extend an expert service without taking authority from the expert.
+
+- Declare — regulated prototype, not certified. Agentic payments built on UAE Open Finance with a regulator's ceiling built in: the AI is a supervised counterparty inside the payments flow, not a tool beside it. Conceived by MiddleLeap and built with an Ozone × Nebras team for the C:\>DIR Global Agentic Regulator Hackathon, where it was shortlisted in the Agentic Payments, Commerce & their Oversight track. The public prototype at https://declare.middleleap.com/ runs on an emulator profile and is a hackathon prototype, not a certified participant.
 
 Parqo and HiveMind apply The Loom's evidence, specification and human-authority principles to venture building. Neither is a claim of full regulated-harness adoption.
 
@@ -94,6 +96,14 @@ OpenFinance-OS, the Data Sandbox and Ecosystem Watcher are presented separately 
 The MiddleLeap Venture Studio invites operators, domain experts and potential partners to propose non-confidential, evidenced problems in regulated markets, platform businesses and financial infrastructure. Dubai is the base and MENA the primary market; this is for evidenced problems, not funding-only pitch submissions. Submissions are screened before any evidence sprint, venture thesis or bounded pilot, and the outcome may be a venture, a partnership, shared infrastructure, an advisory mandate or an explicit decision not to proceed.
 
 The portfolio operates as a build, learn and apply loop: build working assets, capture market and execution intelligence, and apply the learning to client mandates.
+
+## Practice, not commentary
+
+MiddleLeap advises on AI-native delivery because it ships with it. Every position the firm takes on agentic workflows, governance and AI-enabled delivery is tested on its own products first; occasionally it is then asked to teach it. Training is evidence of the practice, not a service line: MiddleLeap does not sell AI-literacy workshops.
+
+- Built: Backoffice, OpenFinance-OS, Hive Coach, Parqo and The Loom itself are built and operated through the same governed loop brought to client mandates, with Discovery and Delivery harnesses, decision-grade proofs and an audit trail on every change.
+- Regulated: the same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq (CBUAE Open Finance, 2024 to 2026), where every consent, API and release is examined by the regulator; and, in 2026, in front of regulators as Declare.
+- Taught: in 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to teach its teams the fundamentals of working with AI: prompt engineering, an open mind, and how an organisation changes its culture and ways of working to get the value out of AI. This is the same shift MiddleLeap designs into AI-native operating models; the training is not about building software.
 
 ## Engagement models
 
