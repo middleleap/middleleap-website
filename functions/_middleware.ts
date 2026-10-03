@@ -5,8 +5,8 @@
 // Everything else falls through to the static HTML, which gains
 // `Vary: Accept` so caches keep the two representations apart.
 //
-// out/_routes.json, generated alongside the Markdown, limits this middleware to
-// page routes and /api/*, so static assets never invoke a function.
+// public/_routes.json limits this middleware to page routes and /api/*, so
+// static assets never invoke a function.
 //
 // Wrangler bundles this file for Pages; imports must stay relative.
 import {

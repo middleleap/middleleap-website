@@ -62,7 +62,7 @@ describe("buildMarkdown", () => {
     if (directory) await rm(directory, { recursive: true, force: true });
   });
 
-  it("writes a Markdown twin per page and routes only pages and the API through Functions", async () => {
+  it("writes a Markdown twin per exported page, skipping error pages and Next.js assets", async () => {
     directory = await mkdtemp(path.join(tmpdir(), "markdown-"));
     await mkdir(path.join(directory, "ventures"));
     await mkdir(path.join(directory, "_next"));
@@ -76,7 +76,6 @@ describe("buildMarkdown", () => {
     expect(routes).toEqual(["/", "/ventures/parqo"]);
     expect(await readFile(path.join(directory, "ventures", "parqo.md"), "utf8")).toContain("# From mandate");
     await expect(readFile(path.join(directory, "404.md"), "utf8")).rejects.toThrow();
-    const routesJson = JSON.parse(await readFile(path.join(directory, "_routes.json"), "utf8"));
-    expect(routesJson).toMatchObject({ version: 1, include: ["/api/*", "/", "/ventures/parqo"], exclude: [] });
+    await expect(readFile(path.join(directory, "_next", "chunk.md"), "utf8")).rejects.toThrow();
   });
 });
