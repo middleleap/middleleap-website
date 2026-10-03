@@ -25,11 +25,23 @@ function outputFileFor(url) {
     : path.join(outputDirectory, "index.html");
 }
 
+function expectedCanonicalFor(route) {
+  return route === "/" ? siteUrl : `${siteUrl}${route}`;
+}
+
 const sitemapXml = await readFile(path.join(outputDirectory, "sitemap.xml"), "utf8");
 const urls = [...sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g)].map((entry) => entry[1]);
 const sitemapPaths = new Set(
   urls.map((url) => new URL(url).pathname.replace(/\/$/, "") || "/"),
 );
+// Markdown for Agents: scripts/build-markdown.mjs writes a twin per page and the
+// _routes.json that sends page requests through functions/_middleware.ts.
+let functionRoutes = [];
+try {
+  functionRoutes = JSON.parse(await readFile(path.join(outputDirectory, "_routes.json"), "utf8")).include ?? [];
+} catch {
+  failures.push("out/_routes.json is missing or invalid; run scripts/build-markdown.mjs");
+}
 const titles = new Map();
 const descriptions = new Map();
 
@@ -45,6 +57,19 @@ for (const url of urls) {
   }
 
   const html = await readFile(file, "utf8");
+
+  try {
+    const markdown = await readFile(file.replace(/\.html$/, ".md"), "utf8");
+    if (!markdown.includes(`url: ${JSON.stringify(expectedCanonicalFor(route))}`)) {
+      failures.push(`${route}: Markdown twin does not name the canonical URL`);
+    }
+  } catch {
+    failures.push(`${route}: missing Markdown twin for Accept: text/markdown`);
+  }
+  if (!functionRoutes.includes(route)) {
+    failures.push(`${route}: not routed through the Markdown negotiation middleware`);
+  }
+
   const title = decode(match(html, /<title>(.*?)<\/title>/s) ?? "");
   const description = decode(
     match(html, /<meta name="description" content="(.*?)"\s*\/>/s) ?? "",
@@ -53,7 +78,7 @@ for (const url of urls) {
     match(html, /<link rel="canonical" href="(.*?)"\s*\/>/s) ?? "",
   );
   const h1Count = (html.match(/<h1(?:\s|>)/g) ?? []).length;
-  const expectedCanonical = route === "/" ? siteUrl : `${siteUrl}${route}`;
+  const expectedCanonical = expectedCanonicalFor(route);
   const jsonLdScripts = [
     ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs),
   ];

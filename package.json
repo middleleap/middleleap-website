@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "next build --webpack && node scripts/build-markdown.mjs",
     "lint": "eslint",
     "type-check": "next typegen && tsc --noEmit",
     "test": "vitest",
@@ -31,12 +31,14 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/turndown": "^5.0.6",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "jsdom": "^30.0.1",
     "serve": "^14.2.6",
     "tailwindcss": "^4",
+    "turndown": "^7.2.4",
     "typescript": "^5",
     "vitest": "^3.2.4"
   }
