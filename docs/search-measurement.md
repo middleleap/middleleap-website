@@ -39,4 +39,4 @@ This is the deployment and measurement companion to the route inventory in `lib/
 - Do not publish unsupported client claims, production claims, regulatory conclusions or invented credentials for search visibility.
 - Treat `llms.txt` as a supplemental source map. Canonical facts must remain in rendered HTML, metadata, schema and authoritative external profiles.
 - Update route `contentUpdated` only when public content materially changes.
-- Keep training-crawler policy separate from search and user-retrieval crawler policy in `app/robots.ts`.
+- Keep training-crawler policy separate from search and user-retrieval crawler policy in `lib/robots.ts`.
