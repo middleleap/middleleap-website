@@ -9,11 +9,11 @@ import styles from "./ai-dlc.module.css";
 export const metadata = pageMetadata({
   title: "The Loom Toolkit | Institutional AI Delivery",
   description:
-    "The released Loom Toolkit 2.5.10 installs MiddleLeap's governed delivery method. Its evidence is a synthetic reference build, not customer production use.",
+    "The released Loom Toolkit 2.5.12 installs MiddleLeap's governed delivery method. Its evidence is a synthetic reference build, not customer production use.",
   path: "/ai-dlc",
   socialTitle: "The Loom Toolkit | Institutional AI Delivery",
   socialDescription:
-    "Loom Toolkit 2.5.10 is released and reference-build validated on a synthetic Open Finance Backoffice—not customer production use.",
+    "Loom Toolkit 2.5.12 is released and reference-build validated on a synthetic Open Finance Backoffice—not customer production use.",
 });
 
 const bundles = [

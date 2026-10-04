@@ -9,11 +9,11 @@ import { loomProof, loomRelease } from "@/lib/proof";
 export const metadata = pageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
-    "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.5.10 is released and validated on a synthetic reference build, not customer production.",
+    "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.5.12 is released and validated on a synthetic reference build, not customer production.",
   path: "/the-loom",
   socialTitle: "The Loom | Governed AI Delivery for Regulated Institutions",
   socialDescription:
-    "Toolkit 2.5.10 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
+    "Toolkit 2.5.12 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
 });
 
 const proofPoints = [

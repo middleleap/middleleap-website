@@ -71,13 +71,13 @@ The Loom is the governed delivery method. The Loom Toolkit is the installable pr
 
 ### The Loom Toolkit
 
-- Current public release: 2.5.10. Product status: released. Evidence status: Reference-build validated. The Toolkit was exercised end to end while building the synthetic Open Finance Backoffice reference portal. It has not been used to deliver or operate a customer production system.
+- Current public release: 2.5.12. Product status: released. Evidence status: Reference-build validated. The Toolkit was exercised end to end while building the synthetic Open Finance Backoffice reference portal. It has not been used to deliver or operate a customer production system.
 - Core bundle: the discovery and delivery harnesses, the Institutional BrainKit, compiled control plans, continuous assurance, governance and evidence controls, and safe, merge-aware adoption from one copy manifest.
 - Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights. It is drafted from approved sources only with unknowns left visible as gaps, approved by accountable owners, digest-pinned per repository and validated in CI.
 - Open Finance Intelligence domain pack: CBUAE and AlTareq knowledge, Islamic-banking context, UAE bank risk review and value-proposition prototyping, attached only when a mandate requires it.
 - AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the public Toolkit.
 - Operating boundary: the Toolkit is a build-time control frame. It validates repository-level gates, evidence and readiness records; live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution's responsibility.
-- Fairness and contestability boundary: version 2.5.10 can mechanically validate declared fairness evaluations and decision-contestability records. It does not determine whether a system is fair or whether an explanation is adequate.
+- Fairness and contestability boundary: version 2.5.12 can mechanically validate declared fairness evaluations and decision-contestability records. It does not determine whether a system is fair or whether an explanation is adequate.
 
 ## Ventures, portfolio and studio
 

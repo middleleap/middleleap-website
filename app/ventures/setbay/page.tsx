@@ -102,7 +102,7 @@ const data: ProjectPageData = {
       lede:
         "AI is used to build Setbay, not inside the product. The repository evidences Claude Code as the implementation partner under founder review, and makes a disciplined claim: generated code is not the moat. Distribution, contracts, reliable access operations and proprietary network data are.",
       cards: [
-        { label: "Build agent", title: "Claude Code", detail: "Delivery since the July snapshot is Claude Code-assisted, with co-authored commits merged through reviewed pull requests." },
+        { label: "Build agent", title: "Claude Code", detail: "Delivery since the July snapshot is Claude Code-assisted, with co-authored commits merged through pull requests." },
         { label: "Delivery model", title: "AI-native, human-authorised", detail: "AI can scaffold code, tests, research and documentation; founders retain commercial and production authority." },
         { label: "Prohibited actions", title: "Deterministic operations", detail: "AI cannot activate capacity, alter access, set payouts, issue final finance documents or change privacy policy." },
         { label: "Brand context", title: "A repository brand skill", detail: "Naming, claims and tone rules live beside the code, so generated copy says “reserved” until supply is signed." },

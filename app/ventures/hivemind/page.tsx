@@ -124,7 +124,7 @@ const data: ProjectPageData = {
       cards: [
         { tag: "CI", title: "Build integrity", detail: "Types, lint, unit and component tests, database policies and the offline evaluation harness run on every change." },
         { tag: "Guardrails", title: "AI containment", detail: "Repository checks prevent browser-side model calls and committed secrets; a separate secret scan runs in CI." },
-        { tag: "Database", title: "RLS integrity", detail: "Migrations are replayed and pgTAP suites prove that teams, coaches and families only see their own data." },
+        { tag: "Database", title: "RLS integrity", detail: "Migrations are replayed and pgTAP suites test that each team and coach can only reach its own data." },
         { tag: "Evaluation", title: "Grounded output", detail: "A gold set scores every change; a weekly live eval checks grounding and drift. The gold set is still small and mostly synthetic." },
         { tag: "Production", title: "Synthetic track day", detail: "Each week a whole track day is driven through the real pipeline in an isolated sandbox organisation and verified end to end." },
         { tag: "Release", title: "Coach authority", detail: "A coach edit and sign-off are required before a debrief becomes advice, and the database keeps sent debriefs immutable." },
