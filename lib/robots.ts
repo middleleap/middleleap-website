@@ -6,12 +6,12 @@ type CrawlerRule = {
 };
 
 // Content Signals (https://contentsignals.org/) declare how crawled content may
-// be used once accessed. The values mirror the open-crawl posture below: search
-// indexing, answer grounding (ai-input) and model training are all permitted.
+// be used once accessed. Search indexing and answer grounding (ai-input) are
+// permitted; use of the content to train or fine-tune AI models is not.
 export const contentSignals = {
   search: "yes",
   "ai-input": "yes",
-  "ai-train": "yes",
+  "ai-train": "no",
 } as const;
 
 // The same policy as a Content-Signal header value, shared by robots.txt and
@@ -34,8 +34,9 @@ export const crawlerRules: CrawlerRule[] = [
     allow: "/",
   },
   {
-    // Model-development crawlers remain allowed, matching the existing
-    // open-crawl posture while keeping that policy separate from search.
+    // Model-development crawlers may still fetch pages, but the ai-train=no
+    // content signal withholds permission to train on them. Kept separate from
+    // the search rule so their access can be changed independently.
     userAgent: ["GPTBot", "ClaudeBot"],
     allow: "/",
   },
