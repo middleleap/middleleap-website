@@ -17,7 +17,7 @@ export function VenturesPortfolio() {
         </div>
         <div className={styles.mapBranch}>
           <span>Venture delivery</span>
-          <strong>Parqo · HiveMind</strong>
+          <strong>Setbay · HiveMind</strong>
           <small>Commercial evidence and expert-authority gates</small>
         </div>
       </div>
