@@ -1,4 +1,6 @@
-// Post-build step: writes a Markdown twin of every exported page.
+// Writes a Markdown twin of every exported page. Runs at the end of every
+// `next build` through scripts/markdown-adapter.mjs; `node
+// scripts/build-markdown.mjs` regenerates the twins in an existing out/.
 //
 //   out/<route>.html  ->  out/<route>.md   (out/index.html -> out/index.md)
 //

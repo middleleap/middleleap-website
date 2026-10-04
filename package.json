@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack && node scripts/build-markdown.mjs",
+    "build": "next build --webpack",
     "lint": "eslint",
     "type-check": "next typegen && tsc --noEmit",
     "test": "vitest",
