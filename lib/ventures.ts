@@ -37,7 +37,7 @@ export const portfolioProjects: PortfolioProject[] = [
     portfolioRole: "Flagship regulated proof",
     harnessProfile: "Regulated delivery",
     detailPath: "/ventures/backoffice",
-    reviewedOn: "2026-07-11",
+    reviewedOn: "2026-10-04",
     href: "https://backoffice.openfinance-os.org/",
     evidenceAccess: "Private build record · reviewed snapshot",
   },

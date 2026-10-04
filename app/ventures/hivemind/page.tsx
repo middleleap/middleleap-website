@@ -26,14 +26,14 @@ const data: ProjectPageData = {
       { label: "Open the live site ↗", href: "https://hivemind.middleleap.com/", kind: "primary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
-    snapshot: "Private evidence snapshot · repository main at 4ef7b9e · reviewed 4 October 2026",
+    snapshot: "Private evidence snapshot · repository main at a5b103d · reviewed 4 October 2026",
   },
   status: {
     ariaLabel: "HiveMind project status",
     headerLabel: "Project record / HiveMind",
     headerValue: "In pilot use",
     rows: [
-      { term: "Current phase", detail: "Pilot use with a partner coaching team · memory and coach-voice features live" },
+      { term: "Current phase", detail: "Pilot use with a partner coaching team · public website live, guided trials not yet open" },
       { term: "Ownership", detail: "MiddleLeap Ventures · HiveMind is a working name" },
       { term: "Product posture", detail: "Coaching-operations PWA, not an autonomous coach" },
       { term: "AI posture", detail: "Server-side only · deterministic grounding · mandatory coach edit" },
@@ -49,7 +49,7 @@ const data: ProjectPageData = {
       { label: "Evidence", title: "In pilot use", detail: "The product assembles evidence, drafts a grounded debrief in the coach's voice and carries each driver's history into the next session." },
       { label: "Authority", title: "The coach decides", detail: "AI cannot issue advice; a coach edit and sign-off are required, and a sent debrief cannot be changed afterwards." },
       { label: "Practice value", title: "Human-in-the-loop design", detail: "The experiment informs service propositions where AI assists perception, synthesis and memory but cannot own the decision." },
-      { label: "Next gate", title: "Wider pilot evidence", detail: "Repeat usage across more coaches and teams, and a final product name, before the service is offered more widely." },
+      { label: "Next gate", title: "Guided trials", detail: "Open guided, one-driver trials with agreed scope, then prove repeat usage across more coaches and teams before wider launch." },
     ],
   },
   why: {
@@ -142,13 +142,13 @@ const data: ProjectPageData = {
       { number: "P5", title: "Wider market", state: "later", label: "Roadmap" },
     ],
     evidence: [
-      { stat: "614", caption: "Unit and component test files in the application" },
-      { stat: "55", caption: "Playwright specs, including AI and RLS-isolation journeys" },
-      { stat: "173", caption: "Supabase migrations in the reviewed repository" },
+      { stat: "618", caption: "Unit and component test files in the application" },
+      { stat: "57", caption: "Playwright specs, including AI and RLS-isolation journeys" },
+      { stat: "174", caption: "Supabase migrations in the reviewed repository" },
       { stat: "12", caption: "CI workflows, including live evaluation and a weekly production check" },
     ],
     boundary:
-      "HiveMind is in pilot use, not offered to the wider market. Production confidence still depends on repeat usage across more coaches and teams, live messaging credentials and a larger real-world gold set. Features built behind flags are not claimed as live. Parent consent and coach authority remain human responsibilities, not model decisions.",
+      "HiveMind is in pilot use, not offered to the wider market. The public website explains the product and its data access, but guided trials are not yet open and trial scope is agreed before any real use. Production confidence still depends on repeat usage across more coaches and teams, live messaging credentials and a larger real-world gold set. Features built behind flags are not claimed as live. Parent consent and coach authority remain human responsibilities, not model decisions.",
   },
   sources: [
     { id: "R1", label: "Repository overview and product principles" },
