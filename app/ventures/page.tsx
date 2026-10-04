@@ -71,7 +71,7 @@ export default function VenturesPage() {
           <div className={styles.systemBody}>
             <div className={styles.systemOrbit} aria-hidden="true">
               <span className={styles.orbitOne}>Backoffice</span>
-              <span className={styles.orbitTwo}>Parqo</span>
+              <span className={styles.orbitTwo}>Setbay</span>
               <span className={styles.orbitThree}>HiveMind</span>
               <b>Build<br />Learn<br />Apply</b>
             </div>
@@ -130,8 +130,7 @@ export default function VenturesPage() {
         <div className={styles.boundaryCopy}>
           <p>
             OpenFinance-OS is presented as independent, community-led
-            infrastructure. MiddleLeap&apos;s role is contribution and stewardship,
-            not institutional ownership.
+            infrastructure. MiddleLeap&apos;s role is contribution, not ownership.
           </p>
           <p>
             MiddleLeap-owned ventures and independent ecosystem contributions are

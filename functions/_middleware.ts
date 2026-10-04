@@ -16,6 +16,7 @@ import {
   prefersMarkdown,
   varyOnAccept,
 } from "../lib/markdown-negotiation";
+import { contentSignal } from "../lib/robots";
 
 export type AssetFetcher = { fetch: (request: Request) => Promise<Response> };
 
@@ -24,9 +25,6 @@ type MiddlewareContext = {
   env: { ASSETS: AssetFetcher };
   next: () => Promise<Response>;
 };
-
-// Matches the open-crawl posture in app/robots.ts.
-export const contentSignal = "ai-train=yes, search=yes, ai-input=yes";
 
 async function withVaryAccept(pending: Promise<Response>): Promise<Response> {
   const response = await pending;

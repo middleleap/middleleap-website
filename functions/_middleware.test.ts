@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import { contentSignal, negotiateMarkdown, type AssetFetcher } from "./_middleware";
+import { contentSignal } from "../lib/robots";
+import { negotiateMarkdown, type AssetFetcher } from "./_middleware";
 
 const origin = "https://www.middleleap.com";
 const markdown = "---\ntitle: \"Open Finance\"\n---\n\n# Open Finance\n";

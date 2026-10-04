@@ -165,7 +165,7 @@ async function htmlFiles(directory, root = directory) {
   return files.sort();
 }
 
-/** "out/index.html" -> "/", "out/ventures/parqo.html" -> "/ventures/parqo" */
+/** "out/index.html" -> "/", "out/ventures/setbay.html" -> "/ventures/setbay" */
 function routeFor(outputDirectory, file) {
   const relative = path.relative(outputDirectory, file).split(path.sep).join("/");
   const route = `/${relative.replace(/\.html$/, "")}`;

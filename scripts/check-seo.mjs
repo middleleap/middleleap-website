@@ -45,6 +45,20 @@ try {
 if (functionRoutes.length && !functionRoutes.includes("/api/*")) {
   failures.push("public/_routes.json no longer routes /api/* to the proposal function");
 }
+// Pages skips _redirects for requests served by Functions, so a redirected
+// path routed through the middleware would stop redirecting.
+try {
+  const redirects = await readFile(path.join(outputDirectory, "_redirects"), "utf8");
+  for (const line of redirects.split("\n")) {
+    const source = line.trim().split(/\s+/)[0];
+    if (!source || source.startsWith("#")) continue;
+    if (functionRoutes.includes(source) || functionRoutes.includes(source.replace(/\/$/, ""))) {
+      failures.push(`public/_routes.json routes ${source} through Functions, which bypasses its redirect`);
+    }
+  }
+} catch {
+  // No _redirects file.
+}
 const titles = new Map();
 const descriptions = new Map();
 

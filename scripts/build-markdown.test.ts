@@ -67,14 +67,14 @@ describe("buildMarkdown", () => {
     await mkdir(path.join(directory, "ventures"));
     await mkdir(path.join(directory, "_next"));
     await writeFile(path.join(directory, "index.html"), page);
-    await writeFile(path.join(directory, "ventures", "parqo.html"), page);
+    await writeFile(path.join(directory, "ventures", "setbay.html"), page);
     await writeFile(path.join(directory, "404.html"), page);
     await writeFile(path.join(directory, "_next", "chunk.html"), page);
 
     const routes = await buildMarkdown(directory);
 
-    expect(routes).toEqual(["/", "/ventures/parqo"]);
-    expect(await readFile(path.join(directory, "ventures", "parqo.md"), "utf8")).toContain("# From mandate");
+    expect(routes).toEqual(["/", "/ventures/setbay"]);
+    expect(await readFile(path.join(directory, "ventures", "setbay.md"), "utf8")).toContain("# From mandate");
     await expect(readFile(path.join(directory, "404.md"), "utf8")).rejects.toThrow();
     await expect(readFile(path.join(directory, "_next", "chunk.md"), "utf8")).rejects.toThrow();
   });

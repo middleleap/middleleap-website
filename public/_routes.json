@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "description": "Functions run only for page routes (Markdown negotiation, functions/_middleware.ts) and /api/*. Static assets never invoke a function. npm run seo:check fails if a sitemap page is missing here.",
+  "description": "Functions run only for page routes (Markdown negotiation, functions/_middleware.ts) and /api/*. Static assets never invoke a function. npm run seo:check fails if a sitemap page is missing here or a _redirects source is listed (Functions bypass _redirects).",
   "include": [
     "/api/*",
     "/",
@@ -14,7 +14,7 @@
     "/ventures/studio",
     "/ventures/backoffice",
     "/ventures/hivemind",
-    "/ventures/parqo",
+    "/ventures/setbay",
     "/privacy",
     "/venture-submission-terms"
   ],

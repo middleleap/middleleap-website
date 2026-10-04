@@ -35,7 +35,7 @@ describe("markdownPathFor", () => {
     ["/index", "/index.md"],
     ["/open-finance", "/open-finance.md"],
     ["/open-finance/", "/open-finance.md"],
-    ["/ventures/parqo", "/ventures/parqo.md"],
+    ["/ventures/setbay", "/ventures/setbay.md"],
   ])("maps %s to %s", (pathname, expected) => {
     expect(markdownPathFor(pathname)).toBe(expected);
   });
