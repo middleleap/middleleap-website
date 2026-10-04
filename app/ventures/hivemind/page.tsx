@@ -23,7 +23,7 @@ const data: ProjectPageData = {
     lede:
       "HiveMind turns a coach's voice notes, photos, telemetry and setups into same-day debriefs for families and a team memory that compounds. AI drafts and remembers; the coach edits, signs off and sends.",
     actions: [
-      { label: "See how it works ↓", href: "#architecture", kind: "primary" },
+      { label: "Open the live site ↗", href: "https://hivemind.middleleap.com/", kind: "primary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
     snapshot: "Private evidence snapshot · repository main at 4ef7b9e · reviewed 4 October 2026",

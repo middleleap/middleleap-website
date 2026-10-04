@@ -68,6 +68,7 @@ export const portfolioProjects: PortfolioProject[] = [
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/hivemind",
     reviewedOn: "2026-10-04",
+    href: "https://hivemind.middleleap.com/",
     evidenceAccess: "Private build record · reviewed snapshot",
   },
   {
