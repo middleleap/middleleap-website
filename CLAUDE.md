@@ -15,7 +15,7 @@ The firm's core capabilities are regulatory and market transformation, platform 
 - **`brand-kit/` is a build dependency**: `app/globals.css` imports `brand-kit/tokens.css`, which holds all colour/type tokens including the light-theme override — do not delete or move it casually
 - Shared components in `components/`: `SiteHeader` (nav, breadcrumbs, scrollspy), `SiteFooter`, `BrandLockup` (canonical lockup), `ThemeToggle`, `MandateSystem`, `ExecutiveSummary`, `VenturesPortfolio`, `RelatedPortfolio`, `VentureProposalForm` (posts to `/api/propose`, falls back to mailto/copy when the endpoint is unavailable)
 - Data/logic in `lib/`: `ventures.ts` (portfolio data), `proposal.ts` (proposal field limits, validation and email serialisation shared by the form and the Pages Function), `theme.ts` (theme mode parsing/resolution — the FOUC-prevention boot script in `app/layout.tsx` is serialized from these functions), `legal.ts` (legal terms version)
-- SEO: root metadata in `app/layout.tsx`, per-route metadata + canonicals on each page, generated OG/Twitter images (`app/opengraph-image.tsx`), `app/sitemap.ts`, `app/robots.ts`, `public/llms.txt`
+- SEO: root metadata in `app/layout.tsx`, per-route metadata + canonicals on each page, generated OG/Twitter images (`app/opengraph-image.tsx`), `app/sitemap.ts`, `app/robots.txt/route.ts` (policy + Content Signals in `lib/robots.ts`), `public/llms.txt`
 - Theme system: three-state (auto/light/dark) via `data-theme`/`data-theme-mode` attributes, localStorage key `middleleap-theme`, tokens in `brand-kit/tokens.css`
 
 ## Brand system
