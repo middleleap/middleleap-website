@@ -13,7 +13,7 @@ const routes = [
   "/ventures/studio",
   "/ventures/backoffice",
   "/ventures/hivemind",
-  "/ventures/parqo",
+  "/ventures/setbay",
   "/privacy",
   "/venture-submission-terms",
 ];
@@ -161,7 +161,7 @@ test.describe("global navigation IA", () => {
     { route: "/ventures/studio", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: true },
     { route: "/ventures/backoffice", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
     { route: "/ventures/hivemind", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
-    { route: "/ventures/parqo", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/ventures/setbay", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
     { route: "/venture-submission-terms", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: false },
   ] as const;
 
@@ -191,7 +191,7 @@ test.describe("global navigation IA", () => {
       "/ventures/studio": ["Advisory", "Ventures", "Venture Studio"],
       "/ventures/backoffice": ["Advisory", "Ventures", "Portfolio", "Backoffice"],
       "/ventures/hivemind": ["Advisory", "Ventures", "Portfolio", "HiveMind"],
-      "/ventures/parqo": ["Advisory", "Ventures", "Portfolio", "Parqo"],
+      "/ventures/setbay": ["Advisory", "Ventures", "Portfolio", "Setbay"],
       "/venture-submission-terms": ["Advisory", "Ventures", "Venture Studio", "Submission terms"],
     } as const;
 

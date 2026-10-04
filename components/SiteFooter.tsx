@@ -33,7 +33,7 @@ export function SiteFooter() {
           <Link href="/ventures#portfolio">Portfolio</Link>
           <Link href="/ventures/studio">Venture Studio</Link>
           <Link href="/ventures/backoffice">Backoffice</Link>
-          <Link href="/ventures/parqo">Parqo</Link>
+          <Link href="/ventures/setbay">Setbay</Link>
           <Link href="/ventures/hivemind">HiveMind</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
