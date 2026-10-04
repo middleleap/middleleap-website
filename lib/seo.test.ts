@@ -76,7 +76,7 @@ describe("crawler policy", () => {
 
     expect(groups).toHaveLength(crawlerRules.length);
     for (const group of groups) {
-      expect(group).toContain("Content-Signal: search=yes, ai-input=yes, ai-train=yes");
+      expect(group).toContain("Content-Signal: search=yes, ai-input=yes, ai-train=no");
     }
     expect(Object.keys(contentSignals).sort()).toEqual(["ai-input", "ai-train", "search"]);
     expect(txt).toContain("Sitemap: https://www.middleleap.com/sitemap.xml");
