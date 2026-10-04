@@ -14,6 +14,12 @@ export const contentSignals = {
   "ai-train": "yes",
 } as const;
 
+// The same policy as a Content-Signal header value, shared by robots.txt and
+// the Markdown responses in functions/_middleware.ts.
+export const contentSignal = Object.entries(contentSignals)
+  .map(([key, value]) => `${key}=${value}`)
+  .join(", ");
+
 export const crawlerRules: CrawlerRule[] = [
   {
     // Search indexing and user-directed answer retrieval.
@@ -42,10 +48,6 @@ export const crawlerRules: CrawlerRule[] = [
 // Next's MetadataRoute.Robots has no field for Content-Signal, so robots.txt is
 // serialized here and served from a static route handler instead.
 export function renderRobotsTxt(): string {
-  const signal = Object.entries(contentSignals)
-    .map(([key, value]) => `${key}=${value}`)
-    .join(", ");
-
   const preamble = [
     "# As a condition of accessing this website, you agree to abide by the",
     "# following content signals (https://contentsignals.org/):",
@@ -57,7 +59,7 @@ export function renderRobotsTxt(): string {
   const groups = crawlerRules.map((rule) =>
     [
       ...rule.userAgent.map((agent) => `User-Agent: ${agent}`),
-      `Content-Signal: ${signal}`,
+      `Content-Signal: ${contentSignal}`,
       `Allow: ${rule.allow}`,
     ].join("\n"),
   );

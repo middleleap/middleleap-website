@@ -6,6 +6,7 @@ Canonical website: https://www.middleleap.com/
 LinkedIn: https://www.linkedin.com/company/middleleap/
 GitHub: https://github.com/middleleap
 Contact: contact@middleleap.com
+Markdown: every page returns Markdown when requested with `Accept: text/markdown`
 Founded: 2021
 Founder: Michael Ryberg Hartmann
 Primary market: Middle East and North Africa
