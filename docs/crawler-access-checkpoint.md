@@ -44,3 +44,7 @@ The public site did not expose a deployment commit, and GitHub's deployment list
 4. Until verified intended retrieval and the earlier refusal are accounted for, keep #49 open as a verification gap. Current evidence does not justify a crawler-outage claim or a security-policy code change.
 
 The existing local regression gate remains `npm run build` then `npm run seo:check`, plus middleware negotiation and robots-policy unit tests. It verifies the source/export contract; it does not test the production edge or prove verified-crawler identity.
+
+## Reusable read-only checker
+
+`npm run retrieval:check` runs a tested, read-only public-retrieval checker. Its 14 identified-client GETs verify the three representative HTML/Markdown pages, discovery resources and canonical redirects, plus direct `/index.md` and `/ventures/hivemind.md` twins carrying `noindex`. It checks `Vary: Accept`, exact Content Signals and representation content; reports contain only safe headers, timestamps, successful-body hashes and findings. A pass establishes retrieval for this client, not verified-crawler identity or a deployed commit. It never changes security or account settings.
