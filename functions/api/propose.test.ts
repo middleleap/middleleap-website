@@ -37,6 +37,8 @@ describe("POST /api/propose", () => {
     const data = await response.json();
     expect(data.ok).toBe(true);
     expect(data.id).toBe("email_123");
+    expect(data.status).toBe("accepted_for_delivery");
+    expect(data.acceptedAt).toBe(data.receivedAt);
 
     expect(sendEmail).toHaveBeenCalledTimes(1);
     const message = sendEmail.mock.calls[0][0];
@@ -115,5 +117,12 @@ describe("POST /api/propose", () => {
     const sendEmail = vi.fn<SendEmail>().mockRejectedValue(new Error("Resend responded 500"));
     const response = await handleProposal(post(proposal), env, sendEmail);
     expect(response.status).toBe(502);
+  });
+
+  it.each([{}, { id: "" }, { id: "   " }])("requires the provider to acknowledge acceptance: %j", async (result) => {
+    const sendEmail = vi.fn<SendEmail>().mockResolvedValue(result);
+    const response = await handleProposal(post(proposal), env, sendEmail);
+    expect(response.status).toBe(502);
+    expect(await response.json()).toEqual({ ok: false, error: "Direct sending failed." });
   });
 });

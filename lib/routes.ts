@@ -23,7 +23,7 @@ export const routes = [
   { path: "/how-we-engage", contentUpdated: "2026-08-14", changeFrequency: "monthly", priority: 0.8 },
   { path: "/ventures", contentUpdated: "2026-10-04", changeFrequency: "monthly", priority: 0.8 },
   { path: "/ai-dlc", contentUpdated: "2026-10-04", changeFrequency: "monthly", priority: 0.75 },
-  { path: "/ventures/studio", contentUpdated: "2026-09-17", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/ventures/studio", contentUpdated: "2026-10-08", changeFrequency: "monthly", priority: 0.75 },
   { path: "/ventures/backoffice", contentUpdated: "2026-10-04", changeFrequency: "monthly", priority: 0.7 },
   { path: "/ventures/hivemind", contentUpdated: "2026-10-04", changeFrequency: "monthly", priority: 0.7 },
   { path: "/ventures/setbay", contentUpdated: "2026-10-04", changeFrequency: "monthly", priority: 0.7 },
