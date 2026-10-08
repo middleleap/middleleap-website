@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { writeFile } from "node:fs/promises";
 
 const routes = [
   "/",
@@ -129,13 +130,31 @@ for (const route of routes) {
     });
 
     for (const colorScheme of ["light", "dark"] as const) {
-      test(`has no serious or critical accessibility violations (${colorScheme})`, async ({ page }) => {
+      test(`has no serious or critical accessibility violations (${colorScheme})`, async ({ page }, testInfo) => {
         await page.emulateMedia({ colorScheme });
         await page.goto(route);
         const results = await new AxeBuilder({ page }).analyze();
         const blocking = results.violations.filter(
           (violation) => violation.impact === "serious" || violation.impact === "critical",
         );
+        if (blocking.length) {
+          const evidencePath = testInfo.outputPath("accessibility-violations.json");
+          await writeFile(evidencePath, JSON.stringify({
+            route,
+            colorScheme,
+            browserVersion: page.context().browser()?.version(),
+            rendering: await page.evaluate(() => ({
+              theme: document.documentElement.dataset.theme,
+              themeMode: document.documentElement.dataset.themeMode,
+              fonts: document.fonts.status,
+            })),
+            violations: blocking,
+          }, null, 2));
+          await testInfo.attach("accessibility-violations.json", {
+            contentType: "application/json",
+            path: evidencePath,
+          });
+        }
         expect(
           blocking.map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })),
         ).toEqual([]);
@@ -147,6 +166,45 @@ for (const route of routes) {
         const prohibited = results.incomplete.filter((r) => r.id === "aria-prohibited-attr");
         expect(prohibited.flatMap((r) => r.nodes.map((n) => n.html))).toEqual([]);
       });
+    }
+  });
+}
+
+for (const route of ["/ventures/backoffice", "/ventures/hivemind", "/ventures/setbay"]) {
+  test(`${route} source labels retain AA contrast throughout theme changes`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto(route);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await page.evaluate(async () => { await document.fonts.ready; });
+
+    for (const theme of ["light", "dark"] as const) {
+      await page.getByRole("radio", { name: `Use ${theme} theme` }).click();
+      await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
+      const sample = await page.evaluate(async () => {
+        const labels = [...document.querySelectorAll<HTMLElement>("#evidence strong")];
+        const luminance = (color: string) => {
+          const channels = (color.match(/[\d.]+/g) ?? []).slice(0, 3).map((value) => {
+            const channel = Number(value) / 255;
+            return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+          });
+          return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+        };
+        let minContrast = Infinity;
+        let worstLabel = "";
+        for (let frame = 0; frame < 14; frame++) {
+          await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+          const background = luminance(getComputedStyle(document.body).backgroundColor);
+          for (const label of labels) {
+            const foreground = luminance(getComputedStyle(label).color);
+            const ratio = (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+            if (ratio < minContrast) { minContrast = ratio; worstLabel = label.textContent ?? ""; }
+          }
+        }
+        return { minContrast, worstLabel, labels: labels.length };
+      });
+      expect(sample.labels).toBeGreaterThan(0);
+      expect(Number.isFinite(sample.minContrast)).toBe(true);
+      expect(sample.minContrast, `${theme}: ${sample.worstLabel}`).toBeGreaterThanOrEqual(4.5);
     }
   });
 }
