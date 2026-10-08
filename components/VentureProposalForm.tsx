@@ -6,6 +6,7 @@ import {
   participationOptions,
   proposalEndpoint,
   proposalRecipient,
+  readProposalAcceptance,
   serializeProposal,
   validateProposal,
   type ProposalInput,
@@ -21,7 +22,7 @@ type PreparedProposal = {
 type SubmissionState =
   | { status: "idle" }
   | { status: "sending" }
-  | { status: "sent"; receivedAt: string }
+  | { status: "sent"; acceptedAt: string }
   | { status: "fallback"; prepared: PreparedProposal; reason: string };
 
 // Several mail clients truncate or drop mailto: URLs beyond ~2,000 characters,
@@ -29,7 +30,7 @@ type SubmissionState =
 const mailtoLengthLimit = 2000;
 
 const fallbackReason =
-  "Direct sending is unavailable right now, so the brief has been prepared on your device instead. Open your email application or copy the brief and send it to contact@middleleap.com.";
+  "Direct sending could not be confirmed, so the brief has been prepared on your device instead. Open your email application or copy the brief and send it to contact@middleleap.com.";
 
 function prepareLocally(proposal: ProposalInput): PreparedProposal {
   const { subject, body } = serializeProposal(proposal, new Date().toISOString());
@@ -40,16 +41,16 @@ function prepareLocally(proposal: ProposalInput): PreparedProposal {
   };
 }
 
-async function sendProposal(proposal: ProposalInput): Promise<{ receivedAt: string }> {
+async function sendProposal(proposal: ProposalInput): Promise<{ acceptedAt: string }> {
   const response = await fetch(proposalEndpoint, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ ...proposal, website: "" }),
   });
   if (!response.ok) throw new Error(`Proposal endpoint responded ${response.status}`);
-  const data = (await response.json()) as { ok?: boolean; receivedAt?: string };
-  if (!data.ok) throw new Error("Proposal endpoint declined the submission");
-  return { receivedAt: data.receivedAt ?? new Date().toISOString() };
+  const acceptance = readProposalAcceptance(await response.json());
+  if (!acceptance) throw new Error("Proposal endpoint did not confirm delivery acceptance");
+  return acceptance;
 }
 
 export function VentureProposalForm() {
@@ -76,9 +77,9 @@ export function VentureProposalForm() {
     setCopyStatus("");
     setSubmission({ status: "sending" });
     try {
-      const { receivedAt } = await sendProposal(validation.value);
+      const { acceptedAt } = await sendProposal(validation.value);
       formElement.reset();
-      setSubmission({ status: "sent", receivedAt });
+      setSubmission({ status: "sent", acceptedAt });
     } catch {
       setSubmission({ status: "fallback", prepared: prepareLocally(validation.value), reason: fallbackReason });
     }
@@ -171,11 +172,12 @@ export function VentureProposalForm() {
           aria-labelledby="proposal-result-heading"
         >
           <div>
-            <span>Sent</span>
-            <h3 id="proposal-result-heading">Your proposal has been sent.</h3>
+            <span>On its way</span>
+            <h3 id="proposal-result-heading">Your proposal was accepted for delivery.</h3>
             <p>
-              MiddleLeap received it at {new Date(submission.receivedAt).toUTCString()} and will reply to the
-              email address you gave if there is a fit. Keep your own copy of the brief for your records.
+              The email service accepted it at {new Date(submission.acceptedAt).toUTCString()}.
+              MiddleLeap will reply to the email address you gave if there is a fit.
+              Keep your own copy of the brief for your records.
             </p>
           </div>
         </section>

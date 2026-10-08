@@ -42,6 +42,26 @@ export const proposalEndpoint = "/api/propose";
 // this leaves room for encoding and rejects anything that is clearly not a form.
 export const proposalMaxBodyBytes = 16 * 1024;
 
+/** Provider acceptance is evidence of queued delivery, not inbox receipt or qualification. */
+export type ProposalAcceptance = { id: string; acceptedAt: string };
+
+export function readProposalAcceptance(input: unknown): ProposalAcceptance | null {
+  if (typeof input !== "object" || input === null || Array.isArray(input)) return null;
+  const data = input as Record<string, unknown>;
+  // receivedAt is the legacy endpoint's name for its provider-acceptance timestamp.
+  const acceptedAt = data.acceptedAt ?? data.receivedAt;
+  if (
+    data.ok !== true ||
+    (data.status !== undefined && data.status !== "accepted_for_delivery") ||
+    typeof data.id !== "string" || !data.id.trim() ||
+    typeof acceptedAt !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(acceptedAt) ||
+    !Number.isFinite(Date.parse(acceptedAt)) ||
+    new Date(acceptedAt).toISOString() !== acceptedAt
+  ) return null;
+  return { id: data.id, acceptedAt };
+}
+
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function readString(source: Record<string, unknown>, name: string): string {
