@@ -39,8 +39,8 @@ describe("accepted outcome reconciliation", () => {
       record({ stage: "qualified_conversation", source: "crm" }),
     ]);
     const report = reconcileOutcomes(data, publicPaths);
-    expect(report.totals).toEqual({ cta_intent: 1, received_inquiry: 1, accepted_booking: 1, qualified_conversation: 1 });
-    expect(report.outcomesPer100EligibleVisits.accepted_booking).toBe(1);
+    expect(report.totals).toEqual({ cta_intent: 1, received_inquiry: 1, booking_accepted_ever: 1, booking_active_at_cutoff: 1, qualified_conversation: 1 });
+    expect(report.outcomesPer100EligibleVisits.booking_active_at_cutoff).toBe(1);
     expect(report.distinctVisitorConversionRate).toBeNull();
     expect(JSON.stringify(report)).not.toContain("opaque-booking-1");
   });
@@ -54,23 +54,26 @@ describe("accepted outcome reconciliation", () => {
     const report = reconcileOutcomes(input([
       record({ observedAt: "2026-10-06T10:00:00.000Z" }), record(), record(),
     ]), publicPaths);
-    expect(report.totals.accepted_booking).toBe(1);
+    expect(report.totals.booking_active_at_cutoff).toBe(1);
     expect(report.excluded.deduplicatedSnapshots).toBe(2);
   });
 
-  it("removes cancelled bookings using the latest snapshot regardless of export order", () => {
+  it("separates accepted-ever from active bookings using the latest snapshot regardless of export order", () => {
     const report = reconcileOutcomes(input([
       record({ status: "cancelled", observedAt: "2026-10-06T10:00:00.000Z" }), record(),
     ]), publicPaths);
-    expect(report.totals.accepted_booking).toBe(0);
-    expect(report.excluded.cancelledBookings).toBe(1);
+    expect(report.totals.booking_active_at_cutoff).toBe(0);
+    expect(report.totals.booking_accepted_ever).toBe(1);
+    expect(report.bookingLifecycle.cancelledAtCutoff).toBe(1);
+    expect(report.outcomesPer100EligibleVisits.booking_accepted_ever).toBe(1);
+    expect(report.outcomesPer100EligibleVisits.booking_active_at_cutoff).toBe(0);
   });
 
   it("keeps a historical report stable when cancellation is observed after its cutoff", () => {
     const report = reconcileOutcomes(input([
       record(), record({ status: "cancelled", observedAt: "2026-10-10T10:00:00.000Z" }),
     ]), publicPaths);
-    expect(report.totals.accepted_booking).toBe(1);
+    expect(report.totals.booking_active_at_cutoff).toBe(1);
     expect(report.excluded.ignoredAfterCutoff).toBe(1);
   });
 
@@ -78,7 +81,7 @@ describe("accepted outcome reconciliation", () => {
     const report = reconcileOutcomes(input([
       record({ recordKey: "test-1", environment: "test" }), record({ recordKey: "internal-1", internal: true }),
     ]), publicPaths);
-    expect(report.totals.accepted_booking).toBe(0);
+    expect(report.totals.booking_active_at_cutoff).toBe(0);
     expect(report.excluded.testOrInternal).toBe(2);
   });
 
@@ -87,18 +90,20 @@ describe("accepted outcome reconciliation", () => {
       record({ completedAt: end, observedAt: end }),
       record({ recordKey: "earlier-visit", attribution: { ...record().attribution, visitAt: "2026-09-30T09:00:00.000Z" } }),
     ]), publicPaths);
-    expect(report.totals.accepted_booking).toBe(1);
+    expect(report.totals.booking_active_at_cutoff).toBe(1);
     expect(report.excluded.outsideWindow).toBe(1);
-    expect(report.unattributed.accepted_booking).toBe(1);
-    expect(report.outcomesPer100EligibleVisits.accepted_booking).toBeNull();
+    expect(report.unattributed.booking_active_at_cutoff).toBe(1);
+    expect(report.outcomesPer100EligibleVisits.booking_active_at_cutoff).toBeNull();
+    expect(report.outcomesPer100EligibleVisits.booking_accepted_ever).toBeNull();
   });
 
   it("reports unknown attribution and missing denominators without inventing a rate", () => {
     const report = reconcileOutcomes(input([record({ attribution: null })], { cohorts: [] }), publicPaths);
-    expect(report.totals.accepted_booking).toBe(1);
-    expect(report.unattributed.accepted_booking).toBe(1);
+    expect(report.totals.booking_active_at_cutoff).toBe(1);
+    expect(report.unattributed.booking_active_at_cutoff).toBe(1);
     expect(report.eligibleVisits).toBe(0);
-    expect(report.outcomesPer100EligibleVisits.accepted_booking).toBeNull();
+    expect(report.outcomesPer100EligibleVisits.booking_active_at_cutoff).toBeNull();
+    expect(report.outcomesPer100EligibleVisits.booking_accepted_ever).toBeNull();
   });
 
   it("does not treat unavailable or partial sources as zero outcomes", () => {
@@ -106,8 +111,9 @@ describe("accepted outcome reconciliation", () => {
       coverage: { browser: "complete", inbox: "unavailable", calendar: "partial", crm: "unavailable" },
     }), publicPaths);
     expect(report.totals.received_inquiry).toBeNull();
-    expect(report.totals.accepted_booking).toBeNull();
-    expect(report.outcomesPer100EligibleVisits.accepted_booking).toBeNull();
+    expect(report.totals.booking_active_at_cutoff).toBeNull();
+    expect(report.outcomesPer100EligibleVisits.booking_active_at_cutoff).toBeNull();
+    expect(report.outcomesPer100EligibleVisits.booking_accepted_ever).toBeNull();
   });
 
   it("suppresses rates when the claimed visit belongs to a cohort with zero eligible visits", () => {
@@ -117,8 +123,9 @@ describe("accepted outcome reconciliation", () => {
         { landingPath: "/practice", campaign: null, eligibleVisits: 100 },
       ],
     }), publicPaths);
-    expect(report.unattributed.accepted_booking).toBe(1);
-    expect(report.outcomesPer100EligibleVisits.accepted_booking).toBeNull();
+    expect(report.unattributed.booking_active_at_cutoff).toBe(1);
+    expect(report.outcomesPer100EligibleVisits.booking_active_at_cutoff).toBeNull();
+    expect(report.outcomesPer100EligibleVisits.booking_accepted_ever).toBeNull();
   });
 
   it("refuses conflicting lifecycle evidence instead of choosing an optimistic outcome", () => {

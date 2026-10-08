@@ -11,7 +11,9 @@ const sources = {
   qualified_conversation: "crm",
 };
 const stages = Object.keys(sources);
-const counts = () => Object.fromEntries(stages.map((stage) => [stage, 0]));
+const reportStages = ["cta_intent", "received_inquiry", "booking_accepted_ever", "booking_active_at_cutoff", "qualified_conversation"];
+const reportSource = (stage) => stage.startsWith("booking_") ? "calendar" : sources[stage];
+const counts = () => Object.fromEntries(reportStages.map((stage) => [stage, 0]));
 
 function object(value, keys) {
   if (!value || typeof value !== "object" || Array.isArray(value) ||
@@ -115,41 +117,51 @@ export function reconcileOutcomes(input, publicPaths) {
 
   const totals = counts();
   const unattributed = counts();
-  const excluded = { testOrInternal: 0, outsideWindow: 0, cancelledBookings: 0, ignoredAfterCutoff, deduplicatedSnapshots };
+  const excluded = { testOrInternal: 0, outsideWindow: 0, ignoredAfterCutoff, deduplicatedSnapshots };
+  let observedCancelledAtCutoff = 0;
   for (const record of latest.values()) {
     if (record.environment !== "production" || record.internal) { excluded.testOrInternal++; continue; }
     const completedAt = timestamp(record.completedAt);
     if (completedAt < start || completedAt >= end) { excluded.outsideWindow++; continue; }
-    if (record.status === "cancelled") { excluded.cancelledBookings++; continue; }
-    totals[record.stage]++;
+    const outputStages = record.stage === "accepted_booking"
+      ? ["booking_accepted_ever", ...(record.status === "active" ? ["booking_active_at_cutoff"] : [])]
+      : [record.stage];
+    if (record.status === "cancelled") observedCancelledAtCutoff++;
     const attribution = record.attribution;
     const cohort = attribution && cohorts.get(context(attribution));
-    if (!attribution || !cohort || cohort.eligibleVisits === 0 || timestamp(attribution.visitAt) < start || timestamp(attribution.visitAt) >= end) {
-      unattributed[record.stage]++;
-      continue;
+    const matched = attribution && cohort && cohort.eligibleVisits > 0 &&
+      timestamp(attribution.visitAt) >= start && timestamp(attribution.visitAt) < end;
+    for (const stage of outputStages) {
+      totals[stage]++;
+      if (matched) cohort.observedOutcomes[stage]++;
+      else unattributed[stage]++;
     }
-    cohort.observedOutcomes[record.stage]++;
   }
 
   const eligibleVisits = [...cohorts.values()].reduce((total, cohort) => total + cohort.eligibleVisits, 0);
   if (!Number.isSafeInteger(eligibleVisits)) throw new Error("The eligible visit total exceeds supported integer precision.");
   // These count records per visit, not distinct converting visitors. Unknown
   // attribution or missing denominators suppress the rate rather than guess.
-  const outcomesPer100EligibleVisits = Object.fromEntries(stages.map((stage) => [stage,
-    input.coverage[sources[stage]] === "complete" && eligibleVisits > 0 && unattributed[stage] === 0
+  const outcomesPer100EligibleVisits = Object.fromEntries(reportStages.map((stage) => [stage,
+    input.coverage[reportSource(stage)] === "complete" && eligibleVisits > 0 && unattributed[stage] === 0
       ? 100 * totals[stage] / eligibleVisits : null,
   ]));
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    inputSchemaVersion: 1,
     deploymentVersion: input.deploymentVersion,
     window: input.window,
     coverage: input.coverage,
-    totals: Object.fromEntries(stages.map((stage) => [stage,
-      input.coverage[sources[stage]] === "complete" ? totals[stage] : null,
+    totals: Object.fromEntries(reportStages.map((stage) => [stage,
+      input.coverage[reportSource(stage)] === "complete" ? totals[stage] : null,
     ])),
     observedCounts: totals,
     unattributed,
     excluded,
+    bookingLifecycle: {
+      observedCancelledAtCutoff,
+      cancelledAtCutoff: input.coverage.calendar === "complete" ? observedCancelledAtCutoff : null,
+    },
     eligibleVisits,
     outcomesPer100EligibleVisits,
     distinctVisitorConversionRate: null,
