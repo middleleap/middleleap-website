@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
   // done, so they exist whichever command runs `next build`.
   adapterPath: require.resolve("./scripts/markdown-adapter.mjs"),
   typedRoutes: true,
-  // TypeScript 7 provides a native CLI rather than the legacy compiler API.
-  // Keep Next's complete project type check enabled through its CLI support.
+  // Keep Next's complete project check enabled through its CLI support.
+  // The type-check script also runs TypeScript 7; lint tooling uses the TS 6 API.
   experimental: {
     useTypeScriptCli: true,
   },
