@@ -11,32 +11,36 @@
     "test:run": "vitest run",
     "test:e2e": "playwright test",
     "seo:check": "node scripts/check-seo.mjs",
+    "measurement:reconcile": "node scripts/reconcile-outcomes.mjs",
+    "retrieval:check": "node scripts/check-public-retrieval.mjs",
     "check:contrast": "node brand-kit/scripts/check-contrast.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
-    "next": "16.2.10",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.12.1",
-    "@playwright/test": "^1.62.1",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
-    "@testing-library/jest-dom": "^7.0.0",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/turndown": "^5.0.6",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.10",
-    "jsdom": "^30.0.1",
+    "eslint-config-next": "16.3.8",
+    "jsdom": "^30.1.1",
     "serve": "^14.2.6",
     "tailwindcss": "^4",
+    "turndown": "^7.2.4",
     "typescript": "^5",
     "vitest": "^4.1.10"
   }

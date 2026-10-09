@@ -27,7 +27,7 @@ const data: ProjectPageData = {
       { label: "Read The Loom method →", href: "/the-loom", kind: "secondary" },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
-    snapshot: "Private evidence snapshot · repository main at 99ab0dd · reviewed 11 July 2026",
+    snapshot: "Private evidence snapshot · repository main at 144f2fd · reviewed 4 October 2026",
   },
   status: {
     ariaLabel: "Backoffice project status",
@@ -67,16 +67,16 @@ const data: ProjectPageData = {
     label: "Product architecture",
     heading: "One contract, multiple governed surfaces.",
     lede:
-      "The portal and agent interface reuse the same BFF contract. External systems sit behind P1–P9 ports, each with demo and enterprise adapters, so bank adoption replaces edges without branching the application core.",
+      "The portal and agent interface reuse the same BFF contract. External systems sit behind P1–P11 ports, each with demo and enterprise adapters, so bank adoption replaces edges without branching the application core.",
     mapAriaLabel:
       "OFBO architecture: operators and agents use the portal and MCP gateway, which share a Hono BFF and OpenAPI contract connected through ports to bank and Nebras systems, with PostgreSQL audit and lineage beneath",
     nodes: [
-      { slot: "users", tag: "Users", title: "Bank operators", small: "Care · Finance · Risk · Ops" },
+      { slot: "users", tag: "Users", title: "Bank operators", small: "Nine personas · Care · Finance · Risk · Ops" },
       { slot: "agents", tag: "Agents", title: "MCP clients", small: "Governed admin tools" },
       { slot: "portal", tag: "Experience", title: "Next.js portal", small: "Scope-gated institutional UI" },
       { slot: "mcp", tag: "Agent interface", title: "MCP gateway", small: "Contract-derived catalogue" },
       { slot: "bff", tag: "Control core", title: "Hono BFF + OpenAPI", small: "Auth · scopes · approvals · idempotency" },
-      { slot: "ports", tag: "Boundary", title: "Ports P1–P9", small: "sim ↔ enterprise adapters" },
+      { slot: "ports", tag: "Boundary", title: "Ports P1–P11", small: "sim ↔ fail-closed enterprise adapters" },
       { slot: "data", tag: "Evidence", title: "PostgreSQL + RLS", small: "Insert-only audit · BCBS 239 lineage" },
       { slot: "external", tag: "External", title: "Nebras + bank estate", small: "Secure egress · no direct bypass" },
     ],
@@ -88,7 +88,7 @@ const data: ProjectPageData = {
       <>
         The Open Finance Backoffice is the first evidenced implementation of
         <Link href="/the-loom"> The Loom</Link>
-        {`. Its autonomous loop carried ${loomProof.storiesDone} of approximately ${loomProof.storiesTotalApprox} backlog stories to done under quality gates, synthetic-data constraints and human four-eyes merge. The method is reusable; the Open Finance regulation, brand, contracts and controls are this implementation's pattern.`}
+        {`. By the July 2026 reference-build review, its autonomous loop had carried ${loomProof.storiesDone} of approximately ${loomProof.storiesTotalApprox} backlog stories to done under quality gates, synthetic-data constraints and human four-eyes merge; the backlog has since grown with the platform. The method is reusable; the Open Finance regulation, brand, contracts and controls are this implementation's pattern.`}
       </>
     ),
     stages: [
@@ -105,9 +105,9 @@ const data: ProjectPageData = {
       label: "AI build system",
       heading: "The model proposes. The harness constrains. Humans decide.",
       lede:
-        "The repository documents Claude Code as the build agent. No Codex build provenance was found in the reviewed repository snapshot. Product MCP and build-time MCP are deliberately reported separately.",
+        "The repository documents Claude Code as the primary build agent. One later feature stream was delivered with Codex, so build provenance is read per change rather than assumed. Product MCP and build-time MCP are deliberately reported separately.",
       cards: [
-        { label: "Build agent", title: "Claude Code", detail: "The documented autonomous build loop is /loop /next-story. Commits retain Claude session and build-model provenance." },
+        { label: "Build agent", title: "Claude Code", detail: "The documented autonomous build loop is /loop /next-story. Claude-built commits retain session and build-model provenance." },
         { label: "Domain skills", title: "Seven repository skills", detail: "discovery, brand-render, develop, next-story, implement-story, spec-change and run-ofbo encode the delivery method." },
         { label: "Review agents", title: "Four bounded reviewers", detail: "Contract conformance, regulatory hard stops, data governance and discovery-boundary checks remain separate judgements." },
         { label: "Pre-action controls", title: "Four Claude Code hooks", detail: "Worktree policy at session start; PII, spec and test-integrity tripwires before file mutations." },
@@ -128,9 +128,9 @@ const data: ProjectPageData = {
       label: "Quality system",
       heading: "Green means more than tests passed.",
       cards: [
-        { tag: "Q1 / Q1b", title: "Build integrity", detail: "Build, unit tests, generated-artifact drift and anti-reward-hacking controls." },
+        { tag: "Q1 / Q1b", title: "Build integrity", detail: "Build, unit tests under an 80% coverage gate, generated-artifact drift and anti-reward-hacking controls." },
         { tag: "D1–D9", title: "Discovery gates", detail: "Evidence, governance, prototype boundaries, stakeholder reaction and delivery traceability." },
-        { tag: "Q2 / Q2b", title: "Static integrity", detail: "Lint, typecheck, SAST, secrets scanning and documentation-drift detection." },
+        { tag: "Q2 / Q2b / Q2c", title: "Static integrity", detail: "Lint, typecheck, SAST, secrets scanning, documentation-drift detection and cross-PR ADR numbering." },
         { tag: "Q3", title: "Runtime integrity", detail: "Postgres integration, contract verification and Playwright portal journeys." },
         { tag: "Q4 / Q4.5", title: "Regulatory integrity", detail: "Dependency review, security controls and BCBS 239 lineage validation." },
         { tag: "Q5", title: "Human release", detail: "Manual approval backed by a SHA-256-sealed release-evidence and agent-provenance bundle." },
@@ -149,9 +149,9 @@ const data: ProjectPageData = {
       { number: "M6", title: "Bank adoption", state: "next", label: "Per-bank engagement" },
     ],
     evidence: [
-      { stat: "89", caption: "OpenAPI paths in the reviewed contract" },
-      { stat: "29", caption: "PostgreSQL migrations in the repository" },
-      { stat: "254", caption: "Tracked test/spec files across the monorepo" },
+      { stat: "99", caption: "OpenAPI paths in the reviewed contract" },
+      { stat: "44", caption: "PostgreSQL migrations in the repository" },
+      { stat: "340", caption: "Tracked test/spec files across the monorepo" },
       { stat: "M0–M5", caption: "Delivered and demonstrable before enterprise port swaps" },
     ],
     boundary:

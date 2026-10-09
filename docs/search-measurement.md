@@ -24,8 +24,12 @@ This is the deployment and measurement companion to the route inventory in `lib/
 | Non-brand impressions and clicks by route | Search Console and Bing queries | Test whether each page owns its intended subject |
 | AI answer citations and cited URLs | Bing AI Performance plus sampled answer-engine checks | Identify selected evidence and entity ambiguity |
 | Referral visits from AI and search assistants | Plausible referrers and campaign parameters | Separate citations from qualified visits |
-| Mandate enquiries by landing page | Plausible goals plus enquiry context | Connect discoverability to commercial relevance |
-| Venture proposals by landing page | Plausible goals plus proposal context | Measure Studio discovery without treating volume as quality |
+| Advisory CTA intent | Configured, verified browser goals only | Measure navigation intent; email and Calendar clicks do not prove completion |
+| Received mandate enquiries and accepted bookings | Verified inbox / Calendar records, reconciled with recorded production context | Assess commercial outcomes; report unknown attribution explicitly |
+| Qualified conversations | Reviewed CRM / engagement records | Measure fit separately from receipt and booking |
+| Venture delivery acceptance | Successful email-provider acknowledgement | Keep Studio proposals separate from advisory outcomes; acceptance does not prove inbox receipt or qualification |
+
+Use [the accepted-outcome runbook](./accepted-outcomes.md) for definitions, exclusions, lifecycle reconciliation and denominator limits. See [the 8 October crawler checkpoint](./crawler-access-checkpoint.md) for route expectations, live read-only evidence and the remaining verified-crawler checks.
 
 ## Review cadence
 
@@ -39,4 +43,4 @@ This is the deployment and measurement companion to the route inventory in `lib/
 - Do not publish unsupported client claims, production claims, regulatory conclusions or invented credentials for search visibility.
 - Treat `llms.txt` as a supplemental source map. Canonical facts must remain in rendered HTML, metadata, schema and authoritative external profiles.
 - Update route `contentUpdated` only when public content materially changes.
-- Keep training-crawler policy separate from search and user-retrieval crawler policy in `app/robots.ts`.
+- Keep training-crawler policy separate from search and user-retrieval crawler policy in `lib/robots.ts`.
