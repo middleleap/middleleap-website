@@ -37,14 +37,18 @@
 }
 
 .globalNav {
+  align-self: stretch;
+  align-items: stretch;
   justify-content: center;
   gap: 28px;
 }
 
 .globalNav a,
+.navTrigger,
 .cta,
 .contextNav a,
-.mobileMenu summary,
+.mobileMenu > summary,
+.mobileNavGroup > summary,
 .mobileLinks a,
 .breadcrumbs,
 .footer {
@@ -53,6 +57,7 @@
 }
 
 .globalNav a,
+.navTrigger,
 .cta,
 .contextNav a,
 .mobileLinks a {
@@ -63,23 +68,173 @@
   text-decoration: none;
 }
 
+.globalNavLink,
+.navTrigger {
+  display: flex;
+  align-items: center;
+}
+
+.navGroup {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.navTrigger {
+  gap: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.navChevron {
+  color: var(--ember-text);
+  font-size: 13px;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition: transform 160ms ease;
+}
+
+.navGroup[data-open="true"] .navChevron {
+  transform: translateY(1px) rotate(180deg);
+}
+
 .globalNav a:hover,
 .globalNav a:focus-visible,
+.navTrigger:hover,
+.navTrigger:focus-visible,
 .contextNav a:hover,
 .contextNav a:focus-visible,
 .mobileLinks a:hover,
 .mobileLinks a:focus-visible,
 .globalNav a[data-active="true"],
+.navTrigger[data-active="true"],
 .contextNav a[aria-current="location"] {
   color: var(--bone-0);
 }
 
 .globalNav a[data-active="true"],
+.navTrigger[data-active="true"],
 .contextNav a[aria-current="location"],
 .mobileLinks a[aria-current] {
   text-decoration: underline;
   text-decoration-color: var(--ember-500);
   text-underline-offset: 7px;
+}
+
+.navTrigger[data-active="true"] {
+  text-decoration: underline;
+  text-decoration-color: var(--ember-500);
+}
+
+.navPanel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 360px;
+  border: 1px solid var(--ink-4);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--ember-500) 6%, transparent), transparent 42%),
+    var(--ink-1);
+  box-shadow: var(--shadow-2);
+  transform: translateX(-50%);
+  animation: nav-panel-in 140ms ease-out both;
+}
+
+.navPanelHeader {
+  min-height: 42px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.navPanelHeader b {
+  color: var(--bone-3);
+  font-weight: 400;
+}
+
+.navPanelLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.globalNav .navPanelLink {
+  min-height: 76px;
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  border-top: 1px solid var(--ink-border);
+  color: var(--bone-1);
+  letter-spacing: .04em;
+  text-transform: none;
+}
+
+.globalNav .navPanelLink:hover,
+.globalNav .navPanelLink:focus-visible,
+.globalNav .navPanelLink[aria-current],
+.globalNav .navPanelLink[data-active="true"] {
+  background: color-mix(in srgb, var(--ember-500) 8%, transparent);
+}
+
+.globalNav .navPanelLink[aria-current],
+.globalNav .navPanelLink[data-active="true"] {
+  box-shadow: inset 2px 0 0 var(--ember-500);
+  text-decoration: none;
+}
+
+.navPanelLink[aria-current] strong,
+.navPanelLink[data-active="true"] strong {
+  color: var(--ember-text);
+}
+
+.navPanelLink > span:first-child {
+  padding-top: 2px;
+  color: var(--ember-text);
+  font-size: var(--fs-ui-micro);
+}
+
+.navPanelLink > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.navPanelLink strong {
+  color: var(--bone-0);
+  font-size: var(--fs-ui-small);
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.navPanelLink small {
+  color: var(--bone-3);
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+
+@keyframes nav-panel-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .cta {
@@ -367,7 +522,7 @@
     justify-self: end;
   }
 
-  .mobileMenu summary {
+  .mobileMenu > summary {
     color: var(--ember-text);
     cursor: pointer;
     font-size: var(--fs-ui);
@@ -375,11 +530,12 @@
     list-style: none;
   }
 
-  .mobileMenu summary::-webkit-details-marker {
+  .mobileMenu > summary::-webkit-details-marker,
+  .mobileNavGroup > summary::-webkit-details-marker {
     display: none;
   }
 
-  .mobileMenu[open] summary {
+  .mobileMenu[open] > summary {
     color: var(--bone-0);
   }
 
@@ -399,6 +555,75 @@
   .mobileContextLabel {
     padding: 14px 16px;
     border-bottom: 1px solid var(--ink-border);
+  }
+
+  .mobileNavGroup {
+    border-bottom: 1px solid var(--ink-border);
+  }
+
+  .mobileNavGroup > summary {
+    min-height: 46px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--bone-3);
+    cursor: pointer;
+    font-size: var(--fs-ui);
+    font-weight: 500;
+    letter-spacing: .08em;
+    list-style: none;
+  }
+
+  .mobileNavGroup > summary:hover,
+  .mobileNavGroup > summary:focus-visible,
+  .mobileNavGroup > summary[data-active="true"],
+  .mobileNavGroup[open] > summary {
+    color: var(--bone-0);
+  }
+
+  .mobileNavGroup > summary[data-active="true"] span {
+    text-decoration: underline;
+    text-decoration-color: var(--ember-500);
+    text-underline-offset: 7px;
+  }
+
+  .mobileNavGroup > summary i {
+    color: var(--ember-text);
+    font-size: 16px;
+    font-style: normal;
+    transition: transform 160ms ease;
+  }
+
+  .mobileNavGroup[open] > summary i {
+    transform: rotate(45deg);
+  }
+
+  .mobileSubLinks {
+    display: flex;
+    flex-direction: column;
+    background: color-mix(in srgb, var(--ink-0) 55%, var(--ink-1));
+  }
+
+  .mobileLinks .mobileSubLinks a {
+    padding-left: 28px;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    border-top: 1px solid var(--ink-border);
+    border-bottom: 0;
+    color: var(--bone-2);
+    font-size: var(--fs-ui-micro);
+  }
+
+  .mobileLinks .mobileSubLinks a[aria-current],
+  .mobileLinks .mobileSubLinks a[data-active="true"] {
+    background: color-mix(in srgb, var(--ember-500) 8%, transparent);
+    box-shadow: inset 2px 0 0 var(--ember-500);
+    color: var(--bone-0);
+  }
+
+  .mobileSubLinks a > span {
+    color: var(--ember-text);
   }
 
   .mobileContextLabel {
@@ -474,5 +699,16 @@
 @media (max-width: 360px) {
   .header {
     gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navPanel {
+    animation: none;
+  }
+
+  .navChevron,
+  .mobileNavGroup > summary i {
+    transition: none;
   }
 }

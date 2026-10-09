@@ -49,6 +49,7 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
+      - run: npm run seo:check
       - uses: actions/upload-artifact@v4
         with:
           name: static-export
@@ -86,7 +87,16 @@ jobs:
         with:
           name: static-export
           path: out/
-      - run: npm install -g @lhci/cli
+      # @lhci/cli pins Lighthouse 12.6.1, whose robots-txt audit rejects the
+      # Content-Signal directive. Install it in an isolated prefix with a
+      # Lighthouse 13 override (13.x accepts content-signal).
+      - name: Install Lighthouse CI
+        run: |
+          mkdir -p "$RUNNER_TEMP/lhci" && cd "$RUNNER_TEMP/lhci"
+          npm init -y > /dev/null
+          npm pkg set "overrides.lighthouse=^13"
+          npm install @lhci/cli "lighthouse@^13"
+          echo "$RUNNER_TEMP/lhci/node_modules/.bin" >> "$GITHUB_PATH"
       - run: lhci autorun
       - uses: actions/upload-artifact@v4
         if: failure()
