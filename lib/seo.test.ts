@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import robots from "../app/robots";
+import { contentSignals, crawlerRules, renderRobotsTxt } from "./robots";
 import { pageMetadata, pageOpenGraph, siteOrigin } from "./seo";
 
 describe("route metadata", () => {
@@ -48,7 +48,7 @@ describe("route metadata", () => {
 
 describe("crawler policy", () => {
   it("explicitly allows current AI search and user-retrieval agents", () => {
-    const serialized = JSON.stringify(robots().rules);
+    const serialized = JSON.stringify(crawlerRules);
 
     for (const agent of [
       "OAI-SearchBot",
@@ -63,11 +63,22 @@ describe("crawler policy", () => {
   });
 
   it("keeps model-development crawlers in a separate rule", () => {
-    const rules = robots().rules;
-    expect(rules).toEqual(
+    expect(crawlerRules).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ userAgent: ["GPTBot", "ClaudeBot"], allow: "/" }),
       ]),
     );
+  });
+
+  it("declares content signals for every user-agent group", () => {
+    const txt = renderRobotsTxt();
+    const groups = txt.split("\n\n").filter((group) => group.includes("User-Agent:"));
+
+    expect(groups).toHaveLength(crawlerRules.length);
+    for (const group of groups) {
+      expect(group).toContain("Content-Signal: search=yes, ai-input=yes, ai-train=no");
+    }
+    expect(Object.keys(contentSignals).sort()).toEqual(["ai-input", "ai-train", "search"]);
+    expect(txt).toContain("Sitemap: https://www.middleleap.com/sitemap.xml");
   });
 });

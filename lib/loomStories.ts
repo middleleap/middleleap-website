@@ -31,8 +31,8 @@ export const advisoryStory: LoomStory = {
     { slot: "discovery", number: "02", title: "Strategy", detail: "Market position, platform model and ecosystem designed together." },
     { slot: "gate", number: "03", title: "Decision", detail: "One investable decision a board and a regulator can back." },
     { slot: "delivery", number: "04", title: "Execution", detail: "Senior-led delivery of platform, partners and operating model." },
-    { slot: "run", number: "05", title: "Market", detail: "First bank certified under the UAE Open Finance framework, with the country's first live transactions with a licensed TPP." },
-    { slot: "feedback", number: "06", title: "Evidence", detail: "Operating evidence returns to the next mandate: 250,000 SMEs, corporates and institutions migrated onto one platform." },
+    { slot: "run", number: "05", title: "Market", detail: "Prior executive role: helped a UAE bank achieve first-bank Open Finance certification and the country's first live transactions with a licensed TPP." },
+    { slot: "feedback", number: "06", title: "Evidence", detail: "Prior executive role: 250,000 SMEs, corporates and institutions migrated onto one platform. Operating evidence informs the next mandate." },
   ],
 };
 

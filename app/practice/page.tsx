@@ -86,7 +86,7 @@ export default function PracticePage() {
             <div><dt>Base</dt><dd>{practiceFacts.base}</dd></div>
             <div><dt>Primary market</dt><dd>{practiceFacts.primaryMarket}</dd></div>
             <div><dt>Model</dt><dd>{practiceFacts.model}</dd></div>
-            <div><dt>Contact</dt><dd>{practiceFacts.contactEmail}</dd></div>
+            <div><dt>Contact</dt><dd><a href={mailtoHref()}>{practiceFacts.contactEmail}</a></dd></div>
           </dl>
         </aside>
       </section>
@@ -145,7 +145,8 @@ export default function PracticePage() {
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
         <h2>Bring the right senior expertise to the problem.</h2>
         <p>
-          Book a call directly, or email {practiceFacts.contactEmail} if you prefer.
+          Book a call directly, or email{" "}
+          <a href={mailtoHref("Strategic mandate")}>{practiceFacts.contactEmail}</a> if you prefer.
         </p>
         <div className={styles.engageActions}>
           <a {...bookingLinkProps}>Book a conversation ↗</a>

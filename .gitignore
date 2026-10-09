@@ -53,3 +53,6 @@ next-env.d.ts
 # lighthouse
 lighthouse-report*
 .lighthouseci/
+
+# wrangler (local Pages runtime)
+.wrangler/

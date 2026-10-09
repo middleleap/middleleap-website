@@ -169,7 +169,9 @@
 .sourceList a, .sourceList > div { display: grid; grid-template-columns: 52px 1fr auto; gap: 18px; align-items: center; padding: 17px 0; color: var(--text); border-bottom: 1px solid var(--line); text-decoration: none; }
 .sourceList a:hover strong { color: var(--ember-text); }
 .sourceList span, .sourceList b { color: var(--faint); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
-.sourceList strong { font-size: var(--fs-small); font-weight: 500; transition: color .2s ease; }
+/* Switch source text with its background: tweening inherited theme colors
+   briefly drops below AA contrast even though both endpoints pass. */
+.sourceList strong { font-size: var(--fs-small); font-weight: 500; }
 
 .engage { max-width: 1080px; margin: 0 auto 64px; padding: 64px; background: var(--text); color: var(--ink-2); }
 .engage .eyebrow { color: var(--ember-on-inverse); }

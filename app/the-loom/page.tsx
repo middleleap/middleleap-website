@@ -11,11 +11,11 @@ import { loomProof, loomRelease } from "@/lib/proof";
 export const metadata = pageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
-    "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.0.0 is released and validated on a synthetic reference build, not customer production.",
+    "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.5.12 is released and validated on a synthetic reference build, not customer production.",
   path: "/the-loom",
   socialTitle: "The Loom | Governed AI Delivery for Regulated Institutions",
   socialDescription:
-    "Toolkit 2.0.0 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
+    "Toolkit 2.5.12 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
 });
 
 const proofPoints = [
@@ -299,7 +299,7 @@ export default function LoomPage() {
           {limits.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
         <div className={styles.caseLink}><span>Reference-build evidence</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only portal used to exercise the harness end to end—not a customer production deployment.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
-        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Parqo · HiveMind</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
+        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Setbay · HiveMind</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
       </section>
 
       <section className={styles.engage}>

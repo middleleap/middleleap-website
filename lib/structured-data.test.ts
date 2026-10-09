@@ -11,14 +11,14 @@ describe("breadcrumbList", () => {
     const schema = breadcrumbList([
       { href: "/", label: "Advisory" },
       { href: "/ventures", label: "Ventures" },
-      { label: "Parqo" },
+      { label: "Setbay" },
     ]);
 
     expect(schema?.itemListElement.map((item) => item.position)).toEqual([1, 2, 3]);
     expect(schema?.itemListElement.map((item) => item.name)).toEqual([
       "Advisory",
       "Ventures",
-      "Parqo",
+      "Setbay",
     ]);
   });
 

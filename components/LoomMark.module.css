@@ -1,8 +1,8 @@
 /*
   One 14s cycle. Beats as a share of the cycle:
-    0.6s   4.29%  the square leaps → Discovery diamond (0.9s, ease-leap)
+    0.6s   4.29%  the square leaps → Discovery diamond (0.4s, ease-leap)
     1.5s  10.71%  Discovery threads draw
-    4.0s  28.57%  Gate: second leap → Delivery diamond (0.9s)
+    4.0s  28.57%  Gate: second leap → Delivery diamond (0.4s)
     4.9s  35.00%  Delivery threads draw
     7.0s  50.00%  Run: threads run level into the distance
     9.0s  64.29%  Feedback thread returns to the square
@@ -17,14 +17,6 @@
   border: 1px solid var(--ink-4);
   background: color-mix(in srgb, var(--ink-1) 92%, transparent);
   box-shadow: var(--shadow-2);
-}
-
-.loom::before {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 34% 46%, rgba(230, 92, 45, .12), transparent 38%);
-  content: "";
-  pointer-events: none;
 }
 
 .header {
@@ -97,13 +89,13 @@
 @keyframes leapDiscovery {
   0%, 4.29% { opacity: 0; transform: translate(72px, 140px) rotate(0deg); }
   4.3% { opacity: 1; transform: translate(72px, 140px) rotate(0deg); animation-timing-function: var(--ease-leap); }
-  10.71%, 100% { opacity: 1; transform: translate(196px, 140px) rotate(45deg); }
+  7.14%, 100% { opacity: 1; transform: translate(196px, 140px) rotate(45deg); }
 }
 
 @keyframes leapDelivery {
   0%, 28.57% { opacity: 0; transform: translate(196px, 140px) rotate(0deg); }
   28.58% { opacity: 1; transform: translate(196px, 140px) rotate(0deg); animation-timing-function: var(--ease-leap); }
-  35%, 100% { opacity: 1; transform: translate(286.51px, 140px) rotate(45deg); }
+  31.43%, 100% { opacity: 1; transform: translate(286.51px, 140px) rotate(45deg); }
 }
 
 /* ---- warp threads --------------------------------------------------- */

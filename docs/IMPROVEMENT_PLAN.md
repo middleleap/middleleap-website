@@ -180,12 +180,17 @@ Ordered by evidence-backed impact for a boutique advisory firm (Hinge buyer rese
    single biggest trust gap versus every comparable firm studied. Real bio, mandate
    history, headshot, `Person` JSON-LD, direct email, links to talks/posts.
 
-   **DEFERRED BY POSITIONING DECISION (2026-08-12).** Until a broader delivery group is
-   demonstrably behind MiddleLeap, the public people story remains deliberately restrained:
-   a senior-led, networked practice; one accountable lead per mandate; independent specialist
-   expertise assembled where required; and active client ownership. The homepage and
-   `/practice` do not carry a founder profile, headshot or named-team construct. Factual founder
-   attribution remains in organisation metadata and the machine-readable company record.
+   **Deferred by positioning decision (2026-08-12), reversed (2026-09-16).** The
+   restraint held while no broader delivery group stood behind MiddleLeap. The founder
+   then decided that naming the accountable senior lead is itself the trust signal the
+   research points at, and that a search for the founder's name should find the site.
+   Shipped: `/founder` (bio, dated career record, credentials strip, headshot in both
+   themes, `ProfilePage` + the single `Person` node from `lib/founder.ts`), a founder
+   block on the homepage in place of the anonymous staffing aside, a top-level nav entry,
+   footer attribution, and a founder section in `public/llms.txt`. The prior "a leading
+   UAE bank" anonymisation was dropped at the same time; `app/disclosure.test.ts` now
+   guards the one remaining boundary (no board-seat claim) and institution-name
+   consistency across surfaces.
 2. **Ungated insights section with 3–5 cornerstone regulatory explainers** (e.g. "CBUAE
    Open Finance: what LFIs must do by phase", "AlTareq CX certification explained",
    "DIFC vs ADGM vs mainland licensing"). Law firms currently own these queries; almost

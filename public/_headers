@@ -1,0 +1,6 @@
+# Markdown twins of each page, written by scripts/build-markdown.mjs. Agents
+# normally reach them through `Accept: text/markdown` on the page URL
+# (functions/_middleware.ts); the direct .md URLs stay out of search indexes.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
