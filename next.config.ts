@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
   // done, so they exist whichever command runs `next build`.
   adapterPath: require.resolve("./scripts/markdown-adapter.mjs"),
   typedRoutes: true,
+  // Keep Next's complete project check enabled through its CLI support.
+  // The type-check script also runs TypeScript 7; lint tooling uses the TS 6 API.
+  experimental: {
+    useTypeScriptCli: true,
+  },
   reactCompiler: true,
   images: {
     unoptimized: true,
