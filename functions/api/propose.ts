@@ -120,8 +120,8 @@ export async function handleProposal(
     return json(400, { ok: false, error: "Proposal is incomplete.", details: validation.errors });
   }
 
-  const receivedAt = new Date().toISOString();
-  const { subject, body } = serializeProposal(validation.value, receivedAt);
+  const preparedAt = new Date().toISOString();
+  const { subject, body } = serializeProposal(validation.value, preparedAt);
 
   try {
     const result = await sendEmail({
@@ -132,7 +132,18 @@ export async function handleProposal(
       subject,
       text: body,
     });
-    return json(200, { ok: true, id: result.id ?? null, receivedAt });
+    if (typeof result.id !== "string" || !result.id.trim()) {
+      throw new Error("Email provider did not acknowledge acceptance");
+    }
+    const acceptedAt = new Date().toISOString();
+    return json(200, {
+      ok: true,
+      status: "accepted_for_delivery",
+      id: result.id,
+      acceptedAt,
+      // Preserve older clients during deployment; this never proves inbox receipt.
+      receivedAt: acceptedAt,
+    });
   } catch {
     return json(502, { ok: false, error: "Direct sending failed." });
   }
