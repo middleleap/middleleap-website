@@ -1,4 +1,5 @@
 import { defineConfig, globalIgnores } from "eslint/config";
+import { fixupConfigRules } from "@eslint/compat";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
@@ -10,8 +11,10 @@ const GENERIC_TAGS = [
 const genericSelector = GENERIC_TAGS.map((tag) => `[name.name="${tag}"]`).join(",");
 
 const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
+  // Next's React rules still use context APIs removed in ESLint 10.
+  // ESLint's compatibility adapter preserves the configured rules.
+  ...fixupConfigRules(nextVitals),
+  ...fixupConfigRules(nextTs),
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

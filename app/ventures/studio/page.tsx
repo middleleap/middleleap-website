@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VentureProposalForm } from "@/components/VentureProposalForm";
+import { pageMetadata } from "@/lib/seo";
 import styles from "./studio.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Venture Studio",
   description:
     "Propose an evidenced platform, regulated-market or financial-infrastructure problem to the MiddleLeap Venture Studio.",
-  alternates: { canonical: "/ventures/studio" },
-};
+  path: "/ventures/studio",
+  socialTitle: "Venture Studio | MiddleLeap",
+});
 
 const criteria = [
   ["A real problem", "A clear operating, customer or ecosystem problem—not only a product idea."],
@@ -42,6 +43,7 @@ export default function VentureStudioPage() {
       <SiteHeader
         active="ventures"
         breadcrumbs={[
+          { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
           { label: "Venture Studio" },
         ]}
@@ -116,7 +118,7 @@ export default function VentureStudioPage() {
       <section className={styles.propose} id="propose">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Propose a venture</p>
-          <div><h2>Start with a concise, non-confidential brief.</h2><p>If there is a fit, MiddleLeap will contact you to agree the next evidence step. Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before preparing the email.</p></div>
+          <div><h2>Start with a concise, non-confidential brief.</h2><p>If there is a fit, MiddleLeap will contact you to agree the next evidence step. Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before sending the brief.</p></div>
         </div>
         <VentureProposalForm />
       </section>
