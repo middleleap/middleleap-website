@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
 
-export const alt = "MiddleLeap — Every engagement should leave the institution smarter";
+export const alt = "MiddleLeap — From Strategic Mandate to Market Execution";
 
 export const size = {
   width: 1200,
@@ -79,7 +79,7 @@ export default function Image() {
               letterSpacing: "0.2em",
             }}
           >
-            {"// INSTITUTIONAL INTELLIGENCE"}
+            {"// REGULATED PLATFORM TRANSFORMATION"}
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export default function Image() {
               lineHeight: 1.08,
             }}
           >
-            Every engagement should
+            From strategic mandate
           </div>
           <div
             style={{
@@ -106,8 +106,9 @@ export default function Image() {
               lineHeight: 1.08,
             }}
           >
+            <span style={{ marginRight: 20 }}>to</span>
             <span style={{ color: EMBER, fontStyle: "italic" }}>
-              leave the institution smarter.
+              market execution.
             </span>
           </div>
           <div
@@ -120,8 +121,8 @@ export default function Image() {
               lineHeight: 1.45,
             }}
           >
-            Working capability and institution-owned intelligence for regulated
-            businesses.
+            Platform strategy, ecosystems and AI-native operating models for
+            regulated financial services.
           </div>
         </div>
 

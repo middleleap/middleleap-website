@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { createPageMetadata } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/seo";
+import { mailtoHref } from "@/lib/contact";
 import styles from "../institutional-intelligence/proposition.module.css";
 
-export const metadata = createPageMetadata({
+export const metadata = pageMetadata({
   title: "The Institutional Brain",
   description:
     "The institution-owned body of approved collective understanding that grounds governed decisions, delivery and learning.",
@@ -33,8 +34,7 @@ export default function InstitutionalBrainPage() {
   return (
     <div className={styles.shell}>
       <SiteHeader
-        active="intelligence"
-        priority
+        active="method"
         breadcrumbs={[
           { href: "/", label: "Advisory" },
           { href: "/institutional-intelligence", label: "Institutional Intelligence" },
@@ -48,11 +48,11 @@ export default function InstitutionalBrainPage() {
         ]}
       />
 
-      <main id="main-content" tabIndex={-1}>
+      <main >
       <section className={styles.hero} id="overview">
         <div>
           <p className={styles.eyebrow}>The institution-owned asset</p>
-          <h1>
+          <h1 id="main-content" tabIndex={-1}>
             Collective understanding. <em>Governed and owned.</em>
           </h1>
           <p>
@@ -62,7 +62,7 @@ export default function InstitutionalBrainPage() {
             them authority.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20Brain">
+            <a className={styles.primaryAction} href={mailtoHref("Institutional Brain")}>
               Discuss an Institutional Brain pilot
             </a>
             <Link className={styles.secondaryAction} href="/institutional-intelligence">See the full proposition</Link>
@@ -138,7 +138,7 @@ export default function InstitutionalBrainPage() {
               In the repository implementation, BrainKit is the technical initializer used to
               draft, validate and release the Brainstem from approved sources.
             </p>
-            <Link href="/toolkit">View the technical implementation →</Link>
+            <Link href="/ai-dlc">View the technical implementation →</Link>
           </div>
         </aside>
       </section>
@@ -185,7 +185,7 @@ export default function InstitutionalBrainPage() {
           proves whether the institution can govern the asset before trying to scale it.
         </p>
         <div className={styles.actions}>
-          <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20Brain%20pilot">
+          <a className={styles.primaryAction} href={mailtoHref("Institutional Brain pilot")}>
             Shape an Institutional Brain pilot
           </a>
           <Link className={styles.secondaryAction} href="/the-loom">See how The Loom applies it</Link>

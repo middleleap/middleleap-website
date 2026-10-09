@@ -2,10 +2,11 @@ import Link from "next/link";
 import { InstitutionalIntelligenceSystem } from "@/components/InstitutionalIntelligenceSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { createPageMetadata } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/seo";
+import { mailtoHref } from "@/lib/contact";
 import styles from "./proposition.module.css";
 
-export const metadata = createPageMetadata({
+export const metadata = pageMetadata({
   title: "Institutional Intelligence",
   description:
     "Build governed institutional intelligence that captures decisions, architecture, controls and operating knowledge through real delivery.",
@@ -49,8 +50,7 @@ export default function InstitutionalIntelligencePage() {
   return (
     <div className={styles.shell}>
       <SiteHeader
-        active="intelligence"
-        priority
+        active="method"
         breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Institutional Intelligence" }]}
         contextLinks={[
           { href: "#overview", label: "Overview" },
@@ -60,11 +60,11 @@ export default function InstitutionalIntelligencePage() {
         ]}
       />
 
-      <main id="main-content" tabIndex={-1}>
+      <main >
       <section className={styles.hero} id="overview">
         <div>
           <p className={styles.eyebrow}>The proposition</p>
-          <h1>
+          <h1 id="main-content" tabIndex={-1}>
             The capability your institution <em>owns.</em>
           </h1>
           <p>
@@ -74,7 +74,7 @@ export default function InstitutionalIntelligencePage() {
             it through real mandates so it stays connected to operating evidence.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20intelligence">
+            <a className={styles.primaryAction} href={mailtoHref("Institutional intelligence")}>
               Discuss the proposition
             </a>
             <Link className={styles.secondaryAction} href="/institutional-brain">Examine the Institutional Brain</Link>
@@ -165,7 +165,7 @@ export default function InstitutionalIntelligencePage() {
               BrainKit is the initializer used to draft and validate the Brainstem inside an
               institution&apos;s private context release.
             </p>
-            <Link href="/toolkit">View the technical implementation →</Link>
+            <Link href="/ai-dlc">View the technical implementation →</Link>
           </div>
         </aside>
       </section>
@@ -232,7 +232,7 @@ export default function InstitutionalIntelligencePage() {
           Choose one bounded regulatory, platform or operating-model outcome. Use it to prove
           both the delivery result and the ownership model.
         </p>
-        <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Institutional%20intelligence%20mandate">
+        <a className={styles.primaryAction} href={mailtoHref("Institutional intelligence mandate")}>
           Discuss a mandate
         </a>
       </section>

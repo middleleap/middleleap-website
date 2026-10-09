@@ -2,11 +2,13 @@ import Link from "next/link";
 import { InstitutionalIntelligenceSystem } from "@/components/InstitutionalIntelligenceSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { createPageMetadata } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/seo";
+import { bookingLinkProps, companyLinkedInUrl, contactEmail, mailtoHref } from "@/lib/contact";
+import { founder, founderBioMedium, founderPerson } from "@/lib/founder";
 import styles from "./page.module.css";
 
-export const metadata = createPageMetadata({
-  title: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
+export const metadata = pageMetadata({
+  title: "Institutional Intelligence for Regulated Businesses",
   description:
     "MiddleLeap helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.",
   path: "/",
@@ -20,13 +22,14 @@ const structuredData = {
       "@type": "Organization",
       "@id": "https://www.middleleap.com/#organization",
       name: "MiddleLeap",
+      sameAs: [companyLinkedInUrl, "https://github.com/middleleap"],
       url: "https://www.middleleap.com/",
       email: "contact@middleleap.com",
       foundingDate: "2021",
       founder: { "@id": "https://www.middleleap.com/#michael-ryberg-hartmann" },
-      slogan: "Every engagement should leave the institution smarter.",
+      slogan: "From strategic mandate to market execution.",
       description:
-        "Independent Dubai-based advisory practice helping regulated institutions move from strategic mandate to working capability while retaining the decisions, architecture, controls and operating knowledge created along the way.",
+        "Independent advisory practice assembling senior leadership and specialist teams to help banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Dubai",
@@ -37,26 +40,32 @@ const structuredData = {
         { "@type": "Country", name: "United Arab Emirates" },
       ],
       knowsAbout: [
-        "Institutional intelligence",
-        "Institutional Brain",
-        "Institutional Brainstem",
         "Platform strategy",
         "Open Finance",
+        "Embedded finance",
         "API strategy",
         "Ecosystem strategy",
         "AI-native operating models",
-        "The Loom governed AI delivery method",
+        "Agentic workflows",
+        "The Loom governed AI delivery harness",
+        "AI delivery governance",
         "Regulated industry transformation",
+        "Telecommunications transformation",
+        "Product operating models",
+        "AI-DLC",
       ],
     },
+    founderPerson,
     {
-      "@type": "Person",
-      "@id": "https://www.middleleap.com/#michael-ryberg-hartmann",
-      name: "Michael Ryberg Hartmann",
-      jobTitle: "Founder and Principal Adviser",
-      url: "https://www.middleleap.com/#practice",
-      sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
-      worksFor: { "@id": "https://www.middleleap.com/#organization" },
+      "@type": "WebSite",
+      "@id": "https://www.middleleap.com/#website",
+      url: "https://www.middleleap.com/",
+      name: "MiddleLeap",
+      alternateName: "MiddleLeap Advisory",
+      description:
+        "Platform strategy and AI-native transformation for regulated businesses.",
+      publisher: { "@id": "https://www.middleleap.com/#organization" },
+      inLanguage: "en",
     },
     {
       "@type": "Service",
@@ -66,12 +75,15 @@ const structuredData = {
         "Executive advisory",
         "Platform and ecosystem strategy",
         "AI-native operating model design",
-        "Transformation delivery",
+        "Transformation and execution",
       ],
       provider: { "@id": "https://www.middleleap.com/#organization" },
-      areaServed: { "@type": "Place", name: "Middle East and North Africa" },
+      areaServed: {
+        "@type": "Place",
+        name: "Middle East and North Africa",
+      },
       description:
-        "Senior advisory that delivers working capability and leaves governed institutional intelligence behind.",
+        "Senior advisory from strategic mandate through platform design, mobilisation and market execution.",
     },
   ],
 };
@@ -109,7 +121,7 @@ const capabilities = [
     href: "#engage",
     action: "Discuss transformation delivery",
   },
-];
+] as const;
 
 const evidence = [
   {
@@ -147,13 +159,13 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
-      <SiteHeader active="advisory" home priority />
+      <SiteHeader home />
 
-      <main id="main-content" tabIndex={-1}>
+      <main >
       <section className={styles.hero} id="top">
         <div>
           <p className={styles.eyebrow}>Independent advisory · Dubai</p>
-          <h1>
+          <h1 id="main-content" tabIndex={-1}>
             Every engagement should leave the institution <em>smarter.</em>
           </h1>
           <p className={styles.lede}>
@@ -163,16 +175,16 @@ export default function HomePage() {
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#engage">Discuss a mandate</a>
-            <a className={styles.secondaryAction} href="#model">See the operating model</a>
+            <a className={styles.secondaryAction} href="#method">See the operating model</a>
           </div>
-          <div className={styles.proofLine} aria-label="MiddleLeap engagement principles">
+          <div className={styles.proofLine} role="group" aria-label="MiddleLeap engagement principles">
             <span><strong>Senior-led</strong> from mandate to execution</span>
             <span><strong>Institution-owned</strong> context and capability</span>
             <span><strong>MENA-grounded</strong> regulated market experience</span>
           </div>
         </div>
 
-        <div className={styles.heroThesis} aria-label="MiddleLeap proposition">
+        <div className={styles.heroThesis} role="group" aria-label="MiddleLeap proposition">
           <span>MiddleLeap thesis / 01</span>
           <blockquote>Institutions should not rent intelligence from consultants.</blockquote>
           <div>
@@ -208,7 +220,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.model} id="model">
+      <section className={styles.model} id="method">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>The MiddleLeap model</p>
           <div>
@@ -256,14 +268,11 @@ export default function HomePage() {
           </div>
           <aside className={styles.founderNote}>
             <p className={styles.eyebrow}>Founded in Dubai</p>
-            <h3>Michael Ryberg Hartmann</h3>
-            <small>Founder and Principal Adviser</small>
-            <p>
-              More than 20 years across banking, fintech, telecommunications and SaaS. Michael
-              leads selected mandates and assembles senior specialists around each client and problem.
-            </p>
-            <a href="https://www.linkedin.com/in/michael-ryberg-hartmann" target="_blank" rel="noreferrer">
-              Founder profile ↗
+            <h3>{founder.name}</h3>
+            <small>{founder.jobTitle}</small>
+            <p>{founderBioMedium}</p>
+            <a href="/founder">
+              Founder profile →
             </a>
           </aside>
         </div>
@@ -301,11 +310,11 @@ export default function HomePage() {
             </article>
           ))}
         </div>
-        <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
+        <a className={styles.primaryAction} {...bookingLinkProps}>
           Discuss your mandate
         </a>
         <p className={styles.contactFallback}>
-          Or write directly to <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.
+          Or write directly to <a href={mailtoHref()}>{contactEmail}</a>.
         </p>
       </section>
       </main>

@@ -1,0 +1,286 @@
+import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "@playwright/test";
+import { writeFile } from "node:fs/promises";
+
+const routes = [
+  "/",
+  "/institutional-intelligence",
+  "/institutional-brain",
+  "/open-finance",
+  "/practice",
+  "/founder",
+  "/how-we-engage",
+  "/the-loom",
+  "/ai-dlc",
+  "/ventures",
+  "/ventures/studio",
+  "/ventures/backoffice",
+  "/ventures/hivemind",
+  "/ventures/setbay",
+  "/privacy",
+  "/venture-submission-terms",
+];
+
+for (const route of routes) {
+  test.describe(route, () => {
+    test("keyboard skip link moves focus past navigation into the page", async ({ page }) => {
+      await page.goto(route);
+      await page.keyboard.press("Tab");
+      await expect(page.getByRole("link", { name: "Skip to content" })).toBeFocused();
+      await page.keyboard.press("Enter");
+      await expect(page.locator("h1#main-content")).toBeFocused();
+    });
+    test("renders with core metadata and a single h1", async ({ page }) => {
+      const response = await page.goto(route);
+      expect(response?.status()).toBe(200);
+
+      await expect(page.locator("h1")).toHaveCount(1);
+      expect(await page.title()).not.toEqual("");
+
+      const description = page.locator('meta[name="description"]');
+      await expect(description).toHaveAttribute("content", /.{20,}/);
+
+      // Every JSON-LD block must parse as valid JSON.
+      const jsonLdBlocks = await page
+        .locator('script[type="application/ld+json"]')
+        .allTextContents();
+      for (const block of jsonLdBlocks) {
+        expect(() => JSON.parse(block)).not.toThrow();
+      }
+    });
+
+    test("BreadcrumbList markup matches the visible breadcrumb trail", async ({ page }) => {
+      await page.goto(route);
+
+      // The desktop trail only; the mobile duplicate lives under a different nav.
+      const visible = (
+        await page.$$eval('nav[aria-label="Breadcrumb"] > span', (spans) =>
+          spans.map((span) => {
+            const clone = span.cloneNode(true) as HTMLElement;
+            clone.querySelectorAll('[aria-hidden="true"]').forEach((n) => n.remove());
+            return (clone.textContent ?? "").trim();
+          }),
+        )
+      ).filter(Boolean);
+
+      const blocks = await page
+        .locator('script[type="application/ld+json"]')
+        .allTextContents();
+      const crumbNames: string[] = [];
+      for (const block of blocks) {
+        const parsed = JSON.parse(block);
+        for (const node of parsed["@graph"] ?? [parsed]) {
+          if (node?.["@type"] !== "BreadcrumbList") continue;
+          for (const item of node.itemListElement) {
+            expect(typeof item.position).toBe("number");
+            crumbNames.push(item.name);
+          }
+          expect(node.itemListElement.map((i: { position: number }) => i.position)).toEqual(
+            node.itemListElement.map((_: unknown, i: number) => i + 1),
+          );
+        }
+      }
+
+      expect(crumbNames).toEqual(visible);
+    });
+
+    /*
+      Layout guard. A dead-CSS sweep once removed grouped width rules like
+      `.nav, .hero, .section { width: min(...) }` because one member was dead,
+      silently un-constraining every live section to full bleed. Nothing else in
+      this suite looks at layout: lint, axe and Lighthouse all stayed green.
+
+      Asserts only that content is inset from the viewport edge, which is what
+      full bleed destroys. Column widths legitimately differ per route (legal
+      pages use a narrower 820px reading measure), so this deliberately does not
+      require the content to match the header exactly.
+    */
+    test("content column stays constrained, not full-bleed", async ({ page }) => {
+      await page.setViewportSize({ width: 1600, height: 900 });
+      await page.goto(route);
+
+      const metrics = await page.evaluate(() => {
+        const header = document.querySelector("header");
+        const heading = document.querySelector("h1");
+        if (!header || !heading) return null;
+        return {
+          headerLeft: header.getBoundingClientRect().left,
+          headingLeft: heading.getBoundingClientRect().left,
+        };
+      });
+
+      expect(metrics).not.toBeNull();
+      // Both the chrome and the page's own content column must be inset.
+      expect(metrics!.headerLeft).toBeGreaterThanOrEqual(100);
+      expect(metrics!.headingLeft).toBeGreaterThanOrEqual(100);
+    });
+
+    test("same-page fragment links resolve to a target", async ({ page }) => {
+      await page.goto(route);
+      const missing = await page.$$eval("a[href*='#']", (anchors) =>
+        anchors
+          .map((a) => a.getAttribute("href") ?? "")
+          .filter((h) => h.startsWith("#") && h.length > 1)
+          .filter((h) => !document.getElementById(h.slice(1))),
+      );
+      expect(missing).toEqual([]);
+    });
+
+    test("internal navigation links resolve", async ({ page }) => {
+      await page.goto(route);
+      const hrefs = await page.$$eval("a[href^='/']", (anchors) =>
+        anchors.map((a) => (a as HTMLAnchorElement).getAttribute("href") ?? ""),
+      );
+      const paths = [...new Set(hrefs.map((href) => href.split("#")[0]).filter(Boolean))];
+      for (const path of paths) {
+        const response = await page.request.get(path);
+        expect(response.status(), `${route} links to ${path}`).toBe(200);
+      }
+    });
+
+    for (const colorScheme of ["light", "dark"] as const) {
+      test(`has no serious or critical accessibility violations (${colorScheme})`, async ({ page }, testInfo) => {
+        await page.emulateMedia({ colorScheme });
+        await page.goto(route);
+        const results = await new AxeBuilder({ page }).analyze();
+        const blocking = results.violations.filter(
+          (violation) => violation.impact === "serious" || violation.impact === "critical",
+        );
+        if (blocking.length) {
+          const evidencePath = testInfo.outputPath("accessibility-violations.json");
+          await writeFile(evidencePath, JSON.stringify({
+            route,
+            colorScheme,
+            browserVersion: page.context().browser()?.version(),
+            rendering: await page.evaluate(() => ({
+              theme: document.documentElement.dataset.theme,
+              themeMode: document.documentElement.dataset.themeMode,
+              fonts: document.fonts.status,
+            })),
+            violations: blocking,
+          }, null, 2));
+          await testInfo.attach("accessibility-violations.json", {
+            contentType: "application/json",
+            path: evidencePath,
+          });
+        }
+        expect(
+          blocking.map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })),
+        ).toEqual([]);
+
+        // axe downgrades aria-prohibited-attr from violation to "incomplete" when
+        // the element has text content, which is exactly why the aria-label-on-div
+        // defects survived this gate before. Assert on it specifically; do not fail
+        // on all incomplete results, since color-contrast is perpetually incomplete.
+        const prohibited = results.incomplete.filter((r) => r.id === "aria-prohibited-attr");
+        expect(prohibited.flatMap((r) => r.nodes.map((n) => n.html))).toEqual([]);
+      });
+    }
+  });
+}
+
+for (const route of ["/ventures/backoffice", "/ventures/hivemind", "/ventures/setbay"]) {
+  test(`${route} source labels retain AA contrast throughout theme changes`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto(route);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await page.evaluate(async () => { await document.fonts.ready; });
+
+    for (const theme of ["light", "dark"] as const) {
+      await page.getByRole("radio", { name: `Use ${theme} theme` }).click();
+      await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
+      const sample = await page.evaluate(async () => {
+        const labels = [...document.querySelectorAll<HTMLElement>("#evidence strong")];
+        const luminance = (color: string) => {
+          const channels = (color.match(/[\d.]+/g) ?? []).slice(0, 3).map((value) => {
+            const channel = Number(value) / 255;
+            return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+          });
+          return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+        };
+        let minContrast = Infinity;
+        let worstLabel = "";
+        for (let frame = 0; frame < 14; frame++) {
+          await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+          const background = luminance(getComputedStyle(document.body).backgroundColor);
+          for (const label of labels) {
+            const foreground = luminance(getComputedStyle(label).color);
+            const ratio = (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+            if (ratio < minContrast) { minContrast = ratio; worstLabel = label.textContent ?? ""; }
+          }
+        }
+        return { minContrast, worstLabel, labels: labels.length };
+      });
+      expect(sample.labels).toBeGreaterThan(0);
+      expect(Number.isFinite(sample.minContrast)).toBe(true);
+      expect(sample.minContrast, `${theme}: ${sample.worstLabel}`).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+}
+
+test.describe("global navigation IA", () => {
+  const expectations = [
+    { route: "/institutional-intelligence", section: "method", parent: "How we work", childHref: "/institutional-intelligence", exact: true },
+    { route: "/institutional-brain", section: "method", parent: "How we work", childHref: "/institutional-brain", exact: true },
+    { route: "/open-finance", section: "what", parent: "What we do", childHref: "/open-finance", exact: true },
+    { route: "/how-we-engage", section: "method", parent: "How we work", childHref: "/how-we-engage", exact: true },
+    { route: "/the-loom", section: "method", parent: "How we work", childHref: "/the-loom", exact: true },
+    { route: "/ai-dlc", section: "method", parent: "How we work", childHref: "/ai-dlc", exact: true },
+    { route: "/ventures", section: "ventures", parent: "Ventures", childHref: "/ventures", exact: true },
+    { route: "/ventures/studio", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: true },
+    { route: "/ventures/backoffice", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/ventures/hivemind", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/ventures/setbay", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/venture-submission-terms", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: false },
+  ] as const;
+
+  test("parent and child states agree on desktop and mobile", async ({ page }) => {
+    for (const expectation of expectations) {
+      await page.goto(expectation.route);
+
+      const desktopNav = page.locator('nav[aria-label="Primary navigation"]');
+      const activeParent = desktopNav.locator(`[data-section="${expectation.section}"][data-active="true"]`);
+      await expect(activeParent, `${expectation.route} activates ${expectation.parent}`).toHaveCount(1);
+
+      const children = page.locator(`a[href="${expectation.childHref}"]`).filter({ has: page.locator("span") });
+      await expect(children, `${expectation.route} exposes the child in desktop and mobile navigation`).toHaveCount(2);
+      for (const child of await children.all()) {
+        await expect(child).toHaveAttribute("data-active", "true");
+        if (expectation.exact) {
+          await expect(child).toHaveAttribute("aria-current", "page");
+        } else {
+          await expect(child).not.toHaveAttribute("aria-current", /.+/);
+        }
+      }
+    }
+  });
+
+  test("venture breadcrumbs preserve the complete hierarchy", async ({ page }) => {
+    const trails = {
+      "/ventures/studio": ["Advisory", "Ventures", "Venture Studio"],
+      "/ventures/backoffice": ["Advisory", "Ventures", "Portfolio", "Backoffice"],
+      "/ventures/hivemind": ["Advisory", "Ventures", "Portfolio", "HiveMind"],
+      "/ventures/setbay": ["Advisory", "Ventures", "Portfolio", "Setbay"],
+      "/venture-submission-terms": ["Advisory", "Ventures", "Venture Studio", "Submission terms"],
+    } as const;
+
+    for (const [route, expected] of Object.entries(trails)) {
+      await page.goto(route);
+      const labels = await page
+        .locator('nav[aria-label="Breadcrumb"] > span')
+        .evaluateAll((spans) => spans.map((span) => {
+          const clone = span.cloneNode(true) as HTMLElement;
+          clone.querySelectorAll('[aria-hidden="true"]').forEach((node) => node.remove());
+          return (clone.textContent ?? "").trim();
+        }));
+      expect(labels).toEqual(expected);
+    }
+  });
+
+  test("breadcrumb-only legal pages expose no empty contextual landmark", async ({ page }) => {
+    for (const route of ["/privacy", "/venture-submission-terms"]) {
+      await page.goto(route);
+      await expect(page.locator('nav[aria-label="On this page"]')).toHaveCount(0);
+    }
+  });
+});

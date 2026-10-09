@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { bookingLinkProps, companyLinkedInUrl, contactEmail, mailtoHref } from "@/lib/contact";
+import { founder } from "@/lib/founder";
 import styles from "./SiteChrome.module.css";
 
 export function SiteFooter() {
@@ -6,34 +8,43 @@ export function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.footerIdentity}>
         <strong>MiddleLeap</strong>
-        <p>Independent advisory practice · Dubai, UAE</p>
-        <p>Working capability and institution-owned intelligence.</p>
+        <p>Independent advisory practice and venture studio · Dubai, UAE</p>
+        <p>Senior teams assembled around each mandate.</p>
+        <p>Founded and led by <Link href="/founder">{founder.name}</Link>.</p>
       </div>
       <div className={styles.footerLinks}>
         <nav className={styles.footerGroup} aria-label="Advisory links">
           <span>Advisory</span>
           <Link href="/#expertise">What we do</Link>
           <Link href="/open-finance">Open Finance</Link>
-          <Link href="/#practice">The practice</Link>
+          <Link href="/#method">How we work</Link>
+          <Link href="/institutional-intelligence">Institutional Intelligence</Link>
+          <Link href="/institutional-brain">Institutional Brain</Link>
+          <Link href="/how-we-engage">Engagement models</Link>
+          <Link href="/practice">The practice</Link>
+          <Link href="/founder">Founder</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
-        <nav className={styles.footerGroup} aria-label="Institutional Intelligence links">
-          <span>Institutional Intelligence</span>
-          <Link href="/institutional-intelligence">Overview</Link>
-          <Link href="/institutional-brain">Institutional Brain</Link>
+        <nav className={styles.footerGroup} aria-label="Execution links">
+          <span>Execution</span>
           <Link href="/the-loom">The Loom</Link>
-          <Link href="/toolkit">Technical implementation</Link>
+          <Link href="/ai-dlc">The Loom Toolkit</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Venture links">
           <span>Ventures</span>
           <Link href="/ventures#portfolio">Portfolio</Link>
           <Link href="/ventures/studio">Venture Studio</Link>
+          <Link href="/ventures/backoffice">Backoffice</Link>
+          <Link href="/ventures/setbay">Setbay</Link>
+          <Link href="/ventures/hivemind">HiveMind</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <Link href="/#practice">Practice &amp; founder</Link>
-          <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
+          <a {...bookingLinkProps}>Book a conversation</a>
+          <a href={mailtoHref()}>{contactEmail}</a>
+          <a href={companyLinkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/venture-submission-terms">Submission terms</Link>
         </nav>
       </div>
     </footer>

@@ -12,7 +12,7 @@ export function InstitutionalIntelligenceSystem() {
   return (
     <div
       className={styles.intelligenceSystem}
-      role="img"
+      role="group"
       aria-label="The institution-owned Institutional Brain informs The Loom, which creates working capability and returns operating evidence to the institution"
     >
       <div className={styles.intelligenceHeader}>

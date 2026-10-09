@@ -2,14 +2,15 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VentureProposalForm } from "@/components/VentureProposalForm";
-import { createPageMetadata } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/seo";
 import styles from "./studio.module.css";
 
-export const metadata = createPageMetadata({
+export const metadata = pageMetadata({
   title: "Venture Studio",
   description:
     "Propose an evidenced platform, regulated-market or financial-infrastructure problem to the MiddleLeap Venture Studio.",
   path: "/ventures/studio",
+  socialTitle: "Venture Studio | MiddleLeap",
 });
 
 const criteria = [
@@ -38,10 +39,9 @@ const process = [
 
 export default function VentureStudioPage() {
   return (
-    <div className={styles.shell}>
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
         active="ventures"
-        priority
         breadcrumbs={[
           { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
@@ -56,10 +56,9 @@ export default function VentureStudioPage() {
         ]}
       />
 
-      <main id="main-content" tabIndex={-1}>
-      <section className={styles.hero} id="problem">
+      <section className={styles.hero}>
         <p className={styles.eyebrow}>MiddleLeap Venture Studio</p>
-        <h1>Bring us a problem<br />worth <em>building around.</em></h1>
+        <h1 id="main-content" tabIndex={-1}>Bring us a problem<br />worth <em>building around.</em></h1>
         <p className={styles.lede}>
           We work with operators, domain experts and potential partners to test focused
           propositions in regulated markets, platform businesses and financial infrastructure.
@@ -97,7 +96,7 @@ export default function VentureStudioPage() {
           <p className={styles.eyebrow}>How it moves</p>
           <div><h2>Evidence before surface area.</h2><p>Every step has a decision gate. The outcome may be a venture, a partnership, shared infrastructure or a clear decision not to proceed.</p></div>
         </div>
-        <div className={styles.processSystem} aria-label="Venture Studio stage-gate process">
+        <div className={styles.processSystem} role="group" aria-label="Venture Studio stage-gate process">
           <div className={styles.processHeader}><span>Studio decision system / 05</span><b>Evidence before commitment</b></div>
           <ol className={styles.processGrid}>
             {process.map(([number, title, detail, gate]) => (
@@ -119,13 +118,12 @@ export default function VentureStudioPage() {
       <section className={styles.propose} id="propose">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Propose a venture</p>
-          <div><h2>Start with a concise, non-confidential brief.</h2><p>If there is a fit, MiddleLeap will contact you to agree the next evidence step. Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before preparing the email.</p></div>
+          <div><h2>Start with a concise, non-confidential brief.</h2><p>If there is a fit, MiddleLeap will contact you to agree the next evidence step. Submission does not create an investment, confidentiality, partnership or advisory obligation. Please read the terms before sending the brief.</p></div>
         </div>
         <VentureProposalForm />
       </section>
 
-      </main>
       <SiteFooter />
-    </div>
+    </main>
   );
 }

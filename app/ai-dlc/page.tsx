@@ -1,30 +1,32 @@
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { createPageMetadata } from "@/lib/metadata";
+import { loomRelease } from "@/lib/proof";
 import styles from "./ai-dlc.module.css";
 
-export const metadata = createPageMetadata({
-  title: "The Loom Implementation | Governed Repository Controls",
+export const metadata = pageMetadata({
+  title: "The Loom Toolkit | Institutional AI Delivery",
   description:
-    "The technical implementation of The Loom: repository controls, assurance, the BrainKit initializer and optional domain intelligence distributed through AI-DLC.",
-  path: "/toolkit",
+    "The released Loom Toolkit 2.5.12 installs MiddleLeap's governed delivery method. Its evidence is a synthetic reference build, not customer production use.",
+  path: "/ai-dlc",
+  socialTitle: "The Loom Toolkit | Institutional AI Delivery",
   socialDescription:
-    "Install The Loom's repository controls and connect delivery to an institution-owned Brainstem.",
+    "Loom Toolkit 2.5.12 is released and reference-build validated on a synthetic Open Finance Backoffice—not customer production use.",
 });
 
 const bundles = [
   {
-    id: "loom-implementation",
-    number: "Repository implementation",
-    version: "Loom 2.0 RC.10 · AI-SDLC 1.0",
-    name: "The Loom implementation",
+    id: "loom-toolkit",
+    number: "Core bundle",
+    version: `Loom ${loomRelease.version} · AI-SDLC 1.0.0`,
+    name: "The Loom Toolkit",
     label: "Governed delivery system",
     kind: "core",
     description:
-      "The repository implementation carries The Loom's method, a BrainKit initializer and foundations that compile each change into the gates, evidence and accountable decisions it requires.",
-    contents: ["Discovery + delivery harnesses", "BrainKit initializer", "Compiled control plans", "Continuous assurance", "Governance + evidence controls", "Safe, merge-aware adoption"],
+      "The customer-facing core combines The Loom's governed method, the Institutional Brain and repository foundations that compile each change into the gates, evidence and accountable decisions it requires.",
+    contents: ["Discovery + delivery harnesses", "Institutional Brain", "Compiled control plans", "Continuous assurance", "Governance + evidence controls", "Safe, merge-aware adoption"],
     href: "/the-loom",
     linkLabel: "Explore The Loom",
   },
@@ -45,8 +47,8 @@ const bundles = [
 
 const layers = [
   ["01", "Advisory", "Frames the mandate", "Regulatory, commercial and operating questions are resolved at leadership level."],
-  ["02", "Repository implementation", "Installs The Loom", "One manifest installs the harnesses, controls and templates, preserves existing agent settings and reports anything that still needs a human merge."],
-  ["03", "BrainKit initializer", "Drafts the Brainstem", "Approved sources become draft identity, terminology, architecture, technology policy and decision rights; unknowns remain visible gaps."],
+  ["02", "The Loom Toolkit", "Installs the frame", "One manifest installs the harnesses, controls and templates, preserves existing agent settings and reports anything that still needs a human merge."],
+  ["03", "Brainstem draft", "Seeds institutional DNA", "Approved sources become draft identity, terminology, architecture, technology policy and decision rights; unknowns remain visible gaps."],
   ["04", "Human governance", "Approves and mounts", "Accountable context owners approve the private release; product repositories mount a digest-pinned snapshot."],
   ["05", "Institution", "Operates and compounds", "Each governed change binds the institutional profile while the wider context brain grows through delivery cycles."],
 ] as const;
@@ -57,7 +59,7 @@ const contextDimensions = [
   ["03", "Institutional DNA", "Architecture, approved technology, design system, terminology, voice and approval routes."],
 ] as const;
 
-const brainstemSources = [
+const brainkitSources = [
   "Design standards",
   "Approved terminology",
   "Architecture principles",
@@ -65,93 +67,92 @@ const brainstemSources = [
   "Controls + decision rights",
 ] as const;
 
-const brainstemOutputs = [
+const brainkitOutputs = [
   "PRDs + discovery artifacts",
   "Code + architectures + ADRs",
   "Interfaces + prototypes",
   "Reports + evidence packs",
 ] as const;
 
-const brainstemLifecycle = [
+const brainkitLifecycle = [
   ["01", "Draft from evidence", "The generator uses approved institutional sources only. Unsupported decisions go into a gap register."],
   ["02", "Approve with humans", "Accountable owners review the package. The agent can seal digests, but it cannot approve institutional context."],
-  ["03", "Pin the release", "Each repository mounts the private Brainstem snapshot. Its institution profile and compiled plans record the release digest."],
-  ["04", "Validate in CI", "Once compiled, CI checks the approved version, canonical sections, complete digest envelope, source grounding, D7 provenance and artifact provenance—and rejects undeclared context files."],
+  ["03", "Pin the release", "Each repository mounts the private snapshot. Its institution profile and compiled plans record the Brainstem digest."],
+  ["04", "Validate in CI", "Once compiled, CI checks the approved version, canonical sections, complete digest envelope, source grounding, D7 provenance and artifact provenance—and rejects undeclared Brainstem files."],
 ] as const;
 
 export default function AiDlcPage() {
   return (
-    <div className={styles.shell}>
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
-        active="intelligence"
-        priority
+        active="method"
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/institutional-intelligence", label: "Institutional Intelligence" },
+          { href: "/#method", label: "How we work" },
           { href: "/the-loom", label: "The Loom" },
-          { label: "Technical implementation" },
+          { label: "Toolkit" },
         ]}
-        contextLabel="Implementation navigation"
+        contextLabel="Toolkit navigation"
         contextLinks={[
           { href: "/the-loom", label: "The Loom" },
           { href: "/institutional-brain", label: "Institutional Brain" },
           { href: "#catalogue", label: "Bundles" },
           { href: "#installation", label: "Installation" },
-          { href: "#context", label: "Brainstem initialization" },
+          { href: "#context", label: "Your Institutional Brain" },
         ]}
       />
 
-      <main id="main-content" tabIndex={-1}>
-      <section className={styles.hero} id="problem">
+      <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>The Loom · technical implementation</p>
-          <h1>Install the method. Connect it to your <em>Institutional Brain.</em></h1>
+          <p className={styles.eyebrow}>The Loom Toolkit {loomRelease.version} · released</p>
+          <h1 id="main-content" tabIndex={-1}>Install the method. Give it your <em>institutional DNA.</em></h1>
           <p className={styles.lede}>
-            AI-DLC distributes The Loom&apos;s repository controls. The BrainKit initializer
-            drafts the private Brainstem from approved sources; human owners approve it,
-            repositories pin it and The Loom applies it where work happens.
+            The Toolkit includes BrainKit, which initializes the private Brainstem of the Institutional Brain for
+            code, PRDs, architectures, interfaces and reports. Human owners approve it;
+            repositories pin it; the Loom applies it where the work happens. Its present
+            evidence comes from a synthetic reference build—not customer production use.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#catalogue">Explore the bundles</a>
             <Link className={styles.secondaryAction} href="/the-loom">Start with The Loom</Link>
           </div>
         </div>
-        <div className={styles.packageVisual} role="img" aria-label="The Loom's repository implementation combines compiled control plans with a private Brainstem draft and optional domain packs">
-          <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Loom 2.0 RC.10</b></div>
-          <div className={styles.packageCore}><span>Discovery + delivery</span><span>Policy compiler</span><span>Continuous assurance</span><span>Manifest-driven adoption</span><strong>The Loom / repository implementation</strong></div>
-          <div className={styles.packageOutput}><span>Brainstem draft / private</span><i>+</i><span>Optional domain intelligence</span></div>
+        <div className={styles.packageVisual} role="group" aria-label="The Loom Toolkit combines compiled control plans with an institution-owned BrainKit and optional domain packs">
+          <div className={styles.packageHeader}><span>middleleap / ai-dlc</span><b>Loom Toolkit {loomRelease.version}</b></div>
+          <div className={styles.packageCore}><span>Discovery + delivery</span><span>Policy compiler</span><span>Continuous assurance</span><span>Manifest-driven adoption</span><strong>The Loom Toolkit / public core</strong></div>
+          <div className={styles.packageOutput}><span>Your Institutional Brain / private seed</span><i>+</i><span>Optional domain intelligence</span></div>
         </div>
       </section>
 
       <ExecutiveSummary
-        title="One method. One institutional asset. Technical machinery underneath."
-        intro="The Loom applies the Institutional Brain to real work. BrainKit initializes the Brainstem, while AI-DLC distributes the repository implementation. Neither is a separate consulting proposition."
+        title="The method is The Loom. The installable product is The Loom Toolkit."
+        intro="AI-DLC is the technical distribution mechanism—not a competing consulting proposition. The Toolkit carries the method into the repository and binds it to institution-owned context."
         items={[
-          { label: "Method", title: "The Loom", detail: "The governed method for discovery, delivery, evidence and human authority." },
-          { label: "Institutional asset", title: "Institutional Brain", detail: "The private, human-approved body of collective institutional understanding." },
-          { label: "Initializer", title: "BrainKit", detail: "Technical tooling used to draft, validate and release the Brainstem from approved sources." },
-          { label: "Distribution", title: "AI-DLC", detail: "The repository and plugin mechanism used to distribute and version the implementation." },
-          { label: "Extensions", title: "Domain packs", detail: "Optional specialist intelligence, beginning with UAE Open Finance, attached only when a mandate requires it." },
+          { label: "Release", title: `Toolkit ${loomRelease.version}`, detail: "The current public release of the installable discovery, delivery, controls, assurance and adoption system." },
+          { label: "Evidence", title: loomRelease.evidenceStatus, detail: loomRelease.evidenceDetail },
+          { label: "Boundary", title: "No customer production use", detail: loomRelease.evidenceBoundary },
+          { label: "Context", title: "Your Institutional Brain", detail: "A private, human-approved package of institutional language, architecture, technology policy and decision rights." },
+          { label: "Distribution", title: "AI-DLC", detail: "The repository and plugin mechanism used to distribute, version and adopt the public Toolkit." },
         ]}
       />
 
       <section className={styles.layers}>
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>The adoption path</p><div><h2>Install The Loom. Draft the Brainstem. Put owners in control.</h2><p>The repository implementation installs from one manifest. BrainKit drafts the private Brainstem; accountable humans approve the Institutional Brain release mounted by each adopting repository.</p></div></div>
-        <div className={styles.layerSystem} aria-label="From advisory mandate to installed institutional capability">
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>The adoption path</p><div><h2>Install the frame. Draft the identity. Put owners in control.</h2><p>The public toolkit installs from one manifest. The first institution-owned artifact is a private Brainstem, reviewed by accountable humans and pinned into each repository that adopts it.</p></div></div>
+        <div className={styles.layerSystem} role="group" aria-label="From advisory mandate to installed institutional capability">
           <div className={styles.layerSystemHeader}><span>Capability adoption path / 05</span><b>Frame → install → draft → approve → compound</b></div>
           <div className={styles.layerGrid}>
             {layers.map(([id, title, label, detail]) => <article key={id}><span>{id}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
           </div>
           <div className={styles.layerOutput}>
             <span>Installed capability</span>
-            <div><b>The Loom</b><b>Private Brainstem</b><b>Compiled control plans</b><b>Optional domain packs</b></div>
+            <div><b>Method</b><b>Private Brainstem</b><b>Compiled control plans</b><b>Optional domain packs</b></div>
             <strong>Operable by the institution</strong>
           </div>
         </div>
       </section>
 
       <section className={styles.catalogue} id="catalogue">
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>Implementation bundles</p><div><h2>One governed delivery system. A compiled route for every change.</h2><p>The public proposition remains The Loom and the Institutional Brain. This technical layer installs the repository controls and optional domain intelligence needed to operate them.</p></div></div>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>What you can adopt</p><div><h2>One governed delivery system. A compiled route for every change.</h2><p>The public proposition is deliberately smaller than the technical marketplace: a core toolkit whose compiler commands execution, plus domain packs when the mandate requires them.</p></div></div>
         <div className={`${styles.pluginGrid} ${styles.bundleGrid}`}>
           {bundles.map((bundle) => (
             <article id={bundle.id} key={bundle.id} className={bundle.kind === "core" ? styles.coreBundle : styles.domainBundle}>
@@ -168,10 +169,15 @@ export default function AiDlcPage() {
       <section className={styles.install} id="installation">
         <div>
           <p className={styles.eyebrow}>For builders</p>
-          <h2>Install The Loom. Then draft the Brainstem.</h2>
-          <p>RC.10 adopts The Loom from one copy manifest, preserves an existing <code>.claude/settings.json</code> and writes a sidecar when human merging is required. The BrainKit initializer may organise approved sources and expose gaps, but only accountable humans can approve the resulting Institutional Brain release.</p>
+          <h2>Install the frame. Then draft the institution&apos;s seed.</h2>
+          <p>Version {loomRelease.version} adopts the Loom from one copy manifest, preserves an existing <code>.claude/settings.json</code> and writes a sidecar when human merging is required. BrainKit initializes the Brainstem as a draft: the generator may organise approved sources and expose gaps, but only accountable humans can approve the result.</p>
         </div>
-        <pre aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
+        {/*
+          A labelled scrollable region rather than a bare aria-label: `pre` has a
+          generic role, so the label was being dropped, and the block scrolls, which
+          keyboard users need to be able to reach and read.
+        */}
+        <pre role="region" tabIndex={0} aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
 /plugin install middleleap-loom@middleleap-ai-dlc
 /plugin install middleleap-ai-sdlc@middleleap-ai-dlc
 
@@ -184,20 +190,21 @@ export default function AiDlcPage() {
 # optional domain intelligence
 /plugin install middleleap-open-finance@middleleap-ai-dlc`}</code></pre>
         <aside className={styles.operatingBoundary}>
-          <span>Operating boundary / RC.10</span>
+          <span>Operating boundary / {loomRelease.version}</span>
           <div>
             <h3>Build-time control frame. Institution-operated production controls.</h3>
-            <p>The repository implementation validates gates, evidence and readiness records. Live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution&apos;s responsibility.</p>
+            <p>The Toolkit validates repository-level gates, evidence and readiness records. Live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution&apos;s responsibility.</p>
+            <p>Version {loomRelease.version} can mechanically validate declared fairness evaluations and decision-contestability records. It does not determine whether a system is fair or whether an explanation is adequate.</p>
           </div>
         </aside>
       </section>
 
       <section className={styles.boundaries} id="context">
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>Technical context initialization</p><div><h2>BrainKit creates the draft. The institution owns the Brain.</h2><p>The initializer assembles the Brainstem from approved institutional sources. It references regulated context and solution-domain assets without duplicating either, keeping each source of truth clear.</p></div></div>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>Your Institutional Brain</p><div><h2>One governed seed—not a second compliance database.</h2><p>The Institutional Brain owns institutional DNA; BrainKit initializes its governed Brainstem. It references regulated context and solution-domain assets without duplicating either, keeping each source of truth clear.</p></div></div>
         <div className={styles.boundaryGrid}>
           {contextDimensions.map(([id, title, detail]) => <article key={id} className={id === "03" ? styles.brainkitDimension : undefined}><span>{id}</span><h3>{title}</h3><p>{detail}</p>{id === "03" && <b>Brainstem scope</b>}</article>)}
         </div>
-        <div className={styles.brainkitFlow} role="group" aria-label="Approved institutional sources become a governed Brainstem that shapes every Loom artifact">
+        <div className={styles.brainkitFlow} role="group" aria-label="Institutional sources become a governed Brainstem that shapes every Loom artifact">
           <div className={styles.brainkitHeader}>
             <span>Institution-owned context layer</span>
             <b>Versioned once · digest-pinned per repository</b>
@@ -206,24 +213,24 @@ export default function AiDlcPage() {
             <article>
               <span>01 / approved inputs</span>
               <h3>Institutional signals</h3>
-              <ul>{brainstemSources.map((source) => <li key={source}>{source}</li>)}</ul>
+              <ul>{brainkitSources.map((source) => <li key={source}>{source}</li>)}</ul>
             </article>
             <i aria-hidden="true">→</i>
             <article className={styles.brainkitSeed}>
-              <span>02 / governed foundation</span>
-              <h3>Brainstem draft</h3>
-              <p>The stable foundation of institutional identity, terminology, architecture, technology policy and decision rights.</p>
+              <span>02 / governed seed</span>
+              <h3>Institutional Brain</h3>
+              <p>A private package of institutional identity, terminology, architecture, technology policy and decision rights.</p>
               <div><b>Draft first</b><b>Human-owned</b><b>Versioned</b><b>Digest-pinned</b></div>
             </article>
             <i aria-hidden="true">→</i>
             <article>
               <span>03 / governed outputs</span>
               <h3>Every Loom artifact</h3>
-              <ul>{brainstemOutputs.map((output) => <li key={output}>{output}</li>)}</ul>
+              <ul>{brainkitOutputs.map((output) => <li key={output}>{output}</li>)}</ul>
             </article>
           </div>
-          <div className={styles.brainkitLifecycle} aria-label="Brainstem governance lifecycle">
-            {brainstemLifecycle.map(([id, title, detail]) => (
+          <div className={styles.brainkitLifecycle} role="group" aria-label="Institutional Brain governance lifecycle">
+            {brainkitLifecycle.map(([id, title, detail]) => (
               <article key={id}>
                 <span>{id}</span>
                 <h4>{title}</h4>
@@ -235,21 +242,17 @@ export default function AiDlcPage() {
             <strong>Private by default. Local by design.</strong>
             <p>The public AI-DLC repository ships the schema, adoption machinery and a fictional example—not institutional content. Product repositories validate their mounted snapshot locally, without a public registry or live resolution service.</p>
           </div>
-          <div className={styles.actions}>
-            <Link className={styles.secondaryAction} href="/institutional-brain">Examine the Institutional Brain</Link>
-          </div>
         </div>
       </section>
 
       <section className={styles.engage}>
-        <p className={styles.eyebrow}>From implementation to capability</p>
+        <p className={styles.eyebrow}>From package to capability</p>
         <h2>Adopt it around one bounded outcome.</h2>
-        <p>Use an AI-native delivery pilot to establish the first Institutional Brain release from approved sources, assign accountable ownership and leave The Loom&apos;s governed controls in the repository.</p>
+        <p>Use an AI-native delivery pilot to draft the first Brainstem from approved sources, establish accountable ownership and leave a digest-pinned, manifest-installed harness in the repository.</p>
         <div className={styles.actions}><Link className={styles.primaryAction} href="/#engage">Discuss a delivery pilot</Link><a className={styles.darkAction} href="https://github.com/middleleap/ai-dlc" target="_blank" rel="noreferrer">Browse the repository ↗</a></div>
       </section>
-      </main>
 
       <SiteFooter />
-    </div>
+    </main>
   );
 }

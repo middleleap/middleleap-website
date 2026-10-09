@@ -40,7 +40,7 @@
 }
 
 .hero h1 em {
-  color: var(--ember-500);
+  color: var(--ember-text);
   font-weight: 400;
 }
 

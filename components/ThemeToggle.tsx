@@ -70,10 +70,30 @@ export function ThemeToggle() {
     setMode(nextMode);
   };
 
+  // Radio-group keyboard contract: arrows move selection, one tab stop.
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const currentIndex = modes.findIndex((option) => option.value === mode);
+    let nextIndex = -1;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      nextIndex = (currentIndex + 1) % modes.length;
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      nextIndex = (currentIndex - 1 + modes.length) % modes.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = modes.length - 1;
+    }
+    if (nextIndex === -1) return;
+    event.preventDefault();
+    selectMode(modes[nextIndex].value);
+    const buttons = event.currentTarget.parentElement?.querySelectorAll("button");
+    buttons?.[nextIndex]?.focus();
+  };
+
   return (
     <div
       className={styles.toggle}
-      role="group"
+      role="radiogroup"
       aria-label="Theme preference"
     >
       <span className={styles.track} data-mode={mode}>
@@ -82,15 +102,18 @@ export function ThemeToggle() {
           <button
             key={option.value}
             type="button"
+            role="radio"
             className={styles.option}
             aria-label={`Use ${option.label.toLowerCase()}`}
-            aria-pressed={mode === option.value}
+            aria-checked={mode === option.value}
+            tabIndex={mode === option.value ? 0 : -1}
             title={
               option.value === "auto"
                 ? "Auto (follow device)"
                 : option.label
             }
             onClick={() => selectMode(option.value)}
+            onKeyDown={handleKeyDown}
           >
             {option.shortLabel}
           </button>

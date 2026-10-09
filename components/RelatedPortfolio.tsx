@@ -3,7 +3,10 @@ import { portfolioProjects } from "@/lib/ventures";
 import styles from "./SiteChrome.module.css";
 
 export function RelatedPortfolio({ currentPath }: { currentPath: string }) {
-  const related = portfolioProjects.filter((project) => project.detailPath !== currentPath);
+  const related = portfolioProjects.filter(
+    (project): project is typeof project & { detailPath: NonNullable<typeof project.detailPath> } =>
+      Boolean(project.detailPath) && project.detailPath !== currentPath,
+  );
 
   return (
     <section className={styles.related} aria-labelledby="related-portfolio-title">

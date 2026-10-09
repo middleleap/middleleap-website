@@ -1,24 +1,26 @@
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { createPageMetadata } from "@/lib/metadata";
 import styles from "./loom.module.css";
+import { loomProof, loomRelease } from "@/lib/proof";
 
-export const metadata = createPageMetadata({
+export const metadata = pageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
   description:
-    "The Loom is MiddleLeap's reusable way for regulated institutions to find the right problem, deliver software under control and learn from what runs.",
+    "The Loom is MiddleLeap's governed AI delivery method. Toolkit 2.5.12 is released and validated on a synthetic reference build, not customer production.",
   path: "/the-loom",
+  socialTitle: "The Loom | Governed AI Delivery for Regulated Institutions",
   socialDescription:
-    "Two governed harnesses turn an evidenced mandate into audit-ready software, then route operational signals back into discovery.",
+    "Toolkit 2.5.12 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
 });
 
 const proofPoints = [
-  ["134 / ~139", "Stories to done in the first build"],
-  ["2 + 1", "Harnesses and the Run feedback arc"],
-  ["100%", "Merges approved by people in the regulated build"],
-  ["0", "Real customer records used"],
+  [loomProof.storiesRatio, "Stories to done in the synthetic reference build"],
+  [loomProof.harnesses, "Harnesses and the Run feedback arc"],
+  [loomProof.humanApprovedMerges, "Merges approved by people in the reference build"],
+  [String(loomProof.realCustomerRecords), "Real customer records used"],
 ] as const;
 
 const loomParts = [
@@ -90,6 +92,7 @@ const governanceDecisions = [
   ["HG-0011", "Residency control", "Model traffic passes through governed gateways and DLP."],
   ["HG-0012", "Derive, do not retrieve", "A sealed runtime distinguishes reasoning from answer mining."],
   ["HG-0013", "Graduated autonomy", "A narrow routine-change lane can move approval from each change to a second-line-owned, expiring envelope. Approval is relocated, never removed."],
+  ["HG-0014", "Human determinations", "Religious and ethical determinations are human-issued context, never agent work-product."],
 ] as const;
 
 const maturityStates = [
@@ -101,7 +104,7 @@ const maturityStates = [
 ] as const;
 
 const limits = [
-  ["Demo-proven, not production-proven", "The first proof is permanently synthetic and has not cleared live production scale or a regulator examination."],
+  ["Reference-build validated, not production-proven", `${loomRelease.evidenceBoundary} It has not cleared live production scale or a regulator examination.`],
   ["One domain is early evidence", "Legacy integration, real data and organisational change remain the true cost curve for other institutions."],
   ["Spend measured; value unproven", "Token telemetry now measures delivery spend by iteration and milestone. The value half—and any implied ROI—remains unbuilt."],
   ["Comprehension debt remains", "Decision logs make agent reasoning replayable, but they do not prove that human reviewers still understand a growing codebase."],
@@ -111,13 +114,12 @@ const limits = [
 
 export default function LoomPage() {
   return (
-    <div className={styles.shell}>
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
-        active="intelligence"
-        priority
+        active="method"
         breadcrumbs={[
           { href: "/", label: "Advisory" },
-          { href: "/institutional-intelligence", label: "Institutional Intelligence" },
+          { href: "/#method", label: "How we work" },
           { label: "The Loom" },
         ]}
         contextLabel="The Loom navigation"
@@ -126,15 +128,14 @@ export default function LoomPage() {
           { href: "#control-chain", label: "Control chain" },
           { href: "#assurance", label: "Assurance" },
           { href: "#evidence", label: "Evidence" },
-          { href: "/toolkit", label: "Implementation" },
+          { href: "/ai-dlc", label: "Toolkit" },
         ]}
       />
 
-      <main id="main-content" tabIndex={-1}>
-      <section className={styles.hero} id="problem">
+      <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>The Loom · governed AI delivery</p>
-          <h1>Find the right problem.<br />Ship it under <em>control.</em></h1>
+          <p className={styles.eyebrow}>The Loom · Toolkit {loomRelease.version} released</p>
+          <h1 id="main-content" tabIndex={-1}>Find the right problem.<br />Ship it under <em>control.</em></h1>
           <p className={styles.lede}>
             Two harnesses turn an ambiguous mandate into audit-ready software. Run and
             Operations then return evidence to Discovery, so the institution learns from
@@ -142,11 +143,11 @@ export default function LoomPage() {
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#loop">Explore the closed loop</a>
-            <Link className={styles.secondaryAction} href="/toolkit">View the technical implementation</Link>
+            <Link className={styles.secondaryAction} href="/ai-dlc">View the technical toolkit</Link>
           </div>
         </div>
 
-        <div className={styles.loomFigure} role="img" aria-label="The Loom uses Discovery and Delivery harnesses to turn a mandate into audit-ready software, then routes operational signals back into Discovery">
+        <div className={styles.loomFigure} role="group" aria-label="The Loom uses Discovery and Delivery harnesses to turn a mandate into audit-ready software, then routes operational signals back into Discovery">
           <div className={styles.figureHeader}><span>Mandate → outcome / closed loop</span><b>Two harnesses · one feedback arc</b></div>
           <div className={styles.warp}><span>Evidence</span><span>Boundaries</span><span>Authority</span><span>Quality</span><span>Traceability</span></div>
           <div className={styles.harnesses}>
@@ -172,12 +173,13 @@ export default function LoomPage() {
           { label: "Mandate", title: "Start before code", detail: "Frame the outcome, evidence, boundaries and decision rights before implementation begins." },
           { label: "For whom", title: "Regulated leaders", detail: "Built for sponsors, product owners, risk leaders and delivery teams working under real institutional constraints." },
           { label: "Capability", title: "One closed loop", detail: "Discovery, delivery and operations share evidence instead of handing work across disconnected phases." },
-          { label: "Evidence", title: "A working reference", detail: "The first regulated build reached demo-complete using synthetic data, explicit gates and human release authority." },
-          { label: "Next decision", title: "Pilot one outcome", detail: "Adopt the method around a bounded mandate, then judge it on operating evidence rather than presentation claims." },
+          { label: "Release", title: `Toolkit ${loomRelease.version}`, detail: "The current public release packages the method for repository adoption." },
+          { label: "Evidence", title: loomRelease.evidenceStatus, detail: loomRelease.evidenceDetail },
+          { label: "Boundary", title: "No customer production use", detail: loomRelease.evidenceBoundary },
         ]}
       />
 
-      <section className={styles.proof} aria-label="Evidence from the first regulated Loom build">
+      <section className={styles.proof} aria-label="Evidence from the synthetic Open Finance Backoffice reference build">
         {proofPoints.map(([value, label]) => <article key={value}><strong>{value}</strong><span>{label}</span></article>)}
       </section>
 
@@ -202,7 +204,7 @@ export default function LoomPage() {
             </p>
           </div>
         </div>
-        <div className={styles.controlChain} aria-label="The Loom control chain from mandate to operational signal">
+        <div className={styles.controlChain} role="group" aria-label="The Loom control chain from mandate to operational signal">
           {controlChain.map(([id, title, detail]) => (
             <article key={id}>
               <span>{id}</span>
@@ -223,7 +225,7 @@ export default function LoomPage() {
           <p className={styles.eyebrow}>The two harnesses</p>
           <div><h2>A double diamond: find the right problem, then deliver it.</h2><p>The diamonds meet at one enforced waist: a gate-green hand-off. Discovery may stop a weak problem early; delivery evidence may legitimately send the work back.</p></div>
         </div>
-        <div className={styles.diamondFlow} role="img" aria-label="Discovery diverges to discover evidence and converges to define one problem, passes through an agreed waist gate, then delivery diverges to develop solutions and converges to deliver under control">
+        <div className={styles.diamondFlow} role="group" aria-label="Discovery diverges to discover evidence and converges to define one problem, passes through an agreed waist gate, then delivery diverges to develop solutions and converges to deliver under control">
           <article className={styles.methodDiamond}>
             <div className={styles.diamondStage}><span>01</span><strong>Discover</strong><small>Diverge around evidence</small></div>
             <div className={styles.diamondStage}><span>02</span><strong>Define</strong><small>Converge on one problem</small></div>
@@ -271,9 +273,6 @@ export default function LoomPage() {
           {brainDimensions.map(([title, label, detail], index) => <article key={title}><span>0{index + 1}</span><small>{label}</small><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
         <div className={styles.moat}><span>The moat test</span><p>If a competitor copied the codebase tomorrow, it would still lack the accumulated, governed context that makes the software belong to the institution.</p></div>
-        <div className={styles.actions}>
-          <Link className={styles.secondaryAction} href="/institutional-brain">Examine the Institutional Brain</Link>
-        </div>
       </section>
 
       <section className={styles.section} id="assurance">
@@ -306,13 +305,13 @@ export default function LoomPage() {
       <section className={styles.section} id="evidence">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Proof and limits</p>
-          <div><h2>Proven on Open Finance. Stated plainly.</h2><p>The first build demonstrates a real gated system and a reusable method. It does not justify claims the evidence cannot yet carry.</p></div>
+          <div><h2>Validated on a reference build. Stated plainly.</h2><p>The synthetic Open Finance Backoffice demonstrates a real gated system and a reusable method. It is not evidence of customer production use.</p></div>
         </div>
         <div className={styles.limitGrid}>
           {limits.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
-        <div className={styles.caseLink}><span>Reference proof</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only operating platform and the first formal proof of the harness.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
-        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Parqo · HiveMind</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
+        <div className={styles.caseLink}><span>Reference-build evidence</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only portal used to exercise the harness end to end—not a customer production deployment.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
+        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Setbay · HiveMind</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
       </section>
 
       <section className={styles.engage}>
@@ -321,12 +320,11 @@ export default function LoomPage() {
         <p>Mount the institution&apos;s controls and context, run one gated discovery, and deliver one bounded outcome with human accountability intact.</p>
         <div className={styles.actions}>
           <Link className={styles.primaryAction} href="/#engage">Discuss a Loom pilot</Link>
-          <Link className={styles.darkAction} href="/toolkit">View the technical implementation</Link>
+          <Link className={styles.darkAction} href="/ai-dlc">View The Loom Toolkit</Link>
         </div>
       </section>
-      </main>
 
       <SiteFooter />
-    </div>
+    </main>
   );
 }

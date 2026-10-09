@@ -1,11 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
+import { bookingLinkProps, contactEmail, mailtoHref } from "@/lib/contact";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { createPageMetadata } from "@/lib/metadata";
 import styles from "./open-finance.module.css";
 
-export const metadata = createPageMetadata({
+export const metadata = pageMetadata({
   title: "Open Finance Advisory | MENA Strategy & Execution",
   description:
     "MiddleLeap helps banks, fintechs and financial infrastructure providers turn Open Finance mandates into propositions, platforms, operating models and market execution.",
@@ -37,23 +38,6 @@ const structuredData = {
       },
       description:
         "Senior advisory that connects Open Finance regulatory obligations with proposition design, platform strategy, ecosystem economics and operating-model execution.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Advisory",
-          item: "https://www.middleleap.com/",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Open Finance",
-          item: "https://www.middleleap.com/open-finance",
-        },
-      ],
     },
   ],
 };
@@ -120,7 +104,7 @@ const engagementModels = [
 
 export default function OpenFinancePage() {
   return (
-    <div className={styles.shell}>
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -129,10 +113,10 @@ export default function OpenFinancePage() {
       />
 
       <SiteHeader
-        active="open-finance"
-        priority
+        active="what"
         breadcrumbs={[
           { href: "/", label: "Advisory" },
+          { href: "/#expertise", label: "What we do" },
           { label: "Open Finance" },
         ]}
         contextLabel="Open Finance navigation"
@@ -144,11 +128,10 @@ export default function OpenFinancePage() {
         ]}
       />
 
-      <main id="main-content" tabIndex={-1}>
-      <section className={styles.hero} id="problem">
+      <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Open Finance advisory · MENA</p>
-          <h1>
+          <h1 id="main-content" tabIndex={-1}>
             Turn regulatory change into <em>platform advantage.</em>
           </h1>
           <p className={styles.lede}>
@@ -164,7 +147,7 @@ export default function OpenFinancePage() {
 
         <div
           className={styles.decisionSystem}
-          role="img"
+          role="group"
           aria-label="Open Finance decision system connecting a regulatory mandate to market position, proposition, platform and operating model"
         >
           <div className={styles.systemHeader}>
@@ -276,11 +259,22 @@ export default function OpenFinancePage() {
               into MiddleLeap&apos;s advisory practice. It is distinguished from work
               contracted directly by MiddleLeap.
             </p>
+            <p>
+              For the current regulatory scope and definitions, use the{" "}
+              <a
+                href="https://rulebook.centralbank.ae/en/rulebook/introduction-and-scope-2"
+                target="_blank"
+                rel="noreferrer"
+              >
+                CBUAE Open Finance Regulation
+              </a>{" "}
+              as the primary source.
+            </p>
           </div>
         </div>
 
         <div className={styles.evidenceFeature}>
-          <div className={styles.evidenceTimeline} aria-label="MENA Open Banking and Open Finance experience">
+          <div className={styles.evidenceTimeline} role="group" aria-label="MENA Open Banking and Open Finance experience">
             <article>
               <span>Platform side</span>
               <h3>Build and expand across MENA</h3>
@@ -357,18 +351,16 @@ export default function OpenFinancePage() {
           ))}
         </div>
         <div className={styles.engageActionRow}>
-          <a
-            className={styles.primaryAction}
-            href="mailto:contact@middleleap.com?subject=Open%20Finance%20mandate"
-          >
-            Discuss the mandate
+          <a className={styles.primaryAction} {...bookingLinkProps}>
+            Book a conversation
           </a>
-          <span>contact@middleleap.com · Dubai, UAE</span>
+          <span>
+            <a href={mailtoHref("Open Finance mandate")}>{contactEmail}</a> · Dubai, UAE
+          </span>
         </div>
       </section>
-      </main>
 
       <SiteFooter />
-    </div>
+    </main>
   );
 }

@@ -4,10 +4,11 @@ import styles from "./BrandLockup.module.css";
 
 type BrandLockupProps = {
   className?: string;
-  priority?: boolean;
 };
 
-export function BrandLockup({ className = "", priority = false }: BrandLockupProps) {
+// Both theme variants render and CSS shows exactly one; neither is preloaded
+// because they are sub-kilobyte SVGs and one is always display: none.
+export function BrandLockup({ className = "" }: BrandLockupProps) {
   return (
     <Link
       href="/"
@@ -20,15 +21,13 @@ export function BrandLockup({ className = "", priority = false }: BrandLockupPro
         alt="MiddleLeap"
         width={164}
         height={39}
-        priority={priority}
       />
       <Image
         className={styles.onLight}
         src="/pivot-on-light.svg"
-        alt="MiddleLeap"
+        alt=""
         width={164}
         height={39}
-        priority={priority}
       />
     </Link>
   );

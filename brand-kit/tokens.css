@@ -12,7 +12,7 @@
 
   /* Ember — accent */
   --ember-300:#F58F55; --ember-400:#F0722E; --ember-500:#E65C2D;
-  --ember-600:#CE451B; --ember-700:#A83614;
+  --ember-600:#CE451B; --ember-700:#A83614; --ember-800:#8A2C0E;
   --ember-grad:linear-gradient(135deg,#F0722E 0%,#CE451B 100%); /* the mark only */
   --ember-dim:rgba(230,92,45,.14);
   --on-ember:#110D0A; /* text on ember-500 CTA fills (AA 5.46:1) */

@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Instrument_Serif, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { siteOrigin } from "@/lib/seo";
+import { parseThemeMode, resolveTheme, themeStorageKey } from "@/lib/theme";
 import "./globals.css";
 
 // Analytics is a no-op until a domain is configured. Plausible is
 // cookieless and privacy-friendly, matching the PRD's analytics intent.
-const siteOrigin = "https://www.middleleap.com";
-const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "www.middleleap.com";
+const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || undefined;
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+const bingSiteVerification = process.env.BING_SITE_VERIFICATION;
 
-const themeBootScript = `(()=>{try{const k="middleleap-theme",s=localStorage.getItem(k),a=s==="light"||s==="dark"?s:"auto",m=matchMedia("(prefers-color-scheme: light)").matches,t=a==="auto"?(m?"light":"dark"):a;document.documentElement.dataset.theme=t;document.documentElement.dataset.themeMode=a;document.documentElement.style.colorScheme=t}catch{document.documentElement.dataset.theme="dark";document.documentElement.dataset.themeMode="auto"}})();`;
+// Serialized from the tested implementations in lib/theme.ts so the
+// FOUC-prevention boot script cannot drift from runtime theme logic.
+const themeBootScript = `(()=>{try{const parse=${parseThemeMode.toString()};const resolve=${resolveTheme.toString()};const mode=parse(localStorage.getItem(${JSON.stringify(themeStorageKey)}));const theme=resolve(mode,matchMedia("(prefers-color-scheme: light)").matches);document.documentElement.dataset.theme=theme;document.documentElement.dataset.themeMode=mode;document.documentElement.style.colorScheme=theme}catch{document.documentElement.dataset.theme="dark";document.documentElement.dataset.themeMode="auto"}})();`;
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -31,11 +36,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
+    default: "MiddleLeap | Platform Strategy & AI-Native Transformation",
     template: "%s | MiddleLeap",
   },
   description:
-    "MiddleLeap helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.",
+    "MiddleLeap advises banks, fintechs, financial infrastructure and telecommunications providers on platform strategy and AI-native transformation.",
   keywords: [
     "Open Finance",
     "embedded finance",
@@ -45,9 +50,6 @@ export const metadata: Metadata = {
     "platform monetisation",
     "regulatory readiness",
     "AI-native operating models",
-    "institutional intelligence",
-    "Institutional Brain",
-    "Institutional Brainstem",
     "The Loom",
     "governed AI delivery method",
     "venture studio",
@@ -66,9 +68,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
+    title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
     description:
-      "Deliver the mandate in front of you. Strengthen the institution behind it.",
+      "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
     url: `${siteOrigin}/`,
     siteName: "MiddleLeap",
     locale: "en_US",
@@ -78,15 +80,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "MiddleLeap — Every engagement should leave the institution smarter",
+        alt: "MiddleLeap — From Strategic Mandate to Market Execution",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MiddleLeap | Institutional Intelligence for Regulated Businesses",
+    title: "MiddleLeap | Platform Strategy & AI-Native Transformation",
     description:
-      "Deliver the mandate in front of you. Strengthen the institution behind it.",
+      "From strategic mandate to market execution across platforms, ecosystems and AI-native operating models.",
     images: ["/twitter-image"],
   },
   robots: {
@@ -100,6 +102,16 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  ...(googleSiteVerification || bingSiteVerification
+    ? {
+        verification: {
+          ...(googleSiteVerification ? { google: googleSiteVerification } : {}),
+          ...(bingSiteVerification
+            ? { other: { "msvalidate.01": bingSiteVerification } }
+            : {}),
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({
@@ -125,7 +137,7 @@ export default function RootLayout({
       >
         <a href="#main-content" className="skip-link">Skip to content</a>
         <div className="grain" />
-        <div>{children}</div>
+        {children}
         {plausibleDomain && (
           <Script
             defer

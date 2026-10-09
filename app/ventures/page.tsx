@@ -1,11 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VenturesPortfolio } from "@/components/VenturesPortfolio";
-import { createPageMetadata } from "@/lib/metadata";
 import styles from "./ventures.module.css";
 
-export const metadata = createPageMetadata({
+export const metadata = pageMetadata({
   title: "Ventures",
   description:
     "Open ecosystem infrastructure, platform ventures and AI-native execution systems built and contributed to by MiddleLeap.",
@@ -35,10 +36,9 @@ const principles = [
 
 export default function VenturesPage() {
   return (
-    <div className={styles.shell}>
+    <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
         active="ventures"
-        priority
         breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Ventures" }]}
         contextLabel="Ventures navigation"
         contextLinks={[
@@ -48,11 +48,10 @@ export default function VenturesPage() {
         ]}
       />
 
-      <main id="main-content" tabIndex={-1}>
-      <section className={styles.hero} id="problem">
+      <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
-          <h1>We build what<br />we <em>advise.</em></h1>
+          <h1 id="main-content" tabIndex={-1}>We build what<br />we <em>advise.</em></h1>
           <p className={styles.lede}>
             MiddleLeap creates focused ventures and contributes selectively to open
             ecosystems. Each initiative turns a strategic proposition into operating
@@ -64,7 +63,7 @@ export default function VenturesPage() {
           </div>
         </div>
 
-        <div className={styles.heroSystem} role="img" aria-label="Venture learning system">
+        <div className={styles.heroSystem} role="group" aria-label="Venture learning system">
           <div className={styles.systemHeader}>
             <span>Venture intelligence system / 03</span>
             <span><i aria-hidden="true" /> Operating</span>
@@ -72,7 +71,7 @@ export default function VenturesPage() {
           <div className={styles.systemBody}>
             <div className={styles.systemOrbit} aria-hidden="true">
               <span className={styles.orbitOne}>Backoffice</span>
-              <span className={styles.orbitTwo}>Parqo</span>
+              <span className={styles.orbitTwo}>Setbay</span>
               <span className={styles.orbitThree}>HiveMind</span>
               <b>Build<br />Learn<br />Apply</b>
             </div>
@@ -104,7 +103,7 @@ export default function VenturesPage() {
       <section className={styles.portfolio} id="portfolio" tabIndex={-1}>
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>The portfolio</p>
-          <h2>One flagship regulated proof. Two venture experiments. One compounding body of evidence.</h2>
+          <h2>One flagship regulated proof. Two venture experiments. One regulated prototype. One compounding body of evidence.</h2>
         </div>
         <VenturesPortfolio />
       </section>
@@ -131,8 +130,7 @@ export default function VenturesPage() {
         <div className={styles.boundaryCopy}>
           <p>
             OpenFinance-OS is presented as independent, community-led
-            infrastructure. MiddleLeap&apos;s role is contribution and stewardship,
-            not institutional ownership.
+            infrastructure. MiddleLeap&apos;s role is contribution, not ownership.
           </p>
           <p>
             MiddleLeap-owned ventures and independent ecosystem contributions are
@@ -148,13 +146,17 @@ export default function VenturesPage() {
           Explore how the portfolio&apos;s market, platform and execution intelligence
           can strengthen a regulated transformation mandate.
         </p>
-        <a className={styles.engageAction} href="mailto:contact@middleleap.com?subject=Ventures%20and%20strategic%20mandate">
-          Discuss your mandate →
-        </a>
+        <div className={styles.engageActions}>
+          <a className={styles.engageAction} {...bookingLinkProps}>
+            Book a conversation ↗
+          </a>
+          <a className={styles.engageEmail} href={mailtoHref("Ventures and strategic mandate")}>
+            Discuss your mandate by email →
+          </a>
+        </div>
       </section>
 
-      </main>
       <SiteFooter />
-    </div>
+    </main>
   );
 }
