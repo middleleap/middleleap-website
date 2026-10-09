@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects. Parqo was Setbay's working codename.
+/ventures/parqo /ventures/setbay 301
+/ventures/parqo/ /ventures/setbay 301

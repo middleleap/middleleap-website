@@ -3,6 +3,10 @@ import Link from "next/link";
 import { MandateSystem } from "@/components/MandateSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { bookingLinkProps, companyLinkedInUrl, mailtoHref } from "@/lib/contact";
+import { engagementModels } from "@/lib/engagements";
+import { founder, founderBioMedium, founderPerson } from "@/lib/founder";
+import { FounderPortrait } from "@/components/FounderPortrait";
 import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
 import { loomProof } from "@/lib/proof";
@@ -17,6 +21,7 @@ const structuredData = {
       "@type": "Organization",
       "@id": "https://www.middleleap.com/#organization",
       name: "MiddleLeap",
+      sameAs: [companyLinkedInUrl, "https://github.com/middleleap"],
       url: "https://www.middleleap.com/",
       email: "contact@middleleap.com",
       foundingDate: "2021",
@@ -49,32 +54,13 @@ const structuredData = {
         "AI-DLC",
       ],
     },
-    {
-      "@type": "Person",
-      "@id": "https://www.middleleap.com/#michael-ryberg-hartmann",
-      name: "Michael Ryberg Hartmann",
-      jobTitle: "Founder and Principal Adviser",
-      url: "https://www.middleleap.com/practice",
-      sameAs: ["https://www.linkedin.com/in/michael-ryberg-hartmann"],
-      worksFor: { "@id": "https://www.middleleap.com/#organization" },
-      alumniOf: [
-        { "@type": "Organization", name: "Fintech Galaxy" },
-        { "@type": "Organization", name: "TDC Group" },
-        { "@type": "Organization", name: "Danske Bank" },
-      ],
-      knowsAbout: [
-        "Open Finance",
-        "Platform strategy",
-        "AI-native operating models",
-        "Product and technology strategy",
-        "Transformation delivery",
-      ],
-    },
+    founderPerson,
     {
       "@type": "WebSite",
       "@id": "https://www.middleleap.com/#website",
       url: "https://www.middleleap.com/",
       name: "MiddleLeap",
+      alternateName: "MiddleLeap Advisory",
       description:
         "Platform strategy and AI-native transformation for regulated businesses.",
       publisher: { "@id": "https://www.middleleap.com/#organization" },
@@ -162,18 +148,42 @@ const approach = [
   { number: "05", name: "Codify", detail: "Embed reusable knowledge, controls and agent workflows." },
 ];
 
-const engagements = [
+// Evidence, not an offering: training appears here only as proof that
+// institutions ask MiddleLeap to show the working. No workshop CTA anywhere.
+// Naming is settled: CFTE may be named; the bank and the sovereign wealth
+// fund are not.
+const proofPractice: Array<{
+  number: string;
+  label: string;
+  title: string;
+  body: string;
+  footer: string;
+  href?: Route;
+}> = [
   {
-    title: "Executive advisory",
-    detail: "Senior guidance for regulatory, platform and transformation mandates.",
+    number: "01",
+    label: "Built",
+    title: "Five products, one method.",
+    body:
+      "Backoffice, HiveMind, Setbay, our OpenFinance-OS contributions and The Loom itself are built and operated through the same governed loop we bring to client mandates: Discovery and Delivery harnesses, decision-grade proofs, an audit trail on every change.",
+    footer: "Live · middleleap.com/ventures",
+    href: "/ventures",
   },
   {
-    title: "Platform strategy sprint",
-    detail: "Define the proposition, ecosystem, commercial model and execution roadmap.",
+    number: "02",
+    label: "Regulated",
+    title: "Proven where the rules are strict.",
+    body:
+      "The same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq, where every consent, API and release is examined by the regulator, not just the product team. And, in 2026, in front of regulators as Declare.",
+    footer: "CBUAE Open Finance · 2024–2026",
   },
   {
-    title: "AI-native delivery pilot",
-    detail: "Adopt The Loom around one real outcome and leave a governed repository capability behind.",
+    number: "03",
+    label: "Taught",
+    title: "Asked to teach the mindset.",
+    body:
+      "In 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to teach its teams the fundamentals of working with AI: prompt engineering, an open mind, and how an organisation changes its culture and ways of working to get the value out. The same shift we design into AI-native operating models.",
+    footer: "Executive training · via CFTE",
   },
 ];
 
@@ -424,7 +434,7 @@ export default function HomePage() {
             <div className={styles.evidenceList}>
               <div>
                 <strong>MENA Open Banking &amp; Open Finance</strong>
-                <span>Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification under the UAE framework and deliver the country&apos;s first live transactions with a licensed TPP.</span>
+                <span>Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that took ADCB Group to first-bank certification under the UAE framework and delivered the country&apos;s first live transactions with a licensed TPP.</span>
               </div>
               <div>
                 <strong>Business banking ecosystems</strong>
@@ -441,22 +451,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className={styles.founderNote}>
-            <p className={styles.eyebrow}>Founded in Dubai</p>
-            <h3>Michael Ryberg Hartmann</h3>
-            <small>Founder and Principal Adviser</small>
-            <p>
-              Michael founded MiddleLeap after more than 20 years across banking, fintech,
-              telecommunications and SaaS, including senior roles at a leading UAE bank,
-              Fintech Galaxy, TDC Group, Danske Bank and Planday.
-            </p>
-            <p>
-              He leads selected mandates and assembles the senior specialists required
-              around each client and problem.
-            </p>
-            <a href="https://www.linkedin.com/in/michael-ryberg-hartmann" target="_blank" rel="noreferrer">
-              Founder profile ↗
-            </a>
+          <aside className={styles.founderNote} aria-label="Founder">
+            <FounderPortrait size={480} />
+            <p className={styles.eyebrow}>The senior lead on every mandate</p>
+            <h3>{founder.name}</h3>
+            <p>{founderBioMedium}</p>
+            <Link href="/founder">Founder profile →</Link>
           </aside>
         </div>
       </section>
@@ -465,11 +465,12 @@ export default function HomePage() {
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
           <div>
-            <h2>One regulated proof. Two venture experiments.</h2>
+            <h2>One regulated proof. Two venture experiments. One regulated prototype.</h2>
             <p className={styles.venturesIntro}>
               Backoffice demonstrates governed delivery in MiddleLeap&apos;s core market.
-              Parqo and HiveMind test transferable platform and human-authority principles
-              in different operating contexts. Their roles are deliberately not presented as equal evidence.
+              Setbay and HiveMind test transferable platform and human-authority principles
+              in different operating contexts. Declare puts AI inside a regulated payments
+              flow as a prototype. Their roles are deliberately not presented as equal evidence.
             </p>
           </div>
         </div>
@@ -495,6 +496,11 @@ export default function HomePage() {
                 <span>{project.type}</span>
                 <span>{project.status}</span>
               </div>
+              {!project.detailPath && project.href && (
+                <a className={styles.ventureLink} href={project.href} target="_blank" rel="noreferrer">
+                  Open the emulator ↗
+                </a>
+              )}
             </article>
           ))}
         </div>
@@ -508,25 +514,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.engage} id="engage">
-        <div>
-          <p className={styles.eyebrow}>Start with the mandate in front of you</p>
-          <h2>Bring the right senior team to the problem.</h2>
+      <section className={styles.proofPractice} id="practice-not-commentary" aria-labelledby="proof-practice-title">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Practice, not commentary</p>
+          <div>
+            <h2 id="proof-practice-title">
+              We advise on AI-native delivery because <em>we ship with it.</em>
+            </h2>
+            <p className={styles.proofPracticeIntro}>
+              Every position MiddleLeap takes on agentic workflows, governance and AI-enabled
+              delivery is tested on our own products first. Then, occasionally, we are asked to teach it.
+            </p>
+          </div>
         </div>
-        <div className={styles.engagementGrid}>
-          {engagements.map((engagement, index) => (
-            <article key={engagement.title}>
-              <span>0{index + 1}</span>
-              <h3>{engagement.title}</h3>
-              <p>{engagement.detail}</p>
+
+        <div className={styles.proofPracticeGrid}>
+          {proofPractice.map((item) => (
+            <article key={item.number}>
+              <span>{item.number} · {item.label}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <small>
+                {"href" in item && item.href ? <Link href={item.href}>{item.footer}</Link> : item.footer}
+              </small>
             </article>
           ))}
         </div>
-        <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
-          Discuss your mandate →
+      </section>
+
+      <section className={styles.engage} id="engage">
+        <div>
+          <p className={styles.eyebrow}>Start with the mandate in front of you</p>
+          <h2>Bring the right senior expertise to the problem.</h2>
+        </div>
+        <div className={styles.engagementGrid}>
+          {engagementModels.map((engagement, index) => (
+            <article key={engagement.key}>
+              <span>0{index + 1}</span>
+              <h3>{engagement.label}</h3>
+              <p>{engagement.short}</p>
+            </article>
+          ))}
+        </div>
+        <a className={styles.primaryAction} {...bookingLinkProps}>
+          Book a conversation ↗
         </a>
         <p className={styles.contactFallback}>
-          Prefer to use your own email client? Copy <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.
+          Opens Google Calendar in a new tab. Prefer email?{" "}
+          <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email</a>.
         </p>
       </section>
 
