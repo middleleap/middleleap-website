@@ -1,50 +1,31 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
-  careerContext,
   experienceProvenanceNote,
-  founderBio,
   practiceEvidence,
-  practiceExpertise,
   practiceFacts,
   practicePrinciples,
 } from "@/lib/practice";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { jsonLdScript } from "@/lib/structured-data";
-import { pageOpenGraph, siteOrigin } from "@/lib/seo";
+import { pageMetadata, siteOrigin } from "@/lib/seo";
 import styles from "./practice.module.css";
 
 const description =
-  "MiddleLeap is a founder-led, networked advisory practice in Dubai. Michael Ryberg Hartmann leads selected mandates and assembles the senior specialists required around each client and problem.";
+  "MiddleLeap is an intentionally boutique, senior-led advisory practice in Dubai, assembling focused expertise around each mandate rather than maintaining a fixed consulting bench.";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "The Practice",
   description,
-  alternates: { canonical: "/practice" },
-  openGraph: pageOpenGraph({
-    title: "The Practice | MiddleLeap",
-    description,
-    path: "/practice",
-  }),
-};
+  path: "/practice",
+  socialTitle: "The Practice | MiddleLeap",
+});
 
-// Reuses the Person @id the homepage already declares, so / and /practice
-// describe one entity rather than two.
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${siteOrigin}/#michael-ryberg-hartmann`,
-      name: practiceFacts.principal,
-      jobTitle: practiceFacts.principalRole,
-      url: `${siteOrigin}/practice`,
-      sameAs: [practiceFacts.linkedIn],
-      worksFor: { "@id": `${siteOrigin}/#organization` },
-      knowsAbout: [...practiceExpertise],
-    },
     {
       "@type": "AboutPage",
       "@id": `${siteOrigin}/practice#page`,
@@ -52,7 +33,7 @@ const structuredData = {
       name: "The Practice",
       description,
       about: { "@id": `${siteOrigin}/#organization` },
-      mainEntity: { "@id": `${siteOrigin}/#michael-ryberg-hartmann` },
+      mainEntity: { "@id": `${siteOrigin}/#organization` },
     },
   ],
 };
@@ -71,7 +52,6 @@ export default function PracticePage() {
         contextLabel="Practice navigation"
         contextLinks={[
           { href: "#model", label: "How we staff" },
-          { href: "#founder", label: "Founder" },
           { href: "#evidence", label: "Evidence" },
           { href: "#engage", label: "Engage" },
         ]}
@@ -87,8 +67,8 @@ export default function PracticePage() {
             around the work—not a fixed consulting bench.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
-              Discuss a mandate
+            <a className={styles.primaryAction} {...bookingLinkProps}>
+              Book a conversation
             </a>
             <Link className={styles.secondaryAction} href="/how-we-engage">
               See how we engage
@@ -99,24 +79,23 @@ export default function PracticePage() {
         <aside className={styles.dossier} aria-label="Practice record">
           <div className={styles.dossierHeader}>
             <span>Practice record</span>
-            <b>Founder-led</b>
+            <b>Intentionally boutique</b>
           </div>
           <dl>
             <div><dt>Founded</dt><dd>{practiceFacts.foundedYear}</dd></div>
             <div><dt>Base</dt><dd>{practiceFacts.base}</dd></div>
             <div><dt>Primary market</dt><dd>{practiceFacts.primaryMarket}</dd></div>
             <div><dt>Model</dt><dd>{practiceFacts.model}</dd></div>
-            <div><dt>Principal</dt><dd>{practiceFacts.principal} · {practiceFacts.principalRole}</dd></div>
-            <div><dt>Contact</dt><dd>{practiceFacts.contactEmail}</dd></div>
+            <div><dt>Contact</dt><dd><a href={mailtoHref()}>{practiceFacts.contactEmail}</a></dd></div>
           </dl>
         </aside>
       </section>
 
       <ExecutiveSummary
-        title="Founder-led, and staffed around the problem."
-        intro="MiddleLeap is founder-led and networked. Each mandate carries senior accountability, specialists assembled around the problem and active client leadership."
+        title="Senior-led, and staffed around the problem."
+        intro="MiddleLeap is intentionally boutique and networked. Each mandate carries clear senior accountability, specialists assembled around the problem and active client leadership."
         items={[
-          { label: "Model", title: "Founder-led and networked", detail: practiceFacts.model + "." },
+          { label: "Model", title: "Intentionally boutique and networked", detail: practiceFacts.model + "." },
           { label: "Accountability", title: practicePrinciples[0].title, detail: practicePrinciples[0].detail },
           { label: "Team", title: practicePrinciples[1].title, detail: practicePrinciples[1].detail },
           { label: "Ownership", title: practicePrinciples[2].title, detail: practicePrinciples[2].detail },
@@ -148,41 +127,6 @@ export default function PracticePage() {
         </div>
       </section>
 
-      <section className={styles.section} id="founder" tabIndex={-1}>
-        <p className={styles.eyebrow}>Founded in Dubai</p>
-        <h2>{practiceFacts.principal}</h2>
-        <div className={styles.founderLayout}>
-          <div className={styles.nameplate}>
-            <strong>{practiceFacts.principal}</strong>
-            <small>{practiceFacts.principalRole}</small>
-          </div>
-          <div className={styles.founderBody}>
-            {founderBio.map((paragraph) => (
-              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-            ))}
-
-            <div className={styles.chipGroup}>
-              <span>Career context</span>
-              <div className={styles.chips}>
-                {careerContext.map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </div>
-
-            <div className={styles.chipGroup}>
-              <span>Works on</span>
-              <div className={styles.chips}>
-                {practiceExpertise.map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </div>
-
-            <div className={styles.founderLinks}>
-              <a href={practiceFacts.linkedIn} target="_blank" rel="noreferrer">Founder profile ↗</a>
-              <a href="mailto:contact@middleleap.com?subject=Strategic%20mandate">Email the practice</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className={styles.section} id="evidence" tabIndex={-1}>
         <p className={styles.eyebrow}>Experience carried into the practice</p>
         <h2>Operating evidence across regulated platforms and transformation.</h2>
@@ -199,12 +143,14 @@ export default function PracticePage() {
 
       <section className={styles.engage} id="engage" tabIndex={-1}>
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
-        <h2>Bring the right senior team to the problem.</h2>
+        <h2>Bring the right senior expertise to the problem.</h2>
         <p>
-          Prefer to use your own email client? Copy {practiceFacts.contactEmail}.
+          Book a call directly, or email{" "}
+          <a href={mailtoHref("Strategic mandate")}>{practiceFacts.contactEmail}</a> if you prefer.
         </p>
         <div className={styles.engageActions}>
-          <a href="mailto:contact@middleleap.com?subject=Strategic%20mandate">Discuss your mandate →</a>
+          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email →</a>
           <Link href="/how-we-engage">See how we engage →</Link>
         </div>
       </section>

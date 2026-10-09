@@ -1,32 +1,33 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import { engagementModels } from "@/lib/engagements";
 import { practiceFacts, practicePrinciples } from "@/lib/practice";
-import { pageOpenGraph } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import styles from "./engage.module.css";
 
 const description =
   "Executive advisory, strategy sprints and transformation mobilisation. MiddleLeap assembles senior regulatory, strategy, product, technology and delivery expertise around the mandate rather than bringing a fixed bench.";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "How We Engage",
   description,
-  alternates: { canonical: "/how-we-engage" },
-  openGraph: pageOpenGraph({
-    title: "How We Engage | MiddleLeap",
-    description,
-    path: "/how-we-engage",
-  }),
-};
+  path: "/how-we-engage",
+  socialTitle: "How We Engage | MiddleLeap",
+});
 
 export default function HowWeEngagePage() {
   return (
     <main className={styles.shell} id="problem" tabIndex={-1}>
       <SiteHeader
-        breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "How we engage" }]}
+        active="method"
+        breadcrumbs={[
+          { href: "/", label: "Advisory" },
+          { href: "/#method", label: "How we work" },
+          { label: "Engagement models" },
+        ]}
         contextLabel="Engagement navigation"
         contextLinks={[
           { href: "#models", label: "Models" },
@@ -43,16 +44,16 @@ export default function HowWeEngagePage() {
           delivery expertise around the mandate rather than bringing a fixed bench.
         </p>
         <div className={styles.actions}>
-          <a className={styles.primaryAction} href="mailto:contact@middleleap.com?subject=Strategic%20mandate">
-            Discuss your mandate
+          <a className={styles.primaryAction} {...bookingLinkProps}>
+            Book a conversation
           </a>
           <a className={styles.secondaryAction} href="#models">See the models</a>
         </div>
       </section>
 
       <ExecutiveSummary
-        title="Three ways to start. One senior team."
-        intro="Every mandate begins with a decision that cannot stay unresolved. The three models differ in scope and pace, not in who does the work."
+        title="Three ways to start. One accountable lead."
+        intro="Every mandate begins with a decision that cannot stay unresolved. The three models differ in scope and pace, not in senior accountability."
         items={[
           {
             label: "01",
@@ -124,10 +125,14 @@ export default function HowWeEngagePage() {
 
       <section className={styles.start} id="start" tabIndex={-1}>
         <p className={styles.eyebrow}>Start with the mandate in front of you</p>
-        <h2>Bring the right senior team to the problem.</h2>
-        <p>Prefer to use your own email client? Copy {practiceFacts.contactEmail}.</p>
+        <h2>Bring the right senior expertise to the problem.</h2>
+        <p>
+          Book a call directly, or email{" "}
+          <a href={mailtoHref("Strategic mandate")}>{practiceFacts.contactEmail}</a> if you prefer.
+        </p>
         <div className={styles.startActions}>
-          <a href="mailto:contact@middleleap.com?subject=Strategic%20mandate">Discuss your mandate →</a>
+          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email →</a>
           <Link href="/practice">Meet the practice →</Link>
         </div>
       </section>
