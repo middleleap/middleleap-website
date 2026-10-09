@@ -766,3 +766,8 @@
     transition: none;
   }
 }
+
+.heroVisual {
+  align-self: center;
+  min-width: 0;
+}

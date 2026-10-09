@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { LoomMark } from "@/components/LoomMark";
+import { advisoryStory } from "@/lib/loomStories";
 import { InstitutionalIntelligenceSystem } from "@/components/InstitutionalIntelligenceSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -177,6 +179,7 @@ export default function HomePage() {
             <a className={styles.primaryAction} href="#engage">Discuss a mandate</a>
             <a className={styles.secondaryAction} href="#method">See the operating model</a>
           </div>
+          <p className={styles.lede}>Deliver the mandate in front of you. Strengthen the institution behind it.</p>
           <div className={styles.proofLine} role="group" aria-label="MiddleLeap engagement principles">
             <span><strong>Senior-led</strong> from mandate to execution</span>
             <span><strong>Institution-owned</strong> context and capability</span>
@@ -184,15 +187,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className={styles.heroThesis} role="group" aria-label="MiddleLeap proposition">
-          <span>MiddleLeap thesis / 01</span>
-          <blockquote>Institutions should not rent intelligence from consultants.</blockquote>
-          <div>
-            <small>Working capability</small>
-            <b>+</b>
-            <small>Institutional intelligence</small>
-          </div>
-          <p>Deliver the mandate in front of you. Strengthen the institution behind it.</p>
+        <div className={styles.heroVisual}>
+          <LoomMark story={advisoryStory} />
         </div>
       </section>
 
