@@ -1,0 +1,26 @@
+/* Square, sharp-cornered portrait: UI radius is 0 (brand rule), so no mask. */
+.portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--ink-border);
+  background: var(--ink-1);
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.onLight {
+  display: none !important;
+}
+
+:global(html[data-theme="light"]) .onInk {
+  display: none;
+}
+
+:global(html[data-theme="light"]) .onLight {
+  display: block !important;
+}
