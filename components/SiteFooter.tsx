@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { bookingLinkProps, companyLinkedInUrl, contactEmail, mailtoHref } from "@/lib/contact";
+import { founder } from "@/lib/founder";
 import styles from "./SiteChrome.module.css";
 
 export function SiteFooter() {
@@ -8,6 +10,7 @@ export function SiteFooter() {
         <strong>MiddleLeap</strong>
         <p>Independent advisory practice and venture studio · Dubai, UAE</p>
         <p>Senior teams assembled around each mandate.</p>
+        <p>Founded and led by <Link href="/founder">{founder.name}</Link>.</p>
       </div>
       <div className={styles.footerLinks}>
         <nav className={styles.footerGroup} aria-label="Advisory links">
@@ -15,7 +18,9 @@ export function SiteFooter() {
           <Link href="/#expertise">What we do</Link>
           <Link href="/open-finance">Open Finance</Link>
           <Link href="/#method">How we work</Link>
+          <Link href="/how-we-engage">Engagement models</Link>
           <Link href="/practice">The practice</Link>
+          <Link href="/founder">Founder</Link>
           <Link href="/#engage">Discuss a mandate</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Execution links">
@@ -28,14 +33,14 @@ export function SiteFooter() {
           <Link href="/ventures#portfolio">Portfolio</Link>
           <Link href="/ventures/studio">Venture Studio</Link>
           <Link href="/ventures/backoffice">Backoffice</Link>
-          <Link href="/ventures/parqo">Parqo</Link>
+          <Link href="/ventures/setbay">Setbay</Link>
           <Link href="/ventures/hivemind">HiveMind</Link>
         </nav>
         <nav className={styles.footerGroup} aria-label="Company links">
           <span>Company</span>
-          <Link href="/practice">Practice &amp; founder</Link>
-          <Link href="/how-we-engage">How we engage</Link>
-          <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>
+          <a {...bookingLinkProps}>Book a conversation</a>
+          <a href={mailtoHref()}>{contactEmail}</a>
+          <a href={companyLinkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/venture-submission-terms">Submission terms</Link>
         </nav>

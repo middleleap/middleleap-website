@@ -1,11 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { legalTermsEffectiveDate } from "@/lib/legal";
+import { pageMetadata } from "@/lib/seo";
 import styles from "../legal.module.css";
 
-export const metadata: Metadata = { title: "Privacy", alternates: { canonical: "/privacy" } };
+export const metadata = pageMetadata({
+  title: "Privacy",
+  description:
+    "How MiddleLeap handles personal information submitted through its website, mandate enquiries and Venture Studio tools.",
+  path: "/privacy",
+  socialTitle: "Privacy Notice | MiddleLeap",
+});
 
 export default function PrivacyPage() {
   return (
@@ -21,7 +27,7 @@ export default function PrivacyPage() {
         </section>
         <section>
           <h2>Information we receive</h2>
-          <p>MiddleLeap receives information that you choose to send by email or prepare through the Venture Studio, including your name, email address, professional background and the content of mandate or venture enquiries. The proposal tool prepares information locally on your device; MiddleLeap receives it only if you send the resulting email.</p>
+          <p>MiddleLeap receives information that you choose to send by email or prepare through the Venture Studio, including your name, email address, professional background and the content of mandate or venture enquiries. When you submit a proposal, the Venture Studio tool sends it to MiddleLeap as an email through an email-delivery provider acting on MiddleLeap&apos;s behalf. If direct sending is unavailable, the tool prepares the brief locally on your device and MiddleLeap receives it only if you send the resulting email yourself.</p>
           <p>Please do not send confidential, regulated, financial, health or other sensitive personal information through an initial enquiry.</p>
         </section>
         <section>

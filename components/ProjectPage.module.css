@@ -166,16 +166,21 @@
 .boundaryNote p { color: var(--muted); font-size: var(--fs-small); line-height: 1.65; }
 
 .sourceList { margin-top: 42px; border-top: 1px solid var(--line); }
-.sourceList a { display: grid; grid-template-columns: 52px 1fr auto; gap: 18px; align-items: center; padding: 17px 0; color: var(--text); border-bottom: 1px solid var(--line); text-decoration: none; }
+.sourceList a, .sourceList > div { display: grid; grid-template-columns: 52px 1fr auto; gap: 18px; align-items: center; padding: 17px 0; color: var(--text); border-bottom: 1px solid var(--line); text-decoration: none; }
 .sourceList a:hover strong { color: var(--ember-text); }
 .sourceList span, .sourceList b { color: var(--faint); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
-.sourceList strong { font-size: var(--fs-small); font-weight: 500; transition: color .2s ease; }
+/* Switch source text with its background: tweening inherited theme colors
+   briefly drops below AA contrast even though both endpoints pass. */
+.sourceList strong { font-size: var(--fs-small); font-weight: 500; }
 
 .engage { max-width: 1080px; margin: 0 auto 64px; padding: 64px; background: var(--text); color: var(--ink-2); }
 .engage .eyebrow { color: var(--ember-on-inverse); }
 .engage h2 { max-width: 850px; font: 400 clamp(42px,5vw,66px)/1 var(--font-instrument-serif), serif; }
 .engage > p:not(.eyebrow) { max-width: 700px; margin-top: 22px; color: var(--ink-4); font-size: 14px; line-height: 1.65; }
-.engage > a { display: inline-flex; min-height: 48px; align-items: center; margin-top: 34px; padding: 14px 22px; color: #110D0A; background: var(--signal); text-decoration: none; font: 500 13px var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }@media (max-width: 1050px) {
+.engageActions { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 34px; }
+.engageActions > a:first-child { display: inline-flex; min-height: 48px; align-items: center; padding: 14px 22px; color: #110D0A; background: var(--signal); text-decoration: none; font: 500 13px var(--font-jetbrains-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.engageActions > a:last-child { color: var(--ink-2); font: 600 14px var(--font-dm-sans), sans-serif; text-underline-offset: 3px; }
+@media (max-width: 1050px) {
   .hero { min-height: auto; grid-template-columns: 1fr; }
   .statusPanel { width: min(100%,680px); }
   .section, .sources { grid-template-columns: 1fr; gap: 20px; }
@@ -205,7 +210,7 @@
   .technicalDetails > summary strong { grid-column: 1 / -1; grid-row: 2; }
   .technicalDetails > summary i { grid-column: 2; grid-row: 1; }
   .technicalDetailsBody .section { padding-inline: 16px; }
-  .sourceList a { grid-template-columns: 38px 1fr; }
+  .sourceList a, .sourceList > div { grid-template-columns: 38px 1fr; }
   .sourceList b { display: none; }
   .engage { margin-inline: 12px; padding: 38px 24px; }
 }

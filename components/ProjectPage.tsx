@@ -5,6 +5,7 @@ import { ExecutiveSummary } from "./ExecutiveSummary";
 import { RelatedPortfolio } from "./RelatedPortfolio";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { bookingLinkProps } from "@/lib/contact";
 import styles from "./ProjectPage.module.css";
 
 export type ProjectAction = {
@@ -111,7 +112,7 @@ export type ProjectPageData = {
     evidence: Array<{ stat: string; caption: string }>;
     boundary: ReactNode;
   };
-  sources: Array<{ id: string; label: string; href: string }>;
+  sources: Array<{ id: string; label: string; href?: string }>;
   engage: {
     heading: string;
     detail: string;
@@ -172,6 +173,7 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
       <SiteHeader
         active="ventures"
         breadcrumbs={[
+          { href: "/", label: "Advisory" },
           { href: "/ventures", label: "Ventures" },
           { href: "/ventures#portfolio", label: "Portfolio" },
           { label: data.breadcrumbLabel },
@@ -352,12 +354,13 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
       <section className={styles.sources} id="evidence">
         <div className={styles.sectionLabel}><span>08</span><p>Evidence register</p></div>
         <div>
-          <h2>Claims trace back to the repository.</h2>
+          <h2>{data.sources.some((source) => source.href) ? "Claims trace back to the repository." : "Claims are grounded in a reviewed private build record."}</h2>
+          {!data.sources.some((source) => source.href) && <p className={styles.sectionLede}>The repository is not publicly accessible. This register names the material reviewed; detailed source access can be considered during appropriate diligence.</p>}
           <div className={styles.sourceList}>
-            {data.sources.map((source) => (
-              <a href={source.href} target="_blank" rel="noreferrer" key={source.id}>
-                <span>{source.id}</span><strong>{source.label}</strong><b>Open ↗</b>
-              </a>
+            {data.sources.map((source) => source.href ? (
+              <a href={source.href} target="_blank" rel="noreferrer" key={source.id}><span>{source.id}</span><strong>{source.label}</strong><b>Open ↗</b></a>
+            ) : (
+              <div key={source.id}><span>{source.id}</span><strong>{source.label}</strong><b>Reviewed</b></div>
             ))}
           </div>
         </div>
@@ -367,7 +370,10 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
         <p className={styles.eyebrow}>What this venture proves</p>
         <h2>{data.engage.heading}</h2>
         <p>{data.engage.detail}</p>
-        <a href={`mailto:contact@middleleap.com?subject=${data.engage.mailtoSubject}`}>Discuss the mandate →</a>
+        <div className={styles.engageActions}>
+          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a href={`mailto:contact@middleleap.com?subject=${data.engage.mailtoSubject}`}>Discuss the mandate by email →</a>
+        </div>
       </section>
 
       <RelatedPortfolio currentPath={data.currentPath} />
