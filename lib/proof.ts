@@ -14,7 +14,7 @@ export const loomProof = {
 // Toolkit version does not imply that the method has operated in customer
 // production.
 export const loomRelease = {
-  version: "2.0.0",
+  version: "2.5.12",
   productStatus: "Released",
   evidenceStatus: "Reference-build validated",
   evidenceDetail:
