@@ -1,3 +1,8 @@
 # Cloudflare Pages redirects. Parqo was Setbay's working codename.
 /ventures/parqo /ventures/setbay 301
 /ventures/parqo/ /ventures/setbay 301
+# Prototype names resolve to the canonical institutional and implementation pages.
+/brainkit /institutional-brain 301
+/brainkit/ /institutional-brain 301
+/toolkit /ai-dlc 301
+/toolkit/ /ai-dlc 301

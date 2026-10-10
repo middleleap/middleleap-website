@@ -60,7 +60,7 @@ export default function PracticePage() {
       <section className={styles.hero}>
         <div>
           <p className={styles.eyebrow}>The practice behind the mandate</p>
-          <h1>Senior leadership, <em>assembled around the work.</em></h1>
+          <h1 id="main-content" tabIndex={-1}>Senior leadership, <em>assembled around the work.</em></h1>
           <p className={styles.lede}>
             MiddleLeap is an independent advisory practice built for mandates that cross
             strategy, regulation, product, technology and delivery. Each engagement is shaped

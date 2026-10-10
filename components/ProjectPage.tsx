@@ -192,7 +192,7 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>{data.hero.eyebrow}</p>
-          <h1>{data.hero.title}</h1>
+          <h1 id="main-content" tabIndex={-1}>{data.hero.title}</h1>
           <p className={styles.lede}>{data.hero.lede}</p>
           <div className={styles.actions}>
             {data.hero.actions.map((action) => (

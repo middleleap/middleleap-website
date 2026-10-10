@@ -115,6 +115,16 @@ export function SiteHeader({
           description: "Frame, design, mobilise, deliver and codify.",
         },
         {
+          href: "/institutional-intelligence",
+          label: "Institutional Intelligence",
+          description: "Working capability and governed knowledge the institution owns.",
+        },
+        {
+          href: "/institutional-brain",
+          label: "Institutional Brain",
+          description: "Approved language, architecture, decisions and controls.",
+        },
+        {
           href: "/how-we-engage",
           label: "Engagement models",
           description: "Executive advisory, strategy sprint and mobilisation.",

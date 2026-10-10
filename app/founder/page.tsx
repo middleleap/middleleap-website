@@ -61,7 +61,7 @@ export default function FounderPage() {
       <section className={styles.hero}>
         <div>
           <p className={styles.eyebrow}>Founder</p>
-          <h1>The senior lead on every mandate. <em>By name.</em></h1>
+          <h1 id="main-content" tabIndex={-1}>The senior lead on every mandate. <em>By name.</em></h1>
           <p className={styles.lede}>{founderBioLong[0]}</p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} {...bookingLinkProps}>

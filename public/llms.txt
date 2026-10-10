@@ -54,7 +54,7 @@ One practice runs three connected systems. Advisory frames the strategic, regula
 
 The Loom is MiddleLeap's governed route from an ambiguous mandate to accountable software. Discovery and Delivery are its two harnesses. A third arc, Run and Operations, returns incidents, drift, regulatory change and customer signals to Discovery as evidence, so the institution learns from what the software actually does.
 
-The Loom is the governed delivery method. The Loom Toolkit is the installable product that carries the method, controls and adoption machinery into a repository. AI-DLC is the technical distribution mechanism for the Toolkit rather than a separate consulting proposition. The Institutional BrainKit is the institution-owned context component, and domain packs are optional specialist intelligence.
+The Loom is the governed delivery method. The Loom Toolkit is the installable product that carries the method, controls and adoption machinery into a repository. AI-DLC is the technical distribution mechanism for the Toolkit rather than a separate consulting proposition. The Institutional Brain is the institution-owned context component, and domain packs are optional specialist intelligence.
 
 ### The Loom
 
@@ -73,8 +73,8 @@ The Loom is the governed delivery method. The Loom Toolkit is the installable pr
 ### The Loom Toolkit
 
 - Current public release: 2.5.12. Product status: released. Evidence status: Reference-build validated. The Toolkit was exercised end to end while building the synthetic Open Finance Backoffice reference portal. It has not been used to deliver or operate a customer production system.
-- Core bundle: the discovery and delivery harnesses, the Institutional BrainKit, compiled control plans, continuous assurance, governance and evidence controls, and safe, merge-aware adoption from one copy manifest.
-- Institutional BrainKit: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights. It is drafted from approved sources only with unknowns left visible as gaps, approved by accountable owners, digest-pinned per repository and validated in CI.
+- Core bundle: the discovery and delivery harnesses, the Institutional Brain, compiled control plans, continuous assurance, governance and evidence controls, and safe, merge-aware adoption from one copy manifest.
+- Institutional Brain: a private, human-approved package of institutional terminology, architecture, technology policy, design standards and decision rights. It is drafted from approved sources only with unknowns left visible as gaps, approved by accountable owners, digest-pinned per repository and validated in CI.
 - Open Finance Intelligence domain pack: CBUAE and AlTareq knowledge, Islamic-banking context, UAE bank risk review and value-proposition prototyping, attached only when a mandate requires it.
 - AI-DLC: the repository and plugin mechanism used to distribute, version and adopt the public Toolkit.
 - Operating boundary: the Toolkit is a build-time control frame. It validates repository-level gates, evidence and readiness records; live IAM, platform enforcement, production monitoring, incident detection, resilience exercises and independent control functions remain the adopting institution's responsibility.
@@ -136,6 +136,9 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 
 ## Primary source
 
+- [Institutional Intelligence](https://www.middleleap.com/institutional-intelligence): the proposition, institution-owned context and governed operating model.
+- [Institutional Brain](https://www.middleleap.com/institutional-brain): approved collective understanding, Brainstem contents, release lifecycle and human authority.
+
 - [MiddleLeap homepage](https://www.middleleap.com/): current positioning, capabilities, approach, experience and contact information.
 - [The practice](https://www.middleleap.com/practice): the senior-led, networked operating model, how mandates are staffed and the experience carried into the practice.
 - [Founder](https://www.middleleap.com/founder): Michael Ryberg Hartmann's profile, track record, dated career record and professional links.
@@ -144,11 +147,20 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
 - [The Loom](https://www.middleleap.com/the-loom): the governed delivery method, its Discovery and Delivery harnesses, the Run feedback arc, control chain, context brain, continuous assurance, harness governance and stated limits.
-- [The Loom Toolkit](https://www.middleleap.com/ai-dlc): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
+- [The Loom Toolkit](https://www.middleleap.com/ai-dlc): installable governed delivery system, Institutional Brain, AI-DLC distribution mechanism and optional domain intelligence.
 - [Open Finance Backoffice build record](https://www.middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
 - [HiveMind build record](https://www.middleleap.com/ventures/hivemind): the human-led coaching product, server-side AI pipeline, coach-voice and memory features, quality system and development maturity.
 - [Setbay build record](https://www.middleleap.com/ventures/setbay): the live acquisition platform, approved marketplace design, AI-assisted delivery controls and next validation gates.
 - [Privacy](https://www.middleleap.com/privacy): data controller, information received, website measurement, purposes, recipients, retention and data-subject rights.
 - [Venture submission terms](https://www.middleleap.com/venture-submission-terms): non-confidentiality, no obligation created, ownership and the limited assessment permission covering Venture Studio proposals.
 
-Last reviewed: 2026-09-16
+Last reviewed: 2026-10-09
+
+## Institutional Intelligence
+
+MiddleLeap helps regulated institutions deliver a strategic mandate while retaining the approved decisions, architecture, controls and operating knowledge created through the engagement. Advisory remains the commercial front door.
+
+- [Institutional Intelligence](https://www.middleleap.com/institutional-intelligence): the proposition, governed operating model and a bounded pilot.
+- [Institutional Brain](https://www.middleleap.com/institutional-brain): private, institution-owned context built from approved sources; humans approve releases and decision rights. BrainKit is the technical initializer; The Loom applies this context through governed discovery and delivery; AI-DLC distributes the repository implementation.
+
+The Institutional Brain does not approve policy or operate production controls. These pages describe a governed pilot and capability model, without asserting customer production adoption.

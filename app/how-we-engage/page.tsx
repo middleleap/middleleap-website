@@ -38,7 +38,7 @@ export default function HowWeEngagePage() {
 
       <section className={styles.hero}>
         <p className={styles.eyebrow}>Engagement models</p>
-        <h1>Start with the decision that <em>cannot stay unresolved.</em></h1>
+        <h1 id="main-content" tabIndex={-1}>Start with the decision that <em>cannot stay unresolved.</em></h1>
         <p className={styles.lede}>
           MiddleLeap assembles senior regulatory, strategy, product, technology and
           delivery expertise around the mandate rather than bringing a fixed bench.

@@ -27,7 +27,7 @@ export default function VentureSubmissionTermsPage() {
       />
       <article className={styles.content}>
         <p className={styles.eyebrow}>Venture Studio</p>
-        <h1>Submission terms.</h1>
+        <h1 id="main-content" tabIndex={-1}>Submission terms.</h1>
         <p className={styles.updated}>Version effective {legalTermsEffectiveDate}</p>
         <section><h2>Do not submit confidential information</h2><p>Initial venture submissions must be non-confidential. MiddleLeap cannot agree to confidentiality obligations merely by receiving or reviewing a submission. If confidential discussion becomes appropriate, the parties can agree suitable terms before that information is shared.</p></section>
         <section><h2>No obligation is created</h2><p>A submission does not create an advisory, investment, employment, partnership, fiduciary or other business relationship. MiddleLeap is not obliged to review, respond to, develop, fund or proceed with a proposal.</p></section>

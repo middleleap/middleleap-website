@@ -131,7 +131,7 @@ export default function OpenFinancePage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Open Finance advisory · MENA</p>
-          <h1>
+          <h1 id="main-content" tabIndex={-1}>
             Turn regulatory change into <em>platform advantage.</em>
           </h1>
           <p className={styles.lede}>

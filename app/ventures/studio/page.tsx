@@ -58,7 +58,7 @@ export default function VentureStudioPage() {
 
       <section className={styles.hero}>
         <p className={styles.eyebrow}>MiddleLeap Venture Studio</p>
-        <h1>Bring us a problem<br />worth <em>building around.</em></h1>
+        <h1 id="main-content" tabIndex={-1}>Bring us a problem<br />worth <em>building around.</em></h1>
         <p className={styles.lede}>
           We work with operators, domain experts and potential partners to test focused
           propositions in regulated markets, platform businesses and financial infrastructure.

@@ -135,7 +135,7 @@ export default function RootLayout({
       <body
         className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       >
-        <a href="#problem" className="skip-link">Skip to content</a>
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <div className="grain" />
         {children}
         {plausibleDomain && (

@@ -18,6 +18,8 @@ export function SiteFooter() {
           <Link href="/#expertise">What we do</Link>
           <Link href="/open-finance">Open Finance</Link>
           <Link href="/#method">How we work</Link>
+          <Link href="/institutional-intelligence">Institutional Intelligence</Link>
+          <Link href="/institutional-brain">Institutional Brain</Link>
           <Link href="/how-we-engage">Engagement models</Link>
           <Link href="/practice">The practice</Link>
           <Link href="/founder">Founder</Link>

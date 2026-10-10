@@ -4,6 +4,8 @@ import { writeFile } from "node:fs/promises";
 
 const routes = [
   "/",
+  "/institutional-intelligence",
+  "/institutional-brain",
   "/open-finance",
   "/practice",
   "/founder",
@@ -21,6 +23,13 @@ const routes = [
 
 for (const route of routes) {
   test.describe(route, () => {
+    test("keyboard skip link moves focus past navigation into the page", async ({ page }) => {
+      await page.goto(route);
+      await page.keyboard.press("Tab");
+      await expect(page.getByRole("link", { name: "Skip to content" })).toBeFocused();
+      await page.keyboard.press("Enter");
+      await expect(page.locator("h1#main-content")).toBeFocused();
+    });
     test("renders with core metadata and a single h1", async ({ page }) => {
       const response = await page.goto(route);
       expect(response?.status()).toBe(200);
@@ -211,6 +220,8 @@ for (const route of ["/ventures/backoffice", "/ventures/hivemind", "/ventures/se
 
 test.describe("global navigation IA", () => {
   const expectations = [
+    { route: "/institutional-intelligence", section: "method", parent: "How we work", childHref: "/institutional-intelligence", exact: true },
+    { route: "/institutional-brain", section: "method", parent: "How we work", childHref: "/institutional-brain", exact: true },
     { route: "/open-finance", section: "what", parent: "What we do", childHref: "/open-finance", exact: true },
     { route: "/how-we-engage", section: "method", parent: "How we work", childHref: "/how-we-engage", exact: true },
     { route: "/the-loom", section: "method", parent: "How we work", childHref: "/the-loom", exact: true },

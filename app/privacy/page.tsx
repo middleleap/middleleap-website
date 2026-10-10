@@ -19,7 +19,7 @@ export default function PrivacyPage() {
       <SiteHeader breadcrumbs={[{ href: "/", label: "Advisory" }, { label: "Privacy" }]} />
       <article className={styles.content}>
         <p className={styles.eyebrow}>Company information</p>
-        <h1>Privacy.</h1>
+        <h1 id="main-content" tabIndex={-1}>Privacy.</h1>
         <p className={styles.updated}>Effective {legalTermsEffectiveDate}</p>
         <section>
           <h2>Who controls your information</h2>

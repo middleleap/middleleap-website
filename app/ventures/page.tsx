@@ -51,7 +51,7 @@ export default function VenturesPage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
-          <h1>We build what<br />we <em>advise.</em></h1>
+          <h1 id="main-content" tabIndex={-1}>We build what<br />we <em>advise.</em></h1>
           <p className={styles.lede}>
             MiddleLeap creates focused ventures and contributes selectively to open
             ecosystems. Each initiative turns a strategic proposition into operating

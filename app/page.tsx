@@ -1,19 +1,21 @@
-import type { Route } from "next";
 import Link from "next/link";
 import { LoomMark } from "@/components/LoomMark";
 import { advisoryStory } from "@/lib/loomStories";
+import { InstitutionalIntelligenceSystem } from "@/components/InstitutionalIntelligenceSystem";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { bookingLinkProps, companyLinkedInUrl, mailtoHref } from "@/lib/contact";
-import { engagementModels } from "@/lib/engagements";
+import { pageMetadata } from "@/lib/seo";
+import { bookingLinkProps, companyLinkedInUrl, contactEmail, mailtoHref } from "@/lib/contact";
 import { founder, founderBioMedium, founderPerson } from "@/lib/founder";
-import { FounderPortrait } from "@/components/FounderPortrait";
-import { portfolioProjects } from "@/lib/ventures";
 import styles from "./page.module.css";
-import { loomProof } from "@/lib/proof";
 
-// Homepage metadata (title, description, canonical, Open Graph) is inherited
-// from the root layout, which declares the same values as its defaults.
+export const metadata = pageMetadata({
+  title: "Institutional Intelligence for Regulated Businesses",
+  description:
+    "MiddleLeap helps regulated institutions turn strategic mandates into working capability while building institutional intelligence they own.",
+  path: "/",
+  socialDescription: "Deliver the mandate in front of you. Strengthen the institution behind it.",
+});
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -88,137 +90,100 @@ const structuredData = {
   ],
 };
 
-const shifts = [
-  {
-    number: "01",
-    title: "Regulated market shifts",
-    question: "How will new mandates become market position and advantage?",
-  },
-  {
-    number: "02",
-    title: "Platform businesses",
-    question: "How will APIs, partners and ecosystems create value?",
-  },
-  {
-    number: "03",
-    title: "AI-native operations",
-    question: "How must the organization work differently to compete?",
-  },
-];
-
-const capabilities: Array<{
-  number: string;
-  title: string;
-  detail: string;
-  href?: Route;
-  linkLabel?: string;
-}> = [
+const capabilities = [
   {
     number: "01",
     title: "Regulatory & market transformation",
     detail:
-      "Open Finance strategy, regulatory readiness, LFI and TPP operating models, market entry and ecosystem participation.",
+      "Turn a regulatory shift into market position, proposition, operating model and accountable execution.",
     href: "/open-finance",
-    linkLabel: "Explore Open Finance advisory",
+    action: "Explore Open Finance",
   },
   {
     number: "02",
     title: "Platform & ecosystem strategy",
     detail:
-      "Platform propositions, API strategy, embedded finance, partnerships, commercial models and monetisation.",
+      "Design the platform proposition, APIs, partner model, economics and governance as one commercial system.",
+    href: "#engage",
+    action: "Discuss a platform mandate",
   },
   {
     number: "03",
     title: "AI-native operating models",
     detail:
-      "Value-stream redesign, agentic workflows, product and engineering models, governance and control.",
+      "Redesign value streams, decision rights, teams and controls for human-and-agent execution.",
+    href: "#engage",
+    action: "Discuss an AI operating model",
   },
   {
     number: "04",
-    title: "Transformation & execution",
+    title: "Transformation delivery",
     detail:
-      "Executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.",
+      "Move from executive mandate through mobilisation to working products, platforms and institutional capability.",
+    href: "#engage",
+    action: "Discuss transformation delivery",
+  },
+] as const;
+
+const evidence = [
+  {
+    title: "MENA Open Banking & Open Finance",
+    detail:
+      "Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that helped a leading UAE bank achieve first-bank certification and deliver the country’s first live transactions with a licensed TPP.",
+  },
+  {
+    title: "Business banking ecosystems",
+    detail:
+      "Led the build-out of Danske Bank’s District platform and marketplace across the Nordics and UK, including migration at enterprise scale and API-based partner channels.",
+  },
+  {
+    title: "Enterprise transformation",
+    detail:
+      "Led a 70+ person digital delivery organisation through an API-first Telco-as-a-Service transformation inside a 140-year-old enterprise.",
+  },
+  {
+    title: "Product to boardroom",
+    detail:
+      "Experience spanning software engineering and architecture through product, commercial and executive transformation leadership.",
   },
 ];
 
-const approach = [
-  { number: "01", name: "Frame", detail: "Clarify the regulatory, commercial or operating mandate." },
-  { number: "02", name: "Design", detail: "Shape the proposition, ecosystem, platform and operating model." },
-  { number: "03", name: "Mobilise", detail: "Align leaders, partners, product teams and governance stakeholders." },
-  { number: "04", name: "Deliver", detail: "Turn the strategy into working products and capabilities." },
-  { number: "05", name: "Codify", detail: "Embed reusable knowledge, controls and agent workflows." },
-];
-
-// Evidence, not an offering: training appears here only as proof that
-// institutions ask MiddleLeap to show the working. No workshop CTA anywhere.
-// Naming is settled: CFTE may be named; the bank and the sovereign wealth
-// fund are not.
-const proofPractice: Array<{
-  number: string;
-  label: string;
-  title: string;
-  body: string;
-  footer: string;
-  href?: Route;
-}> = [
-  {
-    number: "01",
-    label: "Built",
-    title: "Five products, one method.",
-    body:
-      "Backoffice, HiveMind, Setbay, our OpenFinance-OS contributions and The Loom itself are built and operated through the same governed loop we bring to client mandates: Discovery and Delivery harnesses, decision-grade proofs, an audit trail on every change.",
-    footer: "Live · middleleap.com/ventures",
-    href: "/ventures",
-  },
-  {
-    number: "02",
-    label: "Regulated",
-    title: "Proven where the rules are strict.",
-    body:
-      "The same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq, where every consent, API and release is examined by the regulator, not just the product team. And, in 2026, in front of regulators as Declare.",
-    footer: "CBUAE Open Finance · 2024–2026",
-  },
-  {
-    number: "03",
-    label: "Taught",
-    title: "Asked to teach the mindset.",
-    body:
-      "In 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to teach its teams the fundamentals of working with AI: prompt engineering, an open mind, and how an organisation changes its culture and ways of working to get the value out. The same shift we design into AI-native operating models.",
-    footer: "Executive training · via CFTE",
-  },
-];
+const engagements = [
+  ["Executive mandate", "Frame a regulatory, platform or operating-model decision with the leaders who own it."],
+  ["Strategy sprint", "Resolve the proposition, ecosystem, economics and execution path around one bounded opportunity."],
+  ["Governed delivery pilot", "Build one real outcome with The Loom and leave an institution-owned capability behind."],
+] as const;
 
 export default function HomePage() {
   return (
-    <main className={styles.shell} id="problem" tabIndex={-1}>
+    <div className={styles.shell}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
       <SiteHeader home />
 
-      <section className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Regulated markets · Platform businesses · AI-native execution</p>
-          <h1>
-            From strategic mandate<br />to <em>market execution.</em>
+      <main >
+      <section className={styles.hero} id="top">
+        <div>
+          <p className={styles.eyebrow}>Independent advisory · Dubai</p>
+          <h1 id="main-content" tabIndex={-1}>
+            Every engagement should leave the institution <em>smarter.</em>
           </h1>
           <p className={styles.lede}>
-            MiddleLeap helps banks, fintechs, financial infrastructure providers,
-            telecommunications companies and other regulated platform businesses
-            navigate market shifts, design scalable platforms and build AI-native
-            operating models.
+            MiddleLeap helps regulated institutions move from strategic mandate to working
+            capability—while retaining the decisions, architecture, controls and operating
+            knowledge created along the way.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="#engage">Discuss a strategic mandate</a>
-            <a className={styles.secondaryAction} href="#expertise">Explore our capabilities</a>
+            <a className={styles.primaryAction} href="#engage">Discuss a mandate</a>
+            <a className={styles.secondaryAction} href="#method">See the operating model</a>
           </div>
-          <div className={styles.proofLine}>
-            <span><strong>MENA</strong> market focus</span>
-            <span><strong>Senior-led</strong> every mandate</span>
-            <span><strong>Strategy</strong> through execution</span>
+          <p className={styles.lede}>Deliver the mandate in front of you. Strengthen the institution behind it.</p>
+          <div className={styles.proofLine} role="group" aria-label="MiddleLeap engagement principles">
+            <span><strong>Senior-led</strong> from mandate to execution</span>
+            <span><strong>Institution-owned</strong> context and capability</span>
+            <span><strong>MENA-grounded</strong> regulated market experience</span>
           </div>
         </div>
 
@@ -227,30 +192,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.shift}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>The new mandate</p>
-          <h2>Financial services is being redesigned around platforms, ecosystems and intelligent agents.</h2>
-        </div>
-        <div className={styles.shiftGrid}>
-          {shifts.map((shift) => (
-            <article key={shift.number}>
-              <span>{shift.number}</span>
-              <h3>{shift.title}</h3>
-              <p>{shift.question}</p>
-            </article>
-          ))}
-        </div>
-        <p className={styles.shiftConclusion}>
-          The opportunity is not simply to comply or deploy new technology. It is
-          to redesign the proposition, ecosystem and operating model together.
-        </p>
-      </section>
-
       <section className={styles.expertise} id="expertise">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>What we do</p>
-          <h2>Strategy designed to reach execution.</h2>
+          <p className={styles.eyebrow}>Advisory is the front door</p>
+          <div>
+            <h2>Start with the strategic mandate—not the implementation.</h2>
+            <p>
+              MiddleLeap works where regulation, platform economics, technology and operating
+              models have to move together. The delivery system supports the work; it does not
+              replace senior judgement.
+            </p>
+          </div>
         </div>
         <div className={styles.capabilityGrid}>
           {capabilities.map((capability) => (
@@ -258,315 +210,112 @@ export default function HomePage() {
               <span>{capability.number}</span>
               <h3>{capability.title}</h3>
               <p>{capability.detail}</p>
-              {"href" in capability && capability.href && (
-                <Link className={styles.capabilityLink} href={capability.href}>
-                  {capability.linkLabel} →
-                </Link>
-              )}
+              <Link href={capability.href}>{capability.action} →</Link>
             </article>
           ))}
         </div>
       </section>
 
-      <section className={styles.operatingModel} aria-labelledby="operating-model-title">
+      <section className={styles.model} id="method">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>How MiddleLeap fits together</p>
+          <p className={styles.eyebrow}>The MiddleLeap model</p>
           <div>
-            <h2 id="operating-model-title">One practice. Three connected systems.</h2>
-            <p className={styles.operatingModelIntro}>
-              Advisory frames the mandate. Execution turns it into working capability.
-              Ventures test propositions and return operating evidence to the practice.
+            <h2>Build the capability. Codify what made it possible.</h2>
+            <p>
+              Institutional intelligence is the governed context an organisation can own,
+              approve, apply and improve. It grows through delivery—not as a documentation
+              exercise after delivery.
             </p>
           </div>
         </div>
-
-        <div className={styles.companySystem} role="group" aria-label="MiddleLeap company operating model">
-          <div className={styles.companySystemHeader}>
-            <span>MiddleLeap operating system / 03</span>
-            <b>Evidence compounds</b>
-          </div>
-          <div className={styles.companySystemFlow}>
-            <article>
-              <span>01 · Front door</span>
-              <h3>Advisory</h3>
-              <p>Frame the strategic, regulatory and commercial mandate.</p>
-              <div><small>What we do</small><small>How we work</small><small>Experience</small></div>
-            </article>
-            <i aria-hidden="true">→</i>
-            <article>
-              <span>02 · Delivery system</span>
-              <h3>Execution</h3>
-              <p>Use a governed harness and installable toolkit to deliver.</p>
-              <div><small>The Loom</small><small>The Loom Toolkit</small></div>
-            </article>
-            <i aria-hidden="true">→</i>
-            <article>
-              <span>03 · Evidence engine</span>
-              <h3>Ventures</h3>
-              <p>Test propositions in operating reality and expose the next decision.</p>
-              <div><small>Portfolio</small><small>Venture Studio</small></div>
-            </article>
-          </div>
-          <div className={styles.companySystemReturn}>
-            <span>Operating evidence</span>
-            <b aria-hidden="true">↶</b>
-            <strong>Learning returns to Advisory and sharpens the next mandate.</strong>
-          </div>
+        <InstitutionalIntelligenceSystem />
+        <div className={styles.modelLink}>
+          <Link href="/institutional-intelligence">Explore the institutional intelligence proposition →</Link>
         </div>
       </section>
 
-      <section className={styles.method} id="method">
+      <section className={styles.practice} id="practice">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>How we work</p>
-          <h2>From mandate to working capability.</h2>
-        </div>
-        <ol className={styles.approach}>
-          {approach.map((item) => (
-            <li key={item.number}>
-              <span>{item.number}</span>
-              <strong>{item.name}</strong>
-              <p>{item.detail}</p>
-            </li>
-          ))}
-        </ol>
-
-        <div className={styles.loomFeature}>
-          <div className={styles.loomCopy}>
-            <p className={styles.eyebrow}>The Loom · Governed AI delivery</p>
-            <h3>Find the right problem. Ship it under control. Learn from what runs.</h3>
-            <p>
-              Two harnesses turn an evidenced mandate into audit-ready software.
-              Operational signals then return to Discovery, keeping assurance and the
-              institution&apos;s context current.
-            </p>
-            <div className={styles.loomActions}>
-              <Link href="/the-loom">Explore the closed loop →</Link>
-              <Link href="/ai-dlc">View the technical toolkit →</Link>
-            </div>
-          </div>
-          <div className={styles.loomMini} role="group" aria-label="The Loom combines Discovery and Delivery harnesses with a Run feedback arc">
-            <div className={styles.loomMiniHeader}>
-              <span>Mandate → outcome</span>
-              <b>Two harnesses · one loop</b>
-            </div>
-            <div className={styles.loomMiniFlow}>
-              <article className={styles.loomDiamond}>
-                <small>Diamond 01</small>
-                <strong>Discovery</strong>
-                <span>Discover → Define · D1—D9</span>
-              </article>
-              <div className={styles.loomWaist}>
-                <small>Gate-green</small>
-                <strong>Hand-off</strong>
-              </div>
-              <article className={styles.loomDiamond}>
-                <small>Diamond 02</small>
-                <strong>Delivery</strong>
-                <span>Develop → Deliver · Q1—Q5</span>
-              </article>
-            </div>
-            <div className={styles.loomRuntime}>
-              <span>Audit-ready software</span>
-              <i aria-hidden="true">→</i>
-              <strong>Run / Operations</strong>
-              <b aria-hidden="true">↶</b>
-              <small>Signals return to Discovery as evidence</small>
-            </div>
-            <div className={styles.loomWarp}>
-              <span>Four-eyes</span>
-              <span>Audit</span>
-              <span>Lineage</span>
-              <span>Gates</span>
-              <span>Residency</span>
-            </div>
-            <div className={styles.loomProof}>
-              <span><strong>{loomProof.storiesRatio}</strong> stories to done</span>
-              <span><strong>{loomProof.harnesses}</strong> harnesses + Run arc</span>
-              <span><strong>{loomProof.realCustomerRecords}</strong> real records</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.experience} id="experience">
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>The practice behind the mandate</p>
+          <p className={styles.eyebrow}>Experience carried into the practice</p>
           <div>
-            <h2>Senior leadership, assembled around the work.</h2>
-            <p className={styles.experienceIntro}>
-              MiddleLeap is an independent advisory practice built for mandates that cross
-              strategy, regulation, product, technology and delivery. Each engagement is shaped
-              around the work—not a fixed consulting bench.
+            <h2>Operating evidence across regulated platforms and transformation.</h2>
+            <p>
+              MiddleLeap is an independent advisory practice. A senior lead stays accountable;
+              specialists are assembled around the mandate; client leaders remain inside the
+              working system.
+            </p>
+            <p>
+              The outcomes below were delivered in prior executive roles and are carried into
+              MiddleLeap&apos;s practice.
             </p>
           </div>
         </div>
-
-        <div className={styles.practiceGrid}>
-          <article>
-            <span>01</span>
-            <h3>Senior accountability</h3>
-            <p>
-              A senior lead stays accountable from mandate framing through the decisions,
-              operating model and route to execution.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Specialists around the problem</h3>
-            <p>
-              Regulation, strategy, product, technology, ecosystem and delivery expertise is
-              brought in where the mandate requires it.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Client ownership by design</h3>
-            <p>
-              Client leaders remain part of the working system so decisions, institutional
-              context and delivery capability stay inside the organization.
-            </p>
-          </article>
-        </div>
-
-        <div className={styles.experienceLayout}>
-          <div className={styles.evidencePanel}>
-            <p className={styles.eyebrow}>Experience carried into the practice</p>
-            <h3>Operating evidence across regulated platforms and transformation.</h3>
-            <div className={styles.evidenceList}>
-              <div>
-                <strong>MENA Open Banking &amp; Open Finance</strong>
-                <span>Built and expanded an Open Banking platform across MENA, then led a dual LFI/TPP programme that took ADCB Group to first-bank certification under the UAE framework and delivered the country&apos;s first live transactions with a licensed TPP.</span>
-              </div>
-              <div>
-                <strong>Business banking ecosystems</strong>
-                <span>Led the build-out of Danske Bank&apos;s District platform and marketplace across the Nordics and UK, including the migration of 250,000 SMEs, corporates and institutions and the development of API-based partner channels.</span>
-              </div>
-              <div>
-                <strong>Enterprise transformation</strong>
-                <span>Led a 70+ person digital delivery organization through an API-first Telco-as-a-Service transformation within a 140-year-old enterprise, modernising the operating model as well as the technology.</span>
-              </div>
-              <div>
-                <strong>Product to boardroom</strong>
-                <span>Experience spanning software engineering and architecture through product, commercial and executive transformation leadership.</span>
-              </div>
-            </div>
+        <div className={styles.practiceLayout}>
+          <div className={styles.evidenceList}>
+            {evidence.map((item, index) => (
+              <article key={item.title}>
+                <span>0{index + 1}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
+                </div>
+              </article>
+            ))}
           </div>
-
-          <aside className={styles.founderNote} aria-label="Founder">
-            <FounderPortrait size={480} />
-            <p className={styles.eyebrow}>The senior lead on every mandate</p>
+          <aside className={styles.founderNote}>
+            <p className={styles.eyebrow}>Founded in Dubai</p>
             <h3>{founder.name}</h3>
+            <small>{founder.jobTitle}</small>
             <p>{founderBioMedium}</p>
-            <Link href="/founder">Founder profile →</Link>
+            <a href="/founder">
+              Founder profile →
+            </a>
           </aside>
         </div>
       </section>
 
-      <section className={styles.ventures} id="ventures">
-        <div className={styles.sectionIntro}>
+      <section className={styles.ventureBridge}>
+        <div>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
-          <div>
-            <h2>One regulated proof. Two venture experiments. One regulated prototype.</h2>
-            <p className={styles.venturesIntro}>
-              Backoffice demonstrates governed delivery in MiddleLeap&apos;s core market.
-              Setbay and HiveMind test transferable platform and human-authority principles
-              in different operating contexts. Declare puts AI inside a regulated payments
-              flow as a prototype. Their roles are deliberately not presented as equal evidence.
-            </p>
-          </div>
+          <h2>Put propositions under operating pressure.</h2>
         </div>
-
-        <div className={styles.ventureLoop} role="group" aria-label="MiddleLeap venture learning loop">
-          <span><b>Build</b> Working assets</span>
-          <i aria-hidden="true">→</i>
-          <span><b>Learn</b> Operating intelligence</span>
-          <i aria-hidden="true">→</i>
-          <span><b>Apply</b> Stronger mandates</span>
-        </div>
-
-        <div className={styles.ventureGrid}>
-          {portfolioProjects.map((project, index) => (
-            <article key={project.name}>
-              <div className={styles.ventureMeta}>
-                <span>0{index + 1}</span>
-                <small>{project.portfolioRole}</small>
-              </div>
-              <h3>{project.name}</h3>
-              <p>{project.summary}</p>
-              <div className={styles.ventureProjects}>
-                <span>{project.type}</span>
-                <span>{project.status}</span>
-              </div>
-              {!project.detailPath && project.href && (
-                <a className={styles.ventureLink} href={project.href} target="_blank" rel="noreferrer">
-                  Open the emulator ↗
-                </a>
-              )}
-            </article>
-          ))}
-        </div>
-
-        <div className={styles.venturesFooter}>
-          <p>Working platforms · Operating evidence · New propositions</p>
-          <div className={styles.loomActions}>
-            <Link className={styles.venturesLink} href="/ventures">Explore MiddleLeap Ventures →</Link>
-            <Link className={styles.venturesLink} href="/ventures/studio">Propose a venture →</Link>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.proofPractice} id="practice-not-commentary" aria-labelledby="proof-practice-title">
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Practice, not commentary</p>
-          <div>
-            <h2 id="proof-practice-title">
-              We advise on AI-native delivery because <em>we ship with it.</em>
-            </h2>
-            <p className={styles.proofPracticeIntro}>
-              Every position MiddleLeap takes on agentic workflows, governance and AI-enabled
-              delivery is tested on our own products first. Then, occasionally, we are asked to teach it.
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.proofPracticeGrid}>
-          {proofPractice.map((item) => (
-            <article key={item.number}>
-              <span>{item.number} · {item.label}</span>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-              <small>
-                {"href" in item && item.href ? <Link href={item.href}>{item.footer}</Link> : item.footer}
-              </small>
-            </article>
-          ))}
-        </div>
+        <p>
+          Ventures test platform and human-authority principles in working systems. Their
+          evidence returns to the advisory practice without becoming the company’s main identity.
+        </p>
+        <Link href="/ventures">Explore the portfolio →</Link>
       </section>
 
       <section className={styles.engage} id="engage">
-        <div>
+        <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Start with the mandate in front of you</p>
-          <h2>Bring the right senior expertise to the problem.</h2>
+          <div>
+            <h2>Deliver the outcome. Leave the institution stronger.</h2>
+            <p>
+              Bring a regulatory, platform or operating-model mandate. We will shape the right
+              senior team and the smallest credible path to evidence.
+            </p>
+          </div>
         </div>
         <div className={styles.engagementGrid}>
-          {engagementModels.map((engagement, index) => (
-            <article key={engagement.key}>
+          {engagements.map(([title, detail], index) => (
+            <article key={title}>
               <span>0{index + 1}</span>
-              <h3>{engagement.label}</h3>
-              <p>{engagement.short}</p>
+              <h3>{title}</h3>
+              <p>{detail}</p>
             </article>
           ))}
         </div>
         <a className={styles.primaryAction} {...bookingLinkProps}>
-          Book a conversation ↗
+          Discuss your mandate
         </a>
         <p className={styles.contactFallback}>
-          Opens Google Calendar in a new tab. Prefer email?{" "}
-          <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email</a>.
+          Or write directly to <a href={mailtoHref()}>{contactEmail}</a>.
         </p>
       </section>
+      </main>
 
       <SiteFooter />
-    </main>
+    </div>
   );
 }

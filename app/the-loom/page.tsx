@@ -137,7 +137,7 @@ export default function LoomPage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>The Loom · Toolkit {loomRelease.version} released</p>
-          <h1>Find the right problem.<br />Ship it under <em>control.</em></h1>
+          <h1 id="main-content" tabIndex={-1}>Find the right problem.<br />Ship it under <em>control.</em></h1>
           <p className={styles.lede}>
             Two harnesses turn an ambiguous mandate into audit-ready software. Run and
             Operations then return evidence to Discovery, so the institution learns from
