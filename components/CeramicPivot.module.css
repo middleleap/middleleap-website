@@ -1,8 +1,22 @@
 .pivot { margin: 0; width: 100%; }
+.matteDefinitions { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
 .pivot[data-art-theme="light"] { display: none; }
 :global(html[data-theme="light"]) .pivot[data-art-theme="dark"] { display: none; }
 :global(html[data-theme="light"]) .pivot[data-art-theme="light"] { display: block; }
-.frame { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--ink-0); }
+.frame {
+  position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+  /* Feather the studio backdrop into the page. The sculpture stays inside the
+     opaque centre, and the same mask covers the poster and every film frame. */
+  mask-image:
+    linear-gradient(90deg, transparent, #000 14%, #000 88%, transparent),
+    linear-gradient(180deg, transparent, #000 10%, #000 74%, transparent);
+  mask-composite: intersect;
+}
+.pivot[data-art-theme="light"] .frame {
+  /* A luminance matte clears the pale studio wall and floor without grading
+     the charcoal or ember ceramics. Strong contact shadows remain visible. */
+  filter: url(#ceramic-paper-matte);
+}
 .poster, .film { display: block; width: 100%; height: 100%; object-fit: cover; }
 .film { position: absolute; inset: 0; opacity: 0; }
 .film[data-visible="true"] { opacity: 1; }
