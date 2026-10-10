@@ -46,7 +46,9 @@
   letter-spacing: inherit;
   text-transform: inherit;
   cursor: pointer;
-  transition: color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+  /* Text changes with the theme immediately; interpolating it across the new
+     surface briefly drops below AA contrast. */
+  transition: border-color var(--dur-base) var(--ease-out);
 }
 
 .pause:hover,
