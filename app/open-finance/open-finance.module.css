@@ -92,6 +92,13 @@
   border: 1px solid var(--ink-4);
 }
 
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.reviewPrivacy a:focus-visible {
+  outline-color: var(--focus-ring, var(--ember-text));
+  outline-offset: 4px;
+}
+
 .decisionSystem {
   border: 1px solid var(--ink-4);
   background: var(--ink-1);
@@ -503,6 +510,10 @@
 
 .engage .eyebrow {
   color: var(--ember-on-inverse);
+}
+
+.engage .primaryAction:focus-visible {
+  outline-color: var(--ember-on-inverse);
 }
 
 .engage h2 {

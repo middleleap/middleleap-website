@@ -99,23 +99,46 @@ for (const colorScheme of ["light", "dark"] as const) {
   });
 }
 
-test("keyboard journey opens only an intercepted booking handoff", async ({ page }) => {
-  await page.goto("/open-finance");
-  const entry = page.getByRole("link", { name: "Explore the complimentary review" });
-  await entry.focus();
-  await page.keyboard.press("Tab");
-  await page.keyboard.press("Shift+Tab");
-  await expect(entry).toBeFocused();
-  await expect(entry).toHaveCSS("outline-style", "solid");
-  await page.keyboard.press("Enter");
-  await expect(page.locator("#readiness-review")).toBeFocused();
-  const booking = page.getByRole("link", { name: "Book a fit call" });
-  await booking.focus();
-  const [popup] = await Promise.all([
-    page.waitForEvent("popup"),
-    page.keyboard.press("Enter"),
-  ]);
-  await popup.waitForLoadState("domcontentloaded");
-  await expect(popup).toHaveURL(bookingUrl);
-  await expect(popup).toHaveTitle("Intercepted contact handoff");
-});
+for (const colorScheme of ["light", "dark"] as const) {
+  test(`keyboard journey and focus contrast in ${colorScheme}`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme });
+    await page.goto("/open-finance");
+    const entry = page.getByRole("link", { name: "Explore the complimentary review" });
+    await entry.focus();
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Shift+Tab");
+    await expect(entry).toBeFocused();
+    await expect(entry).toHaveCSS("outline-style", "solid");
+    await page.keyboard.press("Enter");
+    await expect(page.locator("#readiness-review")).toBeFocused();
+    const booking = page.getByRole("link", { name: "Book a fit call" });
+    for (const link of [booking, page.getByRole("link", { name: "Request the review by email" }),
+      page.getByRole("link", { name: "privacy notice" }), page.getByRole("link", { name: "Discuss paid advisory" })]) {
+      await link.focus();
+      await expect(link).toHaveCSS("outline-style", "solid");
+      const ratio = await link.evaluate((element) => {
+        const luminance = (color: string) => {
+          const channels = (color.match(/[\d.]+/g) ?? []).slice(0, 3).map((value) => {
+            const c = Number(value) / 255;
+            return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+          });
+          return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+        };
+        // The offset ring sits on the page or the inverse paid-advisory panel.
+        const surface = element.closest("#engage") ?? document.body;
+        const background = luminance(getComputedStyle(surface).backgroundColor);
+        const foreground = luminance(getComputedStyle(element).outlineColor);
+        return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+      });
+      expect(ratio, await link.innerText()).toBeGreaterThanOrEqual(3);
+    }
+    await booking.focus();
+    const [popup] = await Promise.all([
+      page.waitForEvent("popup"),
+      page.keyboard.press("Enter"),
+    ]);
+    await popup.waitForLoadState("domcontentloaded");
+    await expect(popup).toHaveURL(bookingUrl);
+    await expect(popup).toHaveTitle("Intercepted contact handoff");
+  });
+}
