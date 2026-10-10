@@ -1,6 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
-import { MandateSystem } from "@/components/MandateSystem";
+import { CeramicPivot } from "@/components/CeramicPivot";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { engagementModels } from "@/lib/engagements";
@@ -200,7 +200,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.heroVisual}>
-          <MandateSystem />
+          <CeramicPivot />
         </div>
       </section>
 
