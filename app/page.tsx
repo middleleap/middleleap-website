@@ -190,6 +190,18 @@ const proofPractice: Array<{
 export default function HomePage() {
   return (
     <main className={styles.shell} id="problem" tabIndex={-1}>
+      <div className={styles.pivotBackdrop} aria-hidden="true">
+        <svg viewBox="-20 0 370 230" fill="none" focusable="false">
+          <defs>
+            <linearGradient id="ambient-pivot-ember" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="var(--ember-400)" />
+              <stop offset="1" stopColor="var(--ember-600)" />
+            </linearGradient>
+          </defs>
+          <rect className={styles.backdropSquare} y="56" width="120" height="120" rx="20" />
+          <rect className={styles.backdropDiamond} x="-60" y="-60" width="120" height="120" rx="20" transform="translate(222 116) rotate(45)" />
+        </svg>
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
