@@ -14,7 +14,20 @@ type Playback = "still" | "playing" | "paused" | "finished" | "unavailable";
 export function CeramicPivot() {
   // CSS selects the resolved theme before hydration. Inactive artwork stays
   // lazy, and only the visible theme can fetch or play its film.
-  return <><PivotFilm theme="dark" /><PivotFilm theme="light" /></>;
+  return <>
+    <svg className={styles.matteDefinitions} aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="ceramic-paper-matte" colorInterpolationFilters="sRGB" x="0" y="0" width="100%" height="100%">
+          <feColorMatrix in="SourceGraphic" type="luminanceToAlpha" result="luminance" />
+          <feComponentTransfer in="luminance" result="matte">
+            <feFuncA type="table" tableValues="1 1 1 1 1 1 1 1 0 0 0" />
+          </feComponentTransfer>
+          <feComposite in="SourceGraphic" in2="matte" operator="in" />
+        </filter>
+      </defs>
+    </svg>
+    <PivotFilm theme="dark" /><PivotFilm theme="light" />
+  </>;
 }
 
 function PivotFilm({ theme }: { theme: Theme }) {
