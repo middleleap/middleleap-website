@@ -13,7 +13,7 @@ const routes = [
   "/ventures",
   "/ventures/studio",
   "/ventures/backoffice",
-  "/ventures/hivemind",
+  "/ventures/unleash",
   "/ventures/setbay",
   "/privacy",
   "/venture-submission-terms",
@@ -170,7 +170,7 @@ for (const route of routes) {
   });
 }
 
-for (const route of ["/ventures/backoffice", "/ventures/hivemind", "/ventures/setbay"]) {
+for (const route of ["/ventures/backoffice", "/ventures/unleash", "/ventures/setbay"]) {
   test(`${route} source labels retain AA contrast throughout theme changes`, async ({ page }) => {
     await page.emulateMedia({ colorScheme: "dark" });
     await page.goto(route);
@@ -218,7 +218,7 @@ test.describe("global navigation IA", () => {
     { route: "/ventures", section: "ventures", parent: "Ventures", childHref: "/ventures", exact: true },
     { route: "/ventures/studio", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: true },
     { route: "/ventures/backoffice", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
-    { route: "/ventures/hivemind", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
+    { route: "/ventures/unleash", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
     { route: "/ventures/setbay", section: "ventures", parent: "Ventures", childHref: "/ventures#portfolio", exact: false },
     { route: "/venture-submission-terms", section: "ventures", parent: "Ventures", childHref: "/ventures/studio", exact: false },
   ] as const;
@@ -248,7 +248,7 @@ test.describe("global navigation IA", () => {
     const trails = {
       "/ventures/studio": ["Advisory", "Ventures", "Venture Studio"],
       "/ventures/backoffice": ["Advisory", "Ventures", "Portfolio", "Backoffice"],
-      "/ventures/hivemind": ["Advisory", "Ventures", "Portfolio", "HiveMind"],
+      "/ventures/unleash": ["Advisory", "Ventures", "Portfolio", "Unleash"],
       "/ventures/setbay": ["Advisory", "Ventures", "Portfolio", "Setbay"],
       "/venture-submission-terms": ["Advisory", "Ventures", "Venture Studio", "Submission terms"],
     } as const;

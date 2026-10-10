@@ -1,3 +1,6 @@
 # Cloudflare Pages redirects. Parqo was Setbay's working codename.
 /ventures/parqo /ventures/setbay 301
 /ventures/parqo/ /ventures/setbay 301
+# Legacy venture links keep their query string; use the current Unleash record.
+/ventures/hivemind /ventures/unleash 301
+/ventures/hivemind/ /ventures/unleash 301

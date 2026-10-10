@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 import { JSDOM } from "jsdom";
 
 export const origin = "https://www.middleleap.com";
-const pages = ["/", "/ventures", "/ventures/hivemind"];
+const pages = ["/", "/ventures", "/ventures/unleash"];
 const canonical = (route) => route === "/" ? origin : `${origin}${route}`;
 const signals = ["search=yes", "ai-input=yes", "ai-train=no"];
 const safeHeaders = ["content-type", "vary", "content-signal", "x-robots-tag"];
@@ -16,7 +16,7 @@ export const retrievalCases = [
   ...["robots.txt", "sitemap.xml", "llms.txt"].map((file) => ({ url: `${origin}/${file}`, kind: file })),
   ...["http://middleleap.com/", "https://middleleap.com/", "http://www.middleleap.com/"].map((url) => ({ url, kind: "redirect" })),
   { url: `${origin}/index.md`, kind: "direct-markdown" },
-  { url: `${origin}/ventures/hivemind.md`, kind: "direct-markdown" },
+  { url: `${origin}/ventures/unleash.md`, kind: "direct-markdown" },
 ];
 
 /** Validate public representations without interpreting client access as bot identity. */

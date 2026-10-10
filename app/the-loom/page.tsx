@@ -299,7 +299,7 @@ export default function LoomPage() {
           {limits.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
         <div className={styles.caseLink}><span>Reference-build evidence</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only portal used to exercise the harness end to end—not a customer production deployment.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
-        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Setbay · HiveMind</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
+        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Setbay · Unleash</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
       </section>
 
       <section className={styles.engage}>

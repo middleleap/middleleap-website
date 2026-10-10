@@ -46,7 +46,7 @@ type ChildNavState = {
 
 const portfolioDetailPaths = new Set([
   "/ventures/backoffice",
-  "/ventures/hivemind",
+  "/ventures/unleash",
   "/ventures/setbay",
 ]);
 

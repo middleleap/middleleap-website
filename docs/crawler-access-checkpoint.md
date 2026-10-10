@@ -47,4 +47,6 @@ The existing local regression gate remains `npm run build` then `npm run seo:che
 
 ## Reusable read-only checker
 
-`npm run retrieval:check` runs a tested, read-only public-retrieval checker. Its 14 identified-client GETs verify the three representative HTML/Markdown pages, discovery resources and canonical redirects, plus direct `/index.md` and `/ventures/hivemind.md` twins carrying `noindex`. It checks `Vary: Accept`, exact Content Signals and representation content; reports contain only safe headers, timestamps, successful-body hashes and findings. A pass establishes retrieval for this client, not verified-crawler identity or a deployed commit. It never changes security or account settings.
+The dated observations above retain the route used on 8 October. Following the 11 October Unleash rebrand, the current checker uses `/ventures/unleash` as the representative venture page.
+
+`npm run retrieval:check` runs a tested, read-only public-retrieval checker. Its 14 identified-client GETs verify the three representative HTML/Markdown pages, discovery resources and canonical redirects, plus direct `/index.md` and `/ventures/unleash.md` twins carrying `noindex`. It checks `Vary: Accept`, exact Content Signals and representation content; reports contain only safe headers, timestamps, successful-body hashes and findings. A pass establishes retrieval for this client, not verified-crawler identity or a deployed commit. It never changes security or account settings.

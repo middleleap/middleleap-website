@@ -2,48 +2,48 @@ import { ProjectPage, type ProjectPageData } from "@/components/ProjectPage";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "HiveMind",
+  title: "Unleash",
   description:
-    "How HiveMind is built: product architecture, the server-side AI pipeline, coach-voice and memory features, quality controls and development maturity.",
-  path: "/ventures/hivemind",
-  socialTitle: "HiveMind | MiddleLeap Ventures",
+    "How Unleash is built: product architecture, the server-side AI pipeline, coach-voice and memory features, quality controls and development maturity.",
+  path: "/ventures/unleash",
+  socialTitle: "Unleash | MiddleLeap Ventures",
   socialDescription:
     "An evidence-backed build record for human-led, AI-amplified karting coaching.",
 });
 
-// "HiveMind" is the working name; a final product name precedes wider market
-// entry. Pilot organisations and their customer-facing brands are not named.
+// Current brand identity; product claims retain the reviewed evidence snapshot.
+// Pilot organisations and their customer-facing brands are not named.
 const data: ProjectPageData = {
-  currentPath: "/ventures/hivemind",
-  breadcrumbLabel: "HiveMind",
-  contextLabel: "HiveMind navigation",
+  currentPath: "/ventures/unleash",
+  breadcrumbLabel: "Unleash",
+  contextLabel: "Unleash navigation",
   hero: {
     eyebrow: "Portfolio · AI-enabled service venture",
-    title: <>HiveMind.<br /><em>It remembers. You coach.</em></>,
+    title: <>Unleash.<br /><em>It remembers. You coach.</em></>,
     lede:
-      "HiveMind turns a coach's voice notes, photos, telemetry and setups into same-day debriefs for families and a team memory that compounds. AI drafts and remembers; the coach edits, signs off and sends.",
+      "Unleash turns a coach's voice notes, photos, telemetry and setups into same-day debriefs for families and a team memory that compounds. AI drafts and remembers; the coach edits, signs off and sends.",
     actions: [
-      { label: "Open the live site ↗", href: "https://hivemind.middleleap.com/", kind: "primary", external: true },
+      { label: "Open the live site ↗", href: "https://unleash.training/", kind: "primary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
-    snapshot: "Private evidence snapshot · repository main at a5b103d · reviewed 4 October 2026",
+    snapshot: "Private product evidence · repository main at a5b103d · reviewed 4 October 2026 · brand updated 11 October 2026",
   },
   status: {
-    ariaLabel: "HiveMind project status",
-    headerLabel: "Project record / HiveMind",
+    ariaLabel: "Unleash project status",
+    headerLabel: "Project record / Unleash",
     headerValue: "In pilot use",
     rows: [
       { term: "Current phase", detail: "Pilot use with a partner coaching team · public website live, guided trials not yet open" },
-      { term: "Ownership", detail: "MiddleLeap Ventures · HiveMind is a working name" },
+      { term: "Ownership", detail: "MiddleLeap Ventures · product brand Unleash" },
       { term: "Product posture", detail: "Coaching-operations PWA, not an autonomous coach" },
       { term: "AI posture", detail: "Server-side only · deterministic grounding · mandatory coach edit" },
-      { term: "Remaining boundary", detail: "Wider pilot evidence, live messaging credentials and a final brand" },
+      { term: "Remaining boundary", detail: "Wider pilot evidence and live messaging credentials" },
     ],
   },
   executiveSummary: {
     title: "A service experiment in preserving expert authority.",
     intro:
-      "HiveMind is deliberately outside MiddleLeap's regulated core. Its relevance is the operating principle: AI may increase the reach, memory and consistency of an expert service without becoming the accountable expert.",
+      "Unleash is deliberately outside MiddleLeap's regulated core. Its relevance is the operating principle: AI may increase the reach, memory and consistency of an expert service without becoming the accountable expert.",
     items: [
       { label: "Question", title: "Can expertise scale safely?", detail: "Turn fragmented track evidence into useful coaching while preserving the coach's judgement, voice and family relationship." },
       { label: "Evidence", title: "In pilot use", detail: "The product assembles evidence, drafts a grounded debrief in the coach's voice and carries each driver's history into the next session." },
@@ -55,7 +55,7 @@ const data: ProjectPageData = {
   why: {
     heading: "Elite coaching insight should not depend on an elite coaching budget.",
     lede:
-      "Karting produces rich evidence—telemetry, video, photographs, voice notes, setups and weather—but turning it into useful, personal feedback is slow, and most of it is forgotten by the next race weekend. HiveMind makes that synthesis repeatable and keeps the memory, without replacing the coach.",
+      "Karting produces rich evidence—telemetry, video, photographs, voice notes, setups and weather—but turning it into useful, personal feedback is slow, and most of it is forgotten by the next race weekend. Unleash makes that synthesis repeatable and keeps the memory, without replacing the coach.",
     cards: [
       { tag: "Problem", title: "Evidence is scattered", detail: "Track-day observations arrive in different formats and often disappear before they become actionable learning." },
       { tag: "Proposition", title: "One coached debrief, same day", detail: "Capture once, assemble the day, draft a grounded debrief and return it to the coach for judgement before it reaches the family." },
@@ -68,7 +68,7 @@ const data: ProjectPageData = {
     lede:
       "The runtime is a staged, durable pipeline. A consent gate runs first; vision, transcription and synthesis then create structured findings, enriched with the driver's own history, before final prose is written. A deterministic grounding and confidentiality check sits before the coach review and delivery boundary.",
     mapAriaLabel:
-      "HiveMind architecture: coaches capture media, voice and telemetry into Supabase behind a consent gate; server-side Claude vision and Whisper produce structured inputs; Claude synthesis uses driver memory, and final prose in the coach's voice passes a deterministic grounding check to coach review, then delivery by PDF, email or WhatsApp",
+      "Unleash architecture: coaches capture media, voice and telemetry into Supabase behind a consent gate; server-side Claude vision and Whisper produce structured inputs; Claude synthesis uses driver memory, and final prose in the coach's voice passes a deterministic grounding check to coach review, then delivery by PDF, email or WhatsApp",
     nodes: [
       { slot: "users", tag: "People", title: "Coach + family", small: "Capture · context · judgement" },
       { slot: "agents", tag: "Evidence", title: "Media + telemetry", small: "Photo · video · voice · setups · weather" },
@@ -84,7 +84,7 @@ const data: ProjectPageData = {
     label: "Loom-informed delivery",
     heading: "Start with the coach's gold standard, then make every AI step answer to it.",
     lede:
-      "HiveMind applies the Loom's evidence, specification and human-authority principles to venture building. This is disciplined use of the method's ideas—not a claim of full regulated-harness adoption.",
+      "Unleash applies the Loom's evidence, specification and human-authority principles to venture building. This is disciplined use of the method's ideas—not a claim of full regulated-harness adoption.",
     stages: [
       { number: "01", name: "Observe", detail: "Coach workflow, track-day evidence and a gold-standard debrief" },
       { number: "02", name: "Frame", detail: "Human-led product principles, consent boundaries and acceptance criteria" },
@@ -148,7 +148,7 @@ const data: ProjectPageData = {
       { stat: "12", caption: "CI workflows, including live evaluation and a weekly production check" },
     ],
     boundary:
-      "HiveMind is in pilot use, not offered to the wider market. The public website explains the product and its data access, but guided trials are not yet open and trial scope is agreed before any real use. Production confidence still depends on repeat usage across more coaches and teams, live messaging credentials and a larger real-world gold set. Features built behind flags are not claimed as live. Parent consent and coach authority remain human responsibilities, not model decisions.",
+      "Unleash is in pilot use, not offered to the wider market. The public website explains the product and its data access, but guided trials are not yet open and trial scope is agreed before any real use. Production confidence still depends on repeat usage across more coaches and teams, live messaging credentials and a larger real-world gold set. Features built behind flags are not claimed as live. Parent consent and coach authority remain human responsibilities, not model decisions.",
   },
   sources: [
     { id: "R1", label: "Repository overview and product principles" },
@@ -163,10 +163,10 @@ const data: ProjectPageData = {
   engage: {
     heading: "AI can deepen a human service without taking authority away from the expert.",
     detail: "Bring the product, operating-model and governed-AI learning into your service proposition.",
-    mailtoSubject: "HiveMind%20venture%20learning",
+    mailtoSubject: "Unleash%20venture%20learning",
   },
 };
 
-export default function HiveMindProjectPage() {
+export default function UnleashProjectPage() {
   return <ProjectPage data={data} />;
 }
