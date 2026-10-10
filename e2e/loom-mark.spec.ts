@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-for (const route of ["/", "/the-loom"]) {
+for (const route of ["/the-loom"]) {
   test(`${route} lets visitors pause and resume the complete loop`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "no-preference" });
     await page.goto(route);

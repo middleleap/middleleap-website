@@ -1,7 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
-import { LoomMark } from "@/components/LoomMark";
-import { advisoryStory } from "@/lib/loomStories";
+import { CeramicPivot } from "@/components/CeramicPivot";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { bookingLinkProps, companyLinkedInUrl, mailtoHref } from "@/lib/contact";
@@ -223,7 +222,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.heroVisual}>
-          <LoomMark story={advisoryStory} />
+          <CeramicPivot />
         </div>
       </section>
 
