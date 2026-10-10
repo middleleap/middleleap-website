@@ -54,6 +54,14 @@
   line-height: 1.65;
 }
 
+.offerTeaser {
+  max-width: 680px;
+  margin-top: 18px;
+  color: var(--bone-1);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -75,7 +83,7 @@
 }
 
 .primaryAction {
-  color: #110d0a;
+  color: var(--on-ember);
   background: var(--ember-500);
 }
 
@@ -220,6 +228,88 @@
   color: var(--bone-2);
   font-size: var(--fs-small);
   line-height: 1.7;
+}
+
+.reviewSteps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  border-block: 1px solid var(--ink-border);
+}
+
+.reviewSteps > li {
+  padding: 28px 24px;
+  border-right: 1px solid var(--ink-border);
+}
+
+.reviewSteps > li:last-child {
+  border-right: 0;
+}
+
+.reviewSteps span,
+.takeawayLabel {
+  color: var(--ember-text);
+  font: 500 var(--fs-ui-small)/1.5 var(--font-jetbrains-mono), monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.reviewSteps h3,
+.takeawayPages h3 {
+  margin-top: 28px;
+  color: var(--bone-0);
+  font: 400 29px/1.2 var(--font-instrument-serif), serif;
+}
+
+.reviewSteps p,
+.takeawayList p {
+  margin-top: 12px;
+  color: var(--bone-2);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+}
+
+.reviewPrivacy,
+.sequenceNote {
+  max-width: 800px;
+  margin-top: 24px;
+  color: var(--bone-3);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+}
+
+.reviewPrivacy a {
+  color: var(--ember-text);
+  text-underline-offset: 4px;
+}
+
+.takeawayPages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.takeawayPages > article {
+  padding: 32px;
+  border: 1px solid var(--ink-4);
+  background: var(--ink-1);
+}
+
+.takeawayList {
+  margin-top: 24px;
+  list-style: none;
+}
+
+.takeawayList li {
+  padding-block: 20px;
+  border-top: 1px solid var(--ink-border);
+}
+
+.takeawayList h4 {
+  color: var(--bone-1);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  font-weight: 600;
 }
 
 .decisionGrid {
@@ -480,6 +570,19 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .reviewSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewSteps > li {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink-border);
+  }
+
+  .reviewSteps > li:last-child {
+    border-bottom: 0;
+  }
+
   .decisionGrid article:nth-child(2) {
     border-right: 0;
   }
@@ -518,8 +621,13 @@
   .systemFlow,
   .evidenceTimeline,
   .evidenceResult,
-  .engagementGrid {
+  .engagementGrid,
+  .takeawayPages {
     grid-template-columns: 1fr;
+  }
+
+  .takeawayPages > article {
+    padding: 24px;
   }
 
   .sectionIntro {

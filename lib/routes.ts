@@ -16,7 +16,7 @@ export type RouteMeta = {
 
 export const routes = [
   { path: "/", contentUpdated: "2026-10-09", changeFrequency: "monthly", priority: 1 },
-  { path: "/open-finance", contentUpdated: "2026-08-14", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/open-finance", contentUpdated: "2026-10-10", changeFrequency: "monthly", priority: 0.9 },
   { path: "/the-loom", contentUpdated: "2026-10-09", changeFrequency: "monthly", priority: 0.85 },
   { path: "/practice", contentUpdated: "2026-09-16", changeFrequency: "monthly", priority: 0.85 },
   { path: "/founder", contentUpdated: "2026-09-16", changeFrequency: "monthly", priority: 0.85 },
