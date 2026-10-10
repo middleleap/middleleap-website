@@ -1,5 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
+import chromeStyles from "@/components/SiteChrome.module.css";
 import { CeramicPivot } from "@/components/CeramicPivot";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -109,8 +110,8 @@ const capabilities: Array<{
   number: string;
   title: string;
   detail: string;
-  href?: Route;
-  linkLabel?: string;
+  href: Route;
+  linkLabel: string;
 }> = [
   {
     number: "01",
@@ -123,18 +124,24 @@ const capabilities: Array<{
   {
     number: "02",
     title: "Platform & ecosystem strategy",
+    href: "#engage",
+    linkLabel: "Discuss platform strategy",
     detail:
       "Platform propositions, API strategy, embedded finance, partnerships, commercial models and monetisation.",
   },
   {
     number: "03",
     title: "AI-native operating models",
+    href: "/the-loom",
+    linkLabel: "Explore governed AI delivery",
     detail:
       "Value-stream redesign, agentic workflows, product and engineering models, governance and control.",
   },
   {
     number: "04",
     title: "Transformation & execution",
+    href: "/how-we-engage",
+    linkLabel: "Explore engagement models",
     detail:
       "Executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.",
   },
@@ -267,13 +274,11 @@ export default function HomePage() {
           {capabilities.map((capability) => (
             <article key={capability.number}>
               <span>{capability.number}</span>
-              <h3>{capability.title}</h3>
+              <h3><Link className={chromeStyles.titleLink} href={capability.href}>{capability.title}</Link></h3>
               <p>{capability.detail}</p>
-              {"href" in capability && capability.href && (
-                <Link className={styles.capabilityLink} href={capability.href}>
-                  {capability.linkLabel} →
-                </Link>
-              )}
+              <Link className={styles.capabilityLink} href={capability.href}>
+                {capability.linkLabel} →
+              </Link>
             </article>
           ))}
         </div>
@@ -301,21 +306,21 @@ export default function HomePage() {
               <span>01 · Front door</span>
               <h3>Advisory</h3>
               <p>Frame the strategic, regulatory and commercial mandate.</p>
-              <div><small>What we do</small><small>How we work</small><small>Experience</small></div>
+              <div><Link href="#expertise">What we do</Link><Link href="#method">How we work</Link><Link href="#experience">Experience</Link></div>
             </article>
             <i aria-hidden="true">→</i>
             <article>
               <span>02 · Delivery system</span>
               <h3>Execution</h3>
               <p>Use a governed harness and installable toolkit to deliver.</p>
-              <div><small>The Loom</small><small>The Loom Toolkit</small></div>
+              <div><Link href="/the-loom">The Loom</Link><Link href="/ai-dlc">The Loom Toolkit</Link></div>
             </article>
             <i aria-hidden="true">→</i>
             <article>
               <span>03 · Evidence engine</span>
               <h3>Ventures</h3>
               <p>Test propositions in operating reality and expose the next decision.</p>
-              <div><small>Portfolio</small><small>Venture Studio</small></div>
+              <div><Link href="/ventures#portfolio">Portfolio</Link><Link href="/ventures/studio">Venture Studio</Link></div>
             </article>
           </div>
           <div className={styles.companySystemReturn}>
@@ -409,6 +414,7 @@ export default function HomePage() {
               strategy, regulation, product, technology and delivery. Each engagement is shaped
               around the work—not a fixed consulting bench.
             </p>
+            <Link className={styles.capabilityLink} href="/practice">How the practice works →</Link>
           </div>
         </div>
 
@@ -466,7 +472,7 @@ export default function HomePage() {
           <aside className={styles.founderNote} aria-label="Founder">
             <FounderPortrait size={480} />
             <p className={styles.eyebrow}>The senior lead on every mandate</p>
-            <h3>{founder.name}</h3>
+            <h3><Link className={chromeStyles.titleLink} href="/founder">{founder.name}</Link></h3>
             <p>{founderBioMedium}</p>
             <Link href="/founder">Founder profile →</Link>
           </aside>
@@ -502,13 +508,23 @@ export default function HomePage() {
                 <span>0{index + 1}</span>
                 <small>{project.portfolioRole}</small>
               </div>
-              <h3>{project.name}</h3>
+              <h3>
+                {project.detailPath ? (
+                  <Link className={chromeStyles.titleLink} href={project.detailPath}>{project.name}</Link>
+                ) : (
+                  <a className={chromeStyles.titleLink} href={project.href} target="_blank" rel="noreferrer">{project.name} ↗</a>
+                )}
+              </h3>
               <p>{project.summary}</p>
               <div className={styles.ventureProjects}>
                 <span>{project.type}</span>
                 <span>{project.status}</span>
               </div>
-              {!project.detailPath && project.href && (
+              {project.detailPath ? (
+                <Link className={styles.ventureLink} href={project.detailPath} aria-label={`Read ${project.name}'s build record`}>
+                  Read the build record →
+                </Link>
+              ) : project.href && (
                 <a className={styles.ventureLink} href={project.href} target="_blank" rel="noreferrer">
                   Open the emulator ↗
                 </a>
@@ -563,14 +579,17 @@ export default function HomePage() {
           {engagementModels.map((engagement, index) => (
             <article key={engagement.key}>
               <span>0{index + 1}</span>
-              <h3>{engagement.label}</h3>
+              <h3><Link className={chromeStyles.titleLink} href={engagement.href}>{engagement.label}</Link></h3>
               <p>{engagement.short}</p>
             </article>
           ))}
         </div>
-        <a className={styles.primaryAction} {...bookingLinkProps}>
-          Book a conversation ↗
-        </a>
+        <div className={styles.engagementActions}>
+          <a className={styles.primaryAction} {...bookingLinkProps}>
+            Book a conversation ↗
+          </a>
+          <Link className={styles.engagementLink} href="/how-we-engage#models">Explore engagement models →</Link>
+        </div>
         <p className={styles.contactFallback}>
           Opens Google Calendar in a new tab. Prefer email?{" "}
           <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email</a>.

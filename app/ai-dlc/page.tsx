@@ -1,5 +1,6 @@
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
+import chromeStyles from "@/components/SiteChrome.module.css";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -20,7 +21,7 @@ const bundles = [
   {
     id: "loom-toolkit",
     number: "Core bundle",
-    version: `Loom ${loomRelease.version} · AI-SDLC 1.0.0`,
+    version: `Loom ${loomRelease.version}`,
     name: "The Loom Toolkit",
     label: "Governed delivery system",
     kind: "core",
@@ -33,15 +34,28 @@ const bundles = [
   {
     id: "open-finance",
     number: "Domain pack 01",
-    version: "v2.1",
+    version: "v3.0.8",
     name: "Open Finance Intelligence",
     label: "UAE domain intelligence",
     kind: "domain",
     description:
-      "The first attachable domain pack brings CBUAE and AlTareq knowledge, Islamic-banking context, risk review and value-proposition prototyping into the core system.",
-    contents: ["Open Finance canon", "Islamic banking UAE", "UAE bank risk reviewer", "UI/UX prototyper"],
-    href: "https://github.com/middleleap/ai-dlc/tree/main/plugins/middleleap-open-finance",
+      "The Open Finance domain pack brings CBUAE regulation, Standards tracking, AlTareq integration and value-proposition prototyping into the core system.",
+    contents: ["Open Finance canon", "Standards and errata tracking", "AlTareq brand and CX", "UI/UX prototyper"],
+    href: "https://github.com/middleleap/ai-dlc/tree/main/plugins/middleleap-open-finance-uae",
     linkLabel: "View the domain pack",
+  },
+  {
+    id: "banking-uae",
+    number: "Domain pack 02",
+    version: "v1.1.5",
+    name: "UAE Banking Intelligence",
+    label: "UAE banking expertise",
+    kind: "domain",
+    description:
+      "The companion banking pack carries Islamic-banking context, risk review and New Product Approval for CBUAE-regulated institutions, with or without The Loom.",
+    contents: ["Islamic banking UAE", "UAE bank risk reviewer", "New Product Approval"],
+    href: "https://github.com/middleleap/ai-dlc/tree/main/plugins/middleleap-banking-uae",
+    linkLabel: "View the banking pack",
   },
 ] as const;
 
@@ -156,10 +170,16 @@ export default function AiDlcPage() {
           {bundles.map((bundle) => (
             <article id={bundle.id} key={bundle.id} className={bundle.kind === "core" ? styles.coreBundle : styles.domainBundle}>
               <div className={styles.pluginMeta}><span>{bundle.number} / {bundle.label}</span><b>{bundle.version}</b></div>
-              <h3>{bundle.name}</h3>
+              <h3>
+                {bundle.href.startsWith("/") ? (
+                  <Link className={chromeStyles.titleLink} href={bundle.href}>{bundle.name}</Link>
+                ) : (
+                  <a className={chromeStyles.titleLink} href={bundle.href} target="_blank" rel="noreferrer">{bundle.name} ↗</a>
+                )}
+              </h3>
               <p>{bundle.description}</p>
               <ul>{bundle.contents.map((item) => <li key={item}>{item}</li>)}</ul>
-              {bundle.href.startsWith("/") ? <Link href={bundle.href}>{bundle.linkLabel} →</Link> : <a href={bundle.href} target="_blank" rel="noreferrer">{bundle.linkLabel} ↗</a>}
+              {bundle.href.startsWith("/") ? <Link href={bundle.href}>{bundle.linkLabel} →</Link> : <a href={bundle.href} target="_blank" rel="noreferrer" aria-label={`View ${bundle.name}`}>{bundle.linkLabel} ↗</a>}
             </article>
           ))}
         </div>
@@ -178,7 +198,6 @@ export default function AiDlcPage() {
         */}
         <pre role="region" tabIndex={0} aria-label="AI-DLC installation commands"><code>{`/plugin marketplace add middleleap/ai-dlc
 /plugin install middleleap-loom@middleleap-ai-dlc
-/plugin install middleleap-ai-sdlc@middleleap-ai-dlc
 
 # install the Loom inside the repository
 /middleleap-loom:loom-adopt
@@ -186,8 +205,9 @@ export default function AiDlcPage() {
 # draft the BrainKit from approved sources
 /middleleap-loom:brainkit-init
 
-# optional domain intelligence
-/plugin install middleleap-open-finance@middleleap-ai-dlc`}</code></pre>
+# domain packs (also installed as Loom dependencies)
+/plugin install middleleap-open-finance-uae@middleleap-ai-dlc
+/plugin install middleleap-banking-uae@middleleap-ai-dlc`}</code></pre>
         <aside className={styles.operatingBoundary}>
           <span>Operating boundary / {loomRelease.version}</span>
           <div>

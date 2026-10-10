@@ -492,7 +492,7 @@
   background: var(--ink-2);
 }
 
-.supportingEvidence a {
+.supportingEvidence article > a {
   margin-top: auto;
   padding-top: 24px;
   color: var(--ember-text);
@@ -553,10 +553,26 @@
 
 .engageActionRow {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   align-items: center;
   justify-content: space-between;
   margin-top: 32px;
+}
+
+.engagementLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink-2);
+  font: 500 var(--fs-ui-small) var(--font-jetbrains-mono), monospace;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.engagementLink:focus-visible {
+  outline-color: currentColor;
 }
 
 .engageActionRow span {

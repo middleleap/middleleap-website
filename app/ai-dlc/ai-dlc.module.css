@@ -48,6 +48,7 @@
 .catalogue { width: 100%; padding-inline: max(32px, calc((100% - 1120px) / 2)); background: var(--ink-1); }
 .pluginGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .bundleGrid { grid-template-columns: 1.35fr .65fr; }
+.bundleGrid .coreBundle { grid-row: span 2; }
 .pluginGrid article { min-height: 390px; padding: 26px; border: 1px solid var(--ink-4); background: var(--ink-2); scroll-margin-top: 24px; }
 .pluginGrid .coreBundle { border-color: rgba(230,92,45,.5); background: rgba(230,92,45,.045); }
 .pluginGrid .domainBundle { background: var(--ink-0); }
