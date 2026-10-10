@@ -18,8 +18,8 @@ jobs:
   lint-and-typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
@@ -31,8 +31,8 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
@@ -42,15 +42,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
       - run: npm ci
       - run: npm run build
       - run: npm run seo:check
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: static-export
           path: out/
@@ -60,13 +60,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
       - run: npm ci
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: static-export
           path: out/
@@ -77,19 +77,28 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
       - run: npm ci
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: static-export
           path: out/
-      - run: npm install -g @lhci/cli
+      # @lhci/cli pins Lighthouse 12.6.1, whose robots-txt audit rejects the
+      # Content-Signal directive. Install it in an isolated prefix with a
+      # Lighthouse 13 override (13.x accepts content-signal).
+      - name: Install Lighthouse CI
+        run: |
+          mkdir -p "$RUNNER_TEMP/lhci" && cd "$RUNNER_TEMP/lhci"
+          npm init -y > /dev/null
+          npm pkg set "overrides.lighthouse=^13"
+          npm install @lhci/cli "lighthouse@^13"
+          echo "$RUNNER_TEMP/lhci/node_modules/.bin" >> "$GITHUB_PATH"
       - run: lhci autorun
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: lighthouse-results
