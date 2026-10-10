@@ -7,13 +7,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./open-finance.module.css";
 
 export const metadata = pageMetadata({
-  title: "Open Finance Advisory | MENA Strategy & Execution",
+  title: "Open Finance Advisory & Complimentary Review | MiddleLeap",
   description:
-    "MiddleLeap helps banks, fintechs and financial infrastructure providers turn Open Finance mandates into propositions, platforms, operating models and market execution.",
+    "A complimentary Open Finance review for banks and fintechs: a 60-minute working session and two-page takeaway with three priorities and a suggested 90-day sequence.",
   path: "/open-finance",
-  socialTitle: "Open Finance Advisory | MiddleLeap",
+  socialTitle: "Open Finance Readiness & Value Review | MiddleLeap",
   socialDescription:
-    "Senior advisory for Open Finance strategy, regulatory readiness, LFI and TPP operating models, ecosystems and execution across MENA.",
+    "Start with a short fit call, a 60-minute working session and a two-page decision brief. Any paid follow-on is optional and separately scoped.",
 });
 
 const structuredData = {
@@ -121,10 +121,11 @@ export default function OpenFinancePage() {
         ]}
         contextLabel="Open Finance navigation"
         contextLinks={[
+          { href: "#readiness-review", label: "Complimentary review" },
+          { href: "#illustrative-takeaway", label: "Takeaway" },
           { href: "#mandates", label: "Mandates" },
-          { href: "#work", label: "The work" },
           { href: "#evidence", label: "Evidence" },
-          { href: "#engage", label: "Engage" },
+          { href: "#engage", label: "Paid advisory" },
         ]}
       />
 
@@ -139,9 +140,13 @@ export default function OpenFinancePage() {
             connect Open Finance obligations with market position, propositions,
             ecosystem economics, platform capabilities and accountable execution.
           </p>
+          <p className={styles.offerTeaser}>
+            Start with a complimentary Open Finance Readiness &amp; Value Review:
+            one working session and a two-page brief to frame your next decision.
+          </p>
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="#engage">Discuss an Open Finance mandate</a>
-            <a className={styles.secondaryAction} href="#evidence">Review the evidence</a>
+            <a className={styles.primaryAction} href="#readiness-review">Explore the complimentary review</a>
+            <a className={styles.secondaryAction} href="#illustrative-takeaway">View illustrative takeaway</a>
           </div>
         </div>
 
@@ -185,6 +190,127 @@ export default function OpenFinancePage() {
             <span>Market-ready participation model</span>
             <b aria-hidden="true">◆</b>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.section} id="readiness-review" tabIndex={-1} aria-labelledby="readiness-review-title">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Complimentary review</p>
+          <div>
+            <h2 id="readiness-review-title">Open Finance Readiness &amp; Value Review</h2>
+            <p>
+              For leaders in banks, fintechs and financial infrastructure providers
+              weighing an Open Finance proposition or preparing their next delivery
+              decision. Bring one mandate that needs a clearer next step.
+            </p>
+            <p>
+              The review is complimentary, with no obligation to commission further
+              work. Regulatory certification and independent assurance sit outside
+              its scope.
+            </p>
+          </div>
+        </div>
+        <ol className={styles.reviewSteps}>
+          <li>
+            <span>01 / Check the fit</span>
+            <h3>A short fit call</h3>
+            <p>
+              Outline your role, the decision and the context you can safely share.
+              We confirm whether the review is a useful fit before arranging the
+              working session.
+            </p>
+          </li>
+          <li>
+            <span>02 / Work the decision</span>
+            <h3>A 60-minute working session</h3>
+            <p>
+              Map your intended market role, one priority proposition, readiness
+              questions and delivery dependencies with the relevant sponsor. Work
+              from public or approved non-confidential context; keep unknowns visible.
+            </p>
+          </li>
+          <li>
+            <span>03 / Take away the priorities</span>
+            <h3>A two-page takeaway</h3>
+            <p>
+              Receive a concise decision brief with three priorities, evidence gaps
+              and a suggested 90-day sequence. Your accountable owners validate the
+              assumptions and decide what happens next.
+            </p>
+          </li>
+        </ol>
+        <div className={styles.actions}>
+          <a className={styles.primaryAction} {...bookingLinkProps}>Book a fit call</a>
+          <a className={styles.secondaryAction} href={mailtoHref("Open Finance Readiness & Value Review")}>
+            Request the review by email
+          </a>
+          <a className={styles.secondaryAction} href="#illustrative-takeaway">View illustrative takeaway</a>
+        </div>
+        <p className={styles.reviewPrivacy}>
+          Please share only public or non-confidential context. Do not send customer
+          data, credentials or internal bank documents. If protected material is
+          needed later, agree confidentiality and handling arrangements first. Read
+          our <Link href="/privacy">privacy notice</Link>.
+        </p>
+      </section>
+
+      <section className={styles.section} id="illustrative-takeaway" tabIndex={-1} aria-labelledby="illustrative-takeaway-title">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Illustrative deliverable</p>
+          <div>
+            <h2 id="illustrative-takeaway-title">What the two-page takeaway can look like.</h2>
+            <p>
+              Illustrative structure only. These are prompts, not findings about a
+              bank, a client engagement or a completed review. Your takeaway would
+              reflect the discussion, with assumptions and evidence gaps stated
+              explicitly.
+            </p>
+          </div>
+        </div>
+        <div className={styles.takeawayPages}>
+          <article aria-labelledby="takeaway-priorities-title">
+            <p className={styles.takeawayLabel}>Illustrative / Page 1 of 2</p>
+            <h3 id="takeaway-priorities-title">Three priorities to resolve</h3>
+            <ol className={styles.takeawayList}>
+              <li>
+                <h4>Define the participation choice</h4>
+                <p>Which customer need and market role should shape the proposition? What would make it worth pursuing?</p>
+              </li>
+              <li>
+                <h4>Test the readiness assumptions</h4>
+                <p>What must be evidenced across consent, data, APIs, controls and partner responsibilities? Which gaps need an accountable owner?</p>
+              </li>
+              <li>
+                <h4>Set the delivery decision</h4>
+                <p>Who owns the next decision, which dependencies need resolving and what evidence would justify a bounded next step?</p>
+              </li>
+            </ol>
+          </article>
+          <article aria-labelledby="takeaway-sequence-title">
+            <p className={styles.takeawayLabel}>Illustrative / Page 2 of 2</p>
+            <h3 id="takeaway-sequence-title">A suggested 90-day sequence</h3>
+            <ol className={styles.takeawayList}>
+              <li>
+                <h4>Days 1–30 / Frame</h4>
+                <p>Agree the participation hypothesis, decision owners and evidence needed to judge the opportunity.</p>
+              </li>
+              <li>
+                <h4>Days 31–60 / Validate</h4>
+                <p>Test the proposition and readiness assumptions against approved evidence. Review partner dependencies and control responsibilities.</p>
+              </li>
+              <li>
+                <h4>Days 61–90 / Decide</h4>
+                <p>Bring the evidence to accountable owners for a decision to proceed, revise or stop. Scope any next delivery step separately.</p>
+              </li>
+            </ol>
+            <p className={styles.sequenceNote}>
+              Indicative planning windows, subject to your evidence, approvals and
+              capacity. No delivery dates or outcomes are committed by this illustration.
+            </p>
+          </article>
+        </div>
+        <div className={styles.actions}>
+          <a className={styles.secondaryAction} href="#readiness-review">Discuss your review</a>
         </div>
       </section>
 
@@ -334,11 +460,13 @@ export default function OpenFinancePage() {
 
       <section className={styles.engage} id="engage">
         <div className={styles.engageIntro}>
-          <p className={styles.eyebrow}>Engagement models</p>
-          <h2>Start with the decision that cannot stay unresolved.</h2>
+          <p className={styles.eyebrow}>Optional paid advisory</p>
+          <h2>Scope further work around an agreed mandate.</h2>
           <p>
-            MiddleLeap assembles senior regulatory, strategy, product, technology and
-            delivery expertise around the mandate rather than bringing a fixed bench.
+            Any follow-on executive advisory, strategy sprint or mobilisation is
+            optional and separately agreed, including deliverables, fees and
+            responsibilities. The complimentary review does not require a paid
+            engagement.
           </p>
         </div>
         <div className={styles.engagementGrid}>
@@ -352,7 +480,7 @@ export default function OpenFinancePage() {
         </div>
         <div className={styles.engageActionRow}>
           <a className={styles.primaryAction} {...bookingLinkProps}>
-            Book a conversation
+            Discuss paid advisory
           </a>
           <span>
             <a href={mailtoHref("Open Finance mandate")}>{contactEmail}</a> · Dubai, UAE
