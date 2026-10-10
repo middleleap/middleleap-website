@@ -57,8 +57,8 @@ export const portfolioProjects: PortfolioProject[] = [
     evidenceAccess: "Private build record · reviewed snapshot",
   },
   {
-    // "HiveMind" is the working name; pilot teams and their brands are not named.
-    name: "HiveMind",
+    // The Unleash brand is current; pilot teams and their brands are not named.
+    name: "Unleash",
     type: "AI-enabled service venture",
     summary:
       "Human-led karting coaching: a coach's voice notes, photos and telemetry become same-day, coach-signed debriefs and a team memory that compounds.",
@@ -66,9 +66,9 @@ export const portfolioProjects: PortfolioProject[] = [
     evidence: "AI can deepen an expert service without taking authority from the expert.",
     portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
-    detailPath: "/ventures/hivemind",
+    detailPath: "/ventures/unleash",
     reviewedOn: "2026-10-04",
-    href: "https://hivemind.middleleap.com/",
+    href: "https://unleash.training/",
     evidenceAccess: "Private build record · reviewed snapshot",
   },
   {

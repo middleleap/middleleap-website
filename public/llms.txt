@@ -88,11 +88,11 @@ MiddleLeap builds and contributes to working platforms so its advisory work is g
 
 - Open Finance Backoffice — flagship reference build, regulated delivery profile, demo-complete. A bank-neutral, synthetic-only portal that turns Open Finance obligations into governed workflows for people and agents and was used to exercise the harness end to end. It is not a customer production deployment.
 - Setbay (formerly the working codename Parqo) — venture experiment, venture delivery profile, collecting demand. A UAE marketplace turning idle weekday hotel bays into reserved monthly parking for companies and their employees, with a live acquisition platform collecting demand in five Dubai districts at https://setbay.ae/. It is not yet an operating marketplace; no facility is contracted and no employer is paying, and commercial investment is gated by signed supply and a paying employer in one district.
-- HiveMind — venture experiment, venture delivery profile, in pilot use; public website at https://hivemind.middleleap.com/, guided trials not yet open. Owned by MiddleLeap Ventures; "HiveMind" is a working name. Human-led karting coaching: a coach's voice notes, photos and telemetry become same-day, coach-signed debriefs and a team memory that compounds. AI runs server-side only, with a deterministic grounding check and a mandatory coach edit before anything is sent, testing how AI can extend an expert service without taking authority from the expert.
+- Unleash — venture experiment, venture delivery profile, in pilot use; public website at https://unleash.training/, guided trials not yet open. Owned by MiddleLeap Ventures; product brand Unleash. Human-led karting coaching: a coach's voice notes, photos and telemetry become same-day, coach-signed debriefs and a team memory that compounds. AI runs server-side only, with a deterministic grounding check and a mandatory coach edit before anything is sent, testing how AI can extend an expert service without taking authority from the expert.
 
 - Declare — regulated prototype, not certified. Agentic payments on UAE Open Finance with a regulator's ceiling built in. The public prototype at https://declare.middleleap.com/ is a hackathon prototype on an emulator profile.
 
-Setbay and HiveMind apply The Loom's evidence, specification and human-authority principles to venture building. Neither is a claim of full regulated-harness adoption.
+Setbay and Unleash apply The Loom's evidence, specification and human-authority principles to venture building. Neither is a claim of full regulated-harness adoption.
 
 OpenFinance-OS, the Data Sandbox and Ecosystem Watcher are presented separately as independent ecosystem contributions. MiddleLeap's role is contribution, not ownership. OpenFinance-OS (https://openfinance-os.org/) is the independent record of UAE Open Finance. Ecosystem Watcher is a weekly, agent-run monitor published inside the OpenFinance-OS Observatory (https://openfinance-os.org/observatory/watch/). The Data Sandbox (https://data-sandbox.openfinance-os.org/) provides specification-driven synthetic payloads and personas for bank data sharing, insurance and the ATM directory, with an MCP server; code is MIT-licensed and data CC0.
 
@@ -104,7 +104,7 @@ The portfolio operates as a build, learn and apply loop: build working assets, c
 
 MiddleLeap advises on AI-native delivery because it ships with it. Every position the firm takes on agentic workflows, governance and AI-enabled delivery is tested on its own products first; occasionally it is then asked to teach it. Training is evidence of the practice, not a service line: MiddleLeap does not sell AI-literacy workshops.
 
-- Built: Backoffice, HiveMind, Setbay, MiddleLeap's OpenFinance-OS contributions and The Loom itself are built and operated through the same governed loop brought to client mandates, with Discovery and Delivery harnesses, decision-grade proofs and an audit trail on every change.
+- Built: Backoffice, Unleash, Setbay, MiddleLeap's OpenFinance-OS contributions and The Loom itself are built and operated through the same governed loop brought to client mandates, with Discovery and Delivery harnesses, decision-grade proofs and an audit trail on every change.
 - Regulated: the same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq (CBUAE Open Finance, 2024 to 2026), where every consent, API and release is examined by the regulator; and, in 2026, in front of regulators as Declare.
 - Taught: in 2026 a sovereign wealth fund's AI academy engaged MiddleLeap, through CFTE, to teach its teams the fundamentals of working with AI: prompt engineering, an open mind, and how an organisation changes its culture and ways of working to get the value out of AI. This is the same shift MiddleLeap designs into AI-native operating models; the training is not about building software.
 
@@ -148,9 +148,10 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 - [The Loom](https://www.middleleap.com/the-loom): the governed delivery method, its Discovery and Delivery harnesses, the Run feedback arc, control chain, context brain, continuous assurance, harness governance and stated limits.
 - [The Loom Toolkit](https://www.middleleap.com/ai-dlc): installable governed delivery system, Institutional BrainKit, AI-DLC distribution mechanism and optional domain intelligence.
 - [Open Finance Backoffice build record](https://www.middleleap.com/ventures/backoffice): evidence-backed architecture, AI delivery harness, technology stack, quality system and development maturity.
-- [HiveMind build record](https://www.middleleap.com/ventures/hivemind): the human-led coaching product, server-side AI pipeline, coach-voice and memory features, quality system and development maturity.
+- [Unleash build record](https://www.middleleap.com/ventures/unleash): the human-led coaching product, server-side AI pipeline, coach-voice and memory features, quality system and development maturity.
 - [Setbay build record](https://www.middleleap.com/ventures/setbay): the live acquisition platform, approved marketplace design, AI-assisted delivery controls and next validation gates.
 - [Privacy](https://www.middleleap.com/privacy): data controller, information received, website measurement, purposes, recipients, retention and data-subject rights.
 - [Venture submission terms](https://www.middleleap.com/venture-submission-terms): non-confidentiality, no obligation created, ownership and the limited assessment permission covering Venture Studio proposals.
 
 Last reviewed: 2026-09-16
+Unleash brand and canonical venture URL updated: 2026-10-11. Product evidence remains the reviewed snapshot stated in its build record.

@@ -72,7 +72,7 @@ export default function VenturesPage() {
             <div className={styles.systemOrbit} aria-hidden="true">
               <span className={styles.orbitOne}>Backoffice</span>
               <span className={styles.orbitTwo}>Setbay</span>
-              <span className={styles.orbitThree}>HiveMind</span>
+              <span className={styles.orbitThree}>Unleash</span>
               <b>Build<br />Learn<br />Apply</b>
             </div>
           </div>

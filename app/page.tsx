@@ -172,7 +172,7 @@ const proofPractice: Array<{
     label: "Built",
     title: "Five products, one method.",
     body:
-      "Backoffice, HiveMind, Setbay, our OpenFinance-OS contributions and The Loom itself are built and operated through the same governed loop we bring to client mandates: Discovery and Delivery harnesses, decision-grade proofs, an audit trail on every change.",
+      "Backoffice, Unleash, Setbay, our OpenFinance-OS contributions and The Loom itself are built and operated through the same governed loop we bring to client mandates: Discovery and Delivery harnesses, decision-grade proofs, an audit trail on every change.",
     footer: "Live · middleleap.com/ventures",
     href: "/ventures",
   },
@@ -486,7 +486,7 @@ export default function HomePage() {
             <h2>One regulated proof. Two venture experiments. One regulated prototype.</h2>
             <p className={styles.venturesIntro}>
               Backoffice demonstrates governed delivery in MiddleLeap&apos;s core market.
-              Setbay and HiveMind test transferable platform and human-authority principles
+              Setbay and Unleash test transferable platform and human-authority principles
               in different operating contexts. Declare puts AI inside a regulated payments
               flow as a prototype. Their roles are deliberately not presented as equal evidence.
             </p>

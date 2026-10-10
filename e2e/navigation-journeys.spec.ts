@@ -120,6 +120,14 @@ for (const profile of profiles) {
           expect(popup.url()).toBe(declare.href);
           await popup.close();
         }
+        await page.goto("/ventures/unleash");
+        const [unleash] = await Promise.all([
+          page.waitForEvent("popup"),
+          page.getByRole("link", { name: "Open the live site ↗", exact: true }).click(),
+        ]);
+        await unleash.waitForLoadState("domcontentloaded");
+        expect(unleash.url()).toBe("https://unleash.training/");
+        await unleash.close();
         await page.goto("/ai-dlc");
         for (const [name, directory] of [
           ["Open Finance Intelligence ↗", "middleleap-open-finance-uae"],
