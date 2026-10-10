@@ -1,6 +1,8 @@
 import { pageMetadata } from "@/lib/seo";
 import { bookingLinkProps, contactEmail, mailtoHref } from "@/lib/contact";
 import Link from "next/link";
+import chromeStyles from "@/components/SiteChrome.module.css";
+import { engagementModels } from "@/lib/engagements";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -79,27 +81,6 @@ const workstreams = [
   ["03", "Shape the ecosystem", "Define priority partners, participation rules, commercial logic and the capabilities each party must provide."],
   ["04", "Mobilise the platform", "Connect APIs, consent, data, controls, operations and delivery into one sequenced transformation roadmap."],
   ["05", "Move to execution", "Create accountable workstreams, executive governance and evidence loops that expose the next decision early."],
-] as const;
-
-const engagementModels = [
-  {
-    label: "Executive advisory",
-    title: "Hold the strategic line",
-    detail:
-      "Senior support for boards, executives and programme sponsors making regulatory, proposition and ecosystem decisions.",
-  },
-  {
-    label: "Strategy sprint",
-    title: "Resolve the critical choices",
-    detail:
-      "A focused engagement to establish position, priority propositions, platform implications and an execution roadmap.",
-  },
-  {
-    label: "Mobilisation",
-    title: "Turn direction into movement",
-    detail:
-      "Programme leadership that aligns product, technology, risk, operations and external partners around delivery.",
-  },
 ] as const;
 
 export default function OpenFinancePage() {
@@ -438,17 +419,17 @@ export default function OpenFinancePage() {
           </article>
           <article>
             <span>Current working proof</span>
-            <h3>Open Finance Backoffice</h3>
+            <h3><Link className={chromeStyles.titleLink} href="/ventures/backoffice">Open Finance Backoffice</Link></h3>
             <p>
               MiddleLeap&apos;s synthetic-only regulated build turns obligations into
               governed workflows and demonstrates how strategy, controls and delivery
               evidence can be constructed together.
             </p>
-            <Link href="/ventures/backoffice">Read the build record →</Link>
+            <Link href="/ventures/backoffice" aria-label="Read Open Finance Backoffice's build record">Read the build record →</Link>
           </article>
           <article>
             <span>Execution method</span>
-            <h3>The Loom</h3>
+            <h3><Link className={chromeStyles.titleLink} href="/the-loom">The Loom</Link></h3>
             <p>
               A governed discovery and delivery system for moving one evidenced
               mandate into working software while accountable people retain authority.
@@ -471,9 +452,9 @@ export default function OpenFinancePage() {
         </div>
         <div className={styles.engagementGrid}>
           {engagementModels.map((model, index) => (
-            <article key={model.label}>
+            <article key={model.key}>
               <span>0{index + 1} / {model.label}</span>
-              <h3>{model.title}</h3>
+              <h3><Link className={chromeStyles.titleLink} href={model.href} aria-label={`Explore ${model.label}`}>{model.title}</Link></h3>
               <p>{model.detail}</p>
             </article>
           ))}
@@ -482,6 +463,7 @@ export default function OpenFinancePage() {
           <a className={styles.primaryAction} {...bookingLinkProps}>
             Discuss paid advisory
           </a>
+          <Link className={styles.engagementLink} href="/how-we-engage#models">Explore engagement models →</Link>
           <span>
             <a href={mailtoHref("Open Finance mandate")}>{contactEmail}</a> · Dubai, UAE
           </span>

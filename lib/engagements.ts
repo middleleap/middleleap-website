@@ -9,6 +9,7 @@
 export const engagementModels = [
   {
     key: "executive-advisory",
+    href: "/how-we-engage#executive-advisory",
     label: "Executive advisory",
     title: "Hold the strategic line",
     detail:
@@ -17,6 +18,7 @@ export const engagementModels = [
   },
   {
     key: "strategy-sprint",
+    href: "/how-we-engage#strategy-sprint",
     label: "Strategy sprint",
     title: "Resolve the critical choices",
     detail:
@@ -25,6 +27,7 @@ export const engagementModels = [
   },
   {
     key: "mobilisation",
+    href: "/how-we-engage#mobilisation",
     label: "Mobilisation",
     title: "Turn direction into movement",
     detail:

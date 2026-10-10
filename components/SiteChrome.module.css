@@ -712,3 +712,21 @@
     transition: none;
   }
 }
+
+.titleLink {
+  color: inherit;
+  font: inherit;
+  text-transform: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .14em;
+}
+
+.titleLink:hover,
+.titleLink:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+.titleLink:focus-visible {
+  outline-color: currentColor;
+}

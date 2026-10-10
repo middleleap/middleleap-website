@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ecosystemContributions, portfolioProjects } from "@/lib/ventures";
 import styles from "@/app/ventures/ventures.module.css";
+import chromeStyles from "./SiteChrome.module.css";
 
 export function VenturesPortfolio() {
   return (
@@ -29,16 +30,22 @@ export function VenturesPortfolio() {
               <span>{project.portfolioRole}</span>
               <b>{project.status}</b>
             </div>
-            <h3>{project.name}</h3>
+            <h3>
+              {project.detailPath ? (
+                <Link className={chromeStyles.titleLink} href={project.detailPath}>{project.name}</Link>
+              ) : (
+                <a className={chromeStyles.titleLink} href={project.href} target="_blank" rel="noreferrer">{project.name} ↗</a>
+              )}
+            </h3>
             <p>{project.summary}</p>
             <div className={styles.projectEvidence}>
               <span>{project.harnessProfile} profile</span>
               <strong>{project.evidence}</strong>
             </div>
             <div className={styles.projectLinks}>
-              {project.detailPath && <Link href={project.detailPath}>Read the build record →</Link>}
-              {project.href && <a href={project.href} target="_blank" rel="noreferrer">Visit live product ↗</a>}
-              {project.repository && <a href={project.repository} target="_blank" rel="noreferrer">View repository ↗</a>}
+              {project.detailPath && <Link href={project.detailPath} aria-label={`Read ${project.name}'s build record`}>Read the build record →</Link>}
+              {project.href && <a href={project.href} target="_blank" rel="noreferrer" aria-label={`Visit ${project.name}'s live product`}>Visit live product ↗</a>}
+              {project.repository && <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View ${project.name}'s repository`}>View repository ↗</a>}
               {project.evidenceAccess && <span>{project.evidenceAccess}</span>}
             </div>
           </article>
@@ -62,12 +69,12 @@ export function VenturesPortfolio() {
                 <span>{contribution.role}</span>
                 <b>{contribution.status}</b>
               </div>
-              <h4>{contribution.name}</h4>
+              <h4><a className={chromeStyles.titleLink} href={contribution.href} target="_blank" rel="noreferrer">{contribution.name} ↗</a></h4>
               <p>{contribution.summary}</p>
               <div className={styles.projectLinks}>
-                <a href={contribution.href} target="_blank" rel="noreferrer">Visit project ↗</a>
+                <a href={contribution.href} target="_blank" rel="noreferrer" aria-label={`Visit ${contribution.name}`}>Visit project ↗</a>
                 {contribution.repository && (
-                  <a href={contribution.repository} target="_blank" rel="noreferrer">View repository ↗</a>
+                  <a href={contribution.repository} target="_blank" rel="noreferrer" aria-label={`View ${contribution.name}'s repository`}>View repository ↗</a>
                 )}
               </div>
             </article>

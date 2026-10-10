@@ -514,8 +514,8 @@
   border-right: 0;
 }
 
-.shiftGrid article:hover,
-.ventureGrid article:hover {
+.ventureGrid article:hover,
+.ventureGrid article:focus-within {
   background: var(--ink-1);
   transform: translateY(-2px);
 }
@@ -584,7 +584,8 @@
     transform var(--dur-base) var(--ease-out);
 }
 
-.capabilityGrid article:hover {
+.capabilityGrid article:hover,
+.capabilityGrid article:focus-within {
   border-color: var(--ink-4);
   box-shadow: var(--shadow-2);
   transform: translateY(-2px);
@@ -662,7 +663,7 @@
 }
 
 .companySystemFlow article > span,
-.companySystemFlow small {
+.companySystemFlow article > div a {
   color: var(--ember-text);
   font: 500 var(--type-ui-micro) var(--font-jetbrains-mono), monospace;
   letter-spacing: .08em;
@@ -692,11 +693,23 @@
   border-top: 1px solid var(--ink-border);
 }
 
-.companySystemFlow small {
-  padding: 7px 8px;
+.companySystemFlow article > div a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 9px 10px;
   border: 1px solid var(--ink-4);
   color: var(--bone-3);
   letter-spacing: .03em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.companySystemFlow article > div a:hover,
+.companySystemFlow article > div a:focus-visible {
+  color: var(--bone-0);
+  border-color: var(--focus-ring);
+  outline-color: var(--focus-ring);
 }
 
 .companySystemReturn {
@@ -1032,7 +1045,8 @@
   color: var(--ember-text);
   font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
   letter-spacing: .06em;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 5px;
   text-transform: uppercase;
 }
 
@@ -1275,7 +1289,7 @@
   line-height: var(--lh-body);
 }
 
-.founderNote a {
+.founderNote > a {
   display: inline-block;
   margin-top: var(--s-5);
   color: var(--ember-text);
@@ -1331,6 +1345,28 @@
 .engage .primaryAction {
   width: fit-content;
   color: #110D0A;
+}
+
+.engagementActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.engagementLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink-2);
+  font: 500 var(--type-ui-small) var(--font-jetbrains-mono), monospace;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.engagementLink:focus-visible {
+  outline-color: currentColor;
 }
 
 .contactFallback {

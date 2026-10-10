@@ -92,7 +92,7 @@ export default function HowWeEngagePage() {
         </p>
         <div className={styles.modelList}>
           {engagementModels.map((model, index) => (
-            <article key={model.key}>
+            <article key={model.key} id={model.key} tabIndex={-1}>
               <span>0{index + 1}</span>
               <h3><small>{model.label}</small>{model.title}</h3>
               <p>{model.detail}</p>
