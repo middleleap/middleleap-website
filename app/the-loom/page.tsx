@@ -1,4 +1,6 @@
 import { pageMetadata } from "@/lib/seo";
+import { LoomMark } from "@/components/LoomMark";
+import { loomStory } from "@/lib/loomStories";
 import Link from "next/link";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -147,22 +149,8 @@ export default function LoomPage() {
           </div>
         </div>
 
-        <div className={styles.loomFigure} role="group" aria-label="The Loom uses Discovery and Delivery harnesses to turn a mandate into audit-ready software, then routes operational signals back into Discovery">
-          <div className={styles.figureHeader}><span>Mandate → outcome / closed loop</span><b>Two harnesses · one feedback arc</b></div>
-          <div className={styles.warp}><span>Evidence</span><span>Boundaries</span><span>Authority</span><span>Quality</span><span>Traceability</span></div>
-          <div className={styles.harnesses}>
-            <article className={styles.harnessDiamond}><small>Harness 01</small><strong>Discovery</strong><span>Discover → Define · D1—D9</span></article>
-            <i aria-hidden="true">→</i>
-            <article className={styles.harnessDiamond}><small>Harness 02</small><strong>Delivery</strong><span>Develop → Deliver · Q1—Q5</span></article>
-          </div>
-          <div className={styles.pattern}><small>The pattern</small><strong>Mandate context brain</strong><span>Constraints · Domain · Institutional context</span></div>
-          <div className={styles.shuttle}><i aria-hidden="true" /><span>AI agents weave continuously</span></div>
-          <div className={styles.runtime}>
-            <div className={styles.cloth}><small>The cloth</small><strong>Audit-ready software</strong></div>
-            <i aria-hidden="true">→</i>
-            <div className={styles.runNode}><small>The third arc</small><strong>Run / Operations</strong><span>Reality tests the framing</span></div>
-          </div>
-          <div className={styles.feedback}><b aria-hidden="true">↶</b><span>Incidents · drift · regulatory change · customer signals</span><strong>Return to Discovery as evidence</strong></div>
+        <div className={styles.loomFigure}>
+          <LoomMark story={loomStory} />
         </div>
       </section>
 
