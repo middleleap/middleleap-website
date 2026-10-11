@@ -8,6 +8,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./open-finance.module.css";
 
+const reviewEmailHref = mailtoHref("Open Finance Readiness & Value Review");
+
 export const metadata = pageMetadata({
   title: "Open Finance Advisory & Complimentary Review | MiddleLeap",
   description:
@@ -222,9 +224,20 @@ export default function OpenFinancePage() {
         </ol>
         <div className={styles.actions}>
           <a className={styles.primaryAction} {...bookingLinkProps}>Book a fit call</a>
-          <a className={styles.secondaryAction} href={mailtoHref("Open Finance Readiness & Value Review")}>
+          <a className={styles.secondaryAction} data-review-email="standard" href={reviewEmailHref}>
             Request the review by email
           </a>
+          {/* Cloudflare leaves noscript links intact; keep the same contact route
+              when its email-decoding script cannot run. */}
+          <noscript>
+            <style>{`
+              #readiness-review [data-review-email="standard"] { display: none; }
+              #readiness-review noscript { display: contents; }
+            `}</style>
+            <a className={styles.secondaryAction} href={reviewEmailHref}>
+              Request the review by email
+            </a>
+          </noscript>
           <a className={styles.secondaryAction} href="#illustrative-takeaway">View illustrative takeaway</a>
         </div>
         <p className={styles.reviewPrivacy}>
