@@ -1,13 +1,17 @@
 import { expect, test as base } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+import { siteOrigin } from "../lib/seo";
 import { bookingUrl, contactEmail, mailtoHref } from "../lib/contact";
 
 // Verify the handoff without making a booking, opening an email client or sending
 // traffic to a third party. The Calendar popup is an intercepted test destination.
 const test = base.extend<{ safeContactHandoff: void }>({
-  safeContactHandoff: [async ({ context }, use) => {
+  safeContactHandoff: [async ({ context, javaScriptEnabled, baseURL }, use) => {
     await context.route("**/*", async (route) => {
       const request = route.request();
       if (!["GET", "HEAD"].includes(request.method())) {
+        await route.abort();
+      } else if (javaScriptEnabled === false && request.resourceType() === "script") {
         await route.abort();
       } else if (request.url() === bookingUrl) {
         await route.fulfill({
@@ -15,8 +19,24 @@ const test = base.extend<{ safeContactHandoff: void }>({
           contentType: "text/html",
           body: "<!doctype html><title>Intercepted contact handoff</title><p>No booking request was sent.</p>",
         });
-      } else if (new URL(request.url()).origin === "http://127.0.0.1:4788") {
-        await route.continue();
+      } else if (new URL(request.url()).origin === new URL(baseURL!).origin) {
+        if (javaScriptEnabled === false && request.isNavigationRequest()) {
+          const response = await route.fetch();
+          let html = await response.text();
+          // Reproduce the delivered edge behaviour without changing Cloudflare:
+          // normal mailto anchors are rewritten; noscript contents are excluded.
+          html = html.split(/(<noscript\b[^>]*>[\s\S]*?<\/noscript>)/gi)
+            .map((part) => /^<noscript\b/i.test(part) ? part : part.replace(/\bhref="mailto:([^"]*)"/g, (_match, email: string) => {
+              const key = 0x42;
+              const encoded = [key, ...Buffer.from(email)].map((byte, index) =>
+                (index === 0 ? byte : byte ^ key).toString(16).padStart(2, "0"),
+              ).join("");
+              return `href="/cdn-cgi/l/email-protection#${encoded}"`;
+            })).join("");
+          await route.fulfill({ response, body: html });
+        } else {
+          await route.continue();
+        }
       } else {
         await route.abort();
       }
@@ -83,18 +103,49 @@ for (const colorScheme of ["light", "dark"] as const) {
   }
 
   test.describe(`review without JavaScript in ${colorScheme}`, () => {
-    test.use({ javaScriptEnabled: false, colorScheme });
-    test("keeps the offer, example and contact route readable", async ({ page }) => {
+    test.use({ javaScriptEnabled: false, colorScheme, reducedMotion: "reduce" });
+    for (const width of [320, 390, 1440]) test(`keeps the contact route usable at ${width}px after the email rewrite`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
       await page.goto("/open-finance");
       // Exercise native keyboard navigation without requiring hydration.
       await page.getByRole("link", { name: "Explore the complimentary review" }).press("Enter");
       await expect(page).toHaveURL(/#readiness-review$/);
       await expect(page.getByRole("heading", { name: "Open Finance Readiness & Value Review" })).toBeVisible();
-      await expect(page.getByRole("link", { name: "Request the review by email" }))
-        .toHaveAttribute("href", `mailto:${contactEmail}?subject=Open%20Finance%20Readiness%20%26%20Value%20Review`);
+      const email = page.getByRole("link", { name: "Request the review by email" });
+      await expect(email).toHaveCount(1);
+      await expect(email).toHaveAttribute("href", `mailto:${contactEmail}?subject=Open%20Finance%20Readiness%20%26%20Value%20Review`);
+      await email.focus();
+      await page.keyboard.press("Tab");
+      await page.keyboard.press("Shift+Tab");
+      await expect(email).toBeFocused();
+      await expect(email).toHaveCSS("outline-style", "solid");
+      const contrast = await email.evaluate((element) => {
+        const luminance = (color: string) => {
+          const c = (color.match(/[\d.]+/g) ?? []).slice(0, 3).map((value) => {
+            const channel = Number(value) / 255;
+            return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+          });
+          return c[0] * 0.2126 + c[1] * 0.7152 + c[2] * 0.0722;
+        };
+        const background = luminance(getComputedStyle(document.body).backgroundColor);
+        const ratio = (color: string) => (Math.max(luminance(color), background) + 0.05) / (Math.min(luminance(color), background) + 0.05);
+        const style = getComputedStyle(element);
+        return { text: ratio(style.color), focus: ratio(style.outlineColor) };
+      });
+      expect(contrast.text).toBeGreaterThanOrEqual(4.5);
+      expect(contrast.focus).toBeGreaterThanOrEqual(3);
+      const bounds = await email.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds!.x).toBeGreaterThanOrEqual(0);
+      expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+      await expect(page.getByRole("link", { name: "Book a fit call" })).toHaveAttribute("href", bookingUrl);
       await page.locator("#readiness-review").getByRole("link", { name: "View illustrative takeaway" }).press("Enter");
       await expect(page).toHaveURL(/#illustrative-takeaway$/);
-      await expect(page.getByRole("heading", { name: "A suggested 90-day sequence" })).toBeInViewport();
+      await expect(page.getByRole("heading", { name: "What the two-page takeaway can look like." })).toBeInViewport();
+      await expect(page.getByRole("heading", { name: "A suggested 90-day sequence" })).toBeVisible();
+      await page.locator("#readiness-review").getByRole("link", { name: "privacy notice" }).press("Enter");
+      await expect(page).toHaveURL(/\/privacy$/);
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     });
   });
 }
@@ -132,6 +183,7 @@ for (const colorScheme of ["light", "dark"] as const) {
       });
       expect(ratio, await link.innerText()).toBeGreaterThanOrEqual(3);
     }
+    expect((await new AxeBuilder({ page }).include("#readiness-review").analyze()).violations).toEqual([]);
     await booking.focus();
     const [popup] = await Promise.all([
       page.waitForEvent("popup"),
@@ -142,3 +194,24 @@ for (const colorScheme of ["light", "dark"] as const) {
     await expect(popup).toHaveTitle("Intercepted contact handoff");
   });
 }
+
+test("review contact path and schema references use the canonical site", async ({ page }) => {
+  await page.goto("/open-finance");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${siteOrigin}/open-finance`);
+  const graphs = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+    scripts.flatMap((script) => { const data = JSON.parse(script.textContent ?? "{}"); return data["@graph"] ?? [data]; }),
+  );
+  const service = graphs.find((node) => node["@type"] === "Service");
+  expect(service["@id"]).toBe(`${siteOrigin}/open-finance#service`);
+  expect(service.provider["@id"]).toBe(`${siteOrigin}/#organization`);
+  const review = page.locator("#readiness-review");
+  await expect(review.getByRole("link", { name: "Request the review by email" })).toHaveAttribute("href", mailtoHref("Open Finance Readiness & Value Review"));
+  await review.getByRole("link", { name: "privacy notice" }).click();
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${siteOrigin}/privacy`);
+  await page.goto("/");
+  await expect(page.locator("#expertise")).toHaveCount(1);
+  const homeGraph = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+    scripts.flatMap((script) => { const data = JSON.parse(script.textContent ?? "{}"); return data["@graph"] ?? [data]; }),
+  );
+  expect(homeGraph.some((node) => node["@id"] === service.provider["@id"])).toBe(true);
+});
