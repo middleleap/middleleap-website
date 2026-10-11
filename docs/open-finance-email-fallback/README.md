@@ -15,7 +15,9 @@ The screenshots use the local static export with external and non-GET/HEAD reque
 
 Two tests reproduce the delivered no-JavaScript failure on the live page. Before the fix, six local regressions also fail with the observed normal-link rewrite applied across both theme preferences at 320, 390 and 1440px. The fixture preserves noscript content according to the documented exclusion; it does not claim to replace an actual Cloudflare deployment check.
 
-The final suite verifies one visible email handoff with the original mailto subject, native keyboard focus, mobile bounds, axe accessibility, illustrative-takeaway navigation and the privacy path. The existing JavaScript mobile/menu, booking and focus-contrast journeys remain covered. Calendar is intercepted with a local test document and no email client is opened.
+The final suite verifies one visible email handoff with the original mailto subject, native keyboard focus, text and focus contrast, mobile bounds, illustrative-takeaway navigation and the privacy path. The existing JavaScript mobile/menu, booking and focus-contrast journeys remain covered, with axe checks of the review in both themes. Calendar is intercepted with a local test document and no email client is opened.
+
+The no-JavaScript journey blocks application script requests throughout. Its synchronous checks inspect the actual fallback; axe runs in the JavaScript-enabled journeys because the asynchronous audit cannot finish with script execution disabled. No axe rules or thresholds are relaxed.
 
 The contact-path audit checks canonical URLs, the advisory service identifier and its provider reference against the homepage organization, and the existing homepage expertise anchor. These checks passed on current main before the fallback; no additional schema, canonical or content change was warranted.
 

@@ -11,6 +11,8 @@ const test = base.extend<{ safeContactHandoff: void }>({
       const request = route.request();
       if (!["GET", "HEAD"].includes(request.method())) {
         await route.abort();
+      } else if (javaScriptEnabled === false && request.resourceType() === "script") {
+        await route.abort();
       } else if (request.url() === bookingUrl) {
         await route.fulfill({
           status: 200,
@@ -117,15 +119,30 @@ for (const colorScheme of ["light", "dark"] as const) {
       await page.keyboard.press("Shift+Tab");
       await expect(email).toBeFocused();
       await expect(email).toHaveCSS("outline-style", "solid");
+      const contrast = await email.evaluate((element) => {
+        const luminance = (color: string) => {
+          const c = (color.match(/[\d.]+/g) ?? []).slice(0, 3).map((value) => {
+            const channel = Number(value) / 255;
+            return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+          });
+          return c[0] * 0.2126 + c[1] * 0.7152 + c[2] * 0.0722;
+        };
+        const background = luminance(getComputedStyle(document.body).backgroundColor);
+        const ratio = (color: string) => (Math.max(luminance(color), background) + 0.05) / (Math.min(luminance(color), background) + 0.05);
+        const style = getComputedStyle(element);
+        return { text: ratio(style.color), focus: ratio(style.outlineColor) };
+      });
+      expect(contrast.text).toBeGreaterThanOrEqual(4.5);
+      expect(contrast.focus).toBeGreaterThanOrEqual(3);
       const bounds = await email.boundingBox();
       expect(bounds).not.toBeNull();
       expect(bounds!.x).toBeGreaterThanOrEqual(0);
       expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
       await expect(page.getByRole("link", { name: "Book a fit call" })).toHaveAttribute("href", bookingUrl);
-      expect((await new AxeBuilder({ page }).include("#readiness-review").analyze()).violations).toEqual([]);
       await page.locator("#readiness-review").getByRole("link", { name: "View illustrative takeaway" }).press("Enter");
       await expect(page).toHaveURL(/#illustrative-takeaway$/);
-      await expect(page.getByRole("heading", { name: "A suggested 90-day sequence" })).toBeInViewport();
+      await expect(page.getByRole("heading", { name: "What the two-page takeaway can look like." })).toBeInViewport();
+      await expect(page.getByRole("heading", { name: "A suggested 90-day sequence" })).toBeVisible();
       await page.locator("#readiness-review").getByRole("link", { name: "privacy notice" }).press("Enter");
       await expect(page).toHaveURL(/\/privacy$/);
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
@@ -166,6 +183,7 @@ for (const colorScheme of ["light", "dark"] as const) {
       });
       expect(ratio, await link.innerText()).toBeGreaterThanOrEqual(3);
     }
+    expect((await new AxeBuilder({ page }).include("#readiness-review").analyze()).violations).toEqual([]);
     await booking.focus();
     const [popup] = await Promise.all([
       page.waitForEvent("popup"),
