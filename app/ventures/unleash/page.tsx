@@ -4,11 +4,11 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Unleash",
   description:
-    "How Unleash is built: product architecture, the server-side AI pipeline, coach-voice and memory features, quality controls and development maturity.",
+    "Unleash Racing is Unleash’s karting offering. Explore the public website, existing coaching access and the evidence-backed product build record.",
   path: "/ventures/unleash",
   socialTitle: "Unleash | MiddleLeap Ventures",
   socialDescription:
-    "An evidence-backed build record for human-led, AI-amplified karting coaching.",
+    "Unleash Racing: intelligence in your corner, with an evidence-backed record of human-led coaching.",
 });
 
 // Current brand identity; product claims retain the reviewed evidence snapshot.
@@ -19,22 +19,23 @@ const data: ProjectPageData = {
   contextLabel: "Unleash navigation",
   hero: {
     eyebrow: "Portfolio · AI-enabled service venture",
-    title: <>Unleash.<br /><em>It remembers. You coach.</em></>,
+    title: <>Unleash.<br /><em>Intelligence in your corner.</em></>,
     lede:
-      "Unleash turns a coach's voice notes, photos, telemetry and setups into same-day debriefs for families and a team memory that compounds. AI drafts and remembers; the coach edits, signs off and sends.",
+      "Unleash is a platform for drivers and the people supporting them. Its karting offering, Unleash Racing, connects session evidence and learning. Existing coaching workspaces produce coach-reviewed debriefs; the family and adult-driver experience is forthcoming.",
     actions: [
-      { label: "Open the live site ↗", href: "https://unleash.training/", kind: "primary", external: true },
+      { label: "Visit Unleash Racing ↗", href: "https://unleashracing.com/", kind: "primary", external: true },
+      { label: "Existing account sign-in ↗", href: "https://unleash.training/login", kind: "secondary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
-    snapshot: "Private product evidence · repository main at a5b103d · reviewed 4 October 2026 · brand updated 11 October 2026",
+    snapshot: "Private product evidence · repository main at a5b103d · reviewed 4 October 2026 · brand updated 11 October 2026 · public website and access checked 12 October 2026",
   },
   status: {
     ariaLabel: "Unleash project status",
     headerLabel: "Project record / Unleash",
     headerValue: "In pilot use",
     rows: [
-      { term: "Current phase", detail: "Pilot use with a partner coaching team · public website live, guided trials not yet open" },
-      { term: "Ownership", detail: "MiddleLeap Ventures · product brand Unleash" },
+      { term: "Current phase", detail: "Coaching pilot in use · Unleash Racing website live · family and adult-driver experience forthcoming" },
+      { term: "Ownership", detail: "MiddleLeap Ventures · platform brand Unleash · karting offering Unleash Racing" },
       { term: "Product posture", detail: "Coaching-operations PWA, not an autonomous coach" },
       { term: "AI posture", detail: "Server-side only · deterministic grounding · mandatory coach edit" },
       { term: "Remaining boundary", detail: "Wider pilot evidence and live messaging credentials" },
@@ -148,7 +149,7 @@ const data: ProjectPageData = {
       { stat: "12", caption: "CI workflows, including live evaluation and a weekly production check" },
     ],
     boundary:
-      "Unleash is in pilot use, not offered to the wider market. The public website explains the product and its data access, but guided trials are not yet open and trial scope is agreed before any real use. Production confidence still depends on repeat usage across more coaches and teams, live messaging credentials and a larger real-world gold set. Features built behind flags are not claimed as live. Parent consent and coach authority remain human responsibilities, not model decisions.",
+      "Existing coaching accounts can sign in at unleash.training/login. The public Unleash Racing website explains the proposition and collects early-access interest; the family and adult-driver experience is forthcoming, and availability and onboarding are confirmed separately. The technical record on this page describes the coaching product reviewed on 4 October 2026. Production confidence still depends on repeat usage across more coaches and teams, live messaging credentials and a larger real-world gold set. Features built behind flags are not claimed as live. Parent consent and coach authority remain human responsibilities, not model decisions.",
   },
   sources: [
     { id: "R1", label: "Repository overview and product principles" },

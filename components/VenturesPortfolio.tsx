@@ -44,7 +44,7 @@ export function VenturesPortfolio() {
             </div>
             <div className={styles.projectLinks}>
               {project.detailPath && <Link href={project.detailPath} aria-label={`Read ${project.name}'s build record`}>Read the build record →</Link>}
-              {project.href && <a href={project.href} target="_blank" rel="noreferrer" aria-label={`Visit ${project.name}'s live product`}>Visit live product ↗</a>}
+              {project.href && <a href={project.href} target="_blank" rel="noreferrer" aria-label={project.hrefLabel ?? `Visit ${project.name}'s live product`}>{project.hrefLabel ?? "Visit live product"} ↗</a>}
               {project.repository && <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View ${project.name}'s repository`}>View repository ↗</a>}
               {project.evidenceAccess && <span>{project.evidenceAccess}</span>}
             </div>
