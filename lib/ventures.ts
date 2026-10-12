@@ -13,6 +13,7 @@ export type PortfolioProject = {
   /** ISO date the build record's evidence snapshot was last reviewed; required with detailPath. */
   reviewedOn?: `${number}-${number}-${number}`;
   href?: string;
+  hrefLabel?: string;
   repository?: string;
   evidenceAccess?: string;
 };
@@ -61,14 +62,15 @@ export const portfolioProjects: PortfolioProject[] = [
     name: "Unleash",
     type: "AI-enabled service venture",
     summary:
-      "Human-led karting coaching: a coach's voice notes, photos and telemetry become same-day, coach-signed debriefs and a team memory that compounds.",
+      "Unleash Racing is the karting offering of Unleash: session evidence and learning for drivers, families, coaches and teams. Coaching is in pilot use; the family and adult-driver experience is forthcoming.",
     status: "In pilot use",
     evidence: "AI can deepen an expert service without taking authority from the expert.",
     portfolioRole: "Venture experiment",
     harnessProfile: "Venture delivery",
     detailPath: "/ventures/unleash",
     reviewedOn: "2026-10-04",
-    href: "https://unleash.training/",
+    href: "https://unleashracing.com/",
+    hrefLabel: "Visit Unleash Racing",
     evidenceAccess: "Private build record · reviewed snapshot",
   },
   {
