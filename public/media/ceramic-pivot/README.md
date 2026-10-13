@@ -20,3 +20,5 @@ Light theme uses a separate charcoal-and-ember sculpture on warm paper:
 The dark film retains the first 88 generated frames: the ember tile lifts and pivots 45 degrees. The last frame is held to eight seconds, removing the additional rotation from the raw generation. The light film re-renders this approved motion with soft daylight, a charcoal ceramic square and warm paper surroundings; its last frame is extended to exactly eight seconds.
 
 Playback is once per theme per page visit; explicit replay is available. The resolved theme selects its matching film and poster before hydration. Inactive posters stay lazy and inactive films have no source. Changing themes stops and unloads the outgoing film. Reduced-motion visitors see the appropriate poster without an automatic film request.
+
+Both themes use a luminance matte on the shared poster/video frame: the dark matte clears the near-black studio backdrop, while the light matte clears the pale studio surroundings. The existing edge feather remains in place so the artwork blends with the page's ambient background. The source films and posters are unchanged.

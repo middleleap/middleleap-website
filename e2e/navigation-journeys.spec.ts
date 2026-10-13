@@ -114,7 +114,7 @@ for (const profile of profiles) {
           await page.goto(path);
           const [popup] = await Promise.all([
             page.waitForEvent("popup"),
-            page.getByRole("link", { name: "Declare ↗", exact: true }).click(),
+            page.getByRole("link", { name: "Declare", exact: true }).click(),
           ]);
           await popup.waitForLoadState("domcontentloaded");
           expect(popup.url()).toBe(declare.href);
