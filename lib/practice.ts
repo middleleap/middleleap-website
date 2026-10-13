@@ -42,7 +42,7 @@ export const practiceEvidence = [
   {
     label: "Enterprise transformation",
     detail:
-      "Led a 70+ person digital delivery organization at TDC, with a DKK 200m+ annual budget, through BSS/OSS modernisation and an API-first Telco-as-a-Service transformation within a 140-year-old enterprise, including CI/CD and DevOps operating-model change.",
+      "Led large delivery organisations at TDC, with a DKK 200m+ annual budget, through BSS/OSS modernisation and an API-first Telco-as-a-Service transformation within a 140-year-old enterprise, including CI/CD and DevOps operating-model change.",
   },
   {
     label: "Product to boardroom",

@@ -223,6 +223,9 @@ export default function HomePage() {
           <h1>
             From strategic mandate<br />to <em>market execution.</em>
           </h1>
+          <p className={styles.positioning}>
+            Operator-led advisory for regulated platform businesses.
+          </p>
           <p className={styles.lede}>
             MiddleLeap helps banks, fintechs, financial infrastructure providers,
             telecommunications companies and other regulated platform businesses
@@ -408,11 +411,12 @@ export default function HomePage() {
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>The practice behind the mandate</p>
           <div>
-            <h2>Senior leadership, assembled around the work.</h2>
+            <h2>Advisory grounded in operating experience.</h2>
             <p className={styles.experienceIntro}>
-              MiddleLeap is an independent advisory practice built for mandates that cross
-              strategy, regulation, product, technology and delivery. Each engagement is shaped
-              around the work—not a fixed consulting bench.
+              MiddleLeap brings an operator&apos;s judgement to strategic mandates:
+              understanding where execution will stall, which decisions matter first,
+              and how to align commercial ambition with regulatory, organisational
+              and technology constraints.
             </p>
             <Link className={styles.capabilityLink} href="/practice">How the practice works →</Link>
           </div>
@@ -460,7 +464,7 @@ export default function HomePage() {
               </div>
               <div>
                 <strong>Enterprise transformation</strong>
-                <span>Led a 70+ person digital delivery organization through an API-first Telco-as-a-Service transformation within a 140-year-old enterprise, modernising the operating model as well as the technology.</span>
+                <span>Led large delivery organisations through enterprise transformation, including an API-first Telco-as-a-Service shift within a 140-year-old enterprise, modernising operating models as well as technology.</span>
               </div>
               <div>
                 <strong>Product to boardroom</strong>

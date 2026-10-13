@@ -76,7 +76,7 @@ export const founderCareer = [
   {
     years: "2019 – 2021",
     title: "Head of Digital Delivery and Transformation, TDC Group",
-    detail: "Copenhagen · Top-25 leadership team · 70+ person delivery organisation · API-first Telco-as-a-Service platform for TDC NET.",
+    detail: "Copenhagen · Top-25 leadership team · Large delivery organisations · API-first Telco-as-a-Service platform for TDC NET.",
   },
   {
     years: "2016 – 2019",
