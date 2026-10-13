@@ -34,7 +34,7 @@ export function VenturesPortfolio() {
               {project.detailPath ? (
                 <Link className={chromeStyles.titleLink} href={project.detailPath}>{project.name}</Link>
               ) : (
-                <a className={chromeStyles.titleLink} href={project.href} target="_blank" rel="noreferrer">{project.name} ↗</a>
+                <a className={chromeStyles.titleLink} href={project.href} target="_blank" rel="noreferrer">{project.name}</a>
               )}
             </h3>
             <p>{project.summary}</p>

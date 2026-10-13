@@ -12,6 +12,11 @@
     linear-gradient(180deg, transparent, #000 10%, #000 74%, transparent);
   mask-composite: intersect;
 }
+.pivot[data-art-theme="dark"] .frame {
+  /* Clear the near-black studio backdrop and floor so the page's ambient
+     artwork shows through behind both the poster and the moving sculpture. */
+  filter: url(#ceramic-ink-matte);
+}
 .pivot[data-art-theme="light"] .frame {
   /* A luminance matte clears the pale studio wall and floor without grading
      the charcoal or ember ceramics. Strong contact shadows remain visible. */

@@ -17,6 +17,13 @@ export function CeramicPivot() {
   return <>
     <svg className={styles.matteDefinitions} aria-hidden="true" focusable="false">
       <defs>
+        <filter id="ceramic-ink-matte" colorInterpolationFilters="sRGB" x="0" y="0" width="100%" height="100%">
+          <feColorMatrix in="SourceGraphic" type="luminanceToAlpha" result="luminance" />
+          <feComponentTransfer in="luminance" result="matte">
+            <feFuncA type="table" tableValues="0 0 1 1 1 1 1 1 1 1 1" />
+          </feComponentTransfer>
+          <feComposite in="SourceGraphic" in2="matte" operator="in" />
+        </filter>
         <filter id="ceramic-paper-matte" colorInterpolationFilters="sRGB" x="0" y="0" width="100%" height="100%">
           <feColorMatrix in="SourceGraphic" type="luminanceToAlpha" result="luminance" />
           <feComponentTransfer in="luminance" result="matte">
