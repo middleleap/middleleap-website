@@ -120,7 +120,7 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 - Each mandate has senior accountability, specialists assembled around the problem and active client leadership so institutional context and delivery capability remain with the client.
 - Experience carried into the practice includes building and expanding an Open Banking platform across MENA, followed by leadership of a dual LFI/TPP programme that took ADCB Group to first-bank certification under the UAE Open Finance framework and delivered the country's first live transactions with a licensed TPP.
 - Business-banking ecosystem experience includes the build-out of Danske Bank's District platform and marketplace across the Nordics and UK, the migration of 250,000 SMEs, corporates and institutions, and the development of API-based partner channels.
-- Enterprise transformation experience includes leadership of a 70+ person digital delivery organization through an API-first Telco-as-a-Service shift within a 140-year-old company.
+- Enterprise transformation experience includes leadership of large delivery organisations through an API-first Telco-as-a-Service shift within a 140-year-old company.
 - MiddleLeap was founded and is led by Michael Ryberg Hartmann, who is the accountable senior lead on every mandate. The practice remains senior-led and networked rather than a fixed consulting bench.
 
 ## Founder
@@ -129,7 +129,7 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 - Head of Open Finance at ADCB Group, 2024 to 2026: took the bank to the first certification under the UAE Open Finance framework and delivered the country's first live Open Finance transactions with a licensed TPP; directed the bank's dual LFI/TPP programme; participated in BIS Innovation Hub Project Aperta and the CBUAE eKYC initiative.
 - Associate Partner, TFPA (The Fintech and Payments Advisory Network), since 2023.
 - Chief Technology Officer and Chief Business Officer, Fintech Galaxy, 2022 to 2023: carried the thefinx.io open banking platform into Bahrain, Saudi Arabia and Jordan.
-- Head of Digital Delivery and Transformation, TDC Group, 2019 to 2021: led a 70+ person delivery organisation and the API-first Telco-as-a-Service platform for TDC NET.
+- Head of Digital Delivery and Transformation, TDC Group, 2019 to 2021: led large delivery organisations and the API-first Telco-as-a-Service platform for TDC NET.
 - Head of Digital Channels, Danske Bank, 2016 to 2019: led the post-PSD2 District business-banking platform and the migration of 250,000 SMEs, corporates and institutions.
 - Earlier career 2005 to 2016 at Planday, Unwire, Formpipe and Telmore in Copenhagen.
 - MSc Information Technology, IT University of Copenhagen; BComp (Hons), Deakin University; MIT Sloan Executive Education, Platform Strategies.
