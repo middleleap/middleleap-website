@@ -179,7 +179,7 @@ export default function AiDlcPage() {
               </h3>
               <p>{bundle.description}</p>
               <ul>{bundle.contents.map((item) => <li key={item}>{item}</li>)}</ul>
-              {bundle.href.startsWith("/") ? <Link href={bundle.href}>{bundle.linkLabel} →</Link> : <a href={bundle.href} target="_blank" rel="noreferrer" aria-label={`View ${bundle.name}`}>{bundle.linkLabel} ↗</a>}
+              {bundle.href.startsWith("/") ? <Link href={bundle.href}>{bundle.linkLabel} →</Link> : <a href={bundle.href} target="_blank" rel="noreferrer" aria-label={`${bundle.linkLabel}: ${bundle.name}`}>{bundle.linkLabel} ↗</a>}
             </article>
           ))}
         </div>

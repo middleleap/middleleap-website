@@ -43,9 +43,9 @@ export function VenturesPortfolio() {
               <strong>{project.evidence}</strong>
             </div>
             <div className={styles.projectLinks}>
-              {project.detailPath && <Link href={project.detailPath} aria-label={`Read ${project.name}'s build record`}>Read the build record →</Link>}
-              {project.href && <a href={project.href} target="_blank" rel="noreferrer" aria-label={project.hrefLabel ?? `Visit ${project.name}'s live product`}>{project.hrefLabel ?? "Visit live product"} ↗</a>}
-              {project.repository && <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View ${project.name}'s repository`}>View repository ↗</a>}
+              {project.detailPath && <Link href={project.detailPath} aria-label={`Read the build record for ${project.name}`}>Read the build record →</Link>}
+              {project.href && <a href={project.href} target="_blank" rel="noreferrer" aria-label={project.hrefLabel ?? `Visit live product: ${project.name}`}>{project.hrefLabel ?? "Visit live product"} ↗</a>}
+              {project.repository && <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View repository: ${project.name}`}>View repository ↗</a>}
               {project.evidenceAccess && <span>{project.evidenceAccess}</span>}
             </div>
           </article>
@@ -72,9 +72,9 @@ export function VenturesPortfolio() {
               <h4><a className={chromeStyles.titleLink} href={contribution.href} target="_blank" rel="noreferrer">{contribution.name} ↗</a></h4>
               <p>{contribution.summary}</p>
               <div className={styles.projectLinks}>
-                <a href={contribution.href} target="_blank" rel="noreferrer" aria-label={`Visit ${contribution.name}`}>Visit project ↗</a>
+                <a href={contribution.href} target="_blank" rel="noreferrer" aria-label={`Visit project: ${contribution.name}`}>Visit project ↗</a>
                 {contribution.repository && (
-                  <a href={contribution.repository} target="_blank" rel="noreferrer" aria-label={`View ${contribution.name}'s repository`}>View repository ↗</a>
+                  <a href={contribution.repository} target="_blank" rel="noreferrer" aria-label={`View repository: ${contribution.name}`}>View repository ↗</a>
                 )}
               </div>
             </article>

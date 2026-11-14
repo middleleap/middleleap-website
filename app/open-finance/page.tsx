@@ -438,7 +438,7 @@ export default function OpenFinancePage() {
               governed workflows and demonstrates how strategy, controls and delivery
               evidence can be constructed together.
             </p>
-            <Link href="/ventures/backoffice" aria-label="Read Open Finance Backoffice's build record">Read the build record →</Link>
+            <Link href="/ventures/backoffice" aria-label="Read the build record for Open Finance Backoffice">Read the build record →</Link>
           </article>
           <article>
             <span>Execution method</span>
@@ -467,7 +467,7 @@ export default function OpenFinancePage() {
           {engagementModels.map((model, index) => (
             <article key={model.key}>
               <span>0{index + 1} / {model.label}</span>
-              <h3><Link className={chromeStyles.titleLink} href={model.href} aria-label={`Explore ${model.label}`}>{model.title}</Link></h3>
+              <h3><Link className={chromeStyles.titleLink} href={model.href} aria-label={`${model.title}: ${model.label}`}>{model.title}</Link></h3>
               <p>{model.detail}</p>
             </article>
           ))}
