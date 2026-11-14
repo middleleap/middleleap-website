@@ -483,7 +483,8 @@
 .footerGroup {
   min-width: 120px;
   flex-direction: column;
-  gap: 9px;
+  align-items: flex-start;
+  gap: 1px;
 }
 
 .footerGroup span {
@@ -491,7 +492,11 @@
   color: var(--ember-text);
 }
 
+/* Links are 24px tall on pointer layouts and 44px on the stacked touch layout. */
 .footerGroup a {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
   color: var(--bone-2);
   text-decoration: none;
   text-transform: none;
@@ -670,6 +675,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px 24px;
+  }
+
+  .footerGroup {
+    gap: 0;
+  }
+
+  .footerGroup a {
+    min-height: 44px;
   }
 
   .related {
