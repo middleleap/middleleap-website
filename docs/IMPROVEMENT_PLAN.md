@@ -1,7 +1,7 @@
 # MiddleLeap.com — Codebase & Website Improvement Plan
 
 Date: 2026-08-04
-Inputs: full codebase audit (now 13 public routes, components, config, CI), competitive research
+Inputs: full codebase audit (now 14 public routes, components, config, CI), competitive research
 across best-in-class boutique advisory sites (11:FS, Flagship Advisory Partners, Elixirr,
 Aperture, Oliver Wyman, AlixPartners, WhiteSight), and current Next.js 16 static-export
 best-practice research.
@@ -10,7 +10,7 @@ best-practice research.
 
 ## Where the site stands
 
-The foundation is stronger than most marketing sites: 13 public static routes, a lean
+The foundation is stronger than most marketing sites: 14 public static routes, a lean
 3-dependency runtime, strict TypeScript, per-route metadata with canonicals, generated
 OG images, a well-built `llms.txt`, a tested theme system with FOUC prevention, CI with
 lint/type-check/tests/build/Lighthouse budgets, and zero TODO/FIXME debt. The retired
@@ -260,9 +260,10 @@ Ordered by evidence-backed impact for a boutique advisory firm (Hinge buyer rese
 | 7 | Phase 6.6 / 6.7 (structured data, sitemap dates, trailingSlash) | Done, minus `schema-dts` |
 | 8 | Phase 6.2 / 6.3 / 6.4 (insights, flagship asset, scheduler) | Open — needs founder input |
 
-### Loom Toolkit 2.0 release record
+### Loom Toolkit release record
 
-- **Product status:** Loom Toolkit 2.0.0 released.
+- **Product status:** Loom Toolkit released; the current version is tracked in
+  `lib/proof.ts` (2.5.12 at 14 Nov 2026).
 - **Evidence status:** reference-build validated while building the synthetic Open Finance
   Backoffice portal.
 - **Boundary:** it has not been used to deliver or operate a customer production system and
@@ -291,3 +292,21 @@ remains genuinely needs the founder:
 At the time of writing: lint (with a11y guards), type-check with `next typegen`,
 contrast gate, 31 unit tests, static build, 91 Playwright + axe checks across 13
 routes in both themes, and Lighthouse budgets green on all 13 exported pages.
+
+### Site review, 14 Nov 2026
+
+A full review of the built site shipped as PR #67 and a follow-up:
+
+- Bugs: doubled `/open-finance` title, missing light-theme portrait alt text, unbranded
+  404, missing security headers, unthrottled `/api/propose`.
+- Content: `/how-we-engage` now states fit, inputs, outputs and indicative duration per
+  model; repeated practice principles and three homepage sections were removed.
+- Legal: the privacy notice and submission terms name the licensed entity
+  (`lib/legal.ts`). Marketing pages still do not state legal status.
+- Brand rules: em-dash asides, "X, not Y" headlines and card shadows removed.
+- Verification at that point: 151 unit tests, 156 Playwright + axe checks across 14
+  routes, Lighthouse budgets green.
+
+Still open, and all need the founder: a durable Cloudflare rate-limiting rule for
+`/api/propose`, the hero film length (8 seconds with no pause control), and the insights
+and mandate-pattern content from Phase 6.

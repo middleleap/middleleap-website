@@ -32,6 +32,7 @@ const structuredData = {
         "Independent advisory practice assembling senior leadership and specialist teams to help banks, fintechs, financial infrastructure providers, telecommunications companies and other regulated platform businesses navigate market shifts, design scalable platforms and build AI-native operating models.",
       address: {
         "@type": "PostalAddress",
+        streetAddress: "Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba",
         addressLocality: "Dubai",
         addressCountry: "AE",
       },
@@ -170,7 +171,7 @@ const proofPractice: Array<{
   {
     number: "01",
     label: "Built",
-    title: "Five products, one method.",
+    title: "Our own products, one method.",
     body:
       "Backoffice, Unleash, Setbay, our OpenFinance-OS contributions and The Loom itself are built and operated through the same governed loop we bring to client mandates: Discovery and Delivery harnesses, decision-grade proofs, an audit trail on every change.",
     footer: "Live · middleleap.com/ventures",
@@ -181,7 +182,7 @@ const proofPractice: Array<{
     label: "Regulated",
     title: "Proven where the rules are strict.",
     body:
-      "The same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq, where every consent, API and release is examined by the regulator, not just the product team. And, in 2026, in front of regulators as Declare.",
+      "The same practices ran inside a UAE bank's Open Finance programme as LFI and TPP on Al Tareq, where every consent, API and release is examined by the regulator as well as the product team. In 2026 the same practices went in front of regulators as Declare.",
     footer: "CBUAE Open Finance · 2024–2026",
   },
   {
@@ -205,7 +206,6 @@ export default function HomePage() {
               <stop offset="1" stopColor="var(--ember-600)" />
             </linearGradient>
           </defs>
-          <rect className={styles.backdropSquare} y="56" width="120" height="120" rx="20" />
           <rect className={styles.backdropDiamond} x="-60" y="-60" width="120" height="120" rx="20" transform="translate(222 116) rotate(45)" />
         </svg>
       </div>

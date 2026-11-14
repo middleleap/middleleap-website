@@ -46,21 +46,12 @@
   transform: translateY(-50%);
 }
 
-.backdropSquare,
 .backdropDiamond {
   stroke-width: .35;
-}
-
-.backdropSquare {
-  fill: var(--bone-1); fill-opacity: .02;
-  stroke: var(--bone-1); stroke-opacity: .04;
-}
-.backdropDiamond {
   fill: url(#ambient-pivot-ember); fill-opacity: .07;
   stroke: var(--ember-500); stroke-opacity: .07;
 }
 
-:global(html[data-theme="light"]) .backdropSquare { fill-opacity: .025; stroke-opacity: .055; }
 :global(html[data-theme="light"]) .backdropDiamond { fill-opacity: .075; stroke-opacity: .14; }
 
 @media (max-width: 700px) {
