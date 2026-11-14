@@ -22,7 +22,7 @@ for (const profile of profiles) {
               has: page.getByRole("heading", { name: project.name, exact: true }),
             });
             const title = card.getByRole("link", { name: project.name, exact: true });
-            const action = card.getByRole("link", { name: `Read ${project.name}'s build record`, exact: true });
+            const action = card.getByRole("link", { name: `Read the build record for ${project.name}`, exact: true });
             await expect(title).toHaveAttribute("href", project.detailPath!);
             await expect(action).toHaveAttribute("href", project.detailPath!);
             // A keyboard user can move from the title to its explicit action.
@@ -59,7 +59,7 @@ for (const profile of profiles) {
         for (const route of ["/", "/open-finance"]) {
           for (const model of engagementModels) {
             await page.goto(route);
-            const name = route === "/" ? model.label : `Explore ${model.label}`;
+            const name = route === "/" ? model.label : `${model.title}: ${model.label}`;
             await page.locator("#engage").getByRole("link", { name, exact: true }).click();
             await expect(page).toHaveURL(`http://127.0.0.1:4788${model.href}`);
             await expect(page.locator(`#${model.key}`)).toBeInViewport();

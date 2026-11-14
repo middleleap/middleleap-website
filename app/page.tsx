@@ -443,7 +443,7 @@ export default function HomePage() {
                 <span>{project.status}</span>
               </div>
               {project.detailPath ? (
-                <Link className={styles.ventureLink} href={project.detailPath} aria-label={`Read ${project.name}'s build record`}>
+                <Link className={styles.ventureLink} href={project.detailPath} aria-label={`Read the build record for ${project.name}`}>
                   Read the build record →
                 </Link>
               ) : project.href && (
