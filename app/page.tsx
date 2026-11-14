@@ -102,7 +102,7 @@ const shifts = [
   {
     number: "03",
     title: "AI-native operations",
-    question: "How must the organization work differently to compete?",
+    question: "How must the organisation work differently to compete?",
   },
 ];
 
@@ -143,7 +143,7 @@ const capabilities: Array<{
     href: "/how-we-engage",
     linkLabel: "Explore engagement models",
     detail:
-      "Executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.",
+      "Executive mobilisation, programme leadership, platform delivery, organisation design and delivery modernisation.",
   },
 ];
 
@@ -444,7 +444,7 @@ export default function HomePage() {
             <h3>Client ownership by design</h3>
             <p>
               Client leaders remain part of the working system so decisions, institutional
-              context and delivery capability stay inside the organization.
+              context and delivery capability stay inside the organisation.
             </p>
           </article>
         </div>

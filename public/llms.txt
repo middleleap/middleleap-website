@@ -28,7 +28,7 @@ MiddleLeap helps leaders turn regulatory, commercial and technology shifts into 
 - Regulatory and market transformation: Open Finance strategy, regulatory readiness, LFI and TPP operating models, market entry and ecosystem participation.
 - Platform and ecosystem strategy: platform propositions, API strategy, embedded finance, partnerships, commercial models and monetisation.
 - AI-native operating models: value-stream redesign, agentic workflows, product and engineering models, governance and control.
-- Transformation and execution: executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.
+- Transformation and execution: executive mobilisation, programme leadership, platform delivery, organisation design and delivery modernisation.
 
 ### Open Finance advisory
 

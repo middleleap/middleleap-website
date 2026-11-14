@@ -11,7 +11,7 @@ import styles from "./open-finance.module.css";
 const reviewEmailHref = mailtoHref("Open Finance Readiness & Value Review");
 
 export const metadata = pageMetadata({
-  title: "Open Finance Advisory & Complimentary Review | MiddleLeap",
+  title: "Open Finance Advisory & Complimentary Review",
   description:
     "A complimentary Open Finance review for banks and fintechs: a 60-minute working session and two-page takeaway with three priorities and a suggested 90-day sequence.",
   path: "/open-finance",
@@ -408,9 +408,9 @@ export default function OpenFinancePage() {
               <span>Institution side</span>
               <h3>Turn a framework into live participation</h3>
               <p>
-                Led a dual LFI/TPP programme that helped a leading UAE bank achieve
-                first-bank certification under the national framework and deliver the
-                country&apos;s first live transactions with a licensed TPP.
+                Led the dual LFI/TPP programme that took ADCB Group to first-bank
+                certification under the UAE framework and delivered the country&apos;s
+                first live transactions with a licensed TPP.
               </p>
             </article>
           </div>
