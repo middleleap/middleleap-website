@@ -14,7 +14,7 @@
 .secondaryAction { color: var(--bone-1); border: 1px solid var(--ink-4); }
 .darkAction { color: var(--ink-1); border: 1px solid var(--ink-4); }
 
-.packageVisual { border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.packageVisual { border: 1px solid var(--ink-4); background: var(--ink-1); }
 .packageHeader { display: flex; justify-content: space-between; gap: 12px; padding: 16px; border-bottom: 1px solid var(--ink-border); color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
 .packageHeader b { color: var(--ember-text); font-weight: 500; }
 .packageCore { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 34px; background: var(--ink-0); }
@@ -28,7 +28,7 @@
 .sectionIntro { display: grid; grid-template-columns: 230px 1fr; gap: 38px; margin-bottom: 48px; }
 .sectionIntro h2, .install h2 { max-width: 820px; color: var(--bone-0); font: 400 clamp(34px, 4vw, 46px)/1.15 var(--font-instrument-serif), serif; letter-spacing: normal; }
 .sectionIntro div > p, .install > div > p:not(.eyebrow) { max-width: 760px; margin-top: 16px; color: var(--bone-2); font-size: 14px; line-height: 1.65; }
-.layerSystem { border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.layerSystem { border: 1px solid var(--ink-4); background: var(--ink-1); }
 .layerSystemHeader, .layerOutput { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 15px 18px; color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
 .layerSystemHeader { border-bottom: 1px solid var(--ink-border); }
 .layerSystemHeader b, .layerOutput > span { color: var(--ember-text); font-weight: 500; }
@@ -75,7 +75,7 @@
 .boundaryGrid p { margin-top: 13px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.6; }
 .boundaryGrid .brainkitDimension { border-color: rgba(230,92,45,.5); background: rgba(230,92,45,.045); }
 .brainkitDimension b { display: inline-block; margin-top: 24px; padding: 7px 9px; border: 1px solid rgba(230,92,45,.45); color: var(--ember-text); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; text-transform: uppercase; }
-.brainkitFlow { margin-top: 18px; border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.brainkitFlow { margin-top: 18px; border: 1px solid var(--ink-4); background: var(--ink-1); }
 .brainkitHeader, .brainkitFooter { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 20px; }
 .brainkitHeader { border-bottom: 1px solid var(--ink-border); color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .09em; text-transform: uppercase; }
 .brainkitHeader b { color: var(--ember-text); font-weight: 500; }

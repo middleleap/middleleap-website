@@ -56,7 +56,7 @@ const data: ProjectPageData = {
   why: {
     heading: "Elite coaching insight should not depend on an elite coaching budget.",
     lede:
-      "Karting produces rich evidence—telemetry, video, photographs, voice notes, setups and weather—but turning it into useful, personal feedback is slow, and most of it is forgotten by the next race weekend. Unleash makes that synthesis repeatable and keeps the memory, without replacing the coach.",
+      "Karting produces rich evidence in telemetry, video, photographs, voice notes, setups and weather, but turning it into useful, personal feedback is slow, and most of it is forgotten by the next race weekend. Unleash makes that synthesis repeatable and keeps the memory, without replacing the coach.",
     cards: [
       { tag: "Problem", title: "Evidence is scattered", detail: "Track-day observations arrive in different formats and often disappear before they become actionable learning." },
       { tag: "Proposition", title: "One coached debrief, same day", detail: "Capture once, assemble the day, draft a grounded debrief and return it to the coach for judgement before it reaches the family." },
@@ -85,7 +85,7 @@ const data: ProjectPageData = {
     label: "Loom-informed delivery",
     heading: "Start with the coach's gold standard, then make every AI step answer to it.",
     lede:
-      "Unleash applies the Loom's evidence, specification and human-authority principles to venture building. This is disciplined use of the method's ideas—not a claim of full regulated-harness adoption.",
+      "Unleash applies the Loom's evidence, specification and human-authority principles to venture building. This is disciplined use of the method's ideas. It does not claim full regulated-harness adoption.",
     stages: [
       { number: "01", name: "Observe", detail: "Coach workflow, track-day evidence and a gold-standard debrief" },
       { number: "02", name: "Frame", detail: "Human-led product principles, consent boundaries and acceptance criteria" },

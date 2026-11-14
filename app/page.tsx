@@ -263,8 +263,8 @@ export default function HomePage() {
           ))}
         </div>
         <p className={styles.shiftConclusion}>
-          The opportunity is not simply to comply or deploy new technology. It is
-          to redesign the proposition, ecosystem and operating model together.
+          Compliance and new technology are the starting point. The opportunity
+          is to redesign the proposition, ecosystem and operating model together.
         </p>
       </section>
 
@@ -325,7 +325,7 @@ export default function HomePage() {
               <article className={styles.loomDiamond}>
                 <small>Diamond 01</small>
                 <strong>Discovery</strong>
-                <span>Discover → Define · D1—D9</span>
+                <span>Discover → Define · D1–D9</span>
               </article>
               <div className={styles.loomWaist}>
                 <small>Gate-green</small>
@@ -334,7 +334,7 @@ export default function HomePage() {
               <article className={styles.loomDiamond}>
                 <small>Diamond 02</small>
                 <strong>Delivery</strong>
-                <span>Develop → Deliver · Q1—Q5</span>
+                <span>Develop → Deliver · Q1–Q5</span>
               </article>
             </div>
             <div className={styles.loomRuntime}>
@@ -466,7 +466,7 @@ export default function HomePage() {
 
       <section className={styles.proofPractice} id="practice-not-commentary" aria-labelledby="proof-practice-title">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Practice, not commentary</p>
+          <p className={styles.eyebrow}>Proof of practice</p>
           <div>
             <h2 id="proof-practice-title">
               We advise on AI-native delivery because <em>we ship with it.</em>

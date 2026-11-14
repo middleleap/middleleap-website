@@ -35,7 +35,7 @@
 .primaryAction { color: #110d0a; background: var(--signal); }
 .secondaryAction { color: var(--text); border: 1px solid var(--line); }
 
-.heroSystem { overflow: hidden; border: 1px solid var(--ink-4); background: var(--surface); box-shadow: var(--shadow-2); }
+.heroSystem { overflow: hidden; border: 1px solid var(--ink-4); background: var(--surface); }
 .systemHeader { display: flex; justify-content: space-between; gap: 15px; padding: 14px 16px; border-bottom: 1px solid var(--line); color: var(--faint); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .11em; text-transform: uppercase; }
 .systemHeader span:last-child { display: flex; align-items: center; gap: 7px; color: var(--muted); }
 .systemHeader i { width: 7px; height: 7px; border-radius: 1px; background: var(--ember-400); transform: rotate(45deg); }

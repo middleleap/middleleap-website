@@ -4,7 +4,7 @@ for (const theme of ["dark", "light"] as const) {
   test.describe(`${theme} Ceramic Pivot`, () => {
     test.use({ colorScheme: theme });
 
-    test("hero plays once, supports pause and replay, and returns to its matching poster", async ({ page }) => {
+    test("hero plays once without controls and returns to its matching poster", async ({ page }) => {
       await page.emulateMedia({ reducedMotion: "no-preference" });
       await page.goto("/");
       const figure = page.locator(`figure[data-art-theme="${theme}"]`);
@@ -14,22 +14,24 @@ for (const theme of ["dark", "light"] as const) {
       expect(await video.evaluate((element: HTMLVideoElement) => ({
         muted: element.muted, loop: element.loop, duration: element.duration,
       }))).toEqual({ muted: true, loop: false, duration: 8 });
-      await page.getByRole("button", { name: "Pause animation" }).click();
-      await expect(figure).toHaveAttribute("data-playback", "paused");
-      expect(await video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
-      await page.getByRole("button", { name: "Resume animation" }).click();
+      // The film has no controls: it plays once and settles on its poster.
+      await expect(figure.getByRole("button")).toHaveCount(0);
       await expect(figure).toHaveAttribute("data-playback", "finished", { timeout: 12000 });
       await expect(video).toHaveCSS("opacity", "0");
-      await page.getByRole("button", { name: "Replay animation" }).click();
-      await expect(figure).toHaveAttribute("data-playback", "playing");
-      expect(await video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeLessThan(2);
-      // A preference change stops even an already playing film.
-      await page.emulateMedia({ reducedMotion: "reduce" });
-      await expect(figure).toHaveAttribute("data-playback", "still");
-      await expect(video).not.toHaveAttribute("src");
     });
 
-    test("reduced motion loads only the poster until the visitor requests playback", async ({ page }) => {
+    test("a reduced-motion preference stops an already playing film", async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: "no-preference" });
+      await page.goto("/");
+      const figure = page.locator(`figure[data-art-theme="${theme}"]`);
+      await figure.scrollIntoViewIfNeeded();
+      await expect(figure).toHaveAttribute("data-playback", "playing");
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      await expect(figure).toHaveAttribute("data-playback", "still");
+      await expect(figure.locator("video")).not.toHaveAttribute("src");
+    });
+
+    test("reduced motion loads only the poster and never fetches the film", async ({ page }) => {
       await page.emulateMedia({ reducedMotion: "reduce" });
       const films: string[] = [];
       page.on("request", (request) => {
@@ -43,9 +45,6 @@ for (const theme of ["dark", "light"] as const) {
       await page.waitForTimeout(1500);
       expect(films).toEqual([]);
       await expect(figure).toHaveAttribute("data-playback", "still");
-      await page.getByRole("button", { name: "Play animation" }).click();
-      await expect(figure).toHaveAttribute("data-playback", "playing");
-      expect(films.length).toBeGreaterThan(0);
     });
 
     test("failed media retains the artwork without collapsing the mobile layout", async ({ page }) => {
@@ -91,8 +90,6 @@ test("switching themes swaps the film and stops the outgoing animation", async (
   await page.getByRole("radio", { name: "Use dark theme" }).click();
   await expect(light.locator("video")).not.toHaveAttribute("src");
   await expect(dark).toHaveAttribute("data-playback", "finished");
-  await page.getByRole("button", { name: "Replay animation" }).click();
-  await expect(dark).toHaveAttribute("data-playback", "playing");
 });
 
 test("automatic theme follows the system with matching reduced-motion artwork", async ({ page }) => {

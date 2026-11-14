@@ -33,10 +33,3 @@
 }
 .caption > span:first-child { color: var(--bone-1); }
 .caption > span:first-child span { color: var(--ember-text); margin-left: var(--s-2); }
-.caption button {
-  padding: var(--s-2) 0; border: 0; background: transparent;
-  color: var(--bone-2); font: inherit; text-transform: inherit;
-  letter-spacing: inherit; cursor: pointer; min-height: 44px;
-}
-.caption button:hover { color: var(--bone-0); }
-.caption button:focus-visible { outline: 2px solid var(--ember-text); outline-offset: 4px; }

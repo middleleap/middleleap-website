@@ -212,7 +212,6 @@
   overflow: hidden;
   border: 1px solid var(--ink-4);
   background: color-mix(in srgb, var(--ink-1) 92%, transparent);
-  box-shadow: var(--shadow-2);
 }
 
 .mandateSystem::before {
@@ -594,7 +593,6 @@
 .capabilityGrid article:hover,
 .capabilityGrid article:focus-within {
   border-color: var(--ink-4);
-  box-shadow: var(--shadow-2);
   transform: translateY(-2px);
 }
 

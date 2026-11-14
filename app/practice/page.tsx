@@ -63,7 +63,7 @@ export default function PracticePage() {
           <p className={styles.lede}>
             MiddleLeap is an independent advisory practice built for mandates that cross
             strategy, regulation, product, technology and delivery. Each engagement is shaped
-            around the work—not a fixed consulting bench.
+            around the work, with no fixed consulting bench.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} {...bookingLinkProps}>

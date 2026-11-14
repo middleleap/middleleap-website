@@ -22,7 +22,7 @@ const data: ProjectPageData = {
     eyebrow: "Portfolio · Platform venture",
     title: <>Setbay.<br /><em>Your space, set.</em></>,
     lede:
-      "Setbay™ is a UAE marketplace proposition that turns underused premium parking—starting with idle weekday hotel bays—into reserved monthly spaces for companies and their employees. Formerly the working codename Parqo.",
+      "Setbay™ is a UAE marketplace proposition that turns underused premium parking, starting with idle weekday hotel bays, into reserved monthly spaces for companies and their employees. Formerly the working codename Parqo.",
     actions: [
       { label: "Open setbay.ae ↗", href: "https://setbay.ae/", kind: "primary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
@@ -56,7 +56,7 @@ const data: ProjectPageData = {
   why: {
     heading: "Parking scarcity and parking waste exist on the same street.",
     lede:
-      "Employees in dense districts struggle to find dependable parking while nearby hotel bays sit empty on weekdays. Setbay tests whether these two fragmented markets can become a reliable, contracted capacity network—one district at a time.",
+      "Employees in dense districts struggle to find dependable parking while nearby hotel bays sit empty on weekdays. Setbay tests whether these two fragmented markets can become a reliable, contracted capacity network, one district at a time.",
     cards: [
       { tag: "Problem", title: "Two invisible markets", detail: "Employers lack reserved capacity; hotels lack a simple route to monetise predictable idle inventory without giving up guest priority." },
       { tag: "Wedge", title: "Qualify every side", detail: "District pages, calculators and separate employer, hotel and employee intakes create structured demand and supply evidence." },
@@ -65,7 +65,7 @@ const data: ProjectPageData = {
   },
   architecture: {
     label: "Current architecture",
-    heading: "The live platform is an evidence machine—not yet the full marketplace.",
+    heading: "The live platform gathers evidence. The marketplace is not built yet.",
     lede:
       "The production surface acquires, enriches and qualifies all three sides of the market. Next.js route handlers validate submissions into Supabase; a database-backed queue drives notifications and opt-in follow-up; a private staff console runs the operator loop. The employer dashboard, employee app, subscriptions, access provisioning and payments remain intentionally outside this build.",
     mapAriaLabel:
@@ -85,7 +85,7 @@ const data: ProjectPageData = {
     label: "Loom-informed delivery",
     heading: "Make the next investment conditional on real market evidence.",
     lede:
-      "Setbay applies the Loom's evidence, specification and human-authority principles to venture building. This is disciplined use of the method's ideas—not a claim of full regulated-harness adoption.",
+      "Setbay applies the Loom's evidence, specification and human-authority principles to venture building. This is disciplined use of the method's ideas. It does not claim full regulated-harness adoption.",
     stages: [
       { number: "01", name: "Research", detail: "Market evidence, competition, risks and district economics" },
       { number: "02", name: "Specify", detail: "PRD, v0.4 design, data model, contracts and decision gates" },
