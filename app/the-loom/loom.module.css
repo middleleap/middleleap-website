@@ -53,7 +53,7 @@
 .partGrid h3, .gateGrid h3, .deliveryLoop h3, .assuranceFlow h3 { margin-top: 42px; color: var(--bone-0); font: 400 24px var(--font-instrument-serif), serif; }
 .partGrid p, .gateGrid p, .deliveryLoop p, .assuranceFlow p { margin-top: 12px; color: var(--bone-2); font-size: var(--fs-small); line-height: 1.55; }
 
-.controlChain { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.controlChain { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink-4); background: var(--ink-1); }
 .controlChain article { position: relative; min-height: 230px; padding: 22px; border-right: 1px solid var(--ink-border); border-bottom: 1px solid var(--ink-border); }
 .controlChain article:nth-child(3n) { border-right: 0; }
 .controlChain article:nth-child(n+4) { border-bottom: 0; }

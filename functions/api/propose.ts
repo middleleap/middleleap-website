@@ -78,6 +78,36 @@ function sameOrigin(request: Request): boolean {
   }
 }
 
+// Best-effort throttle: at most `proposalRateLimit` proposals per client address
+// per window. The counts live in this isolate's memory, so they reset when
+// Cloudflare recycles it and are not shared across locations. It stops a
+// simple script from draining the email quota; a Cloudflare rate-limiting rule
+// on /api/propose is the durable control.
+export const proposalRateLimit = 5;
+export const proposalRateWindowMs = 10 * 60 * 1000;
+const maxTrackedClients = 5000;
+const recentProposals = new Map<string, number[]>();
+
+export function resetProposalRateLimit(): void {
+  recentProposals.clear();
+}
+
+function rateLimited(request: Request, now: number): boolean {
+  const client = request.headers.get("cf-connecting-ip");
+  if (!client) return false;
+  const recent = (recentProposals.get(client) ?? []).filter((at) => now - at < proposalRateWindowMs);
+  if (recent.length >= proposalRateLimit) {
+    recentProposals.set(client, recent);
+    return true;
+  }
+  if (!recentProposals.has(client) && recentProposals.size >= maxTrackedClients) {
+    recentProposals.clear();
+  }
+  recent.push(now);
+  recentProposals.set(client, recent);
+  return false;
+}
+
 export async function handleProposal(
   request: Request,
   env: ProposalEnv,
@@ -91,6 +121,12 @@ export async function handleProposal(
   }
   if (!env.RESEND_API_KEY) {
     return json(503, { ok: false, error: "Direct sending is not configured." });
+  }
+
+  if (rateLimited(request, Date.now())) {
+    const response = json(429, { ok: false, error: "Too many proposals from this address. Try again in ten minutes, or email the proposal instead." });
+    response.headers.set("retry-after", String(Math.ceil(proposalRateWindowMs / 1000)));
+    return response;
   }
 
   const declaredLength = Number(request.headers.get("content-length") ?? 0);

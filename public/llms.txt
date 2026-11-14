@@ -28,7 +28,7 @@ MiddleLeap helps leaders turn regulatory, commercial and technology shifts into 
 - Regulatory and market transformation: Open Finance strategy, regulatory readiness, LFI and TPP operating models, market entry and ecosystem participation.
 - Platform and ecosystem strategy: platform propositions, API strategy, embedded finance, partnerships, commercial models and monetisation.
 - AI-native operating models: value-stream redesign, agentic workflows, product and engineering models, governance and control.
-- Transformation and execution: executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.
+- Transformation and execution: executive mobilisation, programme leadership, platform delivery, organisation design and delivery modernisation.
 
 ### Open Finance advisory
 
@@ -100,7 +100,7 @@ The MiddleLeap Venture Studio invites operators, domain experts and potential pa
 
 The portfolio operates as a build, learn and apply loop: build working assets, capture market and execution intelligence, and apply the learning to client mandates.
 
-## Practice, not commentary
+## Proof of practice
 
 MiddleLeap advises on AI-native delivery because it ships with it. Every position the firm takes on agentic workflows, governance and AI-enabled delivery is tested on its own products first; occasionally it is then asked to teach it. Training is evidence of the practice, not a service line: MiddleLeap does not sell AI-literacy workshops.
 
@@ -112,7 +112,7 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 
 - Executive advisory for regulatory, platform and transformation mandates.
 - Platform strategy sprints covering proposition, ecosystem, commercial model and execution roadmap.
-- AI-native delivery pilots that adopt The Loom around one bounded outcome and leave a governed repository capability behind.
+- Mobilisation: programme leadership from agreed direction into delivery. Where the mandate includes software, The Loom is adopted around one bounded outcome and leaves a governed repository capability behind.
 
 ## Experience and delivery model
 

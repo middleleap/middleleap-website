@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
 });
 
 const criteria = [
-  ["A real problem", "A clear operating, customer or ecosystem problem—not only a product idea."],
+  ["A real problem", "A clear operating, customer or ecosystem problem that goes beyond a product idea."],
   ["Evidence", "Signals beyond the initial concept: observed behaviour, interviews, data or direct experience."],
   ["Access", "A credible route to customers, partners, operators or specialist domain knowledge."],
   ["A bounded test", "A way to learn through a focused wedge before committing to the full platform."],
@@ -34,7 +34,7 @@ const process = [
   ["02", "Screen", "Test strategic fit, access, boundaries and conflicts.", "Sprint?"],
   ["03", "Evidence sprint", "Pressure-test the problem before shaping the venture thesis.", "Pilot?"],
   ["04", "Bounded pilot", "Build the smallest useful wedge with explicit learning gates.", "Commit?"],
-  ["05", "Decide", "Build, partner, contribute to the commons—or pass clearly.", "Path chosen"],
+  ["05", "Decide", "Build, partner, contribute to the commons, or pass clearly.", "Path chosen"],
 ] as const;
 
 export default function VentureStudioPage() {
@@ -74,7 +74,7 @@ export default function VentureStudioPage() {
       <section className={styles.section} id="criteria">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>What we look for</p>
-          <div><h2>Bring the problem, the evidence and your unfair access.</h2><p>The Studio is selective by design. A strong submission gives us a reason to investigate—not a finished pitch deck.</p></div>
+          <div><h2>Bring the problem, the evidence and your unfair access.</h2><p>The Studio is selective by design. A strong submission gives us a reason to investigate. It does not need to be a finished pitch deck.</p></div>
         </div>
         <div className={styles.criteriaGrid}>
           {criteria.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
@@ -84,7 +84,7 @@ export default function VentureStudioPage() {
       <section className={styles.section} id="contribution">
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>What MiddleLeap contributes</p>
-          <div><h2>More than a review—and no automatic promise of capital.</h2><p>MiddleLeap brings senior platform leadership, an evidence-led decision process and a governed route to a bounded pilot. Commercial structure, ownership and participation are agreed only after mutual fit is established.</p></div>
+          <div><h2>A working partner, with no automatic promise of capital.</h2><p>MiddleLeap brings senior platform leadership, an evidence-led decision process and a governed route to a bounded pilot. Commercial structure, ownership and participation are agreed only after mutual fit is established.</p></div>
         </div>
         <div className={styles.criteriaGrid}>
           {contribution.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}

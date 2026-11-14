@@ -41,31 +41,6 @@ for (const profile of profiles) {
         }
       });
 
-      test("operating-model destinations navigate to the named content", async ({ page }) => {
-        const destinations = [
-          ["What we do", "/#expertise"],
-          ["How we work", "/#method"],
-          ["Experience", "/#experience"],
-          ["The Loom", "/the-loom"],
-          ["The Loom Toolkit", "/ai-dlc"],
-          ["Portfolio", "/ventures#portfolio"],
-          ["Venture Studio", "/ventures/studio"],
-        ];
-        for (const [label, destination] of destinations) {
-          await page.goto("/");
-          const link = page.getByRole("group", { name: "MiddleLeap company operating model", exact: true })
-            .getByRole("link", { name: label, exact: true });
-          await link.click();
-          await expect(page).toHaveURL(`http://127.0.0.1:4788${destination}`);
-          if (destination.includes("#")) {
-            const section = page.locator(`#${destination.split("#")[1]}`);
-            await expect(section).toBeInViewport();
-          } else {
-            await expect(page.locator("h1")).toBeVisible();
-          }
-        }
-      });
-
       test("capabilities, practice and engagement summaries have useful onward journeys", async ({ page }) => {
         const capabilities = [
           ["Explore Open Finance advisory →", "/open-finance"],

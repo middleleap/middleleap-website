@@ -17,7 +17,7 @@
 .criteriaGrid article { min-height: 210px; padding: 24px; border: 1px solid var(--ink-border); background: var(--ink-1); }
 .criteriaGrid h3, .processGrid h3 { color: var(--bone-0); font: 400 26px var(--font-instrument-serif), serif; }
 .criteriaGrid p, .processGrid p { margin-top: 12px; color: var(--bone-2); font-size: 13px; line-height: 1.6; }
-.processSystem { border: 1px solid var(--ink-4); background: var(--ink-1); box-shadow: var(--shadow-2); }
+.processSystem { border: 1px solid var(--ink-4); background: var(--ink-1); }
 .processHeader, .processOutcomes { display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 15px 18px; color: var(--bone-3); font: 400 var(--fs-ui-micro) var(--font-jetbrains-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
 .processHeader { border-bottom: 1px solid var(--ink-border); }
 .processHeader b, .processOutcomes > span { color: var(--ember-text); font-weight: 500; }

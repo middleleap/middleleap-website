@@ -102,7 +102,6 @@
 .decisionSystem {
   border: 1px solid var(--ink-4);
   background: var(--ink-1);
-  box-shadow: var(--shadow-2);
 }
 
 .systemHeader {
@@ -411,7 +410,6 @@
 .evidenceFeature {
   border: 1px solid var(--ink-4);
   background: var(--ink-1);
-  box-shadow: var(--shadow-2);
 }
 
 .evidenceTimeline {

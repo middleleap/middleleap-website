@@ -10,7 +10,8 @@ type FounderPortraitProps = {
 
 // Two studio variants (ink and paper ground) render and CSS shows exactly one,
 // the same pattern BrandLockup uses, so the portrait sits on the theme's own
-// surface instead of a rectangle of the other theme's background.
+// surface instead of a rectangle of the other theme's background. Both carry the
+// alt text: the hidden variant is display: none, so only one is ever announced.
 export function FounderPortrait({ className = "", size, priority = false }: FounderPortraitProps) {
   return (
     <span className={`${styles.portrait} ${className}`.trim()}>
@@ -25,7 +26,7 @@ export function FounderPortrait({ className = "", size, priority = false }: Foun
       <Image
         className={styles.onLight}
         src={founder.portrait.onLight}
-        alt=""
+        alt={founder.portrait.alt}
         width={size}
         height={size}
         priority={priority}

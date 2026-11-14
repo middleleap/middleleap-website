@@ -65,7 +65,7 @@ function PivotFilm({ theme }: { theme: Theme }) {
         attempted.current = true;
         video.src = film;
         void video.play().catch(() => {
-          // Autoplay restrictions leave the poster and manual play button intact.
+          // Autoplay restrictions leave the poster in place.
         });
       }, 800);
     };
@@ -114,28 +114,7 @@ function PivotFilm({ theme }: { theme: Theme }) {
     };
   }, [theme, film]);
 
-  const togglePlayback = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    attempted.current = true;
-    if (playback === "playing") {
-      video.pause();
-      return;
-    }
-    if (!video.getAttribute("src")) video.src = film;
-    if (playback !== "paused") video.currentTime = 0;
-    void video.play().catch(() => {
-      if (document.documentElement.dataset.theme === theme && video.getAttribute("src")) {
-        setPlayback("unavailable");
-      }
-    });
-  };
-
   const showingFilm = playback === "playing" || playback === "paused";
-  const label = playback === "playing" ? "Pause animation"
-    : playback === "paused" ? "Resume animation"
-    : playback === "finished" ? "Replay animation" : "Play animation";
-
   return (
     <figure ref={figureRef} className={styles.pivot} data-art-theme={theme} data-playback={playback}>
       <div className={styles.frame}>
@@ -167,13 +146,6 @@ function PivotFilm({ theme }: { theme: Theme }) {
       </div>
       <figcaption className={styles.caption}>
         <span>The pivot <span aria-hidden="true">↗</span></span>
-        {playback === "unavailable" ? (
-          <span>Still view</span>
-        ) : (
-          <button type="button" onClick={togglePlayback}>
-            <span aria-hidden="true">{playback === "playing" ? "Ⅱ" : "▷"}</span> {label}
-          </button>
-        )}
       </figcaption>
     </figure>
   );

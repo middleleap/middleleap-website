@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { legalTermsEffectiveDate } from "@/lib/legal";
+import { legalEntity, legalTermsEffectiveDate } from "@/lib/legal";
 import { pageMetadata } from "@/lib/seo";
 import styles from "../legal.module.css";
 
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         <p className={styles.updated}>Effective {legalTermsEffectiveDate}</p>
         <section>
           <h2>Who controls your information</h2>
-          <p>MiddleLeap, based in Dubai, United Arab Emirates, operates this website and determines why and how personal information submitted through it is used. In that capacity, MiddleLeap is the data controller. Privacy questions and rights requests can be sent to <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.</p>
+          <p>MiddleLeap is the trading name of {legalEntity.name}, a limited liability company licensed by {legalEntity.licensingAuthority} in Dubai under licence number {legalEntity.licenceNumber}, with its registered address at {legalEntity.address}. It operates this website and determines why and how personal information submitted through it is used. In that capacity, {legalEntity.name} is the data controller. Privacy questions and rights requests can be sent to <a href="mailto:contact@middleleap.com">contact@middleleap.com</a>.</p>
         </section>
         <section>
           <h2>Information we receive</h2>

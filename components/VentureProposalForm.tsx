@@ -196,7 +196,7 @@ export function VentureProposalForm() {
             <p>{submission.reason}</p>
             <p>
               {submission.prepared.mailto.length > mailtoLengthLimit
-                ? "This proposal is long enough that some mail applications may truncate it when opened directly — use “Copy proposal” and paste it into a new email instead."
+                ? "This proposal is long enough that some mail applications may truncate it when opened directly. Use “Copy proposal” and paste it into a new email instead."
                 : "Opening email is convenient, but copying the brief is the reliable fallback if your device has no mail application configured."}
             </p>
           </div>

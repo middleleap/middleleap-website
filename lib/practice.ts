@@ -24,7 +24,7 @@ export const practicePrinciples = [
     number: "03",
     title: "Client ownership by design",
     detail:
-      "Client leaders remain part of the working system so decisions, institutional context and delivery capability stay inside the organization.",
+      "Client leaders remain part of the working system so decisions, institutional context and delivery capability stay inside the organisation.",
   },
 ] as const;
 

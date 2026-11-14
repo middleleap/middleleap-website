@@ -54,7 +54,7 @@ const data: ProjectPageData = {
     ],
   },
   why: {
-    heading: "Open Finance is a regulated operation—not only an API programme.",
+    heading: "Open Finance is a regulated operation as well as an API programme.",
     lede:
       "The platform joins consent operations, billing, reconciliation, risk, compliance and audit into one controlled operating surface. A single event can become a care dispute, finance break, risk signal, operational case and four-eyes approval without losing lineage.",
     cards: [

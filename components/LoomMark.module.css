@@ -16,7 +16,6 @@
   overflow: hidden;
   border: 1px solid var(--ink-4);
   background: color-mix(in srgb, var(--ink-1) 92%, transparent);
-  box-shadow: var(--shadow-2);
 }
 
 .header {

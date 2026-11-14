@@ -1,5 +1,5 @@
-import { describe, expect, it, vi } from "vitest";
-import { defaultProposalFrom, handleProposal, type SendEmail } from "./propose";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { defaultProposalFrom, handleProposal, proposalRateLimit, resetProposalRateLimit, type SendEmail } from "./propose";
 
 const origin = "https://www.middleleap.com";
 
@@ -29,6 +29,22 @@ function post(body: unknown, headers: Record<string, string> = {}): Request {
 const env = { RESEND_API_KEY: "re_test" };
 
 describe("POST /api/propose", () => {
+  beforeEach(() => resetProposalRateLimit());
+
+  it("throttles repeated proposals from one client address without affecting others", async () => {
+    const sendEmail = vi.fn<SendEmail>().mockResolvedValue({ id: "email_123" });
+    const from = (ip: string) => handleProposal(post(proposal, { "cf-connecting-ip": ip }), env, sendEmail);
+
+    for (let i = 0; i < proposalRateLimit; i += 1) {
+      expect((await from("203.0.113.7")).status).toBe(200);
+    }
+    const blocked = await from("203.0.113.7");
+    expect(blocked.status).toBe(429);
+    expect(blocked.headers.get("retry-after")).toBe("600");
+    expect(sendEmail).toHaveBeenCalledTimes(proposalRateLimit);
+    expect((await from("203.0.113.8")).status).toBe(200);
+  });
+
   it("sends a validated proposal to MiddleLeap with reply-to set to the submitter", async () => {
     const sendEmail = vi.fn<SendEmail>().mockResolvedValue({ id: "email_123" });
     const response = await handleProposal(post(proposal), env, sendEmail);

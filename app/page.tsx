@@ -102,7 +102,7 @@ const shifts = [
   {
     number: "03",
     title: "AI-native operations",
-    question: "How must the organization work differently to compete?",
+    question: "How must the organisation work differently to compete?",
   },
 ];
 
@@ -143,7 +143,7 @@ const capabilities: Array<{
     href: "/how-we-engage",
     linkLabel: "Explore engagement models",
     detail:
-      "Executive mobilisation, programme leadership, platform delivery, organization design and delivery modernisation.",
+      "Executive mobilisation, programme leadership, platform delivery, organisation design and delivery modernisation.",
   },
 ];
 
@@ -263,8 +263,8 @@ export default function HomePage() {
           ))}
         </div>
         <p className={styles.shiftConclusion}>
-          The opportunity is not simply to comply or deploy new technology. It is
-          to redesign the proposition, ecosystem and operating model together.
+          Compliance and new technology are the starting point. The opportunity
+          is to redesign the proposition, ecosystem and operating model together.
         </p>
       </section>
 
@@ -284,53 +284,6 @@ export default function HomePage() {
               </Link>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className={styles.operatingModel} aria-labelledby="operating-model-title">
-        <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>How MiddleLeap fits together</p>
-          <div>
-            <h2 id="operating-model-title">One practice. Three connected systems.</h2>
-            <p className={styles.operatingModelIntro}>
-              Advisory frames the mandate. Execution turns it into working capability.
-              Ventures test propositions and return operating evidence to the practice.
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.companySystem} role="group" aria-label="MiddleLeap company operating model">
-          <div className={styles.companySystemHeader}>
-            <span>MiddleLeap operating system / 03</span>
-            <b>Evidence compounds</b>
-          </div>
-          <div className={styles.companySystemFlow}>
-            <article>
-              <span>01 · Front door</span>
-              <h3>Advisory</h3>
-              <p>Frame the strategic, regulatory and commercial mandate.</p>
-              <div><Link href="#expertise">What we do</Link><Link href="#method">How we work</Link><Link href="#experience">Experience</Link></div>
-            </article>
-            <i aria-hidden="true">→</i>
-            <article>
-              <span>02 · Delivery system</span>
-              <h3>Execution</h3>
-              <p>Use a governed harness and installable toolkit to deliver.</p>
-              <div><Link href="/the-loom">The Loom</Link><Link href="/ai-dlc">The Loom Toolkit</Link></div>
-            </article>
-            <i aria-hidden="true">→</i>
-            <article>
-              <span>03 · Evidence engine</span>
-              <h3>Ventures</h3>
-              <p>Test propositions in operating reality and expose the next decision.</p>
-              <div><Link href="/ventures#portfolio">Portfolio</Link><Link href="/ventures/studio">Venture Studio</Link></div>
-            </article>
-          </div>
-          <div className={styles.companySystemReturn}>
-            <span>Operating evidence</span>
-            <b aria-hidden="true">↶</b>
-            <strong>Learning returns to Advisory and sharpens the next mandate.</strong>
-          </div>
         </div>
       </section>
 
@@ -372,7 +325,7 @@ export default function HomePage() {
               <article className={styles.loomDiamond}>
                 <small>Diamond 01</small>
                 <strong>Discovery</strong>
-                <span>Discover → Define · D1—D9</span>
+                <span>Discover → Define · D1–D9</span>
               </article>
               <div className={styles.loomWaist}>
                 <small>Gate-green</small>
@@ -381,7 +334,7 @@ export default function HomePage() {
               <article className={styles.loomDiamond}>
                 <small>Diamond 02</small>
                 <strong>Delivery</strong>
-                <span>Develop → Deliver · Q1—Q5</span>
+                <span>Develop → Deliver · Q1–Q5</span>
               </article>
             </div>
             <div className={styles.loomRuntime}>
@@ -422,33 +375,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className={styles.practiceGrid}>
-          <article>
-            <span>01</span>
-            <h3>Senior accountability</h3>
-            <p>
-              A senior lead stays accountable from mandate framing through the decisions,
-              operating model and route to execution.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Specialists around the problem</h3>
-            <p>
-              Regulation, strategy, product, technology, ecosystem and delivery expertise is
-              brought in where the mandate requires it.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Client ownership by design</h3>
-            <p>
-              Client leaders remain part of the working system so decisions, institutional
-              context and delivery capability stay inside the organization.
-            </p>
-          </article>
-        </div>
-
         <div className={styles.experienceLayout}>
           <div className={styles.evidencePanel}>
             <p className={styles.eyebrow}>Experience carried into the practice</p>
@@ -487,22 +413,14 @@ export default function HomePage() {
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>MiddleLeap Ventures</p>
           <div>
-            <h2>One regulated proof. Two venture experiments. One regulated prototype.</h2>
+            <h2>Ventures that test what we advise.</h2>
             <p className={styles.venturesIntro}>
-              Backoffice demonstrates governed delivery in MiddleLeap&apos;s core market.
-              Setbay and Unleash test transferable platform and human-authority principles
-              in different operating contexts. Declare puts AI inside a regulated payments
-              flow as a prototype. Their roles are deliberately not presented as equal evidence.
+              MiddleLeap builds and operates its own products. Backoffice shows governed
+              delivery in Open Finance. Setbay and Unleash test platform ideas in other
+              markets. Declare is a prototype for AI-initiated payments. Each card states
+              how far the venture has got.
             </p>
           </div>
-        </div>
-
-        <div className={styles.ventureLoop} role="group" aria-label="MiddleLeap venture learning loop">
-          <span><b>Build</b> Working assets</span>
-          <i aria-hidden="true">→</i>
-          <span><b>Learn</b> Operating intelligence</span>
-          <i aria-hidden="true">→</i>
-          <span><b>Apply</b> Stronger mandates</span>
         </div>
 
         <div className={styles.ventureGrid}>
@@ -548,7 +466,7 @@ export default function HomePage() {
 
       <section className={styles.proofPractice} id="practice-not-commentary" aria-labelledby="proof-practice-title">
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>Practice, not commentary</p>
+          <p className={styles.eyebrow}>Proof of practice</p>
           <div>
             <h2 id="proof-practice-title">
               We advise on AI-native delivery because <em>we ship with it.</em>

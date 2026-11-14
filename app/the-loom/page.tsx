@@ -15,7 +15,7 @@ export const metadata = pageMetadata({
   path: "/the-loom",
   socialTitle: "The Loom | Governed AI Delivery for Regulated Institutions",
   socialDescription:
-    "Toolkit 2.5.12 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build—not customer production use.",
+    "Toolkit 2.5.12 carries The Loom into repositories. Its current evidence is the synthetic Open Finance Backoffice reference build. It has not been used in customer production.",
 });
 
 const proofPoints = [
@@ -108,7 +108,7 @@ const maturityStates = [
 const limits = [
   ["Reference-build validated, not production-proven", `${loomRelease.evidenceBoundary} It has not cleared live production scale or a regulator examination.`],
   ["One domain is early evidence", "Legacy integration, real data and organisational change remain the true cost curve for other institutions."],
-  ["Spend measured; value unproven", "Token telemetry now measures delivery spend by iteration and milestone. The value half—and any implied ROI—remains unbuilt."],
+  ["Spend measured; value unproven", "Token telemetry now measures delivery spend by iteration and milestone. The value half, and any implied ROI, remains unbuilt."],
   ["Comprehension debt remains", "Decision logs make agent reasoning replayable, but they do not prove that human reviewers still understand a growing codebase."],
   ["The brain must be curated", "Bad context compounds as quickly as good context, so ownership and quality control are part of the method."],
   ["AI model risk is real", "Agents require validation, monitoring and independent challenge; automation does not remove accountability."],
@@ -185,7 +185,7 @@ export default function LoomPage() {
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Mandate to outcome</p>
           <div>
-            <h2>One traceable control chain—not a collection of AI tools.</h2>
+            <h2>One traceable control chain from mandate to outcome.</h2>
             <p>
               The same success measures that justify the problem become the evaluation
               targets for the released product. Every step leaves an owned artifact.
@@ -244,7 +244,7 @@ export default function LoomPage() {
       <section className={styles.section}>
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Diamond 02</p>
-          <div><h2>Delivery: an autonomous loop that proposes, never disposes.</h2><p>One loop takes one eligible item end to end. The agent authors and verifies; a protected control plane keeps approval accountable—per change by default, or through a narrowly governed routine envelope.</p></div>
+          <div><h2>Delivery: an autonomous loop that proposes, never disposes.</h2><p>One loop takes one eligible item end to end. The agent authors and verifies; a protected control plane keeps approval accountable: per change by default, or through a narrowly governed routine envelope.</p></div>
         </div>
         <ol className={styles.deliveryLoop}>
           {deliverySteps.map(([id, title, detail]) => <li key={id}><span>{id}</span><h3>{title}</h3><p>{detail}</p></li>)}
@@ -298,8 +298,8 @@ export default function LoomPage() {
         <div className={styles.limitGrid}>
           {limits.map(([title, detail]) => <article key={title}><h3>{title}</h3><p>{detail}</p></article>)}
         </div>
-        <div className={styles.caseLink}><span>Reference-build evidence</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only portal used to exercise the harness end to end—not a customer production deployment.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
-        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Setbay · Unleash</strong><p>Applications of its evidence, specification and human-authority principles—not claims of full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
+        <div className={styles.caseLink}><span>Reference-build evidence</span><strong>Open Finance Backoffice</strong><p>A bank-neutral, synthetic-only portal used to exercise the harness end to end. It is not a customer production deployment.</p><Link href="/ventures/backoffice">Read the build record →</Link></div>
+        <div className={styles.caseLink}><span>Loom-informed ventures</span><strong>Setbay · Unleash</strong><p>Applications of its evidence, specification and human-authority principles. They do not claim full regulated-harness adoption.</p><Link href="/ventures#portfolio">Explore the portfolio →</Link></div>
       </section>
 
       <section className={styles.engage}>

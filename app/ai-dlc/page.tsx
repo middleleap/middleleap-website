@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
   path: "/ai-dlc",
   socialTitle: "The Loom Toolkit | Institutional AI Delivery",
   socialDescription:
-    "Loom Toolkit 2.5.12 is released and reference-build validated on a synthetic Open Finance Backoffice—not customer production use.",
+    "Loom Toolkit 2.5.12 is released and reference-build validated on a synthetic Open Finance Backoffice. It has not been used in customer production.",
 });
 
 const bundles = [
@@ -92,7 +92,7 @@ const brainkitLifecycle = [
   ["01", "Draft from evidence", "The generator uses approved institutional sources only. Unsupported decisions go into a gap register."],
   ["02", "Approve with humans", "Accountable owners review the package. The agent can seal digests, but it cannot approve institutional context."],
   ["03", "Pin the release", "Each repository mounts the private snapshot. Its institution profile and compiled plans record the BrainKit digest."],
-  ["04", "Validate in CI", "Once compiled, CI checks the approved version, canonical sections, complete digest envelope, source grounding, D7 provenance and artifact provenance—and rejects undeclared BrainKit files."],
+  ["04", "Validate in CI", "Once compiled, CI checks the approved version, canonical sections, complete digest envelope, source grounding, D7 provenance and artifact provenance, and rejects undeclared BrainKit files."],
 ] as const;
 
 export default function AiDlcPage() {
@@ -123,7 +123,7 @@ export default function AiDlcPage() {
             The Toolkit includes the Institutional BrainKit: a private, governed seed for
             code, PRDs, architectures, interfaces and reports. Human owners approve it;
             repositories pin it; the Loom applies it where the work happens. Its present
-            evidence comes from a synthetic reference build—not customer production use.
+            evidence comes from a synthetic reference build. It has not been used in customer production.
           </p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#catalogue">Explore the bundles</a>
@@ -139,7 +139,7 @@ export default function AiDlcPage() {
 
       <ExecutiveSummary
         title="The method is The Loom. The installable product is The Loom Toolkit."
-        intro="AI-DLC is the technical distribution mechanism—not a competing consulting proposition. The Toolkit carries the method into the repository and binds it to institution-owned context."
+        intro="AI-DLC is the technical distribution mechanism for the Toolkit. It is not a separate consulting proposition. The Toolkit carries the method into the repository and binds it to institution-owned context."
         items={[
           { label: "Release", title: `Toolkit ${loomRelease.version}`, detail: "The current public release of the installable discovery, delivery, controls, assurance and adoption system." },
           { label: "Evidence", title: loomRelease.evidenceStatus, detail: loomRelease.evidenceDetail },
@@ -219,7 +219,7 @@ export default function AiDlcPage() {
       </section>
 
       <section className={styles.boundaries} id="context">
-        <div className={styles.sectionIntro}><p className={styles.eyebrow}>Your institutional BrainKit</p><div><h2>One governed seed—not a second compliance database.</h2><p>The BrainKit owns institutional DNA. It references regulated context and solution-domain assets without duplicating either, keeping each source of truth clear.</p></div></div>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>Your institutional BrainKit</p><div><h2>One governed seed for institutional context.</h2><p>The BrainKit owns institutional DNA. It references regulated context and solution-domain assets without duplicating either, keeping each source of truth clear.</p></div></div>
         <div className={styles.boundaryGrid}>
           {contextDimensions.map(([id, title, detail]) => <article key={id} className={id === "03" ? styles.brainkitDimension : undefined}><span>{id}</span><h3>{title}</h3><p>{detail}</p>{id === "03" && <b>BrainKit scope</b>}</article>)}
         </div>
@@ -259,7 +259,7 @@ export default function AiDlcPage() {
           </div>
           <div className={styles.brainkitFooter}>
             <strong>Private by default. Local by design.</strong>
-            <p>The public AI-DLC repository ships the schema, adoption machinery and a fictional example—not institutional content. Product repositories validate their mounted snapshot locally, without a public registry or live resolution service.</p>
+            <p>The public AI-DLC repository ships the schema, adoption machinery and a fictional example. It contains no institutional content. Product repositories validate their mounted snapshot locally, without a public registry or live resolution service.</p>
           </div>
         </div>
       </section>
