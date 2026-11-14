@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
@@ -90,23 +89,6 @@ export default function PracticePage() {
           </dl>
         </aside>
       </section>
-
-      <ExecutiveSummary
-        title="Senior-led, and staffed around the problem."
-        intro="MiddleLeap is intentionally boutique and networked. Each mandate carries clear senior accountability, specialists assembled around the problem and active client leadership."
-        items={[
-          { label: "Model", title: "Intentionally boutique and networked", detail: practiceFacts.model + "." },
-          { label: "Accountability", title: practicePrinciples[0].title, detail: practicePrinciples[0].detail },
-          { label: "Team", title: practicePrinciples[1].title, detail: practicePrinciples[1].detail },
-          { label: "Ownership", title: practicePrinciples[2].title, detail: practicePrinciples[2].detail },
-          {
-            label: "Evidence",
-            title: "Carried in from prior roles",
-            detail:
-              "Open Banking and Open Finance across MENA, business-banking ecosystems and enterprise transformation — built in prior executive roles and distinguished from work contracted directly by MiddleLeap.",
-          },
-        ]}
-      />
 
       <section className={styles.section} id="model" tabIndex={-1}>
         <p className={styles.eyebrow}>How the practice is staffed</p>
