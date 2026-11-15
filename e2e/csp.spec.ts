@@ -13,6 +13,10 @@ test("the built policy allows inline scripts by hash only", () => {
   expect(policy).not.toMatch(/script-src[^;]*'unsafe-inline'/);
   expect(policy).not.toContain("__INLINE_SCRIPT_HASHES__");
   expect(policy).toContain("frame-ancestors 'none'");
+  // Cloudflare Web Analytics is injected at the edge on the live domain, so no
+  // local page load would notice if these two hosts were dropped.
+  expect(policy).toMatch(/script-src[^;]* https:\/\/static\.cloudflareinsights\.com/);
+  expect(policy).toMatch(/connect-src[^;]* https:\/\/cloudflareinsights\.com/);
 });
 
 test.describe("pages under the built Content Security Policy", () => {
