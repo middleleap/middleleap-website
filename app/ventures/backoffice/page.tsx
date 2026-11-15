@@ -23,7 +23,7 @@ const data: ProjectPageData = {
     lede:
       "A bank-neutral operations platform for running UAE Open Finance in both roles: LFI for inbound third-party traffic and TPP-of-record for outbound platform services.",
     actions: [
-      { label: "Open the live Backoffice ↗", href: "https://backoffice.openfinance-os.org/", kind: "primary", external: true },
+      { label: "Open the live Backoffice", href: "https://backoffice.openfinance-os.org/", kind: "primary", external: true },
       { label: "Read The Loom method →", href: "/the-loom", kind: "secondary" },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],

@@ -23,8 +23,8 @@ const data: ProjectPageData = {
     lede:
       "Unleash is a platform for drivers and the people supporting them. Its karting offering, Unleash Racing, connects session evidence and learning. Existing coaching workspaces produce coach-reviewed debriefs; the family and adult-driver experience is forthcoming.",
     actions: [
-      { label: "Visit Unleash Racing ↗", href: "https://unleashracing.com/", kind: "primary", external: true },
-      { label: "Existing account sign-in ↗", href: "https://unleash.training/login", kind: "secondary", external: true },
+      { label: "Visit Unleash Racing", href: "https://unleashracing.com/", kind: "primary", external: true },
+      { label: "Existing account sign-in", href: "https://unleash.training/login", kind: "secondary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
     snapshot: "Private product evidence · repository main at a5b103d · reviewed 4 October 2026 · brand updated 11 October 2026 · public website and access checked 12 October 2026",

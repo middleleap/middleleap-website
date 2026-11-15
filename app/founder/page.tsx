@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalArrow } from "@/components/ExternalArrow";
 import { FounderPortrait } from "@/components/FounderPortrait";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -73,7 +74,7 @@ export default function FounderPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn ↗
+              LinkedIn<ExternalArrow />
             </a>
           </div>
         </div>
@@ -102,9 +103,9 @@ export default function FounderPage() {
               ))}
             </div>
             <div className={styles.links}>
-              <a href={founder.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-              <a href={founder.links.middleleapGithub} target="_blank" rel="noopener noreferrer">MiddleLeap on GitHub ↗</a>
-              <a href={founder.links.openFinanceOsGithub} target="_blank" rel="noopener noreferrer">OpenFinance-OS on GitHub ↗</a>
+              <a href={founder.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ExternalArrow /></a>
+              <a href={founder.links.middleleapGithub} target="_blank" rel="noopener noreferrer">MiddleLeap on GitHub<ExternalArrow /></a>
+              <a href={founder.links.openFinanceOsGithub} target="_blank" rel="noopener noreferrer">OpenFinance-OS on GitHub<ExternalArrow /></a>
             </div>
           </div>
 
@@ -143,7 +144,7 @@ export default function FounderPage() {
           <a href={mailtoHref("Strategic mandate")}>contact@middleleap.com</a> if you prefer.
         </p>
         <div className={styles.engageActions}>
-          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a {...bookingLinkProps}>Book a conversation<ExternalArrow /></a>
           <Link href="/practice">See how the practice is staffed →</Link>
           <Link href="/how-we-engage">See how we engage →</Link>
         </div>

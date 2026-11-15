@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
+import { ExternalArrow } from "@/components/ExternalArrow";
 import { bookingLinkProps, mailtoHref } from "@/lib/contact";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -148,7 +149,7 @@ export default function VenturesPage() {
         </p>
         <div className={styles.engageActions}>
           <a className={styles.engageAction} {...bookingLinkProps}>
-            Book a conversation ↗
+            Book a conversation<ExternalArrow />
           </a>
           <a className={styles.engageEmail} href={mailtoHref("Ventures and strategic mandate")}>
             Discuss your mandate by email →

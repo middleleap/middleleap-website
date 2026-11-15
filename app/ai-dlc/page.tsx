@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
+import { ExternalArrow } from "@/components/ExternalArrow";
 import Link from "next/link";
 import chromeStyles from "@/components/SiteChrome.module.css";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
@@ -174,12 +175,12 @@ export default function AiDlcPage() {
                 {bundle.href.startsWith("/") ? (
                   <Link className={chromeStyles.titleLink} href={bundle.href}>{bundle.name}</Link>
                 ) : (
-                  <a className={chromeStyles.titleLink} href={bundle.href} target="_blank" rel="noreferrer">{bundle.name} ↗</a>
+                  <a className={chromeStyles.titleLink} href={bundle.href} target="_blank" rel="noreferrer">{bundle.name}<ExternalArrow /></a>
                 )}
               </h3>
               <p>{bundle.description}</p>
               <ul>{bundle.contents.map((item) => <li key={item}>{item}</li>)}</ul>
-              {bundle.href.startsWith("/") ? <Link href={bundle.href}>{bundle.linkLabel} →</Link> : <a href={bundle.href} target="_blank" rel="noreferrer" aria-label={`${bundle.linkLabel}: ${bundle.name}`}>{bundle.linkLabel} ↗</a>}
+              {bundle.href.startsWith("/") ? <Link href={bundle.href}>{bundle.linkLabel} →</Link> : <a href={bundle.href} target="_blank" rel="noreferrer" aria-label={`${bundle.linkLabel}: ${bundle.name}`}>{bundle.linkLabel}<ExternalArrow /></a>}
             </article>
           ))}
         </div>
@@ -268,7 +269,7 @@ export default function AiDlcPage() {
         <p className={styles.eyebrow}>From package to capability</p>
         <h2>Adopt it around one bounded outcome.</h2>
         <p>Use an AI-native delivery pilot to draft the first BrainKit from approved sources, establish accountable ownership and leave a digest-pinned, manifest-installed harness in the repository.</p>
-        <div className={styles.actions}><Link className={styles.primaryAction} href="/#engage">Discuss a delivery pilot</Link><a className={styles.darkAction} href="https://github.com/middleleap/ai-dlc" target="_blank" rel="noreferrer">Browse the repository ↗</a></div>
+        <div className={styles.actions}><Link className={styles.primaryAction} href="/#engage">Discuss a delivery pilot</Link><a className={styles.darkAction} href="https://github.com/middleleap/ai-dlc" target="_blank" rel="noreferrer">Browse the repository<ExternalArrow /></a></div>
       </section>
 
       <SiteFooter />

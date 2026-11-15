@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalArrow } from "@/components/ExternalArrow";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
@@ -131,7 +132,7 @@ export default function PracticePage() {
           <a href={mailtoHref("Strategic mandate")}>{practiceFacts.contactEmail}</a> if you prefer.
         </p>
         <div className={styles.engageActions}>
-          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a {...bookingLinkProps}>Book a conversation<ExternalArrow /></a>
           <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email →</a>
           <Link href="/how-we-engage">See how we engage →</Link>
         </div>

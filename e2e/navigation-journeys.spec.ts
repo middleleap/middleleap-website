@@ -78,7 +78,7 @@ for (const profile of profiles) {
         }));
         await page.goto("/ventures");
         for (const contribution of ecosystemContributions) {
-          const title = page.getByRole("link", { name: `${contribution.name} ↗`, exact: true });
+          const title = page.getByRole("link", { name: `${contribution.name}`, exact: true });
           const [popup] = await Promise.all([page.waitForEvent("popup"), title.click()]);
           await popup.waitForLoadState("domcontentloaded");
           expect(popup.url()).toBe(contribution.href);
@@ -97,8 +97,8 @@ for (const profile of profiles) {
         }
         await page.goto("/ventures/unleash");
         for (const [name, destination] of [
-          ["Visit Unleash Racing ↗", "https://unleashracing.com/"],
-          ["Existing account sign-in ↗", "https://unleash.training/login"],
+          ["Visit Unleash Racing", "https://unleashracing.com/"],
+          ["Existing account sign-in", "https://unleash.training/login"],
         ]) {
           const [unleash] = await Promise.all([
             page.waitForEvent("popup"),
@@ -110,8 +110,8 @@ for (const profile of profiles) {
         }
         await page.goto("/ai-dlc");
         for (const [name, directory] of [
-          ["Open Finance Intelligence ↗", "middleleap-open-finance-uae"],
-          ["UAE Banking Intelligence ↗", "middleleap-banking-uae"],
+          ["Open Finance Intelligence", "middleleap-open-finance-uae"],
+          ["UAE Banking Intelligence", "middleleap-banking-uae"],
         ]) {
           const [popup] = await Promise.all([
             page.waitForEvent("popup"), page.getByRole("link", { name, exact: true }).click(),
