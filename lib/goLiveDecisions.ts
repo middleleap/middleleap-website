@@ -3,8 +3,9 @@
  *
  * A practitioner's list, not regulatory guidance. Statements about the scheme
  * (who must participate, where consent is held, what certification covers, how
- * versions change) were checked against the published UAE Open Finance
- * Standards on `reviewedOn`. Re-check them, and update the date, whenever the
+ * versions change, who pays which fees) were checked against the MiddleLeap
+ * Open Finance reference pack on `reviewedOn`, and the errata level against the
+ * published register. Re-check them, and update the date, whenever the
  * Standards move to a new version or errata level. Figures that change (fees,
  * compensation amounts, service levels) are deliberately not quoted.
  */
@@ -20,7 +21,7 @@ export const goLiveDecisions = [
     title: "Role",
     question: "Will you only comply as a data holder, or also compete as a third party?",
     body:
-      "Every licensed bank must take part as a Licensed Financial Institution and serve data and payments to others. Acting as a third-party provider yourself is a choice. It decides whether Open Finance is a cost you carry or a channel you use.",
+      "Every licensed bank must take part as a Licensed Financial Institution and serve data and payments to others. Acting as a third-party provider yourself is a choice. A bank needs no separate licence for it, but it must notify the Central Bank and have approval before it starts. The choice decides whether Open Finance is a cost you carry or a channel you use.",
     leftOpen:
       "The programme is scoped and funded as compliance. The commercial case then arrives after the architecture, the budget and the team are fixed.",
     owner: "The executive committee, with a business-line sponsor.",
@@ -38,11 +39,11 @@ export const goLiveDecisions = [
   {
     number: "03",
     title: "Consent experience",
-    question: "Who owns what the customer sees when they give, review and withdraw consent?",
+    question: "Will you build the consent journey yourself or use the central one, and who owns it either way?",
     body:
-      "Consent is held centrally by the scheme's API Hub, and the customer authenticates with their own bank. Your consent and authorisation screens are checked against the scheme's customer-experience rules before you go live, and customers need a way to see and revoke consents in your channels.",
+      "Consent is always held centrally by the scheme's API Hub. How the customer gives it is your choice. You can build the journey in your own channels, where the customer authenticates with you, your screens are certified against the scheme's customer-experience rules and you provide the place where customers view and revoke consents. Or you can adopt the scheme's centralised authentication service, which runs the journey and the consent view for you while you build the services behind it.",
     leftOpen:
-      "The screens are designed by the integration team at the end of the build, and the first people to judge them are the certifier and a confused customer.",
+      "The route is chosen by default, by whoever is building. If it is your own journey, the screens are designed at the end of the build and first judged by the certifier and a confused customer.",
     owner: "The head of digital channels, with compliance.",
   },
   {
@@ -50,7 +51,7 @@ export const goLiveDecisions = [
     title: "Version and change",
     question: "Which version are you building to, and who tracks what changes next?",
     body:
-      "A published version of the Standards changes only through recorded errata, and new versions arrive on a roadmap. Changes to function, security profile or customer experience can trigger re-certification. Someone has to read the register and decide what each change means for you.",
+      "A published version of the Standards changes only through recorded errata, and new versions arrive on a roadmap. When a new major version arrives, a bank has to run it alongside the previous one for a period. Changes to function or customer experience can trigger re-certification. Someone has to read the register and decide what each change means for you.",
     leftOpen:
       "The build targets a version that has already moved on, and every correction lands as an unplanned change request.",
     owner: "The head of architecture, with one named person reading the register.",
@@ -60,7 +61,7 @@ export const goLiveDecisions = [
     title: "Operations",
     question: "Who runs this the day after go-live?",
     body:
-      "Participation carries service levels for availability and response time, a service desk relationship with the scheme operator, and incident and change processes with notice periods. These are run-the-bank duties, and they start on day one.",
+      "Participation carries service levels for availability and response time, and planned maintenance counts against the availability target. It also brings a service desk relationship with the scheme operator, and incident and change processes with notice periods. These are run-the-bank duties, and they start on day one.",
     leftOpen:
       "The project team disbands, and the first incident has no owner, no runbook and no route to the operator.",
     owner: "The head of operations or technology operations.",
@@ -70,7 +71,7 @@ export const goLiveDecisions = [
     title: "Liability, fraud and disputes",
     question: "Who answers when a consent, a payment or a control fails?",
     body:
-      "The scheme has a liability model with set compensation for defined failures, such as a consent that is not honoured or a payment executed outside its service level. Payments also carry confirmation-of-payee and risk-information duties, and suspicious activity still has to be reported.",
+      "The scheme has a liability model with set compensation for defined failures, such as a consent that is not honoured or a payment executed outside its service level. The participant that holds the customer relationship, usually the bank, compensates the customer first and recovers from the party at fault afterwards. On payments the bank answers payee-name checks, makes the final fraud decision using the risk information the third party sends, and keeps its existing duty to report suspicious activity.",
     leftOpen:
       "Claims and disputes arrive in a queue nobody staffed or budgeted, and fraud controls are discovered to belong to no one.",
     owner: "The chief risk officer, with operations and financial crime.",
@@ -80,7 +81,7 @@ export const goLiveDecisions = [
     title: "Commercials",
     question: "Who owns the profit and loss of taking part?",
     body:
-      "The commercial model sets fees you pay for using the API Hub and fees you earn from third parties on payments. Add the cost of running the service and the value of your own propositions, and participation has a profit and loss. It needs an owner who is measured on it.",
+      "The commercial model works differently for each role. As a data holder you earn fees from third parties on the payments they initiate, and you pay the Central Bank's licence fees. API Hub usage fees are charged to third parties, so you pay them only if you act as one. Add the cost of running the service and the value of your own propositions, and participation has a profit and loss. It needs an owner who is measured on it.",
     leftOpen:
       "Fees paid become a cost-centre line, fees earned go unmeasured, and nobody can say whether participation pays.",
     owner: "The chief financial officer, with the business-line sponsor.",
@@ -95,7 +96,7 @@ export const goLiveDecisions = [
 export const decisionPatterns = [
   {
     key: "role",
-    title: "LFI, TPP or both?",
+    title: "LFI only, or TPP as well?",
     situation:
       "The compliance programme is funded and running. Whether the bank should also compete as a third party has no owner and no date.",
     decision:
