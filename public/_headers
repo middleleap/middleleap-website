@@ -10,11 +10,13 @@
 # itself contains: scripts/build-csp.mjs replaces __INLINE_SCRIPT_HASHES__ with
 # their SHA-256 hashes at the end of every build, so no other inline script can
 # run. Inline <style> elements are refused; style attributes are allowed because
-# next/image writes one.
+# next/image writes one. Cloudflare Web Analytics is enabled on the zone and
+# injects its beacon at the edge: static.cloudflareinsights.com serves the
+# script and cloudflareinsights.com receives its reports.
 # HSTS deliberately omits includeSubDomains: other hosts under middleleap.com
 # are served from different platforms.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' __INLINE_SCRIPT_HASHES__ https://plausible.io; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://plausible.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' __INLINE_SCRIPT_HASHES__ https://plausible.io https://static.cloudflareinsights.com; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://plausible.io https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
   Strict-Transport-Security: max-age=31536000
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
