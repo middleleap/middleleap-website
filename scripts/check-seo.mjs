@@ -1,5 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 import path from "node:path";
+import { collectInlineScriptHashes, inlineScriptPlaceholder } from "./build-csp.mjs";
 
 const outputDirectory = path.resolve("out");
 const siteUrl = "https://www.middleleap.com";
@@ -138,6 +139,26 @@ for (const url of urls) {
       failures.push(`${route}: internal link target is not in the public route inventory: ${target}`);
     }
   }
+}
+
+// Content Security Policy: scripts/build-csp.mjs must have replaced the
+// placeholder in out/_headers with the hash of every inline script. A missing
+// hash blocks the theme script and hydration on that page.
+try {
+  const headers = await readFile(path.join(outputDirectory, "_headers"), "utf8");
+  const policy = /^\s*Content-Security-Policy:\s*(.+)$/m.exec(headers)?.[1] ?? "";
+  if (!policy) failures.push("_headers: no Content-Security-Policy header");
+  if (headers.includes(inlineScriptPlaceholder)) {
+    failures.push("_headers: the inline-script hash placeholder was not replaced; the build adapter did not run");
+  }
+  if (/script-src[^;]*'unsafe-inline'/.test(policy)) {
+    failures.push("_headers: script-src allows 'unsafe-inline'");
+  }
+  for (const source of await collectInlineScriptHashes(outputDirectory)) {
+    if (!policy.includes(source)) failures.push(`_headers: the policy does not allow an inline script the pages contain (${source})`);
+  }
+} catch (error) {
+  failures.push(`_headers: could not verify the Content Security Policy (${error.message})`);
 }
 
 if (failures.length > 0) {
