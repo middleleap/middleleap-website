@@ -129,6 +129,11 @@ export function SiteHeader({
           label: "The Loom Toolkit",
           description: "The installable system for institutional AI delivery.",
         },
+        {
+          href: "/the-loom#products",
+          label: "Loom products",
+          description: "Toolkit, Loom Shuttle and Loom Estate, and how they fit.",
+        },
       ],
     },
     { href: "/practice", label: "The practice", section: "practice" },
