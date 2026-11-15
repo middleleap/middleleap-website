@@ -24,7 +24,7 @@ const data: ProjectPageData = {
     lede:
       "Setbay™ is a UAE marketplace proposition that turns underused premium parking, starting with idle weekday hotel bays, into reserved monthly spaces for companies and their employees. Formerly the working codename Parqo.",
     actions: [
-      { label: "Open setbay.ae ↗", href: "https://setbay.ae/", kind: "primary", external: true },
+      { label: "Open setbay.ae", href: "https://setbay.ae/", kind: "primary", external: true },
       { label: "Review the evidence boundary ↓", href: "#evidence", kind: "secondary" },
     ],
     snapshot: "Private evidence snapshot · repository main at b32a45b · reviewed 4 October 2026",

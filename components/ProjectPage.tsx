@@ -1,4 +1,5 @@
 import type { Route } from "next";
+import { ExternalArrow } from "./ExternalArrow";
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import { ExecutiveSummary } from "./ExecutiveSummary";
@@ -149,7 +150,7 @@ function ProjectActionLink({ action }: { action: ProjectAction }) {
   if (action.external) {
     return (
       <a className={className} href={action.href} target="_blank" rel="noreferrer">
-        {action.label}
+        {action.label}<ExternalArrow />
       </a>
     );
   }
@@ -358,7 +359,7 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
           {!data.sources.some((source) => source.href) && <p className={styles.sectionLede}>The repository is not publicly accessible. This register names the material reviewed; detailed source access can be considered during appropriate diligence.</p>}
           <div className={styles.sourceList}>
             {data.sources.map((source) => source.href ? (
-              <a href={source.href} target="_blank" rel="noreferrer" key={source.id}><span>{source.id}</span><strong>{source.label}</strong><b>Open ↗</b></a>
+              <a href={source.href} target="_blank" rel="noreferrer" key={source.id}><span>{source.id}</span><strong>{source.label}</strong><b>Open<ExternalArrow /></b></a>
             ) : (
               <div key={source.id}><span>{source.id}</span><strong>{source.label}</strong><b>Reviewed</b></div>
             ))}
@@ -371,7 +372,7 @@ export function ProjectPage({ data }: { data: ProjectPageData }) {
         <h2>{data.engage.heading}</h2>
         <p>{data.engage.detail}</p>
         <div className={styles.engageActions}>
-          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a {...bookingLinkProps}>Book a conversation<ExternalArrow /></a>
           <a href={`mailto:contact@middleleap.com?subject=${data.engage.mailtoSubject}`}>Discuss the mandate by email →</a>
         </div>
       </section>

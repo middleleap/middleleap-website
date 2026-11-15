@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ExternalArrow } from "./ExternalArrow";
 import { useEffect, useRef, useState } from "react";
 import type { Theme } from "@/lib/theme";
 import styles from "./CeramicPivot.module.css";
@@ -145,7 +146,7 @@ function PivotFilm({ theme }: { theme: Theme }) {
         />
       </div>
       <figcaption className={styles.caption}>
-        <span>The pivot <span aria-hidden="true">↗</span></span>
+        <span>The pivot <ExternalArrow /></span>
       </figcaption>
     </figure>
   );

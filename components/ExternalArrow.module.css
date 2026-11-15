@@ -1,0 +1,12 @@
+.arrow {
+  display: inline-block;
+  width: .62em;
+  height: .62em;
+  margin-left: .28em;
+  vertical-align: baseline;
+  overflow: visible;
+}
+
+.keep {
+  white-space: nowrap;
+}

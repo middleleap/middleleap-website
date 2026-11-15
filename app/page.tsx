@@ -1,4 +1,5 @@
 import type { Route } from "next";
+import { ExternalArrow } from "@/components/ExternalArrow";
 import Link from "next/link";
 import chromeStyles from "@/components/SiteChrome.module.css";
 import { CeramicPivot } from "@/components/CeramicPivot";
@@ -448,7 +449,7 @@ export default function HomePage() {
                 </Link>
               ) : project.href && (
                 <a className={styles.ventureLink} href={project.href} target="_blank" rel="noreferrer">
-                  Open the emulator ↗
+                  Open the emulator<ExternalArrow />
                 </a>
               )}
             </article>
@@ -508,7 +509,7 @@ export default function HomePage() {
         </div>
         <div className={styles.engagementActions}>
           <a className={styles.primaryAction} {...bookingLinkProps}>
-            Book a conversation ↗
+            Book a conversation<ExternalArrow />
           </a>
           <Link className={styles.engagementLink} href="/how-we-engage#models">Explore engagement models →</Link>
         </div>

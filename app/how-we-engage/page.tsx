@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalArrow } from "@/components/ExternalArrow";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { bookingLinkProps, mailtoHref } from "@/lib/contact";
@@ -104,7 +105,7 @@ export default function HowWeEngagePage() {
           <a href={mailtoHref("Strategic mandate")}>{practiceFacts.contactEmail}</a> if you prefer.
         </p>
         <div className={styles.startActions}>
-          <a {...bookingLinkProps}>Book a conversation ↗</a>
+          <a {...bookingLinkProps}>Book a conversation<ExternalArrow /></a>
           <a href={mailtoHref("Strategic mandate")}>Discuss your mandate by email →</a>
           <Link href="/practice">Meet the practice →</Link>
         </div>

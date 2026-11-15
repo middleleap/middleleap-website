@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalArrow } from "./ExternalArrow";
 import { ecosystemContributions, portfolioProjects } from "@/lib/ventures";
 import styles from "@/app/ventures/ventures.module.css";
 import chromeStyles from "./SiteChrome.module.css";
@@ -44,8 +45,8 @@ export function VenturesPortfolio() {
             </div>
             <div className={styles.projectLinks}>
               {project.detailPath && <Link href={project.detailPath} aria-label={`Read the build record for ${project.name}`}>Read the build record →</Link>}
-              {project.href && <a href={project.href} target="_blank" rel="noreferrer" aria-label={project.hrefLabel ?? `Visit live product: ${project.name}`}>{project.hrefLabel ?? "Visit live product"} ↗</a>}
-              {project.repository && <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View repository: ${project.name}`}>View repository ↗</a>}
+              {project.href && <a href={project.href} target="_blank" rel="noreferrer" aria-label={project.hrefLabel ?? `Visit live product: ${project.name}`}>{project.hrefLabel ?? "Visit live product"}<ExternalArrow /></a>}
+              {project.repository && <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View repository: ${project.name}`}>View repository<ExternalArrow /></a>}
               {project.evidenceAccess && <span>{project.evidenceAccess}</span>}
             </div>
           </article>
@@ -69,12 +70,12 @@ export function VenturesPortfolio() {
                 <span>{contribution.role}</span>
                 <b>{contribution.status}</b>
               </div>
-              <h4><a className={chromeStyles.titleLink} href={contribution.href} target="_blank" rel="noreferrer">{contribution.name} ↗</a></h4>
+              <h4><a className={chromeStyles.titleLink} href={contribution.href} target="_blank" rel="noreferrer">{contribution.name}<ExternalArrow /></a></h4>
               <p>{contribution.summary}</p>
               <div className={styles.projectLinks}>
-                <a href={contribution.href} target="_blank" rel="noreferrer" aria-label={`Visit project: ${contribution.name}`}>Visit project ↗</a>
+                <a href={contribution.href} target="_blank" rel="noreferrer" aria-label={`Visit project: ${contribution.name}`}>Visit project<ExternalArrow /></a>
                 {contribution.repository && (
-                  <a href={contribution.repository} target="_blank" rel="noreferrer" aria-label={`View repository: ${contribution.name}`}>View repository ↗</a>
+                  <a href={contribution.repository} target="_blank" rel="noreferrer" aria-label={`View repository: ${contribution.name}`}>View repository<ExternalArrow /></a>
                 )}
               </div>
             </article>
