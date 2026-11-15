@@ -3,6 +3,7 @@ import { bookingLinkProps, contactEmail, mailtoHref } from "@/lib/contact";
 import Link from "next/link";
 import chromeStyles from "@/components/SiteChrome.module.css";
 import { engagementModels } from "@/lib/engagements";
+import { decisionPatterns } from "@/lib/goLiveDecisions";
 import { ExecutiveSummary } from "@/components/ExecutiveSummary";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -343,6 +344,35 @@ export default function OpenFinancePage() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className={styles.section} id="patterns">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>Where to start</p>
+          <div>
+            <h2>Two decisions worth resolving first.</h2>
+            <p>
+              These are patterns. They describe a decision and what resolving it should leave
+              behind, and they do not describe a client engagement.
+            </p>
+          </div>
+        </div>
+        <div className={styles.patternGrid}>
+          {decisionPatterns.map((pattern, index) => (
+            <article key={pattern.key}>
+              <span>Pattern 0{index + 1}</span>
+              <h3>{pattern.title}</h3>
+              <dl>
+                <div><dt>The situation</dt><dd>{pattern.situation}</dd></div>
+                <div><dt>The decision</dt><dd>{pattern.decision}</dd></div>
+                <div><dt>What it leaves behind</dt><dd>{pattern.leftBehind}</dd></div>
+              </dl>
+            </article>
+          ))}
+        </div>
+        <Link className={styles.patternLink} href="/open-finance/go-live-decisions">
+          Read the seven decisions to settle before go-live →
+        </Link>
       </section>
 
       <section className={styles.section} id="work">

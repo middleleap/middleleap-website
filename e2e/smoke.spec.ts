@@ -5,6 +5,7 @@ import { writeFile } from "node:fs/promises";
 const routes = [
   "/",
   "/open-finance",
+  "/open-finance/go-live-decisions",
   "/practice",
   "/founder",
   "/how-we-engage",

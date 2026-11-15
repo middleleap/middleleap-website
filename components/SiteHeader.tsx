@@ -103,6 +103,11 @@ export function SiteHeader({
           label: "Open Finance",
           description: "Market position, propositions, platforms and operating models.",
         },
+        {
+          href: "/open-finance/go-live-decisions",
+          label: "Go-live decisions",
+          description: "Seven decisions a UAE bank should settle before launch.",
+        },
       ],
     },
     {

@@ -5,6 +5,7 @@
     "/api/*",
     "/",
     "/open-finance",
+    "/open-finance/go-live-decisions",
     "/the-loom",
     "/ai-dlc",
     "/practice",
