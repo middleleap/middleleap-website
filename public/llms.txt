@@ -145,6 +145,7 @@ MiddleLeap advises on AI-native delivery because it ships with it. Every positio
 - [Founder](https://www.middleleap.com/founder): Michael Ryberg Hartmann's profile, track record, dated career record and professional links.
 - [How we engage](https://www.middleleap.com/how-we-engage): the three engagement models, how senior expertise is assembled around a mandate and how to start.
 - [Open Finance advisory](https://www.middleleap.com/open-finance): the complimentary Readiness & Value Review, illustrative two-page takeaway, mandates, workstreams, MENA experience and optional paid engagement models.
+- [Seven decisions before a UAE Open Finance go-live](https://www.middleleap.com/open-finance/go-live-decisions): a sponsor's list for UAE banks covering role, proposition, consent experience, version and change, operations, liability and commercials, with what happens when each is left open and who should own it. Reviewed 15 Nov 2026 against Standards v2.1 with errata 3. A practitioner's view, not legal or regulatory advice.
 - [MiddleLeap Ventures](https://www.middleleap.com/ventures): portfolio, ecosystem contributions, project status and Venture Studio entry point.
 - [Venture Studio](https://www.middleleap.com/ventures/studio): assessment criteria, evidence-led process and proposal route.
 - [The Loom](https://www.middleleap.com/the-loom): the governed delivery method, its Discovery and Delivery harnesses, the Run feedback arc, control chain, context brain, continuous assurance, harness governance and stated limits.
