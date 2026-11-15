@@ -307,6 +307,11 @@ A full review of the built site shipped as PR #67 and a follow-up:
 - Verification at that point: 151 unit tests, 156 Playwright + axe checks across 14
   routes, Lighthouse budgets green.
 
+Since then: the hero films were cut to 4.6 seconds (the removed part was a held final
+frame), the Content Security Policy allows inline scripts by hash only, the Loom products
+are linked from `/the-loom`, and the first explainer
+(`/open-finance/go-live-decisions`) and two decision patterns are published.
+
 Still open, and all need the founder: a durable Cloudflare rate-limiting rule for
-`/api/propose`, the hero film length (8 seconds with no pause control), and the insights
-and mandate-pattern content from Phase 6.
+`/api/propose`; whether the homepage proof card names ADCB; and further explainers or
+real engagement patterns from Phase 6.
