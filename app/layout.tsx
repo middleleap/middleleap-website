@@ -122,9 +122,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
-        <Script id="middleleap-theme" strategy="beforeInteractive">
-          {themeBootScript}
-        </Script>
+        {/*
+          A plain inline script, not next/script. next/script queues
+          "beforeInteractive" code until the Next.js runtime chunk loads, which
+          let the page paint in the default dark theme before switching. Inline
+          in <head>, it runs before the first paint.
+        */}
+        <script id="middleleap-theme" dangerouslySetInnerHTML={{ __html: themeBootScript }} />
         <link
           rel="alternate"
           type="text/plain"

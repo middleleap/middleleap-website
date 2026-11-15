@@ -273,3 +273,16 @@ test.describe("global navigation IA", () => {
     }
   });
 });
+
+// The theme must be set by markup alone, before any Next.js bundle runs.
+// Otherwise the page first paints in the default dark theme and then switches,
+// which is both a visible flash and a moving target for the contrast checks.
+for (const colorScheme of ["light", "dark"] as const) {
+  test(`theme is applied before application scripts load (${colorScheme})`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme });
+    await page.route("**/_next/static/chunks/**", (route) => route.abort());
+    await page.goto("/open-finance", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("html")).toHaveAttribute("data-theme", colorScheme);
+    await expect(page.locator("html")).toHaveAttribute("data-theme-mode", "auto");
+  });
+}
