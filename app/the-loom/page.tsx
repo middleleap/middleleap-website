@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import styles from "./loom.module.css";
 import { loomProof, loomRelease } from "@/lib/proof";
+import { loomProducts, loomProductsBoundary } from "@/lib/loomProducts";
+import { ExternalArrow } from "@/components/ExternalArrow";
 
 export const metadata = pageMetadata({
   title: "The Loom | Governed AI Delivery for Regulated Institutions",
@@ -28,7 +30,7 @@ const proofPoints = [
 const loomParts = [
   ["Warp", "Always-on principles", "Evidence, bounded work, human authority, quality and traceability remain under tension throughout."],
   ["Harnesses", "Discovery + delivery", "One harness finds the right problem. The other ships the chosen solution under control."],
-  ["Shuttle", "AI agents", "Specialised agents move through the harness to research, build, review, test and evidence."],
+  ["Weft", "AI agents", "Specialised agents are the working thread, laid across the warp to research, build, review, test and evidence."],
   ["Pattern", "The context brain", "Mandate constraints, solution-domain knowledge and institutional context determine what gets woven."],
   ["Cloth", "Audit-ready software", "The output is a working solution with its controls, lineage and release evidence constructed into the line."],
 ] as const;
@@ -127,6 +129,7 @@ export default function LoomPage() {
         contextLabel="The Loom navigation"
         contextLinks={[
           { href: "#loop", label: "Core loop" },
+          { href: "#products", label: "Products" },
           { href: "#control-chain", label: "Control chain" },
           { href: "#assurance", label: "Assurance" },
           { href: "#evidence", label: "Evidence" },
@@ -169,6 +172,32 @@ export default function LoomPage() {
 
       <section className={styles.proof} aria-label="Evidence from the synthetic Open Finance Backoffice reference build">
         {proofPoints.map(([value, label]) => <article key={value}><strong>{value}</strong><span>{label}</span></article>)}
+      </section>
+
+      <section className={styles.section} id="products">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>See it running</p>
+          <div>
+            <h2>One method, three ways to use it.</h2>
+            <p>The Toolkit builds it. Shuttle takes it to approval. Estate shows whether it stays in control.</p>
+          </div>
+        </div>
+        <div className={styles.productGrid}>
+          {loomProducts.map((product, index) => (
+            <article key={product.key}>
+              <span>0{index + 1} · {product.role}</span>
+              <small>{product.audience}</small>
+              <h3>{product.name}</h3>
+              <p>{product.detail}</p>
+              {product.external ? (
+                <a href={product.href} target="_blank" rel="noopener noreferrer">{product.linkLabel}<ExternalArrow /></a>
+              ) : (
+                <Link href={product.href}>{product.linkLabel} →</Link>
+              )}
+            </article>
+          ))}
+        </div>
+        <p className={styles.productBoundary}>{loomProductsBoundary}</p>
       </section>
 
       <section className={styles.section} id="method">

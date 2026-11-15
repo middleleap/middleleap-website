@@ -20,6 +20,8 @@ MiddleLeap helps leaders turn regulatory, commercial and technology shifts into 
 - MiddleLeap is the independent Dubai-based advisory practice. It is not a software product, fund or developer-productivity company.
 - The Loom is MiddleLeap's governed method for AI-enabled discovery, delivery and operational learning in regulated institutions.
 - The Loom Toolkit is the installable product that carries The Loom's method, controls and adoption machinery into a repository.
+- Loom Shuttle and Loom Estate are MiddleLeap products published at https://loom.middleleap.com/. Loom Shuttle takes one regulated product at a bank from idea to permission to launch, with every decision made by a named person. Loom Estate shows what runs in the bank, who owns it and whether it is in control, read from recorded evidence. Both currently run as demos on fictional banks with synthetic data.
+- The Loom names relate as one method used three ways: the Loom Toolkit builds it, Loom Shuttle takes it to approval, and Loom Estate shows whether it stays in control. "Shuttle" refers only to the Loom Shuttle product; in the loom metaphor the AI agents are the weft.
 - AI-DLC is the public repository and plugin mechanism used to distribute, version and adopt The Loom Toolkit; it is an execution capability, not MiddleLeap's umbrella identity.
 - MiddleLeap Ventures is the practice's build-learn-apply portfolio. Portfolio pages are evidence-bounded build records, and each states whether its evidence is a reference build, live venture experiment or ecosystem contribution.
 
