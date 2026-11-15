@@ -2,23 +2,25 @@
 
 Approved homepage artwork, generated in Higgsfield on 10 October 2026.
 
-- `pivot.mp4`: silent H.264, 1440 × 1080, 24 fps, 8 seconds, fast-start.
-- `poster.webp`: matching final film frame at 7.8 seconds, 1440 × 1080.
+- `pivot.mp4`: silent H.264, 1440 × 1080, 24 fps, 4.6 seconds (110 frames), fast-start.
+- `poster.webp`: matching final film frame (taken at 7.8 seconds of the 8-second master), 1440 × 1080.
 - Seedance 2.5 generation: `cb007286-6d25-4a9b-8d7b-a1d7d1f7cd31`.
 - Final edited media: `6db10ae8-1051-4e69-933a-7a7fab6286b8`.
 - Poster media: `d5e6705e-985e-4ddf-91c6-3c77583d4f82`.
 
 Light theme uses a separate charcoal-and-ember sculpture on warm paper:
 
-- `pivot-light.mp4`: silent H.264, 1440 × 1080, 24 fps, 8 seconds, fast-start.
-- `poster-light.webp`: matching final frame at 7.8 seconds, 1440 × 1080.
+- `pivot-light.mp4`: silent H.264, 1440 × 1080, 24 fps, 4.6 seconds (110 frames), fast-start.
+- `poster-light.webp`: matching final frame (taken at 7.8 seconds of the 8-second master), 1440 × 1080.
 - Light still generation: `9d78bebb-339a-4466-82f0-9411dee9fb2d`.
 - Seedance 2.5 video edit: `4634cef7-7286-487d-8ec9-aa0534f0149f`.
 - Web film media: `a18d5189-b6d0-442d-bf8d-2efe1e9fbdc7`.
 - Poster media: `2f55cfee-9702-48f7-ad36-8c4dbeb71935`.
 
-The dark film retains the first 88 generated frames: the ember tile lifts and pivots 45 degrees. The last frame is held to eight seconds, removing the additional rotation from the raw generation. The light film re-renders this approved motion with soft daylight, a charcoal ceramic square and warm paper surroundings; its last frame is extended to exactly eight seconds.
+The dark film retains the first 88 generated frames: the ember tile lifts and pivots 45 degrees, and the last frame is then held, removing the additional rotation from the raw generation. The light film re-renders this approved motion with soft daylight, a charcoal ceramic square and warm paper surroundings.
 
-Playback is once per theme per page visit; explicit replay is available. The resolved theme selects its matching film and poster before hydration. Inactive posters stay lazy and inactive films have no source. Changing themes stops and unloads the outgoing film. Reduced-motion visitors see the appropriate poster without an automatic film request.
+Both films were first delivered as 8-second masters whose second half was the held final frame. On 15 November 2026 the hold was cut to 4.6 seconds with a stream copy (`ffmpeg -t 4.5 -c copy`, no re-encode), so the motion and every remaining frame are unchanged. The films start automatically and have no pause control, and WCAG 2.2.2 asks for one on motion that lasts more than five seconds: keep both films under five seconds.
 
-Both themes use a luminance matte on the shared poster/video frame: the dark matte clears the near-black studio backdrop, while the light matte clears the pale studio surroundings. The existing edge feather remains in place so the artwork blends with the page's ambient background. The source films and posters are unchanged.
+Playback is once per theme per page visit, with no controls. The resolved theme selects its matching film and poster before hydration. Inactive posters stay lazy and inactive films have no source. Changing themes stops and unloads the outgoing film. Reduced-motion visitors see the appropriate poster without an automatic film request.
+
+Both themes use a luminance matte on the shared poster/video frame: the dark matte clears the near-black studio backdrop, while the light matte clears the pale studio surroundings. The existing edge feather remains in place so the artwork blends with the page's ambient background. The posters are unchanged.

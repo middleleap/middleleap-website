@@ -11,9 +11,14 @@ for (const theme of ["dark", "light"] as const) {
       const video = figure.locator("video");
       await figure.scrollIntoViewIfNeeded();
       await expect(figure).toHaveAttribute("data-playback", "playing");
-      expect(await video.evaluate((element: HTMLVideoElement) => ({
+      const film = await video.evaluate((element: HTMLVideoElement) => ({
         muted: element.muted, loop: element.loop, duration: element.duration,
-      }))).toEqual({ muted: true, loop: false, duration: 8 });
+      }));
+      expect(film).toMatchObject({ muted: true, loop: false });
+      // The film starts by itself and has no pause control, so it must stay
+      // under five seconds (WCAG 2.2.2).
+      expect(film.duration).toBeGreaterThan(3);
+      expect(film.duration).toBeLessThan(5);
       // The film has no controls: it plays once and settles on its poster.
       await expect(figure.getByRole("button")).toHaveCount(0);
       await expect(figure).toHaveAttribute("data-playback", "finished", { timeout: 12000 });
